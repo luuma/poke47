@@ -12,7 +12,7 @@ Fun changes to abilities:
 - Infinite Wisdom: can use TMs and relearn its own moves during battle (oranguru, drampa)
 - Opposite Day: Sets 5 turns of inverse battle on switchin (inkay, malamar)
 
-It's intended as a rombase - hopefully, one that I'll use myself. Have a lovely day!
+It's fully playable (and good fun) but I'm also hoping to use it one day as my own rombase for a future project. Have a lovely day!
 
 # About `pokeemerald-expansion`
 
