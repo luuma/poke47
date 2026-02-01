@@ -1,13 +1,3 @@
-<!-- ## Old List of Credits -->
-<!-- - **mvit**: ability pop up and mega evo gfx -->
-<!-- - **Doesnt**: berries gfx, pokeball particles -->
-<!-- - **MrDollSteak**: Pokedex descriptions -->
-<!-- - **Avara**: item descriptions -->
-<!-- - **TheLaw**: move animations -->
-<!-- - **BreadCrumbs**: code review -->
-<!-- - **Syreldar**: testing, wrote an explanation post -->
-<!-- - **Pyredrid**: automating issue creation, code review and testing -->
-
 ## Credits ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -93,6 +83,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Gamer2020"><img src="https://avatars.githubusercontent.com/u/6243575?v=4?s=100" width="100px;" alt="Gamer2020"/><br /><sub><b>Gamer2020</b></sub></a><br /><a href="https://github.com/rh-hideout/pokeemerald-expansion/commits?author=Gamer2020" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/SonikkuA-DatH"><img src="https://avatars.githubusercontent.com/u/58025603?v=4?s=100" width="100px;" alt="SonikkuA-DatH"/><br /><sub><b>SonikkuA-DatH</b></sub></a><br /><a href="#design-SonikkuA-DatH" title="Design">🎨</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://jaizu.moe"><img src="https://avatars.githubusercontent.com/u/18596778?v=4?s=100" width="100px;" alt="Jaizu"/><br /><sub><b>Jaizu</b></sub></a><br /><a href="https://github.com/rh-hideout/pokeemerald-expansion/commits?author=Jaizu" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/izrofid"><img src="https://avatars.githubusercontent.com/u/206095739?v=4?s=100" width="100px;" alt="Kildemal"/><br /><sub><b>Kildemal</b></sub></a><br /><a href="https://github.com/rh-hideout/pokeemerald-expansion/commits?author=izrofid" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Skeli789"><img src="https://avatars.githubusercontent.com/u/17243618?v=4?s=100" width="100px;" alt="Skeli"/><br /><sub><b>Skeli</b></sub></a><br /><a href="#design-Skeli789" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://hufford.io"><img src="https://avatars.githubusercontent.com/u/8021794?v=4?s=100" width="100px;" alt="Josh Hufford"/><br /><sub><b>Josh Hufford</b></sub></a><br /><a href="https://github.com/rh-hideout/pokeemerald-expansion/commits?author=ostomachion" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Kasenn"><img src="https://avatars.githubusercontent.com/u/115586266?v=4?s=100" width="100px;" alt="Kasenn"/><br /><sub><b>Kasenn</b></sub></a><br /><a href="https://github.com/rh-hideout/pokeemerald-expansion/commits?author=Kasenn" title="Code">💻</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/SabataLunar"><img src="https://avatars.githubusercontent.com/u/26584469?v=4?s=100" width="100px;" alt="SabataLunar"/><br /><sub><b>SabataLunar</b></sub></a><br /><a href="#design-SabataLunar" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/PacFire"><img src="https://avatars.githubusercontent.com/u/108960850?v=4?s=100" width="100px;" alt="PacFire"/><br /><sub><b>PacFire</b></sub></a><br /><a href="#design-PacFire" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ChrispyChris27"><img src="https://avatars.githubusercontent.com/u/173648816?v=4?s=100" width="100px;" alt="ChrispyChris27"/><br /><sub><b>ChrispyChris27</b></sub></a><br /><a href="https://github.com/rh-hideout/pokeemerald-expansion/commits?author=ChrispyChris27" title="Code">💻</a></td>
     </tr>
   </tbody>
   <tfoot>
