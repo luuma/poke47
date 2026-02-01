@@ -2478,7 +2478,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
 
     [ABILITY_DOUBLE_WALLOP] =
     {
-        .name = _("Double Wallop"),
+        .name = _("Double Whammy"),
         .description = COMPOUND_STRING("Batters foes under 3/4 HP."),
         .aiRating = 8,
     },
