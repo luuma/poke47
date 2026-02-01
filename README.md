@@ -3,15 +3,14 @@
 Pokemon ____(4) _______(7) is a rombase that replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with updated movepools, new abilities, new TMs, and a couple of new maps. This was a one-month sprint, and it's a complete and playable hack. 
 
 Fun changes to abilities:
-Commander Duosion/ Reuniclus
-Zero to Hero Carbink
-Honey Gather gathers honey every turn if possible. Honey provides 1.2x defense to bug types and is great when flung
-Litter Picker: gains a random consumable at end of turn if it has no item (trubbish)
-sets 1/8 HP hail that boosts defense of ice types 1.5x (kyurem)
-Staring Contest: accuracy rises each turn (patrat)
-Double Whammy: hits twice at full power against foes under 75% HP (crabrawler)
-Infinite Wisdom: can use TMs and relearn its own moves during battle (oranguru, drampa)
-Opposite Day: Sets 5 turns of inverse battle on switchin (inkay, malamar)
+- Commander Duosion/ Reuniclus
+- Zero to Hero Carbink
+- Honey Gather gathers honey every turn if possible. Honey provides 1.2x defense to bug types and is great when flung
+- Litter Picker: gains a random consumable at end of turn if it has no item (trubbish)
+- Staring Contest: accuracy rises each turn (patrat)
+- Double Whammy: hits twice at full power against foes under 75% HP (crabrawler)
+- Infinite Wisdom: can use TMs and relearn its own moves during battle (oranguru, drampa)
+- Opposite Day: Sets 5 turns of inverse battle on switchin (inkay, malamar)
 
 It's also intended as a rombase for my next project, but that is another story.
 
