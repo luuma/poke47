@@ -1,3 +1,20 @@
+# About `poke47`
+
+Pokemon ____(4) _______(7) is a rombase that replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with updated movepools, new abilities, new TMs, and a couple of new maps. This was a one-month sprint, and it's a complete and playable hack. 
+
+Fun changes to abilities:
+Commander Duosion/ Reuniclus
+Zero to Hero Carbink
+Honey Gather gathers honey every turn if possible. Honey provides 1.2x defense to bug types and is great when flung
+Litter Picker: gains a random consumable at end of turn if it has no item (trubbish)
+sets 1/8 HP hail that boosts defense of ice types 1.5x (kyurem)
+Staring Contest: accuracy rises each turn (patrat)
+Double Whammy: hits twice at full power against foes under 75% HP (crabrawler)
+Infinite Wisdom: can use TMs and relearn its own moves during battle (oranguru, drampa)
+Opposite Day: Sets 5 turns of inverse battle on switchin (inkay, malamar)
+
+It's also intended as a rombase for my next project, but that is another story.
+
 # About `pokeemerald-expansion`
 
 ![Gif that shows debugging functionality that is unique to pokeemerald-expansion such as rerolling Trainer ID, Cheat Start, PC from Debug Menu, Debug PC Fill, Pokémon Sprite Visualizer, Debug Warp to Map, and Battle Debug Menu](https://github.com/user-attachments/assets/cf9dfbee-4c6b-4bca-8e0a-07f116ef891c) ![Gif that shows overworld functionality that is unique to pokeemerald-expansion such as indoor running, BW2 style map popups, overworld followers, DNA Splicers, Gen 1 style fishing, OW Item descriptions, Quick Run from Battle, Use Last Ball, Wild Double Battles, and Catch from EXP](https://github.com/user-attachments/assets/383af243-0904-4d41-bced-721492fbc48e) ![Gif that shows off a number of modern Pokémon battle mechanics happening in the pokeemerald-expansion engine: 2 vs 1 battles, modern Pokémon, items, moves, abilities, fully customizable opponents and partners, Trainer Slides, and generational gimmicks](https://github.com/user-attachments/assets/50c576bc-415e-4d66-a38f-ad712f3316be)
