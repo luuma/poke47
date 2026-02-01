@@ -2288,7 +2288,7 @@ bool8 ObjectEventInteractionBerryHasPests(void)
     species = GetBerryPestSpecies(gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].berry);
     if (species == SPECIES_NONE)
         return FALSE;
-    CreateScriptedWildMon(species, 14 + Random() % 3, ITEM_NONE);
+    CreateScriptedWildMon(species, 10 + Random() % 6, ITEM_RICH_MULCH + Random() % 4); // any of the four XY mulches.
     gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests = FALSE;
     return TRUE;
 }
@@ -2360,7 +2360,9 @@ static const u8 sBerryMutations[][3] = {
     {ITEM_TO_BERRY(ITEM_KELPSY_BERRY), ITEM_TO_BERRY(ITEM_WACAN_BERRY),  ITEM_TO_BERRY(ITEM_APICOT_BERRY)},
     {ITEM_TO_BERRY(ITEM_GANLON_BERRY), ITEM_TO_BERRY(ITEM_LIECHI_BERRY), ITEM_TO_BERRY(ITEM_KEE_BERRY)},
     {ITEM_TO_BERRY(ITEM_SALAC_BERRY),  ITEM_TO_BERRY(ITEM_PETAYA_BERRY), ITEM_TO_BERRY(ITEM_MARANGA_BERRY)},
-    // Up to one more Mutation can be added here for a total of 15 (only 4 bits are allocated)
+    {ITEM_TO_BERRY(ITEM_TAMATO_BERRY), ITEM_TO_BERRY(ITEM_OCCA_BERRY),   ITEM_TO_BERRY(ITEM_LANSAT_BERRY)},
+    {ITEM_TO_BERRY(ITEM_KEE_BERRY),    ITEM_TO_BERRY(ITEM_MARANGA_BERRY),  ITEM_TO_BERRY(ITEM_ENIGMA_BERRY)},
+    // Up to two more Mutations can be added here for a total of 15 (only 4 bits are allocated)
 };
 
 static u8 GetMutationOutcome(u8 berry1, u8 berry2)
@@ -2461,30 +2463,30 @@ static u16 GetBerryPestSpecies(u8 berryId)
     switch(berry->color)
     {
         case BERRY_COLOR_RED:
-            return P_FAMILY_LEDYBA ? SPECIES_LEDYBA : SPECIES_NONE;
+            return SPECIES_PIKIPEK;
             break;
         case BERRY_COLOR_BLUE:
-            return P_FAMILY_VOLBEAT_ILLUMISE ? SPECIES_VOLBEAT : SPECIES_NONE;
+            return SPECIES_KARRABLAST;
             break;
         case BERRY_COLOR_PURPLE:
-            return P_FAMILY_VOLBEAT_ILLUMISE ? SPECIES_ILLUMISE : SPECIES_NONE;
+            return SPECIES_POIPOLE;
             break;
         case BERRY_COLOR_GREEN:
-            return P_FAMILY_BURMY ? SPECIES_BURMY_PLANT : SPECIES_NONE;
+            return SPECIES_BURMY_PLANT;
             break;
         case BERRY_COLOR_YELLOW:
-            return P_FAMILY_COMBEE ? SPECIES_COMBEE : SPECIES_NONE;
+            return SPECIES_CUTIEFLY;
             break;
         case BERRY_COLOR_PINK:
-            return P_FAMILY_SCATTERBUG ? SPECIES_SPEWPA : SPECIES_NONE;
+            return SPECIES_VENIPEDE;
             break;
     }
 #endif
     return SPECIES_NONE;
 }
 
-#define BERRY_WEEDS_CHANCE 15
-#define BERRY_PESTS_CHANCE 15
+#define BERRY_WEEDS_CHANCE 10 // Every 2 hours
+#define BERRY_PESTS_CHANCE 20 // Every 2 hours
 
 static void TryForWeeds(struct BerryTree *tree)
 {

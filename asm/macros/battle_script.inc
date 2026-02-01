@@ -732,8 +732,10 @@
 	.byte B_SCR_OP_TRYSETREST
 	.endm
 
-	.macro unused_0x82
-	.byte B_SCR_OP_UNUSED_0x82
+	.macro tryhealfullhealth battler:req, failInstr:req
+	.byte 0x82
+	.byte \battler
+	.4byte \failInstr
 	.endm
 
 	.macro unused_0x83
