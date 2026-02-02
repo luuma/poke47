@@ -2482,4 +2482,20 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Batters foes under 3/4 HP."),
         .aiRating = 8,
     },
+
+    [ABILITY_WONDERLAND] =
+    {
+        .name = _("Wonder Surge"),
+        .description = COMPOUND_STRING("Sets Wonder Room."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_TRICKLAND] =
+    {
+        .name = _("Hijink Surge"),
+        .description = COMPOUND_STRING("Sets Trick Room."),
+        .aiRating = 8,
+    },
+
+
 };

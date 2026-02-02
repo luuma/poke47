@@ -1772,7 +1772,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Hyper Beam"),
         .description = sHyperBeamDescription,
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = 140,
         .type = TYPE_NORMAL,
         .accuracy = 90,
         .pp = 5,
@@ -8233,7 +8233,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Powerful, but leaves the\n"
             "user immobile the next turn."),
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = 140,
         .type = TYPE_FIRE,
         .accuracy = 90,
         .pp = 5,
@@ -8259,7 +8259,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Powerful, but leaves the\n"
             "user immobile the next turn."),
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = 140,
         .type = TYPE_WATER,
         .accuracy = 90,
         .pp = 5,
@@ -9019,7 +9019,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Powerful, but leaves the\n"
             "user immobile the next turn."),
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = 140,
         .type = TYPE_GRASS,
         .accuracy = 90,
         .pp = 5,
@@ -9517,7 +9517,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Miracle Eye"),
         .description = COMPOUND_STRING(
             "Negate evasiveness and\n"
-            "Dark type's immunities."),
+            "ignore all immunities."),
         .effect = EFFECT_MIRACLE_EYE,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -10943,7 +10943,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Giga Impact"),
         .description = sHyperBeamDescription,
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = 140,
         .type = TYPE_NORMAL,
         .accuracy = 90,
         .pp = 5,
@@ -11516,7 +11516,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Rock Wrecker"),
         .description = sHyperBeamDescription,
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = 140,
         .type = TYPE_ROCK,
         .accuracy = 90,
         .pp = 5,
@@ -12013,7 +12013,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Powerful, but leaves the\n"
             "user immobile the next turn."),
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = 140,
         .type = TYPE_DRAGON,
         .accuracy = 90,
         .pp = 5,
@@ -12330,8 +12330,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Wonder Room"),
         .description = COMPOUND_STRING(
-            "Defense and Sp. Def stats\n"
-            "are swapped for 5 turns."),
+            "Base Atk/Sp.Atk swap for\n"
+            "Def/Sp.Def for 5 turns."),
         .effect = EFFECT_WONDER_ROOM,
         .power = 0,
         .type = TYPE_PSYCHIC,
@@ -17065,7 +17065,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "A high power laser that\n"
             "forces recharge next turn."),
         .effect = EFFECT_HIT,
-        .power = 160,
+        .power = 150,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
         .pp = 10,
@@ -18456,7 +18456,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Attacks with a thick leek.\n"
             "The user must then rest."),
         .effect = EFFECT_HIT,
-        .power = 150,
+        .power = 140,
         .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 5,
@@ -18483,7 +18483,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Eternatus' strongest move.\n"
             "The user rests next turn."),
         .effect = EFFECT_HIT,
-        .power = 160,
+        .power = 150,
         .type = TYPE_DRAGON,
         .accuracy = 90,
         .pp = 5,
@@ -22928,7 +22928,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestEffect = CONTEST_EFFECT_STARTLE_MONS_SAME_TYPE_APPEAL,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
-        .battleAnimScript = gBattleAnimMove_InfernalParade,
+        .battleAnimScript = gBattleAnimMove_BaddyBad,
     },
     [MOVE_SCREEN_BURN] =
     {
@@ -22954,6 +22954,88 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {COMBO_STARTER_CALM_MIND},
         .battleAnimScript = gBattleAnimMove_Barrier,
         .validApprenticeMove = TRUE,
+    },
+
+    [MOVE_JUST_DESSERTS] =
+    {
+        .name = COMPOUND_STRING("Just Desserts"),
+        .description = COMPOUND_STRING(
+            "Deals damage. May\n"
+            "restore eaten Berries."),
+        .effect = EFFECT_HIT,
+        .power = 75,
+        .type = TYPE_FAIRY,
+        .accuracy = 100,
+        .pp = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .zMove = { .effect = Z_EFFECT_SPDEF_UP_1 },
+        .battleAnimScript = gBattleAnimMove_SparklySwirl,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_RECYCLE_BERRIES,
+        }),
+    },
+
+    [MOVE_CRIT_UP_HIT] =
+    {
+        .name = COMPOUND_STRING("Hawkeye"),
+        .description = COMPOUND_STRING(
+            "Boosts critical-hit ratio,\n"
+            "for itself and allies."),    //ANIM TODO
+        .effect = EFFECT_HIT,
+        .power = 30,
+        .type = TYPE_FLYING,
+        .accuracy = 90,
+        .pp = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .zMove = { .effect = Z_EFFECT_SPATK_UP_1 },
+        .battleAnimScript = gBattleAnimMove_FreezingGlare,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_CRIT_PLUS_SIDE,
+        }),
+    },
+
+    [MOVE_BASTION_WALLS] =
+    {
+        .name = COMPOUND_STRING("Bastion Walls"),
+        .description = COMPOUND_STRING(
+            "Scatters sharp spikes\n"
+            "that do steel damage."),    //ANIM TODO
+        .effect = EFFECT_HIT,
+        .power = 50,
+        .type = TYPE_STEEL,
+        .accuracy = 100,
+        .pp = 5,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_StoneAxe,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_STEELSURGE,
+        }),
+    },
+
+    [MOVE_LIGHTBLOOM] =
+    {
+        .name = COMPOUND_STRING("Light Bloom"),
+        .description = COMPOUND_STRING(
+            "A blossoming fire that\n"
+            "intensifies sun for 5 turns."),
+        .effect = EFFECT_HIT,
+        .power = 55,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 5,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .battleAnimScript = gBattleAnimMove_SappySeed,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_SUN,
+        }),
     },
 
 };

@@ -3239,8 +3239,10 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
         }
         else
         {
-            if (GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_GRIP_CLAW)
-                gDisableStructs[gEffectBattler].wrapTurns = GetConfig(CONFIG_BINDING_TURNS) >= GEN_5 ? 7 : 5;
+            if (GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_GRIP_CLAW && GetBattlerAbility(gBattlerAttacker) == ABILITY_CONSTRICTOR)
+                gDisableStructs[gEffectBattler].wrapTurns =  9;
+            else if (GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_GRIP_CLAW || GetBattlerAbility(gBattlerAttacker) == ABILITY_CONSTRICTOR)
+                gDisableStructs[gEffectBattler].wrapTurns = 7;
             else
                 gDisableStructs[gEffectBattler].wrapTurns = GetConfig(CONFIG_BINDING_TURNS) >= GEN_5 ? RandomUniform(RNG_WRAP, 4, 5) : RandomUniform(RNG_WRAP, 2, 5);
             gBattleMons[gEffectBattler].volatiles.wrapped = TRUE;

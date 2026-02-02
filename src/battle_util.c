@@ -4395,6 +4395,46 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, u32 battler, enum Ability ab
                 effect++;
             }
             break;
+        case ABILITY_WONDERLAND:
+	    if (!gSpecialStatuses[battler].switchInAbilityDone)
+	    {
+                if (!(gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
+                {
+	    	    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+		    BattleScriptPushCursorAndCallback(BattleScript_WonderlandActivates);
+	            gFieldStatuses |= STATUS_FIELD_WONDER_ROOM;
+                    gFieldTimers.wonderRoomTimer = 5;
+                    effect++;
+                }
+                else if (!gSpecialStatuses[battler].switchInAbilityDone)
+                {
+	    	    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+		    BattleScriptPushCursorAndCallback(BattleScript_WonderlandWonderRoomEnds);
+	            gFieldStatuses &= ~STATUS_FIELD_WONDER_ROOM;
+                    effect++;
+                }
+	    }
+            break;
+        case ABILITY_TRICKLAND:
+	    if (!gSpecialStatuses[battler].switchInAbilityDone)
+	    {
+                if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM))
+                {
+	    	    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+		    BattleScriptPushCursorAndCallback(BattleScript_TricklandActivates);
+	            gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
+                    gFieldTimers.trickRoomTimer = 5;
+                    effect++;
+                }
+                else if (!gSpecialStatuses[battler].switchInAbilityDone)
+                {
+	    	    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+		    BattleScriptPushCursorAndCallback(BattleScript_TricklandTrickRoomEnds);
+	            gFieldStatuses &= ~STATUS_FIELD_TRICK_ROOM;
+                    effect++;
+                }
+	    }
+            break;
         case ABILITY_INTIMIDATE:
             if (!gSpecialStatuses[battler].switchInAbilityDone && !IsOpposingSideEmpty(battler))
             {
@@ -6018,16 +6058,16 @@ u32 GetHighestStatId(u32 battler)
         switch (stat)
         {
         case STAT_ATK:
-            statVal = gBattleMons[battler].attack;
+            statVal = wonderRoom ? gBattleMons[battler].defense : gBattleMons[battler].attack;
             break;
         case STAT_DEF:
-            statVal = wonderRoom ? gBattleMons[battler].spDefense : gBattleMons[battler].defense;
+            statVal = wonderRoom ? gBattleMons[battler].attack : gBattleMons[battler].defense;
             break;
         case STAT_SPATK:
-            statVal = gBattleMons[battler].spAttack;
+            statVal = wonderRoom ? gBattleMons[battler].spDefense : gBattleMons[battler].spAttack;
             break;
         case STAT_SPDEF:
-            statVal = wonderRoom ? gBattleMons[battler].defense : gBattleMons[battler].spDefense;
+            statVal = wonderRoom ? gBattleMons[battler].spAttack : gBattleMons[battler].spDefense;
             break;
         default:
             continue;
@@ -7797,7 +7837,49 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
 
     atkBaseSpeciesId = GET_BASE_SPECIES_ID(gBattleMons[battlerAtk].species);
 
-    if (moveEffect == EFFECT_FOUL_PLAY)
+    if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM)
+    {
+        if (moveEffect == EFFECT_FOUL_PLAY)
+        {
+            if (IsBattleMovePhysical(move))
+            {
+                atkStat = gBattleMons[battlerDef].defense;
+                atkStage = gBattleMons[battlerDef].statStages[STAT_ATK];
+            }
+            else
+            {
+                atkStat = gBattleMons[battlerDef].spDefense;
+                atkStage = gBattleMons[battlerDef].statStages[STAT_SPATK];
+            }
+        }
+        else if (moveEffect == EFFECT_BODY_PRESS)
+        {
+            if (IsBattleMovePhysical(move))
+            {
+                atkStat = gBattleMons[battlerAtk].attack;
+                atkStage = gBattleMons[battlerAtk].statStages[STAT_DEF];
+            }
+            else
+            {
+                atkStat = gBattleMons[battlerAtk].spAttack;
+                atkStage = gBattleMons[battlerAtk].statStages[STAT_SPDEF];
+            }
+        }
+        else
+        {
+            if (IsBattleMovePhysical(move))
+            {
+                atkStat = gBattleMons[battlerAtk].defense;
+                atkStage = gBattleMons[battlerAtk].statStages[STAT_ATK];
+            }
+            else
+            {
+                atkStat = gBattleMons[battlerAtk].spDefense;
+                atkStage = gBattleMons[battlerAtk].statStages[STAT_SPATK];
+            }
+        }
+    }
+    else if (moveEffect == EFFECT_FOUL_PLAY)
     {
         if (IsBattleMovePhysical(move))
         {
@@ -7815,11 +7897,7 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
         if (IsBattleMovePhysical(move))
         {
             atkStat = gBattleMons[battlerAtk].defense;
-            // Edge case: Body Press used during Wonder Room. For some reason, it still uses Defense over Sp.Def, but uses Sp.Def stat changes
-            if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM)
-                atkStage = gBattleMons[battlerAtk].statStages[STAT_SPDEF];
-            else
-                atkStage = gBattleMons[battlerAtk].statStages[STAT_DEF];
+            atkStage = gBattleMons[battlerAtk].statStages[STAT_DEF];
         }
         else
         {
@@ -8085,6 +8163,8 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     bool32 usesDefStat;
     u8 defStage;
     u32 defStat, def, spDef;
+    u8 atk;
+    u8 spAtk;
     uq4_12_t modifier;
     u32 battlerDef = ctx->battlerDef;
     u32 move = ctx->move;
@@ -8092,13 +8172,15 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
 
     def = gBattleMons[battlerDef].defense;
     spDef = gBattleMons[battlerDef].spDefense;
+    spAtk = gBattleMons[battlerDef].spAttack;
+    atk = gBattleMons[battlerDef].attack;
 
     if (moveEffect == EFFECT_PSYSHOCK || IsBattleMovePhysical(move)) // uses defense stat instead of sp.def
     {
-        if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM) // the defense stats are swapped
+        if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM) // the BASE defense stats are swapped 
         {
-            defStat = spDef;
-            usesDefStat = FALSE;
+            defStat = atk;
+            usesDefStat = TRUE;
         }
         else
         {
@@ -8109,10 +8191,10 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     }
     else // is special
     {
-        if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM) // the defense stats are swapped
+        if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM) // the base defense stats are swapped
         {
-            defStat = def;
-            usesDefStat = TRUE;
+            defStat = spAtk;
+            usesDefStat = FALSE;
         }
         else
         {
@@ -8242,7 +8324,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     case HOLD_EFFECT_HONEY:
         if ((IS_BATTLER_OF_TYPE(battlerDef, TYPE_BUG)) 
 	 && usesDefStat)
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.2));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.3));
         break;
     case HOLD_EFFECT_EVIOLITE:
         if (CanEvolve(gBattleMons[battlerDef].species))
@@ -8881,7 +8963,7 @@ static inline void MulByTypeEffectiveness(struct DamageContext *ctx, uq4_12_t *m
             RecordAbilityBattle(ctx->battlerAtk, ctx->abilityAtk);
     }
 
-    if (ctx->moveType == TYPE_PSYCHIC && defType == TYPE_DARK && gBattleMons[ctx->battlerDef].volatiles.miracleEye && mod == UQ_4_12(0.0))
+    if (gBattleMons[ctx->battlerDef].volatiles.miracleEye && mod == UQ_4_12(0.0))// miracle eye works on all immunities
         mod = UQ_4_12(1.0);
     if (GetMoveEffect(ctx->move) == EFFECT_SUPER_EFFECTIVE_ON_ARG && defType == GetMoveArgType(ctx->move) && !ctx->isAnticipation)
         mod = UQ_4_12(2.0);

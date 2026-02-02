@@ -850,6 +850,12 @@ extern const u8 BattleScript_PokemonCantUseTheMove[];
 extern const u8 BattleScript_EffectScreenBurn[]; 
 extern const u8 BattleScript_RestComatose[]; 
 extern const u8 BattleScript_OppositeDayActivates[];
+extern const u8 BattleScript_WonderlandActivates[];
+extern const u8 BattleScript_WonderlandWonderRoomEnds[];
+extern const u8 BattleScript_TricklandActivates[];
+extern const u8 BattleScript_TricklandTrickRoomEnds[];
+
+
 
 // mine
 
