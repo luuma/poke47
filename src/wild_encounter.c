@@ -534,13 +534,10 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
             break;
         if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, LAND_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, LAND_WILD_COUNT))
-            break;
         if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_PLATE, &wildMonIndex, LAND_WILD_COUNT))//ADDED
             break;
         if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_RESIST_BERRY, &wildMonIndex, LAND_WILD_COUNT))//ADDED
             break;
-
         wildMonIndex = ChooseWildMonIndex_Land();
         break;
     case WILD_AREA_WATER:
@@ -556,7 +553,10 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
             break;
         if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, WATER_WILD_COUNT))
             break;
-
+        if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_PLATE, &wildMonIndex, WATER_WILD_COUNT))//ADDED
+            break;
+        if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_RESIST_BERRY, &wildMonIndex, WATER_WILD_COUNT))//ADDED
+            break;
         wildMonIndex = ChooseWildMonIndex_Water();
         break;
     case WILD_AREA_ROCKS:
