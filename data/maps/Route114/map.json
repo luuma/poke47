@@ -22,6 +22,11 @@
       "map": "MAP_FALLARBOR_TOWN",
       "offset": 0,
       "direction": "right"
+    },
+    {
+      "map": "MAP_UNDERWATER_ROUTE114",
+      "offset": 0,
+      "direction": "dive"
     }
   ],
   "object_events": [
@@ -144,8 +149,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 11,
-      "y": 37,
+      "x": 33,
+      "y": 24,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -222,7 +227,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "x": 19,
+      "x": 20,
       "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -476,14 +481,14 @@
     {
       "type": "secret_base",
       "x": 11,
-      "y": 27,
+      "y": 26,
       "elevation": 0,
       "secret_base_id": "SECRET_BASE_TREE3_2"
     },
     {
       "type": "secret_base",
       "x": 12,
-      "y": 27,
+      "y": 26,
       "elevation": 0,
       "secret_base_id": "SECRET_BASE_TREE4_2"
     },
@@ -512,8 +517,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 7,
-      "y": 30,
+      "x": 12,
+      "y": 37,
       "elevation": 3,
       "item": "ITEM_PROTEIN",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_114_REVIVE"

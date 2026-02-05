@@ -700,10 +700,10 @@
 #define FLAG_EONTICKET_ITEM  0x286 // 
 #define FLAG_TICKET_BEGIN  0x287 // 
 #define FLAG_TICKET_PHOTO_STATE  0x288 // Unused Flag
-#define FLAG_UNUSED_0x289  0x289 // Unused Flag
-#define FLAG_UNUSED_0x28A  0x28A // Unused Flag
-#define FLAG_UNUSED_0x28B  0x28B // Unused Flag
-#define FLAG_UNUSED_0x28C  0x28C // Unused Flag
+#define FLAG_DIVE_ITEM_114  0x289 // Unused Flag
+#define FLAG_DEWBEACH1  0x28A // Unused Flag
+#define FLAG_DEWBEACH2  0x28B // Unused Flag
+#define FLAG_DEWBEACH3  0x28C // Unused Flag
 #define FLAG_UNUSED_0x28D  0x28D // Unused Flag
 #define FLAG_UNUSED_0x28E  0x28E // Unused Flag
 #define FLAG_UNUSED_0x28F  0x28F // Unused Flag

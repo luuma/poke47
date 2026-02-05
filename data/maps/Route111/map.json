@@ -27,6 +27,11 @@
       "map": "MAP_ROUTE112",
       "offset": 20,
       "direction": "left"
+    },
+    {
+      "map": "MAP_ROUTE136",
+      "offset": 0,
+      "direction": "right"
     }
   ],
   "object_events": [
@@ -153,8 +158,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
-      "x": 27,
-      "y": 69,
+      "x": 25,
+      "y": 67,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT",
       "movement_range_x": 2,
@@ -220,8 +225,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 18,
-      "y": 101,
+      "x": 21,
+      "y": 99,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -233,8 +238,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 19,
-      "y": 100,
+      "x": 20,
+      "y": 98,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -367,8 +372,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 3,
-      "y": 114,
+      "x": 16,
+      "y": 108,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -471,8 +476,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
-      "x": 20,
-      "y": 114,
+      "x": 26,
+      "y": 117,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -510,34 +515,34 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
-      "x": 19,
-      "y": 121,
+      "x": 21,
+      "y": 105,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_type": "MOVEMENT_TYPE_FACE_UP_AND_LEFT",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "2",
+      "trainer_sight_or_berry_tree_id": "5",
       "script": "Route111_EventScript_Bianca",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_5",
-      "x": 16,
-      "y": 119,
+      "x": 17,
+      "y": 103,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NORMAL",
-      "trainer_sight_or_berry_tree_id": "3",
+      "trainer_sight_or_berry_tree_id": "5",
       "script": "Route111_EventScript_Hayden",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_HIKER",
       "x": 29,
-      "y": 77,
+      "y": 80,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -550,7 +555,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PICNICKER",
       "x": 22,
-      "y": 77,
+      "y": 80,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 1,
@@ -563,7 +568,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_CAMPER",
       "x": 37,
-      "y": 77,
+      "y": 80,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 1,
@@ -575,8 +580,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 19,
-      "y": 118,
+      "x": 18,
+      "y": 98,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -629,8 +634,8 @@
     {
       "local_id": "LOCALID_ROUTE111_ROCK_SMASH_MAN",
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
-      "x": 19,
-      "y": 101,
+      "x": 21,
+      "y": 100,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 1,
@@ -1072,8 +1077,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 26,
-      "y": 70,
+      "x": 24,
+      "y": 68,
       "elevation": 0,
       "item": "ITEM_STARDUST",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_111_STARDUST"
@@ -1117,7 +1122,7 @@
     },
     {
       "type": "hidden_item",
-      "x": 35,
+      "x": 34,
       "y": 66,
       "elevation": 0,
       "item": "ITEM_RARE_CANDY",
@@ -1126,7 +1131,7 @@
     {
       "type": "sign",
       "x": 24,
-      "y": 116,
+      "y": 115,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route111_EventScript_TrainerHillSign"

@@ -737,7 +737,7 @@
     },
     {
       "id": "MAPSEC_ROUTE_4_POKECENTER",
-      "name": "ROUTE 4"
+      "name": "ROUTE 136"
     },
     {
       "id": "MAPSEC_ROUTE_10_POKECENTER",
@@ -753,15 +753,23 @@
     },
     {
       "id": "MAPSEC_ROUTE_2",
-      "name": "ROUTE 2"
+      "name": "DEW BEACH",
+      "x": 0,
+      "y": 14,
+      "width": 2,
+      "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_3",
-      "name": "ROUTE 3"
+      "name": "UNDERWATER",
+      "x": 1,
+      "y": 0,
+      "width": 1,
+      "height": 2
     },
     {
       "id": "MAPSEC_ROUTE_4",
-      "name": "ROUTE 4"
+      "name": "ROUTE 135"
     },
     {
       "id": "MAPSEC_ROUTE_5",

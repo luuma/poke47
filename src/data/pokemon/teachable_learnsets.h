@@ -23402,6 +23402,7 @@ static const u16 sMaractusTeachableLearnset[] = {
     MOVE_PROTECT,
     MOVE_RAIN_DANCE,
     MOVE_REST,
+    MOVE_SCORCHING_SANDS,
     MOVE_SLEEP_TALK,
     MOVE_SNORE,
     MOVE_SPIKES,

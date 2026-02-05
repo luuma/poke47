@@ -96,20 +96,20 @@ static const u8 sSeaIncenseDesc[]     = _("A hold item that\n"
                                           "Water-type moves.");
 
 static const u8 sOddIncenseDesc[]     = _("A hold item that\n"
-                                          "boosts Psychic-\n"
-                                          "type moves.");
+            				"lures Psychic-\n"
+            				"types, and boosts.");
 
 static const u8 sRockIncenseDesc[]    = _("A hold item that\n"
-                                          "raises the power of\n"
-                                          "Rock-type moves.");
+            				"lures Rock-types\n"
+            				"and powers moves.");
 
 static const u8 sFullIncenseDesc[]    = _("A held item that\n"
                                           "makes the holder\n"
                                           "move slower.");
 
 static const u8 sRoseIncenseDesc[]    = _("A hold item that\n"
-                                          "raises the power of\n"
-                                          "Grass-type moves.");
+            				"lures Grass-types\n"
+            				"and powers moves.");
 
 static const u8 sLuckIncenseDesc[]    = _("Doubles money in\n"
                                           "battle if the\n"
@@ -7906,7 +7906,7 @@ const struct Item gItemsInfo[] =
         .holdEffect = HOLD_EFFECT_LIGHT_BALL,
         .description = COMPOUND_STRING(
             "Boosts the damage\n"
-            "of ELECTRIC-type\n"
+            "of Electric-type\n"
 	    "rodents 1.5x."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
@@ -8532,8 +8532,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Normal-type moves."),
+            "lures Normal-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8558,8 +8558,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Fire-type moves."),
+            "lures Fire-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8578,8 +8578,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Water-type moves."),
+            "lures Water-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8598,8 +8598,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "boosts Electric-\n"
-            "type moves."),
+            "lures Electric-\n"
+            "types, and boosts."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8635,8 +8635,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Ice-type moves."),
+            "lures Ice-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8655,8 +8655,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "boosts Fighting-\n"
-            "type moves."),
+            "lures Fighting-\n"
+            "types, and boosts."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8675,8 +8675,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Poison-type moves."),
+            "lures Poison-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8696,8 +8696,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Ground-type moves."),
+            "lures Ground-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8716,8 +8716,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Flying-type moves."),
+            "lures Flying-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8753,8 +8753,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Bug-type moves."),
+            "lures Bug-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8790,8 +8790,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Ghost-type moves."),
+            "lures Ghost-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8810,8 +8810,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Dragon-type moves."),
+            "lures Dragon-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8831,8 +8831,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Dark-type moves."),
+            "lures Dark-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -8857,8 +8857,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Steel-type moves."),
+            "lures Steel-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = EVO_HELD_ITEM_TYPE,
@@ -15127,8 +15127,8 @@ const struct Item gItemsInfo[] =
         .holdEffectParam = TYPE_BOOST_PARAM,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "raises the power of\n"
-            "Fairy-type moves."),
+            "lures Fairy-types\n"
+            "and powers moves."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_TYPE_BOOST_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,

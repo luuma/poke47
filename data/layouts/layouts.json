@@ -4520,6 +4520,166 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/FourthSealed/border.bin",
       "blockdata_filepath": "data/layouts/FourthSealed/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEW_BEACH",
+      "name": "DewBeach",
+      "width": 36,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/DewBeach/border.bin",
+      "blockdata_filepath": "data/layouts/DewBeach/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE114DIVING",
+      "name": "Route114Diving",
+      "width": 30,
+      "height": 35,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/Route114Diving/border.bin",
+      "blockdata_filepath": "data/layouts/Route114Diving/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE115B",
+      "name": "route115B",
+      "width": 40,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/route115B/border.bin",
+      "blockdata_filepath": "data/layouts/route115B/map.bin"
+    },
+    {
+      "id": "LAYOUT_ALT_EM115",
+      "name": "AltEm115",
+      "width": 60,
+      "height": 80,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Fallarbor",
+      "border_filepath": "data/layouts/AltEm115/border.bin",
+      "blockdata_filepath": "data/layouts/AltEm115/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE135",
+      "name": "Route135",
+      "width": 40,
+      "height": 100,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Route135/border.bin",
+      "blockdata_filepath": "data/layouts/Route135/map.bin"
+    },
+    {
+      "id": "LAYOUT_ROUTE136LAYOUT",
+      "name": "Route136layout",
+      "width": 40,
+      "height": 100,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Route136layout/border.bin",
+      "blockdata_filepath": "data/layouts/Route136layout/map.bin"
+    },
+    {
+      "id": "LAYOUT_ALTERING_CAVE_HOENN_MAP",
+      "name": "AlteringCaveHoennMap",
+      "width": 32,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/AlteringCaveHoennMap/border.bin",
+      "blockdata_filepath": "data/layouts/AlteringCaveHoennMap/map.bin"
+    },
+    {
+      "id": "LAYOUT_ALT_EM128",
+      "name": "AltEm128",
+      "width": 120,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/AltEm128/border.bin",
+      "blockdata_filepath": "data/layouts/AltEm128/map.bin"
+    },
+    {
+      "id": "LAYOUT_AE111",
+      "name": "ae111",
+      "width": 40,
+      "height": 140,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mauville",
+      "border_filepath": "data/layouts/ae111/border.bin",
+      "blockdata_filepath": "data/layouts/ae111/map.bin"
+    },
+    {
+      "id": "LAYOUT_AE102",
+      "name": "ae102",
+      "width": 50,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Petalburg",
+      "border_filepath": "data/layouts/ae102/border.bin",
+      "blockdata_filepath": "data/layouts/ae102/map.bin"
+    },
+    {
+      "id": "LAYOUT_AE121",
+      "name": "ae121",
+      "width": 86,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Lilycove",
+      "border_filepath": "data/layouts/ae121/border.bin",
+      "blockdata_filepath": "data/layouts/ae121/map.bin"
+    },
+    {
+      "id": "LAYOUT_AESKKYPILLAR",
+      "name": "aeskkypillar",
+      "width": 27,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/aeskkypillar/border.bin",
+      "blockdata_filepath": "data/layouts/aeskkypillar/map.bin"
+    },
+    {
+      "id": "LAYOUT_AEVICRD2",
+      "name": "aevicrd2",
+      "width": 46,
+      "height": 31,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/aevicrd2/border.bin",
+      "blockdata_filepath": "data/layouts/aevicrd2/map.bin"
+    },
+    {
+      "id": "LAYOUT_AEVICRD3",
+      "name": "aevicrd3",
+      "width": 46,
+      "height": 31,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/aevicrd3/border.bin",
+      "blockdata_filepath": "data/layouts/aevicrd3/map.bin"
+    },
+    {
+      "id": "LAYOUT_AEVICRD1",
+      "name": "aevicrd1",
+      "width": 46,
+      "height": 45,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/aevicrd1/border.bin",
+      "blockdata_filepath": "data/layouts/aevicrd1/map.bin"
+    },
+    {
+      "id": "LAYOUT_AE116",
+      "name": "AE116",
+      "width": 100,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Rustboro",
+      "border_filepath": "data/layouts/AE116/border.bin",
+      "blockdata_filepath": "data/layouts/AE116/map.bin"
     }
   ]
 }
