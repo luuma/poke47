@@ -4960,6 +4960,71 @@
         {
           "map": "MAP_ROUTE128",
           "base_label": "gRoute128",
+          "land_mons": {
+            "encounter_rate": 10,
+            "mons": [
+              {
+                "min_level": 32,
+                "max_level": 37,
+                "species": "SPECIES_CRABRAWLER"
+              },
+              {
+                "min_level": 32,
+                "max_level": 37,
+                "species": "SPECIES_SHELLOS_EAST"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SHELLOS_EAST"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_GASTRODON_EAST"
+              },
+              {
+                "min_level": 36,
+                "max_level": 36,
+                "species": "SPECIES_SHELLOS_EAST"
+              },
+              {
+                "min_level": 36,
+                "max_level": 36,
+                "species": "SPECIES_CRABRAWLER"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_SHELLOS_EAST"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_PYUKUMUKU"
+              },
+              {
+                "min_level": 34,
+                "max_level": 37,
+                "species": "SPECIES_SANDYGAST"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_SANDYGAST"
+              },
+              {
+                "min_level": 32,
+                "max_level": 32,
+                "species": "SPECIES_SANDYGAST"
+              },
+              {
+                "min_level": 32,
+                "max_level": 32,
+                "species": "SPECIES_SANDYGAST"
+              }
+            ]
+          },
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -5042,71 +5107,6 @@
                 "min_level": 30,
                 "max_level": 45,
                 "species": "SPECIES_ALOMOMOLA"
-              }
-            ]
-          },
-          "land_mons": {
-            "encounter_rate": 10,
-            "mons": [
-              {
-                "min_level": 32,
-                "max_level": 37,
-                "species": "SPECIES_CRABRAWLER"
-              },
-              {
-                "min_level": 32,
-                "max_level": 37,
-                "species": "SPECIES_SHELLOS_EAST"
-              },
-              {
-                "min_level": 32,
-                "max_level": 36,
-                "species": "SPECIES_SHELLOS_EAST"
-              },
-              {
-                "min_level": 34,
-                "max_level": 36,
-                "species": "SPECIES_GASTRODON_EAST"
-              },
-              {
-                "min_level": 36,
-                "max_level": 36,
-                "species": "SPECIES_SHELLOS_EAST"
-              },
-              {
-                "min_level": 36,
-                "max_level": 36,
-                "species": "SPECIES_CRABRAWLER"
-              },
-              {
-                "min_level": 34,
-                "max_level": 37,
-                "species": "SPECIES_SHELLOS_EAST"
-              },
-              {
-                "min_level": 34,
-                "max_level": 37,
-                "species": "SPECIES_PYUKUMUKU"
-              },
-              {
-                "min_level": 34,
-                "max_level": 37,
-                "species": "SPECIES_SANDYGAST"
-              },
-              {
-                "min_level": 34,
-                "max_level": 36,
-                "species": "SPECIES_SANDYGAST"
-              },
-              {
-                "min_level": 32,
-                "max_level": 32,
-                "species": "SPECIES_SANDYGAST"
-              },
-              {
-                "min_level": 32,
-                "max_level": 32,
-                "species": "SPECIES_SANDYGAST"
               }
             ]
           }

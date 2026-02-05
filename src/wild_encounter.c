@@ -538,6 +538,9 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
             break;
         if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_PLATE, &wildMonIndex, LAND_WILD_COUNT))//ADDED
             break;
+        if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_RESIST_BERRY, &wildMonIndex, LAND_WILD_COUNT))//ADDED
+            break;
+
         wildMonIndex = ChooseWildMonIndex_Land();
         break;
     case WILD_AREA_WATER:

@@ -119,7 +119,7 @@
   "coord_events": [
     {
       "type": "trigger",
-      "x": 1,
+      "x": 0,
       "y": 10,
       "elevation": 3,
       "var": "VAR_OLDALE_TOWN_STATE",
