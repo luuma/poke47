@@ -1,18 +1,18 @@
 # About `poke47`
 
-Pokemon ____(4) _______(7) is a rombase that replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with updated movepools, new abilities, new TMs, and a couple of new maps. This was a one-month sprint, and it's a complete and playable hack. 
+Pokemon ____(4) _______(7) is a rombase that replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with fully overhauled movepools, new abilities, new TMs, and a couple of new maps. This was a one-month sprint, and it's a complete and playable hack. 
 
 Fun changes to abilities:
 - Commander Duosion/ Reuniclus
 - Zero to Hero Carbink
-- Honey Gather gathers honey every turn if possible. Honey provides 1.2x defense to bug types and is great when flung
-- Litter Picker: gains a random consumable at end of turn if it has no item (trubbish)
-- Staring Contest: accuracy rises each turn (patrat)
-- Double Whammy: hits twice at full power against foes under 75% HP (crabrawler)
-- Infinite Wisdom: can use TMs and relearn its own moves during battle (oranguru, drampa)
-- Opposite Day: Sets 5 turns of inverse battle on switchin (inkay, malamar)
+- Honey Gather gathers honey every turn if possible. Honey provides 1.3x defense to bug types and is great when flung.
+- Staring Contest: accuracy rises each turn (Watchog)
+- Wonder Surge: on switchin, sets a bizarre room that swaps Attack for Defense, and Sp.Atk for Sp.Def (Sigilyph)
+- Double Whammy: hits twice at full power against foes under 75% HP (Crabrawler)
+- Infinite Wisdom: can use TMs and relearn its own moves during battle (Oranguru, Drampa)
+- Opposite Day: Sets 5 turns of inverse battle on switchin (Inkay, Malamar)
 
-It's fully playable (and good fun) but I'm also hoping to use it one day as my own rombase for a future project. Have a lovely day!
+It's already playable (and good fun) but I'm also hoping to use it one day as my own rombase for a future project. Have a lovely day!
 
 # About `pokeemerald-expansion`
 
