@@ -4680,6 +4680,66 @@
       "secondary_tileset": "gTileset_Rustboro",
       "border_filepath": "data/layouts/AE116/border.bin",
       "blockdata_filepath": "data/layouts/AE116/map.bin"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET5",
+      "name": "AEGauntlet5",
+      "width": 50,
+      "height": 55,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/AEGauntlet5/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntlet5/map.bin"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET4",
+      "name": "AEGauntlet4",
+      "width": 25,
+      "height": 70,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/AEGauntlet4/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntlet4/map.bin"
+    },
+    {
+      "id": "LAYOUT_INGY_BINGY_ISLAND",
+      "name": "IngyBingyIsland_Layout",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/IngyBingyIsland/border.bin",
+      "blockdata_filepath": "data/layouts/IngyBingyIsland/map.bin"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET2",
+      "name": "AEGauntlet2",
+      "width": 30,
+      "height": 70,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/AEGauntlet2/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntlet2/map.bin"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET3",
+      "name": "AEGauntlet3",
+      "width": 40,
+      "height": 55,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/AEGauntlet3/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntlet3/map.bin"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET1",
+      "name": "AEGauntlet1",
+      "width": 60,
+      "height": 60,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/AEGauntlet1/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntlet1/map.bin"
     }
   ]
 }

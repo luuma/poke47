@@ -1193,3 +1193,5 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route135_Map/scripts.inc"
 
 	.include "data/maps/Route136/scripts.inc"
+
+	.include "data/maps/IngyBingyIsland/scripts.inc"
