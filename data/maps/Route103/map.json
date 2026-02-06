@@ -22,11 +22,6 @@
       "map": "MAP_ROUTE110",
       "offset": -60,
       "direction": "right"
-    },
-    {
-      "map": "MAP_INGY_BINGY_ISLAND",
-      "offset": 8,
-      "direction": "up"
     }
   ],
   "object_events": [
