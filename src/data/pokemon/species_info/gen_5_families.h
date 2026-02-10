@@ -10827,12 +10827,12 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 #if P_FAMILY_STUNFISK
     [SPECIES_STUNFISK] =
     {
-        .baseHP        = 109,
+        .baseHP        = 121,//+12
         .baseAttack    = 66,
-        .baseDefense   = 84,
+        .baseDefense   = 94,//+10
         .baseSpeed     = 32,
         .baseSpAttack  = 81,
-        .baseSpDefense = 99,
+        .baseSpDefense = 109,//+10
         .types = MON_TYPES(TYPE_GROUND, TYPE_ELECTRIC),
         .catchRate = 75,
         .expYield = 165,
@@ -10843,7 +10843,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_STATIC, ABILITY_LIMBER, ABILITY_SAND_VEIL },
+        .abilities = { ABILITY_STATIC, ABILITY_SAND_VEIL, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Stunfisk"),
         .cryId = CRY_STUNFISK,
@@ -10897,7 +10897,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 #if P_GALARIAN_FORMS
     [SPECIES_STUNFISK_GALAR] =
     {
-        .baseHP        = 109,
+        .baseHP        = 139,//+30
         .baseAttack    = 81,
         .baseDefense   = 99,
         .baseSpeed     = 32,
@@ -10912,7 +10912,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_MIMICRY, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_MIMICRY, ABILITY_NONE, ABILITY_STATIC },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Stunfisk"),
         .cryId = CRY_STUNFISK,
