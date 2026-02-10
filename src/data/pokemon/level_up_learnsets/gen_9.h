@@ -15250,7 +15250,6 @@ static const struct LevelUpMove sFloatzelLevelUpLearnset[] = {
 };
 static const struct LevelUpMove sCherubiLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_WORRY_SEED),
-        LEVEL_UP_MOVE(1, MOVE_ABSORB),
         LEVEL_UP_MOVE(4, MOVE_SWEET_SCENT),
         LEVEL_UP_MOVE(8, MOVE_FAIRY_WIND),
         LEVEL_UP_MOVE(13, MOVE_AROMATHERAPY),
@@ -15267,7 +15266,9 @@ static const struct LevelUpMove sCherubiLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sCherrimLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(0, MOVE_HELPING_HAND),
+        LEVEL_UP_MOVE(0, MOVE_CELEBRATE),
+        LEVEL_UP_MOVE(0, MOVE_HOLD_HANDS),
+        LEVEL_UP_MOVE(1, MOVE_HELPING_HAND),
         LEVEL_UP_MOVE(1, MOVE_FOLLOW_ME),
         LEVEL_UP_MOVE(1, MOVE_SUNNY_DAY),
         LEVEL_UP_MOVE(1, MOVE_WORRY_SEED),
@@ -18832,16 +18833,17 @@ static const struct LevelUpMove sStunfiskLevelUpLearnset[] = {
         LEVEL_UP_MOVE(24, MOVE_NATURE_POWER),
         LEVEL_UP_MOVE(28, MOVE_SLUDGE_WAVE),
         LEVEL_UP_MOVE(31, MOVE_MAGNITUDE),
-        LEVEL_UP_MOVE(35, MOVE_PAIN_SPLIT),
+        LEVEL_UP_MOVE(35, MOVE_TERRAIN_PULSE),
         LEVEL_UP_MOVE(38, MOVE_REFLECT_TYPE),
         LEVEL_UP_MOVE(41, MOVE_THUNDER_CAGE),
         LEVEL_UP_MOVE(44, MOVE_MUDDY_WATER),
         LEVEL_UP_MOVE(47, MOVE_FISSURE),
-        LEVEL_UP_MOVE(50, MOVE_TERRAIN_PULSE),
+        LEVEL_UP_MOVE(50, MOVE_NUZZLE),
         LEVEL_UP_END
 };
 
 static const struct LevelUpMove sStunfiskGalarLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_GRASSY_TERRAIN),
         LEVEL_UP_MOVE(1, MOVE_MUD_SLAP),
         LEVEL_UP_MOVE(1, MOVE_SPIKES),
         LEVEL_UP_MOVE(3, MOVE_WATER_GUN),
@@ -18851,15 +18853,15 @@ static const struct LevelUpMove sStunfiskGalarLevelUpLearnset[] = {
         LEVEL_UP_MOVE(15, MOVE_COURT_CHANGE),
         LEVEL_UP_MOVE(18, MOVE_SNAP_TRAP),
         LEVEL_UP_MOVE(21, MOVE_TOXIC),
-        LEVEL_UP_MOVE(24, MOVE_NATURE_POWER),
+        LEVEL_UP_MOVE(24, MOVE_TERRAIN_PULSE),
         LEVEL_UP_MOVE(28, MOVE_SLUDGE_WAVE),
         LEVEL_UP_MOVE(31, MOVE_MAGNITUDE),
-        LEVEL_UP_MOVE(35, MOVE_PAIN_SPLIT),
+        LEVEL_UP_MOVE(35, MOVE_NATURE_POWER),
         LEVEL_UP_MOVE(38, MOVE_REFLECT_TYPE),
         LEVEL_UP_MOVE(41, MOVE_JAW_LOCK),
         LEVEL_UP_MOVE(44, MOVE_MUDDY_WATER),
         LEVEL_UP_MOVE(47, MOVE_FISSURE),
-        LEVEL_UP_MOVE(50, MOVE_TERRAIN_PULSE),
+        LEVEL_UP_MOVE(50, MOVE_EARTHQUAKE),
         LEVEL_UP_END
 };
 static const struct LevelUpMove sMienfooLevelUpLearnset[] = {
