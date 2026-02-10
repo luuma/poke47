@@ -1678,6 +1678,17 @@ static const struct FormChange sCramorantFormChangeTable[] =
 };
 #endif //P_FAMILY_CRAMORANT
 
+static const struct FormChange sDrifblimFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_HP_PERCENT, SPECIES_DRIFBLIM_YAMASK, ABILITY_GULP_MISSILE, HP_HIGHER_THAN,   50},
+    {FORM_CHANGE_BATTLE_HP_PERCENT, SPECIES_DRIFBLIM_LITWICK, ABILITY_GULP_MISSILE, HP_LOWER_EQ_THAN, 50},
+    {FORM_CHANGE_HIT_BY_MOVE,       SPECIES_DRIFBLIM,         ABILITY_GULP_MISSILE},
+    {FORM_CHANGE_BATTLE_SWITCH,     SPECIES_DRIFBLIM},
+    {FORM_CHANGE_FAINT,             SPECIES_DRIFBLIM},
+    {FORM_CHANGE_END_BATTLE,        SPECIES_DRIFBLIM},
+    {FORM_CHANGE_TERMINATOR},
+};
+
 #if P_FAMILY_TOXEL
 static const struct FormChange sToxtricityAmpedFormChangeTable[] =
 {
@@ -1762,6 +1773,14 @@ static const struct FormChange sEiscueFormChangeTable[] =
     {FORM_CHANGE_TERMINATOR},
 };
 #endif //P_FAMILY_EISCUE
+
+static const struct FormChange sCrustleFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_WEATHER,    SPECIES_CRUSTLE, B_WEATHER_SANDSTORM, ABILITY_ICE_FACE},
+    {FORM_CHANGE_FAINT,             SPECIES_CRUSTLE},
+    {FORM_CHANGE_END_BATTLE,        SPECIES_CRUSTLE},
+    {FORM_CHANGE_TERMINATOR},
+};
 
 #if P_FAMILY_MORPEKO
 static const struct FormChange sMorpekoFormChangeTable[] =
@@ -1864,6 +1883,7 @@ static const struct FormChange sPalafinZeroFormChangeTable[] =
 static const struct FormChange sCarbinkFormChangeTable[] =
 {
     {FORM_CHANGE_BATTLE_SWITCH, SPECIES_DIANCIE},
+    {FORM_CHANGE_END_BATTLE,    SPECIES_CARBINK},
     {FORM_CHANGE_TERMINATOR},
 };
 

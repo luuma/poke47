@@ -5374,9 +5374,9 @@ BattleScript_GulpMissileNoDmgGorging:
 	handleformchange BS_TARGET, 0
 	playanimation BS_TARGET, B_ANIM_FORM_CHANGE
 	waitanimation
-	swapattackerwithtarget
-	seteffectprimary BS_ATTACKER, BS_TARGET, MOVE_EFFECT_PARALYSIS
-	swapattackerwithtarget
+	@ swapattackerwithtarget
+	seteffectprimary BS_TARGET, BS_ATTACKER, MOVE_EFFECT_BURN
+	@ swapattackerwithtarget
 	return
 BattleScript_GulpMissileNoSecondEffectGorging:
 	handleformchange BS_TARGET, 0

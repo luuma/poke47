@@ -5422,11 +5422,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 #if P_FAMILY_MARACTUS
     [SPECIES_MARACTUS] =
     {
-        .baseHP        = 91,//+26
+        .baseHP        = 71,//+5
         .baseAttack    = 130,//+44. Kept in check in game by its one option being godawful stab needle arm til lv54
         .baseDefense   = 77,//+10
         .baseSpeed     = 60,//
-        .baseSpAttack  = 96,//-10
+        .baseSpAttack  = 106,
         .baseSpDefense = 67,
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 255,
@@ -5574,11 +5574,11 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
     [SPECIES_CRUSTLE] =
     {
         .baseHP        = 70,
-        .baseAttack    = P_UPDATED_STATS >= GEN_7 ? 105 : 95,
+        .baseAttack    = 105,
         .baseDefense   = 125,
         .baseSpeed     = 45,
         .baseSpAttack  = 65,
-        .baseSpDefense = 75,
+        .baseSpDefense = 85,
         .types = MON_TYPES(TYPE_BUG, TYPE_ROCK),
         .catchRate = 75,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 170 : 166,
@@ -5589,7 +5589,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_STURDY, ABILITY_SHELL_ARMOR, ABILITY_WEAK_ARMOR },
+        .abilities = { ABILITY_ICE_FACE, ABILITY_STURDY, ABILITY_WEAK_ARMOR },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Crustle"),
         .cryId = CRY_CRUSTLE,
@@ -5640,7 +5640,83 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sCrustleLevelUpLearnset,
         .teachableLearnset = sCrustleTeachableLearnset,
+        .formSpeciesIdTable = sCrustleFormSpeciesIdTable,
+        .formChangeTable = sCrustleFormChangeTable,
     },
+
+    [SPECIES_CRUSTLE_KNOCK_FACE] =
+    {
+        .baseHP        = 70,
+        .baseAttack    = 105,
+        .baseDefense   = 75,
+        .baseSpeed     = 125,
+        .baseSpAttack  = 65,
+        .baseSpDefense = 55,
+        .types = MON_TYPES(TYPE_BUG, TYPE_ROCK),
+        .catchRate = 75,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 170 : 166,
+        .evYield_Defense = 2,
+        .itemRare = ITEM_HARD_STONE,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_MINERAL),
+        .abilities = { ABILITY_ICE_FACE, ABILITY_STURDY, ABILITY_WEAK_ARMOR },
+        .bodyColor = BODY_COLOR_RED,
+        .speciesName = _("Crustle"),
+        .cryId = CRY_CRUSTLE,
+        .natDexNum = NATIONAL_DEX_CRUSTLE,
+        .categoryName = _("Stone Home"),
+        .height = 14,
+        .weight = 2000,
+        .description = COMPOUND_STRING(
+            "Competing for territory, Crustle fight\n"
+            "viciously. The one whose boulder is\n"
+            "broken is the loser of the battle and\n"
+            "begins to weaken."),
+        .pokemonScale = 265,
+        .pokemonOffset = 2,
+        .trainerScale = 262,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_CrustleKnockFace,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 2,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_H_SLIDE_SLOW,
+        .backPic = gMonBackPic_CrustleKnockFace,
+        .backPicSize = MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = 9,
+        .backAnimId = BACK_ANIM_V_SHAKE_LOW,
+        .palette = gMonPalette_CrustleKnockFace,
+        .shinyPalette = gMonShinyPalette_CrustleKnockFace,
+        .iconSprite = gMonIcon_CrustleKnockFace,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(1, 8, SHADOW_SIZE_L)
+        FOOTPRINT(Crustle)
+        OVERWORLD(
+            sPicTable_Crustle,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Crustle,
+            gShinyOverworldPalette_Crustle
+        )
+        .levelUpLearnset = sCrustleLevelUpLearnset,
+        .teachableLearnset = sCrustleTeachableLearnset,
+        .formSpeciesIdTable = sCrustleFormSpeciesIdTable,
+        .formChangeTable = sCrustleFormChangeTable,
+    },
+
 #endif //P_FAMILY_DWEBBLE
 
 #if P_FAMILY_SCRAGGY
@@ -6149,7 +6225,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL, EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_WANDERING_SPIRIT, ABILITY_PRESSURE, ABILITY_BERSERK },
+        .abilities = { ABILITY_WANDERING_SPIRIT, ABILITY_POWER_SPOT, ABILITY_BERSERK },
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Runerigus"),
@@ -10623,9 +10699,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 #if P_FAMILY_CRYOGONAL
     [SPECIES_CRYOGONAL] =
     {
-        .baseHP        = P_UPDATED_STATS >= GEN_7 ? 80 : 70,
+        .baseHP        = 80,
         .baseAttack    = 50,
-        .baseDefense   = P_UPDATED_STATS >= GEN_7 ? 50 : 30,
+        .baseDefense   = 50,
         .baseSpeed     = 105,
         .baseSpAttack  = 95,
         .baseSpDefense = 135,
@@ -10639,7 +10715,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_ICE_SCALES },
+        .abilities = { ABILITY_ICE_SCALES, ABILITY_MAGIC_BOUNCE, ABILITY_LEVITATE },
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Cryogonal"),
         .cryId = CRY_CRYOGONAL,
@@ -11560,7 +11636,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_RECKLESS, ABILITY_SAP_SIPPER, ABILITY_CUD_CHEW },
+        .abilities = { ABILITY_RECKLESS, ABILITY_ANGER_POINT, ABILITY_CUD_CHEW },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Bouffalant"),
         .cryId = CRY_BOUFFALANT,

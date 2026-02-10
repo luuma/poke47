@@ -1753,7 +1753,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_ERRATIC,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER),
-        .abilities  = {ABILITY_STURDY, ABILITY_MIRROR_ARMOR, ABILITY_TRIAGE},
+        .abilities  = {ABILITY_STURDY, ABILITY_MIRROR_ARMOR, ABILITY_SOLID_ROCK},
         .bodyColor = BODY_COLOR_GRAY,
         .speciesName = _("Bastiodon"),
         .cryId = CRY_BASTIODON,
@@ -2773,10 +2773,10 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
     [SPECIES_CHERRIM_OVERCAST] =
     {
         .baseHP        = 70,
-        .baseAttack    = 60,
+        .baseAttack    = 70,//+10
         .baseDefense   = 70,
         .baseSpeed     = 85,
-        .baseSpAttack  = 87,
+        .baseSpAttack  = 127,//+40
         .baseSpDefense = 78,
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 75,
@@ -2846,10 +2846,10 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
     [SPECIES_CHERRIM_SUNSHINE] =
     {
         .baseHP        = 70,
-        .baseAttack    = 60,
+        .baseAttack    = 70,//+10
         .baseDefense   = 70,
         .baseSpeed     = 85,
-        .baseSpAttack  = 87,
+        .baseSpAttack  = 127,//+40
         .baseSpDefense = 78,
         .types = MON_TYPES(TYPE_GRASS),
         .catchRate = 75,
@@ -3260,7 +3260,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FLUCTUATING,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities  = {ABILITY_AFTERMATH, ABILITY_WIND_RIDER, ABILITY_FLARE_BOOST},
+        .abilities  = {ABILITY_GULP_MISSILE, ABILITY_WIND_RIDER, ABILITY_FLARE_BOOST},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = TRUE,
         .speciesName = _("Drifblim"),
@@ -3313,7 +3313,159 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         )
         .levelUpLearnset = sDrifblimLevelUpLearnset,
         .teachableLearnset = sDrifblimTeachableLearnset,
+        .formSpeciesIdTable = sDrifblimFormSpeciesIdTable,
+        .formChangeTable = sDrifblimFormChangeTable,
     },
+
+
+    [SPECIES_DRIFBLIM_LITWICK] =
+    {
+        .baseHP        = 150,
+        .baseAttack    = 80,
+        .baseDefense   = 44,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 90,
+        .baseSpDefense = 54,
+        .types = MON_TYPES(TYPE_GHOST, TYPE_FLYING),
+        .catchRate = 60,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 174 : 204,
+        .evYield_HP = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 30,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_FLUCTUATING,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
+        .abilities  = {ABILITY_GULP_MISSILE, ABILITY_NONE, ABILITY_NONE},
+        .bodyColor = BODY_COLOR_PURPLE,
+        .noFlip = TRUE,
+        .speciesName = _("Drifblim"),
+        .cryId = CRY_DRIFBLIM,
+        .natDexNum = NATIONAL_DEX_DRIFBLIM,
+        .categoryName = _("Blimp"),
+        .height = 12,
+        .weight = 150,
+        .description = COMPOUND_STRING(
+            "Even while under careful observation,\n"
+            "large flocks of Drifblim flying at dusk\n"
+            "will inexplicably disappear from view.\n"
+            "No one knows where they go."),
+        .pokemonScale = 282,
+        .pokemonOffset = 4,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_DrifblimLitwick,
+        .frontPicSize = MON_COORDS_SIZE(56, 56),
+        .frontPicYOffset = 7,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 25),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 25),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_V_SLIDE_WOBBLE,
+        .enemyMonElevation = 7,
+        .backPic = gMonBackPic_DrifblimLitwick,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
+        .palette = gMonPalette_Drifblim,
+        .shinyPalette = gMonShinyPalette_Drifblim,
+        .iconSprite = gMonIcon_Drifblim,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 11, SHADOW_SIZE_M)
+        FOOTPRINT(Drifblim)
+        OVERWORLD(
+            sPicTable_Drifblim,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Drifblim,
+            gShinyOverworldPalette_Drifblim
+        )
+        .levelUpLearnset = sDrifblimLevelUpLearnset,
+        .teachableLearnset = sDrifblimTeachableLearnset,
+        .formSpeciesIdTable = sDrifblimFormSpeciesIdTable,
+        .formChangeTable = sDrifblimFormChangeTable,
+    },
+
+    [SPECIES_DRIFBLIM_YAMASK] =
+    {
+        .baseHP        = 150,
+        .baseAttack    = 80,
+        .baseDefense   = 44,
+        .baseSpeed     = 80,
+        .baseSpAttack  = 90,
+        .baseSpDefense = 54,
+        .types = MON_TYPES(TYPE_GHOST, TYPE_FLYING),
+        .catchRate = 60,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 174 : 204,
+        .evYield_HP = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 30,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_FLUCTUATING,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
+        .abilities  = {ABILITY_GULP_MISSILE, ABILITY_NONE, ABILITY_NONE},
+        .bodyColor = BODY_COLOR_PURPLE,
+        .noFlip = TRUE,
+        .speciesName = _("Drifblim"),
+        .cryId = CRY_DRIFBLIM,
+        .natDexNum = NATIONAL_DEX_DRIFBLIM,
+        .categoryName = _("Blimp"),
+        .height = 12,
+        .weight = 150,
+        .description = COMPOUND_STRING(
+            "Even while under careful observation,\n"
+            "large flocks of Drifblim flying at dusk\n"
+            "will inexplicably disappear from view.\n"
+            "No one knows where they go."),
+        .pokemonScale = 282,
+        .pokemonOffset = 4,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_DrifblimYamask,
+        .frontPicSize = MON_COORDS_SIZE(56, 56),
+        .frontPicYOffset = 7,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 25),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 25),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_V_SLIDE_WOBBLE,
+        .enemyMonElevation = 7,
+        .backPic = gMonBackPic_DrifblimYamask,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 6,
+        .backAnimId = BACK_ANIM_CONVEX_DOUBLE_ARC,
+        .palette = gMonPalette_Drifblim,
+        .shinyPalette = gMonShinyPalette_Drifblim,
+        .iconSprite = gMonIcon_Drifblim,
+        .iconPalIndex = 2,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 11, SHADOW_SIZE_M)
+        FOOTPRINT(Drifblim)
+        OVERWORLD(
+            sPicTable_Drifblim,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Drifblim,
+            gShinyOverworldPalette_Drifblim
+        )
+        .levelUpLearnset = sDrifblimLevelUpLearnset,
+        .teachableLearnset = sDrifblimTeachableLearnset,
+        .formSpeciesIdTable = sDrifblimFormSpeciesIdTable,
+        .formChangeTable = sDrifblimFormChangeTable,
+    },
+
 #endif //P_FAMILY_DRIFLOON
 
 #if P_FAMILY_BUNEARY
@@ -4061,7 +4213,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_AMORPHOUS),
-        .abilities  = {ABILITY_PRESSURE, ABILITY_CURSED_BODY, ABILITY_POWER_SPOT},
+        .abilities  = {ABILITY_PRESSURE, ABILITY_CURSED_BODY, ABILITY_PERISH_BODY},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = TRUE,
         .speciesName = _("Spiritomb"),
@@ -5143,9 +5295,9 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #if P_FAMILY_CARNIVINE
     [SPECIES_CARNIVINE] =
     {
-        .baseHP        = 94,
+        .baseHP        = 84,
         .baseAttack    = 100,
-        .baseDefense   = 82, //+10def +10sdef +20hp -20 spatk
+        .baseDefense   = 82, //+10def +10sdef +10hp -20 spatk
         .baseSpeed     = 46,
         .baseSpAttack  = 70,
         .baseSpDefense = 82,
@@ -5326,7 +5478,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2),
-        .abilities  = {ABILITY_SWIFT_SWIM, ABILITY_STORM_DRAIN, ABILITY_DELTA_STREAM},
+        .abilities  = {ABILITY_SWIFT_SWIM, ABILITY_SCREEN_CLEANER, ABILITY_DELTA_STREAM},
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Lumineon"),
         .cryId = CRY_LUMINEON,

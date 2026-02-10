@@ -1664,8 +1664,12 @@
 #define SPECIES_ZYGARDE_MEGA                            1547
 #define SPECIES_DRAMPA_MEGA                             1548
 #define SPECIES_FALINKS_MEGA                            1549
+#define SPECIES_CUSTOMSTART				SPECIES_FALINKS_MEGA      
 
-#define SPECIES_EGG                                     (SPECIES_FALINKS_MEGA + 1)
+#define SPECIES_CRUSTLE_KNOCK_FACE                      (SPECIES_CUSTOMSTART + 1)
+#define SPECIES_DRIFBLIM_YAMASK                         (SPECIES_CUSTOMSTART + 2)
+#define SPECIES_DRIFBLIM_LITWICK                        (SPECIES_CUSTOMSTART + 3)
+#define SPECIES_EGG                                     (SPECIES_CUSTOMSTART + 4)
 
 #define NUM_SPECIES SPECIES_EGG
 

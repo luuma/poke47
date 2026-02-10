@@ -5443,19 +5443,19 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, u32 battler, enum Ability ab
             if (!gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && IsBattlerTurnDamaged(gBattlerTarget)
              && IsBattlerAlive(gBattlerAttacker)
-             && gBattleMons[gBattlerTarget].species != SPECIES_CRAMORANT)
+             && gBattleMons[gBattlerTarget].species != SPECIES_DRIFBLIM)
             {
                 if (!IsAbilityAndRecord(gBattlerAttacker, GetBattlerAbility(gBattlerAttacker), ABILITY_MAGIC_GUARD))
                     SetPassiveDamageAmount(gBattlerAttacker, GetNonDynamaxMaxHP(gBattlerAttacker) / 4);
 
                 switch (gBattleMons[gBattlerTarget].species)
                 {
-                    case SPECIES_CRAMORANT_GORGING:
+                    case SPECIES_DRIFBLIM_LITWICK:
                         TryBattleFormChange(battler, FORM_CHANGE_HIT_BY_MOVE);
                         BattleScriptCall(BattleScript_GulpMissileGorging);
                         effect++;
                         break;
-                    case SPECIES_CRAMORANT_GULPING:
+                    case SPECIES_DRIFBLIM_YAMASK:
                         TryBattleFormChange(battler, FORM_CHANGE_HIT_BY_MOVE);
                         BattleScriptCall(BattleScript_GulpMissileGulping);
                         effect++;
@@ -5560,8 +5560,8 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, u32 battler, enum Ability ab
             }
             break;
         case ABILITY_GULP_MISSILE:
-            if ((gBattleMons[gBattlerAttacker].species == SPECIES_CRAMORANT)
-             && ((gCurrentMove == MOVE_SURF && IsBattlerTurnDamaged(gBattlerTarget)) || gBattleMons[gBattlerAttacker].volatiles.semiInvulnerable == STATE_UNDERWATER)
+            if ((gBattleMons[gBattlerAttacker].species == SPECIES_DRIFBLIM)
+             && (gCurrentMove == MOVE_STOCKPILE || gBattleMons[gBattlerAttacker].volatiles.semiInvulnerable == STATE_PHANTOM_FORCE)
              && TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_HP_PERCENT))
             {
                 gBattleScripting.battler = gBattlerAttacker;
@@ -8265,7 +8265,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
         break;
     case ABILITY_FLOWER_GIFT:
         if (gBattleMons[battlerDef].species == SPECIES_CHERRIM_SUNSHINE && IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN) && !usesDefStat)
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case ABILITY_PROTOSYNTHESIS:
         {
@@ -8296,7 +8296,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
         {
         case ABILITY_FLOWER_GIFT:
             if (gBattleMons[BATTLE_PARTNER(battlerDef)].species == SPECIES_CHERRIM_SUNSHINE && IsBattlerWeatherAffected(BATTLE_PARTNER(battlerDef), B_WEATHER_SUN) && !usesDefStat)
-                modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+                modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
             break;
         default:
             break;

@@ -1912,7 +1912,7 @@ static void Cmd_adjustdamage(void)
             continue;
         }
 
-        if (GetBattlerAbility(battlerDef) == ABILITY_ICE_FACE && IsBattleMovePhysical(gCurrentMove) && gBattleMons[battlerDef].species == SPECIES_EISCUE)
+        if (GetBattlerAbility(battlerDef) == ABILITY_ICE_FACE && IsBattleMovePhysical(gCurrentMove) && gBattleMons[battlerDef].species == SPECIES_CRUSTLE)
         {
             // Damage deals typeless 0 HP.
             gBattleStruct->moveResultFlags[battlerDef] &= ~(MOVE_RESULT_SUPER_EFFECTIVE | MOVE_RESULT_NOT_VERY_EFFECTIVE);
@@ -2035,7 +2035,7 @@ static inline bool32 DoesBattlerNegateDamage(u32 battler)
         return FALSE;
     if (ability == ABILITY_DISGUISE && species == SPECIES_MIMIKYU)
         return TRUE;
-    if (ability == ABILITY_ICE_FACE && species == SPECIES_EISCUE && GetBattleMoveCategory(gCurrentMove) == DAMAGE_CATEGORY_PHYSICAL)
+    if (ability == ABILITY_ICE_FACE && species == SPECIES_CRUSTLE && GetBattleMoveCategory(gCurrentMove) == DAMAGE_CATEGORY_PHYSICAL)
         return TRUE;
 
     return FALSE;
@@ -2617,7 +2617,7 @@ static void Cmd_resultmessage(void)
         gDisableStructs[gBattlerTarget].iceFaceActivationPrevention = FALSE;
         if (GetBattlerPartyState(gBattlerTarget)->changedSpecies == SPECIES_NONE)
             GetBattlerPartyState(gBattlerTarget)->changedSpecies = gBattleMons[gBattlerTarget].species;
-        gBattleMons[gBattlerTarget].species = SPECIES_EISCUE_NOICE;
+        gBattleMons[gBattlerTarget].species = SPECIES_CRUSTLE_KNOCK_FACE;
         gBattleScripting.battler = gBattlerTarget; // For STRINGID_PKMNTRANSFORMED
         BattleScriptCall(BattleScript_IceFaceNullsDamage);
         return;
@@ -15675,8 +15675,8 @@ void BS_TryGulpMissile(void)
 {
     NATIVE_ARGS();
 
-    if ((gBattleMons[gBattlerAttacker].species == SPECIES_CRAMORANT)
-     && (gCurrentMove == MOVE_DIVE)
+    if ((gBattleMons[gBattlerAttacker].species == SPECIES_DRIFBLIM)
+     && (gCurrentMove == MOVE_PHANTOM_FORCE || gCurrentMove == MOVE_SHADOW_FORCE)
      && GetBattlerAbility(gBattlerAttacker) == ABILITY_GULP_MISSILE
      && TryBattleFormChange(gBattlerAttacker, FORM_CHANGE_BATTLE_HP_PERCENT))
     {
@@ -15696,7 +15696,7 @@ void BS_TryActivateGulpMissile(void)
     if (!gProtectStructs[gBattlerAttacker].confusionSelfDmg
         && IsBattlerAlive(gBattlerAttacker)
         && IsBattlerTurnDamaged(gBattlerTarget)
-        && gBattleMons[gBattlerTarget].species != SPECIES_CRAMORANT
+        && gBattleMons[gBattlerTarget].species != SPECIES_DRIFBLIM
         && GetBattlerAbility(gBattlerTarget) == ABILITY_GULP_MISSILE)
     {
         if (!IsAbilityAndRecord(gBattlerAttacker, GetBattlerAbility(gBattlerAttacker), ABILITY_MAGIC_GUARD))
@@ -15704,11 +15704,11 @@ void BS_TryActivateGulpMissile(void)
 
         switch(gBattleMons[gBattlerTarget].species)
         {
-            case SPECIES_CRAMORANT_GORGING:
+            case SPECIES_DRIFBLIM_LITWICK:
                 TryBattleFormChange(gBattlerTarget, FORM_CHANGE_HIT_BY_MOVE);
-                BattleScriptCall(BattleScript_GulpMissileGorging);
+                BattleScriptCall(BattleScript_GulpMissileGorging); //should use CanBeBurned
                 return;
-            case SPECIES_CRAMORANT_GULPING:
+            case SPECIES_DRIFBLIM_YAMASK:
                 TryBattleFormChange(gBattlerTarget, FORM_CHANGE_HIT_BY_MOVE);
                 BattleScriptCall(BattleScript_GulpMissileGulping);
                 return;

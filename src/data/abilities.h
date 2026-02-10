@@ -1829,8 +1829,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
 
     [ABILITY_GULP_MISSILE] =
     {
-        .name = _("Gulp Missile"),
-        .description = COMPOUND_STRING("If hit, spits prey from sea."),
+        .name = _("Phantom Payload"),
+        .description = COMPOUND_STRING("Stocks ammo when vanishing."),
         .aiRating = 3,
         .cantBeCopied = TRUE,
         .cantBeSuppressed = TRUE,
@@ -1879,13 +1879,14 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Ripen"),
         .description = COMPOUND_STRING("Doubles effect of Berries."),
+
         .aiRating = 4,
     },
 
     [ABILITY_ICE_FACE] =
     {
-        .name = _("Ice Face"),
-        .description = COMPOUND_STRING("Hail or Snow renew free hit."),
+        .name = _("Rock Face"),
+        .description = COMPOUND_STRING("Sand renews a free hit."),
         .aiRating = 4,
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,

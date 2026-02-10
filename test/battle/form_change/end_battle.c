@@ -211,16 +211,16 @@ SINGLE_BATTLE_TEST("Mimikyu Busted reverts to Disguised form upon battle end aft
 SINGLE_BATTLE_TEST("Cramorant reverts to base Form upon battle end after using Surf in battle")
 {
     GIVEN {
-        PLAYER(SPECIES_CRAMORANT) { Ability(ABILITY_GULP_MISSILE); }
+        PLAYER(SPECIES_DRIFBLIM) { Ability(ABILITY_GULP_MISSILE); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_SURF); }
+        TURN { MOVE(player, MOVE_OMINOUS_WIND); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SURF, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_OMINOUS_WIND, player);
         HP_BAR(opponent);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
     } THEN {
-        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SPECIES), SPECIES_CRAMORANT);
+        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SPECIES), SPECIES_DRIFBLIM);
     }
 }
 
@@ -228,16 +228,16 @@ SINGLE_BATTLE_TEST("Eiscue Noice reverts to Ice Form upon battle end after being
 {
     GIVEN {
         ASSUME(GetMoveCategory(MOVE_SCRATCH) == DAMAGE_CATEGORY_PHYSICAL);
-        PLAYER(SPECIES_EISCUE_ICE);
+        PLAYER(SPECIES_CRUSTLE);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponent, MOVE_SCRATCH); }
     } SCENE {
         ABILITY_POPUP(player, ABILITY_ICE_FACE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
-        MESSAGE("Eiscue transformed!");
+        MESSAGE("Crustle transformed!");
     } THEN {
-        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SPECIES), SPECIES_EISCUE_ICE);
+        EXPECT_EQ(GetMonData(&gPlayerParty[0], MON_DATA_SPECIES), SPECIES_CRUSTLE);
     }
 }
 

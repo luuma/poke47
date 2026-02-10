@@ -1,3 +1,19 @@
+static const u16 sCrustleFormSpeciesIdTable[] = {
+    SPECIES_CRUSTLE,
+    SPECIES_CRUSTLE_KNOCK_FACE,
+    FORM_SPECIES_END,
+};
+
+static const u16 sDrifblimFormSpeciesIdTable[] = {
+    SPECIES_DRIFBLIM,
+    SPECIES_DRIFBLIM_YAMASK,
+    SPECIES_DRIFBLIM_LITWICK,
+    FORM_SPECIES_END,
+};
+
+
+
+
 #if P_FAMILY_BULBASAUR
 static const u16 sVenusaurFormSpeciesIdTable[] = {
     SPECIES_VENUSAUR,
@@ -2243,6 +2259,8 @@ static const u16 sEiscueFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_EISCUE
+
+
 
 #if P_FAMILY_INDEEDEE
 static const u16 sIndeedeeFormSpeciesIdTable[] = {
