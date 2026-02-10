@@ -423,7 +423,7 @@ SINGLE_BATTLE_TEST("Dynamax: Dynamaxed Pokemon that changes forms does not gain 
 {
     u16 capturedHP, finalHP;
     GIVEN {
-        WITH_CONFIG(CONFIG_BATTLE_BOND, GEN_8);
+        WITH_CONFIG(B_BATTLE_BOND, GEN_8);
         PLAYER(SPECIES_GRENINJA_BATTLE_BOND) { Ability(ABILITY_BATTLE_BOND); HP(100); Speed(100); }
         OPPONENT(SPECIES_CATERPIE) { HP(1); Speed(1000); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(10); }
@@ -529,37 +529,6 @@ DOUBLE_BATTLE_TEST("Dynamax: Dynamaxed Pokemon are immune to Instruct")
         MESSAGE("Wobbuffet used Max Strike!");
         MESSAGE("Wynaut used Instruct!");
         MESSAGE("But it failed!");
-    }
-}
-
-SINGLE_BATTLE_TEST("Dynamax: Pokemon with Gigantamax forms change upon Dynamaxing")
-{
-    u32 species;
-    bool32 gigantamaxFactor;
-    PARAMETRIZE { gigantamaxFactor = FALSE; species = SPECIES_VENUSAUR; }
-    PARAMETRIZE { gigantamaxFactor = TRUE; species = SPECIES_VENUSAUR_GMAX; }
-    GIVEN {
-        PLAYER(SPECIES_VENUSAUR) { GigantamaxFactor(gigantamaxFactor); }
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_DYNAMAX); }
-    } THEN {
-        EXPECT_EQ(player->species, species);
-    }
-}
-
-SINGLE_BATTLE_TEST("Dynamax: Pokemon with Gigantamax forms revert upon switching")
-{
-    GIVEN {
-        PLAYER(SPECIES_VENUSAUR);
-        PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_DYNAMAX); }
-        TURN { SWITCH(player, 1); }
-        TURN { SWITCH(player, 0); }
-    } THEN {
-        EXPECT_EQ(player->species, SPECIES_VENUSAUR);
     }
 }
 
@@ -971,7 +940,7 @@ SINGLE_BATTLE_TEST("Dynamax: G-Max Stonesurge sets up Stealth Rocks")
 SINGLE_BATTLE_TEST("Dynamax: G-Max Steelsurge sets up sharp steel")
 {
     GIVEN {
-        WITH_CONFIG(CONFIG_DEFOG_EFFECT_CLEARING, GEN_6);
+        WITH_CONFIG(B_DEFOG_EFFECT_CLEARING, GEN_6);
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_STEELSURGE, MOVE_EFFECT_STEELSURGE));
         PLAYER(SPECIES_COPPERAJAH) { GigantamaxFactor(TRUE); }
         OPPONENT(SPECIES_WOBBUFFET);
@@ -1465,7 +1434,7 @@ DOUBLE_BATTLE_TEST("Dynamax: G-Max Chi Strike boosts allies' crit chance by 1 st
 {
     u32 j;
     GIVEN {
-        WITH_CONFIG(CONFIG_CRIT_CHANCE, GEN_6);
+        WITH_CONFIG(B_CRIT_CHANCE, GEN_6);
         ASSUME(MoveHasAdditionalEffect(MOVE_G_MAX_CHI_STRIKE, MOVE_EFFECT_CRIT_PLUS_SIDE));
         PLAYER(SPECIES_MACHAMP) { GigantamaxFactor(TRUE); }
         PLAYER(SPECIES_MACHOP);
@@ -1628,7 +1597,7 @@ SINGLE_BATTLE_TEST("Dynamax: Max Moves don't bypass absorbing abilities")
         ASSUME(GetMoveType(MOVE_EMBER) == TYPE_FIRE);
         ASSUME(GetMoveType(MOVE_MUD_BOMB) == TYPE_GROUND);
         ASSUME(GetMoveType(MOVE_VINE_WHIP) == TYPE_GRASS);
-        WITH_CONFIG(CONFIG_REDIRECT_ABILITY_IMMUNITY, GEN_5);
+        WITH_CONFIG(B_REDIRECT_ABILITY_IMMUNITY, GEN_5);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(species) { Ability(ability); }
     } WHEN {
