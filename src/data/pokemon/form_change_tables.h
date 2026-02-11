@@ -1297,14 +1297,14 @@ static const struct FormChange sZygardeCompleteFormChangeTable[] =
 #endif //P_FAMILY_ZYGARDE
 
 #if P_FAMILY_DIANCIE
-static const struct FormChange sDiancieFormChangeTable[] =
-{
+//static const struct FormChange sDiancieFormChangeTable[] =
+//{
 #if P_MEGA_EVOLUTIONS
-    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_DIANCIE_MEGA, ITEM_DIANCITE},
+    //{FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_DIANCIE_MEGA, ITEM_DIANCITE},
 #endif
-    {FORM_CHANGE_END_BATTLE,                    SPECIES_DIANCIE},
-    {FORM_CHANGE_TERMINATOR},
-};
+    //{FORM_CHANGE_END_BATTLE,                    SPECIES_DIANCIE},
+    //{FORM_CHANGE_TERMINATOR},
+//};
 #endif //P_FAMILY_DIANCIE
 
 #if P_FAMILY_HOOPA

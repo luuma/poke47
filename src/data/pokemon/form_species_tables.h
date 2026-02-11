@@ -12,8 +12,6 @@ static const u16 sDrifblimFormSpeciesIdTable[] = {
 };
 
 
-
-
 #if P_FAMILY_BULBASAUR
 static const u16 sVenusaurFormSpeciesIdTable[] = {
     SPECIES_VENUSAUR,

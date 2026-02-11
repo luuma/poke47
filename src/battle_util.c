@@ -5454,7 +5454,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, u32 battler, enum Ability ab
             if (!gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && IsBattlerTurnDamaged(gBattlerTarget)
              && IsBattlerAlive(gBattlerAttacker)
-             && gBattleMons[gBattlerTarget].species != SPECIES_DRIFBLIM)
+	     && gBattleMons[gBattlerTarget].species != SPECIES_DRIFBLIM)
             {
                 if (!IsAbilityAndRecord(gBattlerAttacker, GetBattlerAbility(gBattlerAttacker), ABILITY_MAGIC_GUARD))
                     SetPassiveDamageAmount(gBattlerAttacker, GetNonDynamaxMaxHP(gBattlerAttacker) / 4);

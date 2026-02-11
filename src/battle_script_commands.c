@@ -15732,8 +15732,8 @@ void BS_TryActivateGulpMissile(void)
         {
             case SPECIES_DRIFBLIM_LITWICK:
                 TryBattleFormChange(gBattlerTarget, FORM_CHANGE_HIT_BY_MOVE);
-                BattleScriptCall(BattleScript_GulpMissileGorging); //should use CanBeBurned
-                return;
+                BattleScriptCall(BattleScript_GulpMissileGorging);
+		return;
             case SPECIES_DRIFBLIM_YAMASK:
                 TryBattleFormChange(gBattlerTarget, FORM_CHANGE_HIT_BY_MOVE);
                 BattleScriptCall(BattleScript_GulpMissileGulping);
