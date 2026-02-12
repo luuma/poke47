@@ -12,6 +12,26 @@ static const u16 sDrifblimFormSpeciesIdTable[] = {
 };
 
 
+static const u16 sSimisageFormSpeciesIdTable[] = {
+    SPECIES_SIMISAGE,
+    SPECIES_SIMISEAR,
+    FORM_SPECIES_END,
+};
+
+static const u16 sSimisearFormSpeciesIdTable[] = {
+    SPECIES_SIMISEAR,
+    SPECIES_SIMIPOUR,
+    FORM_SPECIES_END,
+};
+
+static const u16 sSimipourFormSpeciesIdTable[] = {
+    SPECIES_SIMIPOUR,
+    SPECIES_SIMISAGE,
+    FORM_SPECIES_END,
+};
+
+
+
 #if P_FAMILY_BULBASAUR
 static const u16 sVenusaurFormSpeciesIdTable[] = {
     SPECIES_VENUSAUR,
@@ -1785,13 +1805,13 @@ static const u16 sZygardeFormSpeciesIdTable[] = {
 #endif //P_FAMILY_ZYGARDE
 
 #if P_FAMILY_DIANCIE
-static const u16 sDiancieFormSpeciesIdTable[] = {
-    SPECIES_DIANCIE,
+//static const u16 sDiancieFormSpeciesIdTable[] = {
+    //SPECIES_DIANCIE,
 #if P_MEGA_EVOLUTIONS
-    SPECIES_DIANCIE_MEGA,
+    //SPECIES_DIANCIE_MEGA,
 #endif
-    FORM_SPECIES_END,
-};
+    //FORM_SPECIES_END,
+//};
 #endif //P_FAMILY_DIANCIE
 
 #if P_FAMILY_HOOPA

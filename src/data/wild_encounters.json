@@ -1881,12 +1881,12 @@
               {
                 "min_level": 6,
                 "max_level": 6,
-                "species": "SPECIES_SCATTERBUG_POKEBALL"
+                "species": "SPECIES_PANSAGE"
               },
               {
                 "min_level": 6,
                 "max_level": 6,
-                "species": "SPECIES_SCATTERBUG_MODERN"
+                "species": "SPECIES_PANSAGE"
               }
             ]
           }
@@ -5217,19 +5217,19 @@
                 "species": "SPECIES_PANSEAR"
               },
               {
-                "min_level": 30,
-                "max_level": 40,
-                "species": "SPECIES_PANSEAR"
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_TURTWIG"
               },
               {
-                "min_level": 30,
-                "max_level": 40,
-                "species": "SPECIES_PANSAGE"
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_PIPLUP"
               },
               {
-                "min_level": 30,
-                "max_level": 40,
-                "species": "SPECIES_PANPOUR"
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_CHIMCHAR"
               },
               {
                 "min_level": 30,

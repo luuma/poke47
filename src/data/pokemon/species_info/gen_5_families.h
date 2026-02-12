@@ -1427,7 +1427,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 
     [SPECIES_SIMISAGE] =
     {
-        .baseHP        = 75,
+        .baseHP        = 85,
         .baseAttack    = 98,
         .baseDefense   = 63,
         .baseSpeed     = 101,
@@ -1442,7 +1442,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities  = {ABILITY_PICKUP, ABILITY_RECEIVER, ABILITY_SAP_SIPPER},
+        .abilities  = {ABILITY_HUNGER_SWITCH, ABILITY_RECEIVER, ABILITY_SAP_SIPPER},
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Simisage"),
         .cryId = CRY_SIMISAGE,
@@ -1490,6 +1490,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sSimisageLevelUpLearnset,
         .teachableLearnset = sSimisageTeachableLearnset,
+        .formSpeciesIdTable = sSimisageFormSpeciesIdTable,
+        .formChangeTable = sSimisageFormChangeTable,
     },
 #endif //P_FAMILY_PANSAGE
 
@@ -1565,12 +1567,12 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 
     [SPECIES_SIMISEAR] =
     {
-        .baseHP        = 75,
+        .baseHP        = 85,
         .baseAttack    = 98,
-        .baseDefense   = 63,
-        .baseSpeed     = 101,
+        .baseDefense   = 43,
+        .baseSpeed     = 141,
         .baseSpAttack  = 98,
-        .baseSpDefense = 63,
+        .baseSpDefense = 43,
         .types = MON_TYPES(TYPE_FIRE),
         .catchRate = 75,
         .expYield = 174,
@@ -1580,7 +1582,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = {ABILITY_PICKUP, ABILITY_RECEIVER, ABILITY_FLASH_FIRE},
+        .abilities = {ABILITY_HUNGER_SWITCH, ABILITY_RECEIVER, ABILITY_FLASH_FIRE},
         .bodyColor = BODY_COLOR_RED,
         .noFlip = TRUE,
         .speciesName = _("Simisear"),
@@ -1631,6 +1633,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sSimisearLevelUpLearnset,
         .teachableLearnset = sSimisearTeachableLearnset,
+        .formSpeciesIdTable = sSimisearFormSpeciesIdTable,
+        .formChangeTable = sSimisearFormChangeTable,
     },
 #endif //P_FAMILY_PANSEAR
 
@@ -1706,12 +1710,12 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
 
     [SPECIES_SIMIPOUR] =
     {
-        .baseHP        = 75,
+        .baseHP        = 85,//+10
         .baseAttack    = 98,
-        .baseDefense   = 63,
-        .baseSpeed     = 101,
+        .baseDefense   = 93,
+        .baseSpeed     = 41,
         .baseSpAttack  = 98,
-        .baseSpDefense = 63,
+        .baseSpDefense = 93,
         .types = MON_TYPES(TYPE_WATER),
         .catchRate = 75,
         .expYield = 174,
@@ -1721,7 +1725,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = {ABILITY_PICKUP, ABILITY_RECEIVER, ABILITY_STORM_DRAIN},
+        .abilities = {ABILITY_HUNGER_SWITCH, ABILITY_RECEIVER, ABILITY_STORM_DRAIN},
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Simipour"),
         .cryId = CRY_SIMIPOUR,
@@ -1768,6 +1772,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         )
         .levelUpLearnset = sSimipourLevelUpLearnset,
         .teachableLearnset = sSimipourTeachableLearnset,
+        .formSpeciesIdTable = sSimipourFormSpeciesIdTable,
+        .formChangeTable = sSimipourFormChangeTable,
+
     },
 #endif //P_FAMILY_PANPOUR
 

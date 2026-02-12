@@ -6075,10 +6075,16 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, u32 move, u32 battler, enum Mo
         return TYPE_WATER;
     }
     else if (moveEffect == EFFECT_AURA_WHEEL
-          && species == SPECIES_MORPEKO_HANGRY
+          && species == SPECIES_SIMISEAR
           && ability != ABILITY_NORMALIZE)
     {
-        return TYPE_DARK;
+        return TYPE_FIRE;
+    }
+    else if (moveEffect == EFFECT_AURA_WHEEL
+          && species == SPECIES_SIMIPOUR
+          && ability != ABILITY_NORMALIZE)
+    {
+        return TYPE_WATER;
     }
     else if (moveType == TYPE_NORMAL
           && ability != ABILITY_NORMALIZE

@@ -7054,8 +7054,8 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sCarbinkLevelUpLearnset,
         .teachableLearnset = sCarbinkTeachableLearnset,
-        .formSpeciesIdTable = sDiancieFormSpeciesIdTable,
-        .formChangeTable = sDiancieFormChangeTable,
+        .formSpeciesIdTable = sCarbinkFormSpeciesIdTable,
+        .formChangeTable = sCarbinkFormChangeTable,
     },
 
 #if P_MEGA_EVOLUTIONS

@@ -18171,11 +18171,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Aura Wheel"),
         .description = COMPOUND_STRING(
-            "Raises Speed to attack. The\n"
+            "Raises Attack and hits. The\n"
             "Type is based on its form."),
         .effect = EFFECT_AURA_WHEEL,
-        .power = 110,
-        .type = TYPE_ELECTRIC,
+        .power = 90,
+        .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
@@ -18183,7 +18183,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .category = DAMAGE_CATEGORY_PHYSICAL,
         .metronomeBanned = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_SPD_PLUS_1,
+            .moveEffect = MOVE_EFFECT_ATK_PLUS_1,
             .self = TRUE,
             .chance = 100,
         }),

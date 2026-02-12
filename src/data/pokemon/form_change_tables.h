@@ -1,3 +1,25 @@
+static const struct FormChange sSimisageFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SIMISAGE,     ABILITY_HUNGER_SWITCH},
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SIMISEAR, ABILITY_HUNGER_SWITCH},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sSimisearFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SIMISEAR,     ABILITY_HUNGER_SWITCH},
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SIMIPOUR, ABILITY_HUNGER_SWITCH},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+static const struct FormChange sSimipourFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SIMIPOUR,     ABILITY_HUNGER_SWITCH},
+    {FORM_CHANGE_BATTLE_TURN_END,   SPECIES_SIMISAGE, ABILITY_HUNGER_SWITCH},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+
 #if P_FAMILY_BULBASAUR
 static const struct FormChange sVenusaurFormChangeTable[] =
 {

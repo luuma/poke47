@@ -16466,6 +16466,7 @@ static const struct LevelUpMove sPansageLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sSimisageLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_DETECT),
         LEVEL_UP_MOVE(1, MOVE_DOUBLESLAP),
         LEVEL_UP_MOVE(1, MOVE_PLAY_NICE),
         LEVEL_UP_MOVE(5, MOVE_FLING),
@@ -16479,7 +16480,7 @@ static const struct LevelUpMove sSimisageLevelUpLearnset[] = {
         LEVEL_UP_MOVE(32, MOVE_ACROBATICS),
         LEVEL_UP_MOVE(35, MOVE_WOOD_HAMMER),
         LEVEL_UP_MOVE(39, MOVE_NATURAL_GIFT),
-        LEVEL_UP_MOVE(42, MOVE_BATON_PASS),
+        LEVEL_UP_MOVE(42, MOVE_AURA_WHEEL),
         LEVEL_UP_MOVE(45, MOVE_SUCKER_PUNCH),
         LEVEL_UP_END
 };
@@ -16503,6 +16504,7 @@ static const struct LevelUpMove sPansearLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sSimisearLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_DETECT),
         LEVEL_UP_MOVE(1, MOVE_DOUBLESLAP),
         LEVEL_UP_MOVE(1, MOVE_PLAY_NICE),
         LEVEL_UP_MOVE(5, MOVE_FLING),
@@ -16516,7 +16518,7 @@ static const struct LevelUpMove sSimisearLevelUpLearnset[] = {
         LEVEL_UP_MOVE(32, MOVE_ACROBATICS),
         LEVEL_UP_MOVE(35, MOVE_FLARE_BLITZ),
         LEVEL_UP_MOVE(39, MOVE_NATURAL_GIFT),
-        LEVEL_UP_MOVE(42, MOVE_BATON_PASS),
+        LEVEL_UP_MOVE(42, MOVE_AURA_WHEEL),
         LEVEL_UP_MOVE(45, MOVE_SUCKER_PUNCH),
         LEVEL_UP_END
 };
@@ -16540,6 +16542,7 @@ static const struct LevelUpMove sPanpourLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sSimipourLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_DETECT),
         LEVEL_UP_MOVE(1, MOVE_DOUBLESLAP),
         LEVEL_UP_MOVE(1, MOVE_PLAY_NICE),
         LEVEL_UP_MOVE(5, MOVE_FLING),
@@ -16553,7 +16556,7 @@ static const struct LevelUpMove sSimipourLevelUpLearnset[] = {
         LEVEL_UP_MOVE(32, MOVE_ACROBATICS),
         LEVEL_UP_MOVE(35, MOVE_WAVE_CRASH),
         LEVEL_UP_MOVE(39, MOVE_NATURAL_GIFT),
-        LEVEL_UP_MOVE(42, MOVE_BATON_PASS),
+        LEVEL_UP_MOVE(42, MOVE_AURA_WHEEL),
         LEVEL_UP_MOVE(45, MOVE_SUCKER_PUNCH),
         LEVEL_UP_END
 };
