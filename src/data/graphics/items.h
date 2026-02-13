@@ -4,6 +4,10 @@ const u16 gItemIconPalette_QuestionMark[] = INCBIN_U16("graphics/items/icon_pale
 const u32 gItemIcon_ReturnToFieldArrow[] = INCBIN_U32("graphics/items/icons/return_to_field_arrow.4bpp.smol");
 const u16 gItemIconPalette_ReturnToFieldArrow[] = INCBIN_U16("graphics/items/icon_palettes/return_to_field_arrow.gbapal");
 
+const u32 gItemIcon_LevelCap[] = INCBIN_U32("graphics/items/icons/level_cap.4bpp.smol");
+const u16 gItemIconPalette_LevelCap[] = INCBIN_U16("graphics/items/icon_palettes/level_cap.gbapal");
+
+
 // Poké Balls
 
 const u32 gItemIcon_StrangeBall[] = INCBIN_U32("graphics/items/icons/strange_ball.4bpp.smol");

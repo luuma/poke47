@@ -56,8 +56,10 @@
 #define FLAG_NO_COLLISION FLAG_UNUSED_0x024
 #define FLAG_UNUSED_0x025    0x25 // Unused Flag
 #define FLAG_FORCE_SHINY FLAG_UNUSED_0x025 
-#define FLAG_UNUSED_0x026    0x26 // Unused Flag
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
+#define FLAG_UNUSED_0x026    0x26
+#define FLAG_CAP_GUY FLAG_UNUSED_0x026 // Used to determine if player has the level cap
+#define FLAG_UNUSED_0x027    0x27 
+#define FLAG_LEVEL_CAP FLAG_UNUSED_0x027 // Used to determine if player has the level cap
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag

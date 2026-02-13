@@ -1100,7 +1100,8 @@
 #define ITEM_OVAL_CHARM 855
 #define CUSTOM_ITEMS_BEGIN ITEM_OVAL_CHARM
 
-#define ITEMS_COUNT (CUSTOM_ITEMS_BEGIN +1)
+#define ITEM_LEVEL_CAP (CUSTOM_ITEMS_BEGIN +1)
+#define ITEMS_COUNT (CUSTOM_ITEMS_BEGIN +2)
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

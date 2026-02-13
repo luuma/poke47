@@ -15658,6 +15658,23 @@ const struct Item gItemsInfo[] =
         .iconPic = gItemIcon_PokeshiDoll,
         .iconPalette = gItemIconPalette_PokeshiDoll,
     },
+
+    [ITEM_LEVEL_CAP] =
+    {
+        .name = ITEM_NAME("Level Cap"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "Caps growth based\n"
+            "on badges. Lures\n"
+            "Shiny Pokémon."),
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .iconPic = gItemIcon_LevelCap,
+        .iconPalette = gItemIconPalette_LevelCap,
+    },
+
 };
 
 #undef ITEM_NAME

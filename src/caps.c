@@ -3,26 +3,31 @@
 #include "event_data.h"
 #include "caps.h"
 #include "pokemon.h"
+#include "item.h"
 
 
 u32 GetCurrentLevelCap(void)
 {
     static const u32 sLevelCapFlagMap[][2] =
     {
-        {FLAG_BADGE01_GET, 15},
-        {FLAG_BADGE02_GET, 19},
-        {FLAG_BADGE03_GET, 24},
-        {FLAG_BADGE04_GET, 29},
-        {FLAG_BADGE05_GET, 31},
-        {FLAG_BADGE06_GET, 33},
-        {FLAG_BADGE07_GET, 42},
-        {FLAG_BADGE08_GET, 46},
+        {FLAG_BADGE01_GET, 14},
+        {FLAG_BADGE02_GET, 18},
+        {FLAG_BADGE03_GET, 23},
+        {FLAG_BADGE04_GET, 26},
+        {FLAG_BADGE05_GET, 29},
+        {FLAG_BADGE06_GET, 32},
+        {FLAG_BADGE07_GET, 39},
+        {FLAG_BADGE08_GET, 43},
+        {FLAG_SIDNEY_SUCKER_PUNCH, 50},
+        {FLAG_PHOEBE_PHANTOM_FORCE, 52},
+        {FLAG_JUAN_DAZZLING_GLEAM, 54},
+        {FLAG_DRAKE_DRAGON_PULSE, 56},
         {FLAG_IS_CHAMPION, 58},
     };
 
     u32 i;
 
-    if (B_LEVEL_CAP_TYPE == LEVEL_CAP_FLAG_LIST)
+    if (CheckBagHasItem(ITEM_LEVEL_CAP, 1))
     {
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
         {
@@ -64,7 +69,7 @@ u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
             return expValue;
         }
     }
-    else if (B_EXP_CAP_TYPE == EXP_CAP_HARD)
+    else if (CheckBagHasItem(ITEM_LEVEL_CAP, 1))
     {
         return 0;
     }

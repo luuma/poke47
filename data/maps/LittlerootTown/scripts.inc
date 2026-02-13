@@ -161,7 +161,7 @@ LittlerootTown_EventScript_GoInsideWithMom::
 	waitdooranim
 	clearflag FLAG_HIDE_LITTLEROOT_TOWN_FAT_MAN
 	clearflag FLAG_HIDE_MAP_NAME_POPUP
-	setflag FLAG_AURORATICKET_ITEM
+	setflag FLAG_AURORATICKET_ITEM//CUSTOM GAMESTART FLAGSETS.
 	setflag FLAG_EONTICKET_ITEM
 	setflag FLAG_MYSTICTICKET_ITEM
 	return
@@ -242,6 +242,46 @@ LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeMale::
 LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale::
 	setobjectxy LOCALID_LITTLEROOT_RIVAL, 13, 10
 	setobjectxy LOCALID_LITTLEROOT_BIRCH, 14, 10
+	end
+
+LittlerootTown_EventScript_CapKid::
+	lock
+	faceplayer
+	checkitem ITEM_LEVEL_CAP
+	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_EventScript_CapKidJump
+	goto_if_set FLAG_LEVEL_CAP LittlerootTown_EventScript_CapKidGiveBack
+LittlerootTown_EventScript_CapKidJump::
+	msgbox LittlerootTown_Text_HardDifficultyStart, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LittlerootTown_EventScript_CapKidTooBad
+	setflag FLAG_LEVEL_CAP
+	giveitem ITEM_LEVEL_CAP
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	msgbox LittlerootTown_Text_IfWantGiveBack, MSGBOX_DEFAULT
+	closemessage
+	releaseall
+	end
+
+LittlerootTown_EventScript_CapKidGiveBack::
+	msgbox LittlerootTown_Text_WantGiveCapBack, MSGBOX_YESNO
+	lockall
+	goto_if_eq VAR_RESULT, NO, LittlerootTown_EventScript_CapKidBelievesInYou
+	removeitem ITEM_LEVEL_CAP, 1
+	msgbox LittlerootTown_Text_GaveCapBackIllBeOff
+	fadescreenswapbuffers FADE_TO_BLACK
+	removeobject VAR_LAST_TALKED
+	setflag FLAG_CAP_GUY
+	fadescreenswapbuffers FADE_FROM_BLACK
+	releaseall
+	end
+
+LittlerootTown_EventScript_CapKidBelievesInYou::
+	msgbox LittlerootTown_Text_WantGiveCapBackBelieve, MSGBOX_NPC
+	release
+	end
+
+LittlerootTown_EventScript_CapKidTooBad::
+	msgbox LittlerootTown_Text_CapKidTooBad, MSGBOX_NPC
+	release
 	end
 
 LittlerootTown_EventScript_FatMan::
@@ -1016,4 +1056,39 @@ LittlerootTown_Text_BirchSomethingToShowYouAtLab:
 	.string "I gave you?\p"
 	.string "I have something to show you.\n"
 	.string "Let's go to my LAB.$"
+
+
+LittlerootTown_Text_HardDifficultyStart:
+	.string "Hey big kid! I got something.\n"
+	.string "I got a challenge for ya!\p"
+	.string "This epic piece of headgear I hold\n"
+	.string "in my hands is… a LEVEL CAP.\p"
+	.string "It caps POKéMON levelling until you\n"
+	.string "have enough BADGES, see?\p"
+	.string "It's super rare. And SUUUPER tough.\n"
+	.string "You like it? You wanna borrow it?$"
+
+LittlerootTown_Text_IfWantGiveBack:
+	.string "If you want to give that back, I guess\n"
+	.string "I can stick around to take it off you…$"
+
+LittlerootTown_Text_WantGiveCapBack:
+	.string "Wow. Cheeks. Don't tell me you're\n"
+	.string "here to give the LEVEL CAP back!\p"
+	.string "Are you really giving it back?$"
+
+LittlerootTown_Text_WantGiveCapBackBelieve:
+	.string "I believe in you.$"
+
+LittlerootTown_Text_GaveCapBackIllBeOff:
+	.string "{PLAYER} returned the LEVEL CAP.\p"
+	.string "Heh. Shame. Smell ya later!$"
+
+LittlerootTown_Text_CapKidTooBad:
+	.string "Wow! Surprisingly lame of you.\p"
+	.string "Alright, go have a think.\n"
+	.string "But be quick about it!\p"
+	.string "This offer ends as soon as my big bro\n"
+	.string "is done sketching some majorly baller\l"
+	.string "POKéMON footprints.$"
 
