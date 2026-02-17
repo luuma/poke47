@@ -1330,9 +1330,7 @@ gCryTable::
 .endif @ P_FAMILY_DRILBUR
 .if P_FAMILY_AUDINO == TRUE
 	cry Cry_Audino
-.if P_MEGA_EVOLUTIONS == TRUE
 	cry Cry_AudinoMega
-.endif @ P_MEGA_EVOLUTIONS
 .endif @ P_FAMILY_AUDINO
 .if P_FAMILY_TIMBURR == TRUE
 	cry Cry_Timburr

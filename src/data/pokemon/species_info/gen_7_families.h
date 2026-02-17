@@ -5083,12 +5083,12 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
 #if P_FAMILY_BRUXISH
     [SPECIES_BRUXISH] =
     {
-        .baseHP        = 68,
+        .baseHP        = 78,//+10
         .baseAttack    = 105,
         .baseDefense   = 70,
         .baseSpeed     = 92,
         .baseSpAttack  = 70,
-        .baseSpDefense = 70,
+        .baseSpDefense = 80,//+10
         .types = MON_TYPES(TYPE_WATER, TYPE_PSYCHIC),
         .catchRate = 80,
         .expYield = 166,

@@ -78,15 +78,16 @@ bool32 CanDynamax(u32 battler)
     // Prevents Zigzagoon from dynamaxing in vanilla.
     if (gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE && !IsOnPlayerSide(battler))
         return FALSE;
-
     // Check if Player has a Dynamax Band.
     if (!TESTING && (GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT
         || (!(gBattleTypeFlags & BATTLE_TYPE_MULTI) && GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)))
     {
-        if (!CheckBagHasItem(ITEM_DYNAMAX_BAND, 1))
-            return FALSE;
-        if (B_FLAG_DYNAMAX_BATTLE == 0 || (B_FLAG_DYNAMAX_BATTLE != 0 && !FlagGet(B_FLAG_DYNAMAX_BATTLE)))
-            return FALSE;
+        if (GET_BASE_SPECIES_ID(species) != SPECIES_AUDINO)
+	    return FALSE;
+	//if (!CheckBagHasItem(ITEM_DYNAMAX_BAND, 1))
+            //return FALSE;
+        //if (B_FLAG_DYNAMAX_BATTLE == 0 || (B_FLAG_DYNAMAX_BATTLE != 0 && !FlagGet(B_FLAG_DYNAMAX_BATTLE)))
+            //return FALSE;
     }
 
     // Check if species isn't allowed to Dynamax.

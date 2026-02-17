@@ -4118,11 +4118,8 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
         gBattlescriptCurrInstr = BattleScript_MoveEffectAromatherapy;
         break;
     case MOVE_EFFECT_RECYCLE_BERRIES:
-        if (RandomPercentage(RNG_G_MAX_REPLENISH, 50))
-        {
-            BattleScriptPush(battleScript);
-            gBattlescriptCurrInstr = BattleScript_EffectRecycleBerriesAllies;
-        }
+        BattleScriptPush(battleScript);
+        gBattlescriptCurrInstr = BattleScript_EffectRecycleBerriesAllies;
         break;
     case MOVE_EFFECT_REMOVE_STATUS:
     {

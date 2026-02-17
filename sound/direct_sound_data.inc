@@ -3507,11 +3507,9 @@ Cry_Excadrill::
 Cry_Audino::
 	.incbin "sound/direct_sound_samples/cries/audino.bin"
 
-.if P_MEGA_EVOLUTIONS == TRUE
 	.align 2
 Cry_AudinoMega::
 	.incbin "sound/direct_sound_samples/cries/audino_mega.bin"
-.endif @ P_MEGA_EVOLUTIONS
 .endif @ P_FAMILY_AUDINO
 
 .if P_FAMILY_TIMBURR == TRUE

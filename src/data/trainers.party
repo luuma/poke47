@@ -4934,7 +4934,7 @@ Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Smart Trainer / Risky / Ace Pokemon
+AI: Smart Trainer / Risky
 
 Fletchinder
 Level: 29
@@ -4960,7 +4960,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Substitute
 - Air Slash
 
-Emolga
+Emolga @ Sitrus Berry
 Level: 31
 IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Tailwind
@@ -4968,10 +4968,10 @@ IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
 - Volt Switch
 - Air Slash
 
-Noivern @ Sitrus Berry
+Noivern
 Level: 33
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Boomburst
+- Acrobatics
 - Dragon Claw
 - Tailwind
 - U Turn
@@ -15053,13 +15053,13 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Sunny Day
 - Aerial Ace
 - Solar Beam
-- Earthquake
+- Flamethrower
 
 Pelipper
 Level: 41
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Surf
-- Supersonic
+- Tailwind
 - Protect
 - Aerial Ace
 
@@ -15068,8 +15068,8 @@ Level: 43
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Whirlwind
 - Spikes
-- Steel Wing
-- Aerial Ace
+- Defog
+- Air Cutter
 
 Altaria @ Chesto Berry
 Level: 45
@@ -15725,7 +15725,7 @@ Music: Cool
 Double Battle: No
 AI: Basic Trainer
 
-Tropius
+Fletchinder
 Level: 30
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 

@@ -10,19 +10,19 @@ u32 GetCurrentLevelCap(void)
 {
     static const u32 sLevelCapFlagMap[][2] =
     {
-        {FLAG_BADGE01_GET, 14},
-        {FLAG_BADGE02_GET, 18},
-        {FLAG_BADGE03_GET, 23},
-        {FLAG_BADGE04_GET, 26},
-        {FLAG_BADGE05_GET, 29},
-        {FLAG_BADGE06_GET, 32},
-        {FLAG_BADGE07_GET, 39},
-        {FLAG_BADGE08_GET, 43},
-        {FLAG_SIDNEY_SUCKER_PUNCH, 50},
-        {FLAG_PHOEBE_PHANTOM_FORCE, 52},
-        {FLAG_JUAN_DAZZLING_GLEAM, 54},
-        {FLAG_DRAKE_DRAGON_PULSE, 56},
-        {FLAG_IS_CHAMPION, 58},
+        {FLAG_BADGE01_GET, 14},//0
+        {FLAG_BADGE02_GET, 18},//1
+        {FLAG_BADGE03_GET, 23},//2
+        {FLAG_BADGE04_GET, 26},//3
+        {FLAG_BADGE05_GET, 28},//3
+        {FLAG_BADGE06_GET, 30},//3
+        {FLAG_BADGE07_GET, 38},//4
+        {FLAG_BADGE08_GET, 42},//4
+        {FLAG_SIDNEY_SUCKER_PUNCH, 49},//0. high, to let people full-send champion
+        {FLAG_PHOEBE_PHANTOM_FORCE, 50},//1
+        {FLAG_JUAN_DAZZLING_GLEAM, 51},//2
+        {FLAG_DRAKE_DRAGON_PULSE, 52},//3
+        {FLAG_IS_CHAMPION, 54},//4
     };
 
     u32 i;

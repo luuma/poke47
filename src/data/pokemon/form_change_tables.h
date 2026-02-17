@@ -987,9 +987,7 @@ static const struct FormChange sExcadrillFormChangeTable[] =
 #if P_FAMILY_AUDINO
 static const struct FormChange sAudinoFormChangeTable[] =
 {
-#if P_MEGA_EVOLUTIONS
-    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM,    SPECIES_AUDINO_MEGA, ITEM_AUDINITE},
-#endif
+    {FORM_CHANGE_BATTLE_MEGA_EVOLUTION_MOVE,    SPECIES_AUDINO_MEGA, MOVE_TERA_BLAST},
     {FORM_CHANGE_END_BATTLE,                    SPECIES_AUDINO},
     {FORM_CHANGE_TERMINATOR},
 };

@@ -74,7 +74,11 @@ bool32 CanTerastallize(u32 battler)
     {
         // Skip all other checks in this block, go to HasTrainerUsedGimmick
     }
-    else if (!CheckBagHasItem(ITEM_TERA_ORB, 1))
+    //else if (!CheckBagHasItem(ITEM_TERA_ORB, 1))
+    //{
+        //return FALSE;
+    //}
+    else if (GET_BASE_SPECIES_ID(gBattleMons[battler].species) != SPECIES_AUDINO)
     {
         return FALSE;
     }
@@ -82,10 +86,10 @@ bool32 CanTerastallize(u32 battler)
     {
         // Tera Orb is not depleted, go to HasTrainerUsedGimmick
     }
-    else if (!FlagGet(B_FLAG_TERA_ORB_CHARGED))
-    {
-        return FALSE;
-    }
+    //else if (!FlagGet(B_FLAG_TERA_ORB_CHARGED))
+    //{
+        //return FALSE;
+    //}
 
     // Check if Trainer has already Terastallized.
     if (HasTrainerUsedGimmick(battler, GIMMICK_TERA))
@@ -96,8 +100,8 @@ bool32 CanTerastallize(u32 battler)
         return FALSE;
 
     // Check if battler has another gimmick active.
-    if (GetActiveGimmick(battler) != GIMMICK_NONE)
-        return FALSE;
+    //if (GetActiveGimmick(battler) != GIMMICK_NONE)
+        //return FALSE;
 
     // Check if battler is holding a Z-Crystal or Mega Stone.
     if (!TESTING && (holdEffect == HOLD_EFFECT_Z_CRYSTAL || holdEffect == HOLD_EFFECT_MEGA_STONE)) // tests make this check already

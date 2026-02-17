@@ -3861,13 +3861,9 @@ static const struct SpriteFrameImage sPicTable_Excadrill[] = {
 static const struct SpriteFrameImage sPicTable_Audino[] = {
     overworld_ascending_frames(gObjectEventPic_Audino, 4, 4),
 };
-#if OW_BATTLE_ONLY_FORMS
-#if P_MEGA_EVOLUTIONS
 static const struct SpriteFrameImage sPicTable_AudinoMega[] = {
     overworld_ascending_frames(gObjectEventPic_AudinoMega, 4, 4),
 };
-#endif // P_MEGA_EVOLUTIONS
-#endif // OW_BATTLE_ONLY_FORMS
 #endif //P_FAMILY_AUDINO
 
 #if P_FAMILY_TIMBURR

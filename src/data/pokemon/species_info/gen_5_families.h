@@ -2906,6 +2906,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpAttack  = 60,
         .baseSpDefense = 86,
         .types = MON_TYPES(TYPE_NORMAL),
+	.forceTeraType = TYPE_FAIRY,
         .catchRate = 255,
         .expYield = 390,
         .evYield_HP = 2,
@@ -2969,7 +2970,6 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .formChangeTable = sAudinoFormChangeTable,
     },
 
-#if P_MEGA_EVOLUTIONS
     [SPECIES_AUDINO_MEGA] =
     {
         .baseHP        = 103,
@@ -2978,7 +2978,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpeed     = 50,
         .baseSpAttack  = 113,
         .baseSpDefense = 126,
-        .types = MON_TYPES(TYPE_FAIRY),
+        .types = MON_TYPES(TYPE_NORMAL, TYPE_FAIRY),
+	.forceTeraType = TYPE_STELLAR,
         .catchRate = 255,
         .expYield = 425,
         .evYield_HP = 2,
@@ -3022,7 +3023,6 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
         SHADOW(-1, 7, SHADOW_SIZE_M)
         FOOTPRINT(Audino)
-    #if OW_BATTLE_ONLY_FORMS
         OVERWORLD(
             sPicTable_AudinoMega,
             SIZE_32x32,
@@ -3032,7 +3032,6 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_AudinoMega,
             gShinyOverworldPalette_AudinoMega
         )
-    #endif //OW_BATTLE_ONLY_FORMS
         .isMegaEvolution = TRUE,
         .levelUpLearnset = sAudinoLevelUpLearnset,
         .teachableLearnset = sAudinoTeachableLearnset,
@@ -3040,7 +3039,6 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .formSpeciesIdTable = sAudinoFormSpeciesIdTable,
         .formChangeTable = sAudinoFormChangeTable,
     },
-#endif //P_MEGA_EVOLUTIONS
 #endif //P_FAMILY_AUDINO
 
 #if P_FAMILY_TIMBURR
@@ -9950,7 +9948,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
-        .abilities  = {ABILITY_BEAST_BOOST, ABILITY_SYNCHRONIZE, ABILITY_ANALYTIC},
+        .abilities  = {ABILITY_TRACE, ABILITY_SYNCHRONIZE, ABILITY_ANALYTIC},
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Elgyem"),
         .cryId = CRY_ELGYEM,
@@ -10024,7 +10022,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_HUMAN_LIKE),
-        .abilities  = {ABILITY_BEAST_BOOST, ABILITY_SYNCHRONIZE, ABILITY_ANALYTIC},
+        .abilities  = {ABILITY_TRACE, ABILITY_SYNCHRONIZE, ABILITY_ANALYTIC},
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Beheeyem"),
         .cryId = CRY_BEHEEYEM,

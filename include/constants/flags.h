@@ -60,7 +60,7 @@
 #define FLAG_CAP_GUY FLAG_UNUSED_0x026 // Used to determine if player has the level cap
 #define FLAG_UNUSED_0x027    0x27 
 #define FLAG_LEVEL_CAP FLAG_UNUSED_0x027 // Used to determine if player has the level cap
-#define FLAG_UNUSED_0x028    0x28 // Unused Flag
+#define FLAG_TERA    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag

@@ -3049,8 +3049,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseDefense   = 68,
         .baseSpeed     = 39,
         .baseSpAttack  = 92,
-        .baseSpDefense = 82,
-        .types = MON_TYPES(TYPE_WATER, TYPE_GROUND),
+        .baseSpDefense = 92,//+10
+        .types = MON_TYPES(TYPE_WATER, TYPE_GROUND),/// considering poison/ground. but not like. strongly
         .catchRate = 75,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 166 : 176,
         .evYield_HP = 2,
@@ -3113,7 +3113,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseDefense   = 68,
         .baseSpeed     = 39,
         .baseSpAttack  = 92,
-        .baseSpDefense = 82,
+        .baseSpDefense = 92,//+10
         .types = MON_TYPES(TYPE_WATER, TYPE_GROUND),
         .catchRate = 75,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 166 : 176,
