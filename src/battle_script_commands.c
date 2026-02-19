@@ -3116,7 +3116,7 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
         moveEffect = MOVE_EFFECT_NONE;
     else if (!IsBattlerAlive(gEffectBattler) && !activateAfterFaint)
         moveEffect = MOVE_EFFECT_NONE;
-    else if (NoAliveMonsForBattlerSide(gBattlerTarget) ||)
+    else if (NoAliveMonsForBattlerSide(gBattlerTarget))
         moveEffect = MOVE_EFFECT_NONE;// Added for my own rom for the sake of zoom speedy zoom go go. 
     else if (DoesSubstituteBlockMove(gBattlerAttacker, gEffectBattler, gCurrentMove) && !affectsUser)
         moveEffect = MOVE_EFFECT_NONE;
