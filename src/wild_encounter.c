@@ -29,6 +29,8 @@
 #include "constants/items.h"
 #include "constants/layouts.h"
 #include "constants/weather.h"
+#include "data/pokemon/form_species_tables.h"
+
 
 extern const u8 EventScript_SprayWoreOff[];
 
@@ -60,6 +62,11 @@ static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildM
 
 static bool8 IsAbilityAllowingEncounter(u8 level);
 
+/////////WILL EVENTUALLY BE INVALIDATED // grintoul THANK YOU :)
+static bool32 ShouldRandomizeWildMonForm(u16 species);
+static void RandomizeWildMonForm(u16 *species);
+static bool32 GetFormArray(u16 species, const u16 **formTable, u32 *count);
+
 EWRAM_DATA static u8 sWildEncountersDisabled = 0;
 EWRAM_DATA static u32 sFeebasRngValue = 0;
 EWRAM_DATA bool8 gIsFishingEncounter = 0;
@@ -76,6 +83,20 @@ static const u16 sRoute119WaterTileData[] =
      0,  45,  0,
     46,  91,  NUM_FISHING_SPOTS_1,
     92, 139,  NUM_FISHING_SPOTS_1 + NUM_FISHING_SPOTS_2,
+};
+
+
+/////////////WILL EVENTUALLY BE INVALIDATED
+
+static const u16 gFormArrayMinior[] =
+{
+    SPECIES_MINIOR_METEOR_RED,
+    SPECIES_MINIOR_METEOR_ORANGE,
+    SPECIES_MINIOR_METEOR_YELLOW,
+    SPECIES_MINIOR_METEOR_GREEN,
+    SPECIES_MINIOR_METEOR_BLUE,
+    SPECIES_MINIOR_METEOR_INDIGO,
+    SPECIES_MINIOR_METEOR_VIOLET
 };
 
 void DisableWildEncounters(bool8 disabled)
@@ -573,8 +594,12 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
         return FALSE;
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
+////////////////////////////////////////// will eventually be invalidated. Return to:     CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
 
-    CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
+    u16 species = wildMonInfo->wildPokemon[wildMonIndex].species;
+    if (ShouldRandomizeWildMonForm(species))
+	RandomizeWildMonForm(&species);
+    CreateWildMon(species, level);
     return TRUE;
 }
 
@@ -1263,4 +1288,55 @@ u32 ChooseHiddenMonIndex(void)
 bool32 MapHasNoEncounterData(void)
 {
     return (GetCurrentMapWildMonHeaderId() == HEADER_NONE);
+}
+
+
+///// WILL EVENTUALLY BE INVALIDATED BY THE ENDLESS DRIVE FOR PROGRESS
+
+static bool32 ShouldRandomizeWildMonForm(u16 species)
+{
+    switch (species)
+    {
+    case SPECIES_MINIOR_METEOR:
+    case SPECIES_FURFROU_DANDY:
+    case SPECIES_SCATTERBUG:
+    case SPECIES_SPEWPA:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+static void RandomizeWildMonForm(u16 *species)
+{
+    const u16 *formTable = NULL;
+    u32 count = 0;
+    if (GetFormArray(*species, &formTable, &count))
+        *species = formTable[Random() % count];
+}
+
+static bool32 GetFormArray(u16 species, const u16 **formTable, u32 *count)
+{
+    switch (species)
+    {
+    case SPECIES_MINIOR:
+        *formTable = gFormArrayMinior;
+        *count = ARRAY_COUNT(gFormArrayMinior);
+        break;
+    case SPECIES_FURFROU_DANDY:
+        *formTable = sFurfrouFormSpeciesIdTable;
+        *count = ARRAY_COUNT(sFurfrouFormSpeciesIdTable) - 1;
+        break;
+    case SPECIES_SCATTERBUG:
+        *formTable = sScatterbugFormSpeciesIdTable;
+        *count = ARRAY_COUNT(sScatterbugFormSpeciesIdTable) -3;
+        break;
+    case SPECIES_SPEWPA:
+        *formTable = sSpewpaFormSpeciesIdTable;
+        *count = ARRAY_COUNT(sSpewpaFormSpeciesIdTable) -3;
+        break;
+    default:
+        return FALSE;
+    }
+    return TRUE;
 }

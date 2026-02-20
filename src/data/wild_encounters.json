@@ -183,7 +183,7 @@
               },
               {
                 "min_level": 3,
-                "max_level": 3,
+                "max_level": 4,
                 "species": "SPECIES_FLABEBE_RED"
               },
               {
@@ -207,9 +207,9 @@
                 "species": "SPECIES_SCATTERBUG"
               },
               {
-                "min_level": 4,
+                "min_level": 5,
                 "max_level": 5,
-                "species": "SPECIES_FLABEBE"
+                "species": "SPECIES_FLABEBE_BLUE"
               }
             ]
           },
@@ -1439,7 +1439,7 @@
               {
                 "min_level": 13,
                 "max_level": 13,
-                "species": "SPECIES_FLABEBE"
+                "species": "SPECIES_FLABEBE_ORANGE"
               },
               {
                 "min_level": 14,
@@ -1474,7 +1474,7 @@
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_FLABEBE"
+                "species": "SPECIES_FLABEBE_WHITE"
               },
               {
                 "min_level": 14,
@@ -1484,12 +1484,12 @@
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_KRICKETUNE"
+                "species": "SPECIES_FLABEBE_YELLOW"
               },
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_KRICKETUNE"
+                "species": "SPECIES_FLABEBE_BLUE"
               }
             ]
           },
@@ -3798,14 +3798,14 @@
                 "species": "SPECIES_FURFROU"
               },
               {
-                "min_level": 28,
+                "min_level": 25,
                 "max_level": 28,
-                "species": "SPECIES_FURFROU"
+                "species": "SPECIES_FURFROU_DANDY"
               },
               {
                 "min_level": 25,
-                "max_level": 25,
-                "species": "SPECIES_FURFROU"
+                "max_level": 28,
+                "species": "SPECIES_FURFROU_DANDY"
               }
             ]
           },

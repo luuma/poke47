@@ -1375,19 +1375,25 @@ void CreateMonWithGenderNatureLetter(struct Pokemon *mon, u16 species, u8 level,
     CreateMon(mon, species, level, fixedIV, TRUE, personality, OT_ID_PLAYER_ID, 0);
 }
 
-// This is only used to create Wally's Ralts.
+// This is only used to create Wally's Ralts. Lol unused now.
 void CreateMaleMon(struct Pokemon *mon, u16 species, u8 level)
 {
     u32 personality;
     u32 otId;
-
-    do
+    if (gSpeciesInfo[species].genderRatio == MON_FEMALE || gSpeciesInfo[species].genderRatio == MON_GENDERLESS)
     {
-        otId = Random32();
-        personality = Random32();
+	CreateMon(mon, species, level, USE_RANDOM_IVS, FALSE, 0, OT_ID_RANDOM_NO_SHINY, 0);
     }
-    while (GetGenderFromSpeciesAndPersonality(species, personality) != MON_MALE);
-    CreateMon(mon, species, level, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
+    else
+    {
+    	do
+    	{
+            otId = Random32();
+            personality = Random32();
+    	}
+	while (GetGenderFromSpeciesAndPersonality(species, personality) != MON_MALE);
+	CreateMon(mon, species, level, USE_RANDOM_IVS, TRUE, personality, OT_ID_PRESET, otId);
+    }
 }
 
 void CreateMonWithIVsPersonality(struct Pokemon *mon, u16 species, u8 level, u32 ivs, u32 personality)
