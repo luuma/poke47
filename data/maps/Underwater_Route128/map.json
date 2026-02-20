@@ -38,16 +38,16 @@
   "bg_events": [
     {
       "type": "hidden_item",
-      "x": 69,
-      "y": 18,
+      "x": 38,
+      "y": 19,
       "elevation": 3,
-      "item": "ITEM_PROTEIN",
+      "item": "ITEM_PLUME_FOSSIL",
       "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_128_PROTEIN"
     },
     {
       "type": "hidden_item",
-      "x": 38,
-      "y": 19,
+      "x": 69,
+      "y": 18,
       "elevation": 3,
       "item": "ITEM_FLYING_GEM",
       "flag": "FLAG_HIDDEN_ITEM_UNDERWATER_128_PEARL"

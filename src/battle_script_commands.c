@@ -3042,37 +3042,15 @@ static void SetNonVolatileStatus(u32 effectBattler, enum MoveEffect effect, cons
         gBattleStruct->poisonPuppeteerConfusion = TRUE;
 }
 
-// To avoid confusion the arguments are naned battler/effectBattler since they can be different from gBattlerAttacker/gBattlerTarget
-void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, const u8 *battleScript, enum SetMoveEffectFlags effectFlags)
+static inline bool32 IgnoreTargetingForMoveEffect(enum MoveEffect moveEffect) // Currently only used to determine move effects which happen even if the move's defined effectbattler is fainted
 {
-    s32 i;
-    bool32 primary = effectFlags & EFFECT_PRIMARY;
-    bool32 certain = effectFlags & EFFECT_CERTAIN;
-    bool32 affectsUser = (battler == effectBattler);
-    bool32 mirrorArmorReflected = (GetBattlerAbility(gBattlerTarget) == ABILITY_MIRROR_ARMOR);
-    union StatChangeFlags flags = {0};
-    u32 battlerAbility;
-    bool32 activateAfterFaint = FALSE;
-
-    // NULL move effect
-    if (moveEffect == MOVE_EFFECT_NONE)
-        return;
-
-    if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT
-        && IsBattlerAlive(gBattlerTarget)
-        && IsFinalStrikeEffect(moveEffect))
+    switch (moveEffect) 
     {
-        gBattlescriptCurrInstr = battleScript;
-        return;
-    }
-
-    switch (moveEffect) // Set move effects which happen later on
-    {
-    case MOVE_EFFECT_STEALTH_ROCK:
     case MOVE_EFFECT_PAYDAY:
     case MOVE_EFFECT_BUG_BITE:
     case MOVE_EFFECT_FLAME_BURST:
-//added
+    case MOVE_EFFECT_STEALTH_ROCK:
+    case MOVE_EFFECT_STEELSURGE:
     case MOVE_EFFECT_SUN:
     case MOVE_EFFECT_RAIN:
     case MOVE_EFFECT_SANDSTORM:
@@ -3087,7 +3065,6 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
     case MOVE_EFFECT_RAISE_TEAM_SP_ATK:
     case MOVE_EFFECT_RAISE_TEAM_SP_DEF:
     case MOVE_EFFECT_CRIT_PLUS_SIDE:
-    case MOVE_EFFECT_STEELSURGE:
     case MOVE_EFFECT_DEFOG:
     case MOVE_EFFECT_REFLECT:
     case MOVE_EFFECT_LIGHT_SCREEN:
@@ -3098,10 +3075,33 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
     case MOVE_EFFECT_RECYCLE_BERRIES:
     case MOVE_EFFECT_ION_DELUGE:
     case MOVE_EFFECT_HAZE:
-        activateAfterFaint = TRUE;
-        break;
+        return TRUE;
     default:
-        break;
+        return FALSE;
+    }
+}
+
+// To avoid confusion the arguments are naned battler/effectBattler since they can be different from gBattlerAttacker/gBattlerTarget
+void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, const u8 *battleScript, enum SetMoveEffectFlags effectFlags)
+{
+    s32 i;
+    bool32 primary = effectFlags & EFFECT_PRIMARY;
+    bool32 certain = effectFlags & EFFECT_CERTAIN;
+    bool32 affectsUser = (battler == effectBattler);
+    bool32 mirrorArmorReflected = (GetBattlerAbility(gBattlerTarget) == ABILITY_MIRROR_ARMOR);
+    union StatChangeFlags flags = {0};
+    u32 battlerAbility;
+
+    // NULL move effect
+    if (moveEffect == MOVE_EFFECT_NONE)
+        return;
+
+    if (gSpecialStatuses[gBattlerAttacker].parentalBondState == PARENTAL_BOND_1ST_HIT
+        && IsBattlerAlive(gBattlerTarget)
+        && IsFinalStrikeEffect(moveEffect))
+    {
+        gBattlescriptCurrInstr = battleScript;
+        return;
     }
 
     gBattleScripting.battler = battler;
@@ -3114,9 +3114,9 @@ void SetMoveEffect(u32 battler, u32 effectBattler, enum MoveEffect moveEffect, c
           && IsSheerForceAffected(gCurrentMove, GetBattlerAbility(battler))
           && !(GetMoveEffect(gCurrentMove) == EFFECT_ORDER_UP && gBattleStruct->battlerState[gBattlerAttacker].commanderSpecies != SPECIES_NONE))
         moveEffect = MOVE_EFFECT_NONE;
-    else if (!IsBattlerAlive(gEffectBattler) && !activateAfterFaint)
+    else if (!IsBattlerAlive(gEffectBattler) && !IgnoreTargetingForMoveEffect(moveEffect))
         moveEffect = MOVE_EFFECT_NONE;
-    else if (NoAliveMonsForBattlerSide(gBattlerTarget))
+    else if (NoAliveMonsForBattlerSide(gBattlerTarget) || NoAliveMonsForBattlerSide(gBattlerAttacker))
         moveEffect = MOVE_EFFECT_NONE;// Added for my own rom for the sake of zoom speedy zoom go go. 
     else if (DoesSubstituteBlockMove(gBattlerAttacker, gEffectBattler, gCurrentMove) && !affectsUser)
         moveEffect = MOVE_EFFECT_NONE;
