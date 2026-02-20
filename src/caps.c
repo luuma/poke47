@@ -17,7 +17,7 @@ u32 GetCurrentLevelCap(void)
         {FLAG_BADGE05_GET, 28},//3
         {FLAG_BADGE06_GET, 30},//3
         {FLAG_BADGE07_GET, 38},//4
-        {FLAG_BADGE08_GET, 42},//4
+        {FLAG_BADGE08_GET, 41},//5
         {FLAG_SIDNEY_SUCKER_PUNCH, 49},//0. high, to let people full-send champion
         {FLAG_PHOEBE_PHANTOM_FORCE, 50},//1
         {FLAG_JUAN_DAZZLING_GLEAM, 51},//2

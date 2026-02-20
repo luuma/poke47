@@ -22960,12 +22960,12 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Just Desserts"),
         .description = COMPOUND_STRING(
-            "Deals damage. May\n"
+            "Deals damage. Will\n"
             "restore eaten Berries."),
         .effect = EFFECT_HIT,
         .power = 75,
         .type = TYPE_FAIRY,
-        .accuracy = 100,
+        .accuracy = 95,
         .pp = 10,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
