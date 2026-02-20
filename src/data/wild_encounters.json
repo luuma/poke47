@@ -800,7 +800,7 @@
               {
                 "min_level": 5,
                 "max_level": 10,
-                "species": "SPECIES_BASCULIN_RED_STRIPED"
+                "species": "SPECIES_FINNEON"
               },
               {
                 "min_level": 5,
@@ -809,33 +809,33 @@
               },
               {
                 "min_level": 20,
-                "max_level": 30,
+                "max_level": 25,
+                "species": "SPECIES_WISHIWASHI"
+              },
+              {
+                "min_level": 20,
+                "max_level": 25,
                 "species": "SPECIES_BASCULIN_RED_STRIPED"
               },
               {
                 "min_level": 20,
-                "max_level": 30,
-                "species": "SPECIES_BASCULIN_RED_STRIPED"
+                "max_level": 25,
+                "species": "SPECIES_FINNEON"
               },
               {
-                "min_level": 20,
-                "max_level": 30,
-                "species": "SPECIES_BASCULIN_RED_STRIPED"
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_WISHIWASHI"
               },
               {
-                "min_level": 25,
-                "max_level": 30,
-                "species": "SPECIES_BASCULIN_RED_STRIPED"
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_FINNEON"
               },
               {
-                "min_level": 30,
-                "max_level": 35,
-                "species": "SPECIES_BASCULIN_RED_STRIPED"
-              },
-              {
-                "min_level": 30,
-                "max_level": 35,
-                "species": "SPECIES_BASCULIN_RED_STRIPED"
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_LUMINEON"
               },
               {
                 "min_level": 35,
@@ -843,8 +843,8 @@
                 "species": "SPECIES_BASCULIN_RED_STRIPED"
               },
               {
-                "min_level": 40,
-                "max_level": 45,
+                "min_level": 35,
+                "max_level": 40,
                 "species": "SPECIES_BASCULIN_RED_STRIPED"
               }
             ]
@@ -12048,63 +12048,63 @@
             "encounter_rate": 10,
             "mons": [
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 8,
                 "species": "SPECIES_SANDYGAST"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 8,
+                "max_level": 9,
                 "species": "SPECIES_SHELLOS_WEST"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 8,
+                "max_level": 8,
                 "species": "SPECIES_TIMBURR"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 8,
+                "max_level": 9,
                 "species": "SPECIES_TIMBURR"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 9,
+                "max_level": 9,
                 "species": "SPECIES_SANDYGAST"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 7,
                 "species": "SPECIES_CRABRAWLER"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 7,
                 "species": "SPECIES_CRABRAWLER"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 8,
+                "max_level": 9,
                 "species": "SPECIES_PYUKUMUKU"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 9,
+                "max_level": 9,
                 "species": "SPECIES_STARLY"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 9,
+                "max_level": 10,
                 "species": "SPECIES_STARLY"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 7,
                 "species": "SPECIES_RIOLU"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
+                "min_level": 7,
+                "max_level": 7,
                 "species": "SPECIES_RIOLU"
               }
             ]
