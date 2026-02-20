@@ -3075,6 +3075,7 @@ static inline bool32 IgnoreTargetingForMoveEffect(enum MoveEffect moveEffect) //
     case MOVE_EFFECT_RECYCLE_BERRIES:
     case MOVE_EFFECT_ION_DELUGE:
     case MOVE_EFFECT_HAZE:
+    case MOVE_EFFECT_PARALYZE_SIDE:
         return TRUE;
     default:
         return FALSE;
