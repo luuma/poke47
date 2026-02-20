@@ -3,10 +3,10 @@
   "name": "IngyBingyIsland",
   "layout": "LAYOUT_INGY_BINGY_ISLAND",
   "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_ROUTE_1",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "weather": "WEATHER_SNOW",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": false,
   "allow_escaping": false,
   "allow_running": false,
@@ -17,6 +17,16 @@
       "map": "MAP_ROUTE103",
       "offset": -8,
       "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE110",
+      "offset": 0,
+      "direction": "right"
+    },
+    {
+      "map": "MAP_ROUTE117",
+      "offset": 12,
+      "direction": "up"
     }
   ],
   "object_events": [

@@ -4704,7 +4704,7 @@
     {
       "id": "LAYOUT_INGY_BINGY_ISLAND",
       "name": "IngyBingyIsland_Layout",
-      "width": 60,
+      "width": 72,
       "height": 60,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Unused1",
