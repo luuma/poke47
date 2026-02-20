@@ -585,9 +585,7 @@ static void CB2_InitBattleInternal(void)
         TryFormChange(i, B_SIDE_OPPONENT, FORM_CHANGE_BEGIN_BATTLE);
     }
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))//  (BATTLE_TYPE_TRAINER | BATTLE_TYPE_LINK | BATTLE_TYPE_RECORDED)??
-    {
-        TryFormChange(0, B_SIDE_OPPONENT, FORM_CHANGE_BEGIN_WILD_ENCOUNTER);
-    }
+	TryFormChange(0, B_SIDE_OPPONENT, FORM_CHANGE_BEGIN_WILD_ENCOUNTER);// This only needs to be done for an opponent as the player's minior is reset to core on end of battle. Minior is always given in core form.
     if (TESTING)
     {
         gPlayerPartyCount = CalculatePartyCount(gPlayerParty);
