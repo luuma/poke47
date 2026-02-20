@@ -249,7 +249,7 @@ RustboroCity_DevonCorp_2F_EventScript_CranidosReady::
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
         bufferspeciesname STR_VAR_1, SPECIES_CRANIDOS
         setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CRANIDOS
-        givemon SPECIES_CRANIDOS, 20
+        givemon SPECIES_CRANIDOS, 33
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilParty
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilPC
         goto Common_EventScript_NoMoreRoomForPokemon
@@ -260,7 +260,7 @@ RustboroCity_DevonCorp_2F_EventScript_ShieldonReady::
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
         bufferspeciesname STR_VAR_1, SPECIES_SHIELDON
         setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_SHIELDON
-        givemon SPECIES_SHIELDON, 20
+        givemon SPECIES_SHIELDON, 33
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilParty
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilPC
         goto Common_EventScript_NoMoreRoomForPokemon
@@ -271,7 +271,7 @@ RustboroCity_DevonCorp_2F_EventScript_ArchenReady::
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
         bufferspeciesname STR_VAR_1, SPECIES_ARCHEN
         setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ARCHEN
-        givemon SPECIES_ARCHEN, 20
+        givemon SPECIES_ARCHEN, 33
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilParty
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilPC
         goto Common_EventScript_NoMoreRoomForPokemon
@@ -282,7 +282,7 @@ RustboroCity_DevonCorp_2F_EventScript_TirtougaReady::
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
         bufferspeciesname STR_VAR_1, SPECIES_TIRTOUGA
         setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_TIRTOUGA
-        givemon SPECIES_TIRTOUGA, 20
+        givemon SPECIES_TIRTOUGA, 33
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilParty
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilPC
         goto Common_EventScript_NoMoreRoomForPokemon
