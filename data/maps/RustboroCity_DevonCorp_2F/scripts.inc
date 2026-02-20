@@ -59,9 +59,10 @@ RustboroCity_DevonCorp_2F_EventScript_FossilScientist::
 	faceplayer
 	goto_if_eq VAR_FOSSIL_RESURRECTION_STATE, 2, RustboroCity_DevonCorp_2F_EventScript_FossilMonReady
 	goto_if_eq VAR_FOSSIL_RESURRECTION_STATE, 1, RustboroCity_DevonCorp_2F_EventScript_StillRegenerating
-	msgbox RustboroCity_DevonCorp_2F_Text_DevelopDeviceToResurrectFossils, MSGBOX_DEFAULT
+	msgbox RustboroCity_DevonCorp_2F_Text_DevelopDeviceToResurrectFossils, MSGBOX_DEFAULT 
+	goto_if_ne VAR_TEMP_2, 0, RustboroCity_DevonCorp_2F_EventScript_NoticeFossil
 	checkitem ITEM_HELIX_FOSSIL, 1
-	call_if_ne VAR_RESULT, FALSE, RustboroCity_DevonCorp_2F_EventScript_MultipushHelix
+	call_if_ne VAR_RESULT, FALSE, RustboroCity_DevonCorp_2F_EventScript_MultipushHelix 
 	checkitem ITEM_DOME_FOSSIL, 1
 	call_if_ne VAR_RESULT, FALSE, RustboroCity_DevonCorp_2F_EventScript_MultipushDome    
 	checkitem ITEM_ROOT_FOSSIL, 1
@@ -82,10 +83,7 @@ RustboroCity_DevonCorp_2F_EventScript_FossilScientist::
 	call_if_ne VAR_RESULT, FALSE, RustboroCity_DevonCorp_2F_EventScript_MultipushSail
 	checkitem ITEM_OLD_AMBER, 1
 	call_if_eq VAR_RESULT, TRUE, RustboroCity_DevonCorp_2F_EventScript_MultipushOldAmber
-	goto_if_eq VAR_TEMP_2, 1, RustboroCity_DevonCorp_2F_EventScript_NoticeFossil @ var_temp_1 is VAR_TEMP_TRANSFERRED_SPECIES, so we may as well avoid it here.
-	setflag FLAG_TEMP_1
 	goto_if_ne VAR_TEMP_2, 0, RustboroCity_DevonCorp_2F_EventScript_NoticeFossil
-	clearflag FLAG_TEMP_1 @ No fossils.
 	closemessage
 	release
 	end
@@ -165,7 +163,7 @@ RustboroCity_DevonCorp_2F_EventScript_NoticeFossil::
 	waitmovement 0
 	msgbox RustboroCity_DevonCorp_2F_Text_WantToBringFossilBackToLife, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RustboroCity_DevonCorp_2F_EventScript_DeclineGiveFossil
-	goto_if_set FLAG_TEMP_1, RustboroCity_DevonCorp_2F_EventScript_ChooseFossil
+	goto_if_ne VAR_TEMP_2, 1, RustboroCity_DevonCorp_2F_EventScript_ChooseFossil
 	goto RustboroCity_DevonCorp_2F_EventScript_GiveFossil
 	end
 
@@ -246,7 +244,6 @@ RustboroCity_DevonCorp_2F_EventScript_AnorithReady::
         goto Common_EventScript_NoMoreRoomForPokemon
         end
 
-
 RustboroCity_DevonCorp_2F_EventScript_CranidosReady::
 	bufferspeciesname STR_VAR_2, SPECIES_CRANIDOS
 	msgbox RustboroCity_DevonCorp_2F_Text_FossilizedMonBroughtBackToLife, MSGBOX_DEFAULT
@@ -302,8 +299,6 @@ RustboroCity_DevonCorp_2F_EventScript_TyruntReady::
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, RustboroCity_DevonCorp_2F_EventScript_ReceiveFossilPC
         goto Common_EventScript_NoMoreRoomForPokemon
         end
-
-
 
 RustboroCity_DevonCorp_2F_EventScript_AmauraReady::
 	bufferspeciesname STR_VAR_2, SPECIES_AMAURA
@@ -364,8 +359,10 @@ RustboroCity_DevonCorp_2F_EventScript_FinishReceiving::
 	end
 
 RustboroCity_DevonCorp_2F_EventScript_ChooseFossil::
+	buffernumberstring STR_VAR_2, VAR_TEMP_2 
 	message RustboroCity_DevonCorp_2F_Text_TwoFossilsPickOne
 	waitmessage
+	setvar VAR_TEMP_2, 0 @ must be done, so that var temp 2 keeps in line with the state of the dynamic multichoice
         dynmultistack 0, 0, FALSE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_SHOW_ITEM @ may as well
 	copyvar VAR_0x8008, VAR_RESULT
         goto_if_eq VAR_0x8008, MULTI_B_PRESSED, RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect
@@ -453,7 +450,7 @@ RustboroCity_DevonCorp_2F_Text_OhIsThatSo:
 
 RustboroCity_DevonCorp_2F_Text_TwoFossilsPickOne:
 	.string "Oh, now that's a surprise!\n"
-	.string "You have not one, but two, fossils?\p"
+	.string "You have not one, but {STR_VAR_2}, fossils?\p"
 	.string "Unfortunately, my machine can only\n"
 	.string "regenerate one POKéMON at a time.\p"
 	.string "Would you like to pick one of your\n"
@@ -485,9 +482,9 @@ RustboroCity_DevonCorp_2F_Text_ReceivedMonFromResearcher:
 	.string "the DEVON RESEARCHER.$"
 
 @ Unused
-RustboroCity_DevonCorp_2F_Text_TooManyPokemon:
-	.string "Uh-oh, you've got too many POKéMON.\n"
-	.string "You have no room for this one.$"
+@ RustboroCity_DevonCorp_2F_Text_TooManyPokemon:
+	@ .string "Uh-oh, you've got too many POKéMON.\n"
+	@ .string "You have no room for this one.$"
 
 RustboroCity_DevonCorp_2F_Text_DevelopNewPokenavFeature:
 	.string "I'm trying to develop a new feature\n"
