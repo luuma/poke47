@@ -533,6 +533,7 @@ struct PokemonStorageSystemData
 static u32 sItemIconGfxBuffer[98];
 
 EWRAM_DATA static u8 sPreviousBoxOption = 0;
+EWRAM_DATA static MainCallback sReturnToPartyCallback = NULL;
 EWRAM_DATA static struct ChooseBoxMenu *sChooseBoxMenu = NULL;
 EWRAM_DATA static struct PokemonStorageSystemData *sStorage = NULL;
 EWRAM_DATA static bool8 sInPartyMenu = 0;
@@ -1646,6 +1647,33 @@ static void FieldTask_ReturnToPcMenu(void)
     FadeInFromBlack();
 }
 
+static void FieldTask_ReturnToPartyMenu(void)
+{
+    MainCallback vblankCb = gMain.vblankCallback;
+    ResetSpriteData();
+    FreeAllWindowBuffers();
+    SetVBlankCallback(NULL);
+    SetMainCallback2(sReturnToPartyCallback != NULL ? sReturnToPartyCallback : CB2_ReturnToFieldWithOpenMenu);
+    sReturnToPartyCallback = NULL;
+    SetVBlankCallback(vblankCb);
+    FadeInFromBlack();
+}
+
+void PokemonPC_SetReturnToPartyCallback(MainCallback cb)
+{
+    sReturnToPartyCallback = cb;
+}
+
+void ShowPokemonPCFromParty(void)
+{
+    EnterPokeStorage(OPTION_MOVE_MONS);
+}
+
+void CB2_ShowPokemonPCFromParty(void)
+{
+    ShowPokemonPCFromParty();
+}
+
 #undef tState
 #undef tSelectedOption
 #undef tInput
@@ -1668,7 +1696,14 @@ static void CreateMainMenu(u8 whichMenu, s16 *windowIdPtr)
 static void CB2_ExitPokeStorage(void)
 {
     sPreviousBoxOption = GetCurrentBoxOption();
-    gFieldCallback = FieldTask_ReturnToPcMenu;
+    if (sReturnToPartyCallback != NULL)
+    {
+        gFieldCallback = FieldTask_ReturnToPartyMenu;
+    }
+    else
+    {
+        gFieldCallback = FieldTask_ReturnToPcMenu;
+    }
     SetMainCallback2(CB2_ReturnToField);
 }
 
@@ -3807,7 +3842,7 @@ static void FreePokeStorageData(void)
 
 static void SetScrollingBackground(void)
 {
-    SetGpuReg(REG_OFFSET_BG3CNT, BGCNT_PRIORITY(3) | BGCNT_CHARBASE(3) | BGCNT_16COLOR | BGCNT_SCREENBASE(31));
+    ShowBg(3);
     DecompressAndLoadBgGfxUsingHeap(3, sScrollingBg_Gfx, 0, 0, 0);
     DecompressDataWithHeaderVram(sScrollingBg_Tilemap, (void *)BG_SCREEN_ADDR(31));
 }
@@ -4261,7 +4296,7 @@ static void UpdateBoxToSendMons(void)
 
 static void InitPokeStorageBg0(void)
 {
-    SetGpuReg(REG_OFFSET_BG0CNT, BGCNT_PRIORITY(0) | BGCNT_CHARBASE(0) | BGCNT_SCREENBASE(29));
+    ShowBg(0);
     LoadUserWindowBorderGfx(WIN_MESSAGE, 2, BG_PLTT_ID(13));
     FillBgTilemapBufferRect(0, 0, 0, 0, 32, 20, 17);
     CopyBgTilemapBufferToVram(0);
