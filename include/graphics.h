@@ -1982,15 +1982,7 @@ extern const u16 gBattleInterface_BallStatusBarPal[];
 extern const u16 gBattleInterface_BallDisplayPal[];
 
 extern const u32 gSwapLineGfx[];
-<<<<<<< HEAD
 extern const u16 gSwapLinePal[];
-<<<<<<< HEAD
-=======
-extern const u32 gSwapLinePal[];
->>>>>>> parent of 32ae65eb03 (A worrying number of the functions changed are unused now !!)
-extern const u32 gSwapLineGfx_RegisteredItemsMenu[];
-=======
->>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
 
 extern const u32 gBattlePyramidBag_Gfx[];
 extern const u16 gBattlePyramidBag_Pal[];

@@ -2160,17 +2160,8 @@ bool8 UseRegisteredKeyItemOnField(void)
             FreezeObjectEvents();
             PlayerFreeze();
             StopPlayerAvatar();
-<<<<<<< HEAD
-            gSpecialVar_ItemId = registeredItem;
-<<<<<<< HEAD
-            taskId = CreateTask(GetItemFieldFunc(registeredItem), 8);
-=======
             gSpecialVar_ItemId = gSaveBlock1Ptr->registeredItem;
             taskId = CreateTask(GetItemFieldFunc(gSaveBlock1Ptr->registeredItem), 8);
->>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
-=======
-            taskId = CreateTask(ItemId_GetFieldFunc(registeredItem), 8);
->>>>>>> parent of 32ae65eb03 (A worrying number of the functions changed are unused now !!)
             gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
             return TRUE;
         }
