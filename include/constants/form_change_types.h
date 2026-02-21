@@ -137,6 +137,8 @@ enum FormChanges
     FORM_CHANGE_OVERWORLD_WEATHER,
     // Form change that activates when the Pokémon is deposited into the PC or Daycare.
     FORM_CHANGE_DEPOSIT,
+    // Form change for Minior, which appears in meteor when encountered in the wild, but appears as core when a trainer sends it out
+    FORM_CHANGE_BEGIN_WILD_ENCOUNTER,
 };
 
 #endif // GUARD_CONSTANTS_FORM_CHANGE_TYPES_H

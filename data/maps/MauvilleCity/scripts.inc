@@ -359,12 +359,10 @@ MauvilleCity_Movement_WallysUncleExitEast2:
 	step_end
 
 MauvilleCity_Movement_ScottApproachPlayerNorth:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -373,11 +371,10 @@ MauvilleCity_Movement_ScottApproachPlayerNorth:
 	step_end
 
 MauvilleCity_Movement_ScottApproachPlayerEast:
-	walk_up
-	walk_up
-	walk_up
-	walk_up
-	walk_up
+	walk_left
+	walk_left
+	walk_left
+	walk_left
 	walk_left
 	walk_left
 	walk_left
@@ -646,7 +643,10 @@ MauvilleCity_Text_BikeShopSign:
 
 MauvilleCity_Text_GameCornerSign:
 	.string "“The play spot for all!”\n"
-	.string "MAUVILLE GAME CORNER$"
+	.string "MAUVILLE GAME CORNER\p"
+	.string "Four signatures decorate the sign.\n"
+	.string "Huderlem, PokeAbbie, agsmgmaster64,\l"
+	.string "and Chris Piche.$"
 
 MauvilleCity_Text_ExplainTV:
 	.string "Hi, do you check out TV at all?\p"

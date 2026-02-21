@@ -63,8 +63,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_MANIAC",
-      "x": 14,
-      "y": 11,
+      "x": 27,
+      "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
@@ -89,8 +89,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_SCHOOL_KID_M",
-      "x": 17,
-      "y": 14,
+      "x": 18,
+      "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
@@ -130,8 +130,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_WATTSON",
-      "x": 29,
-      "y": 9,
+      "x": 18,
+      "y": 10,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -170,8 +170,8 @@
     {
       "local_id": "LOCALID_MAUVILLE_SCOTT",
       "graphics_id": "OBJ_EVENT_GFX_SCOTT",
-      "x": 12,
-      "y": 14,
+      "x": 16,
+      "y": 8,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 0,
@@ -196,7 +196,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_LIGHT_SPRITE",
-      "x": 25,
+      "x": 26,
       "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -231,7 +231,7 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 23,
+      "x": 24,
       "y": 14,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_MART",
@@ -245,14 +245,14 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 8,
-      "y": 13,
+      "x": 11,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_GAME_CORNER",
       "dest_warp_id": "0"
     },
     {
-      "x": 19,
+      "x": 20,
       "y": 14,
       "elevation": 0,
       "dest_map": "MAP_MAUVILLE_CITY_HOUSE2",
@@ -279,7 +279,7 @@
     },
     {
       "type": "sign",
-      "x": 24,
+      "x": 25,
       "y": 14,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
@@ -287,7 +287,7 @@
     },
     {
       "type": "sign",
-      "x": 25,
+      "x": 26,
       "y": 14,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
@@ -319,8 +319,8 @@
     },
     {
       "type": "sign",
-      "x": 11,
-      "y": 15,
+      "x": 13,
+      "y": 18,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "MauvilleCity_EventScript_GameCornerSign"
