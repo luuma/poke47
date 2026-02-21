@@ -112,9 +112,9 @@ enum {
 #define RARITY_ULTRA_RARE_ODDS 5
 
 #define GACHA_BASIC_MIN_WAGER 50
-#define GACHA_GREAT_MIN_WAGER 250
-#define GACHA_ULTRA_MIN_WAGER 1000
-#define GACHA_MASTER_MIN_WAGER 4500
+#define GACHA_GREAT_MIN_WAGER 250//unused
+#define GACHA_ULTRA_MIN_WAGER 1000//unused
+#define GACHA_MASTER_MIN_WAGER 1000
 
 #define SPR_CREDIT_DIGITS SPR_CREDIT_DIG_1
 #define SPR_PLAYER_DIGITS SPR_PLAYER_DIG_1
@@ -1975,7 +1975,6 @@ static const u16 sGachaUltraSpeciesUltraRare[] = {
 
 static const u16 sGachaMasterSpeciesCommon[] = {
     SPECIES_MEOWTH_GALAR,
-    SPECIES_PORYGON_Z,
     SPECIES_MEOWTH_ALOLA
 };
 

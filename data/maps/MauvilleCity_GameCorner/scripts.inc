@@ -315,12 +315,12 @@ MauvilleCity_GameCorner_EventScript_VoltorbFlip::
 	msgbox MauvilleCity_GameCorner_Text_VF, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF
-	removecoins 30
+	removecoins 25
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
 	hidecoinsbox 0, 5
-	playbgm MUS_RG_OAK, FALSE
+	playbgm MUS_RG_CINNABAR, FALSE
 	setvar GAME_CORNER_VAR_WINNINGS, 0
 	special Special_ViewVoltorbFlip
 	waitstate
@@ -339,7 +339,8 @@ VF_Come_Again::
 	
 VF_Go_On::
 	showcoinsbox 1, 1
-	buffernumberstring STR_VAR_1, GAME_CORNER_VAR_WINNINGS	
+	buffernumberstring STR_VAR_1, GAME_CORNER_VAR_WINNINGS
+	buffernumberstring STR_VAR_2, FLIP_VAR_LEVEL
 	msgbox MauvilleCity_GameCorner_Text_VF_Keep_Going, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, VF_Cash_Out
@@ -379,7 +380,7 @@ MauvilleCity_GameCorner_EventScript_Gacha_Basic::
 	end
 
 MauvilleCity_GameCorner_EventScript_GachaCommon::
-	playbgm MUS_RG_CINNABAR, FALSE
+	playbgm MUS_RG_GAME_CORNER, FALSE
 	special StartGacha
 	waitstate
 	savebgm MUS_DUMMY
@@ -1705,7 +1706,7 @@ MauvilleCity_GameCorner_Text_Pinball_Gengar:
 	
 MauvilleCity_GameCorner_Text_VF:
 	.string "It's VOLTORB FLIP!\n"
-	.string "It costs 30 COINS to play.$"
+	.string "It costs 25 COINS to play.$"
 
 VF_Come_Again_Text:
 	.string "Too bad.\n"
@@ -1751,6 +1752,7 @@ MauvilleCity_GameCorner_Text_NoRoomForPlacingDecor:
 	.string "placing {STR_VAR_1}.$"
 	
 MauvilleCity_GameCorner_Text_VF_Keep_Going:
+	.string "Advanced to Flip Level {STR_VAR_2}.\p"
 	.string "You've made {STR_VAR_1} COINS.\n"
 	.string "Keep going?$"
 
