@@ -1016,11 +1016,7 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         else
         {
             // Print registered icon
-<<<<<<< HEAD
-            if (TxRegItemsMenu_CheckRegisteredHasItem(itemSlot.itemId))
-=======
             if (gSaveBlock1Ptr->registeredItem != ITEM_NONE && gSaveBlock1Ptr->registeredItem == itemSlot.itemId)
->>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
                 BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx, 96, y - 1, 24, 16);
         }
     }
@@ -1697,22 +1693,10 @@ static void OpenContextMenu(u8 taskId)
                 break;
             case POCKET_KEY_ITEMS:
                 gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
-<<<<<<< HEAD
-                if (GetItemFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_CannotUse){
-                    gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_Cancel);
-                    memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_Cancel, sizeof(sContextMenuItems_Cancel));
-                }
-                else {
-                    gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_KeyItemsPocket);
-                    memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_KeyItemsPocket, sizeof(sContextMenuItems_KeyItemsPocket));
-                }
-                
-=======
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_KeyItemsPocket);
                 memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_KeyItemsPocket, sizeof(sContextMenuItems_KeyItemsPocket));
                 if (gSaveBlock1Ptr->registeredItem == gSpecialVar_ItemId)
                     gBagMenu->contextMenuItemsBuffer[1] = ACTION_DESELECT;
->>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
                 if (gSpecialVar_ItemId == ITEM_MACH_BIKE || gSpecialVar_ItemId == ITEM_ACRO_BIKE)
                 {
                     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
@@ -2178,11 +2162,15 @@ bool8 UseRegisteredKeyItemOnField(void)
             StopPlayerAvatar();
 <<<<<<< HEAD
             gSpecialVar_ItemId = registeredItem;
+<<<<<<< HEAD
             taskId = CreateTask(GetItemFieldFunc(registeredItem), 8);
 =======
             gSpecialVar_ItemId = gSaveBlock1Ptr->registeredItem;
             taskId = CreateTask(GetItemFieldFunc(gSaveBlock1Ptr->registeredItem), 8);
 >>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
+=======
+            taskId = CreateTask(ItemId_GetFieldFunc(registeredItem), 8);
+>>>>>>> parent of 32ae65eb03 (A worrying number of the functions changed are unused now !!)
             gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
             return TRUE;
         }
@@ -3089,9 +3077,8 @@ void UNUSED ItemMenu_Register(u8 taskId)
     BagDestroyPocketScrollArrowPair();
     BagMenu_PrintCursor(tListTaskId, COLORID_GRAY_CURSOR);
     tListPosition = listPosition;
-    struct ItemSlot itemSlot = GetBagItemIdAndQuantity(gBagPosition.pocket, listPosition);
-    gSpecialVar_ItemId = itemSlot.itemId;
-    tQuantity = itemSlot.quantity;
+    tQuantity = BagGetQuantityByPocketPosition(gBagPosition.pocket + 1, listPosition);
+    gSpecialVar_ItemId = BagGetItemIdByPocketPosition(gBagPosition.pocket + 1, listPosition);
     sContextMenuFuncs[gBagPosition.location](taskId);
 }
 
@@ -3107,9 +3094,7 @@ static void UNUSED ItemMenu_Deselect(u8 taskId)
 {
     s16* data = gTasks[taskId].data;
     int listPosition = ListMenu_ProcessInput(tListTaskId);
-    struct ItemSlot itemSlot = GetBagItemIdAndQuantity(gBagPosition.pocket, listPosition);
-
-    u16 itemId = itemSlot.itemId;
+    u16 itemId = BagGetItemIdByPocketPosition(gBagPosition.pocket + 1, listPosition);
 
     ResetRegisteredItem(itemId);
 
