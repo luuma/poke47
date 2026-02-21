@@ -116,7 +116,7 @@ MauvilleCity_GameCorner_EventScript_Snake::
 	msgbox MauvilleCity_GameCorner_Text_Snake, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF
-	removecoins 25
+	removecoins 20
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
@@ -138,7 +138,7 @@ MauvilleCity_GameCorner_EventScript_FlappyBird::
 	msgbox MauvilleCity_GameCorner_Text_Bird, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF
-	removecoins 25
+	removecoins 20
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
@@ -160,7 +160,7 @@ MauvilleCity_GameCorner_EventScript_BlockStacker::
 	msgbox MauvilleCity_GameCorner_Text_BS, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF	
-	removecoins 25
+	removecoins 20
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
@@ -227,7 +227,7 @@ MauvilleCity_GameCorner_EventScript_PinballMeowth::
 	msgbox MauvilleCity_GameCorner_Text_Pinball_Meowth, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF	
-	removecoins 25
+	removecoins 20
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
@@ -249,7 +249,7 @@ MauvilleCity_GameCorner_EventScript_PinballDiglett::
 	msgbox MauvilleCity_GameCorner_Text_Pinball_Diglett, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF	
-	removecoins 50
+	removecoins 40
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
@@ -271,7 +271,7 @@ MauvilleCity_GameCorner_EventScript_PinballSeel::
 	msgbox MauvilleCity_GameCorner_Text_Pinball_Seel, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF	
-	removecoins 25
+	removecoins 20
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
@@ -293,7 +293,7 @@ MauvilleCity_GameCorner_EventScript_PinballGengar::
 	msgbox MauvilleCity_GameCorner_Text_Pinball_Gengar, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF	
-	removecoins 100
+	removecoins 80
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
@@ -315,7 +315,7 @@ MauvilleCity_GameCorner_EventScript_VoltorbFlip::
 	msgbox MauvilleCity_GameCorner_Text_VF, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelVF
-	removecoins 50
+	removecoins 30
 	updatecoinsbox 1, 1
 	playse SE_SHOP
 	delay 40
@@ -1677,35 +1677,35 @@ MauvilleCity_GameCorner_Text_Derby:
 	
 MauvilleCity_GameCorner_Text_Snake:
 	.string "It's ONIX!\n"
-	.string "It costs 25 COINS to play.$"		
+	.string "It costs 20 COINS to play.$"		
 	
 MauvilleCity_GameCorner_Text_Bird:
 	.string "It's FLUTTERFREE!\n"
-	.string "It costs 25 COINS to play.$"		
+	.string "It costs 20 COINS to play.$"		
 	
 MauvilleCity_GameCorner_Text_Pinball_Meowth:
 	.string "It's a PINBALL MACHINE!\n"
-	.string "It costs 25 COINS to play.$"
+	.string "It costs 20 COINS to play.$"
 
 MauvilleCity_GameCorner_Text_BS:
 	.string "It's BLOCK BUILDER!\n"
-	.string "It costs 25 COINS to play.$"
+	.string "It costs 20 COINS to play.$"
 	
 MauvilleCity_GameCorner_Text_Pinball_Seel:
 	.string "It's a PINBALL MACHINE!\n"
-	.string "It costs 25 COINS to play.$"
+	.string "It costs 20 COINS to play.$"
 	
 MauvilleCity_GameCorner_Text_Pinball_Diglett:
 	.string "It's a PINBALL MACHINE!\n"
-	.string "It costs 50 COINS to play.$"
+	.string "It costs 40 COINS to play.$"
 	
 MauvilleCity_GameCorner_Text_Pinball_Gengar:
 	.string "It's a PINBALL MACHINE!\n"
-	.string "It costs 100 COINS to play.$"
+	.string "It costs 80 COINS to play.$"
 	
 MauvilleCity_GameCorner_Text_VF:
 	.string "It's VOLTORB FLIP!\n"
-	.string "It costs 50 COINS to play.$"
+	.string "It costs 30 COINS to play.$"
 
 VF_Come_Again_Text:
 	.string "Too bad.\n"
