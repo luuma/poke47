@@ -969,7 +969,7 @@ LittlerootTown_Text_WearTheseRunningShoes:
 	//.string "Oh! What an adorable POKéMON!\n"
 	//.string "You got it from PROF. BIRCH. How nice!\p"
 	//.string "You're your father's child, all right.\n"
-	//.string "You look good together with POKéMON!\p" /// NOTE if you just fully replace this file and tweak the map, it'll be reset to the OG behaviour. Don't forget the little cap boyo. 
+	//.string "You look good together with POKéMON!\p"/// NOTE if you just fully replace this file and tweak the map, it'll be reset to the OG behaviour. Don't forget the little cap boyo. 
 	.string "Here, honey! If you're going out on an\n"
 	.string "adventure, wear these RUNNING SHOES.\p"
 	.string "They'll put a zip in your step!$"
@@ -986,12 +986,14 @@ LittlerootTown_Text_ExplainRunningShoes:
 	.string "“Press the B Button while wearing these\n"
 	.string "RUNNING SHOES to slow your sprint!$"
 
+
+/// BLINK TWICE, PLAYER'S MOM, IF YOU HAVE AN INTERNAL WORLD, OR WANTS, OR DESIRES
 LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "… … … … … … … …\n"
 	.string "… … … … … … … …\p"
 	.string "To think that you might get your \n"
 	.string "very own POKéMON soon…\l"
-	.string "Your father would be overjoyed.\p"/// BLINK TWICE, PLAYER'S MOM, IF YOU HAVE AN INTERNAL WORLD, OR WANTS, OR DESIRES
+	.string "Your father would be overjoyed.\p"
 	.string "…Please be careful.\n"
 	.string "If anything happens, you can come home.\p"
 	.string "Go on, go get them, honey!$"
