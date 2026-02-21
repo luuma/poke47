@@ -18,7 +18,6 @@
 #include "gpu_regs.h"
 #include "international_string_util.h"
 #include "item.h"
-#include "item_icon.h"
 #include "item_menu_icons.h"
 #include "item_use.h"
 #include "lilycove_lady.h"
@@ -37,7 +36,6 @@
 #include "pokemon_summary_screen.h"
 #include "scanline_effect.h"
 #include "script.h"
-#include "script_menu.h"
 #include "shop.h"
 #include "sound.h"
 #include "sprite.h"
@@ -45,7 +43,6 @@
 #include "string_util.h"
 #include "task.h"
 #include "text_window.h"
-#include "tx_registered_items_menu.h"
 #include "menu_helpers.h"
 #include "window.h"
 #include "apprentice.h"
@@ -95,7 +92,6 @@ enum {
     ACTION_BY_TYPE,
     ACTION_BY_AMOUNT,
     ACTION_BY_INDEX,
-    ACTION_SELECT_BUTTON,
     ACTION_DUMMY,
 };
 
@@ -238,10 +234,6 @@ static s32 CompareItemsAlphabetically(enum Pocket pocketId, struct ItemSlot item
 static s32 CompareItemsByMost(enum Pocket pocketId, struct ItemSlot item1, struct ItemSlot item2);
 static s32 CompareItemsByType(enum Pocket pocketId, struct ItemSlot item1, struct ItemSlot item2);
 static s32 CompareItemsByIndex(enum Pocket pocketId, struct ItemSlot item1, struct ItemSlot item2);
-//tx_registered_items_menu
-//static void ItemMenu_RegisterSelect(u8 taskId);
-static void ItemMenu_RegisterList(u8 taskId);
-static void ItemMenu_Deselect(u8 taskId);
 
 static const struct BgTemplate sBgTemplates_ItemMenu[] =
 {
@@ -296,7 +288,6 @@ static const struct ListMenuTemplate sItemListMenu =
     .cursorKind = CURSOR_BLACK_ARROW
 };
 
-static const u8 sMenuText_Select[] = _("SELECT");
 static const u8 sText_NothingToSort[] = _("There's nothing to sort!");
 static const struct MenuAction sItemMenuActions[] = {
     [ACTION_USE]               = {gMenuText_Use,                {ItemMenu_UseOutOfBattle}},
@@ -589,9 +580,6 @@ static EWRAM_DATA struct ListBuffer1 *sListBuffer1 = 0;
 static EWRAM_DATA struct ListBuffer2 *sListBuffer2 = 0;
 EWRAM_DATA u16 gSpecialVar_ItemId = 0;
 static EWRAM_DATA struct TempWallyBag *sTempWallyBag = 0;
-
-//tx_registered_items_menu
-extern const u8 EventScript_SelectWithoutRegisteredItem[];
 
 void ResetBagScrollPositions(void)
 {
@@ -1028,7 +1016,11 @@ static void BagMenu_ItemPrintCallback(u8 windowId, u32 itemIndex, u8 y)
         else
         {
             // Print registered icon
+<<<<<<< HEAD
             if (TxRegItemsMenu_CheckRegisteredHasItem(itemSlot.itemId))
+=======
+            if (gSaveBlock1Ptr->registeredItem != ITEM_NONE && gSaveBlock1Ptr->registeredItem == itemSlot.itemId)
+>>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
                 BlitBitmapToWindow(windowId, sRegisteredSelect_Gfx, 96, y - 1, 24, 16);
         }
     }
@@ -1705,6 +1697,7 @@ static void OpenContextMenu(u8 taskId)
                 break;
             case POCKET_KEY_ITEMS:
                 gBagMenu->contextMenuItemsPtr = gBagMenu->contextMenuItemsBuffer;
+<<<<<<< HEAD
                 if (GetItemFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_CannotUse){
                     gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_Cancel);
                     memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_Cancel, sizeof(sContextMenuItems_Cancel));
@@ -1714,16 +1707,17 @@ static void OpenContextMenu(u8 taskId)
                     memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_KeyItemsPocket, sizeof(sContextMenuItems_KeyItemsPocket));
                 }
                 
+=======
+                gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_KeyItemsPocket);
+                memcpy(&gBagMenu->contextMenuItemsBuffer, &sContextMenuItems_KeyItemsPocket, sizeof(sContextMenuItems_KeyItemsPocket));
+                if (gSaveBlock1Ptr->registeredItem == gSpecialVar_ItemId)
+                    gBagMenu->contextMenuItemsBuffer[1] = ACTION_DESELECT;
+>>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
                 if (gSpecialVar_ItemId == ITEM_MACH_BIKE || gSpecialVar_ItemId == ITEM_ACRO_BIKE)
                 {
                     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
                         gBagMenu->contextMenuItemsBuffer[0] = ACTION_WALK;
                 }
-
-                //tx_registered_items_menu
-                if (TxRegItemsMenu_CheckRegisteredHasItem(gSpecialVar_ItemId))
-                    gBagMenu->contextMenuItemsBuffer[1] = ACTION_DESELECT;
-
                 break;
             case POCKET_POKE_BALLS:
                 gBagMenu->contextMenuItemsPtr = sContextMenuItems_BallsPocket;
@@ -2029,6 +2023,22 @@ static void Task_RemoveItemFromBag(u8 taskId)
     }
 }
 
+static void ItemMenu_Register(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+    u16 *scrollPos = &gBagPosition.scrollPosition[gBagPosition.pocket];
+    u16 *cursorPos = &gBagPosition.cursorPosition[gBagPosition.pocket];
+
+    if (gSaveBlock1Ptr->registeredItem == gSpecialVar_ItemId)
+        gSaveBlock1Ptr->registeredItem = ITEM_NONE;
+    else
+        gSaveBlock1Ptr->registeredItem = gSpecialVar_ItemId;
+    DestroyListMenuTask(tListTaskId, scrollPos, cursorPos);
+    LoadBagItemListBuffers(gBagPosition.pocket);
+    tListTaskId = ListMenuInit(&gMultiuseListMenuTemplate, *scrollPos, *cursorPos);
+    ScheduleBgCopyTilemapToVram(0);
+    ItemMenu_Cancel(taskId);
+}
 
 static void ItemMenu_Give(u8 taskId)
 {
@@ -2094,23 +2104,6 @@ static void ItemMenu_Cancel(u8 taskId)
     ReturnToItemList(taskId);
 }
 
-//tx_registered_items_menu
-static const u8 gText_TooManyRegistered[] = _("You already have too\nmany items registered!");
-
-static void ItemMenu_Cancel2(u8 taskId)
-{
-    s16* data = gTasks[taskId].data;
-
-    RemoveContextWindow();
-    PrintItemDescription(tListPosition);
-    ScheduleBgCopyTilemapToVram(0);
-    ScheduleBgCopyTilemapToVram(1);
-    BagMenu_PrintCursor(tListTaskId, COLORID_NORMAL);
-    ReturnToItemList(taskId);
-
-    DisplayItemMessage(taskId, 1, gText_TooManyRegistered, HandleErrorMessage);
-}
-
 static void ItemMenu_UseInBattle(u8 taskId)
 {
     // Safety check
@@ -2167,56 +2160,37 @@ static void Task_ItemContext_GiveToPC(u8 taskId)
 
 #define tUsingRegisteredKeyItem data[3] // See usage in item_use.c
 
-bool8 UseRegisteredKeyItemOnField(u8 button)
+bool8 UseRegisteredKeyItemOnField(void)
 {
     u8 taskId;
-    u16 registeredItem;
 
     if (InUnionRoom() == TRUE || CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || InBattlePike() || InMultiPartnerRoom() == TRUE)
         return FALSE;
     HideMapNamePopUpWindow();
     ChangeBgY_ScreenOff(0, 0, BG_COORD_SET);
-
-    if (button >= 2 && button <= REGISTERED_ITEMS_MAX+2)
-        registeredItem = gSaveBlock1Ptr->registeredItems[button-2].itemId;
-    else
+    if (gSaveBlock1Ptr->registeredItem != ITEM_NONE)
     {
-        switch (button)
-        {
-        case 1:
-            registeredItem = gSaveBlock1Ptr->registeredItems[0].itemId;
-            break;
-        default:
-            return FALSE;
-        }
-    }
-
-    if (registeredItem != ITEM_NONE)
-    {
-        if (CheckBagHasItem(registeredItem, 1) == TRUE)
+        if (CheckBagHasItem(gSaveBlock1Ptr->registeredItem, 1) == TRUE)
         {
             LockPlayerFieldControls();
             FreezeObjectEvents();
             PlayerFreeze();
             StopPlayerAvatar();
+<<<<<<< HEAD
             gSpecialVar_ItemId = registeredItem;
             taskId = CreateTask(GetItemFieldFunc(registeredItem), 8);
+=======
+            gSpecialVar_ItemId = gSaveBlock1Ptr->registeredItem;
+            taskId = CreateTask(GetItemFieldFunc(gSaveBlock1Ptr->registeredItem), 8);
+>>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
             gTasks[taskId].tUsingRegisteredKeyItem = TRUE;
             return TRUE;
         }
         else
         {
-            switch (button)
-            {
-            case 1:
-                break;
-            default:
-                gSaveBlock1Ptr->registeredItems[button-2].itemId = ITEM_NONE;
-                break;
-            }
+            gSaveBlock1Ptr->registeredItem = ITEM_NONE;
         }
-    } 
-
+    }
     ScriptContext_SetupScript(EventScript_SelectWithoutRegisteredItem);
     return TRUE;
 }
@@ -3067,6 +3041,7 @@ static s32 CompareItemsByIndex(enum Pocket pocketId, struct ItemSlot item1, stru
 
     return 0; // Cannot have multiple stacks of indexed items
 }
+<<<<<<< HEAD
 // tx_registered_items_menu, based on code from ghoulslash
 static void ResetRegisteredItem(u16 itemId)
 {
@@ -3140,3 +3115,5 @@ static void UNUSED ItemMenu_Deselect(u8 taskId)
 
     gTasks[taskId].func = ItemMenu_FinishRegister;
 }
+=======
+>>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)

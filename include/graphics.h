@@ -1983,7 +1983,10 @@ extern const u16 gBattleInterface_BallDisplayPal[];
 
 extern const u32 gSwapLineGfx[];
 extern const u16 gSwapLinePal[];
+<<<<<<< HEAD
 extern const u32 gSwapLineGfx_RegisteredItemsMenu[];
+=======
+>>>>>>> parent of 23a0e55e60 (Merge branch 'pr/10' into Extras)
 
 extern const u32 gBattlePyramidBag_Gfx[];
 extern const u16 gBattlePyramidBag_Pal[];
