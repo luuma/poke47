@@ -190,7 +190,7 @@
       "y": 1,
       "elevation": 3,
       "var": "VAR_LITTLEROOT_TOWN_STATE",
-      "var_value": "1",
+      "var_value": "2",
       "script": "LittlerootTown_EventScript_GoSaveBirchTrigger"
     },
     {
@@ -199,7 +199,7 @@
       "y": 9,
       "elevation": 3,
       "var": "VAR_LITTLEROOT_TOWN_STATE",
-      "var_value": "3",
+      "var_value": "1",
       "script": "LittlerootTown_EventScript_GiveRunningShoesTrigger4"
     },
     {
@@ -208,7 +208,7 @@
       "y": 9,
       "elevation": 3,
       "var": "VAR_LITTLEROOT_TOWN_STATE",
-      "var_value": "3",
+      "var_value": "1",
       "script": "LittlerootTown_EventScript_GiveRunningShoesTrigger5"
     },
     {
@@ -217,7 +217,7 @@
       "y": 9,
       "elevation": 3,
       "var": "VAR_LITTLEROOT_TOWN_STATE",
-      "var_value": "3",
+      "var_value": "1",
       "script": "LittlerootTown_EventScript_GiveRunningShoesTrigger2"
     },
     {
@@ -226,7 +226,7 @@
       "y": 9,
       "elevation": 3,
       "var": "VAR_LITTLEROOT_TOWN_STATE",
-      "var_value": "3",
+      "var_value": "1",
       "script": "LittlerootTown_EventScript_GiveRunningShoesTrigger3"
     },
     {
@@ -235,7 +235,7 @@
       "y": 2,
       "elevation": 3,
       "var": "VAR_LITTLEROOT_TOWN_STATE",
-      "var_value": "3",
+      "var_value": "1",
       "script": "LittlerootTown_EventScript_GiveRunningShoesTrigger0"
     },
     {
@@ -244,7 +244,7 @@
       "y": 2,
       "elevation": 3,
       "var": "VAR_LITTLEROOT_TOWN_STATE",
-      "var_value": "3",
+      "var_value": "1",
       "script": "LittlerootTown_EventScript_GiveRunningShoesTrigger1"
     }
   ],
