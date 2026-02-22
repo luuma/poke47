@@ -205,8 +205,8 @@ SecretBase_Text_SmallIndentInWall::
 	.string "There's a small indent in the wall.$"
 
 SecretBase_Text_IndentUseSecretPower::
-	.string "There's a small indent in the wall.\p"
-	.string "Use the SECRET POWER?$"
+	.string "There's a small indent in the wall!\n"
+	.string "{STR_VAR_1} used {STR_VAR_2}!$"
 
 SecretBase_Text_DiscoveredSmallCavern::
 	.string "Discovered a small cavern!$"

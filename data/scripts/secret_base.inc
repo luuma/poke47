@@ -1,10 +1,12 @@
+.include "data/text/secret_base_trainers.inc"
+
 SecretBase_Text_TreeCanBeClimbed:
 	.string "If some vines drop down, this tree can\n"
 	.string "be climbed.$"
 
 SecretBase_Text_TreeUseSecretPower:
 	.string "If some vines drop down, this tree can\n"
-	.string "be climbed. Use {STR_VAR_2}?$"
+	.string "be climbed! {STR_VAR_1} used {STR_VAR_2}!$"
 
 SecretBase_Text_VineDroppedDown:
 	.string "A thick vine dropped down!$"
@@ -15,20 +17,19 @@ SecretBase_Text_ClumpOfGrass:
 
 SecretBase_Text_ClumpUseSecretPower:
 	.string "If this clump of grass can be moved,\n"
-	.string "it might be possible to go inside.\p"
-	.string "Use {STR_VAR_2}?$"
+	.string "it might be possible to go inside!\p"
+	.string "{STR_VAR_1} used {STR_VAR_2}!$"
 
 SecretBase_Text_DiscoveredSmallEntrance:
 	.string "Discovered a small entrance!$"
 
-	.include "data/text/secret_base_trainers.inc"
 
 SecretBase_EventScript_CheckEntrance::
 	special GetSecretBaseTypeInFrontOfPlayer
 	special CheckPlayerHasSecretBase
 	goto_if_eq VAR_RESULT, TRUE, SecretBase_EventScript_AlreadyHasSecretBase
 	checkfieldmove FIELD_MOVE_SECRET_POWER
-	goto_if_eq VAR_RESULT, FALSE, SecretBase_EventScript_NaturePower
+	goto_if_eq VAR_RESULT, PARTY_SIZE, SecretBase_EventScript_NaturePower
 	setfieldeffectargument 0, VAR_RESULT
 	buffermovename STR_VAR_2, MOVE_SECRET_POWER
 	goto_if_eq VAR_0x8007, SECRET_BASE_RED_CAVE, SecretBase_EventScript_Cave
@@ -55,9 +56,7 @@ SecretBase_EventScript_Cave::
 	lockall
 	goto_if_eq VAR_RESULT, PARTY_SIZE, SecretBase_EventScript_CaveNoSecretPower
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	msgbox SecretBase_Text_IndentUseSecretPower, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SecretBase_EventScript_CancelOnEntrance
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	msgbox SecretBase_Text_IndentUseSecretPower, MSGBOX_DEFAULT
 	closemessage
 	dofieldeffect FLDEFF_USE_SECRET_POWER_CAVE
 	waitstate
@@ -85,9 +84,7 @@ SecretBase_EventScript_Tree::
 	lockall
 	goto_if_eq VAR_RESULT, PARTY_SIZE, SecretBase_EventScript_TreeNoSecretPower
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	msgbox SecretBase_Text_TreeUseSecretPower, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SecretBase_EventScript_CancelOnEntrance
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	msgbox SecretBase_Text_TreeUseSecretPower, MSGBOX_DEFAULT
 	closemessage
 	dofieldeffect FLDEFF_USE_SECRET_POWER_TREE
 	waitstate
@@ -115,9 +112,7 @@ SecretBase_EventScript_Shrub::
 	lockall
 	goto_if_eq VAR_RESULT, PARTY_SIZE, SecretBase_EventScript_ShrubNoSecretPower
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
-	msgbox SecretBase_Text_ClumpUseSecretPower, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, SecretBase_EventScript_CancelOnEntrance
-	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	msgbox SecretBase_Text_ClumpUseSecretPower, MSGBOX_DEFAULT
 	closemessage
 	dofieldeffect FLDEFF_USE_SECRET_POWER_SHRUB
 	waitstate
@@ -197,9 +192,16 @@ SecretBase_EventScript_EnterPlayersBase::
 	waitstate
 	end
 
-SecretBase_EventScript_AlreadyHasSecretBase::
-	checkfieldmove FIELD_MOVE_SECRET_POWER
+SecretBase_EventScript_NaturePower2::
+	buffermovename STR_VAR_2, MOVE_NATURE_POWER
+	checkfieldmove FIELD_MOVE_NATURE_POWER
 	goto_if_eq VAR_RESULT, PARTY_SIZE, SecretBase_EventScript_NoSecretPower
+	return
+
+SecretBase_EventScript_AlreadyHasSecretBase::
+	buffermovename STR_VAR_2, MOVE_SECRET_POWER
+	checkfieldmove FIELD_MOVE_SECRET_POWER
+	call_if_eq VAR_RESULT, PARTY_SIZE, SecretBase_EventScript_NaturePower2
 	setfieldeffectargument 0, VAR_RESULT
 	setorcopyvar VAR_0x8004, VAR_RESULT
 	lockall
@@ -748,3 +750,4 @@ SecretBase_Text_WouldYouLikeToMoveBases:
 SecretBase_Text_MovingCompletedUseSecretPower:
 	.string "Moving completed.\p"
 	.string "Would you like to use {STR_VAR_2}?$"
+
