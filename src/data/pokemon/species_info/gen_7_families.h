@@ -7501,7 +7501,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .baseAttack    = 65,
         .baseDefense   = 65,
         .baseSpeed     = 34,
-        .baseSpAttack  = 55,
+        .baseSpAttack  = 65,//+10
         .baseSpDefense = 35,
         .types = MON_TYPES(TYPE_STEEL),
         .catchRate = 3,
@@ -7523,7 +7523,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .description = COMPOUND_STRING(
             "It melts particles of iron and other metals\n"
             "found in the subsoil, so it can absorb them\n"
-            "into its body of molten steel."),
+            "into its molten steel body. Strong Meltan\n"
+            "evolve by walking with a trainer.\n"),
         .pokemonScale = 682,
         .pokemonOffset = 24,
         .trainerScale = 256,
@@ -7558,6 +7559,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .levelUpLearnset = sMeltanLevelUpLearnset,
         .teachableLearnset = sMeltanTeachableLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 32, SPECIES_MELMETAL, CONDITIONS({IF_MIN_OVERWORLD_STEPS, 1000})}),
     },
 
     [SPECIES_MELMETAL] =

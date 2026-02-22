@@ -23035,7 +23035,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "A blossoming fire that\n"
             "intensifies sun for 5 turns."),
         .effect = EFFECT_HIT,
-        .power = 55,
+        .power = 60,
         .type = TYPE_GRASS,
         .accuracy = 100,
         .pp = 5,

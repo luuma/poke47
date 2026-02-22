@@ -114,7 +114,7 @@ enum {
 #define GACHA_BASIC_MIN_WAGER 50
 #define GACHA_GREAT_MIN_WAGER 250//unused
 #define GACHA_ULTRA_MIN_WAGER 1000//unused
-#define GACHA_MASTER_MIN_WAGER 1000
+#define GACHA_MASTER_MIN_WAGER 600// meltan cheaper on master: 
 
 #define SPR_CREDIT_DIGITS SPR_CREDIT_DIG_1
 #define SPR_PLAYER_DIGITS SPR_PLAYER_DIG_1
@@ -1627,27 +1627,28 @@ static void CreateKnob(void)
     gSprites[sGacha->KnobSpriteId].animNum = 0; // No Rotation
 }
 
-static const u16 sGachaBasicSpeciesCommon[] = {
+static const u16 sGachaBasicSpeciesCommon[] = {//50% or about 6% apiece
     SPECIES_LILLIPUP,
     SPECIES_SCATTERBUG_POKEBALL,
     SPECIES_STARLY,
     SPECIES_SWIRLIX,
+    SPECIES_PUMPKABOO_SUPER,
+    SPECIES_COTTONEE,
+    SPECIES_PETILIL,
     SPECIES_WOOBAT
 };
 
-static const u16 sGachaBasicSpeciesUncommon[] = {
+static const u16 sGachaBasicSpeciesUncommon[] = {//30% about 4.5%apiece
     SPECIES_SEWADDLE,
-    SPECIES_COTTONEE,
-    SPECIES_PETILIL,
     SPECIES_MUNNA,
-    SPECIES_BUDEW,
     SPECIES_BUNEARY,
     SPECIES_STUFFUL,
     SPECIES_GRUBBIN,
+    SPECIES_BUDEW,
     SPECIES_MINCCINO
 };
 
-static const u16 sGachaBasicSpeciesRare[] = {
+static const u16 sGachaBasicSpeciesRare[] = {//15% or 2 apiece
     SPECIES_ORICORIO_POM_POM,
     SPECIES_CHATOT,
     SPECIES_FLABEBE_RED,
@@ -1657,12 +1658,43 @@ static const u16 sGachaBasicSpeciesRare[] = {
     SPECIES_RIOLU
 };
 
-static const u16 sGachaBasicSpeciesUltraRare[] = {
+static const u16 sGachaBasicSpeciesUltraRare[] = {//5% or 1 apiece
     SPECIES_AUDINO,
     SPECIES_MIMIKYU,
-    SPECIES_PORYGON_Z,
-    SPECIES_POIPOLE
+    SPECIES_PYUKUMUKU,
+    SPECIES_TURTONATOR,
+    SPECIES_MELTAN
 };
+
+
+static const u16 sGachaMasterSpeciesCommon[] = {//50% or 10% apiece
+    SPECIES_DRIFLOON,
+    SPECIES_VANILLITE,
+    SPECIES_AXEW,
+    SPECIES_AUDINO,
+    SPECIES_MELTAN,
+};
+
+static const u16 sGachaMasterSpeciesUncommon[] = {//30% or 6% apiece
+    SPECIES_KOMALA,
+    SPECIES_BOUFFALANT,
+    SPECIES_CRYOGONAL,
+    SPECIES_COMFEY,
+    SPECIES_MELTAN,
+};
+
+static const u16 sGachaMasterSpeciesRare[] = {//15% or 3% apiece
+    SPECIES_CRABOMINABLE,
+    SPECIES_ESCAVALIER,
+    SPECIES_ACCELGOR,
+    SPECIES_MAROWAK_ALOLA,
+    SPECIES_MELTAN,
+};
+
+static const u16 sGachaMasterSpeciesUltraRare[] = {// 5% OR TOTAL 24% >>   1-0.99^12
+    SPECIES_MELTAN
+};
+
 
 static const u16 sGachaGreatSpeciesCommon[] = {/// UNUSED.
     SPECIES_JIGGLYPUFF,
@@ -1973,31 +2005,6 @@ static const u16 sGachaUltraSpeciesUltraRare[] = {
     SPECIES_SLAKING
 };
 
-static const u16 sGachaMasterSpeciesCommon[] = {
-    SPECIES_MEOWTH_GALAR,
-    SPECIES_MEOWTH_ALOLA
-};
-
-static const u16 sGachaMasterSpeciesUncommon[] = {
-    SPECIES_SANDSHREW_ALOLA,
-    SPECIES_VULPIX_ALOLA,
-    SPECIES_GEODUDE_ALOLA,
-    SPECIES_DIGLETT_ALOLA,
-    SPECIES_GRIMER_ALOLA,
-};
-
-static const u16 sGachaMasterSpeciesRare[] = {
-    SPECIES_EXEGGUTOR_ALOLA,
-    SPECIES_MAROWAK_ALOLA,
-    SPECIES_RAICHU_ALOLA,
-    SPECIES_MUK_ALOLA
-};
-
-static const u16 sGachaMasterSpeciesUltraRare[] = {
-    SPECIES_POPPLIO,
-    SPECIES_ROWLET,
-    SPECIES_LITLEO
-};
 
 static void ShowMessage(void)
 {
@@ -2493,7 +2500,7 @@ void DeterminePokemonRarityAndNewStatus(void)
                 attempts--;
                 if (attempts < 1)
                 {
-                    attempts = 1000;
+                    attempts = 1000; //////fucked up, FRAME hang when dex full.
                     randomValue = (Random() % 100);  // Generate random value between 0 and 100
 
                     // Determine Rarity based on the chances

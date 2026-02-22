@@ -2733,7 +2733,7 @@ static void Win(void)
             {
                 if (sBlackJack->hasBlackJack)
                 {
-                    winnings = (sBlackJack->betBlackJack * 3) / 2; // 3:2 payout
+                    winnings = sBlackJack->betBlackJack * 3; // 2:1 payout. Previously was LISTED 3:2 and paid 1:2
                 }
                 else
                 {
@@ -3229,7 +3229,7 @@ static void AButton(void)
                         else if (playerCard1Points == CARD_SCORE_ACE && playerCard2Points != CARD_SCORE_ACE)
                             sBlackJack->playerScore = CARD_SCORE_ACE_EXPANDED + playerCard2Points;
                         else if (playerCard1Points != CARD_SCORE_ACE && playerCard2Points == CARD_SCORE_ACE)
-                            sBlackJack->playerScore = playerCard1Points + CARD_SCORE_ACE_EXPANDED;
+                            sBlackJack->playerScore = playerCard1Points + CARD_SCORE_ACE_EXPANDED;//// something wrong here in that it sets to a flat value and forgets a card is ace.
 
                         dealerCard1Points = sPlayingCards[sBlackJack->dealerCardNumbers[0]].points;
                         
@@ -3245,15 +3245,16 @@ static void AButton(void)
                             return;
                         }
 
-                        if ((sBlackJack->playerScore != 9) && (sBlackJack->playerScore != 10) && (sBlackJack->playerScore != 11) &&
-                            (sBlackJack->dealerScore != 11))
+                        else if (sBlackJack->dealerScore == 11)
                         {
-                            SetOptionMode(OPTION_HIT);
+                            if (GetCoins() > (sBlackJack->betBlackJack / 2))
+                                SetOptionMode(OPTION_INSURANCE);
+                            else
+                                SetOptionMode(OPTION_HIT);
                             return;
                         }
 
-                        if ((sBlackJack->playerScore >= 9) && (sBlackJack->playerScore <= 11) &&
-                            (sBlackJack->dealerScore != 11))
+                        else if ((sBlackJack->playerScore >= 6) && (sBlackJack->playerScore <= 20))
                         {
                             if (GetCoins() > sBlackJack->betBlackJack)
                                 SetOptionMode(OPTION_DOUBLE);
@@ -3262,12 +3263,9 @@ static void AButton(void)
                             return;
                         }
 
-                        if (sBlackJack->dealerScore == 11)
+                        else
                         {
-                            if (GetCoins() > (sBlackJack->betBlackJack / 2))
-                                SetOptionMode(OPTION_INSURANCE);
-                            else
-                                SetOptionMode(OPTION_HIT);
+                            SetOptionMode(OPTION_HIT);
                             return;
                         }
                     }

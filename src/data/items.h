@@ -12181,9 +12181,23 @@ const struct Item gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM_HIDDEN_POWER] =
+    [ITEM_TM_ENDEAVOR] =
     {
         .name = ITEM_NAME("TM25"),
+        .price = 3000,
+        .description = COMPOUND_STRING(
+    "Cuts down the foe's\n"
+    "HP to equal the\n"
+    "user's HP."),
+        .importance = I_REUSABLE_TMS,
+        .pocket = POCKET_TM_HM,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
+    },
+
+    [ITEM_TM_HIDDEN_POWER] =
+    {
+        .name = ITEM_NAME("TM26"),
         .price = 3000,
         .description = COMPOUND_STRING(
     "The attack power\n"
@@ -12197,26 +12211,12 @@ const struct Item gItemsInfo[] =
 
     [ITEM_TM_HYPER_BEAM] =
     {
-        .name = ITEM_NAME("TM26"),
+        .name = ITEM_NAME("TM27"),
         .price = 70000,
         .description = COMPOUND_STRING(
     "Powerful, but needs\n"
     "recharging if \n"
     "it doesn't KO."),
-        .importance = I_REUSABLE_TMS,
-        .pocket = POCKET_TM_HM,
-        .type = ITEM_USE_PARTY_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-    },
-
-    [ITEM_TM_HYPER_VOICE] =
-    {
-        .name = ITEM_NAME("TM27"),
-        .price = 3000,
-        .description = COMPOUND_STRING(
-    "A loud attack that\n"
-    "uses sound waves\n"
-    "to injure."),
         .importance = I_REUSABLE_TMS,
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,

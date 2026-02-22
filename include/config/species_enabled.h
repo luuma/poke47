@@ -33,7 +33,7 @@
 
 // Regional Forms. Includes Regional Form evolutions, like Sirfetch'd.
 #define P_REGIONAL_FORMS                 FALSE
-#define P_ALOLAN_FORMS                   P_REGIONAL_FORMS
+#define P_ALOLAN_FORMS                   TRUE
 #define P_GALARIAN_FORMS                 TRUE
 #define P_HISUIAN_FORMS                  TRUE
 #define P_PALDEAN_FORMS                  P_REGIONAL_FORMS
@@ -464,19 +464,19 @@
 #define P_FAMILY_TAPU_BULU               P_GEN_7_POKEMON
 #define P_FAMILY_TAPU_FINI               P_GEN_7_POKEMON
 #define P_FAMILY_COSMOG                  P_GEN_7_POKEMON
-#define P_FAMILY_NIHILEGO                P_GEN_7_POKEMON
-#define P_FAMILY_BUZZWOLE                P_GEN_7_POKEMON
-#define P_FAMILY_PHEROMOSA               P_GEN_7_POKEMON
-#define P_FAMILY_XURKITREE               P_GEN_7_POKEMON
-#define P_FAMILY_CELESTEELA              P_GEN_7_POKEMON
-#define P_FAMILY_KARTANA                 P_GEN_7_POKEMON
-#define P_FAMILY_GUZZLORD                P_GEN_7_POKEMON
-#define P_FAMILY_NECROZMA                P_GEN_7_POKEMON
+#define P_FAMILY_NIHILEGO                FALSE
+#define P_FAMILY_BUZZWOLE                FALSE
+#define P_FAMILY_PHEROMOSA               FALSE
+#define P_FAMILY_XURKITREE               FALSE
+#define P_FAMILY_CELESTEELA              FALSE
+#define P_FAMILY_KARTANA                 FALSE
+#define P_FAMILY_GUZZLORD                FALSE
+#define P_FAMILY_NECROZMA                FALSE
 #define P_FAMILY_MAGEARNA                P_GEN_7_POKEMON
-#define P_FAMILY_MARSHADOW               P_GEN_7_POKEMON
-#define P_FAMILY_POIPOLE                 P_GEN_7_POKEMON
-#define P_FAMILY_STAKATAKA               P_GEN_7_POKEMON
-#define P_FAMILY_BLACEPHALON             P_GEN_7_POKEMON
+#define P_FAMILY_MARSHADOW               P_GEN_7_POKEMON//Y
+#define P_FAMILY_POIPOLE                 P_GEN_7_POKEMON//Y
+#define P_FAMILY_STAKATAKA               FALSE
+#define P_FAMILY_BLACEPHALON             FALSE
 #define P_FAMILY_ZERAORA                 P_GEN_7_POKEMON
 #define P_FAMILY_MELTAN                  P_GEN_7_POKEMON
 
