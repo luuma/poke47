@@ -115,7 +115,7 @@ def prepare_output(all_learnables: dict[str, set[str]], repo_teachables: set[str
             cursor = match_e + 1
             continue
 
-        if species_upper == "MEW":
+        if species_upper == "VIVILLON":
             new += old[cursor:match_e + 1] # copy the original content and skip.
             cursor = match_e + 1
             continue

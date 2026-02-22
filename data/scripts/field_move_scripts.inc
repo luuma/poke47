@@ -24,8 +24,8 @@ EventScript_CutTreeDown:: @ fallthrough
 	end
 
 EventScript_CheckSecretPowerCut::
-	buffermovename STR_VAR_2, MOVE_SECRET_POWER
-	checkfieldmove FIELD_MOVE_SECRET_POWER, TRUE
+	buffermovename STR_VAR_2, MOVE_NATURE_POWER
+	checkfieldmove FIELD_MOVE_NATURE_POWER, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckTreeCantCut
 	return
 
@@ -97,8 +97,8 @@ EventScript_SmashRock:: @ fallthrough
 	end
 
 EventScript_CheckSecretPowerSmash::
-	buffermovename STR_VAR_2, MOVE_SECRET_POWER
-	checkfieldmove FIELD_MOVE_SECRET_POWER, TRUE
+	buffermovename STR_VAR_2, MOVE_NATURE_POWER
+	checkfieldmove FIELD_MOVE_NATURE_POWER, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSmashRock
 	return
 
@@ -245,8 +245,8 @@ EventScript_StrengthBoulder::
 	end
 
 EventScript_CheckSecretPowerStrength::
-	buffermovename STR_VAR_2, MOVE_SECRET_POWER
-	checkfieldmove FIELD_MOVE_SECRET_POWER, TRUE
+	buffermovename STR_VAR_2, MOVE_NATURE_POWER
+	checkfieldmove FIELD_MOVE_NATURE_POWER, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantStrength
 	return
 
@@ -311,8 +311,8 @@ EventScript_UseWaterfall::
 	goto EventScript_EndWaterfall
 
 EventScript_CheckSecretPowerFall::
-	buffermovename STR_VAR_2, MOVE_SECRET_POWER
-	checkfieldmove FIELD_MOVE_SECRET_POWER
+	buffermovename STR_VAR_2, MOVE_NATURE_POWER
+	checkfieldmove FIELD_MOVE_NATURE_POWER
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantWaterfall
 	return
 
@@ -356,8 +356,8 @@ EventScript_UseDive::
 	end
 
 EventScript_CheckSecretPowerDive::
-	buffermovename STR_VAR_2, MOVE_SECRET_POWER
-	checkfieldmove FIELD_MOVE_SECRET_POWER, TRUE
+	buffermovename STR_VAR_2, MOVE_NATURE_POWER
+	checkfieldmove FIELD_MOVE_NATURE_POWER, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantDive
 	return
 
@@ -385,8 +385,8 @@ EventScript_UseDiveUnderwater::
 	end
 
 EventScript_CheckSecretPowerDiveUnderwater::
-	buffermovename STR_VAR_2, MOVE_SECRET_POWER
-	checkfieldmove FIELD_MOVE_SECRET_POWER, TRUE
+	buffermovename STR_VAR_2, MOVE_NATURE_POWER
+	checkfieldmove FIELD_MOVE_NATURE_POWER, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSurface
 	return
 

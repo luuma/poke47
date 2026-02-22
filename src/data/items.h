@@ -13246,7 +13246,7 @@ const struct Item gItemsInfo[] =
     },
 
 
-    [ITEM_HM_SECRET_POWER] =
+    [ITEM_HM_NATURE_POWER] =
     {
         .name = ITEM_NAME("HM01"),
         .price = 0,

@@ -182,6 +182,14 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
     },
 
+    [FIELD_MOVE_NATURE_POWER] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_SecretPower,
+        .isUnlockedFunc = IsFieldMoveUnlocked_SecretPower,
+        .moveID = MOVE_NATURE_POWER,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
+
     [FIELD_MOVE_MILK_DRINK] =
     {
         .fieldMoveFunc = SetUpFieldMove_SoftBoiled,

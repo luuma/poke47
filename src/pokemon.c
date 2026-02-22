@@ -5713,6 +5713,9 @@ static const u16 sUniversalMoves[] =
     MOVE_SECRET_POWER,
     MOVE_SUBSTITUTE,
     MOVE_TERA_BLAST,
+    MOVE_COPYCAT,
+    MOVE_LASER_FOCUS,
+    MOVE_POWER_SPLIT,
 };
 
 u8 CanLearnTeachableMove(u16 species, u16 move)
@@ -5721,7 +5724,7 @@ u8 CanLearnTeachableMove(u16 species, u16 move)
     {
         return FALSE;
     }
-    else if (species == SPECIES_MEW)
+    else if (species == SPECIES_VIVILLON || species == SPECIES_MEW || species == SPECIES_SMEARGLE  )
     {
         switch (move)
         {
@@ -5757,7 +5760,11 @@ u8 CanLearnTeachableMove(u16 species, u16 move)
                 {
                     if (move == MOVE_TERA_BLAST && GET_BASE_SPECIES_ID(species) == SPECIES_TERAPAGOS)
                         return FALSE;
-                    if (GET_BASE_SPECIES_ID(species) == SPECIES_PYUKUMUKU && (move == MOVE_HIDDEN_POWER || move == MOVE_RETURN || move == MOVE_FRUSTRATION))
+                    if (GET_BASE_SPECIES_ID(species) == SPECIES_PYUKUMUKU && (move == MOVE_HIDDEN_POWER || move == MOVE_RETURN || move == MOVE_NATURAL_GIFT || move == MOVE_FRUSTRATION || move == MOVE_TERA_BLAST))
+                        return FALSE;
+                    if (GET_BASE_SPECIES_ID(species) == SPECIES_GOLETT && (move == MOVE_HIDDEN_POWER || move == MOVE_TERA_BLAST || move == MOVE_NATURAL_GIFT || move == MOVE_COPYCAT))
+                        return FALSE;
+                    if (GET_BASE_SPECIES_ID(species) == SPECIES_GOLURK && (move == MOVE_HIDDEN_POWER || move == MOVE_TERA_BLAST || move == MOVE_NATURAL_GIFT ||move == MOVE_COPYCAT))
                         return FALSE;
                     return TRUE;
                 }
