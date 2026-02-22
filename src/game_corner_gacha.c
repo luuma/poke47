@@ -2481,7 +2481,7 @@ void DeterminePokemonRarityAndNewStatus(void)
         // Calculate the total number of Pokémon the player doesn't own
         totalNotOwned = totalMax - totalOwned;
 
-        if (totalNotOwned <= 0)
+        if (totalNotOwned <= 0 && !HasAllMons())//bugfix!
         {
             // If all Pokémon of the selected rarity are owned, restart the process (reroll)
             continue;  // This will make the loop restart from the beginning
@@ -2835,36 +2835,36 @@ void ShowFinalMessage(void)
 
 static u8 GetSpeciesGachaLevel(void)
 {
-    u32 level, levelCap, minLevel, addedLevelRange, i;
+    u32 level, levelCap, minLevel, i; // addedLevelRange,
     static const u32 sLevelGachaFlagMap[][3] =
     {
-        {FLAG_BADGE01_GET, 5, 6},
-        {FLAG_BADGE02_GET, 7, 5},
-        {FLAG_BADGE03_GET, 13, 7},
-        {FLAG_BADGE04_GET, 18, 5},
-        {FLAG_BADGE05_GET, 19, 9},
-        {FLAG_BADGE06_GET, 21, 9},
-        {FLAG_BADGE07_GET, 28, 8},
-        {FLAG_BADGE08_GET, 36, 14},
-        {FLAG_IS_CHAMPION, 40, 29},
+        {FLAG_BADGE01_GET, 15, 0},
+        {FLAG_BADGE02_GET, 15, 0},
+        {FLAG_BADGE03_GET, 15, 0},
+        {FLAG_BADGE04_GET, 15, 0},
+        {FLAG_BADGE05_GET, 15, 0},
+        {FLAG_BADGE06_GET, 15, 0},
+        {FLAG_BADGE07_GET, 15, 0},
+        {FLAG_BADGE08_GET, 15, 0},
+        {FLAG_IS_CHAMPION, 30, 0},// complicated rules serve no merit and players won't look at this twice. If they do look at it twice, it will be odd if the gacha machines are randomly slightly more or less.
     };
 
-    minLevel = 2;
-    addedLevelRange = 4;
+    minLevel = 15;
+    //addedLevelRange = 0;
 
     for (i = 0; i < ARRAY_COUNT(sLevelGachaFlagMap); i++)
     {
         if (FlagGet(sLevelGachaFlagMap[i][0]))
         {
             minLevel = sLevelGachaFlagMap[i][1];
-            addedLevelRange = sLevelGachaFlagMap[i][2];
+            //addedLevelRange = sLevelGachaFlagMap[i][2];
         }
     }
 
-    addedLevelRange += 1;
+    //addedLevelRange += 1;
+    //level = (Random() % addedLevelRange) + minLevel;
 
-    level = (Random() % addedLevelRange) + minLevel;
-
+    level = minLevel;
     levelCap = GetCurrentLevelCap();
 
     if (level > levelCap)
@@ -3006,13 +3006,14 @@ static void GachaMain(u8 taskId)
         break;
     case STATE_POKEBALL_ARRIVE_WAIT:        
         if (gSprites[sGacha->bouncingPokeballSpriteId].callback == SpriteCallbackDummy)
-        {
+        { 
             CreateMon(&gEnemyParty[0], sGacha->CalculatedSpecies, GetSpeciesGachaLevel(), USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+	    SetMonMoveSlot(&gEnemyParty[0], MOVE_LUCKY_CHANT, 0);// slot 1
             gSpecialVar_Result = GiveMonToPlayer(&gEnemyParty[0]);
             VarSet(VAR_TEMP_TRANSFERRED_SPECIES, sGacha->CalculatedSpecies);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(sGacha->CalculatedSpecies), FLAG_SET_SEEN);
             HandleSetPokedexFlag(SpeciesToNationalPokedexNum(sGacha->CalculatedSpecies), FLAG_SET_CAUGHT, GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY));
-            LoadPalette(GetMonFrontSpritePal(&gEnemyParty[0]), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+            LoadPalette(GetMonFrontSpritePal(&gEnemyParty[0]), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);// it's fairly easy to see how this entire bit could be adapted to give an item!
             SetMultiuseSpriteTemplateToPokemon(sGacha->CalculatedSpecies, B_POSITION_OPPONENT_RIGHT);
             sGacha->monSpriteId = CreateMonPicSprite_Affine(sGacha->CalculatedSpecies, GetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY), GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY), MON_PIC_AFFINE_FRONT, 120, 60, 14, TAG_NONE);
             gSprites[sGacha->monSpriteId].callback = SpriteCB_Null;
