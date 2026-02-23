@@ -3053,7 +3053,7 @@ static u32 CreatePokedexMonSprite(u16 num, s16 x, s16 y, bool8 seen)
             u8 spriteId = CreateMonSpriteFromNationalDexNumberHGSS(num, x, y, i);
 	    if (!seen)
 	    {
-		LoadPalette(sSizeScreenSilhouette_Pal, OBJ_PLTT_ID2(gSprites[spriteId].oam.paletteNum), PLTT_SIZE_4BPP);
+		LoadPalette(sDexSilhouette_Pal, OBJ_PLTT_ID2(gSprites[spriteId].oam.paletteNum), PLTT_SIZE_4BPP);
 	    }
 	    gSprites[spriteId].oam.affineMode = ST_OAM_AFFINE_NORMAL;
             gSprites[spriteId].oam.priority = 3;
