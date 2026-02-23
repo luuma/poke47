@@ -478,6 +478,8 @@ static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(NAGANADEL),
     HOENN_TO_NATIONAL(MELTAN),
     HOENN_TO_NATIONAL(MELMETAL),
+    HOENN_TO_NATIONAL(KINGAMBIT),
+    HOENN_TO_NATIONAL(RUNERIGUS),
 };
 
 const struct SpindaSpot gSpindaSpotGraphics[] =
