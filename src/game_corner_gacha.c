@@ -112,9 +112,9 @@ enum {
 #define RARITY_ULTRA_RARE_ODDS 5
 
 #define GACHA_BASIC_MIN_WAGER 50
-#define GACHA_GREAT_MIN_WAGER 250
-#define GACHA_ULTRA_MIN_WAGER 1000
-#define GACHA_MASTER_MIN_WAGER 4500
+#define GACHA_GREAT_MIN_WAGER 250//unused
+#define GACHA_ULTRA_MIN_WAGER 1000//unused
+#define GACHA_MASTER_MIN_WAGER 600// meltan cheaper on master: 
 
 #define SPR_CREDIT_DIGITS SPR_CREDIT_DIG_1
 #define SPR_PLAYER_DIGITS SPR_PLAYER_DIG_1
@@ -1627,27 +1627,28 @@ static void CreateKnob(void)
     gSprites[sGacha->KnobSpriteId].animNum = 0; // No Rotation
 }
 
-static const u16 sGachaBasicSpeciesCommon[] = {
+static const u16 sGachaBasicSpeciesCommon[] = {//50% or about 6% apiece
     SPECIES_LILLIPUP,
     SPECIES_SCATTERBUG_POKEBALL,
     SPECIES_STARLY,
     SPECIES_SWIRLIX,
+    SPECIES_PUMPKABOO_SUPER,
+    SPECIES_COTTONEE,
+    SPECIES_PETILIL,
     SPECIES_WOOBAT
 };
 
-static const u16 sGachaBasicSpeciesUncommon[] = {
+static const u16 sGachaBasicSpeciesUncommon[] = {//30% about 4.5%apiece
     SPECIES_SEWADDLE,
-    SPECIES_COTTONEE,
-    SPECIES_PETILIL,
     SPECIES_MUNNA,
-    SPECIES_BUDEW,
     SPECIES_BUNEARY,
     SPECIES_STUFFUL,
     SPECIES_GRUBBIN,
+    SPECIES_BUDEW,
     SPECIES_MINCCINO
 };
 
-static const u16 sGachaBasicSpeciesRare[] = {
+static const u16 sGachaBasicSpeciesRare[] = {//15% or 2 apiece
     SPECIES_ORICORIO_POM_POM,
     SPECIES_CHATOT,
     SPECIES_FLABEBE_RED,
@@ -1657,12 +1658,43 @@ static const u16 sGachaBasicSpeciesRare[] = {
     SPECIES_RIOLU
 };
 
-static const u16 sGachaBasicSpeciesUltraRare[] = {
+static const u16 sGachaBasicSpeciesUltraRare[] = {//5% or 1 apiece
     SPECIES_AUDINO,
     SPECIES_MIMIKYU,
-    SPECIES_PORYGON_Z,
-    SPECIES_POIPOLE
+    SPECIES_PYUKUMUKU,
+    SPECIES_TURTONATOR,
+    SPECIES_MELTAN
 };
+
+
+static const u16 sGachaMasterSpeciesCommon[] = {//50% or 10% apiece
+    SPECIES_DRIFLOON,
+    SPECIES_VANILLITE,
+    SPECIES_AXEW,
+    SPECIES_AUDINO,
+    SPECIES_MELTAN,
+};
+
+static const u16 sGachaMasterSpeciesUncommon[] = {//30% or 6% apiece
+    SPECIES_KOMALA,
+    SPECIES_BOUFFALANT,
+    SPECIES_CRYOGONAL,
+    SPECIES_COMFEY,
+    SPECIES_MELTAN,
+};
+
+static const u16 sGachaMasterSpeciesRare[] = {//15% or 3% apiece
+    SPECIES_CRABOMINABLE,
+    SPECIES_ESCAVALIER,
+    SPECIES_ACCELGOR,
+    SPECIES_MAROWAK_ALOLA,
+    SPECIES_MELTAN,
+};
+
+static const u16 sGachaMasterSpeciesUltraRare[] = {// 5% OR TOTAL 24% >>   1-0.99^12
+    SPECIES_MELTAN
+};
+
 
 static const u16 sGachaGreatSpeciesCommon[] = {/// UNUSED.
     SPECIES_JIGGLYPUFF,
@@ -1973,32 +2005,6 @@ static const u16 sGachaUltraSpeciesUltraRare[] = {
     SPECIES_SLAKING
 };
 
-static const u16 sGachaMasterSpeciesCommon[] = {
-    SPECIES_MEOWTH_GALAR,
-    SPECIES_PORYGON_Z,
-    SPECIES_MEOWTH_ALOLA
-};
-
-static const u16 sGachaMasterSpeciesUncommon[] = {
-    SPECIES_SANDSHREW_ALOLA,
-    SPECIES_VULPIX_ALOLA,
-    SPECIES_GEODUDE_ALOLA,
-    SPECIES_DIGLETT_ALOLA,
-    SPECIES_GRIMER_ALOLA,
-};
-
-static const u16 sGachaMasterSpeciesRare[] = {
-    SPECIES_EXEGGUTOR_ALOLA,
-    SPECIES_MAROWAK_ALOLA,
-    SPECIES_RAICHU_ALOLA,
-    SPECIES_MUK_ALOLA
-};
-
-static const u16 sGachaMasterSpeciesUltraRare[] = {
-    SPECIES_POPPLIO,
-    SPECIES_ROWLET,
-    SPECIES_LITLEO
-};
 
 static void ShowMessage(void)
 {
@@ -2475,7 +2481,7 @@ void DeterminePokemonRarityAndNewStatus(void)
         // Calculate the total number of Pokémon the player doesn't own
         totalNotOwned = totalMax - totalOwned;
 
-        if (totalNotOwned <= 0)
+        if (totalNotOwned <= 0 && !HasAllMons())//bugfix!
         {
             // If all Pokémon of the selected rarity are owned, restart the process (reroll)
             continue;  // This will make the loop restart from the beginning
@@ -2494,7 +2500,7 @@ void DeterminePokemonRarityAndNewStatus(void)
                 attempts--;
                 if (attempts < 1)
                 {
-                    attempts = 1000;
+                    attempts = 1000; //////fucked up, FRAME hang when dex full.
                     randomValue = (Random() % 100);  // Generate random value between 0 and 100
 
                     // Determine Rarity based on the chances
@@ -2829,36 +2835,36 @@ void ShowFinalMessage(void)
 
 static u8 GetSpeciesGachaLevel(void)
 {
-    u32 level, levelCap, minLevel, addedLevelRange, i;
+    u32 level, levelCap, minLevel, i; // addedLevelRange,
     static const u32 sLevelGachaFlagMap[][3] =
     {
-        {FLAG_BADGE01_GET, 5, 6},
-        {FLAG_BADGE02_GET, 7, 5},
-        {FLAG_BADGE03_GET, 13, 7},
-        {FLAG_BADGE04_GET, 18, 5},
-        {FLAG_BADGE05_GET, 19, 9},
-        {FLAG_BADGE06_GET, 21, 9},
-        {FLAG_BADGE07_GET, 28, 8},
-        {FLAG_BADGE08_GET, 36, 14},
-        {FLAG_IS_CHAMPION, 40, 29},
+        {FLAG_BADGE01_GET, 15, 0},
+        {FLAG_BADGE02_GET, 15, 0},
+        {FLAG_BADGE03_GET, 15, 0},
+        {FLAG_BADGE04_GET, 15, 0},
+        {FLAG_BADGE05_GET, 15, 0},
+        {FLAG_BADGE06_GET, 15, 0},
+        {FLAG_BADGE07_GET, 15, 0},
+        {FLAG_BADGE08_GET, 15, 0},
+        {FLAG_IS_CHAMPION, 30, 0},// complicated rules serve no merit and players won't look at this twice. If they do look at it twice, it will be odd if the gacha machines are randomly slightly more or less.
     };
 
-    minLevel = 2;
-    addedLevelRange = 4;
+    minLevel = 15;
+    //addedLevelRange = 0;
 
     for (i = 0; i < ARRAY_COUNT(sLevelGachaFlagMap); i++)
     {
         if (FlagGet(sLevelGachaFlagMap[i][0]))
         {
             minLevel = sLevelGachaFlagMap[i][1];
-            addedLevelRange = sLevelGachaFlagMap[i][2];
+            //addedLevelRange = sLevelGachaFlagMap[i][2];
         }
     }
 
-    addedLevelRange += 1;
+    //addedLevelRange += 1;
+    //level = (Random() % addedLevelRange) + minLevel;
 
-    level = (Random() % addedLevelRange) + minLevel;
-
+    level = minLevel;
     levelCap = GetCurrentLevelCap();
 
     if (level > levelCap)
@@ -3000,13 +3006,14 @@ static void GachaMain(u8 taskId)
         break;
     case STATE_POKEBALL_ARRIVE_WAIT:        
         if (gSprites[sGacha->bouncingPokeballSpriteId].callback == SpriteCallbackDummy)
-        {
+        { 
             CreateMon(&gEnemyParty[0], sGacha->CalculatedSpecies, GetSpeciesGachaLevel(), USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+	    SetMonMoveSlot(&gEnemyParty[0], MOVE_LUCKY_CHANT, 0);// slot 1
             gSpecialVar_Result = GiveMonToPlayer(&gEnemyParty[0]);
             VarSet(VAR_TEMP_TRANSFERRED_SPECIES, sGacha->CalculatedSpecies);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(sGacha->CalculatedSpecies), FLAG_SET_SEEN);
             HandleSetPokedexFlag(SpeciesToNationalPokedexNum(sGacha->CalculatedSpecies), FLAG_SET_CAUGHT, GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY));
-            LoadPalette(GetMonFrontSpritePal(&gEnemyParty[0]), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);
+            LoadPalette(GetMonFrontSpritePal(&gEnemyParty[0]), OBJ_PLTT_ID(2), PLTT_SIZE_4BPP);// it's fairly easy to see how this entire bit could be adapted to give an item!
             SetMultiuseSpriteTemplateToPokemon(sGacha->CalculatedSpecies, B_POSITION_OPPONENT_RIGHT);
             sGacha->monSpriteId = CreateMonPicSprite_Affine(sGacha->CalculatedSpecies, GetMonData(&gEnemyParty[0], MON_DATA_IS_SHINY), GetMonData(&gEnemyParty[0], MON_DATA_PERSONALITY), MON_PIC_AFFINE_FRONT, 120, 60, 14, TAG_NONE);
             gSprites[sGacha->monSpriteId].callback = SpriteCB_Null;

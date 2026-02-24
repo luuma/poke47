@@ -1,18 +1,35 @@
 # About `poke47`
 
-Pokemon ____(4) _______(7) is a rombase that replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with fully overhauled movepools, new abilities, new TMs, and a couple of new maps. This was a one-month sprint, and it's a complete and playable hack. 
+Pokemon ____(4) _______(7) is a rombase that replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with properly playtested and overhauled movepools, new abilities, new TMs, and a couple of new maps. This was a one-month sprint, followed by another month polishing. It's a complete and playable hack. Every pokémon got something new and exciting but none of the changes should get in your way or require you to relearn anything.
 
-Fun changes to abilities:
-- Commander Duosion/ Reuniclus
-- Zero to Hero Carbink
+For example:
+- Gulp Missile Drifblim (it throws litwick or yamask)
 - Honey Gather gathers honey every turn if possible. Honey provides 1.3x defense to bug types and is great when flung.
-- Staring Contest: accuracy rises each turn (Watchog)
-- Wonder Surge: on switchin, sets a bizarre room that swaps Attack for Defense, and Sp.Atk for Sp.Def (Sigilyph)
-- Double Whammy: hits twice at full power against foes under 75% HP (Crabrawler)
-- Infinite Wisdom: can use TMs and relearn its own moves during battle (Oranguru, Drampa)
 - Opposite Day: Sets 5 turns of inverse battle on switchin (Inkay, Malamar)
+- Infinite Wisdom: can use TMs and relearn its own moves during battle (Oranguru, Drampa)
+- Wonder Surge: on switchin, sets a bizarre room that swaps Attack for Defense, and Sp.Atk for Sp.Def (Sigilyph)
+- Rest stacks with Comatose now
 
-It's already playable (and good fun) but I'm also hoping to use it one day as my own rombase for a future project. Have a lovely day!
+- Miracle Seed guarantees encounters with grass types and so on for all the other type items. This change is just great actually.
+
+The Usual Good Stuff:
+- Follower pokemon, HGSS dex with complete documentation, and other exceptional features from the RHH pokeemerald-expansion,  Press R to access the PC from the mon menu. Voltorb Flip.
+- Surfing, healing, cutting etc is quicker. HM09 Nature power has the same functionality as altered emerald - you use it in place of most HMs.
+- Berries are revamped. Try growing some purple ones.
+
+Notes for players
+- Press R to access box from the menu.
+- Not all legendaries make the cut, just yet. No megas/giganta/tera stuff except if you're audino.
+- The pokedex is in the order you encounter the mons in, and it's really useful.
+- The game corner is fun now and so is growing berries.
+- Evo methods:
+  - Evolve to Hisuian forms with Dawn Stone. You'll have enough stones to evolve everything once, and all of them can be obtained repeatably. Green minior hold dawn stones, for example.
+  - Trade mons use items or some accessable approximation of their conditions. Gurdurr and Boldore evolve at lv36. Phantump and Pumpkaboo evolve at lv30
+  - Foongus, Pawniard, Frillish, Mienfoo, Vullaby, Rufflet, Deino, Zweilous, and Larvesta evolve 10 levels earlier, to keep it simple to remember.
+- There is only one type change: aurorus is ice/dragon.
+- 11 new abilities and 8 new moves. The new moves are mostly unique
+
+
 
 # About Pokémon Emerald Game Corner Expansion
 

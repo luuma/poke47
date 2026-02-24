@@ -14,7 +14,7 @@ EventScript_EndUseSurf::
 	end
 
 EventScript_CheckSecretPowerSurf::
-	buffermovename STR_VAR_2, MOVE_SECRET_POWER
-	checkfieldmove FIELD_MOVE_SECRET_POWER, TRUE
+	buffermovename STR_VAR_2, MOVE_NATURE_POWER
+	checkfieldmove FIELD_MOVE_NATURE_POWER, TRUE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_EndUseSurf
 	return

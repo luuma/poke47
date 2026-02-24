@@ -10,7 +10,7 @@
 #define VAR_TEMP_1                 (TEMP_VARS_START + 0x1)
 #define VAR_TEMP_2                 (TEMP_VARS_START + 0x2)
 #define VAR_TEMP_3                 (TEMP_VARS_START + 0x3) // Note: Used when the player checks a TV
-#define VAR_TEMP_4                 (TEMP_VARS_START + 0x4)
+#define VAR_TEMP_4                 (TEMP_VARS_START + 0x4) // used by the new game corner
 #define VAR_TEMP_5                 (TEMP_VARS_START + 0x5)
 #define VAR_TEMP_6                 (TEMP_VARS_START + 0x6) 
 #define VAR_TEMP_7                 (TEMP_VARS_START + 0x7)
@@ -117,13 +117,13 @@
 #define VAR_ROUTE102_STATE                               0x4061 // Unused Var
 #define VAR_ROUTE103_STATE                               0x4062 // Unused Var
 #define VAR_ROUTE104_STATE                               0x4063
-#define VAR_ROUTE105_STATE                               0x4064 // Unused Var
-#define VAR_ROUTE106_STATE                               0x4065 // Unused Var
-#define VAR_ROUTE107_STATE                               0x4066 // Unused Var
-#define VAR_ROUTE108_STATE                               0x4067 // Unused Var
-#define VAR_ROUTE109_STATE                               0x4068 // Unused Var
+#define VAR_DERBY_N1                               0x4064 // 
+#define VAR_DERBY_N2                               0x4065 // 
+#define VAR_DERBY_N3                               0x4066 // 
+#define VAR_DERBY_N4                               0x4067 // 
+#define VAR_DERBY_N5                               0x4068 //
 #define VAR_ROUTE110_STATE                               0x4069
-#define VAR_ROUTE111_STATE                               0x406A // Unused Var
+#define VAR_DERBY_N6                               0x406A // 
 #define VAR_ROUTE112_STATE                               0x406B // Unused Var
 #define VAR_ROUTE113_STATE                               0x406C // Unused Var
 #define VAR_ROUTE114_STATE                               0x406D // Unused Var
@@ -138,15 +138,15 @@
 #define VAR_ROUTE123_STATE                               0x4076 // Unused Var
 #define VAR_ROUTE124_STATE                               0x4077 // Unused Var
 #define VAR_ROUTE125_STATE                               0x4078 // Unused Var
-#define VAR_ROUTE126_STATE                               0x4079 // Unused Var
-#define VAR_ROUTE127_STATE                               0x407A // Unused Var
+#define VAR_VOLTORB_FLIP_DIFFICULTY                      0x4079 
+#define VAR_FLAPPY_HISCORE                               0x407A 
 #define VAR_ROUTE128_STATE                               0x407B
-#define VAR_ROUTE129_STATE                               0x407C // Unused Var
-#define VAR_ROUTE130_STATE                               0x407D // Unused Var
-#define VAR_ROUTE131_STATE                               0x407E // Unused Var
-#define VAR_ROUTE132_STATE                               0x407F // Unused Var
-#define VAR_ROUTE133_STATE                               0x4080 // Unused Var
-#define VAR_ROUTE134_STATE                               0x4081 // Unused Var
+#define VAR_DERBY_1                               0x407C 
+#define VAR_DERBY_2                              0x407D // 
+#define VAR_DERBY_3                                 0x407E // its winning the derby!
+#define VAR_DERBY_4                               0x407F // 
+#define VAR_DERBY_5                               0x4080 //
+#define VAR_DERBY_6                               0x4081 // 
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
 #define VAR_UNUSED_0x4083                                0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                              0x4084

@@ -52,7 +52,7 @@ MoveTutor_Text_FuryCutterTeach:
 	.string "when you keep using it in a row.\p"
 	.string "It's a BUG-type move, and it is\n"
 	.string "wickedly cool.\p"
-	.string "It's called FURY CUTTER.\n"
+	.string "It's called TWINEEDLE.\n"
 	.string "Want me to teach it to a POKéMON?$"
 
 MoveTutor_Text_FuryCutterDeclined:
@@ -73,10 +73,10 @@ MoveTutor_MimicTeach:
 	.string "folks of this town.\p"
 	.string "What do you say, young one?\n"
 	.string "Would you agree to it if I were to\l"
-	.string "offer to teach the move MIMIC?$"
+	.string "offer to teach the move COPYCAT?$"
 
 MoveTutor_MimicDeclined:
-	.string "Oh, boo! I wanted to teach MIMIC\n"
+	.string "Oh, boo! I wanted to teach COPYCAT\n"
 	.string "to your POKéMON!$"
 
 MoveTutor_Text_MimicWhichMon:
@@ -85,7 +85,7 @@ MoveTutor_Text_MimicWhichMon:
 	.string "you wish me to teach.$"
 
 MoveTutor_Text_MimicTaught:
-	.string "MIMIC is a move of great depth.\p"
+	.string "COPYCAT is a move of great depth.\p"
 	.string "Could you execute it to perfection\n"
 	.string "as well as me…?$"
 
@@ -116,22 +116,23 @@ MoveTutor_Text_MetronomeTaught:
 	.string "use it, too?$"
 
 MoveTutor_Text_SleepTalkTeach:
-	.string "Humph! My wife relies on HIDDEN\n"
-	.string "POWER to stay awake.\p"
-	.string "She should just take a nap like I do,\n"
-	.string "and SLEEP TALK.\p"
+	.string "Oh, my foolish wife. She thinks that\n"
+	.string "HIDDEN POWER is - well - strong!!\p"
+	.string "A preposterous thought. Just 60 base\n"
+	.string "power! No. The move I teach - this is\p"
+	.string "a move that can net some KO's.\p"
 	.string "I can teach your POKéMON how to\n"
-	.string "SLEEP TALK instead. Interested?$"
+	.string "FALSE SWIPE. Interested?$"
 
 MoveTutor_Text_SleepTalkDeclined:
-	.string "Oh, fine, fine. You want to stay awake\n"
+	.string "Oh, fine, fine. You want to stay feeble\n"
 	.string "with HIDDEN POWER, too…$"
 
 MoveTutor_Text_SleepTalkWhichMon:
 	.string "Ah, an appreciative child!\n"
 	.string "Which POKéMON should I teach?$"
 
-MoveTutor_Text_SleepTalkTaught:
+MoveTutor_Text_SleepTalkTaught:// unused.
 	.string "I've never once gotten my wife's\n"
 	.string "coin trick right.\p"
 	.string "I would be happy if I got it right\n"
@@ -141,12 +142,12 @@ MoveTutor_Text_SubstituteTeach:
 	.string "When I see the wide world from up\n"
 	.string "here on the roof…\p"
 	.string "I think about how nice it would be\n"
-	.string "if there were more than just one me\l"
+	.string "if I could trade bodies with people\l"
 	.string "so I could enjoy all sorts of lives.\p"
 	.string "Of course it's not possible.\n"
 	.string "Giggle…\p"
 	.string "I know! Would you be interested in\n"
-	.string "having a POKéMON learn SUBSTITUTE?$"
+	.string "having a POKéMON learn POWER SPLIT?$"
 
 MoveTutor_Text_SubstituteDeclined:
 	.string "Oh, no?\p"
@@ -156,7 +157,7 @@ MoveTutor_Text_SubstituteDeclined:
 MoveTutor_Text_SubstituteWhichMon:
 	.string "Giggle…\n"
 	.string "Which POKéMON do you want me to\l"
-	.string "teach SUBSTITUTE?$"
+	.string "teach POWER SPLIT?$"
 
 MoveTutor_Text_SubstituteTaught:
 	.string "We human beings should enjoy our\n"
@@ -169,12 +170,12 @@ MoveTutor_Text_DynamicPunchTeach:
 	.string "I'm a FIGHTING-type TRAINER,\n"
 	.string "so I can't win at the MOSSDEEP GYM\l"
 	.string "no matter how hard I try!\p"
-	.string "Argh! Punch! Punch! Punch!\n"
-	.string "Punch! Punch! Punch!\p"
+	.string "I've been trying for so long, I'm just\n"
+	.string "about ready to squash into the floor…\p"
 	.string "What, don't look at me that way!\n"
-	.string "I'm only hitting the ground!\p"
+	.string "The sand is comfy here!\p"
 	.string "Or do you want me to teach your\n"
-	.string "POKéMON DYNAMICPUNCH?$"
+	.string "POKéMON BODY PRESS?$"
 
 MoveTutor_Text_DynamicPunchDeclined:
 	.string "Darn! You're even making fun of me?\n"
@@ -186,18 +187,18 @@ MoveTutor_Text_DynamicPunchWhichMon:
 
 MoveTutor_Text_DynamicPunchTaught:
 	.string "I want you to win at the MOSSDEEP GYM\n"
-	.string "using that DYNAMICPUNCH!$"
+	.string "using that BODY PRESS!$"
 
 MoveTutor_Text_DoubleEdgeTeach:
 	.string "Sigh…\p"
 	.string "SOOTOPOLIS's GYM LEADER is really\n"
-	.string "lovably admirable.\p"
+	.string "driven and demanding.\p"
 	.string "But that also means I have many\n"
-	.string "rivals for his attention.\p"
-	.string "He's got appeal with a DOUBLE-EDGE.\n"
-	.string "I couldn't even catch his eye.\p"
+	.string "rivals for her attention.\p"
+	.string "It's like she's got a LASER FOCUS.\n"
+	.string "I couldn't even catch her eye.\p"
 	.string "Please, let me teach your POKéMON\n"
-	.string "the move DOUBLE-EDGE!$"
+	.string "the move LASER FOCUS!$"
 
 MoveTutor_Text_DoubleEdgeDeclined:
 	.string "Oh…\n"
@@ -205,7 +206,7 @@ MoveTutor_Text_DoubleEdgeDeclined:
 
 MoveTutor_Text_DoubleEdgeWhichMon:
 	.string "Okay, which POKéMON should I teach\n"
-	.string "DOUBLE-EDGE?$"
+	.string "LASER FOCUS?$"
 
 MoveTutor_Text_DoubleEdgeTaught:
 	.string "I won't live for love anymore!\n"

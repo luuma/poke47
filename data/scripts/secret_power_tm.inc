@@ -3,7 +3,7 @@ Route111_Text_MakingRoomUseTMToMakeYourOwn:
 	.string "What am I doing?\p"
 	.string "I'm thinking about making my own room\n"
 	.string "here using a secret POKéMON move.\p"
-	.string "It's my SECRET POWER! It works\n"
+	.string "It's my NATURE POWER! It works\n"
 	.string "in place of virtually every HM!\p"
 	.string "I know! I'll give you a copy.\n"
 	.string "HMO1 is our group's favourite HM.$"
@@ -11,7 +11,7 @@ Route111_Text_MakingRoomUseTMToMakeYourOwn:
 Route111_Text_ExplainSecretPower:
 	.string "Find a big tree that looks like it might\n"
 	.string "drop some vines.\p"
-	.string "Use SECRET POWER in front of the tree.\n"
+	.string "Use NATURE POWER in front of the tree.\n"
 	.string "Some vines should get free and drop\l"
 	.string "down, so you can climb the tree.\p"
 	.string "You'll find a lot of space for putting\n"
@@ -20,7 +20,7 @@ Route111_Text_ExplainSecretPower:
 	.string "A SECRET BASE!\p"
 	.string "You should make one, too.\p"
 	.string "And, it works as any HM, too!\n"
-	.string "Try using SECRET POWER to cut trees,\n"
+	.string "Try using NATURE POWER to cut trees,\n"
 	.string "move rocks, surf, and dive underwater.\p"
 	.string "Have fun with this lovely convenience.\n"
 	.string "Okay, bye!$"
@@ -44,7 +44,7 @@ Route111_EventScript_SecretPowerMan::
 	end
 
 Route111_EventScript_GiveSecretPower::
-	giveitem ITEM_HM_SECRET_POWER
+	giveitem ITEM_HM_NATURE_POWER
 	goto_if_eq VAR_RESULT, FALSE, Route111_EventScript_NoRoomForSecretPower
 	msgbox Route111_Text_ExplainSecretPower, MSGBOX_DEFAULT
 	closemessage
