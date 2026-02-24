@@ -704,7 +704,6 @@ void DecompressTrainerBackPic(u16 backPicId, u8 battler)
     CopyTrainerBackspriteFramesToDest(backPicId, gMonSpritesGfxPtr->spritesGfx[position]);
     LoadPalette(gTrainerBacksprites[backPicId].palette.data,
                           OBJ_PLTT_ID(battler), PLTT_SIZE_4BPP);
-    TimeMixBattleSpritePalette(OBJ_PLTT_ID(battler));
 }
 
 void FreeTrainerFrontPicPalette(u16 frontPicId)
