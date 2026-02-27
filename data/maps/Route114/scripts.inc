@@ -61,7 +61,7 @@ Route114_EventScript_Poochyena::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_POOCHYENA, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_PURRLOIN, CRY_MODE_ENCOUNTER
 	msgbox Route114_Text_Poochyena, MSGBOX_DEFAULT
 	waitmoncry
 	release
@@ -187,7 +187,7 @@ Route114_Text_ExplainRoar:
 	.string "TAUNT sends foes into a frenzy.$"
 
 Route114_Text_Poochyena:
-	.string "Bow! Bowwow!$"
+	.string "Mrrreeeow! Hssss!$"
 
 Route114_Text_MeteorFallsSign:
 	.string "METEOR FALLS\n"
