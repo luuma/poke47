@@ -237,6 +237,7 @@ const struct FollowerMsgInfoExtended gFollowerConditionalMessages[COND_MSG_COUNT
         .conditions =
         {
             MATCH_MAP(MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM),
+            MATCH_ON_MB(MB_SNOW, MB_ICE),
         },
     },
     [COND_MSG_ROUTE_117] =

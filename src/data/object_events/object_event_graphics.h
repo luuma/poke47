@@ -306,6 +306,7 @@ const u32 gFieldEffectObjectPic_Ash[] = INCBIN_U32("graphics/field_effects/pics/
 const u32 gFieldEffectObjectPic_Arrow[] = INCBIN_U32("graphics/field_effects/pics/arrow.4bpp");
 const u16 gFieldEffectObjectPalette0[] = INCBIN_U16("graphics/field_effects/palettes/general_0.gbapal");
 const u16 gFieldEffectObjectPalette1[] = INCBIN_U16("graphics/field_effects/palettes/general_1.gbapal");
+const u16 gFieldEffectObjectPaletteSnowTracks[] = INCBIN_U16("graphics/field_effects/palettes/snow_tracks.gbapal");
 const u32 gFieldEffectObjectPic_GroundImpactDust[] = INCBIN_U32("graphics/field_effects/pics/ground_impact_dust.4bpp");
 const u32 gFieldEffectObjectPic_JumpTallGrass[] = INCBIN_U32("graphics/field_effects/pics/jump_tall_grass.4bpp");
 const u32 gUnusedGrass3[] = INCBIN_U32("graphics/field_effects/pics/unused_grass_3.4bpp");
@@ -360,6 +361,12 @@ const u32 gObjectEventPic_Noland[] = INCBIN_U32("graphics/object_events/pics/peo
 const u32 gObjectEventPic_Lucy[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/lucy.4bpp");
 const u32 gObjectEventPic_Brandon[] = INCBIN_U32("graphics/object_events/pics/people/frontier_brains/brandon.4bpp");
 const u32 gObjectEventPic_PokeBall[] = INCBIN_U32("graphics/object_events/pics/misc/ball_poke.4bpp");
+//const u32 gFieldEffectObjectPic_SnowFootprints[] = INCBIN_U32("graphics/field_effects/pics/snow_footprints.4bpp");
+//const u32 gFieldEffectObjectPic_SnowBikeTireTracks[] = INCBIN_U32("graphics/field_effects/pics/snow_footprints.4bpp");
+//const u32 gFieldEffectObjectPic_SnowSlitherTracks[] = INCBIN_U32("graphics/field_effects/pics/snow_footprints.4bpp");
+//const u32 gFieldEffectObjectPic_SnowSpotTracks[] = INCBIN_U32("graphics/field_effects/pics/snow_footprints.4bpp");
+//const u32 gFieldEffectObjectPic_SnowBugTracks[] = INCBIN_U32("graphics/field_effects/pics/snow_footprints.4bpp");
+
 
 const u32 gObjectEventPic_DeoxysOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/deoxys.4bpp");
 const u32 gObjectEventPic_MewOld[] = INCBIN_U32("graphics/object_events/pics/pokemon_old/mew.4bpp");

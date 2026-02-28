@@ -2,14 +2,14 @@
   "id": "MAP_INGY_BINGY_ISLAND",
   "name": "IngyBingyIsland",
   "layout": "LAYOUT_INGY_BINGY_ISLAND",
-  "music": "MUS_DUMMY",
+  "music": "MUS_RG_SEVII_ROUTE",
   "region_map_section": "MAPSEC_ROUTE_1",
   "requires_flash": false,
   "weather": "WEATHER_SNOW",
   "map_type": "MAP_TYPE_ROUTE",
-  "allow_cycling": false,
+  "allow_cycling": true,
   "allow_escaping": false,
-  "allow_running": false,
+  "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
@@ -20,20 +20,15 @@
     },
     {
       "map": "MAP_ROUTE110",
-      "offset": 0,
+      "offset": 4,
       "direction": "right"
-    },
-    {
-      "map": "MAP_ROUTE117",
-      "offset": 12,
-      "direction": "up"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
       "x": 34,
-      "y": 50,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -46,7 +41,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
       "x": 66,
-      "y": 20,
+      "y": 24,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -59,7 +54,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
       "x": 56,
-      "y": 51,
+      "y": 55,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -72,7 +67,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
       "x": 33,
-      "y": 37,
+      "y": 41,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -85,7 +80,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
       "x": 32,
-      "y": 24,
+      "y": 28,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -98,7 +93,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
       "x": 31,
-      "y": 20,
+      "y": 24,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -111,7 +106,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
       "x": 41,
-      "y": 12,
+      "y": 16,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -124,7 +119,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_BRENDAN_NORMAL",
       "x": 60,
-      "y": 53,
+      "y": 57,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -137,7 +132,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
       "x": 35,
-      "y": 49,
+      "y": 53,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,

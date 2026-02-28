@@ -4705,7 +4705,7 @@
       "id": "LAYOUT_INGY_BINGY_ISLAND",
       "name": "IngyBingyIsland_Layout",
       "width": 72,
-      "height": 60,
+      "height": 64,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Unused1",
       "border_filepath": "data/layouts/IngyBingyIsland/border.bin",

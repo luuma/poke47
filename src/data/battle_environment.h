@@ -379,6 +379,7 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
     #endif
         .secretPowerEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
         .camouflageType = TYPE_ICE,
+        .background = ENVIRONMENT_BACKGROUND(TallGrass),/////TODOSNOWGRASS
     },
 
     [BATTLE_ENVIRONMENT_ICE] =
