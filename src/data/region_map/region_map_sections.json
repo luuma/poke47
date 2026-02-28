@@ -749,7 +749,11 @@
     },
     {
       "id": "MAPSEC_ROUTE_1",
-      "name": "ROUTE 137"
+      "name": "ROUTE 137",
+      "x": 5,
+      "y": 7,
+      "width": 3,
+      "height": 1
     },
     {
       "id": "MAPSEC_ROUTE_2",

@@ -12298,7 +12298,7 @@
           "map": "MAP_INGY_BINGY_ISLAND",
           "base_label": "gIngyBingyIsland",
           "land_mons": {
-            "encounter_rate": 10,
+            "encounter_rate": 20,
             "mons": [
               {
                 "min_level": 6,
@@ -12323,7 +12323,7 @@
               {
                 "min_level": 5,
                 "max_level": 7,
-                "species": "SPECIES_DARUMAKA_GALAR"
+                "species": "SPECIES_INKAY"
               },
               {
                 "min_level": 7,

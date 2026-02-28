@@ -2,6 +2,10 @@ const u32 gBattleEnvironmentTiles_TallGrass[] = INCBIN_U32("graphics/battle_envi
 const u16 gBattleEnvironmentPalette_TallGrass[] = INCBIN_U16("graphics/battle_environment/tall_grass/palette.gbapal");
 const u32 gBattleEnvironmentTilemap_TallGrass[] = INCBIN_U32("graphics/battle_environment/tall_grass/map.bin.smolTM");
 
+
+const u16 gBattleEnvironmentPalette_SnowGrass[] = INCBIN_U16("graphics/battle_environment/snow_grass/palette.gbapal");
+
+
 const u32 gBattleEnvironmentTiles_LongGrass[] = INCBIN_U32("graphics/battle_environment/long_grass/tiles.4bpp.smol");
 const u16 gBattleEnvironmentPalette_LongGrass[] = INCBIN_U16("graphics/battle_environment/long_grass/palette.gbapal");
 const u32 gBattleEnvironmentTilemap_LongGrass[] = INCBIN_U32("graphics/battle_environment/long_grass/map.bin.smolTM");
@@ -379,7 +383,14 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
     #endif
         .secretPowerEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
         .camouflageType = TYPE_ICE,
-        .background = ENVIRONMENT_BACKGROUND(TallGrass),/////TODOSNOWGRASS
+        .background = 
+{                                                               \
+    .tileset = gBattleEnvironmentTiles_TallGrass,            \
+    .tilemap = gBattleEnvironmentTilemap_TallGrass,          \
+    .entryTileset = gBattleEnvironmentAnimTiles_TallGrass,   \
+    .entryTilemap = gBattleEnvironmentAnimTilemap_TallGrass, \
+    .palette = gBattleEnvironmentPalette_SnowGrass,          \
+}////TODOSNOW
     },
 
     [BATTLE_ENVIRONMENT_ICE] =

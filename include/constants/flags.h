@@ -703,23 +703,23 @@
 #define FLAG_TICKET_BEGIN  0x287 // 
 #define FLAG_TICKET_PHOTO_STATE  0x288 // Unused Flag
 #define FLAG_DIVE_ITEM_114  0x289 // Unused Flag
-#define FLAG_DEWBEACH1  0x28A // Unused Flag
-#define FLAG_DEWBEACH2  0x28B // Unused Flag
-#define FLAG_DEWBEACH3  0x28C // Unused Flag
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
-#define FLAG_UNUSED_0x28E  0x28E // Unused Flag
-#define FLAG_UNUSED_0x28F  0x28F // Unused Flag
-#define FLAG_UNUSED_0x290  0x290 // Unused Flag
-#define FLAG_UNUSED_0x291  0x291 // Unused Flag
-#define FLAG_UNUSED_0x292  0x292 // Unused Flag
-#define FLAG_UNUSED_0x293  0x293 // Unused Flag
-#define FLAG_UNUSED_0x294  0x294 // Unused Flag
-#define FLAG_UNUSED_0x295  0x295 // Unused Flag
-#define FLAG_UNUSED_0x296  0x296 // Unused Flag
-#define FLAG_UNUSED_0x297  0x297 // Unused Flag
-#define FLAG_UNUSED_0x298  0x298 // Unused Flag
-#define FLAG_UNUSED_0x299  0x299 // Unused Flag
-#define FLAG_UNUSED_0x29A  0x29A // Unused Flag
+#define FLAG_DEWBEACH1  0x28A //  Flag
+#define FLAG_DEWBEACH2  0x28B //  Flag
+#define FLAG_DEWBEACH3  0x28C //  Flag
+#define FLAG_R1371  0x28D // HID Flag
+#define FLAG_R1372  0x28E // HID Flag
+#define FLAG_R1373  0x28F // HID Flag
+#define FLAG_R1374  0x290 // HID Flag
+#define FLAG_R1376  0x291 // HID Flag
+#define FLAG_R1377 0x292 //  Flag
+#define FLAG_R1378 0x293 //  Flag
+#define FLAG_R1379  0x294 //  Flag
+#define FLAG_R137A  0x295 //  Flag
+#define FLAG_R1375  0x296 // HID Flag
+#define FLAG_R137B  0x297 //  Flag
+#define FLAG_R137C 0x298 //  Flag
+#define FLAG_R137D 0x299 //  Flag
+#define FLAG_R137E 0x29A //  Flag
 #define FLAG_UNUSED_0x29B  0x29B // Unused Flag
 #define FLAG_UNUSED_0x29C  0x29C // Unused Flag
 #define FLAG_UNUSED_0x29D  0x29D // Unused Flag
