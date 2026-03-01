@@ -229,6 +229,7 @@ enum BattleScriptOpcode
     B_SCR_OP_SETNONVOLATILESTATUS,
     B_SCR_OP_TRYOVERWRITEABILITY,
 
+
     // Expansion users, please don't use any of the unused commands.
     // They are reserved for expansion usage.
     // Use callnatives instead.
@@ -261,7 +262,7 @@ enum BattleScriptOpcode
     B_SCR_OP_UNUSED_27,
     B_SCR_OP_UNUSED_28,
     B_SCR_OP_UNUSED_29,
-    B_SCR_OP_UNUSED_30,
+    B_SCR_OP_TRYHEALFULLHEALTH,// Will do for now.
     B_SCR_OP_CALLNATIVE,
 };
 

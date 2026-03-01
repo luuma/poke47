@@ -3457,7 +3457,9 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             }
             break;
         case ABILITY_OPPOSITE_DAY:
-            if (!(gFieldStatuses & STATUS_FIELD_INVERSE))
+            if (!shouldAbilityTrigger)
+                break;
+            else if (!(gFieldStatuses & STATUS_FIELD_INVERSE))
             {
 		BattleScriptPushCursorAndCallback(BattleScript_OppositeDayActivates);
 	        gFieldStatuses |= STATUS_FIELD_INVERSE;
@@ -3466,43 +3468,37 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             }
             break;
         case ABILITY_WONDERLAND:
-	    if (!gSpecialStatuses[battler].switchInAbilityDone)
-	    {
-                if (!(gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
+            if (!shouldAbilityTrigger)
+                break;
+	    if (!(gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
                 {
-	    	    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
 		    BattleScriptPushCursorAndCallback(BattleScript_WonderlandActivates);
 	            gFieldStatuses |= STATUS_FIELD_WONDER_ROOM;
                     gFieldTimers.wonderRoomTimer = 5;
                     effect++;
                 }
-                else if (!gSpecialStatuses[battler].switchInAbilityDone)
+            else
                 {
-	    	    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
 		    BattleScriptPushCursorAndCallback(BattleScript_WonderlandWonderRoomEnds);
 	            gFieldStatuses &= ~STATUS_FIELD_WONDER_ROOM;
                     effect++;
                 }
-	    }
             break;
         case ABILITY_TRICKLAND:
-	    if (!gSpecialStatuses[battler].switchInAbilityDone)
-	    {
-                if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM))
-                {
-	    	    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-		    BattleScriptPushCursorAndCallback(BattleScript_TricklandActivates);
-	            gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
-                    gFieldTimers.trickRoomTimer = 5;
-                    effect++;
-                }
-                else if (!gSpecialStatuses[battler].switchInAbilityDone)
-                {
-	    	    gSpecialStatuses[battler].switchInAbilityDone = TRUE;
-		    BattleScriptPushCursorAndCallback(BattleScript_TricklandTrickRoomEnds);
-	            gFieldStatuses &= ~STATUS_FIELD_TRICK_ROOM;
-                    effect++;
-                }
+            if (!shouldAbilityTrigger)
+                break;
+	    if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM))
+            {
+		BattleScriptPushCursorAndCallback(BattleScript_TricklandActivates);
+	        gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
+                gFieldTimers.trickRoomTimer = 5;
+                effect++;
+            }
+            else
+            {
+		BattleScriptPushCursorAndCallback(BattleScript_TricklandTrickRoomEnds);
+	        gFieldStatuses &= ~STATUS_FIELD_TRICK_ROOM;
+                effect++;
 	    }
             break;
         case ABILITY_INTIMIDATE:
@@ -3815,7 +3811,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 }
                 break;
             case ABILITY_FOCUS_BOOST:
-                if (CompareStat(battler, STAT_ACC, MAX_STAT_STAGE, CMP_LESS_THAN, gLastUsedAbility) && gDisableStructs[battler].isFirstTurn != 2)
+                if (CompareStat(battler, STAT_ACC, MAX_STAT_STAGE, CMP_LESS_THAN, gLastUsedAbility) && gBattleStruct->battlerState[battler].isFirstTurn != 2)
                 {
                     SaveBattlerAttacker(gBattlerAttacker);
                     SET_STATCHANGER(STAT_ACC, 1, FALSE);
@@ -4052,7 +4048,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             if (IsBattlerAlive(gBattlerAttacker)
              && IsBattlerTurnDamaged(gBattlerTarget)
              && !CanBattlerAvoidContactEffects(gBattlerAttacker, gBattlerTarget, GetBattlerAbility(gBattlerAttacker), GetBattlerHoldEffect(gBattlerAttacker), move)
-             && gDisableStructs[gBattlerAttacker].overwrittenAbility != GetBattlerAbility(gBattlerTarget)
+             && gBattleMons[gBattlerAttacker].volatiles.overwrittenAbility != GetBattlerAbility(gBattlerTarget)
              && gBattleMons[gBattlerAttacker].ability != ABILITY_MUMMY
              && gBattleMons[gBattlerAttacker].ability != ABILITY_LINGERING_AROMA
              && !gAbilitiesInfo[gBattleMons[gBattlerAttacker].ability].cantBeSuppressed)
@@ -4065,7 +4061,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
 
                 RemoveAbilityFlags(gBattlerAttacker);
                 gLastUsedAbility = gBattleMons[gBattlerAttacker].ability;
-                gBattleMons[gBattlerAttacker].ability = gDisableStructs[gBattlerAttacker].overwrittenAbility = gBattleMons[gBattlerTarget].ability;
+                gBattleMons[gBattlerAttacker].ability = gBattleMons[gBattlerAttacker].volatiles.overwrittenAbility = gBattleMons[gBattlerTarget].ability;
                 BattleScriptCall(BattleScript_MummyActivates);
                 effect++;
                 break;
@@ -4074,7 +4070,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             {
                 enum Ability abilityAtk = GetBattlerAbility(gBattlerAttacker);
                 if (IsBattlerAlive(gBattlerAttacker)
-                && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
+                && !gBattleStruct->unableToUseMove
                 && IsBattlerTurnDamaged(gBattlerTarget)
                 && CanBePoisoned(gBattlerTarget, gBattlerAttacker, gLastUsedAbility, abilityAtk)
                 && !CanBattlerAvoidContactEffects(gBattlerAttacker, gBattlerTarget, abilityAtk, GetBattlerHoldEffect(gBattlerAttacker), move))
@@ -7418,7 +7414,7 @@ static inline u32 CalcDefenseStat(struct BattleContext *ctx)
         }
         break;
     case ABILITY_GRAND_DEBUT:
-        if (gDisableStructs[battlerDef].isFirstTurn == 2) // just switched in
+        if (gBattleStruct->battlerState[battlerDef].isFirstTurn == 2)// just switched in
         {
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
             if (ctx->updateFlags)
@@ -8767,7 +8763,8 @@ bool32 DoesSpeciesUseHoldItemToChangeForm(u16 species, u16 heldItemId)
 bool32 CanMegaEvolve(enum BattlerId battler)
 {
     enum HoldEffect holdEffect = GetBattlerHoldEffectIgnoreNegation(battler);
-    enum BattlerPosition position = GetBattlerPosition(battler);
+    // enum BattlerPosition position = GetBattlerPosition(battler);
+    enum Ability ability = GetBattlerAbility(battler);
 
     // Check if there is an entry in the form change table for Wish Mega Evolution. first.
     if (GetBattleFormChangeTargetSpecies(battler, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_MOVE, ability) != gBattleMons[battler].species)
@@ -8794,7 +8791,7 @@ bool32 CanMegaEvolve(enum BattlerId battler)
     if (holdEffect == HOLD_EFFECT_Z_CRYSTAL)
         return FALSE;
 
-    enum Ability ability = GetBattlerAbility(battler);
+    //enum Ability ability = GetBattlerAbility(battler);
 
     // Check if there is an entry in the form change table for regular Mega Evolution and battler is holding Mega Stone.
     if (GetBattleFormChangeTargetSpecies(battler, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM, ability) != gBattleMons[battler].species)
@@ -11000,7 +10997,7 @@ bool32 IsUsableWhileAsleepEffect(enum BattleMoveEffects effect)
 void SetWrapTurns(enum BattlerId battler, enum HoldEffect holdEffect, enum Ability ability)
 {
     u32 normalWrapTurns = B_WRAP_TURNS - 4; // 5 turns
-    if (holdEffect == HOLD_EFFECT_GRIP_CLAW && ability = ABILITY_CONSTRICTOR)
+    if (holdEffect == HOLD_EFFECT_GRIP_CLAW && ability == ABILITY_CONSTRICTOR)
         gBattleMons[battler].volatiles.wrapTurns = B_WRAP_TURNS;
     else if (GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_GRIP_CLAW || GetBattlerAbility(gBattlerAttacker) == ABILITY_CONSTRICTOR)
         gBattleMons[battler].volatiles.wrapTurns = B_WRAP_TURNS - 2;

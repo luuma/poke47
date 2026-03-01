@@ -728,7 +728,7 @@
 	.endm
 
 	.macro tryhealfullhealth battler:req, failInstr:req
-	.byte 0x82
+	.byte B_SCR_OP_TRYHEALFULLHEALTH
 	.byte \battler
 	.4byte \failInstr
 	.endm

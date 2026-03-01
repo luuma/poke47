@@ -23,7 +23,6 @@ enum __attribute__((packed)) Item
     ITEM_QUICK_BALL = 12, // Rustboro
     ITEM_REPEAT_BALL = 13,
     ITEM_LUXURY_BALL = 14,
-//CUT
     ITEM_LEVEL_BALL = 15,
     ITEM_LURE_BALL = 16,
     ITEM_MOON_BALL = 17,
@@ -567,7 +566,7 @@ enum __attribute__((packed)) Item
     ITEM_HEAT_ROCK = 448,
     ITEM_SMOOTH_ROCK = 449,
     ITEM_ICY_ROCK = 450,
-    CONSUMABLES_START = ITEM_ICY_ROCK
+    CONSUMABLES_START = ITEM_ICY_ROCK,
 
     // Terrain Seeds
     ITEM_ELECTRIC_SEED = 451,
@@ -585,76 +584,75 @@ enum __attribute__((packed)) Item
 
     ITEM_WHITE_HERB = 459,
     ITEM_MENTAL_HERB = 460,
-    ITEM_POWER_HERB = 461
+    ITEM_POWER_HERB = 461,
 
 // Other Cheap Consumables
-    ITEM_STICKY_BARB = 462
-    ITEM_SHED_SHELL = 463
-     ITEM_AIR_BALLOON =  464
-     ITEM_EJECT_BUTTON = 465
-     ITEM_ADRENALINE_ORB = 466
+    ITEM_STICKY_BARB = 462,
+    ITEM_SHED_SHELL = 463,
+     ITEM_AIR_BALLOON =  464,
+     ITEM_EJECT_BUTTON = 465,
+     ITEM_ADRENALINE_ORB = 466,
 
-    CONSUMABLES_LENGTH = (ITEM_ADRENALINE_ORB - CONSUMABLES_START)
+    CONSUMABLES_LENGTH = (ITEM_ADRENALINE_ORB - CONSUMABLES_START),
 
 
-     ITEM_EJECT_PACK = 467 // pickup
-    ITEM_FOCUS_SASH = 468 //pickup
-    ITEM_RED_CARD  = 469
-    ITEM_WEAKNESS_POLICY = 470 //pickup
-    ITEM_THROAT_SPRAY = 471
-    ITEM_ROOM_SERVICE  = 472
-     ITEM_BLUNDER_POLICY = 473 //pickup
-
+     ITEM_EJECT_PACK = 467, // pickup
+    ITEM_FOCUS_SASH = 468, //pickup
+    ITEM_RED_CARD = 469,
+    ITEM_WEAKNESS_POLICY = 470, //pickup
+    ITEM_THROAT_SPRAY = 471,
+    ITEM_ROOM_SERVICE = 472,
+     ITEM_BLUNDER_POLICY = 473, //pickup
 
      ITEM_BRIGHT_POWDER = 474,
      ITEM_BRIGHTPOWDER = ITEM_BRIGHT_POWDER, // Pre-Gen VI name
      ITEM_EXP_SHARE = 475,
      ITEM_EXP_ALL = ITEM_EXP_SHARE, // Gen I name
      ITEM_QUICK_CLAW = 476,
-     ITEM_SOOTHE_BELL 477,
+     ITEM_SOOTHE_BELL = 477,
 
-     ITEM_KINGS_ROCK = 478
-     ITEM_AMULET_COIN = 479
-     ITEM_CLEANSE_TAG = 480
-     ITEM_SMOKE_BALL = 481
-     ITEM_FOCUS_BAND = 482
-     ITEM_LUCKY_EGG = 483
-     ITEM_SCOPE_LENS = 484 // Abandoned Ship
-     ITEM_LEFTOVERS = 485
-     ITEM_SHELL_BELL = 486
-     ITEM_WIDE_LENS = 487 // Abandoned Ship
-     ITEM_MUSCLE_BAND = 488 // post? THILL
-     ITEM_WISE_GLASSES = 489 // post?
-     ITEM_EXPERT_BELT = 490 // post?
-     ITEM_LIGHT_CLAY = 491 // Meteor Falls
-     ITEM_LIFE_ORB = 492  // vicrd?
+     ITEM_KINGS_ROCK = 478,
+     ITEM_AMULET_COIN = 479,
+     ITEM_CLEANSE_TAG = 480,
+     ITEM_SMOKE_BALL = 481,
+     ITEM_FOCUS_BAND = 482,
+     ITEM_LUCKY_EGG = 483,
+     ITEM_SCOPE_LENS = 484, // Abandoned Ship
+     ITEM_LEFTOVERS = 485,
+     ITEM_SHELL_BELL = 486,
+     ITEM_WIDE_LENS = 487, // Abandoned Ship
+     ITEM_MUSCLE_BAND = 488, // post? THILL
+     ITEM_WISE_GLASSES = 489, // post?
+     ITEM_EXPERT_BELT = 490, // post?
+     ITEM_LIGHT_CLAY = 491, // Meteor Falls
+     ITEM_LIFE_ORB = 492,  // vicrd?
 
-     ITEM_ZOOM_LENS = 493 // PETALBURG woods cut section
-     ITEM_METRONOME = 494 //RoutE 116 
-     ITEM_IRON_BALL = 495 // granite cave 2f Maybe reimplement the old rsmash thing
-     ITEM_LAGGING_TAIL = 496  // post
-     ITEM_DESTINY_KNOT = 497 // DEWBEACH
-     ITEM_BLACK_SLUDGE = 498 // Fiery Path
-     ITEM_GRIP_CLAW = 499  //POST?
+     ITEM_ZOOM_LENS = 493, // PETALBURG woods cut section
+     ITEM_METRONOME = 494, //RoutE 116 
+     ITEM_IRON_BALL = 495, // granite cave 2f Maybe reimplement the old rsmash thing
+     ITEM_LAGGING_TAIL = 496,  // post
+     ITEM_DESTINY_KNOT = 497, // DEWBEACH
+     ITEM_BLACK_SLUDGE = 498, // Fiery Path
+     ITEM_GRIP_CLAW = 499,  //POST?
 
-     ITEM_BIG_ROOT = 500 // 119
-     ITEM_RAZOR_CLAW = 501 // post?
-     ITEM_RAZOR_FANG = 502 // SCOPE LENS ABANDONED SHIP
-     ITEM_EVIOLITE = 503 // MT PYRE
-     ITEM_FLOAT_STONE = 504 // granite xave B1F
-     ITEM_ROCKY_HELMET = 505  // vicrd? late ship?
+     ITEM_BIG_ROOT = 500, // 119
+     ITEM_RAZOR_CLAW = 501, // post?
+     ITEM_RAZOR_FANG = 502, // SCOPE LENS ABANDONED SHIP
+     ITEM_EVIOLITE = 503, // MT PYRE
+     ITEM_FLOAT_STONE = 504, // granite xave B1F
+     ITEM_ROCKY_HELMET = 505,  // vicrd? late ship?
 
-     ITEM_RING_TARGET = 506 // Rustboro
-     ITEM_BINDING_BAND = 507 // 121
+     ITEM_RING_TARGET = 506, // Rustboro
+     ITEM_BINDING_BAND = 507, // 121
 
-     ITEM_ASSAULT_VEST = 508  // vicrd??
-     ITEM_SAFETY_GOGGLES = 509 // NEW MAUV
+     ITEM_ASSAULT_VEST = 508,  // vicrd??
+     ITEM_SAFETY_GOGGLES = 509, // NEW MAUV
 
-     ITEM_TERRAIN_EXTENDER = 510 // 119 UP WATERFALL
-     ITEM_PROTECTIVE_PADS = 511 // 117
+     ITEM_TERRAIN_EXTENDER = 510, // 119 UP WATERFALL
+     ITEM_PROTECTIVE_PADS = 511, // 117
 
-     ITEM_HEAVY_DUTY_BOOTS = 512 
-     ITEM_UTILITY_UMBRELLA = 513 //ROUTE 120
+     ITEM_HEAVY_DUTY_BOOTS = 512, 
+     ITEM_UTILITY_UMBRELLA = 513, //ROUTE 120
 
     // Berries
     FIRST_BERRY_INDEX = 514,
@@ -838,6 +836,7 @@ enum __attribute__((packed)) Item
     ITEM_HM06 = 687,
     ITEM_HM07 = 688,
     ITEM_HM08 = 689,
+    ITEM_HM09 = 690,
 
 
     /* Expands to:
@@ -855,7 +854,6 @@ enum __attribute__((packed)) Item
     #undef TO_TMHM_NUMS
 
     // Charms
-    ITEM_OVAL_CHARM = 690,
     ITEM_SHINY_CHARM = 691,
     ITEM_CATCHING_CHARM = 692,
     ITEM_EXP_CHARM = 693,
@@ -1068,9 +1066,10 @@ enum __attribute__((packed)) Item
     ITEM_BAXCALIBRITE = 871,
     ITEM_TATSUGIRINITE = 872,
     ITEM_GLIMMORANITE = 873,
-    CUSTOM_ITEMS_BEGIN = ITEM_GLIMMORANITE
+    CUSTOM_ITEMS_BEGIN = ITEM_GLIMMORANITE,
 
-    ITEM_LEVEL_CAP = (CUSTOM_ITEMS_BEGIN +1),
+    ITEM_LEVEL_CAP,
+    ITEM_OVAL_CHARM,
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,
 };
