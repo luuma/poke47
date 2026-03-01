@@ -5,7 +5,7 @@
   "music": "MUS_RG_SEVII_ROUTE",
   "region_map_section": "MAPSEC_ROUTE_1",
   "requires_flash": false,
-  "weather": "WEATHER_SUNNY_CLOUDS",
+  "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
@@ -92,8 +92,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
-      "x": 31,
-      "y": 21,
+      "x": 34,
+      "y": 18,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -164,8 +164,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_sight_or_berry_tree_id": "ITEM_ADRENALINE_ORB",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R1377"
     },
     {
@@ -178,7 +178,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "ITEM_TM_AURORA_VEIL",
-      "script": "NULL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R137C"
     },
     {
@@ -190,8 +190,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_sight_or_berry_tree_id": "ITEM_ICE_HEAL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R1378"
     },
     {
@@ -203,21 +203,21 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_sight_or_berry_tree_id": "ITEM_POTION",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R1379"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 58,
-      "y": 60,
+      "x": 57,
+      "y": 61,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_sight_or_berry_tree_id": "ITEM_ABSORB_BULB",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R137E"
     },
     {
@@ -229,8 +229,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_sight_or_berry_tree_id": "ITEM_THROAT_SPRAY",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R137B"
     },
     {
@@ -255,8 +255,8 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_sight_or_berry_tree_id": "ITEM_FULL_HEAL",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R137D"
     }
   ],
@@ -286,14 +286,14 @@
     },
     {
       "type": "weather",
-      "x": 44,
-      "y": 9,
+      "x": 49,
+      "y": 10,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_FOG_HORIZONTAL"
     },
     {
       "type": "weather",
-      "x": 44,
+      "x": 47,
       "y": 11,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SNOW"
@@ -303,21 +303,21 @@
       "x": 44,
       "y": 32,
       "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
       "x": 45,
       "y": 32,
       "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
       "x": 60,
       "y": 31,
       "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
@@ -331,14 +331,14 @@
       "x": 50,
       "y": 25,
       "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
+      "weather": "COORD_EVENT_WEATHER_SNOW"
     },
     {
       "type": "weather",
       "x": 61,
       "y": 31,
       "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SUNNY_CLOUDS"
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
     }
   ],
   "bg_events": [
@@ -384,7 +384,7 @@
       "x": 20,
       "y": 55,
       "elevation": 0,
-      "item": "ITEM_NONE",
+      "item": "ITEM_STARDUST",
       "flag": "FLAG_R1376"
     },
     {
@@ -392,14 +392,14 @@
       "x": 60,
       "y": 39,
       "elevation": 0,
-      "item": "ITEM_NONE",
+      "item": "ITEM_BIG_PEARL",
       "flag": "FLAG_R1375"
     },
     {
       "type": "hidden_item",
       "x": 19,
       "y": 24,
-      "elevation": 5,
+      "elevation": 4,
       "item": "ITEM_SNOWBALL",
       "flag": "FLAG_R1371"
     },
@@ -413,11 +413,11 @@
     },
     {
       "type": "hidden_item",
-      "x": 3,
-      "y": 37,
+      "x": 0,
+      "y": 0,
       "elevation": 0,
       "item": "ITEM_NONE",
-      "flag": "FLAG_TEMP_1"
+      "flag": "FLAG_R1374"
     }
   ]
 }
