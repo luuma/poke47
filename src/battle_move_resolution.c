@@ -1854,7 +1854,7 @@ static enum CancelerResult CancelerNotFullyProtected(struct BattleContext *ctx)
 
 static bool32 IsMoveParentalBondAffected(struct BattleContext *ctx)
 {
-    if (ctx->abilityAtk != ABILITY_PARENTAL_BOND
+    if ((ctx.abilities[ctx.battlerAtk] == ABILITY_PARENTAL_BOND || (ctx.abilities[ctx.battlerAtk] == ABILITY_DOUBLE_WALLOP && gBattleMons[gBattlerTarget].hp <= gBattleMons[gBattlerTarget].maxHP * 3 / 4) )
      || gBattleStruct->numSpreadTargets > 1
      || IsMoveParentalBondBanned(ctx->move)
      || GetMoveCategory(ctx->move) == DAMAGE_CATEGORY_STATUS

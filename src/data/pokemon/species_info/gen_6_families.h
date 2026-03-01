@@ -1522,6 +1522,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             gOverworldPalette_Vivillon ##form,                                              \
             gShinyOverworldPalette_Vivillon ##form                                          \
         )                                                                                   \
+        .teachingType = ALL_TEACHABLES,                                                     \
         .levelUpLearnset = sVivillonLevelUpLearnset,                                        \
         .teachableLearnset = sVivillonTeachableLearnset,                                    \
         .formSpeciesIdTable = sVivillonFormSpeciesIdTable
