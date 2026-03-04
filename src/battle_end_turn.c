@@ -1297,6 +1297,7 @@ static bool32 HandleEndTurnThirdEventBlock(enum BattlerId battler)
         case ABILITY_HONEY_GATHER:
         case ABILITY_ITEM_GET:
         case ABILITY_SPEED_BOOST:
+        case ABILITY_ICE_BODY: // must be added here to leftovers properly
         case ABILITY_FOCUS_BOOST:
             if (AbilityBattleEffects(ABILITYEFFECT_ENDTURN, battler, ability, MOVE_NONE, TRUE))
                 effect = TRUE;

@@ -1114,6 +1114,10 @@ static enum CancelerResult CancelerMoveFailure(struct BattleContext *ctx)
         if (!(gBattleWeather & B_WEATHER_ICY_ANY && HasWeatherEffect()))
             battleScript = BattleScript_ButItFailed;
         break;
+    case EFFECT_SCREEN_BURN:
+        if (((gSideTimers[GetBattlerSide(ctx->battlerAtk)].reflectTimer > 0) && (gSideTimers[GetBattlerSide(ctx->battlerAtk)].lightscreenTimer > 0)))
+            battleScript = BattleScript_ButItFailed;
+        break;
     case EFFECT_CLANGOROUS_SOUL:
         if (gBattleMons[ctx->battlerAtk].hp <= max(1, GetNonDynamaxMaxHP(ctx->battlerAtk) / 3))
             battleScript = BattleScript_ButItFailed;
@@ -1188,8 +1192,7 @@ static enum CancelerResult CancelerMoveFailure(struct BattleContext *ctx)
         }
         break;
     case EFFECT_REST:
-        if (gBattleMons[ctx->battlerAtk].status1 & STATUS1_SLEEP
-         || ctx->abilityAtk == ABILITY_COMATOSE)
+        if (gBattleMons[ctx->battlerAtk].status1 & STATUS1_SLEEP)//         || ctx->abilityAtk == ABILITY_COMATOSE
             battleScript = BattleScript_RestIsAlreadyAsleep;
         else if (gBattleMons[ctx->battlerAtk].hp == gBattleMons[ctx->battlerAtk].maxHP)
             battleScript = BattleScript_AlreadyAtFullHp;
@@ -1854,7 +1857,7 @@ static enum CancelerResult CancelerNotFullyProtected(struct BattleContext *ctx)
 
 static bool32 IsMoveParentalBondAffected(struct BattleContext *ctx)
 {
-    if ((ctx->abilityAtk != ABILITY_PARENTAL_BOND || (ctx->abilityAtk != ABILITY_DOUBLE_WALLOP || gBattleMons[gBattlerTarget].hp >= gBattleMons[gBattlerTarget].maxHP * 3 / 4) )
+    if ((ctx->abilityAtk != ABILITY_PARENTAL_BOND && (ctx->abilityAtk != ABILITY_DOUBLE_WALLOP || gBattleMons[gBattlerTarget].hp >= gBattleMons[gBattlerTarget].maxHP * 3 / 4) )
      || gBattleStruct->numSpreadTargets > 1
      || IsMoveParentalBondBanned(ctx->move)
      || GetMoveCategory(ctx->move) == DAMAGE_CATEGORY_STATUS
@@ -2200,6 +2203,7 @@ static enum MoveEndResult MoveEndAbsorb(void)
         }
         break;
     case EFFECT_MAX_HP_50_RECOIL:
+    case EFFECT_SCREEN_BURN:
         if (IsBattlerAlive(gBattlerAttacker)
          && !gBattleStruct->unableToUseMove
          && (gBattleStruct->doneDoublesSpreadHit || !IsDoubleSpreadMove())
@@ -2291,7 +2295,7 @@ static enum MoveEndResult MoveEndAbilitiesAttacker(void)
 
 static enum MoveEndResult MoveEndQueueDancer(void)
 {
-    if (!IsDanceMove(gCurrentMove)
+    if ((!IsDanceMove(gCurrentMove) && !IsSoundMove(gCurrentMove))
      || IsBattlerUnaffectedByMove(gBattlerTarget)
      || gBattleStruct->unableToUseMove
      || gSpecialStatuses[gBattlerAttacker].dancerUsedMove
@@ -2307,7 +2311,7 @@ static enum MoveEndResult MoveEndQueueDancer(void)
         if (battler == gBattlerAttacker || !IsBattlerAlive(battler))
             continue;
 
-        if (GetBattlerAbility(battler) == ABILITY_DANCER)
+        if (GetBattlerAbility(battler) == ABILITY_DANCER || GetBattlerAbility(battler) == ABILITY_PARROT)
             gBattleMons[battler].volatiles.activateDancer = TRUE;
     }
 
@@ -3369,8 +3373,7 @@ static enum MoveEndResult MoveEndEmergencyExit(void)
     // we check if EE can be activated and count how many.
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
     {
-        if (!IsBattleMoveStatus(gCurrentMove)
-         && !gBattleStruct->unableToUseMove
+        if (!gBattleStruct->unableToUseMove
          && EmergencyExitCanBeTriggered(i))
         {
             emergencyExitBattlers |= 1u << i;
@@ -3780,7 +3783,7 @@ static enum MoveEndResult MoveEndDancer(void)
         gSpecialStatuses[gBattlerAttacker].dancerUsedMove = TRUE;
     }
 
-    if (AbilityBattleEffects(ABILITYEFFECT_MOVE_END_OTHER, nextDancer, ABILITY_DANCER, gCurrentMove, TRUE))
+    if (AbilityBattleEffects(ABILITYEFFECT_MOVE_END_OTHER, nextDancer, ABILITY_DANCER, gCurrentMove, TRUE) || AbilityBattleEffects(ABILITYEFFECT_MOVE_END_OTHER, nextDancer, ABILITY_PARROT, gCurrentMove, TRUE))
         result = MOVEEND_RESULT_RUN_SCRIPT;
 
     gBattleScripting.moveendState++;

@@ -741,10 +741,11 @@ static inline u32 GetMoveDamagePercentage(enum Move move)
     return gMovesInfo[move].argument.damagePercentage;
 }
 
-static inline u32 GetMoveOverwriteAbility(enum Move move)
+static inline u32 GetMoveOverwriteAbility(enum Move move)// what benefit does this have?? Isn't this just covering for the testing system? Bloody asserts lol
 {
+    extern bool32 MoveHasAdditionalEffect(enum Move move, enum MoveEffect moveEffect);
     move = SanitizeMoveId(move);
-    assertf(gMovesInfo[move].effect == EFFECT_OVERWRITE_ABILITY, "not a move that overwrites abilities: %S", gMovesInfo[move].name);
+    assertf(gMovesInfo[move].effect == EFFECT_OVERWRITE_ABILITY || MoveHasAdditionalEffect(move, MOVE_EFFECT_OVERWRITE_ABILITY), , "not a move that overwrites abilities: %S", gMovesInfo[move].name);
     return gMovesInfo[move].argument.overwriteAbility;
 }
 

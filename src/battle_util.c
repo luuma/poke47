@@ -4585,7 +4585,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 gBattlerAttacker = gBattlerAbility = battler;
                 gCalledMove = move;
 
-                // Set the target to the original target of the mon that first used a Dance move
+                // Set the target to the original target of the mon that first used a SOUND move
                 gBattlerTarget = gBattleScripting.savedBattler & 0x3;
 
                 // Make sure that the target isn't an ally - if it is, target the original user
@@ -4945,7 +4945,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         gLastUsedAbility = GetBattlerAbility(battler);
         switch (gLastUsedAbility)
         {
-        case ABILITY_FORECAST:
         case ABILITY_FLOWER_GIFT:
         case ABILITY_ICE_FACE:
         {
@@ -4968,6 +4967,36 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             }
             break;
         }
+        case ABILITY_FORECAST:
+        {
+            bool32 battlerWeatherAffected = IsBattlerWeatherAffected(battler, gBattleWeather);
+            if (battlerWeatherAffected && !CanBattlerFormChange(battler, FORM_CHANGE_BATTLE_WEATHER))
+            {
+                // If Hail/Snow activates when in Eiscue is in base, prevent reversion when Eiscue Noice gets broken
+                gBattleMons[battler].volatiles.weatherAbilityDone = TRUE;
+            }
+
+            if (((!gBattleMons[battler].volatiles.weatherAbilityDone && battlerWeatherAffected)
+             || gBattleWeather == B_WEATHER_NONE
+             || !HasWeatherEffect()) // Air Lock active
+             && TryBattleFormChange(battler, FORM_CHANGE_BATTLE_WEATHER, gLastUsedAbility))
+            {
+                gBattleScripting.battler = battler;
+                gBattleMons[battler].volatiles.weatherAbilityDone = TRUE;
+                BattleScriptCall(BattleScript_BattlerFormChangeWithString);
+                if (CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN, ability))
+                {
+                    SET_STATCHANGER(STAT_SPATK, 1, FALSE);
+                    PREPARE_STAT_BUFFER(gBattleTextBuff1, STAT_SPATK);
+                    gBattleScripting.animArg1 = GET_STAT_BUFF_ID(STAT_SPATK) + (STAT_ANIM_PLUS1);
+                    BattleScriptCall(BattleScript_RaiseStatOnFaintingTarget);
+                }
+                effect++;
+            }
+            break;
+        }
+
+
         case ABILITY_PROTOSYNTHESIS:
             if (!gBattleMons[battler].volatiles.weatherAbilityDone
              && (gBattleWeather & B_WEATHER_SUN) && HasWeatherEffect()
@@ -10125,12 +10154,15 @@ bool32 IsMoveEffectBlockedByTarget(enum Ability ability)
         RecordAbilityBattle(gBattlerTarget, ability);
         return TRUE;
     }
+    else if (gSideStatuses[GetBattlerSide(gBattlerTarget)] & SIDE_STATUS_MIST)
+    {
+        return TRUE;
+    }
     else if (GetBattlerHoldEffect(gBattlerTarget) == HOLD_EFFECT_COVERT_CLOAK)
     {
         RecordItemEffectBattle(gBattlerTarget, HOLD_EFFECT_COVERT_CLOAK);
         return TRUE;
     }
-
     return FALSE;
 }
 
@@ -10506,6 +10538,7 @@ bool32 CanMoveSkipAccuracyCalc(enum BattlerId battlerAtk, enum BattlerId battler
 
     if ((gBattleMons[battlerDef].volatiles.lockOn && gBattleMons[battlerDef].volatiles.battlerWithSureHit == battlerAtk)
      || CanMoveSkipAccuracyCheck(battlerAtk, move)
+     || gBattleMons[battlerAtk].volatiles.laserFocus
      || gBattleMons[battlerDef].volatiles.glaiveRush)
     {
         effect = TRUE;
@@ -10735,6 +10768,7 @@ bool32 DoesOHKOMoveMissTarget(struct BattleCalcValues *cv)
         lands = NO_HIT;
     }
     else if ((gBattleMons[cv->battlerDef].volatiles.lockOn && gBattleMons[cv->battlerDef].volatiles.battlerWithSureHit == cv->battlerAtk)
+     	  || gBattleMons[cv->battlerAtk].volatiles.laserFocus
           || IsAbilityAndRecord(cv->battlerAtk, cv->abilities[cv->battlerAtk], ABILITY_NO_GUARD)
           || IsAbilityAndRecord(cv->battlerDef, cv->abilities[cv->battlerDef], ABILITY_NO_GUARD))
     {

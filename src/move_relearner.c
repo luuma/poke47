@@ -32,7 +32,6 @@
 #include "constants/songs.h"
 #include "data/pokemon/egg_moves.h"
 #include "data/tutor_moves.h"
-
 /*
  * Move relearner state machine
  * ------------------------

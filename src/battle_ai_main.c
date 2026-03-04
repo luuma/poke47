@@ -6403,6 +6403,7 @@ static s32 AI_Risky(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum M
         break;
     case EFFECT_MAX_HP_50_RECOIL:
     case EFFECT_CHLOROBLAST:
+    case EFFECT_SCREEN_BURN:
     case EFFECT_SWAGGER:
     case EFFECT_FLATTER:
     case EFFECT_ATTRACT:

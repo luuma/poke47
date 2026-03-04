@@ -479,7 +479,7 @@ static enum ItemEffect TryThroatSpray(enum BattlerId battlerAtk)
     if (IsSoundMove(gCurrentMove)
      && gMultiHitCounter == 0
      && IsBattlerAlive(battlerAtk)
-     && IsAnyTargetTurnDamaged(battlerAtk)
+     //&& IsAnyTargetTurnDamaged(battlerAtk) What the fuck is this check doing here?
      && CompareStat(battlerAtk, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN, GetBattlerAbility(battlerAtk))
      && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
     {
@@ -490,6 +490,28 @@ static enum ItemEffect TryThroatSpray(enum BattlerId battlerAtk)
 
     return effect;
 }
+
+static enum ItemEffect TrySpandexFlares(enum BattlerId battlerAtk)
+{
+    enum ItemEffect effect = ITEM_NO_EFFECT;
+
+    if (IsDanceMove(gCurrentMove)
+     && gMultiHitCounter == 0
+     && IsBattlerAlive(battlerAtk)
+     && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
+    {
+        if (!(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN || gBattleStruct->isSkyBattle))
+    	{
+             gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_TERRAIN_SET_ELECTRIC;
+	     TryChangeBattleTerrain(battlerAtk, STATUS_FIELD_ELECTRIC_TERRAIN);
+	     BattleScriptCall(BattleScript_AttackerItemSpandexFlares);
+             effect = ITEM_EFFECT_OTHER;
+    	}
+    }
+    return effect;
+}
+
+
 
 static enum ItemEffect DamagedStatBoostBerryEffect(enum BattlerId battlerDef, enum BattlerId battlerAtk, enum Stat statId, enum DamageCategory category)
 {
@@ -1096,6 +1118,9 @@ enum ItemEffect ItemBattleEffects(enum BattlerId itemBattler, enum BattlerId bat
         break;
     case HOLD_EFFECT_THROAT_SPRAY:
         effect = TryThroatSpray(itemBattler);
+        break;
+    case HOLD_EFFECT_SPANDEX_FLARES:
+        effect = TrySpandexFlares(itemBattler);
         break;
     case HOLD_EFFECT_KEE_BERRY:  // consume and boost defense if used physical move
         effect = DamagedStatBoostBerryEffect(itemBattler, battler, STAT_DEF, DAMAGE_CATEGORY_PHYSICAL);

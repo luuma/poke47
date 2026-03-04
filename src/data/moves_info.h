@@ -1539,8 +1539,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Mist"),
         .description = COMPOUND_STRING(
-            "Creates a mist that stops\n"
-            "reduction of stats."),
+            "A mist cloaks the team\n"
+            "from secondary effects."),
         .effect = EFFECT_MIST,
         .power = 0,
         .type = TYPE_ICE,
@@ -14592,8 +14592,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Rototiller"),
         .description = COMPOUND_STRING(
-            "Ups the Attack and Sp. Atk\n"
-            "of Grass-type Pokémon."),
+            "Ups the Atk, Def, and Sp.\n"
+            "Def of Grass-types."),
         .effect = EFFECT_ROTOTILLER,
         .power = 0,
         .type = TYPE_GROUND,
@@ -16384,7 +16384,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Toxic Thread"),
         .description = COMPOUND_STRING(
-            "Attacks with a thread that\n"
+            "A thread that badly\n"
             "poisons and drops Speed."),
         .effect = EFFECT_TOXIC_THREAD,
         .power = 0,
@@ -17851,7 +17851,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Tar Shot"),
         .description = COMPOUND_STRING(
-            "Lowers the foe's Speed and\n"
+            "Sharply lowers Speed and\n"
             "makes it weak to Fire."),
         .effect = EFFECT_TAR_SHOT,
         .power = 0,
@@ -23049,7 +23049,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .power = 0,
         .type = TYPE_ELECTRIC,
         .accuracy = 0,
-        .pp = 30,
+        .pp = 5,
         .target = TARGET_USER,
         .priority = 0,
         .category = DAMAGE_CATEGORY_STATUS,
@@ -23121,7 +23121,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Scatters sharp spikes\n"
             "that do steel damage."),    //ANIM TODO
         .effect = EFFECT_HIT,
-        .power = 50,
+        .power = 60,
         .type = TYPE_STEEL,
         .accuracy = 100,
         .pp = 5,

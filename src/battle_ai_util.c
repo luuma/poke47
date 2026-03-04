@@ -730,6 +730,9 @@ bool32 IsAdditionalEffectBlocked(enum BattlerId battlerAtk, u32 abilityAtk, enum
     if (gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK)
         return TRUE;
 
+    if (gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_MIST)
+        return TRUE;
+
     if (abilityDef == ABILITY_SHIELD_DUST && !IsMoldBreakerTypeAbility(battlerAtk, abilityAtk))
         return TRUE;
 
@@ -1241,6 +1244,7 @@ static bool32 AI_IsMoveEffectInMinus(enum BattlerId battlerAtk, enum BattlerId b
     case EFFECT_MAX_HP_50_RECOIL:
     case EFFECT_CHLOROBLAST:
     case EFFECT_FINAL_GAMBIT:
+    case EFFECT_SCREEN_BURN:
         return TRUE;
     case EFFECT_RECOIL:
     case EFFECT_RECOIL_IF_MISS:
@@ -3762,6 +3766,7 @@ bool32 ShouldTryToFlinch(enum BattlerId battlerAtk, enum BattlerId battlerDef, e
     enum Move predictedMoveSpeedCheck = GetIncomingMoveSpeedCheck(battlerAtk, battlerDef, gAiLogicData);
     if (((!IsMoldBreakerTypeAbility(battlerAtk, gAiLogicData->abilities[battlerAtk]) && (defAbility == ABILITY_SHIELD_DUST || defAbility == ABILITY_INNER_FOCUS))
       || gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
+      || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_MIST
       || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
       || AI_IsSlower(battlerAtk, battlerDef, move, predictedMoveSpeedCheck, CONSIDER_PRIORITY))) // Opponent goes first
     {
@@ -3820,6 +3825,7 @@ bool32 IsFlinchGuaranteed(enum BattlerId battlerAtk, enum BattlerId battlerDef, 
         if (additionalEffect->moveEffect == MOVE_EFFECT_FLINCH)
         {
             if (gAiLogicData->holdEffects[battlerDef] == HOLD_EFFECT_COVERT_CLOAK
+            || gSideStatuses[GetBattlerSide(battlerDef)] & SIDE_STATUS_MIST
             || DoesSubstituteBlockMove(battlerAtk, battlerDef, move)
             || (!IsMoldBreakerTypeAbility(battlerAtk, gAiLogicData->abilities[battlerAtk])
             && (gAiLogicData->abilities[battlerDef] == ABILITY_SHIELD_DUST || gAiLogicData->abilities[battlerDef] == ABILITY_INNER_FOCUS)))
@@ -6373,7 +6379,7 @@ void GetAIPartyIndexes(enum BattlerId battler, s32 *firstId, s32 *lastId)
 
 bool32 ShouldInstructPartner(enum BattlerId partner, enum Move move)
 {
-    if (GetMoveEffect(move) == EFFECT_MAX_HP_50_RECOIL && gAiLogicData->abilities[partner] != ABILITY_MAGIC_GUARD)
+    if ((GetMoveEffect(move) == EFFECT_MAX_HP_50_RECOIL && gAiLogicData->abilities[partner] != ABILITY_MAGIC_GUARD) || GetMoveEffect(move) == EFFECT_SCREEN_BURN)
         return FALSE;
 
     enum MoveTarget type = AI_GetBattlerMoveTargetType(partner, move);

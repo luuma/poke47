@@ -27,12 +27,12 @@ SINGLE_BATTLE_TEST("eNVELOP uses special defense stat of target", s16 damage)
 
 SINGLE_BATTLE_TEST("ENVELOP's damage depends on the user's base Defense instead of its base Attack", s16 damage)
 {
-    u32 def, atk;
+    u32 spdef, spatk;
     PARAMETRIZE { spdef = 150; spatk = 179; } // Atk is higher
     PARAMETRIZE { spatk = 150; spdef = 179; } // Atk is lower
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET) { SpAttack(atk); SpDefense(def); }
+        OPPONENT(SPECIES_WOBBUFFET) { SpAttack(spatk); SpDefense(spdef); }
     } WHEN {
         TURN { MOVE(opponent, MOVE_ENVELOP); }
     } SCENE {
@@ -59,7 +59,7 @@ DOUBLE_BATTLE_TEST("Just Desserts recycles allies' berries 100% of the time")
                MOVE(playerRight, MOVE_STUFF_CHEEKS); \
                MOVE(opponentLeft, MOVE_STUFF_CHEEKS); \
                MOVE(opponentRight, MOVE_STUFF_CHEEKS); }
-        TURN { MOVE(playerLeft, MOVE_JUST_DESSERTS; }
+        TURN { MOVE(playerLeft, MOVE_JUST_DESSERTS); }
     } SCENE {
         // turn 1
 
@@ -318,7 +318,4 @@ SINGLE_BATTLE_TEST("Emergency Exit will trigger due to recoil damage from screen
         ABILITY_POPUP(opponent, ABILITY_EMERGENCY_EXIT);
     }
 }
-
-
-
 

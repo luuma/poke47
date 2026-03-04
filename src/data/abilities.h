@@ -2432,7 +2432,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_GRAND_DEBUT] =
     {
         .name = _("Showboater"),
-        .description = COMPOUND_STRING("Halves damage on switch."),
+        .description = COMPOUND_STRING("1.5x Defense on switchin."),
         .aiRating = 8,
     },
 

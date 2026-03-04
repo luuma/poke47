@@ -907,7 +907,15 @@ enum __attribute__((packed)) Move
 
     // Add any custom moves here, not further down!
 
-    MOVES_COUNT = MOVES_COUNT_GEN9,
+    MOVE_MOOD_CRUSH = MOVES_COUNT_GEN9,
+    MOVE_ICESOAK,
+    MOVE_SCREEN_BURN,
+    MOVE_JUST_DESSERTS,
+    MOVE_CRIT_UP_HIT,
+    MOVE_BASTION_WALLS,
+    MOVE_LIGHTBLOOM,
+    MOVE_ENVELOP,
+    MOVES_COUNT,
 
     // Z Moves
     FIRST_Z_MOVE = MOVES_COUNT,
@@ -1008,16 +1016,7 @@ enum __attribute__((packed)) Move
     MOVE_G_MAX_RAPID_FLOW,
     LAST_MAX_MOVE = MOVE_G_MAX_RAPID_FLOW,
     MOVES_COUNT_DYNAMAX,
-    MOVES_COUNT_EXISTING = MOVES_COUNT_DYNAMAX,
-    MOVE_MOOD_CRUSH = MOVES_COUNT_EXISTING,
-    MOVE_ICESOAK,
-    MOVE_SCREEN_BURN,
-    MOVE_JUST_DESSERTS,
-    MOVE_CRIT_UP_HIT,
-    MOVE_BASTION_WALLS,
-    MOVE_LIGHTBLOOM,
-    MOVE_ENVELOP,
-    MOVES_COUNT_ALL,
+    MOVES_COUNT_ALL = MOVES_COUNT_DYNAMAX,
 };
 
 #define MOVE_DEFAULT     0x3FFF // Used when creating a mon to be replaced by a level-up move (needs to be less than that 0x4000 because of VarGet)

@@ -16007,6 +16007,24 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_LevelCap,
     },
 
+    [ITEM_SPANDEX_FLARES] =
+    {
+        .name = ITEM_NAME("Spandex Flares"),
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_SPANDEX_FLARES,
+        .description = COMPOUND_STRING(
+            "Starts Electric\n"
+            "Terrain when\n"
+            "dancing."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 30,
+        .iconPic = gItemIcon_ThroatSpray,
+        .iconPalette = gItemIconPalette_ThroatSpray,
+    },
+
 };
 
 #undef ITEM_NAME

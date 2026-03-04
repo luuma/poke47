@@ -811,6 +811,7 @@ extern const u8 BattleScript_WonderlandActivates[];
 extern const u8 BattleScript_WonderlandWonderRoomEnds[];
 extern const u8 BattleScript_TricklandActivates[];
 extern const u8 BattleScript_TricklandTrickRoomEnds[];
+extern const u8 BattleScript_AttackerItemSpandexFlares[];
 
 
 

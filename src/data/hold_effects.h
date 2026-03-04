@@ -610,4 +610,9 @@ const struct HoldEffectInfo gHoldEffectsInfo[HOLD_EFFECT_COUNT] =
     [HOLD_EFFECT_HONEY] =
     {
     },
+
+    [HOLD_EFFECT_SPANDEX_FLARES] =
+    {
+        .onAttackerAfterHit = TRUE,
+    },
 };

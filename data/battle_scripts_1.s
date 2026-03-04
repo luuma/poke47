@@ -607,7 +607,7 @@ BattleScript_EffectTarShot::
 	jumpifsubstituteblocks BattleScript_ButItFailed
 	accuracycheck BattleScript_MoveMissedPause
 	cantarshotwork BattleScript_ButItFailed
-	setstatchanger STAT_SPEED, 1, TRUE
+	setstatchanger STAT_SPEED, 2, TRUE
 	attackanimation
 	waitanimation
 	statbuffchange BS_TARGET, STAT_CHANGE_ALLOW_PTR, BattleScript_TryTarShot
@@ -1421,7 +1421,7 @@ BattleScript_EffectToxicThread::
 	setstatchanger STAT_SPEED, 2, TRUE
 	attackcanceler
 	jumpifsubstituteblocks BattleScript_ButItFailed
-	checknonvolatiletrigger MOVE_EFFECT_POISON, BattleScript_EffectStatDownFromAccCheck
+	checknonvolatiletrigger MOVE_EFFECT_TOXIC, BattleScript_EffectStatDownFromAccCheck
 	accuracycheck BattleScript_MoveMissedPause
 	attackanimation
 	waitanimation
@@ -1437,7 +1437,7 @@ BattleScript_ToxicThreadPrintString::
 	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_ToxicThreadTryPsn::
-	seteffectprimary BS_ATTACKER, BS_TARGET, MOVE_EFFECT_POISON
+	seteffectprimary BS_ATTACKER, BS_TARGET, MOVE_EFFECT_TOXIC
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectVenomDrench::
@@ -6500,6 +6500,18 @@ BattleScript_ElectricSurgeActivates::
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
 	call BattleScript_ActivateTerrainEffects
+	return
+
+BattleScript_AttackerItemSpandexFlares::
+	copybyte sBATTLER, gBattlerAttacker
+	playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	waitanimation
+	printstring STRINGID_TERRAINBECOMESELECTRIC
+	waitmessage B_WAIT_TIME_LONG
+	playanimation BS_SCRIPTING, B_ANIM_RESTORE_BG
+	call BattleScript_ActivateTerrainEffects
+	waitmessage B_WAIT_TIME_LONG
+	removeitem BS_ATTACKER
 	return
 
 BattleScript_MistySurgeActivates::

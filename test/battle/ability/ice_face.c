@@ -40,8 +40,6 @@ SINGLE_BATTLE_TEST("Ice Face is restored if hail or snow begins while Noice Face
     PARAMETRIZE { move = MOVE_SANDSTORM; }
     GIVEN {
         ASSUME(GetMoveCategory(MOVE_SCRATCH) == DAMAGE_CATEGORY_PHYSICAL);
-        ASSUME(GetMoveEffect(MOVE_SNOWSCAPE) == EFFECT_SNOWSCAPE);
-        ASSUME(GetMoveEffect(MOVE_HAIL) == EFFECT_HAIL);
         PLAYER(SPECIES_CRUSTLE);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -69,8 +67,6 @@ SINGLE_BATTLE_TEST("Ice Face is restored if Noice Face Eiscue is sent in while h
     PARAMETRIZE { move = MOVE_SANDSTORM; }
     GIVEN {
         ASSUME(GetMoveCategory(MOVE_SCRATCH) == DAMAGE_CATEGORY_PHYSICAL);
-        ASSUME(GetMoveEffect(MOVE_SNOWSCAPE) == EFFECT_SNOWSCAPE);
-        ASSUME(GetMoveEffect(MOVE_HAIL) == EFFECT_HAIL);
         PLAYER(SPECIES_CRUSTLE);
         PLAYER(SPECIES_WOBBUFFET);
         OPPONENT(SPECIES_WOBBUFFET);

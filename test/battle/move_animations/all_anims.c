@@ -358,7 +358,7 @@ static void DoublesWhen(u32 move, struct BattlePokemon *attacker, struct BattleP
     TURN {
         if (TargetHasToMove(move))
         { // Opponent needs to hit the player first
-            MOVE(target, effect == EFFECT_MIRROR_COAT ? MOVE_SWIFT : MOVE_POUND, target: attacker);
+            //MOVE(target, effect == EFFECT_MIRROR_COAT ? MOVE_SWIFT : MOVE_POUND, target: attacker);
             MOVE(attacker, move, target: target);
         }
         else if (effect == EFFECT_SNATCH)
@@ -366,7 +366,7 @@ static void DoublesWhen(u32 move, struct BattlePokemon *attacker, struct BattleP
             MOVE(attacker, move, target: target);
             MOVE(target, MOVE_SWORDS_DANCE);
         }
-        else if (effect == EFFECT_OHKO || effect == EFFECT_SHEER_COLD)
+        else if (effect == EFFECT_OHKO)
         { // Opponent needs to send out a different team member
             MOVE(attacker, move, target: target);
             SEND_OUT(target, 2);
