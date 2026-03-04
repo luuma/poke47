@@ -879,6 +879,8 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNDISGUISEWASBUSTED]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s disguise was busted!"),
     [STRINGID_ZENMODETRIGGERED]                     = COMPOUND_STRING("{B_SCR_ABILITY} triggered!"),
     [STRINGID_ZENMODEENDED]                         = COMPOUND_STRING("{B_SCR_ABILITY} ended!"),
+    [STRINGID_TARGETPKMNHURTSWITH]                        = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} was hurt by {B_ATK_NAME_WITH_PREFIX2}'s {B_BUFF1}!"),
+    [STRINGID_DAMAGEBOUNCEABLESDOESNTALLOW]               = COMPOUND_STRING("The effects of the {B_LAST_ITEM} prevent attacking moves from being used!\p"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =

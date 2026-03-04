@@ -615,4 +615,23 @@ const struct HoldEffectInfo gHoldEffectsInfo[HOLD_EFFECT_COUNT] =
     {
         .onAttackerAfterHit = TRUE,
     },
+
+    [HOLD_EFFECT_EVIOLITETYPES] =
+    {
+    },
+
+    [HOLD_EFFECT_EVIOLITESPEED] =
+    {
+    },
+
+    [HOLD_EFFECT_KNELL_BELL] =
+    {
+        .lifeOrbShellBell = TRUE,
+    },
+
+    [HOLD_EFFECT_DAMAGE_BOUNCEABLES] =
+    {
+        .onAttackerAfterHit = TRUE,
+    },
+
 };

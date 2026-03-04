@@ -83,6 +83,9 @@
 #include "cable_club.h"
 #include "test/test_runner_battle.h"
 
+//#include "battle_util.h"
+
+
 extern const struct BgTemplate gBattleBgTemplates[];
 extern const struct WindowTemplate *const gBattleWindowTemplates[];
 
@@ -4793,6 +4796,16 @@ u32 GetBattlerTotalSpeedStat(enum BattlerId battler, enum Ability ability, enum 
         speed /= 2;
     else if (holdEffect == HOLD_EFFECT_CHOICE_SCARF && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
         speed = (speed * 150) / 100;
+    else if (holdEffect == HOLD_EFFECT_EVIOLITESPEED)
+    {
+        u16 species = gBattleMons[battler].species;
+        if (gBattleMons[battler].volatiles.transformed && gBattleMons[battler].volatiles.transformedMonSpecies != SPECIES_NONE)
+	    species = gBattleMons[battler].volatiles.transformedMonSpecies;
+        if (CanEvolve(species))
+	    speed = (speed * 150) / 100;
+	else
+	    speed = (speed * 110) / 100;
+    }
     else if (holdEffect == HOLD_EFFECT_QUICK_POWDER && gBattleMons[battler].species == SPECIES_DITTO && !(gBattleMons[battler].volatiles.transformed))
         speed *= 2;
 

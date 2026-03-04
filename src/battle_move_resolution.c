@@ -936,11 +936,18 @@ static enum CancelerResult CancelerPPDeduction(struct BattleContext *ctx)
         return CANCELER_RESULT_SUCCESS;
 
     s32 ppToDeduct = 1;
+    s32 ppCost = 1;
     enum MoveTarget moveTarget = GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move);
     u32 movePosition = gCurrMovePos;
 
     if (gBattleStruct->submoveAnnouncement == SUBMOVE_SUCCESS)
         movePosition = gChosenMovePos;
+
+    if (GetBattlerHoldEffect(ctx->battlerAtk) == HOLD_EFFECT_KNELL_BELL)
+    {
+        ppCost *= 4;//
+        ppToDeduct = ppCost;
+    }
 
     if (IsSpreadMove(moveTarget)
      || moveTarget == TARGET_ALL_BATTLERS
@@ -950,13 +957,14 @@ static enum CancelerResult CancelerPPDeduction(struct BattleContext *ctx)
         for (u32 i = 0; i < gBattlersCount; i++)
         {
             if (!IsBattlerAlly(i, ctx->battlerAtk) && IsBattlerAlive(i))
-                ppToDeduct += (GetBattlerAbility(i) == ABILITY_PRESSURE);
+                ppToDeduct += ppCost*2*(GetBattlerAbility(i) == ABILITY_PRESSURE);
         }
     }
+
     else if (moveTarget != TARGET_OPPONENTS_FIELD)
     {
         if (ctx->battlerAtk != ctx->battlerDef && GetBattlerAbility(ctx->battlerDef) == ABILITY_PRESSURE)
-             ppToDeduct++;
+             ppToDeduct *= 3;
     }
 
     // For item Metronome, echoed voice

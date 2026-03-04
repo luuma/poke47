@@ -1605,6 +1605,24 @@ u32 TrySetCantSelectMoveBattleScript(enum BattlerId battler)
             limitations++;
         }
     }
+    else if (holdEffect == HOLD_EFFECT_DAMAGE_BOUNCEABLES && !(IsBattleMoveStatus(move) && moveEffect != EFFECT_ME_FIRST))
+    {
+        if ((GetActiveGimmick(battler) == GIMMICK_DYNAMAX))
+            gCurrentMove = MOVE_MAX_GUARD;
+        else
+            gCurrentMove = move;
+        gLastUsedItem = gBattleMons[battler].item;
+        if (gBattleTypeFlags & BATTLE_TYPE_PALACE)
+        {
+            gPalaceSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedMoveSpikyVestInPalace;
+            gProtectStructs[battler].palaceUnableToUseMove = TRUE;
+        }
+        else
+        {
+            gSelectionBattleScripts[battler] = BattleScript_SelectingNotAllowedMoveSpikyVest;
+            limitations++;
+        }
+    }
     if (DYNAMAX_BYPASS_CHECK && (GetBattlerAbility(battler) == ABILITY_GORILLA_TACTICS) && *choicedMove != MOVE_NONE
               && *choicedMove != MOVE_UNAVAILABLE && *choicedMove != move)
     {
@@ -1719,6 +1737,8 @@ u32 CheckMoveLimitations(enum BattlerId battler, u8 unusableMoves, u16 check)
             unusableMoves |= 1u << i;
         // Can't Use Twice flag
         else if (check & MOVE_LIMITATION_CANT_USE_TWICE && MoveCantBeUsedTwice(move) && move == gLastResultingMoves[battler])
+            unusableMoves |= 1u << i;
+        else if (check & MOVE_LIMITATION_SPIKY_VEST && holdEffect == HOLD_EFFECT_DAMAGE_BOUNCEABLES && !(IsBattleMoveStatus(move) && moveEffect != EFFECT_ME_FIRST))
             unusableMoves |= 1u << i;
     }
     return unusableMoves;
@@ -7345,7 +7365,7 @@ static inline u32 CalcAttackStat(struct BattleContext *ctx)
     return uq4_12_multiply_by_int_half_down(modifier, atkStat);
 }
 
-static bool32 CanEvolve(u32 species)
+bool32 CanEvolve(u32 species)
 {
     u32 i;
     const struct Evolution *evolutions = GetSpeciesEvolutions(species);
@@ -7536,6 +7556,15 @@ static inline u32 CalcDefenseStat(struct BattleContext *ctx)
                 species = gBattleMons[battlerDef].volatiles.transformedMonSpecies;
             if (CanEvolve(species))
                 modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+        }
+        break;
+    case HOLD_EFFECT_EVIOLITETYPES:
+        {
+            u16 species = gBattleMons[battlerDef].species; 
+            if (gBattleMons[battlerDef].volatiles.transformed && gBattleMons[battlerDef].volatiles.transformedMonSpecies != SPECIES_NONE)
+                species = gBattleMons[battlerDef].volatiles.transformedMonSpecies;
+            if (CanEvolve(species) && (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE)||IS_BATTLER_OF_TYPE(battlerDef, TYPE_ROCK)))
+                modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         }
         break;
     case HOLD_EFFECT_ASSAULT_VEST:

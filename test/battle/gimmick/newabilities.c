@@ -283,6 +283,31 @@ SINGLE_BATTLE_TEST("fPREcast raises satk EXClusively on form change.")
     }
 }
 
+SINGLE_BATTLE_TEST("Pressure causes opponent's moves to use up 2 additional PP")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_POUND, 35}); }
+        OPPONENT(SPECIES_WOBBUFFET) { Ability(ABILITY_PRESSURE); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_POUND); }
+    } THEN {
+        EXPECT_EQ(player->pp[0], 32);
+    }
+}
+
+DOUBLE_BATTLE_TEST("Pressure's +2PP effect stacks with multiple Pokémon")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_SWIFT, 20}); }
+        PLAYER(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_WOBBUFFET) { Ability(ABILITY_PRESSURE); }
+        OPPONENT(SPECIES_WYNAUT) { Ability(ABILITY_PRESSURE); }
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_SWIFT); }
+    } THEN {
+        EXPECT_EQ(playerLeft->pp[0], 15);
+    }
+}
 
 
 ///GRAND DEBUT, ANALYTIC. NOT MOve relearner sadly.

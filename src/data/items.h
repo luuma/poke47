@@ -16013,9 +16013,9 @@ const struct ItemInfo gItemsInfo[] =
         .price = 10000,
         .holdEffect = HOLD_EFFECT_SPANDEX_FLARES,
         .description = COMPOUND_STRING(
-            "Starts Electric\n"
-            "Terrain when\n"
-            "dancing."),
+            "When held, dances\n"
+            "will electrify\n"
+            "the battlefield."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -16025,6 +16025,79 @@ const struct ItemInfo gItemsInfo[] =
         .iconPalette = gItemIconPalette_ThroatSpray,
     },
 
+    [ITEM_EVIUM_INGOT] =
+    {
+        .name = ITEM_NAME("Evolium Ingot"),
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_EVIOLITETYPES,
+        .description = COMPOUND_STRING(
+            "Doubles defenses\n"
+            "for unevolved\n"
+            "Rock or Ice types."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 40,
+        .iconPic = gItemIcon_Eviolite,
+        .iconPalette = gItemIconPalette_Eviolite,
+    },
+
+    [ITEM_EVIOPOLYMER] =
+    {
+        .name = ITEM_NAME("Eviopolymer"),
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_EVIOLITESPEED,
+        .description = COMPOUND_STRING(
+            "Boosts Speed 1.1x,\n"
+            "or 1.5x if the\n"
+            "holder can evolve."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 40,
+        .iconPic = gItemIcon_Eviolite,
+        .iconPalette = gItemIconPalette_Eviolite,
+    },
+
+    [ITEM_KNELL_BELL] =
+    {
+        .name = ITEM_NAME("Knell Bell"),
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_KNELL_BELL,
+        .holdEffectParam = 4,
+        .description = COMPOUND_STRING(
+            "Quadruples PP use,\n"
+            "but recovers up to\n"
+            "1/4 damage as HP."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 60,
+        .iconPic = gItemIcon_Eviolite,
+        .iconPalette = gItemIconPalette_Eviolite,
+    },
+
+    [ITEM_DAMAGE_BOUNCEABLES] =
+    {
+        .name = ITEM_NAME("Wizard Hat"),
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_DAMAGE_BOUNCEABLES,//and corresponding MOVE_LIMITATION_SPIKY_VEST
+        .holdEffectParam = 6,
+        .description = COMPOUND_STRING(
+            "Hurt target after,\n"
+            "all moves, but\n"
+            "bans attack moves."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_Eviolite,
+        .iconPalette = gItemIconPalette_Eviolite,
+    },
 };
 
 #undef ITEM_NAME

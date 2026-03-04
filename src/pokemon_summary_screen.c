@@ -574,7 +574,7 @@ static const struct WindowTemplate sSummaryTemplate[] =
     },
     [PSS_LABEL_WINDOW_PROMPT_RELEARN] = {
         .bg = 0,
-        .tilemapLeft = (P_ENABLE_MOVE_RELEARNERS) ? 18 : 22,
+        .tilemapLeft = 18, /// (P_ENABLE_MOVE_RELEARNERS) ? 18 : 22,// FUCKED THE MERGE UP!
         .tilemapTop = 2,
         .width = 11,
         .height = 2,

@@ -511,7 +511,23 @@ static enum ItemEffect TrySpandexFlares(enum BattlerId battlerAtk)
     return effect;
 }
 
+static enum ItemEffect TryDamageBounceables(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Item item)
+{
+    enum ItemEffect effect = ITEM_NO_EFFECT;
 
+    if (MoveCanBeBouncedBack(gCurrentMove)
+     && gMultiHitCounter == 0
+     && IsBattlerAlive(battlerDef)
+     && !IsAbilityAndRecord(battlerAtk, GetBattlerAbility(battlerAtk), ABILITY_MAGIC_GUARD)
+     && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
+    {
+	SetPassiveDamageAmount(battlerDef, GetNonDynamaxMaxHP(battlerDef) / GetBattlerHoldEffectParam(battlerAtk));
+	PREPARE_ITEM_BUFFER(gBattleTextBuff1, item);
+	BattleScriptCall(BattleScript_DamageBounceablesActivates);
+	effect = ITEM_HP_CHANGE;
+    }
+    return effect;
+}
 
 static enum ItemEffect DamagedStatBoostBerryEffect(enum BattlerId battlerDef, enum BattlerId battlerAtk, enum Stat statId, enum DamageCategory category)
 {
@@ -1122,6 +1138,9 @@ enum ItemEffect ItemBattleEffects(enum BattlerId itemBattler, enum BattlerId bat
     case HOLD_EFFECT_SPANDEX_FLARES:
         effect = TrySpandexFlares(itemBattler);
         break;
+    case HOLD_EFFECT_DAMAGE_BOUNCEABLES:
+        effect = TryDamageBounceables(itemBattler, battler, item);
+        break;
     case HOLD_EFFECT_KEE_BERRY:  // consume and boost defense if used physical move
         effect = DamagedStatBoostBerryEffect(itemBattler, battler, STAT_DEF, DAMAGE_CATEGORY_PHYSICAL);
         break;
@@ -1129,7 +1148,8 @@ enum ItemEffect ItemBattleEffects(enum BattlerId itemBattler, enum BattlerId bat
         effect = DamagedStatBoostBerryEffect(itemBattler, battler, STAT_SPDEF, DAMAGE_CATEGORY_SPECIAL);
         break;
     case HOLD_EFFECT_SHELL_BELL:
-        effect = TryShellBell(itemBattler);
+    case HOLD_EFFECT_KNELL_BELL:
+        effect = TryShellBell(itemBattler);// they have different amounts defined in the item but use same script at this point.
         break;
     case HOLD_EFFECT_LIFE_ORB:
         effect = TryLifeOrb(itemBattler);

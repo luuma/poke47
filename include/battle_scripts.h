@@ -812,6 +812,9 @@ extern const u8 BattleScript_WonderlandWonderRoomEnds[];
 extern const u8 BattleScript_TricklandActivates[];
 extern const u8 BattleScript_TricklandTrickRoomEnds[];
 extern const u8 BattleScript_AttackerItemSpandexFlares[];
+extern const u8 BattleScript_DamageBounceablesActivates[];
+extern const u8 BattleScript_SelectingNotAllowedMoveSpikyVest[];
+extern const u8 BattleScript_SelectingNotAllowedMoveSpikyVestInPalace[];
 
 
 

@@ -6966,6 +6966,19 @@ BattleScript_RockyHelmetActivatesDmg:
 	call BattleScript_HurtAttacker
 	return
 
+BattleScript_DamageBounceablesActivates::
+	@ don't play the animation for a fainted mon
+	@jumpifabsent BS_TARGET, BattleScript_HurtTarget
+	@playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
+	@waitanimation
+BattleScript_HurtTarget:
+	healthbarupdate BS_TARGET, PASSIVE_HP_UPDATE
+	datahpupdate BS_TARGET, PASSIVE_HP_UPDATE
+	printstring STRINGID_TARGETPKMNHURTSWITH
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_TARGET
+	return
+
 BattleScript_SpikyShieldEffect::
 	jumpifabsent BS_ATTACKER, BattleScript_SpikyShieldRet
 	clearmoveresultflags MOVE_RESULT_NO_EFFECT
@@ -7272,6 +7285,17 @@ BattleScript_SelectingNotAllowedMoveAssaultVest::
 BattleScript_SelectingNotAllowedMoveAssaultVestInPalace::
 	printstring STRINGID_ASSAULTVESTDOESNTALLOW
 	goto BattleScript_SelectingUnusableMoveInPalace
+
+
+BattleScript_SelectingNotAllowedMoveSpikyVest::
+	printselectionstring STRINGID_DAMAGEBOUNCEABLESDOESNTALLOW
+	endselectionscript
+
+BattleScript_SelectingNotAllowedMoveSpikyVestInPalace::
+	printstring STRINGID_DAMAGEBOUNCEABLESDOESNTALLOW
+	goto BattleScript_SelectingUnusableMoveInPalace
+
+
 
 BattleScript_SelectingNotAllowedPlaceholder::
 	printselectionstring STRINGID_NOTDONEYET
