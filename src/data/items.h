@@ -16063,7 +16063,7 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_KNELL_BELL] =
     {
-        .name = ITEM_NAME("Knell Bell"),
+        .name = ITEM_NAME("Knell Bell"), // Hmmm!
         .price = 10000,
         .holdEffect = HOLD_EFFECT_KNELL_BELL,
         .holdEffectParam = 4,
@@ -16082,7 +16082,7 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_DAMAGE_BOUNCEABLES] =
     {
-        .name = ITEM_NAME("Wizard Hat"),
+        .name = ITEM_NAME("Wizard Cape"),
         .price = 10000,
         .holdEffect = HOLD_EFFECT_DAMAGE_BOUNCEABLES,//and corresponding MOVE_LIMITATION_SPIKY_VEST
         .holdEffectParam = 6,

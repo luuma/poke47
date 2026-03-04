@@ -6871,6 +6871,16 @@ BattleScript_RaiseStatOnFaintingTarget::
 BattleScript_RaiseStatOnFaintingTarget_End:
 	return
 
+BattleScript_RaiseStatOnForecast::
+	copybyte gBattlerAbility, sBATTLER
+	call BattleScript_AbilityPopUp
+	statbuffchange BS_SCRIPTING, STAT_CHANGE_ALLOW_PTR, BattleScript_RaiseStatOnForecast_End
+	printstring STRINGID_SCRIPTINGABILITYSTATRAISE
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_RaiseStatOnForecast_End:
+	return
+
+
 BattleScript_AttackerAbilityStatRaise::
 	statbuffchange BS_SCRIPTING, STAT_CHANGE_ALLOW_PTR | STAT_CHANGE_ONLY_CHECKING, BattleScript_AttackerAbilityStatRaise_End
 	call BattleScript_AbilityPopUpScripting

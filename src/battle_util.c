@@ -5009,7 +5009,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                     SET_STATCHANGER(STAT_SPATK, 1, FALSE);
                     PREPARE_STAT_BUFFER(gBattleTextBuff1, STAT_SPATK);
                     gBattleScripting.animArg1 = GET_STAT_BUFF_ID(STAT_SPATK) + (STAT_ANIM_PLUS1);
-                    BattleScriptCall(BattleScript_RaiseStatOnFaintingTarget);
+                    BattleScriptCall(BattleScript_RaiseStatOnForecast);
                 }
                 effect++;
             }
