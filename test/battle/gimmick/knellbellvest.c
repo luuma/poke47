@@ -101,7 +101,7 @@ SINGLE_BATTLE_TEST("Damage vest TEST with message")
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_TEARS, player);
         HP_BAR(opponent, damage: 20);
-	MESSAGE("The opposing Wynaut was hurt by Wobbuffet's Spiny Vest!");
+	MESSAGE("The opposing Wynaut was hurt by Wobbuffet's Wizard Cape!");
     }
 }
 
@@ -136,6 +136,6 @@ SINGLE_BATTLE_TEST("wonder what happens here!")
     } WHEN {
         TURN { MOVE(player, MOVE_FAKE_TEARS); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_TEARS, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_TEARS, opponent);
     }
 }
