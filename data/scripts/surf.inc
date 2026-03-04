@@ -2,7 +2,7 @@ EventScript_UseSurf::
 	goto_if_unset FLAG_BADGE05_GET, EventScript_EndUseSurf
 	buffermovename STR_VAR_2, MOVE_SURF
 	checkfieldmove FIELD_MOVE_SURF
-	call_if_eq VAR_RESULT, 6, EventScript_CheckSecretPowerSurf
+	call_if_eq VAR_RESULT, 6, EventScript_CheckSecretPowerSurf// should say party size!!
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	lockall

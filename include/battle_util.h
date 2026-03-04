@@ -20,9 +20,8 @@
 #define MOVE_LIMITATION_THROAT_CHOP             (1 << 12)
 #define MOVE_LIMITATION_STUFF_CHEEKS            (1 << 13)
 #define MOVE_LIMITATION_CANT_USE_TWICE          (1 << 14)
-#define MOVE_LIMITATION_SPIKY_VEST            (1 << 15)
-
-#define MOVE_LIMITATION_PLACEHOLDER             (1 << 16)
+#define MOVE_LIMITATION_SPIKY_VEST              (MOVE_LIMITATION_ASSAULT_VEST | MOVE_LIMITATION_CHOICE_ITEM)// these can't otherwise happen simultaneously. = 2^7 + 2^8
+#define MOVE_LIMITATION_PLACEHOLDER             (1 << 15)
 #define MOVE_LIMITATIONS_ALL                    0xFFFF
 
 // Switches between simulated battle calc and actual battle combat

@@ -479,7 +479,7 @@ static enum ItemEffect TryThroatSpray(enum BattlerId battlerAtk)
     if (IsSoundMove(gCurrentMove)
      && gMultiHitCounter == 0
      && IsBattlerAlive(battlerAtk)
-     //&& IsAnyTargetTurnDamaged(battlerAtk) What the fuck is this check doing here?
+     // && !IsBattlerUnaffectedByMove(battlerDef) // not turn damaged, that's wrong.
      && CompareStat(battlerAtk, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN, GetBattlerAbility(battlerAtk))
      && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
     {
@@ -514,17 +514,23 @@ static enum ItemEffect TrySpandexFlares(enum BattlerId battlerAtk)
 static enum ItemEffect TryDamageBounceables(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Item item)
 {
     enum ItemEffect effect = ITEM_NO_EFFECT;
+    //u16 asdf = gBattleStruct->moveResultFlags[battlerAtk];
 
     if (MoveCanBeBouncedBack(gCurrentMove)
      && gMultiHitCounter == 0
      && IsBattlerAlive(battlerDef)
-     && !IsAbilityAndRecord(battlerAtk, GetBattlerAbility(battlerAtk), ABILITY_MAGIC_GUARD)
-     && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
+     && !IsAbilityAndRecord(battlerDef, GetBattlerAbility(battlerDef), ABILITY_MAGIC_GUARD)
+     && !NoAliveMonsForEitherParty()  // Don't activate if battle will end
+     && !IsBattlerUnaffectedByMove(battlerDef))
+
     {
-	SetPassiveDamageAmount(battlerDef, GetNonDynamaxMaxHP(battlerDef) / GetBattlerHoldEffectParam(battlerAtk));
-	PREPARE_ITEM_BUFFER(gBattleTextBuff1, item);
-	BattleScriptCall(BattleScript_DamageBounceablesActivates);
-	effect = ITEM_HP_CHANGE;
+        //if (!((asdf & (MOVE_RESULT_FAILED | MOVE_RESULT_DOESNT_AFFECT_FOE)) > 0)) // This is bitwise and. Take our flags, and compare to bitwise or (failed/dont affect). All yes means 
+	{
+	    SetPassiveDamageAmount(battlerDef, GetNonDynamaxMaxHP(battlerDef) / GetBattlerHoldEffectParam(battlerAtk));
+	    PREPARE_ITEM_BUFFER(gBattleTextBuff1, item);
+	    BattleScriptCall(BattleScript_DamageBounceablesActivates);
+	    effect = ITEM_HP_CHANGE;
+	}
     }
     return effect;
 }

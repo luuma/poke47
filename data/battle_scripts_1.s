@@ -6977,7 +6977,7 @@ BattleScript_RockyHelmetActivatesDmg:
 	return
 
 BattleScript_DamageBounceablesActivates::
-	@ don't play the animation for a fainted mon
+	@ don't play the animation.
 	@jumpifabsent BS_TARGET, BattleScript_HurtTarget
 	@playanimation BS_ATTACKER, B_ANIM_HELD_ITEM_EFFECT
 	@waitanimation
