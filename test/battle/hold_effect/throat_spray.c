@@ -5,6 +5,12 @@ ASSUMPTIONS
 {
     ASSUME(GetItemHoldEffect(ITEM_THROAT_SPRAY) == HOLD_EFFECT_THROAT_SPRAY);
     ASSUME(IsSoundMove(MOVE_HYPER_VOICE) == TRUE);
+    ASSUME(IsSoundMove(MOVE_BOOMBURST) == TRUE);
+    ASSUME(IsSoundMove(MOVE_HOWL) == TRUE);
+    ASSUME(IsSoundMove(MOVE_PARTING_SHOT) == TRUE);
+    ASSUME(IsSoundMove(MOVE_ECHOED_VOICE) == TRUE);
+    ASSUME(IsSoundMove(MOVE_TORCH_SONG) == TRUE);
+    ASSUME(IsSoundMove(MOVE_BUG_BUZZ) == TRUE);
 }
 
 DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move")
@@ -12,6 +18,7 @@ DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move")
     s16 firstHit, secondHit;
 
     GIVEN {
+
         ASSUME(GetMoveTarget(MOVE_HYPER_VOICE) == TARGET_BOTH);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         PLAYER(SPECIES_WYNAUT);
