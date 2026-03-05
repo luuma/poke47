@@ -109,7 +109,7 @@ SINGLE_BATTLE_TEST("Throat Spray does not activate if user flinches")
 
 SINGLE_BATTLE_TEST("Throat Spray does not activate if user flinches with status move")
 {
-    KNOWN_FAILING; /// This requires us to pass information from gBattleStruct->moveResultFlags[battlerDef] |= MOVE_RESULT_MISSED to sort it, but this gets mostly discarded before throat spray activates.
+    KNOWN_FAILING; /// This requires us to pass information from gBattleStruct->moveResultFlags[battlerAtk] |= MOVE_RESULT_MISSED to sort it, but this gets mostly discarded before throat spray activates.
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
