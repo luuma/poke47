@@ -4,13 +4,6 @@
 ASSUMPTIONS
 {
     ASSUME(GetItemHoldEffect(ITEM_THROAT_SPRAY) == HOLD_EFFECT_THROAT_SPRAY);
-    ASSUME(IsSoundMove(MOVE_HYPER_VOICE) == TRUE);
-    ASSUME(IsSoundMove(MOVE_BOOMBURST) == TRUE);
-    ASSUME(IsSoundMove(MOVE_HOWL) == TRUE);
-    ASSUME(IsSoundMove(MOVE_PARTING_SHOT) == TRUE);
-    ASSUME(IsSoundMove(MOVE_ECHOED_VOICE) == TRUE);
-    ASSUME(IsSoundMove(MOVE_TORCH_SONG) == TRUE);
-    ASSUME(IsSoundMove(MOVE_BUG_BUZZ) == TRUE);
 }
 
 DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move")
@@ -18,7 +11,7 @@ DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move")
     s16 firstHit, secondHit;
 
     GIVEN {
-
+        ASSUME(IsSoundMove(MOVE_HYPER_VOICE) == TRUE);
         ASSUME(GetMoveTarget(MOVE_HYPER_VOICE) == TARGET_BOTH);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         PLAYER(SPECIES_WYNAUT);
@@ -39,6 +32,7 @@ DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move")
 DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move, even if one foe protects")
 {
     GIVEN {
+        ASSUME(IsSoundMove(MOVE_BOOMBURST) == TRUE);
         ASSUME(GetMoveTarget(MOVE_BOOMBURST) == TARGET_BOTH);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         PLAYER(SPECIES_WYNAUT);
@@ -57,6 +51,7 @@ DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move, eve
 DOUBLE_BATTLE_TEST("Throat Spray fails if both foes take no damage")
 {
     GIVEN {
+        ASSUME(IsSoundMove(MOVE_HYPER_VOICE) == TRUE);
         ASSUME(GetMoveTarget(MOVE_HYPER_VOICE) == TARGET_BOTH);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         PLAYER(SPECIES_WYNAUT);
@@ -78,6 +73,7 @@ SINGLE_BATTLE_TEST("Throat Spray increases Sp. Atk by one stage")
     s16 boostedHit;
 
     GIVEN {
+        ASSUME(IsSoundMove(MOVE_HYPER_VOICE) == TRUE);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -103,7 +99,9 @@ SINGLE_BATTLE_TEST("Throat Spray activates when a sound move is used")
     PARAMETRIZE { move = MOVE_ECHOED_VOICE; }
 
     GIVEN {
-        ASSUME(IsSoundMove(MOVE_SWIFT) != IsSoundMove(MOVE_HOWL));
+        ASSUME(IsSoundMove(MOVE_HOWL) == TRUE);
+        ASSUME(IsSoundMove(MOVE_ECHOED_VOICE) == TRUE);
+        ASSUME(IsSoundMove(MOVE_SWIFT) == FALSE);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -124,6 +122,8 @@ SINGLE_BATTLE_TEST("Throat Spray activates when a sound move is used")
 SINGLE_BATTLE_TEST("Throat Spray does not activate if move fails")
 {
     GIVEN {
+        ASSUME(IsSoundMove(MOVE_PARTING_SHOT) == TRUE);
+        ASSUME(IsSoundMove(MOVE_TORCH_SONG) == TRUE);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -149,6 +149,7 @@ SINGLE_BATTLE_TEST("Throat Spray does not activate if move fails")
 SINGLE_BATTLE_TEST("Throat Spray does not activate if user flinches")
 {
     GIVEN {
+        ASSUME(IsSoundMove(MOVE_HYPER_VOICE) == TRUE);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -165,6 +166,7 @@ SINGLE_BATTLE_TEST("Throat Spray does not activate if user flinches")
 SINGLE_BATTLE_TEST("Throat Spray does not activate if user flinches with status move")
 {
     GIVEN {
+        ASSUME(IsSoundMove(MOVE_HYPER_VOICE) == TRUE);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
@@ -182,6 +184,7 @@ SINGLE_BATTLE_TEST("Throat Spray does not activate if user flinches with status 
 SINGLE_BATTLE_TEST("Throat Spray is not blocked by Sheer Force")
 {
     GIVEN {
+        ASSUME(IsSoundMove(MOVE_BUG_BUZZ) == TRUE);
         PLAYER(SPECIES_NIDOKING) { Ability(ABILITY_SHEER_FORCE); Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
