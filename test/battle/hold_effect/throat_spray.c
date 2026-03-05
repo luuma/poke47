@@ -33,7 +33,7 @@ DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move, eve
 {
     GIVEN {
         ASSUME(IsSoundMove(MOVE_BOOMBURST) == TRUE);
-        ASSUME(GetMoveTarget(MOVE_BOOMBURST) == TARGET_BOTH);
+        ASSUME(GetMoveTarget(MOVE_BOOMBURST) == TARGET_FOES_AND_ALLY);
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         PLAYER(SPECIES_WYNAUT);
         OPPONENT(SPECIES_WOBBUFFET);
@@ -48,7 +48,7 @@ DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move, eve
     }
 }
 
-DOUBLE_BATTLE_TEST("Throat Spray fails if both foes take no damage")
+DOUBLE_BATTLE_TEST("Throat Spray does not activate if both foes take no damage from a move that targets both")
 {
     GIVEN {
         ASSUME(IsSoundMove(MOVE_HYPER_VOICE) == TRUE);
