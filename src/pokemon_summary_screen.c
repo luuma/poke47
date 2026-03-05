@@ -574,7 +574,7 @@ static const struct WindowTemplate sSummaryTemplate[] =
     },
     [PSS_LABEL_WINDOW_PROMPT_RELEARN] = {
         .bg = 0,
-        .tilemapLeft = 18, // The config can't stay now. It causes graphical issues and FlagGet(P_FLAG_EGG_MOVES) can't appear in a define
+        .tilemapLeft = 18,
         .tilemapTop = 2,
         .width = 11,
         .height = 2,
