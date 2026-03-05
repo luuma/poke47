@@ -479,7 +479,8 @@ static enum ItemEffect TryThroatSpray(enum BattlerId battlerAtk)
     if (IsSoundMove(gCurrentMove)
      && gMultiHitCounter == 0
      && IsBattlerAlive(battlerAtk)
-     // && !IsBattlerUnaffectedByMove(battlerDef) // not turn damaged, that's wrong.
+     && !gBattleStruct->unableToUseMove
+     && (IsAnyTargetTurnDamaged(battlerAtk) || (GetBattleMoveCategory(gCurrentMove) == DAMAGE_CATEGORY_STATUS && IsAnyTargetAffected()))
      && CompareStat(battlerAtk, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN, GetBattlerAbility(battlerAtk))
      && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
     {

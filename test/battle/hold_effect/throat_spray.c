@@ -29,6 +29,42 @@ DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move")
     }
 }
 
+DOUBLE_BATTLE_TEST("Throat Spray activates after both hits of a spread move, even if one foe protects")
+{
+    GIVEN {
+        ASSUME(GetMoveTarget(MOVE_HYPER_VOICE) == TARGET_BOTH);
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
+        PLAYER(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_BOOMBURST); MOVE(opponentRight, MOVE_PROTECT);}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_BOOMBURST, playerLeft);
+        HP_BAR(opponentLeft);
+        HP_BAR(playerRight);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
+    }
+}
+
+DOUBLE_BATTLE_TEST("Throat Spray fails if both foes take no damage")
+{
+    GIVEN {
+        ASSUME(GetMoveTarget(MOVE_HYPER_VOICE) == TARGET_BOTH);
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
+        PLAYER(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_WOBBUFFET) { Ability(ABILITY_SOUNDPROOF); }
+        OPPONENT(SPECIES_WOBBUFFET) { Ability(ABILITY_SOUNDPROOF); }
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_HYPER_VOICE);}
+    } SCENE {
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, playerLeft);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
+	}
+    }
+}
+
 SINGLE_BATTLE_TEST("Throat Spray increases Sp. Atk by one stage")
 {
     s16 normalHit;
@@ -56,22 +92,27 @@ SINGLE_BATTLE_TEST("Throat Spray activates when a sound move is used")
     enum Move move;
 
     PARAMETRIZE { move = MOVE_SWIFT; }
-    PARAMETRIZE { move = MOVE_HYPER_VOICE; }
+    PARAMETRIZE { move = MOVE_HOWL; }
+    PARAMETRIZE { move = MOVE_ECHOED_VOICE; }
 
     GIVEN {
-        ASSUME(IsSoundMove(MOVE_SWIFT) != IsSoundMove(MOVE_HYPER_VOICE));
+        ASSUME(IsSoundMove(MOVE_SWIFT) != IsSoundMove(MOVE_HOWL));
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(player, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, move, player);
-        if (move == MOVE_HYPER_VOICE)
+        if (move == MOVE_HOWL)
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
+        else if (move == MOVE_ECHOED_VOICE)
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         else
             NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
     }
 }
+
+
 
 SINGLE_BATTLE_TEST("Throat Spray does not activate if move fails")
 {
@@ -79,11 +120,20 @@ SINGLE_BATTLE_TEST("Throat Spray does not activate if move fails")
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(opponent, MOVE_PROTECT); MOVE(player, MOVE_HYPER_VOICE); }
+        TURN { MOVE(opponent, MOVE_PROTECT); MOVE(player, MOVE_PARTING_SHOT); }
+	TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_CELEBRATE);  }
+        TURN { MOVE(opponent, MOVE_PROTECT); MOVE(player, MOVE_TORCH_SONG); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
         NONE_OF {
-            ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, player);
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, player);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
+        }
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_TORCH_SONG, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         }
     }
@@ -104,6 +154,23 @@ SINGLE_BATTLE_TEST("Throat Spray does not activate if user flinches")
         }
     }
 }
+
+SINGLE_BATTLE_TEST("Throat Spray does not activate if user flinches with status move")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_FAKE_OUT); MOVE(player, MOVE_HOWL); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FAKE_OUT, opponent);
+        NONE_OF {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, player);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
+        }
+    }
+}
+
 
 SINGLE_BATTLE_TEST("Throat Spray is not blocked by Sheer Force")
 {
