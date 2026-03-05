@@ -1773,6 +1773,11 @@ extern const u16 gItemIconPalette_TwiceSpicedRadish[];
 extern const u32 gItemIcon_LevelCap[];
 extern const u16 gItemIconPalette_LevelCap[];
 
+extern const u32 gItemIcon_WizardCape[];
+extern const u16 gItemIconPalette_WizardCape[];
+extern const u32 gItemIcon_SpandexFlares[];
+
+
 extern const u32 gItemIcon_ReturnToFieldArrow[];
 extern const u16 gItemIconPalette_ReturnToFieldArrow[];
 

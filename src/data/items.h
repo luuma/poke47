@@ -16021,8 +16021,8 @@ const struct ItemInfo gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 30,
-        .iconPic = gItemIcon_ThroatSpray,
-        .iconPalette = gItemIconPalette_ThroatSpray,
+        .iconPic = gItemIcon_SpandexFlares,
+        .iconPalette = gItemIconPalette_FocusSash,
     },
 
     [ITEM_EVIUM_INGOT] =
@@ -16087,16 +16087,16 @@ const struct ItemInfo gItemsInfo[] =
         .holdEffect = HOLD_EFFECT_DAMAGE_BOUNCEABLES,//and corresponding MOVE_LIMITATION_SPIKY_VEST
         .holdEffectParam = 6,
         .description = COMPOUND_STRING(
-            "Hurt target after,\n"
-            "all moves, but\n"
-            "bans attack moves."),
+            "Bans non-status\n"
+            "moves, but hurts\n"
+            "any foe it targets."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .flingPower = 80,
-        .iconPic = gItemIcon_Eviolite,
-        .iconPalette = gItemIconPalette_Eviolite,
+        .flingPower = 160,//If you manage it, kill em.
+        .iconPic = gItemIcon_WizardCape,
+        .iconPalette = gItemIconPalette_WizardCape,
     },
 };
 

@@ -7,6 +7,11 @@ const u16 gItemIconPalette_ReturnToFieldArrow[] = INCBIN_U16("graphics/items/ico
 const u32 gItemIcon_LevelCap[] = INCBIN_U32("graphics/items/icons/level_cap.4bpp.smol");
 const u16 gItemIconPalette_LevelCap[] = INCBIN_U16("graphics/items/icon_palettes/level_cap.gbapal");
 
+const u32 gItemIcon_WizardCape[] = INCBIN_U32("graphics/items/icons/wizard_cape.4bpp.smol");
+const u16 gItemIconPalette_WizardCape[] = INCBIN_U16("graphics/items/icon_palettes/wizard_cape.gbapal");
+
+const u32 gItemIcon_SpandexFlares[] = INCBIN_U32("graphics/items/icons/spandex_flares.4bpp.smol");
+
 
 // Poké Balls
 
