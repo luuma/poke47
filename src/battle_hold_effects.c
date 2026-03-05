@@ -472,7 +472,7 @@ static enum ItemEffect TryMentalHerb(enum BattlerId battler)
     return effect;
 }
 
-static enum ItemEffect TryThroatSpray(enum BattlerId battlerAtk, enum BattlerId battlerDef)
+static enum ItemEffect TryThroatSpray(enum BattlerId battlerAtk)
 {
     enum ItemEffect effect = ITEM_NO_EFFECT;
 
@@ -1095,7 +1095,7 @@ enum ItemEffect ItemBattleEffects(enum BattlerId itemBattler, enum BattlerId bat
         effect = TryMentalHerb(itemBattler);
         break;
     case HOLD_EFFECT_THROAT_SPRAY:
-        effect = TryThroatSpray(itemBattler, battler);
+        effect = TryThroatSpray(itemBattler);
         break;
     case HOLD_EFFECT_KEE_BERRY:  // consume and boost defense if used physical move
         effect = DamagedStatBoostBerryEffect(itemBattler, battler, STAT_DEF, DAMAGE_CATEGORY_PHYSICAL);
