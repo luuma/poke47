@@ -72,7 +72,7 @@ SINGLE_BATTLE_TEST("kNELL Bell restores 1/4 HP of damage dealt")
     }
 }
 
-SINGLE_BATTLE_TEST("Damage vest deals 1/6 foe hp when fake tears is used, BUT NOT iron defense. Bounceables only")
+SINGLE_BATTLE_TEST("Wizard Cape deals 1/6 foe hp when fake tears is used, BUT NOT iron defense. Bounceables only")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}
@@ -91,7 +91,7 @@ SINGLE_BATTLE_TEST("Damage vest deals 1/6 foe hp when fake tears is used, BUT NO
 }
 
 
-SINGLE_BATTLE_TEST("Damage vest TEST with message")
+SINGLE_BATTLE_TEST("Wizard Cape TEST with message")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}
@@ -105,7 +105,7 @@ SINGLE_BATTLE_TEST("Damage vest TEST with message")
     }
 }
 
-DOUBLE_BATTLE_TEST("Damage Vest in doubles")
+DOUBLE_BATTLE_TEST("Wizard Cape in doubles")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}
@@ -125,6 +125,35 @@ DOUBLE_BATTLE_TEST("Damage Vest in doubles")
         }
     }
 }
+
+SINGLE_BATTLE_TEST("Wizard Cape deals no damage if fail")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}
+        OPPONENT(SPECIES_GOGOAT) { Level(40); HP(60); MaxHP(120);  }
+    } WHEN {
+        TURN { MOVE(player, MOVE_SLEEP_POWDER); }
+        TURN { MOVE(player, MOVE_THUNDER_WAVE); MOVE(opponent, MOVE_PROTECT); }
+        TURN { MOVE(player, MOVE_THUNDER_WAVE); }
+        TURN { MOVE(player, MOVE_THUNDER_WAVE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_POWDER, player);
+        NONE_OF {
+            HP_BAR(opponent);
+        }
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
+        NONE_OF {
+            HP_BAR(opponent);
+        }
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDER_WAVE, player);
+        HP_BAR(opponent, damage: 20);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDER_WAVE, player);
+        NONE_OF {
+            HP_BAR(opponent);
+        }
+    }
+}
+
 
 
 

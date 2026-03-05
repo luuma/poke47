@@ -499,6 +499,8 @@ static enum ItemEffect TrySpandexFlares(enum BattlerId battlerAtk)
     if (IsDanceMove(gCurrentMove)
      && gMultiHitCounter == 0
      && IsBattlerAlive(battlerAtk)
+     && !gBattleStruct->unableToUseMove
+     && (IsAnyTargetTurnDamaged(battlerAtk) || (GetBattleMoveCategory(gCurrentMove) == DAMAGE_CATEGORY_STATUS && IsAnyTargetAffected()))
      && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
     {
         if (!(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN || gBattleStruct->isSkyBattle))
@@ -520,9 +522,10 @@ static enum ItemEffect TryDamageBounceables(enum BattlerId battlerAtk, enum Batt
     if (MoveCanBeBouncedBack(gCurrentMove)
      && gMultiHitCounter == 0
      && IsBattlerAlive(battlerDef)
+     && !gBattleStruct->unableToUseMove
+     && IsAnyTargetAffected()
      && !IsAbilityAndRecord(battlerDef, GetBattlerAbility(battlerDef), ABILITY_MAGIC_GUARD)
-     && !NoAliveMonsForEitherParty()  // Don't activate if battle will end
-     && !IsBattlerUnaffectedByMove(battlerDef))
+     && !NoAliveMonsForEitherParty())  // Don't activate if battle will end
 
     {
         //if (!((asdf & (MOVE_RESULT_FAILED | MOVE_RESULT_DOESNT_AFFECT_FOE)) > 0)) // This is bitwise and. Take our flags, and compare to bitwise or (failed/dont affect). All yes means 
