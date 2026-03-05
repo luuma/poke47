@@ -51,27 +51,29 @@ SINGLE_BATTLE_TEST("Throat Spray increases Sp. Atk by one stage")
     }
 }
 
-SINGLE_BATTLE_TEST("Throat Spray activates when a sound move is used")
+SINGLE_BATTLE_TEST("Throat Spray activates when a status-based sound move is used")
 {
     enum Move move;
 
     PARAMETRIZE { move = MOVE_SWIFT; }
-    PARAMETRIZE { move = MOVE_HYPER_VOICE; }
+    PARAMETRIZE { move = MOVE_HOWL; }
 
     GIVEN {
-        ASSUME(IsSoundMove(MOVE_SWIFT) != IsSoundMove(MOVE_HYPER_VOICE));
+        ASSUME(IsSoundMove(MOVE_SWIFT) != IsSoundMove(MOVE_HOWL));
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(player, move); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, move, player);
-        if (move == MOVE_HYPER_VOICE)
+        if (move == MOVE_HOWL)
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         else
             NOT ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
     }
 }
+
+
 
 SINGLE_BATTLE_TEST("Throat Spray does not activate if move fails")
 {
@@ -79,11 +81,11 @@ SINGLE_BATTLE_TEST("Throat Spray does not activate if move fails")
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_THROAT_SPRAY); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(opponent, MOVE_PROTECT); MOVE(player, MOVE_HYPER_VOICE); }
+        TURN { MOVE(opponent, MOVE_PROTECT); MOVE(player, MOVE_PARTING_SHOT); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
         NONE_OF {
-            ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_VOICE, player);
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, player);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, player);
         }
     }
