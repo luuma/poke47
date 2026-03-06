@@ -3005,7 +3005,7 @@ static bool32 TryDancer(void)
     bool32 anyDancerQueued = FALSE;
     enum BattlerId dancerBattler = MAX_BATTLERS_COUNT;
 
-    if (!IsDanceMove(gCurrentMove))
+    if (!IsDanceMove(gCurrentMove) || !IsSoundMove(gCurrentMove) )
         return FALSE;
 
     for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
@@ -3032,7 +3032,7 @@ static bool32 TryDancer(void)
 
     if (IsBattlerAlive(dancerBattler)
      && !gSpecialStatuses[dancerBattler].dancerUsedMove
-     && gBattlerAttacker != dancerBattler)
+     && gBattlerAttacker != dancerBattler && IsDanceMove(gCurrentMove) && (GetBattlerAbility(gBattlerAttacker) == ABILITY_DANCER))
     {
         gSpecialStatuses[dancerBattler].dancerUsedMove = TRUE;
         gSpecialStatuses[dancerBattler].backUpTarget = gBattleStruct->moveTarget[dancerBattler] + 1;
@@ -3052,7 +3052,28 @@ static bool32 TryDancer(void)
         BattleScriptExecute(BattleScript_DancerActivates);
         return TRUE;
     }
+    if (IsBattlerAlive(dancerBattler)
+     && !gSpecialStatuses[dancerBattler].dancerUsedMove
+     && gBattlerAttacker != dancerBattler && IsSoundMove(gCurrentMove) && (GetBattlerAbility(gBattlerAttacker) == ABILITY_PARROT))
+    {
+        gSpecialStatuses[dancerBattler].dancerUsedMove = TRUE;
+        gSpecialStatuses[dancerBattler].backUpTarget = gBattleStruct->moveTarget[dancerBattler] + 1;
+        gBattleMons[dancerBattler].volatiles.activateDancer = FALSE;
+        gBattlerAttacker = gBattlerAbility = dancerBattler;
+        gCalledMove = gCurrentMove;
+        gLastUsedAbility = ABILITY_PARROT;
+        RecordAbilityBattle(gBattlerAttacker, ABILITY_PARROT);
 
+        // Set the target to the original target of the mon that first used a Dance move
+        gBattlerTarget = gBattleScripting.savedBattler & 0x3;
+
+        // Make sure that the target isn't an ally - if it is, target the original user
+        if (IsBattlerAlly(gBattlerTarget, gBattlerAttacker))
+            gBattlerTarget = (gBattleScripting.savedBattler & 0xF0) >> 4;
+
+        BattleScriptExecute(BattleScript_DancerActivates);
+        return TRUE;
+    }
     return FALSE;
 }
 
@@ -4550,58 +4571,8 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             break;
         }
         break;
-    case ABILITYEFFECT_MOVE_END_OTHER: // Abilities that activate on *another* battler's moveend: Dancer, Soul-Heart, Receiver, Symbiosis
-        switch (ability)
-        {
-        case ABILITY_DANCER:
-            if (IsBattlerAlive(battler)
-             && IsDanceMove(move)
-             && !gSpecialStatuses[battler].dancerUsedMove
-             && gBattlerAttacker != battler)
-            {
-                // Set bit and save Dancer mon's original target
-                gSpecialStatuses[battler].dancerUsedMove = TRUE;
-                gSpecialStatuses[battler].dancerOriginalTarget = gBattleStruct->moveTarget[battler] | 0x4;
-                gBattleMons[battler].volatiles.activateDancer = FALSE;
-                gBattlerAttacker = gBattlerAbility = battler;
-                gCalledMove = move;
-
-                // Set the target to the original target of the mon that first used a Dance move
-                gBattlerTarget = gBattleScripting.savedBattler & 0x3;
-
-                // Make sure that the target isn't an ally - if it is, target the original user
-                if (IsBattlerAlly(gBattlerTarget, gBattlerAttacker))
-                    gBattlerTarget = (gBattleScripting.savedBattler & 0xF0) >> 4;
-                BattleScriptExecute(BattleScript_DancerActivates);
-                effect++;
-            }
-            break;
-        case ABILITY_PARROT:
-            if (IsBattlerAlive(battler)
-             && IsSoundMove(move)
-             && !gSpecialStatuses[battler].dancerUsedMove
-             && gBattlerAttacker != battler)
-            {
-                // Set bit and save Parrot mon's original target
-                gSpecialStatuses[battler].dancerUsedMove = TRUE;
-                gSpecialStatuses[battler].dancerOriginalTarget = gBattleStruct->moveTarget[battler] | 0x4;
-                gBattlerAttacker = gBattlerAbility = battler;
-                gCalledMove = move;
-
-                // Set the target to the original target of the mon that first used a SOUND move
-                gBattlerTarget = gBattleScripting.savedBattler & 0x3;
-
-                // Make sure that the target isn't an ally - if it is, target the original user
-                if (IsBattlerAlly(gBattlerTarget, gBattlerAttacker))
-                    gBattlerTarget = (gBattleScripting.savedBattler & 0xF0) >> 4;
-                BattleScriptExecute(BattleScript_DancerActivates);
-                effect++;
-            }
-            break;
-        default:
-            break;
-        }
-        break;
+    case ABILITYEFFECT_DANCER:
+        return TryDancer();
     case ABILITYEFFECT_MOVE_END_FOES_FAINTED:
         switch (ability)
         {

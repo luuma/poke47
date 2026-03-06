@@ -3771,32 +3771,7 @@ static enum MoveEndResult MoveEndDancer(void)
 {
     enum MoveEndResult result = MOVEEND_RESULT_CONTINUE;
 
-    for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
-    {
-        if (gBattleMons[battler].volatiles.activateDancer && !gSpecialStatuses[battler].dancerUsedMove)
-        {
-            if (!anyDancerQueued || (gBattleMons[battler].speed < gBattleMons[nextDancer].speed))
-                nextDancer = battler;
-            anyDancerQueued = TRUE;
-        }
-    }
-
-    if (!anyDancerQueued)
-    {
-        gBattleScripting.moveendState++;
-        return result;
-    }
-
-    // Dance move succeeds
-    // Set target for other Dancer mons; set bit so that mon cannot activate Dancer off of its own move
-    if (!gSpecialStatuses[gBattlerAttacker].dancerUsedMove)
-    {
-        gBattleScripting.savedBattler = gBattlerTarget | 0x4;
-        gBattleScripting.savedBattler |= (gBattlerAttacker << 4);
-        gSpecialStatuses[gBattlerAttacker].dancerUsedMove = TRUE;
-    }
-
-    if (AbilityBattleEffects(ABILITYEFFECT_MOVE_END_OTHER, nextDancer, ABILITY_DANCER, gCurrentMove, TRUE) || AbilityBattleEffects(ABILITYEFFECT_MOVE_END_OTHER, nextDancer, ABILITY_PARROT, gCurrentMove, TRUE))
+    if (AbilityBattleEffects(ABILITYEFFECT_DANCER, gBattlerAttacker, ABILITY_DANCER, gCurrentMove, TRUE)|| AbilityBattleEffects(ABILITYEFFECT_DANCER, gBattlerAttacker, ABILITY_PARROT, gCurrentMove, TRUE))
         result = MOVEEND_RESULT_RUN_SCRIPT;
 
     gBattleScripting.moveendState++;
