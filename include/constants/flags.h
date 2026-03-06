@@ -708,14 +708,14 @@
 #define FLAG_MYSTICTICKET_ITEM 0x285 // 
 #define FLAG_EONTICKET_ITEM  0x286 // 
 #define FLAG_TICKET_BEGIN  0x287 // 
-#define FLAG_TICKET_PHOTO_STATE  0x288 // Unused Flag
-#define FLAG_DIVE_ITEM_114  0x289 // Unused Flag
-#define FLAG_DEWBEACH1  0x28A // Unused Flag
-#define FLAG_DEWBEACH2  0x28B // Unused Flag
-#define FLAG_DEWBEACH3  0x28C // Unused Flag
-#define FLAG_UNUSED_0x28D  0x28D // Unused Flag
-#define FLAG_UNUSED_0x28E  0x28E // Unused Flag
-#define FLAG_UNUSED_0x28F  0x28F // Unused Flag
+#define FLAG_TICKET_PHOTO_STATE  0x288 //  Flag
+#define FLAG_DIVE_ITEM_114  0x289 //  Flag
+#define FLAG_DEWBEACH1  0x28A //  Flag
+#define FLAG_DEWBEACH2  0x28B //  Flag
+#define FLAG_DEWBEACH3  0x28C //  Flag
+#define FLAG_WIZARD_CAPE  0x28D //  Flag
+#define FLAG_SPANDEX_FLARES  0x28E //  Flag
+#define FLAG_KNELL_BELL  0x28F //  Flag
 #define FLAG_UNUSED_0x290  0x290 // Unused Flag
 #define FLAG_UNUSED_0x291  0x291 // Unused Flag
 #define FLAG_UNUSED_0x292  0x292 // Unused Flag
