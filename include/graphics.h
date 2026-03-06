@@ -1776,6 +1776,8 @@ extern const u16 gItemIconPalette_LevelCap[];
 extern const u32 gItemIcon_WizardCape[];
 extern const u16 gItemIconPalette_WizardCape[];
 extern const u32 gItemIcon_SpandexFlares[];
+extern const u32 gItemIcon_KnellBell[];
+extern const u16 gItemIconPalette_KnellBell[];
 
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];

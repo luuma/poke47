@@ -9516,6 +9516,7 @@ void SortBattlersBySpeed(enum BattlerId *battlers, bool32 slowToFast)
 void TryRestoreHeldItems(void)
 {
     u32 i;
+    u32 j;
     bool32 returnNPCItems = B_RETURN_STOLEN_NPC_ITEMS >= GEN_5 && gBattleTypeFlags & BATTLE_TYPE_TRAINER;
 
     for (i = 0; i < PARTY_SIZE; i++)
@@ -9533,6 +9534,17 @@ void TryRestoreHeldItems(void)
             if ((lostItem != ITEM_NONE || returnNPCItems) && GetItemPocket(lostItem) != POCKET_BERRIES)
                 SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &lostItem);
         }
+	if (GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM) == ITEM_KNELL_BELL)
+        {
+    	    for (j = 0; j < MAX_MON_MOVES; ++j)
+    	    {
+		u32 pp = GetMovePP(GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j))* 2 / 5;
+		if (GetMonData(&gPlayerParty[i], MON_DATA_PP1 + j) < pp)
+		{
+      		    SetMonData(&gPlayerParty[i], MON_DATA_PP1 + j, &pp);
+		}
+	    }
+    	}
     }
 }
 

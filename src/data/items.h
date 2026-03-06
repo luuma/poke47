@@ -16063,7 +16063,7 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_KNELL_BELL] =
     {
-        .name = ITEM_NAME("Knell Bell"), // Hmmm!
+        .name = ITEM_NAME("Knell Bell"),
         .price = 10000,
         .holdEffect = HOLD_EFFECT_KNELL_BELL,
         .holdEffectParam = 4,
@@ -16076,8 +16076,8 @@ const struct ItemInfo gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 60,
-        .iconPic = gItemIcon_Eviolite,
-        .iconPalette = gItemIconPalette_Eviolite,
+        .iconPic = gItemIcon_KnellBell,
+        .iconPalette = gItemIconPalette_KnellBell,
     },
 
     [ITEM_DAMAGE_BOUNCEABLES] =

@@ -12,6 +12,9 @@ const u16 gItemIconPalette_WizardCape[] = INCBIN_U16("graphics/items/icon_palett
 
 const u32 gItemIcon_SpandexFlares[] = INCBIN_U32("graphics/items/icons/spandex_flares.4bpp.smol");
 
+const u32 gItemIcon_KnellBell[] = INCBIN_U32("graphics/items/icons/knell_bell.4bpp.smol");
+const u16 gItemIconPalette_KnellBell[] = INCBIN_U16("graphics/items/icon_palettes/knell_bell.gbapal");
+
 
 // Poké Balls
 
