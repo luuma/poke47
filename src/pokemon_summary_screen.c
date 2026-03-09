@@ -574,7 +574,7 @@ static const struct WindowTemplate sSummaryTemplate[] =
     },
     [PSS_LABEL_WINDOW_PROMPT_RELEARN] = {
         .bg = 0,
-        .tilemapLeft = 18,
+        .tilemapLeft = (SPECIAL_RELEARNER_IS_ACTIVE) ? 18 : 22,
         .tilemapTop = 2,
         .width = 11,
         .height = 2,
@@ -1975,10 +1975,8 @@ static void TryUpdateRelearnType(enum IncrDecrUpdateValues delta)
     enum MoveRelearnerStates state = gMoveRelearnerState;
 
     // just in case everything is off, default to level up moves
-    if ((!P_ENABLE_MOVE_RELEARNERS
         && !P_TM_MOVES_RELEARNER
-        && !FlagGet(P_FLAG_EGG_MOVES)
-        && !FlagGet(P_FLAG_TUTOR_MOVES)))
+    if (!SPECIAL_RELEARNER_IS_ACTIVE)
     {
         sMonSummaryScreen->hasRelearnableMoves = HasAnyRelearnableMoves(MOVE_RELEARNER_LEVEL_UP_MOVES);
         return;
@@ -4943,10 +4941,7 @@ static void ShowRelearnPrompt(void)
     const u8 *relearnText;
     int relearnTextXPos;
 
-    if ((!P_ENABLE_MOVE_RELEARNERS
-    && !P_TM_MOVES_RELEARNER
-    && !FlagGet(P_FLAG_EGG_MOVES)
-    && !FlagGet(P_FLAG_TUTOR_MOVES)))
+    if (!SPECIAL_RELEARNER_IS_ACTIVE)
     {
         relearnText = sText_Relearn;
         relearnTextXPos = 0;
