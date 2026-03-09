@@ -1975,7 +1975,6 @@ static void TryUpdateRelearnType(enum IncrDecrUpdateValues delta)
     enum MoveRelearnerStates state = gMoveRelearnerState;
 
     // just in case everything is off, default to level up moves
-        && !P_TM_MOVES_RELEARNER
     if (!SPECIAL_RELEARNER_IS_ACTIVE)
     {
         sMonSummaryScreen->hasRelearnableMoves = HasAnyRelearnableMoves(MOVE_RELEARNER_LEVEL_UP_MOVES);
