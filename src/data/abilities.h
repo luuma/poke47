@@ -1832,7 +1832,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Phantom Payload"),
         .description = COMPOUND_STRING("Stocks ammo when vanished."),
         .aiRating = 3,
-        .cantBeCopied = TRUE,
+        .cantBeCopied = B_UPDATED_MOVE_FLAGS <= GEN_8,
+        .cantBeSwapped = B_UPDATED_MOVE_FLAGS <= GEN_8,
         .cantBeSuppressed = TRUE,
         .cantBeOverwritten = TRUE,
         .failsOnImposter = TRUE,
@@ -2431,7 +2432,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_GRAND_DEBUT] =
     {
         .name = _("Showboater"),
-        .description = COMPOUND_STRING("Halves damage on switch."),
+        .description = COMPOUND_STRING("1.5x Defense on switchin."),
         .aiRating = 8,
     },
 

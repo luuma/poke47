@@ -114,8 +114,10 @@ void TintPalette_GrayScale(u16 *palette, u32 count);
 void TintPalette_GrayScale2(u16 *palette, u32 count);
 void TintPalette_SepiaTone(u16 *palette, u32 count);
 void TintPalette_CustomTone(u16 *palette, u32 count, u16 rTone, u16 gTone, u16 bTone);
-void TimeMixBattleBgPalette(bool8 shadowOnly);
-void TimeMixBattleSpritePalette(u16 paletteOffset);
+void TimeMixBattleBgPalette(bool8 shadowOnly);//UNSURE WHETHER THIS IS USED
+void TimeMixBattleSpritePalette(u16 paletteOffset);//UNSURE WHETHER THIS IS USED
+bool32 IsBlendPalettesGraduallyTaskActive(u8 id);
+void DestroyBlendPalettesGraduallyTask(void);
 
 static inline void SetBackdropFromColor(u32 color)
 {

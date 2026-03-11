@@ -2,7 +2,7 @@ EventScript_UseSurf::
 	goto_if_unset FLAG_BADGE05_GET, EventScript_EndUseSurf
 	buffermovename STR_VAR_2, MOVE_SURF
 	checkfieldmove FIELD_MOVE_SURF
-	call_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckSecretPowerSurf
+	call_if_eq VAR_RESULT, 6, EventScript_CheckSecretPowerSurf// should say party size!!
 	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	lockall
@@ -15,6 +15,25 @@ EventScript_EndUseSurf::
 
 EventScript_CheckSecretPowerSurf::
 	buffermovename STR_VAR_2, MOVE_NATURE_POWER
-	checkfieldmove FIELD_MOVE_NATURE_POWER, TRUE
-	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_EndUseSurf
+	checkfieldmove FIELD_MOVE_NATURE_POWER
+	goto_if_eq VAR_RESULT, 6, EventScript_EndUseSurf
 	return
+	end
+
+EventScript_CurrentTooFast::
+	lockall
+	checkfieldmove FIELD_MOVE_SURF
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CurrentTooFast2
+	playse SE_SELECT
+	msgbox Text_CurrentTooFast
+EventScript_CurrentTooFastEndMsg::
+	releaseall
+	end
+
+EventScript_CurrentTooFast2::
+    checkfieldmove FIELD_MOVE_NATURE_POWER
+	goto_if_eq VAR_RESULT, FALSE, EventScript_CurrentTooFastEndMsg
+	playse SE_SELECT
+	msgbox Text_CurrentTooFast
+	releaseall
+	end

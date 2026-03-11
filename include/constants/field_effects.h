@@ -80,12 +80,9 @@
 #define FLDEFF_USE_ROCK_CLIMB            75
 #define FLDEFF_ROCK_CLIMB_DUST           76
 #define FLDEFF_ORAS_DOWSE                77
-#define FLDEFF_SNOW_FOOTPRINTS           78
-#define FLDEFF_SNOW_TRACKS_SLITHER       79
-#define FLDEFF_SNOW_TRACKS_BUG           80
-#define FLDEFF_SNOW_TRACKS_SPOT          81
-#define FLDEFF_BIKE_SNOW_TRACKS          82
-
+#define FLDEFF_SMILEY_FACE_ICON          83
+#define FLDEFF_HALL_OF_FAME_RECORD_FRLG  84
+#define FLDEFF_PHOTO_FLASH               85
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1
