@@ -374,7 +374,7 @@
     {
       "type": "hidden_item",
       "x": 2,
-      "y": 54,
+      "y": 53,
       "elevation": 0,
       "item": "ITEM_POTION",
       "flag": "FLAG_R1372"

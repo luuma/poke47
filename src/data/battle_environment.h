@@ -3,9 +3,6 @@
 
 const u16 gBattleEnvironmentPalette_SnowGrass[] = INCBIN_U16("graphics/battle_environment/snow_grass/palette.gbapal");
 
-
-}
-
 #define ENVIRONMENT_ENTRY(Background)                      \
 {                                                          \
     .tileset = gBattleEnvironmentAnimTiles_##Background,   \
