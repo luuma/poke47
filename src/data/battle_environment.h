@@ -1,13 +1,18 @@
 #include "battle_anim_scripts.h"
 
-
+#define ENVIRONMENT_BACKGROUND(Background)             \
+{                                                      \
+    .tileset = gBattleEnvironmentTiles_##Background,   \
+    .tilemap = gBattleEnvironmentTilemap_##Background, \
+}
 
 #define ENVIRONMENT_ENTRY(Background)                      \
 {                                                          \
     .tileset = gBattleEnvironmentAnimTiles_##Background,   \
     .tilemap = gBattleEnvironmentAnimTilemap_##Background, \
-}	
+}
 
+#define DEFAULT_CAMOUFLAGE_BLEND RGB_WHITE
 #define DEFAULT_CAMOUFLAGE_BLEND RGB_WHITE
 
 // Cave values. Used for BATTLE_ENVIRONMENT_CAVE as well as BATTLE_ENVIRONMENT_GROUDON and BATTLE_ENVIRONMENT_KYOGRE
