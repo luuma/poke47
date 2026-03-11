@@ -1195,3 +1195,7 @@ EventScript_VsSeekerChargingDone::
 	.include "data/maps/Route136/scripts.inc"
 
 	.include "data/maps/IngyBingyIsland/scripts.inc"
+
+	.include "data/maps/Indoor_route_136_fisherman/scripts.inc"
+
+	.include "data/maps/PetalburgCity_PokemonCenter_1F_2/scripts.inc"

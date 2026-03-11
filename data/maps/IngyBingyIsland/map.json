@@ -28,7 +28,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
       "x": 34,
-      "y": 54,
+      "y": 53,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -121,7 +121,7 @@
       "x": 59,
       "y": 49,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
       "movement_range_x": 4,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
@@ -147,12 +147,12 @@
       "x": 69,
       "y": 14,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "trainer_sight_or_berry_tree_id": "ITEM_ADRENALINE_ORB",
+      "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R137A"
     },
     {
@@ -164,7 +164,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_ADRENALINE_ORB",
+      "trainer_sight_or_berry_tree_id": "ITEM_ICE_HEAL",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R1377"
     },
@@ -190,7 +190,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_ICE_HEAL",
+      "trainer_sight_or_berry_tree_id": "ITEM_NEVERMELTICE",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R1378"
     },
@@ -209,7 +209,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 57,
+      "x": 58,
       "y": 61,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
@@ -265,7 +265,7 @@
       "x": 37,
       "y": 46,
       "elevation": 0,
-      "dest_map": "MAP_INGY_BINGY_ISLAND",
+      "dest_map": "MAP_INDOOR_ROUTE_136_FISHERMAN",
       "dest_warp_id": "0"
     }
   ],
@@ -314,8 +314,8 @@
     },
     {
       "type": "weather",
-      "x": 60,
-      "y": 31,
+      "x": 52,
+      "y": 29,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
@@ -335,8 +335,8 @@
     },
     {
       "type": "weather",
-      "x": 61,
-      "y": 31,
+      "x": 52,
+      "y": 28,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     }
@@ -418,6 +418,22 @@
       "elevation": 0,
       "item": "ITEM_NONE",
       "flag": "FLAG_R1374"
+    },
+    {
+      "type": "sign",
+      "x": 39,
+      "y": 50,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NULL"
+    },
+    {
+      "type": "sign",
+      "x": 52,
+      "y": 32,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "NULL"
     }
   ]
 }
