@@ -160,8 +160,8 @@ static void InitObjectPriorityByElevation(struct Sprite *, u8);
 static void ObjectEventUpdateSubpriority(struct ObjectEvent *, struct Sprite *);
 static void DoTracksGroundEffect_None(struct ObjectEvent *, struct Sprite *, u8);
 static void DoTracksGroundEffect_Footprints(struct ObjectEvent *, struct Sprite *, u8);
-static void DoTracksGroundEffect_FootprintsB(struct ObjectEvent*, struct Sprite*, u8);
-static void DoTracksGroundEffect_FootprintsC(struct ObjectEvent*, struct Sprite*, u8);
+static void DoTracksGroundEffect_FootprintsBug(struct ObjectEvent*, struct Sprite*, u8);
+static void DoTracksGroundEffect_FootprintsSpot(struct ObjectEvent*, struct Sprite*, u8);
 static void DoTracksGroundEffect_BikeTireTracks(struct ObjectEvent *, struct Sprite *, u8);
 static void DoTracksGroundEffect_SlitherTracks(struct ObjectEvent*, struct Sprite*, u8);
 static void DoRippleFieldEffect(struct ObjectEvent *, struct Sprite *);
@@ -10169,8 +10169,8 @@ static void (*const sGroundEffectTracksFuncs[])(struct ObjectEvent *objEvent, st
     [TRACKS_FOOT] = DoTracksGroundEffect_Footprints,
     [TRACKS_BIKE_TIRE] = DoTracksGroundEffect_BikeTireTracks,
     [TRACKS_SLITHER] = DoTracksGroundEffect_SlitherTracks,
-    [TRACKS_SPOT] = DoTracksGroundEffect_FootprintsC,
-    [TRACKS_BUG] = DoTracksGroundEffect_FootprintsB,
+    [TRACKS_SPOT] = DoTracksGroundEffect_FootprintsSpot,
+    [TRACKS_BUG] = DoTracksGroundEffect_FootprintsBug,
 };
 
 void GroundEffect_SandTracks(struct ObjectEvent *objEvent, struct Sprite *sprite)
@@ -10212,10 +10212,10 @@ static void DoTracksGroundEffect_Footprints(struct ObjectEvent *objEvent, struct
     FieldEffectStart(sandFootprints_FieldEffectData[isDeepSand]);
 }
 
-static void DoTracksGroundEffect_FootprintsB(struct ObjectEvent *objEvent, struct Sprite *sprite, u8 isDeepSand)
+static void DoTracksGroundEffect_FootprintsSpot(struct ObjectEvent *objEvent, struct Sprite *sprite, u8 isDeepSand)
 {
     // First half-word is a Field Effect script id. (gFieldEffectScriptPointers)
-    u16 otherFootprintsA_FieldEffectData[3] = {
+    u16 otherFootprintsSpot_FieldEffectData[3] = {
         FLDEFF_TRACKS_SPOT,
         FLDEFF_TRACKS_SPOT,
         FLDEFF_SNOW_TRACKS_SPOT
@@ -10227,13 +10227,13 @@ static void DoTracksGroundEffect_FootprintsB(struct ObjectEvent *objEvent, struc
     gFieldEffectArguments[3] = 2;
     gFieldEffectArguments[4] = objEvent->facingDirection;
     gFieldEffectArguments[5] = objEvent->previousMetatileBehavior;
-    FieldEffectStart(otherFootprintsA_FieldEffectData[isDeepSand]);
+    FieldEffectStart(otherFootprintsSpot_FieldEffectData[isDeepSand]);
 }
 
-static void DoTracksGroundEffect_FootprintsC(struct ObjectEvent *objEvent, struct Sprite *sprite, u8 isDeepSand)
+static void DoTracksGroundEffect_FootprintsBug(struct ObjectEvent *objEvent, struct Sprite *sprite, u8 isDeepSand)
 {
     // First half-word is a Field Effect script id. (gFieldEffectScriptPointers)
-    u16 otherFootprintsB_FieldEffectData[3] = {
+    u16 otherFootprintsBug_FieldEffectData[3] = {
         FLDEFF_TRACKS_BUG,
         FLDEFF_TRACKS_BUG,
         FLDEFF_SNOW_TRACKS_BUG
@@ -10245,7 +10245,7 @@ static void DoTracksGroundEffect_FootprintsC(struct ObjectEvent *objEvent, struc
     gFieldEffectArguments[3] = 2;
     gFieldEffectArguments[4] = objEvent->facingDirection;
     gFieldEffectArguments[5] = objEvent->previousMetatileBehavior;
-    FieldEffectStart(otherFootprintsB_FieldEffectData[isDeepSand]);
+    FieldEffectStart(otherFootprintsBug_FieldEffectData[isDeepSand]);
 }
 
 static void DoTracksGroundEffect_BikeTireTracks(struct ObjectEvent *objEvent, struct Sprite *sprite, u8 isDeepSand)

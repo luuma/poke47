@@ -3,37 +3,87 @@ IngyBingyIsland_MapScripts::
 
 @SPECIAL BITS
 
-Route110_EventScript_BirchApproachPlayer1::
-	applymovement LOCALID_ROUTE110_BIRCH, Route110_Movement_BirchApproachPlayer1
+
+
+
+
+annoyfishermanToSteps::
+	applymovement LOCALID_ANNOYING_FISHERMAN, ing_move1
 	waitmovement 0
 	return
 
-Route110_Movement_BirchApproachPlayer1:
-	walk_down
-	walk_left
-	walk_left
-	walk_down
+annoyfishermanToSide::
+	applymovement LOCALID_ANNOYING_FISHERMAN, ing_move2
+	waitmovement 0
+	return
+
+
+ing_move1:
+	walk_slow_left
+	walk_slow_left
+	walk_slow_left
+	face_down
+	step_end
+
+ing_move2:
+	walk_slow_right
+	walk_slow_right
+	walk_slow_right
+ing_move3:
+	face_down
 	step_end
 
 @SIGNS
-Route110_EventScript_SlateportCitySign::
-	msgbox Route110_Text_SlateportCitySign, MSGBOX_SIGN
+ing_sign1::
+	msgbox ing_signtext1, MSGBOX_SIGN
 	end
 
-Route110_Text_SlateportCitySign:
-	.string "ROUTE 110\n"
-	.string "{DOWN_ARROW} SLATEPORT CITY$"
+ing_signtext1:
+	.string "ROUTE 137\n"
+	.string "{LEFT_ARROW} MT. SNOWDROP\l"
+	.string "{RIGHT_ARROW} ROUTE 110$"
+
+ing_sign2::
+	msgbox ing_signtext2, MSGBOX_SIGN
+	end
+
+ing_signtext2:
+	.string "FISHING HUT$"
 
 @PEOPLE
 
-Route110_EventScript_OldMan::
-	msgbox Route110_Text_TwoRoads, MSGBOX_NPC
+ing_person1::
+	msgbox ing_person1text, MSGBOX_NPC
 	end
 
-Route110_Text_TwoRoads:
-	.string "The two roads, one above, one below…\p"
-	.string "A road each for people and POKéMON.\n"
-	.string "Perhaps that is right and fair.$"
+ing_person1text:
+	.string "This place is very special to me and\n"
+	.string "my girlfriend.\p"
+	.string "To honor our love, we decided to\n"
+	.string "name it “INGY BINGY LAND”.$"
+
+ing_person2::
+	msgbox ing_person2text, MSGBOX_NPC
+	end
+
+ing_person2text:
+	.string "Seeing my reflection in the rock pools\n"
+	.string "inspires me with ideas for how to get\l"
+	.string "my partner soaked with water… Muahaha!$"
+
+ing_sewaddle::
+	lock
+	faceplayer
+	waitse
+	playmoncry SPECIES_SEWADDLE, CRY_MODE_NORMAL
+	msgbox ing_sewaddlems, MSGBOX_DEFAULT
+	waitmoncry
+	release
+	end
+
+ing_sewaddlems:
+	.string "SEWADDLE: Wad wad wad!$"
+
 
 @TRAINERS
 

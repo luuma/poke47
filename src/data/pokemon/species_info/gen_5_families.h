@@ -277,7 +277,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Serperior,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_Serperior,
             gShinyOverworldPalette_Serperior
@@ -1850,7 +1850,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Munna,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Munna,
             gShinyOverworldPalette_Munna
@@ -1922,7 +1922,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Musharna,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Musharna,
             gShinyOverworldPalette_Musharna
@@ -2617,7 +2617,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Woobat,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Woobat,
             gShinyOverworldPalette_Woobat
@@ -2690,7 +2690,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Swoobat,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Swoobat,
             gShinyOverworldPalette_Swoobat
@@ -3323,7 +3323,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Tympole,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_Tympole,
             gShinyOverworldPalette_Tympole
@@ -3685,7 +3685,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Sewaddle,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Sewaddle,
             gShinyOverworldPalette_Sewaddle
@@ -3756,7 +3756,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Swadloon,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Swadloon,
             gShinyOverworldPalette_Swadloon
@@ -3909,7 +3909,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Venipede,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Venipede,
             gShinyOverworldPalette_Venipede
@@ -3986,7 +3986,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Whirlipede,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BIKE_TIRE,
             sAnimTable_Following,
             gOverworldPalette_Whirlipede,
             gShinyOverworldPalette_Whirlipede
@@ -4064,7 +4064,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Scolipede,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Scolipede,
             gShinyOverworldPalette_Scolipede
@@ -4556,7 +4556,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_BasculinRedStriped,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_BasculinRedStriped,
             gShinyOverworldPalette_BasculinRedStriped
@@ -4623,7 +4623,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_BasculinBlueStriped,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_BasculinBlueStriped,
             gShinyOverworldPalette_BasculinBlueStriped
@@ -4691,7 +4691,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_BasculinWhiteStriped,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_BasculinWhiteStriped,
             gShinyOverworldPalette_BasculinWhiteStriped
@@ -4759,7 +4759,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_BasculegionM,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_BasculegionM,
             gShinyOverworldPalette_BasculegionM
@@ -4823,7 +4823,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_BasculegionF,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_BasculegionF,
             gShinyOverworldPalette_BasculegionF
@@ -5586,7 +5586,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Dwebble,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Dwebble,
             gShinyOverworldPalette_Dwebble
@@ -5659,7 +5659,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Crustle,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Crustle,
             gShinyOverworldPalette_Crustle
@@ -5732,7 +5732,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Crustle,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Crustle,
             gShinyOverworldPalette_Crustle
@@ -6014,7 +6014,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Sigilyph,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Sigilyph,
             gShinyOverworldPalette_Sigilyph
@@ -6088,7 +6088,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Yamask,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Yamask,
             gShinyOverworldPalette_Yamask
@@ -6159,7 +6159,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Cofagrigus,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Cofagrigus,
             gShinyOverworldPalette_Cofagrigus
@@ -6225,7 +6225,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_YamaskGalar,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_YamaskGalar,
             gShinyOverworldPalette_YamaskGalar
@@ -6293,7 +6293,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Runerigus,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Runerigus,
             gShinyOverworldPalette_Runerigus
@@ -6364,7 +6364,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Tirtouga,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_Tirtouga,
             gShinyOverworldPalette_Tirtouga
@@ -6585,7 +6585,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Archeops,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Archeops,
             gShinyOverworldPalette_Archeops
@@ -7504,7 +7504,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Solosis,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Solosis,
             gShinyOverworldPalette_Solosis
@@ -7575,7 +7575,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Duosion,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Duosion,
             gShinyOverworldPalette_Duosion
@@ -7646,7 +7646,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Reuniclus,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Reuniclus,
             gShinyOverworldPalette_Reuniclus
@@ -7864,7 +7864,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Vanillite,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Vanillite,
             gShinyOverworldPalette_Vanillite
@@ -7938,7 +7938,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Vanillish,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Vanillish,
             gShinyOverworldPalette_Vanillish
@@ -8012,7 +8012,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Vanilluxe,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Vanilluxe,
             gShinyOverworldPalette_Vanilluxe
@@ -8615,7 +8615,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Emolga,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Emolga,
             gShinyOverworldPalette_Emolga
@@ -8755,7 +8755,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Escavalier,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BIKE_TIRE,
             sAnimTable_Following,
             gOverworldPalette_Escavalier,
             gShinyOverworldPalette_Escavalier
@@ -8828,7 +8828,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Foongus,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Foongus,
             gShinyOverworldPalette_Foongus
@@ -8903,7 +8903,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Amoonguss,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Amoonguss,
             gShinyOverworldPalette_Amoonguss
@@ -8983,7 +8983,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Frillish,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Frillish,
             gShinyOverworldPalette_Frillish
@@ -8992,7 +8992,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_FrillishF,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_FrillishF,
             gShinyOverworldPalette_FrillishF
@@ -9073,7 +9073,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Jellicent,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Jellicent,
             gShinyOverworldPalette_Jellicent
@@ -9082,7 +9082,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_JellicentF,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_JellicentF,
             gShinyOverworldPalette_JellicentF
@@ -9151,7 +9151,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Alomomola,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Alomomola,
             gShinyOverworldPalette_Alomomola
@@ -9223,7 +9223,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Joltik,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Joltik,
             gShinyOverworldPalette_Joltik
@@ -9297,7 +9297,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Galvantula,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Galvantula,
             gShinyOverworldPalette_Galvantula
@@ -9369,7 +9369,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Ferroseed,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Ferroseed,
             gShinyOverworldPalette_Ferroseed
@@ -9446,7 +9446,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Ferrothorn,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Ferrothorn,
             gShinyOverworldPalette_Ferrothorn
@@ -9518,7 +9518,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Klink,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Klink,
             gShinyOverworldPalette_Klink
@@ -9589,7 +9589,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Klang,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Klang,
             gShinyOverworldPalette_Klang
@@ -9660,7 +9660,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Klinklang,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Klinklang,
             gShinyOverworldPalette_Klinklang
@@ -9743,7 +9743,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Tynamo,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Tynamo,
             gShinyOverworldPalette_Tynamo
@@ -9815,7 +9815,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Eelektrik,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Eelektrik,
             gShinyOverworldPalette_Eelektrik
@@ -9887,7 +9887,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Eelektross,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Eelektross,
             gShinyOverworldPalette_Eelektross
@@ -10022,7 +10022,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Elgyem,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Elgyem,
             gShinyOverworldPalette_Elgyem
@@ -10090,7 +10090,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Beheeyem,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Beheeyem,
             gShinyOverworldPalette_Beheeyem
@@ -10165,7 +10165,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Litwick,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Litwick,
             gShinyOverworldPalette_Litwick
@@ -10240,7 +10240,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Lampent,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Lampent,
             gShinyOverworldPalette_Lampent
@@ -10313,7 +10313,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Chandelure,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Chandelure,
             gShinyOverworldPalette_Chandelure
@@ -10801,7 +10801,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Cryogonal,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Cryogonal,
             gShinyOverworldPalette_Cryogonal
@@ -10942,7 +10942,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Accelgor,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Accelgor,
             gShinyOverworldPalette_Accelgor
@@ -11011,7 +11011,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Stunfisk,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_Stunfisk,
             gShinyOverworldPalette_Stunfisk
@@ -11923,7 +11923,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Braviary,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Braviary,
             gShinyOverworldPalette_Braviary
@@ -11988,7 +11988,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_BraviaryHisui,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_BraviaryHisui,
             gShinyOverworldPalette_BraviaryHisui
@@ -12130,7 +12130,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Mandibuzz,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Mandibuzz,
             gShinyOverworldPalette_Mandibuzz
@@ -12282,7 +12282,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Durant,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Durant,
             gShinyOverworldPalette_Durant
@@ -12571,7 +12571,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Larvesta,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Larvesta,
             gShinyOverworldPalette_Larvesta
@@ -12644,7 +12644,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Volcarona,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Volcarona,
             gShinyOverworldPalette_Volcarona
@@ -12949,7 +12949,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_TornadusIncarnate,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_TornadusIncarnate,
             gShinyOverworldPalette_TornadusIncarnate
@@ -13115,7 +13115,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_ThundurusIncarnate,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_ThundurusIncarnate,
             gShinyOverworldPalette_ThundurusIncarnate
@@ -13435,7 +13435,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_LandorusIncarnate,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_LandorusIncarnate,
             gShinyOverworldPalette_LandorusIncarnate
