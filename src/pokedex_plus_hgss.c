@@ -331,6 +331,7 @@ struct PokedexListItem
     u16 dexNum;
     u16 seen:1;
     u16 owned:1;
+    u16 silhouette:1;
 };
 
 
@@ -2483,6 +2484,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             {
                 temp_dexNum = RegionalToNationalOrder(i + 1);
                 sPokedexView->pokedexList[i].dexNum = temp_dexNum;
+                sPokedexView->pokedexList[i].silhouette = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SILHOUETTE);
                 sPokedexView->pokedexList[i].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
                 sPokedexView->pokedexList[i].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
                 if (sPokedexView->pokedexList[i].seen)
@@ -2500,6 +2502,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                 if (r10)
                 {
                     sPokedexView->pokedexList[r5].dexNum = temp_dexNum;
+                    sPokedexView->pokedexList[r5].silhouette = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SILHOUETTE);
                     sPokedexView->pokedexList[r5].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
                     sPokedexView->pokedexList[r5].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
                     if (sPokedexView->pokedexList[r5].seen)
@@ -2760,7 +2763,7 @@ static void CreateMonSpritesAtPos(u16 selectedMon, u16 ignored)
 
     // Create top mon sprite
     dexNum = GetPokemonSpriteToDisplay(selectedMon - 1);
-    AsSilhouette = !sPokedexView->pokedexList[selectedMon - 1].seen;
+    AsSilhouette = sPokedexView->pokedexList[selectedMon - 1].silhouette;
     if (dexNum != 0xFFFF)
     {
         spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2769,7 +2772,7 @@ static void CreateMonSpritesAtPos(u16 selectedMon, u16 ignored)
     }
     // Create mid mon sprite
     dexNum = GetPokemonSpriteToDisplay(selectedMon);
-    AsSilhouette = !sPokedexView->pokedexList[selectedMon].seen;
+    AsSilhouette = sPokedexView->pokedexList[selectedMon].silhouette;
     if (dexNum != 0xFFFF)
     {
         spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2778,7 +2781,7 @@ static void CreateMonSpritesAtPos(u16 selectedMon, u16 ignored)
     }
     // Create bottom mon sprite
     dexNum = GetPokemonSpriteToDisplay(selectedMon + 1);
-    AsSilhouette = !sPokedexView->pokedexList[selectedMon + 1].seen;
+    AsSilhouette = sPokedexView->pokedexList[selectedMon + 1].silhouette;
     if (dexNum != 0xFFFF)
     {
         spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2845,7 +2848,7 @@ static void CreateScrollingPokemonSprite(u8 direction, u16 selectedMon)
     {
     case 1: // up
         dexNum = GetPokemonSpriteToDisplay(selectedMon - 1);
-	AsSilhouette = !sPokedexView->pokedexList[selectedMon - 1].seen;
+	    AsSilhouette = sPokedexView->pokedexList[selectedMon - 1].silhouette;
         if (dexNum != 0xFFFF)
         {
             spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2859,7 +2862,7 @@ static void CreateScrollingPokemonSprite(u8 direction, u16 selectedMon)
         break;
     case 2: // down
         dexNum = GetPokemonSpriteToDisplay(selectedMon + 1);
-	AsSilhouette = !sPokedexView->pokedexList[selectedMon + 1].seen;
+	    AsSilhouette = sPokedexView->pokedexList[selectedMon + 1].silhouette;
         if (dexNum != 0xFFFF)
         {
             spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -3034,7 +3037,9 @@ static u16 GetPokemonSpriteToDisplay(u16 species)
 {
     if (species >= NATIONAL_DEX_COUNT || sPokedexView->pokedexList[species].dexNum == 0xFFFF)
         return 0xFFFF;
-    else if (!sPokedexView->pokedexList[species].seen && !HGSS_UNSEEN_MONS_AS_SILHOUETTES)
+    else if (!sPokedexView->pokedexList[species].seen && !HGSS_UNSEEN_MONS_AS_SILHOUETTES && !HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES)
+        return 0;
+    else if (!sPokedexView->pokedexList[species].silhouette && !HGSS_UNSEEN_MONS_AS_SILHOUETTES)
         return 0;
     else
         return sPokedexView->pokedexList[species].dexNum;;
@@ -3049,9 +3054,9 @@ static u32 CreatePokedexMonSprite(u16 num, s16 x, s16 y, bool8 AsSilhouette)
         if (sPokedexView->monSpriteIds[i] == 0xFFFF)
         {
             u8 spriteId = CreateMonSpriteFromNationalDexNumberHGSS(num, x, y, i);
-	    if (AsSilhouette && HGSS_UNSEEN_MONS_AS_SILHOUETTES)
+	    if (AsSilhouette && (HGSS_UNSEEN_MONS_AS_SILHOUETTES || HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES))
 	    {
-		LoadPalette(sDexSilhouette_Pal, OBJ_PLTT_ID2(gSprites[spriteId].oam.paletteNum), PLTT_SIZE_4BPP);
+		    LoadPalette(sDexSilhouette_Pal, OBJ_PLTT_ID2(gSprites[spriteId].oam.paletteNum), PLTT_SIZE_4BPP);
 	    }
 	    gSprites[spriteId].oam.affineMode = ST_OAM_AFFINE_NORMAL;
             gSprites[spriteId].oam.priority = 3;
