@@ -2487,7 +2487,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                 sPokedexView->pokedexList[i].silhouette = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SILHOUETTE);
                 sPokedexView->pokedexList[i].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
                 sPokedexView->pokedexList[i].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
-                if (sPokedexView->pokedexList[i].seen)
+                if (sPokedexView->pokedexList[i].seen || (sPokedexView->pokedexList[i].silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES))
                     sPokedexView->pokemonListCount = i + 1;
             }
         }
@@ -2505,7 +2505,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
                     sPokedexView->pokedexList[r5].silhouette = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SILHOUETTE);
                     sPokedexView->pokedexList[r5].seen = GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN);
                     sPokedexView->pokedexList[r5].owned = GetSetPokedexFlag(temp_dexNum, FLAG_GET_CAUGHT);
-                    if (sPokedexView->pokedexList[r5].seen)
+                    if (sPokedexView->pokedexList[r5].seen || (sPokedexView->pokedexList[r5].silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES))
                         sPokedexView->pokemonListCount = r5 + 1;
                     r5++;
                 }
