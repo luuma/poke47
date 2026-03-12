@@ -3039,10 +3039,10 @@ static u16 GetPokemonSpriteToDisplay(u16 species)
         return 0xFFFF;
     else if (!sPokedexView->pokedexList[species].seen && !HGSS_UNSEEN_MONS_AS_SILHOUETTES && !HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES)
         return 0;
-    else if (!sPokedexView->pokedexList[species].silhouette && !HGSS_UNSEEN_MONS_AS_SILHOUETTES)
+    else if (!sPokedexView->pokedexList[species].silhouette && !sPokedexView->pokedexList[species].seen && !HGSS_UNSEEN_MONS_AS_SILHOUETTES)
         return 0;
     else
-        return sPokedexView->pokedexList[species].dexNum;;
+        return sPokedexView->pokedexList[species].dexNum;
 }
 
 static u32 CreatePokedexMonSprite(u16 num, s16 x, s16 y, bool8 AsSilhouette)
