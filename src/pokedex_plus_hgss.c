@@ -2497,7 +2497,7 @@ static void CreatePokedexList(u8 dexMode, u8 order)
             for (i = 0, r5 = 0, r10 = 0; i < temp_dexCount; i++)
             {
                 temp_dexNum = i + 1;
-                if (GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN))
+                if (GetSetPokedexFlag(temp_dexNum, FLAG_GET_SEEN) || (GetSetPokedexFlag(temp_dexNum, FLAG_GET_SILHOUETTE) && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES))
                     r10 = 1;
                 if (r10)
                 {
@@ -6016,8 +6016,7 @@ static void Task_LoadEvolutionScreen(u8 taskId)
         if (sPokedexView->sEvoScreenData.numAllEvolutions > 0 && sPokedexView->sEvoScreenData.numSeen > 0)
         {
             u32 pos;
-            for (pos = 0; !sPokedexView->sEvoScreenData.seen[pos]; pos++)
-                ;
+            for (pos = 0; !sPokedexView->sEvoScreenData.seen[pos]; pos++);
             sPokedexView->sEvoScreenData.menuPos = pos;
             sPokedexView->sEvoScreenData.arrowSpriteId = CreateSprite(&gSpriteTemplate_Arrow, 7, 58 + 9 * pos, 0);
             gSprites[sPokedexView->sEvoScreenData.arrowSpriteId].animNum = 2;
