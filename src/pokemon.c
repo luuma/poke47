@@ -1101,6 +1101,7 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 #include "data/pokemon/form_species_tables.h"
 #include "data/pokemon/form_change_tables.h"
 #include "data/pokemon/form_change_table_pointers.h"
+#include "data/pokemon/wild_encounter_ow_behavior.h"
 #include "data/object_events/object_event_pic_tables_followers.h"
 
 #include "data/pokemon/species_info.h"
@@ -1437,11 +1438,51 @@ void CreateMonWithIVs(struct Pokemon *mon, u16 species, u8 level, u32 personalit
     CalculateMonStats(mon);
 }
 
+bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
+{
+    bool32 isShiny;
+    if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY))
+    {
+        isShiny = FALSE;
+    }
+    else if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY))
+    {
+        isShiny = TRUE;
+    }
+    else if (P_ONLY_OBTAINABLE_SHINIES && (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || (B_FLAG_NO_CATCHING != 0 && FlagGet(B_FLAG_NO_CATCHING))))
+    {
+        isShiny = FALSE;
+    }
+    else if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
+    {
+        isShiny = FALSE;
+    }
+    else
+    {
+        u32 totalRerolls = 0;
+        if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+            totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
+        if (LURE_STEP_COUNT != 0)
+            totalRerolls += 1;
+        totalRerolls += CalculateChainFishingShinyRolls();
+        if (gDexNavSpecies)
+            totalRerolls += CalculateDexNavShinyRolls();
+
+        u32 shinyPersonality = personality;
+        while (GET_SHINY_VALUE(value, shinyPersonality) >= SHINY_ODDS && totalRerolls > 0)
+        {
+            shinyPersonality = Random32();
+            totalRerolls--;
+        }
+
+        isShiny = GET_SHINY_VALUE(value, shinyPersonality) < SHINY_ODDS;
+    }
+    return isShiny;
+}
+
 void SetBoxMonIVs(struct BoxPokemon *mon, u8 fixedIV)
 {
     u32 i, value;
-    enum Stat availableIVs[NUM_STATS];
-    enum Stat selectedIvs[NUM_STATS];
 
     if (fixedIV < USE_RANDOM_IVS)
     {
@@ -1471,21 +1512,35 @@ void SetBoxMonIVs(struct BoxPokemon *mon, u8 fixedIV)
     iv = (value & (MAX_IV_MASK << 10)) >> 10;
     SetBoxMonData(mon, MON_DATA_SPDEF_IV, &iv);
 
-    if (gSpeciesInfo[species].perfectIVCount != 0)
-    {
-        iv = MAX_PER_STAT_IVS;
-        // Initialize a list of IV indices.
-        for (i = 0; i < NUM_STATS; i++)
-            availableIVs[i] = i;
+    SetBoxMonPerfectIVs(mon, gSpeciesInfo[species].perfectIVCount);
+}
 
-        // Select the IVs that will be perfected.
-        for (i = 0; i < NUM_STATS && i < gSpeciesInfo[species].perfectIVCount; i++)
-        {
-            u8 index = Random() % (NUM_STATS - i);
-            selectedIvs[i] = availableIVs[index];
-            RemoveIVIndexFromList(availableIVs, index);
-            SetBoxMonData(mon, MON_DATA_HP_IV + selectedIvs[i], &iv);
-        }
+void SetBoxMonPerfectIVs(struct BoxPokemon *mon, u32 numPerfect)
+{
+    if (!numPerfect)
+        return;
+
+    u32 i, iv = MAX_PER_STAT_IVS;
+    if (numPerfect >= NUM_STATS)
+    {
+        for (i = 0; i < NUM_STATS; i++)
+            SetBoxMonData(mon, MON_DATA_HP_IV + i, &iv);
+        return;
+    }
+
+    enum Stat availableIVs[NUM_STATS];
+    enum Stat selectedIvs[NUM_STATS];
+    // Initialize a list of IV indices.
+    for (i = 0; i < NUM_STATS; i++)
+        availableIVs[i] = i;
+
+    // Select the IVs that will be perfected.
+    for (i = 0; i < numPerfect; i++)
+    {
+        u8 index = Random() % (NUM_STATS - i);
+        selectedIvs[i] = availableIVs[index];
+        RemoveIVIndexFromList(availableIVs, index);
+        SetBoxMonData(mon, MON_DATA_HP_IV + selectedIvs[i], &iv);
     }
 }
 
@@ -1511,42 +1566,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u32 personal
     else // Player is the OT
     {
         value = READ_OTID_FROM_SAVE;
-        if (P_FLAG_FORCE_NO_SHINY != 0 && FlagGet(P_FLAG_FORCE_NO_SHINY))
-        {
-            isShiny = FALSE;
-        }
-        else if (P_FLAG_FORCE_SHINY != 0 && FlagGet(P_FLAG_FORCE_SHINY))
-        {
-            isShiny = TRUE;
-        }
-        else if (P_ONLY_OBTAINABLE_SHINIES && (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || (B_FLAG_NO_CATCHING != 0 && FlagGet(B_FLAG_NO_CATCHING))))
-        {
-            isShiny = FALSE;
-        }
-        else if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
-        {
-            isShiny = FALSE;
-        }
-        else
-        {
-            u32 totalRerolls = 0;
-            if (CheckBagHasItem(ITEM_SHINY_CHARM, 1) || CheckBagHasItem(ITEM_LEVEL_CAP, 1))
-                totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
-            if (LURE_STEP_COUNT != 0)
-                totalRerolls += 1;
-            totalRerolls += CalculateChainFishingShinyRolls();
-            if (gDexNavSpecies)
-                totalRerolls += CalculateDexNavShinyRolls();
-
-            u32 shinyPersonality = personality;
-            while (GET_SHINY_VALUE(value, shinyPersonality) >= SHINY_ODDS && totalRerolls > 0)
-            {
-                shinyPersonality = Random32();
-                totalRerolls--;
-            }
-
-            isShiny = GET_SHINY_VALUE(value, shinyPersonality) < SHINY_ODDS;
-        }
+        isShiny = ComputePlayerShinyOdds(personality, value);    
     }
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
@@ -7551,4 +7571,46 @@ void ChangePokemonNicknameWithCallback(void (*callback)(void))
     GetBoxMonData(boxMon, MON_DATA_NICKNAME, gStringVar3);
     GetBoxMonData(boxMon, MON_DATA_NICKNAME, gStringVar2);
     DoNamingScreen(NAMING_SCREEN_NICKNAME, gStringVar2, GetBoxMonData(boxMon, MON_DATA_SPECIES), GetBoxMonGender(boxMon), GetBoxMonData(boxMon, MON_DATA_PERSONALITY), callback);
+}
+
+u32 OWE_GetMovementTypeFromSpecies(u32 speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].movementType;
+}
+
+u32 OWE_GetViewDistanceFromSpecies(u32 speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].viewDistance;
+}
+
+u32 OWE_GetViewWidthFromSpecies(u32 speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].viewWidth;
+}
+
+u32 OWE_GetViewActiveDistanceFromSpecies(u32 speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].activeDistance;
+}
+
+enum SpeedOWE OWE_GetIdleSpeedFromSpecies(u32 speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].idleSpeed;
+}
+
+enum SpeedOWE OWE_GetActiveSpeedFromSpecies(u32 speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].activeSpeed;
 }

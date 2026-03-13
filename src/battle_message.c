@@ -1,7 +1,7 @@
 #include "global.h"
 #include "battle.h"
 #include "battle_anim.h"
-#include "battle_ai_util.h"
+#include "battle_ai_record.h"
 #include "battle_controllers.h"
 #include "battle_message.h"
 #include "battle_setup.h"
@@ -2999,7 +2999,7 @@ static const u8 *BattleStringGetOpponentNameByTrainerId(u16 trainerId, u8 *text,
 
     assertf(DoesStringProperlyTerminate(toCpy, TRAINER_NAME_LENGTH + 1),"Opponent needs a valid name")
     {
-        return gText_Blank;
+        return sText_EmptyString4;
     }
 
     return toCpy;
