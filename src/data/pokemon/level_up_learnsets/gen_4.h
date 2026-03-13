@@ -10379,7 +10379,6 @@ static const struct LevelUpMove sCresseliaLevelUpLearnset[] = {
 };
 #endif //P_FAMILY_CRESSELIA
 
-#if P_FAMILY_MANAPHY
 static const struct LevelUpMove sPhioneLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_BUBBLE),
     LEVEL_UP_MOVE( 1, MOVE_WATER_SPORT),
@@ -10411,7 +10410,6 @@ static const struct LevelUpMove sManaphyLevelUpLearnset[] = {
     LEVEL_UP_MOVE(76, MOVE_HEART_SWAP),
     LEVEL_UP_END
 };
-#endif //P_FAMILY_MANAPHY
 
 #if P_FAMILY_DARKRAI
 static const struct LevelUpMove sDarkraiLevelUpLearnset[] = {

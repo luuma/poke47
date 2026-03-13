@@ -7492,7 +7492,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
     },
 #endif //P_FAMILY_CRESSELIA
 
-#if P_FAMILY_MANAPHY
     [SPECIES_PHIONE] =
     {
         .baseHP        = 80,
@@ -7647,7 +7646,6 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .teachableLearnset = sManaphyTeachableLearnset,
         .eggId = EGG_ID_MANAPHY,
     },
-#endif //P_FAMILY_MANAPHY
 
 #if P_FAMILY_DARKRAI
     [SPECIES_DARKRAI] =
