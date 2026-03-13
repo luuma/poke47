@@ -57,10 +57,7 @@ static bool8 TryGetHoldInfluencedWildMonIndex(const struct WildPokemon *wildMon,
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex, u32 size);
 
 
-static bool8 IsAbilityAllowingEncounter(u8 level);
-#else
-static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex);
-#endif
+//static bool8 IsAbilityAllowingEncounter(u8 level);
 
 /////////WILL EVENTUALLY BE INVALIDATED // grintoul THANK YOU :)
 static bool32 ShouldRandomizeWildMonForm(u16 species);

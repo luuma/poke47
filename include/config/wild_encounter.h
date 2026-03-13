@@ -8,8 +8,8 @@
 #define WE_OW_ENCOUNTERS                    TRUE   // If TRUE, OW Pokémon can spawn as Overworld Wild Encounters on the current map. Requires OW_POKEMON_OBJECT_EVENTS.
                                                     // If WE_OW_ENCOUNTERS is TRUE, it is recommended that OW_GFX_COMPRESS be set to FALSE to prevent VRAM issues.
 #define WE_OWE_FLAG_DISABLED                0       // Replace 0 with a flag to use it to enable/disable generated OWEs.
-#define WE_OWE_BATTLE_PIKE                  TRUE    // If TRUE, OWEs can spawn in the Battle Pike, if FALSE random encounters will be enabled instead. Requires WE_OW_ENCOUNTERS to be TRUE.
-#define WE_OWE_BATTLE_PYRAMID               TRUE    // If TRUE, OWEs can spawn in the Battle Pyramid, if FALSE random encounters will be enabled instead. Requires WE_OW_ENCOUNTERS to be TRUE.
+#define WE_OWE_BATTLE_PIKE                  FALSE    // If TRUE, OWEs can spawn in the Battle Pike, if FALSE random encounters will be enabled instead. Requires WE_OW_ENCOUNTERS to be TRUE.
+#define WE_OWE_BATTLE_PYRAMID               FALSE    // If TRUE, OWEs can spawn in the Battle Pyramid, if FALSE random encounters will be enabled instead. Requires WE_OW_ENCOUNTERS to be TRUE.
 #define WE_OWE_RESTRICT_METATILE            TRUE    // If TRUE, OWEs will stay within tiles with the same encounter metatile behavior as the one it is currently on, if any.
 #define WE_OWE_RESTRICT_MAP                 TRUE    // If TRUE, OWEs will stay within their current map bounds.
 #define WE_OWE_UNRESTRICT_SIGHT             FALSE   // If TRUE, OWEs will ignore all movement restrictions when they can see the player.
@@ -19,8 +19,8 @@
 #define WE_OWE_FEEBAS_SPOTS                 TRUE   // If TRUE, any spot that could result in a Feebas fishing encounter can spawn a Feebas OWE.
 #define WE_OWE_DESPAWN_SOUND                FALSE   // If TRUE, plays SE_FLEE when an OWE despawns.
 #define WE_OWE_APPROACH_FOR_BATTLE          TRUE    // If TRUE, OWEs will take steps to be right next to the player before the battle starts.
-#define WE_OWE_PREVENT_SHINY_DESPAWN        FALSE   // If TRUE, shiny OWEs will not be despawned when off-screen if on the same map as the player, or be replaced if WE_OWE_SPAWN_REPLACEMENT is TRUE.
-#define WE_OWE_PREVENT_FEEBAS_DESPAWN       FALSE   // If TRUE, Feebas OWEs spawned from special Feebas fishing spots (when WE_OWE_FEEBAS_SPOTS is TRUE) will not be despawned when off-screen if on the same map as the player, or be replaced if WE_OWE_SPAWN_REPLACEMENT is TRUE.
+#define WE_OWE_PREVENT_SHINY_DESPAWN        TRUE   // If TRUE, shiny OWEs will not be despawned when off-screen if on the same map as the player, or be replaced if WE_OWE_SPAWN_REPLACEMENT is TRUE.
+#define WE_OWE_PREVENT_FEEBAS_DESPAWN       TRUE   // If TRUE, Feebas OWEs spawned from special Feebas fishing spots (when WE_OWE_FEEBAS_SPOTS is TRUE) will not be despawned when off-screen if on the same map as the player, or be replaced if WE_OWE_SPAWN_REPLACEMENT is TRUE.
 #define WE_OWE_DESPAWN_ON_ENTER_TOWN        TRUE    // If TRUE, despawns all OWEs upon entering a city (MAP_TYPE_CITY) or town (MAP_TYPE_TOWN).
 #define WE_OWE_REPEL_DEXNAV_COLLISION       FALSE   // If TRUE, OWEs can still be triggered by a collision if a Repel or the DexNav is active.
 

@@ -45,7 +45,7 @@
 #define OWE_SAVED_MOVEMENT_STATE_FLAG   OWE_FLAG_BIT
 #define OWE_NO_DESPAWN_FLAG             OWE_FLAG_BIT
 
-#define OWE_SPAWNS_MAX                  4
+#define OWE_SPAWNS_MAX                  6
 #define OWE_SPAWN_DISTANCE_LAND         1   // A spawn cannot happen within this many tiles of the player position.
 #define OWE_SPAWN_DISTANCE_WATER        3   // A spawn cannot happen within this many tiles of the player position (while surfing).
 #define OWE_SPAWN_WIDTH_TOTAL           15  // Width of the on-screen spawn area in tiles.
@@ -815,7 +815,7 @@ static bool32 TrySelectTileForOWE(s32* outX, s32* outY)
     if (ShouldSpawnWaterOWE() && MetatileBehavior_IsWaterWildEncounter(tileBehavior))
         isEncounterTile = TRUE;
 
-    if (!ShouldSpawnWaterOWE() && (MetatileBehavior_IsLandWildEncounter(tileBehavior) || MetatileBehavior_IsIndoorEncounter(tileBehavior)))
+    if (!ShouldSpawnWaterOWE() && (elevation == ELEVATION_OWE || MetatileBehavior_IsIndoorEncounter(tileBehavior)))
         isEncounterTile = TRUE;
 
     if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS
@@ -1386,9 +1386,10 @@ static bool32 CheckRestrictedOWEMovementMetatile(s32 xCurrent, s32 yCurrent, s32
         return FALSE;
     u32 metatileBehaviourCurrent = MapGridGetMetatileBehaviorAt(xCurrent, yCurrent);
     u32 metatileBehaviourNew = MapGridGetMetatileBehaviorAt(xNew, yNew);
+    u32 elevationCurrent = MapGridGetElevationAt(xCurrent, yCurrent);
+    u32 elevationNew = MapGridGetElevationAt(xNew, yNew);
 
-    if (MetatileBehavior_IsLandWildEncounter(metatileBehaviourCurrent)
-     && MetatileBehavior_IsLandWildEncounter(metatileBehaviourNew))
+    if (elevationCurrent == elevationNew)
         return FALSE;
 
     if (MetatileBehavior_IsWaterWildEncounter(metatileBehaviourCurrent)
@@ -1399,10 +1400,10 @@ static bool32 CheckRestrictedOWEMovementMetatile(s32 xCurrent, s32 yCurrent, s32
      && MetatileBehavior_IsIndoorEncounter(metatileBehaviourNew))
         return FALSE;
 
-    if (!MetatileBehavior_IsLandWildEncounter(metatileBehaviourCurrent)
-     && !MetatileBehavior_IsWaterWildEncounter(metatileBehaviourCurrent)
-     && !MetatileBehavior_IsIndoorEncounter(metatileBehaviourCurrent))
-        return FALSE;
+    //if (!MetatileBehavior_IsLandWildEncounter(metatileBehaviourCurrent)
+     //&& !MetatileBehavior_IsWaterWildEncounter(metatileBehaviourCurrent)
+    // && !MetatileBehavior_IsIndoorEncounter(metatileBehaviourCurrent))
+       // return FALSE;
 
     return TRUE;
 }
