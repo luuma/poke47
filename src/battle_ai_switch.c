@@ -2142,7 +2142,7 @@ static u32 GetBestMonIntegrated(struct Pokemon *party, int firstId, int lastId, 
         }
 
         validMonIds |= (1u << monIndex);
-        InitializeSwitchinCandidate(battler, &party[monIndex]);
+        InitializeSwitchinCandidate(battler, monIndex, &party[monIndex]);
 
         u32 originalHp = gBattleMons[battler].hp;
 
@@ -2399,7 +2399,7 @@ static u32 GetBestMonVanilla(struct Pokemon *party, int firstId, int lastId, enu
             continue;
         }
         validMonIds |= (1u << monIndex);
-        InitializeSwitchinCandidate(battler, &party[monIndex]);
+        InitializeSwitchinCandidate(battler, monIndex, &party[monIndex]);
 
         // While not really invalid per se, not really wise to switch into this mon
         if (gAiLogicData->abilities[battler] == ABILITY_TRUANT && IsTruantMonVulnerable(battler, opposingBattler))
