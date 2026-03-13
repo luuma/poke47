@@ -509,7 +509,7 @@ static void HighlightScreenSelectBarItem(u8, u16);
 static void Task_HandleCaughtMonPageInput(u8);
 static void Task_ExitCaughtMonPage(u8);
 static void SpriteCB_SlideCaughtMonToCenter(struct Sprite *sprite);
-static void PrintMonInfo(u32 num, u32, u32 owned, u32 newEntry);
+static void PrintMonInfo(u32 num, u32, u32 owned, u32 newEntry, u32 blankText);
 static void ResetOtherVideoRegisters(u16);
 static u8 PrintCryScreenSpeciesName(u8, u16, u8, u8);
 static void PrintDecimalNum(u8 windowId, u16 num, u8 left, u8 top);
@@ -2136,7 +2136,7 @@ static void Task_HandlePokedexInput(u8 taskId)
     }
     else
     {
-        if (JOY_NEW(A_BUTTON) && sPokedexView->pokedexList[sPokedexView->selectedPokemon].seen)
+        if (JOY_NEW(A_BUTTON) && (sPokedexView->pokedexList[sPokedexView->selectedPokemon].seen || (sPokedexView->pokedexList[sPokedexView->selectedPokemon].silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES)))
         {
             TryDestroyStatBars();
             UpdateSelectedMonSpriteId();
@@ -2766,7 +2766,7 @@ static void CreateMonSpritesAtPos(u16 selectedMon, u16 ignored)
 
     // Create top mon sprite
     dexNum = GetPokemonSpriteToDisplay(selectedMon - 1);
-    AsSilhouette = sPokedexView->pokedexList[selectedMon - 1].silhouette;
+    AsSilhouette = ((sPokedexView->pokedexList[selectedMon - 1].silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES) || (!(sPokedexView->pokedexList[selectedMon - 1].seen) && HGSS_UNSEEN_MONS_AS_SILHOUETTES));
     if (dexNum != 0xFFFF)
     {
         spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2775,7 +2775,7 @@ static void CreateMonSpritesAtPos(u16 selectedMon, u16 ignored)
     }
     // Create mid mon sprite
     dexNum = GetPokemonSpriteToDisplay(selectedMon);
-    AsSilhouette = sPokedexView->pokedexList[selectedMon].silhouette;
+    AsSilhouette = ((sPokedexView->pokedexList[selectedMon].silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES) || (!(sPokedexView->pokedexList[selectedMon].seen) && HGSS_UNSEEN_MONS_AS_SILHOUETTES));
     if (dexNum != 0xFFFF)
     {
         spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2784,7 +2784,7 @@ static void CreateMonSpritesAtPos(u16 selectedMon, u16 ignored)
     }
     // Create bottom mon sprite
     dexNum = GetPokemonSpriteToDisplay(selectedMon + 1);
-    AsSilhouette = sPokedexView->pokedexList[selectedMon + 1].silhouette;
+    AsSilhouette = ((sPokedexView->pokedexList[selectedMon + 1].silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES) || (!(sPokedexView->pokedexList[selectedMon + 1].seen) && HGSS_UNSEEN_MONS_AS_SILHOUETTES));
     if (dexNum != 0xFFFF)
     {
         spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2851,7 +2851,7 @@ static void CreateScrollingPokemonSprite(u8 direction, u16 selectedMon)
     {
     case 1: // up
         dexNum = GetPokemonSpriteToDisplay(selectedMon - 1);
-	    AsSilhouette = sPokedexView->pokedexList[selectedMon - 1].silhouette;
+	    AsSilhouette = ((sPokedexView->pokedexList[selectedMon - 1].silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES) || (!(sPokedexView->pokedexList[selectedMon - 1].seen) && HGSS_UNSEEN_MONS_AS_SILHOUETTES));
         if (dexNum != 0xFFFF)
         {
             spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2865,7 +2865,7 @@ static void CreateScrollingPokemonSprite(u8 direction, u16 selectedMon)
         break;
     case 2: // down
         dexNum = GetPokemonSpriteToDisplay(selectedMon + 1);
-	    AsSilhouette = sPokedexView->pokedexList[selectedMon + 1].silhouette;
+	    AsSilhouette = ((sPokedexView->pokedexList[selectedMon + 1].silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES) || (!(sPokedexView->pokedexList[selectedMon + 1].seen) && HGSS_UNSEEN_MONS_AS_SILHOUETTES));
         if (dexNum != 0xFFFF)
         {
             spriteId = CreatePokedexMonSprite(dexNum, SCROLLING_MON_X, 0x50, AsSilhouette);
@@ -2979,7 +2979,7 @@ static bool8 TryDoInfoScreenScroll(void)
         {
             nextPokemon = GetNextPosition(1, nextPokemon, 0, sPokedexView->pokemonListCount - 1);
 
-            if (sPokedexView->pokedexList[nextPokemon].seen)
+            if (sPokedexView->pokedexList[nextPokemon].seen || (HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES && sPokedexView->pokedexList[nextPokemon].silhouette))
             {
                 selectedPokemon = nextPokemon;
                 break;
@@ -3002,7 +3002,7 @@ static bool8 TryDoInfoScreenScroll(void)
         {
             nextPokemon = GetNextPosition(0, nextPokemon, 0, sPokedexView->pokemonListCount - 1);
 
-            if (sPokedexView->pokedexList[nextPokemon].seen)
+            if (sPokedexView->pokedexList[nextPokemon].seen || (HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES && sPokedexView->pokedexList[nextPokemon].silhouette))
             {
                 selectedPokemon = nextPokemon;
                 break;
@@ -3057,7 +3057,7 @@ static u32 CreatePokedexMonSprite(u16 num, s16 x, s16 y, bool8 AsSilhouette)
         if (sPokedexView->monSpriteIds[i] == 0xFFFF)
         {
             u8 spriteId = CreateMonSpriteFromNationalDexNumberHGSS(num, x, y, i);
-	    if (AsSilhouette && (HGSS_UNSEEN_MONS_AS_SILHOUETTES || HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES))
+	    if (AsSilhouette)
 	    {
 		    LoadPalette(sDexSilhouette_Pal, OBJ_PLTT_ID2(gSprites[spriteId].oam.paletteNum), PLTT_SIZE_4BPP);
 	    }
@@ -3781,7 +3781,7 @@ static void Task_LoadInfoScreen(u8 taskId)
         gMain.state++;
         break;
     case 4:
-        PrintMonInfo(sPokedexListItem->dexNum, sPokedexView->dexMode == DEX_MODE_HOENN ? FALSE : TRUE, sPokedexListItem->owned, 0);
+        PrintMonInfo(sPokedexListItem->dexNum, sPokedexView->dexMode == DEX_MODE_HOENN ? FALSE : TRUE, sPokedexListItem->owned, 0, sPokedexListItem->silhouette);
         if (!sPokedexListItem->owned)
             LoadPalette(gPlttBufferUnfaded + 1, BG_PLTT_ID(3) + 1, PLTT_SIZEOF(16 - 1));
         CopyWindowToVram(WIN_INFO, COPYWIN_FULL);
@@ -3806,6 +3806,8 @@ static void Task_LoadInfoScreen(u8 taskId)
             preservedPalettes = 0x14; // each bit represents a palette index
         if (gTasks[taskId].tMonSpriteDone)
             preservedPalettes |= (1 << (gSprites[gTasks[taskId].tMonSpriteId].oam.paletteNum + 16));
+        if (sPokedexListItem->silhouette && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES)
+            LoadPalette(sDexSilhouette_Pal, OBJ_PLTT_ID2(gSprites[gTasks[taskId].tMonSpriteId].oam.paletteNum), PLTT_SIZE_4BPP);
         BeginNormalPaletteFade(~preservedPalettes, 0, 16, 0, RGB_BLACK);
         SetVBlankCallback(gPokedexVBlankCB);
         gMain.state++;
@@ -4135,7 +4137,7 @@ void Task_DisplayCaughtMonDexPageHGSS(u8 taskId)
         gTasks[taskId].tState++;
         break;
     case 3:
-        PrintMonInfo(dexNum, IsNationalPokedexEnabled(), 1, 1);
+        PrintMonInfo(dexNum, IsNationalPokedexEnabled(), 1, 1, FALSE);
         CopyWindowToVram(WIN_INFO, COPYWIN_FULL);
         CopyBgTilemapBufferToVram(2);
         CopyBgTilemapBufferToVram(3);
@@ -4389,7 +4391,7 @@ static void CreateTypeIconSprites(void)
 }
 
 // u32 value is re-used, but passed as a bool that's TRUE if national dex is enabled
-static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
+static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry, u32 blankText)
 {
     u8 str[16];
     u8 str2[32];
@@ -4406,7 +4408,7 @@ static void PrintMonInfo(u32 num, u32 value, u32 owned, u32 newEntry)
     ConvertIntToDecimalStringN(StringCopy(str, gText_NumberClear01), value, STR_CONV_MODE_LEADING_ZEROS, digitCount);
     PrintInfoScreenTextWhite(str, 123, 17);
     species = NationalPokedexNumToSpeciesHGSS(num);
-    if (species)
+    if (species && !(blankText && HGSS_OVERWORLD_NOTICED_AS_SILHOUETTES))
         name = GetSpeciesName(species);
     else
         name = sText_TenDashes;
