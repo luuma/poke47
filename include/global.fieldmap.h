@@ -16,7 +16,7 @@ enum
     ELEVATION_TRANSITION = 0,
     ELEVATION_SURF = 1,
     ELEVATION_DEFAULT = 3,
-    ELEVATION_OWE = 13, // ATTEMpt to match behaviour of elevation_transition but confines owencs to it.
+    ELEVATION_OWE = 13, // ATTEMpted to match behaviour of elevation_transition but nah.
     ELEVATION_MULTI_LEVEL = 15,
     ELEVATION_INVALID = 0xFFFF
 };
