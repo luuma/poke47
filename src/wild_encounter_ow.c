@@ -176,7 +176,7 @@ struct AgeSort
 };
 
 
-void OverworldWildEncounters_CB(void)// unrelated to crash
+void OverworldWildEncounters_CB(void)
 {
     bool32 shouldSpawnWaterMons = ShouldSpawnWaterOWE();
     
@@ -388,7 +388,7 @@ static bool32 CreateEnemyPartyOWE(u32 *speciesId, u32 *level, u32 *indexRoamerOu
         return FALSE;
     }
 
-    if (MetatileBehavior_IsWaterWildEncounter(metatileBehavior))///ShouldSpawnWaterOWE() && ??
+    if (ShouldSpawnWaterOWE() && MetatileBehavior_IsWaterWildEncounter(metatileBehavior))///??
     {
         wildArea = WILD_AREA_WATER;
         timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
