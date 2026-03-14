@@ -859,6 +859,14 @@ bool8 MetatileBehavior_IsIndoorEncounter(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_SpawnsOWs(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_CAVE || metatileBehavior == MB_INDOOR_ENCOUNTER || metatileBehavior == MB_SEAWEED)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsMountain(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_MOUNTAIN_TOP)

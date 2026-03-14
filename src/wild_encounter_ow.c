@@ -128,7 +128,7 @@ static inline void SetOWENoDespawnFlag(u32 *level)
 
 static inline bool32 ShouldSpawnWaterOWE(void)
 {
-    return TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING | PLAYER_AVATAR_FLAG_UNDERWATER);
+    return TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_SURFING); // && !(TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_UNDERWATER)))
 }
 
 static bool32 CreateEnemyPartyOWE(u32 *speciesId, u32 *level, u32 *indexRoamerOutbreak, s32 x, s32 y);
@@ -176,7 +176,7 @@ struct AgeSort
 };
 
 
-void OverworldWildEncounters_CB(void)
+void OverworldWildEncounters_CB(void)// unrelated to crash
 {
     bool32 shouldSpawnWaterMons = ShouldSpawnWaterOWE();
     
@@ -208,7 +208,7 @@ void OverworldWildEncounters_CB(void)
         sOWESpawnCountdown--;
         return;
     }
-    
+
     DespwnAllOverworldWildEncounters(OWE_GENERATED, WILD_CHECK_REPEL);
     struct ObjectEvent* player = &gObjectEvents[gPlayerAvatar.objectEventId];
     if (player->currentCoords.x != player->previousCoords.x || player->currentCoords.y != player->previousCoords.y)
@@ -216,6 +216,8 @@ void OverworldWildEncounters_CB(void)
 
     u32 spawnSlot = GetNextOWESpawnSlot();
     s32 x, y;
+
+
     if (spawnSlot == OWE_INVALID_SPAWN_SLOT
      || (shouldSpawnWaterMons && AreLegendariesInSootopolisPreventingEncounters())
      || !TrySelectTileForOWE(&x, &y))
@@ -232,6 +234,7 @@ void OverworldWildEncounters_CB(void)
     u32 level = MIN_LEVEL;
     u32 graphicsId = GetGraphicsIdForOWE(&speciesId, &isShiny, &isFemale, &level, &indexRoamerOutbreak, x, y);
 
+
     if (speciesId == SPECIES_NONE
      || !IsWildLevelAllowedByRepel(GetOWEEncounterLevel(level))
      || !IsAbilityAllowingEncounter(GetOWEEncounterLevel(level))
@@ -240,7 +243,7 @@ void OverworldWildEncounters_CB(void)
         SetMinimumOWESpawnTimer();
         return;
     }
-    
+
     struct ObjectEventTemplate objectEventTemplate = {
         .localId = localId,
         .graphicsId = graphicsId,
@@ -256,7 +259,6 @@ void OverworldWildEncounters_CB(void)
     if (ShouldDespawnGeneratedForNewOWE(owe))
         RemoveObjectEvent(owe);
     objectEventId = SpawnSpecialObjectEvent(&objectEventTemplate);
-
     assertf(objectEventId < OBJECT_EVENTS_COUNT, "could not spawn generated overworld encounter. too many object events exist")
     {
         SetMinimumOWESpawnTimer();
@@ -386,7 +388,7 @@ static bool32 CreateEnemyPartyOWE(u32 *speciesId, u32 *level, u32 *indexRoamerOu
         return FALSE;
     }
 
-    if (MetatileBehavior_IsWaterWildEncounter(metatileBehavior))
+    if (MetatileBehavior_IsWaterWildEncounter(metatileBehavior))///ShouldSpawnWaterOWE() && ??
     {
         wildArea = WILD_AREA_WATER;
         timeOfDay = GetTimeOfDayForEncounters(headerId, wildArea);
@@ -656,7 +658,6 @@ static bool32 CheckCuurentWildMonHeaderForOWE(bool32 shouldSpawnWaterMons)
         }
         return FALSE;
     }
-
     if (shouldSpawnWaterMons)
     {
         timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_WATER);
@@ -815,7 +816,7 @@ static bool32 TrySelectTileForOWE(s32* outX, s32* outY)
     if (ShouldSpawnWaterOWE() && MetatileBehavior_IsWaterWildEncounter(tileBehavior))
         isEncounterTile = TRUE;
 
-    if (!ShouldSpawnWaterOWE() && (elevation == ELEVATION_OWE || MetatileBehavior_IsIndoorEncounter(tileBehavior)))
+    if (!ShouldSpawnWaterOWE() && (elevation == ELEVATION_OWE || MetatileBehavior_SpawnsOWs(tileBehavior)))
         isEncounterTile = TRUE;
 
     if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS
