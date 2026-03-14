@@ -3005,7 +3005,7 @@ static bool32 TryDancer(void)
     bool32 anyDancerQueued = FALSE;
     enum BattlerId dancerBattler = MAX_BATTLERS_COUNT;
 
-    if (!IsDanceMove(gCurrentMove) || !IsSoundMove(gCurrentMove) )
+    if (!(IsDanceMove(gCurrentMove) || IsSoundMove(gCurrentMove)))
         return FALSE;
 
     for (enum BattlerId battler = 0; battler < gBattlersCount; battler++)
@@ -3032,7 +3032,7 @@ static bool32 TryDancer(void)
 
     if (IsBattlerAlive(dancerBattler)
      && !gSpecialStatuses[dancerBattler].dancerUsedMove
-     && gBattlerAttacker != dancerBattler && IsDanceMove(gCurrentMove) && (GetBattlerAbility(gBattlerAttacker) == ABILITY_DANCER))
+     && gBattlerAttacker != dancerBattler && IsDanceMove(gCurrentMove) && (GetBattlerAbility(dancerBattler) == ABILITY_DANCER))
     {
         gSpecialStatuses[dancerBattler].dancerUsedMove = TRUE;
         gSpecialStatuses[dancerBattler].backUpTarget = gBattleStruct->moveTarget[dancerBattler] + 1;
@@ -3054,7 +3054,7 @@ static bool32 TryDancer(void)
     }
     if (IsBattlerAlive(dancerBattler)
      && !gSpecialStatuses[dancerBattler].dancerUsedMove
-     && gBattlerAttacker != dancerBattler && IsSoundMove(gCurrentMove) && (GetBattlerAbility(gBattlerAttacker) == ABILITY_PARROT))
+     && gBattlerAttacker != dancerBattler && IsSoundMove(gCurrentMove) && (GetBattlerAbility(dancerBattler) == ABILITY_PARROT))
     {
         gSpecialStatuses[dancerBattler].dancerUsedMove = TRUE;
         gSpecialStatuses[dancerBattler].backUpTarget = gBattleStruct->moveTarget[dancerBattler] + 1;

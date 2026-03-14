@@ -137,8 +137,8 @@ SINGLE_BATTLE_TEST("Wizard Cape deals no damage if fail")
         TURN { MOVE(player, MOVE_THUNDER_WAVE); }
         TURN { MOVE(player, MOVE_THUNDER_WAVE); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_POWDER, player);
         NONE_OF {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_SLEEP_POWDER, player);
             HP_BAR(opponent);
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PROTECT, opponent);
@@ -147,8 +147,8 @@ SINGLE_BATTLE_TEST("Wizard Cape deals no damage if fail")
         }
         ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDER_WAVE, player);
         HP_BAR(opponent, damage: 20);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDER_WAVE, player);
         NONE_OF {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_THUNDER_WAVE, player);
             HP_BAR(opponent);
         }
     }
