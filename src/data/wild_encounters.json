@@ -12295,6 +12295,160 @@
           }
         },
         {
+          "map": "MAP_INGY_BINGY_ISLAND",
+          "base_label": "gIngyBingyIsland",
+          "land_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 6,
+                "max_level": 6,
+                "species": "SPECIES_SNOVER"
+              },
+              {
+                "min_level": 6,
+                "max_level": 6,
+                "species": "SPECIES_CUBCHOO"
+              },
+              {
+                "min_level": 6,
+                "max_level": 7,
+                "species": "SPECIES_TIMBURR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 7,
+                "species": "SPECIES_DARUMAKA_GALAR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 7,
+                "species": "SPECIES_INKAY"
+              },
+              {
+                "min_level": 7,
+                "max_level": 7,
+                "species": "SPECIES_SNOVER"
+              },
+              {
+                "min_level": 5,
+                "max_level": 8,
+                "species": "SPECIES_STARLY"
+              },
+              {
+                "min_level": 7,
+                "max_level": 7,
+                "species": "SPECIES_SHELMET"
+              },
+              {
+                "min_level": 6,
+                "max_level": 6,
+                "species": "SPECIES_ROGGENROLA"
+              },
+              {
+                "min_level": 6,
+                "max_level": 7,
+                "species": "SPECIES_STARLY"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_RIOLU"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_RIOLU"
+              }
+            ]
+          },
+          "water_mons": {
+            "encounter_rate": 1,
+            "mons": [
+              {
+                "min_level": 20,
+                "max_level": 35,
+                "species": "SPECIES_FRILLISH"
+              },
+              {
+                "min_level": 20,
+                "max_level": 30,
+                "species": "SPECIES_BERGMITE"
+              },
+              {
+                "min_level": 20,
+                "max_level": 25,
+                "species": "SPECIES_SHELLOS_WEST"
+              },
+              {
+                "min_level": 20,
+                "max_level": 30,
+                "species": "SPECIES_SHELLOS_WEST"
+              },
+              {
+                "min_level": 20,
+                "max_level": 30,
+                "species": "SPECIES_SHELLOS_WEST"
+              }
+            ]
+          },
+          "fishing_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 10,
+                "species": "SPECIES_FINNEON"
+              },
+              {
+                "min_level": 5,
+                "max_level": 10,
+                "species": "SPECIES_BASCULIN_RED_STRIPED"
+              },
+              {
+                "min_level": 20,
+                "max_level": 25,
+                "species": "SPECIES_WISHIWASHI"
+              },
+              {
+                "min_level": 20,
+                "max_level": 25,
+                "species": "SPECIES_BASCULIN_RED_STRIPED"
+              },
+              {
+                "min_level": 20,
+                "max_level": 25,
+                "species": "SPECIES_FINNEON"
+              },
+              {
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_WISHIWASHI"
+              },
+              {
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_FINNEON"
+              },
+              {
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_LUMINEON"
+              },
+              {
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_ALOMOMOLA"
+              },
+              {
+                "min_level": 35,
+                "max_level": 40,
+                "species": "SPECIES_ALOMOMOLA"
+              }
+            ]
+          }
+        },
+        {
           "map": "MAP_SEVEN_ISLAND_TANOBY_RUINS_MONEAN_CHAMBER",
           "base_label": "sSevenIslandTanobyRuinsMoneanChamber_FireRed",
           "land_mons": {

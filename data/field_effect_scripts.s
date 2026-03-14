@@ -77,13 +77,18 @@ gFieldEffectScriptPointers::
 	.4byte gFldEffScript_XIcon                          @ FLDEFF_X_ICON
 	.4byte gFldEffScript_DoubleExclMarkIcon             @ FLDEFF_DOUBLE_EXCL_MARK_ICON
 	.4byte gFieldEffectScript_TracksSlither             @ FLDEFF_TRACKS_SLITHER
-	.4byte gFieldEffectScript_TracksBug                 @ FLDEFF_TRACKS_BUG
 	.4byte gFieldEffectScript_TracksSpot                @ FLDEFF_TRACKS_SPOT
+	.4byte gFieldEffectScript_TracksBug                 @ FLDEFF_TRACKS_BUG
 	.4byte gFieldEffectScript_CaveDust                  @ FLDEFF_CAVE_DUST
 	.4byte gFieldEffectScript_Defog                     @ FLDEFF_DEFOG
 	.4byte gFieldEffectScript_UseRockClimb              @ FLDEFF_USE_ROCK_CLIMB
 	.4byte gFieldEffectScript_RockClimbDust             @ FLDEFF_ROCK_CLIMB_DUST
 	.4byte gFieldEffectScript_ORASDowse                 @ FLDEFF_ORAS_DOWSE
+	.4byte gFieldEffectScript_SnowFootprints            @ FLDEFF_SNOW_FOOTPRINTS
+	.4byte gFieldEffectScript_SnowBikeTireTracks            @ FLDEFF_BIKE_SNOW_TRACKS
+	.4byte gFieldEffectScript_SnowTracksSlither             @ FLDEFF_SNOW_TRACKS_SLITHER
+	.4byte gFieldEffectScript_SnowTracksSpot                @ FLDEFF_SNOW_TRACKS_SPOT
+	.4byte gFieldEffectScript_SnowTracksBug                 @ FLDEFF_SNOW_TRACKS_BUG
 	.4byte gFldEffScript_SmileyFaceIcon    		        @ FLDEFF_SMILEY_FACE_ICON
 	.4byte gFieldEffectScript_HallOfFameRecordFrlg      @ FLDEFF_HALL_OF_FAME_RECORD_FRLG
 	.4byte gFldEffScript_PhotoFlash      		        @ FLDEFF_PHOTO_FLASH
@@ -187,6 +192,27 @@ gFieldEffectScript_BerryTreeGrowthSparkle::
 
 gFieldEffectScript_DeepSandFootprints::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_DeepSandFootprints
+	field_eff_end
+
+
+gFieldEffectScript_SnowFootprints::
+	field_eff_loadfadedpal_callnative gSpritePalette_SnowTracks, FldEff_SnowFootprints
+	field_eff_end
+
+gFieldEffectScript_SnowBikeTireTracks::
+	field_eff_loadfadedpal_callnative gSpritePalette_SnowTracks, FldEff_SnowBikeTireTracks
+	field_eff_end
+
+gFieldEffectScript_SnowTracksSlither::
+	field_eff_loadfadedpal_callnative gSpritePalette_SnowTracks, FldEff_SnowTracksSlither
+	field_eff_end
+
+gFieldEffectScript_SnowTracksSpot::
+	field_eff_loadfadedpal_callnative gSpritePalette_SnowTracks, FldEff_SnowTracksSpot
+	field_eff_end
+
+gFieldEffectScript_SnowTracksBug::
+	field_eff_loadfadedpal_callnative gSpritePalette_SnowTracks, FldEff_SnowTracksBug
 	field_eff_end
 
 gFieldEffectScript_PokeCenterHeal::
@@ -372,16 +398,16 @@ gFldEffScript_DoubleExclMarkIcon::
 	field_eff_callnative FldEff_DoubleExclMarkIcon
 	field_eff_end
 
-gFieldEffectScript_TracksBug::
-	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_TracksBug
+gFieldEffectScript_TracksSlither::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_TracksSlither
 	field_eff_end
 
 gFieldEffectScript_TracksSpot::
 	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_TracksSpot
 	field_eff_end
 
-gFieldEffectScript_TracksSlither::
-	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_TracksSlither
+gFieldEffectScript_TracksBug::
+	field_eff_loadfadedpal_callnative gSpritePalette_GeneralFieldEffect0, FldEff_TracksBug
 	field_eff_end
 
 gFieldEffectScript_CaveDust::

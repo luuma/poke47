@@ -194,6 +194,7 @@ bool32 SetUpFieldMove_Cut(void)
                 {
                     tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
                     if (MetatileBehavior_IsPokeGrass(tileBehavior) == TRUE
+		    || MetatileBehavior_IsSnowGrass(tileBehavior) == TRUE
                     || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE)
                     {
                         // Standing in front of grass.
@@ -257,6 +258,7 @@ bool32 SetUpFieldMove_Cut(void)
                         u8 tileArrayId = ((sHyperCutStruct[i].y * 5) + 12) + (sHyperCutStruct[i].x);
                         tileBehavior = MapGridGetMetatileBehaviorAt(x, y);
                         if (MetatileBehavior_IsPokeGrass(tileBehavior) == TRUE
+                        || MetatileBehavior_IsSnowGrass(tileBehavior) == TRUE
                         || MetatileBehavior_IsAshGrass(tileBehavior) == TRUE)
                         {
                             gFieldCallback2 = FieldCallback_PrepareFadeInFromMenu;
@@ -400,6 +402,10 @@ static void SetCutGrassMetatile(s16 x, s16 y)
     case METATILE_General_TallGrass_TreeUp:
         MapGridSetMetatileIdAt(x, y, METATILE_General_Grass_TreeUp);
         break;
+    case METATILE_Unused1_SnowGrass:
+        MapGridSetMetatileIdAt(x, y, METATILE_Unused1_Snow);
+        break;
+
     }
 }
 

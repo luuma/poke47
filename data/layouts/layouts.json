@@ -2040,7 +2040,7 @@
       "id": "LAYOUT_ABANDONED_SHIP_DECK",
       "name": "AbandonedShip_Deck_Layout",
       "width": 23,
-      "height": 21,
+      "height": 23,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Facility",
       "border_filepath": "data/layouts/AbandonedShip_Deck/border.bin",
@@ -5174,8 +5174,8 @@
     {
       "id": "LAYOUT_INGY_BINGY_ISLAND",
       "name": "IngyBingyIsland_Layout",
-      "width": 60,
-      "height": 60,
+      "width": 72,
+      "height": 64,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Unused1",
       "border_filepath": "data/layouts/IngyBingyIsland/border.bin",
@@ -5213,6 +5213,28 @@
       "secondary_tileset": "gTileset_Unused1",
       "border_filepath": "data/layouts/AEGauntlet1/border.bin",
       "blockdata_filepath": "data/layouts/AEGauntlet1/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_INDOOR_ROUTE_136_FISHERMAN",
+      "name": "Indoor_route_136_fisherman_Layout",
+      "width": 8,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_MossdeepGameCorner",
+      "border_filepath": "data/layouts/Indoor_route_136_fisherman/border.bin",
+      "blockdata_filepath": "data/layouts/Indoor_route_136_fisherman/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_PETALBURG_CITY_POKEMON_CENTER_1F_2",
+      "name": "PetalburgCity_PokemonCenter_1F_2_Layout",
+      "width": 14,
+      "height": 15,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_PokemonCenter",
+      "border_filepath": "data/layouts/PetalburgCity_PokemonCenter_1F_2/border.bin",
+      "blockdata_filepath": "data/layouts/PetalburgCity_PokemonCenter_1F_2/map.bin",
       "layout_version": "emerald"
     },
     {

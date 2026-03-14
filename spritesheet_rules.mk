@@ -1085,6 +1085,23 @@ $(FLDEFFGFXDIR)/bubbles.4bpp: %.4bpp: %.png
 $(FLDEFFGFXDIR)/deep_sand_footprints.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 2
 
+
+$(FLDEFFGFXDIR)/snow_footprints.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(FLDEFFGFXDIR)/snow_bike_tire_tracks.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(FLDEFFGFXDIR)/snow_slither_tracks.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(FLDEFFGFXDIR)/snow_bug_tracks.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+$(FLDEFFGFXDIR)/snow_spot_tracks.4bpp: %.4bpp: %.png
+	$(GFX) $< $@ -mwidth 2 -mheight 2
+
+
 $(FLDEFFGFXDIR)/ground_impact_dust.4bpp: %.4bpp: %.png
 	$(GFX) $< $@ -mwidth 2 -mheight 1
 

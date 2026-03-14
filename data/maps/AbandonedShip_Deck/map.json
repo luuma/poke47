@@ -5,26 +5,32 @@
   "music": "MUS_ABANDONED_SHIP",
   "region_map_section": "MAPSEC_ABANDONED_SHIP",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_UNDERGROUND",
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
-  "allow_escaping": true,
+  "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": [
+    {
+      "map": "MAP_ROUTE108",
+      "offset": -16,
+      "direction": "down"
+    }
+  ],
   "object_events": [],
   "warp_events": [
     {
-      "x": 13,
-      "y": 15,
+      "x": 7,
+      "y": 14,
       "elevation": 3,
       "dest_map": "MAP_ROUTE108",
       "dest_warp_id": "0"
     },
     {
-      "x": 14,
-      "y": 15,
+      "x": 8,
+      "y": 14,
       "elevation": 3,
       "dest_map": "MAP_ROUTE108",
       "dest_warp_id": "0"

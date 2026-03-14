@@ -13,6 +13,7 @@
 }
 
 #define DEFAULT_CAMOUFLAGE_BLEND RGB_WHITE
+#define DEFAULT_CAMOUFLAGE_BLEND RGB_WHITE
 
 // Cave values. Used for BATTLE_ENVIRONMENT_CAVE as well as BATTLE_ENVIRONMENT_GROUDON and BATTLE_ENVIRONMENT_KYOGRE
 #if B_NATURE_POWER_MOVES >= GEN_6
@@ -477,6 +478,9 @@ const struct BattleEnvironment gBattleEnvironmentInfo[BATTLE_ENVIRONMENT_COUNT] 
         .secretPowerEffect = MOVE_EFFECT_FREEZE_OR_FROSTBITE,
         .camouflageType = TYPE_ICE,
         .camouflageBlend = DEFAULT_CAMOUFLAGE_BLEND,
+        .entry = ENVIRONMENT_ENTRY(TallGrass),
+        .background = ENVIRONMENT_BACKGROUND(TallGrass),
+        .palette = gBattleEnvironmentPalette_SnowGrass,          
     },
 
     [BATTLE_ENVIRONMENT_ICE] =

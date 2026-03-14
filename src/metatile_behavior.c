@@ -134,6 +134,8 @@ static const u8 sTileBitAttributes[NUM_METATILE_BEHAVIORS] =
     [MB_SIDEWAYS_STAIRS_LEFT_SIDE_BOTTOM]   = TILE_FLAG_UNUSED,
     [MB_ROCK_STAIRS]                        = TILE_FLAG_UNUSED,
     [MB_ROCK_CLIMB]                         = TILE_FLAG_UNUSED,
+    [MB_SNOW]                               = TILE_FLAG_UNUSED,
+    [MB_SNOW_GRASS]                         = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_CYCLING_ROAD_PULL_DOWN_GRASS]       = TILE_FLAG_UNUSED | TILE_FLAG_HAS_ENCOUNTERS,
     [MB_FAST_WATER]                         = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
     [MB_CYCLING_ROAD_WATER]                 = TILE_FLAG_UNUSED | TILE_FLAG_SURFABLE,
@@ -159,6 +161,33 @@ bool8 MetatileBehavior_IsJumpEast(u8 metatileBehavior)
     else
         return FALSE;
 }
+
+
+bool8 MetatileBehavior_IsSnow(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOW)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+
+bool8 MetatileBehavior_IsSnowGrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_SNOW_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsTallGrassType(u8 metatileBehavior)// tall or snow or etc.
+{
+    if (metatileBehavior == MB_TALL_GRASS || metatileBehavior == MB_SNOW_GRASS)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 
 bool8 MetatileBehavior_IsJumpWest(u8 metatileBehavior)
 {
@@ -200,10 +229,10 @@ bool8 MetatileBehavior_IsSandOrDeepSand(u8 metatileBehavior)
         return FALSE;
 }
 
-bool8 MetatileBehavior_IsDeepSand(u8 metatileBehavior)
+u8 MetatileBehavior_IsDeepSand(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_DEEP_SAND)
-        return TRUE;
+        return 1;
     else
         return FALSE;
 }
@@ -1316,7 +1345,8 @@ bool8 MetatileBehavior_IsCuttableGrass(u8 metatileBehavior)
     if (metatileBehavior == MB_TALL_GRASS
      || metatileBehavior == MB_LONG_GRASS
      || metatileBehavior == MB_ASHGRASS
-     || metatileBehavior == MB_LONG_GRASS_SOUTH_EDGE)
+     || metatileBehavior == MB_LONG_GRASS_SOUTH_EDGE
+     || metatileBehavior == MB_SNOW_GRASS)
         return TRUE;
     else
         return FALSE;

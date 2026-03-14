@@ -208,7 +208,8 @@
     "PetalburgCity_House2",
     "PetalburgCity_PokemonCenter_1F",
     "PetalburgCity_PokemonCenter_2F",
-    "PetalburgCity_Mart"
+    "PetalburgCity_Mart",
+    "PetalburgCity_PokemonCenter_1F_2"
   ],
   "gMapGroup_IndoorSlateport": [
     "SlateportCity_SternsShipyard_1F",
@@ -644,7 +645,8 @@
   ],
   "gMapGroup_IndoorRoute104Prototype": [
     "Route104_Prototype",
-    "Route104_PrototypePrettyPetalFlowerShop"
+    "Route104_PrototypePrettyPetalFlowerShop",
+    "Indoor_route_136_fisherman"
   ],
   "gMapGroup_IndoorRoute109": [
     "Route109_SeashoreHouse"
