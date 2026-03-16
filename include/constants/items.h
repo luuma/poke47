@@ -308,8 +308,8 @@ enum __attribute__((packed)) Item
     ITEM_DUBIOUS_DISC = 232,
     ITEM_REAPER_CLOTH = 233,
     ITEM_PRISM_SCALE = 234,
-    ITEM_WHIPPED_DREAM = 235,
-    ITEM_SACHET = 236,
+    ITEM_WHIPPED_DREAM = 235, /////SLATEPORT
+    ITEM_SACHET = 236, ///SLATEPORT
     ITEM_OVAL_STONE = 237,
     ITEM_STRAWBERRY_SWEET = 238,
     ITEM_LOVE_SWEET = 239,
@@ -542,7 +542,7 @@ enum __attribute__((packed)) Item
     ITEM_SOFT_SAND = 433,
     ITEM_SHARP_BEAK = 434,
     ITEM_TWISTED_SPOON = 435,
-    ITEM_TWISTEDSPOON = ITEM_TWISTED_SPOON, // Pre-Gen VI name
+    ITEM_TWISTEDSPOON = ITEM_TWISTED_SPOON, // ADDED PAI CANYON
     ITEM_SILVER_POWDER = 436,
     ITEM_SILVERPOWDER = ITEM_SILVER_POWDER, // Pre-Gen VI name
     ITEM_HARD_STONE = 437,
@@ -600,8 +600,8 @@ enum __attribute__((packed)) Item
     ITEM_FOCUS_SASH = 468, //pickup
     ITEM_RED_CARD = 469,
     ITEM_WEAKNESS_POLICY = 470, //pickup
-    ITEM_THROAT_SPRAY = 471,
-    ITEM_ROOM_SERVICE = 472,
+    ITEM_THROAT_SPRAY = 471, //137 INGY
+    ITEM_ROOM_SERVICE = 472,// HOUSE
      ITEM_BLUNDER_POLICY = 473, //pickup
 
      ITEM_BRIGHT_POWDER = 474,
@@ -625,7 +625,7 @@ enum __attribute__((packed)) Item
      ITEM_WISE_GLASSES = 489, // post?
      ITEM_EXPERT_BELT = 490, // post?
      ITEM_LIGHT_CLAY = 491, // Meteor Falls
-     ITEM_LIFE_ORB = 492,  // vicrd?
+     ITEM_LIFE_ORB = 492,  // PAI CANYON
 
      ITEM_ZOOM_LENS = 493, // PETALBURG woods cut section
      ITEM_METRONOME = 494, //RoutE 116 
@@ -651,7 +651,7 @@ enum __attribute__((packed)) Item
      ITEM_TERRAIN_EXTENDER = 510, // 119 UP WATERFALL
      ITEM_PROTECTIVE_PADS = 511, // 117
 
-     ITEM_HEAVY_DUTY_BOOTS = 512, 
+     ITEM_HEAVY_DUTY_BOOTS = 512, // NEW MAUV
      ITEM_UTILITY_UMBRELLA = 513, //ROUTE 120
 
     // Berries
@@ -940,18 +940,18 @@ enum __attribute__((packed)) Item
     ITEM_SAPPHIRE = 757,
 
     // GEN IX ITEMS
-    ITEM_ABILITY_SHIELD = 758,
-    ITEM_CLEAR_AMULET = 759,
-    ITEM_PUNCHING_GLOVE = 760,
-    ITEM_COVERT_CLOAK = 761,
-    ITEM_LOADED_DICE = 762,
+    ITEM_ABILITY_SHIELD = 758, // PAI
+    ITEM_CLEAR_AMULET = 759, //////////////////
+    ITEM_PUNCHING_GLOVE = 760, ////////// goodness knows 
+    ITEM_COVERT_CLOAK = 761, //////////////// 137 puzzle solve
+    ITEM_LOADED_DICE = 762, // GAME CORNER
     ITEM_AUSPICIOUS_ARMOR = 763,
-    ITEM_BOOSTER_ENERGY = 764,
+    ITEM_BOOSTER_ENERGY = 764, //unused
     ITEM_BIG_BAMBOO_SHOOT = 765,
     ITEM_GIMMIGHOUL_COIN = 766,
-    ITEM_LEADERS_CREST = 767,
+    ITEM_LEADERS_CREST = 767, // wild bisharp
     ITEM_MALICIOUS_ARMOR = 768,
-    ITEM_MIRROR_HERB = 769,
+    ITEM_MIRROR_HERB = 769, //////////////////
     ITEM_SCROLL_OF_DARKNESS = 770,
     ITEM_SCROLL_OF_WATERS = 771,
     ITEM_TERA_ORB = 772,

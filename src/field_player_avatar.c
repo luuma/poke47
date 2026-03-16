@@ -918,10 +918,10 @@ static void PlayerNotOnBikeMoving(enum Direction direction, u16 heldKeys)
         return;
     }
 
-    if (((heldKeys & B_BUTTON) || !FlagGet(FLAG_SYS_B_DASH) || (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER))
-     && IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) == 0
-     && !FollowerNPCComingThroughDoor()
-     && (I_ORAS_DOWSING_FLAG == 0 || (I_ORAS_DOWSING_FLAG != 0 && !FlagGet(I_ORAS_DOWSING_FLAG))))
+    if ((heldKeys & B_BUTTON) || !FlagGet(FLAG_SYS_B_DASH) || (gPlayerAvatar.flags & PLAYER_AVATAR_FLAG_UNDERWATER)
+     || IsRunningDisallowed(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior) != 0
+     || FollowerNPCComingThroughDoor()
+     || !(I_ORAS_DOWSING_FLAG == 0 || (I_ORAS_DOWSING_FLAG != 0 && !FlagGet(I_ORAS_DOWSING_FLAG))))
     {
         if (ObjectMovingOnRockStairs(&gObjectEvents[gPlayerAvatar.objectEventId], direction))
             PlayerWalkSlowStairs(direction);

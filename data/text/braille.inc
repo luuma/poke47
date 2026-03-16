@@ -280,3 +280,17 @@ Braille_Text_ForYou::
 	brailleformat 3, 0, 25, 19, 6, 3
 	.braille "FOR YOU.$"
 
+Braille_Text_Triangle1::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "CIRCUMCENTER.$"
+
+Braille_Text_Triangle2::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "PERPENDICULAR"
+	.braille "BISECTIONS.$"
+
+Braille_Text_Triangle3::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "TRIGONOMETRY\n"
+	.braille "BETWEEN THE\n"
+	.braille "THREE SIGNS.$"

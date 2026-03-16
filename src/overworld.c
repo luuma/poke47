@@ -3757,7 +3757,7 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
     u8 *dst;
     bool8 handleFlash = FALSE;
 
-    if (GetFlashLevel() > 0 || InBattlePyramid_())
+    if (TRUE || GetFlashLevel() > 0 || InBattlePyramid_())
         handleFlash = TRUE;
 
     if (headerType == 1) // berry
