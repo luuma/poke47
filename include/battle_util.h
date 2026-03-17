@@ -336,7 +336,7 @@ enum Stat GetHighestStatId(enum BattlerId battler);
 enum Stat GetParadoxHighestStatId(enum BattlerId battler);
 enum Stat GetParadoxBoostedStatId(enum BattlerId battler);
 
-bool32 CanEvolve(u32 species);
+bool32 CanEvolve(enum Species species);
 
 
 bool32 CanBeSlept(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Ability abilityDef, enum SleepClauseBlock isBlockedBySleepClause);

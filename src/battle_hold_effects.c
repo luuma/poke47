@@ -500,7 +500,7 @@ static enum ItemEffect TrySpandexFlares(enum BattlerId battlerAtk)
      && gMultiHitCounter == 0
      && IsBattlerAlive(battlerAtk)
      && !gBattleStruct->unableToUseMove
-     && (IsAnyTargetTurnDamaged(battlerAtk) || (GetBattleMoveCategory(gCurrentMove) == DAMAGE_CATEGORY_STATUS && IsAnyTargetAffected()))
+     && (IsAnyTargetTurnDamaged(battlerAtk, INCLUDING_SUBSTITUTES) || (GetBattleMoveCategory(gCurrentMove) == DAMAGE_CATEGORY_STATUS && IsAnyTargetAffected()))
      && !NoAliveMonsForEitherParty())   // Don't activate if battle will end
     {
         if (!(gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN || gBattleStruct->isSkyBattle))

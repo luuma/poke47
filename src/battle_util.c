@@ -4886,7 +4886,8 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         }
         case ABILITY_FORECAST:
         {
-            bool32 battlerWeatherAffected = IsBattlerWeatherAffected(battler, gBattleWeather);
+            u32 weather = GetWeather();
+            bool32 battlerWeatherAffected = IsBattlerWeatherAffected(GetBattlerHoldEffect(battler), weather, gBattleWeather);
             if (battlerWeatherAffected && !CanBattlerFormChange(battler, FORM_CHANGE_BATTLE_WEATHER))
             {
                 // If Hail/Snow activates when in Eiscue is in base, prevent reversion when Eiscue Noice gets broken
