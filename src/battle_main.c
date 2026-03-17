@@ -176,7 +176,7 @@ EWRAM_DATA u16 gChosenMove = 0;
 EWRAM_DATA u16 gCalledMove = 0;
 EWRAM_DATA s32 gBideDmg[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA u16 gLastUsedItem = 0;
-EWRAM_DATA enum Ability gLastUsedAbility = 0;
+EWRAM_DATA enum Ability gLastUsedAbility = ABILITY_NONE;
 EWRAM_DATA enum BattlerId gBattlerAttacker = 0;
 EWRAM_DATA enum BattlerId gBattlerTarget = 0;
 EWRAM_DATA enum BattlerId gBattlerFainted = 0;
@@ -640,7 +640,7 @@ static void CB2_InitBattleInternal(void)
 #define BUFFER_PARTY_VS_SCREEN_STATUS(party, flags, i)                      \
     for ((i) = 0; (i) < PARTY_SIZE; (i)++)                                  \
     {                                                                       \
-        u16 species = GetMonData(&(party)[(i)], MON_DATA_SPECIES_OR_EGG);   \
+        enum Species species = GetMonData(&(party)[(i)], MON_DATA_SPECIES_OR_EGG);   \
         u16 hp = GetMonData(&(party)[(i)], MON_DATA_HP);                    \
         u32 status = GetMonData(&(party)[(i)], MON_DATA_STATUS);            \
                                                                             \
@@ -1445,7 +1445,7 @@ static void CB2_PreInitMultiBattle(void)
                 FREE_AND_SET_NULL(sMultiPartnerPartyBuffer);
             }
         }
-        else if (gReceivedRemoteLinkPlayers == 0)
+        else if (!gReceivedRemoteLinkPlayers)
         {
             gBattleTypeFlags = *savedBattleTypeFlags;
             gMain.savedCallback = *savedCallback;
@@ -1893,7 +1893,7 @@ void ModifyPersonalityForNature(u32 *personality, u32 newNature)
     *personality -= (diff * sign);
 }
 
-u32 GeneratePersonalityForGender(u32 gender, u32 species)
+u32 GeneratePersonalityForGender(u32 gender, enum Species species)
 {
     const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[species];
     if (gender == MON_GENDERLESS)
@@ -2331,7 +2331,7 @@ static void EndLinkBattleInSteps(void)
                     FreeBattleSpritesData();
                     FreeMonSpritesGfx();
                 }
-                else if (gReceivedRemoteLinkPlayers == 0)
+                else if (!gReceivedRemoteLinkPlayers)
                 {
                     // Player can't record battle but
                     // another player can, reconnect with them
@@ -2390,7 +2390,7 @@ static void EndLinkBattleInSteps(void)
         gBattleCommunication[MULTIUSE_STATE]++;
         break;
     case 9:
-        if (!gMain.anyLinkBattlerHasFrontierPass || gWirelessCommType || gReceivedRemoteLinkPlayers != 1)
+        if (!gMain.anyLinkBattlerHasFrontierPass || gWirelessCommType || !gReceivedRemoteLinkPlayers)
         {
             gMain.anyLinkBattlerHasFrontierPass = FALSE;
             SetMainCallback2(gMain.savedCallback);
@@ -2504,7 +2504,7 @@ static void AskRecordBattle(void)
         gBattleCommunication[MULTIUSE_STATE]++;
         break;
     case STATE_LINK:
-        if (gMain.anyLinkBattlerHasFrontierPass && gReceivedRemoteLinkPlayers == 0)
+        if (gMain.anyLinkBattlerHasFrontierPass && !gReceivedRemoteLinkPlayers)
             CreateTask(Task_ReconnectWithLinkPlayers, 5);
         gBattleCommunication[MULTIUSE_STATE]++;
         break;
@@ -2597,7 +2597,7 @@ static void AskRecordBattle(void)
         }
         break;
     case STATE_END:
-        if (!gMain.anyLinkBattlerHasFrontierPass || gWirelessCommType || gReceivedRemoteLinkPlayers != 1)
+        if (!gMain.anyLinkBattlerHasFrontierPass || gWirelessCommType || !gReceivedRemoteLinkPlayers)
         {
             gMain.anyLinkBattlerHasFrontierPass = FALSE;
             if (!gPaletteFade.active)
@@ -2748,7 +2748,7 @@ void SpriteCB_FaintOpponentMon(struct Sprite *sprite)
 {
     enum BattlerId battler = sprite->sBattler;
     u32 personality = GetMonData(GetBattlerMon(battler), MON_DATA_PERSONALITY);
-    u16 species;
+    enum Species species;
     u8 yOffset;
 
     if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies != 0)
@@ -5691,7 +5691,7 @@ static void TryEvolvePokemon(void)
             bool32 canStopEvo = TRUE;
             enum EvolutionMode mode = EVO_MODE_BATTLE_SPECIAL;
             u32 evolutionItemArg = i;
-            u32 species = GetEvolutionTargetSpecies(&gPlayerParty[i], mode, evolutionItemArg, NULL, &canStopEvo, CHECK_EVO);
+            enum Species species = GetEvolutionTargetSpecies(&gPlayerParty[i], mode, evolutionItemArg, NULL, &canStopEvo, CHECK_EVO);
             sTriedEvolving |= 1u << i;
 
             if (species == SPECIES_NONE && (gLeveledUpInBattle & (1u << i)))
@@ -5829,7 +5829,8 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
 {
     enum Type moveType = GetMoveType(move);
     enum BattleMoveEffects moveEffect = GetMoveEffect(move);
-    u32 species, heldItem;
+    enum Species species;
+    enum Item heldItem;
     enum Type type1, type2, type3;
     enum Ability ability;
     enum HoldEffect holdEffect;
@@ -5962,6 +5963,8 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
         case SPECIES_TAUROS_PALDEA_BLAZE:
         case SPECIES_TAUROS_PALDEA_AQUA:
             return GetSpeciesType(species, 1);
+        default:
+            break;
         }
         break;
     case EFFECT_IVY_CUDGEL:
@@ -5974,6 +5977,8 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
         case SPECIES_OGERPON_CORNERSTONE:
         case SPECIES_OGERPON_CORNERSTONE_TERA:
             return GetSpeciesType(species, 1);
+        default:
+            break;
         }
         break;
     case EFFECT_NATURAL_GIFT:

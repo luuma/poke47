@@ -156,9 +156,12 @@ BattleScript_EffectShedTail::
 	switchinevents
 	end
 
-BattleScript_EffectPsychicNoise::
+BattleScript_MoveEffectPsychicNoise::
+	savetarget
+	copybyte gBattlerTarget, gEffectBattler
 	printstring STRINGID_PKMNPREVENTEDFROMHEALING
 	waitmessage B_WAIT_TIME_LONG
+	restoretarget
 	return
 
 BattleScript_EffectFilletAway::
@@ -409,18 +412,18 @@ BattleScript_EffectRevivalBlessingSendOut:
 	switchinevents
 	goto BattleScript_MoveEnd
 
-BattleScript_StealthRockActivates::
-	setstealthrock BattleScript_StealthRockActivatesRet
+BattleScript_MoveEffectStealthRock::
+	setstealthrock BattleScript_MoveEffectStealthRockRet
 	printfromtable gDmgHazardsStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_StealthRockActivatesRet:
+BattleScript_MoveEffectStealthRockRet:
 	return
 
-BattleScript_SpikesActivates::
-	trysetspikes BattleScript_SpikesActivatesRet
+BattleScript_MoveEffectSpikes::
+	trysetspikes BattleScript_MoveEffectSpikesRet
 	printfromtable gDmgHazardsStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_SpikesActivatesRet:
+BattleScript_MoveEffectSpikesRet:
 	return
 
 BattleScript_EffectTeatime::
@@ -649,11 +652,6 @@ BattleScript_ButHoopaCantUseIt:
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-BattleScript_HyperspaceFuryRemoveProtect::
-	printstring STRINGID_BROKETHROUGHPROTECTION
-	waitmessage B_WAIT_TIME_LONG
-	return
-
 BattleScript_MoveEffectIonDeluge::
 	printstring STRINGID_IONDELUGEON
 	waitmessage B_WAIT_TIME_LONG
@@ -665,18 +663,19 @@ BattleScript_MoveEffectHaze::
 	return
 
 BattleScript_MoveEffectLeechSeed::
+	savetarget
+	copybyte gBattlerTarget, gEffectBattler
 	printstring STRINGID_PKMNSEEDED
 	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-
-BattleScript_MoveEffectReflect::
-	printfromtable gReflectLightScreenSafeguardStringIds
-	waitmessage B_WAIT_TIME_LONG
+	restoretarget
 	return
 
-BattleScript_MoveEffectLightScreen::
+BattleScript_MoveEffectScreens::
+	saveattacker
+	copybyte gBattlerAttacker, gEffectBattler
 	printfromtable gReflectLightScreenSafeguardStringIds
 	waitmessage B_WAIT_TIME_LONG
+	restoreattacker
 	return
 
 BattleScript_EffectStuffCheeks::
@@ -899,6 +898,8 @@ BattleScript_MoveEffectBugBite::
 	return
 
 BattleScript_MoveEffectCoreEnforcer::
+	savetarget
+	copybyte gBattlerTarget, gEffectBattler
 	setgastroacid BattleScript_CoreEnforcerRet
 	printstring STRINGID_PKMNSABILITYSUPPRESSED
 	waitmessage B_WAIT_TIME_LONG
@@ -906,6 +907,7 @@ BattleScript_MoveEffectCoreEnforcer::
 	call BattleScript_TryRevertWeatherform
 	flushtextbox
 BattleScript_CoreEnforcerRet:
+	restoretarget
 	return
 
 BattleScript_EffectLaserFocus::
@@ -1121,7 +1123,7 @@ BattleScript_EffectAcupressureTry:
 	goto BattleScript_MoveEnd
 
 BattleScript_MoveEffectFeint::
-	printstring STRINGID_FELLFORFEINT
+	printfromtable gBrokeProtectionStringIds
 	waitmessage B_WAIT_TIME_LONG
 	return
 
@@ -1254,9 +1256,9 @@ BattleScript_EffectAfterYou::
 BattleScript_MoveEffectFlameBurst::
 	printstring STRINGID_BURSTINGFLAMESHIT
 	waitmessage B_WAIT_TIME_LONG
-	healthbarupdate BS_SCRIPTING, PASSIVE_HP_UPDATE
-	datahpupdate BS_SCRIPTING, PASSIVE_HP_UPDATE
-	tryfaintmon BS_SCRIPTING
+	healthbarupdate BS_EFFECT_BATTLER, PASSIVE_HP_UPDATE
+	datahpupdate BS_EFFECT_BATTLER, PASSIVE_HP_UPDATE
+	tryfaintmon BS_EFFECT_BATTLER
 	return
 
 BattleScript_EffectPowerTrick::
@@ -2158,7 +2160,7 @@ BattleScript_EffectGravityInternal:
 	setgravity BattleScript_ButItFailed
 	attackanimation
 	waitanimation
-BattleScript_EffectGravitySuccess::
+BattleScript_MoveEffectGravity::
 	printstring STRINGID_GRAVITYINTENSIFIED
 	waitmessage B_WAIT_TIME_LONG
 	savetarget
@@ -2818,11 +2820,6 @@ BattleScript_PrintReflectLightScreenSafeguardString::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-BattleScript_MoveEffectAuroraVeil::
-	printfromtable gReflectLightScreenSafeguardStringIds
-	waitmessage B_WAIT_TIME_LONG
-	return
-
 BattleScript_VoltAbsorbHeal:
 	copybyte gBattlerAbility, gBattlerTarget
 	tryhealquarterhealth BS_TARGET, BattleScript_MonMadeMoveUseless @ Check if max hp
@@ -3063,8 +3060,11 @@ BattleScript_EffectDestinyBond::
 	goto BattleScript_MoveEnd
 
 BattleScript_MoveEffectEerieSpell::
+	savetarget
+	copybyte gBattlerTarget, gEffectBattler
 	printstring STRINGID_PKMNREDUCEDPP
 	waitmessage B_WAIT_TIME_LONG
+	restoretarget
 	return
 
 BattleScript_EffectSpite::
@@ -3785,12 +3785,15 @@ BattleScript_BreakScreens::
 	return
 
 BattleScript_StealStats::
+	savetarget
+	copybyte gBattlerTarget, gEffectBattler
 	playmoveanimation MOVE_SPECTRAL_THIEF
 	waitanimation
 	printstring STRINGID_SPECTRALTHIEFSTEAL
 	waitmessage B_WAIT_TIME_LONG
 	spectralthiefprintstats
 	flushtextbox
+	restoretarget
 	return
 
 BattleScript_EffectYawn::
@@ -3803,9 +3806,12 @@ BattleScript_EffectYawn::
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
 
-BattleScript_MoveEffectYawnSide::
+BattleScript_MoveEffectYawnFoe::
+	savetarget
+	copybyte gBattlerTarget, gEffectBattler
 	printstring STRINGID_PKMNWASMADEDROWSY
 	waitmessage B_WAIT_TIME_LONG
+	restoretarget
 	return
 
 BattleScript_PrintAbilityMadeIneffective::
@@ -5987,6 +5993,13 @@ BattleScript_MoveEffectConfusion::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_MoveEffectRecoilHP25::
+	saveattacker
+	copybyte gBattlerAttacker, sBATTLER
+	call BattleScript_MoveEffectRecoil
+	restoreattacker
+	return
+
 BattleScript_MoveEffectRecoil::
 	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
 	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
@@ -7960,21 +7973,21 @@ BattleScript_LowerSideStatsEnd:
 	restoretarget
 	return
 
-BattleScript_EffectSetWeather::
+BattleScript_MoveEffectSetWeather::
 	playanimation 0, B_ANIM_MAX_SET_WEATHER
 	printfromtable gMoveWeatherChangeStringIds
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_ActivateWeatherAbilities
 	return
 
-BattleScript_EffectSetTerrain::
+BattleScript_MoveEffectSetTerrain::
 	printfromtable gTerrainStringIds
 	waitmessage B_WAIT_TIME_LONG
 	playanimation BS_ATTACKER, B_ANIM_RESTORE_BG
 	call BattleScript_ActivateTerrainEffects
 	return
 
-BattleScript_DamageNonTypesStarts::
+BattleScript_MoveEffectDamageNonTypes::
 	printfromtable gDamageNonTypesStartStringIds
 	waitmessage B_WAIT_TIME_LONG
 	return
@@ -7986,15 +7999,20 @@ BattleScript_DamageNonTypesContinues::
 	hitanimation BS_ATTACKER
 	goto BattleScript_DoTurnDmg
 
-BattleScript_EffectTryReducePP::
-	tryspiteppreduce BattleScript_MoveEnd
+BattleScript_MoveEffectSpite::
+	savetarget
+	copybyte gBattlerTarget, gEffectBattler
+	tryspiteppreduce BattleScript_MoveEffectSpiteRet
 	printstring STRINGID_PKMNREDUCEDPP
 	waitmessage B_WAIT_TIME_LONG
+BattleScript_MoveEffectSpiteRet:
+	restoretarget
 	return
 
 BattleScript_EffectParalyzeSide::
 	savetarget
-	copybyte sBATTLER, gBattlerTarget
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_ParalyzeSideLoop:
 	jumpifabsent BS_TARGET, BattleScript_ParalyzeSideIncrement
 	trysetparalysis BattleScript_ParalyzeSideIncrement
@@ -8007,7 +8025,8 @@ BattleScript_ParalyzeSideEnd:
 
 BattleScript_EffectPoisonSide::
 	savetarget
-	copybyte sBATTLER, gBattlerTarget
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_PoisonSideLoop:
 	jumpifabsent BS_TARGET, BattleScript_PoisonSideIncrement
 	trysetpoison BattleScript_PoisonSideIncrement
@@ -8020,7 +8039,8 @@ BattleScript_PoisonSideEnd:
 
 BattleScript_EffectPoisonParalyzeSide::
 	savetarget
-	copybyte sBATTLER, gBattlerTarget
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_PoisonParalyzeSideLoop:
 	jumpifabsent BS_TARGET, BattleScript_PoisonParalyzeSideIncrement
 	trysetpoisonparalysis BattleScript_PoisonParalyzeSideIncrement
@@ -8033,7 +8053,8 @@ BattleScript_PoisonParalyzeSideEnd:
 
 BattleScript_EffectEffectSporeSide::
 	savetarget
-	copybyte sBATTLER, gBattlerTarget
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_EffectSporeSideLoop:
 	jumpifabsent BS_TARGET, BattleScript_EffectSporeSideIncrement
 	tryseteffectspore BattleScript_EffectSporeSideIncrement
@@ -8046,11 +8067,12 @@ BattleScript_EffectSporeSideEnd:
 
 BattleScript_EffectConfuseSide::
 	savetarget
-	copybyte sBATTLER, gBattlerTarget
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_ConfuseSideLoop:
 	jumpifabsent BS_TARGET, BattleScript_ConfuseSideIncrement
 	trysetconfusion BattleScript_ConfuseSideIncrement
-	volatileanimation BS_EFFECT_BATTLER, VOLATILE_CONFUSION
+	volatileanimation BS_TARGET, VOLATILE_CONFUSION
 BattleScript_ConfuseSidePrintMessage:
 	printstring STRINGID_PKMNWASCONFUSED
 	waitmessage B_WAIT_TIME_LONG
@@ -8068,11 +8090,12 @@ BattleScript_PrintCoinsScattered:
 
 BattleScript_EffectInfatuateSide::
 	savetarget
-	copybyte sBATTLER, gBattlerTarget
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_InfatuateSideLoop:
 	jumpifabsent BS_TARGET, BattleScript_InfatuateSideIncrement
 	trysetinfatuation BattleScript_InfatuateSideIncrement
-	volatileanimation BS_EFFECT_BATTLER, VOLATILE_INFATUATION
+	volatileanimation BS_TARGET, VOLATILE_INFATUATION
 BattleScript_InfatuateSidePrintMessage:
 	printstring STRINGID_PKMNFELLINLOVE
 	waitmessage B_WAIT_TIME_LONG
@@ -8085,7 +8108,8 @@ BattleScript_InfatuateSideEnd:
 
 BattleScript_EffectTormentSide::
 	savetarget
-	copybyte sBATTLER, gBattlerTarget
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_TormentSideLoop:
 	jumpifabsent BS_TARGET, BattleScript_TormentSideIncrement
 	trysettorment BattleScript_TormentSideIncrement
@@ -8106,7 +8130,8 @@ BattleScript_TormentEnds::
 
 BattleScript_EffectMeanLookSide::
 	savetarget
-	copybyte sBATTLER, gBattlerTarget
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_MeanLookSideLoop:
 	jumpifabsent BS_TARGET, BattleScript_MeanLookSideIncrement
 	trysetescapeprevention BattleScript_MeanLookSideIncrement
@@ -8122,7 +8147,8 @@ BattleScript_MeanLookSideEnd:
 
 BattleScript_EffectRaiseCritAlliesAnim::
 	savetarget
-	copybyte gBattlerTarget, gBattlerAttacker
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_RaiseCritAlliesLoop:
 	jumpifabsent BS_TARGET, BattleScript_RaiseCritAlliesIncrement
 	setstatchanger STAT_ATK, 0, FALSE @ for animation
@@ -8130,7 +8156,7 @@ BattleScript_RaiseCritAlliesLoop:
 	printstring STRINGID_PKMNGETTINGPUMPED
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_RaiseCritAlliesIncrement:
-	jumpifbytenotequal gBattlerTarget, gBattlerAttacker, BattleScript_RaiseCritAlliesEnd
+	jumpifbytenotequal gBattlerTarget, sBATTLER, BattleScript_RaiseCritAlliesEnd
 	setallytonexttarget BattleScript_RaiseCritAlliesLoop
 BattleScript_RaiseCritAlliesEnd:
 	restoretarget
@@ -8139,7 +8165,8 @@ BattleScript_RaiseCritAlliesEnd:
 BattleScript_EffectHealOneSixthAllies::
 	jumpifteamhealthy BattleScript_MoveEnd
 	savetarget
-	copybyte gBattlerTarget, gBattlerAttacker
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_HealOneSixthAlliesLoop:
 	jumpifabsent BS_TARGET, BattleScript_HealOneSixthAlliesIncrement
 	tryhealsixthhealth BattleScript_HealOneSixthAlliesIncrement
@@ -8148,7 +8175,7 @@ BattleScript_HealOneSixthAlliesLoop:
 	printstring STRINGID_PKMNREGAINEDHEALTH
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_HealOneSixthAlliesIncrement:
-	jumpifbytenotequal gBattlerTarget, gBattlerAttacker, BattleScript_HealOneSixthAlliesEnd
+	jumpifbytenotequal gBattlerTarget, sBATTLER, BattleScript_HealOneSixthAlliesEnd
 	setallytonexttarget BattleScript_HealOneSixthAlliesLoop
 BattleScript_HealOneSixthAlliesEnd:
 	restoretarget
@@ -8156,7 +8183,8 @@ BattleScript_HealOneSixthAlliesEnd:
 
 BattleScript_EffectRecycleBerriesAllies::
 	savetarget
-	copybyte gBattlerTarget, gBattlerAttacker
+	copybyte sBATTLER, gEffectBattler
+	copybyte gBattlerTarget, gEffectBattler
 BattleScript_RecycleBerriesAlliesLoop:
 	jumpifabsent BS_TARGET, BattleScript_RecycleBerriesAlliesIncrement
 	tryrecycleberry BattleScript_RecycleBerriesAlliesIncrement
@@ -8165,13 +8193,13 @@ BattleScript_RecycleBerriesAlliesLoop:
 	waitmessage B_WAIT_TIME_LONG
 	swapattackerwithtarget
 BattleScript_RecycleBerriesAlliesIncrement:
-	jumpifbytenotequal gBattlerTarget, gBattlerAttacker, BattleScript_RecycleBerriesAlliesEnd
+	jumpifbytenotequal gBattlerTarget, sBATTLER, BattleScript_RecycleBerriesAlliesEnd
 	setallytonexttarget BattleScript_RecycleBerriesAlliesLoop
 BattleScript_RecycleBerriesAlliesEnd:
 	restoretarget
 	return
 
-BattleScript_EffectSteelsurge::
+BattleScript_MoveEffectSteelsurge::
 	setsteelsurge BattleScript_MoveEnd
 	printfromtable gDmgHazardsStringIds
 	waitmessage B_WAIT_TIME_LONG

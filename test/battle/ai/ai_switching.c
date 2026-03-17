@@ -2206,8 +2206,8 @@ AI_MULTI_BATTLE_TEST("AI will not switch out if the opposite battler is absent a
         MULTI_OPPONENT_B(SPECIES_WYNAUT) { Speed(2); HP(41); }
     } WHEN {
         TURN {
-            EXPECT_MOVE(opponentLeft, MOVE_BODY_SLAM, target: playerLeft); 
-            EXPECT_MOVE(playerRight, MOVE_SHADOW_BALL, target: opponentRight); 
+            EXPECT_MOVE(opponentLeft, MOVE_BODY_SLAM, target: playerLeft);
+            EXPECT_MOVE(playerRight, MOVE_SHADOW_BALL, target: opponentRight);
         }
         TURN {
             EXPECT_MOVE(opponentLeft, MOVE_DRAGON_RAGE, target: playerRight);
