@@ -71,17 +71,6 @@
 // leech life's anim would be better off updated to something bigger now its base power is 80, using the poison fang particle.
 // I'm surprised anchor shot uses a different chain particle to spirit shackl
 
-#include "global.h"
-#include "test/battle.h"
-#include "battle_anim_scripts.h"
-
-// These tests are very heavy computationally. Only use them to review animation PRs.
-
-#if T_SHOULD_RUN_MOVE_ANIM
-
-#define ANIM_TEST_START_MOVE 1              //  First move to test
-#define ANIM_TEST_END_MOVE   MOVES_COUNT-1  //  Last move to test
-
 
 static void ParametrizeMovesAndSpecies(u32 j, u32 *pMove, u32 *pSpecies, u32 variation)
 {
