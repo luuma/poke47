@@ -1458,9 +1458,12 @@ static u8 GetMapsecType(mapsec_u16_t mapSecId)
     case MAPSEC_ROUTE_103:
     case MAPSEC_ROUTE_104:
     case MAPSEC_ROUTE_106:
+    case MAPSEC_DEW_BEACH:
     case MAPSEC_ROUTE_109:
     case MAPSEC_ROUTE_110:
+    case MAPSEC_137:
     case MAPSEC_ROUTE_111:
+    case MAPSEC_136:
     case MAPSEC_ROUTE_112:
     case MAPSEC_ROUTE_113:
     case MAPSEC_ROUTE_114:
@@ -1481,6 +1484,7 @@ static u8 GetMapsecType(mapsec_u16_t mapSecId)
     case MAPSEC_MOSSDEEP_CITY:
     case MAPSEC_ROUTE_124:
     case MAPSEC_ROUTE_125:
+    case MAPSEC_135:
         return FlagGet(FLAG_VISITED_MOSSDEEP_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
     case MAPSEC_SOOTOPOLIS_CITY:
         return FlagGet(FLAG_VISITED_SOOTOPOLIS_CITY) ? MAPSECTYPE_CITY_CANFLY : MAPSECTYPE_CITY_CANTFLY;
