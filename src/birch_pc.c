@@ -20,6 +20,56 @@ bool16 ScriptGetPokedexInfo(void)
     return IsNationalPokedexEnabled();
 }
 
+bool16 CheckFishVsRod(void)
+{
+    gSpecialVar_0x8005 = 0;
+    if (gSpecialVar_0x8004 > 0) // old rod
+    {
+	gSpecialVar_0x8006 = 5;
+	if (GetSetPokedexFlag(NATIONAL_DEX_FINNEON, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_BASCULIN, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_FROAKIE, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_TYMPOLE, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_DHELMISE, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+    }
+    if (gSpecialVar_0x8004 >= 2) // GOOD rod
+    {
+	gSpecialVar_0x8006 = 10;
+	if (GetSetPokedexFlag(NATIONAL_DEX_CLAUNCHER, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_WISHIWASHI, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_ALOMOMOLA, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_STUNFISK, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_WIMPOD, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+    }
+    if (gSpecialVar_0x8004 >= 3) // SUPER rod
+    {
+	gSpecialVar_0x8006 = 15;
+	if (GetSetPokedexFlag(NATIONAL_DEX_PALPITOAD, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_FROGADIER, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_LUMINEON, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_BRUXISH, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+	if (GetSetPokedexFlag(NATIONAL_DEX_SKRELP, FLAG_GET_CAUGHT))
+	        gSpecialVar_0x8005++;
+    }
+    return (gSpecialVar_0x8006 == gSpecialVar_0x8005);
+}
+
+
+
 #define BIRCH_DEX_STRINGS 21
 
 static const u8 *const sBirchDexRatingTexts[BIRCH_DEX_STRINGS] =
@@ -46,6 +96,8 @@ static const u8 *const sBirchDexRatingTexts[BIRCH_DEX_STRINGS] =
     gBirchDexRatingText_LessThan200,
     gBirchDexRatingText_DexCompleted,
 };
+
+/// need update to jumps of 20 ish.
 
 // This shows your Hoenn Pokédex rating and not your National Dex.
 const u8 *GetPokedexRatingText(u32 count)

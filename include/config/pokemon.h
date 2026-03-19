@@ -61,6 +61,7 @@
 #define P_ONLY_OBTAINABLE_SHINIES        TRUE       // If TRUE, Pokémon encountered in the Battle Pyramid or while catching is disabled won't be shiny.
 #define P_NO_SHINIES_WITHOUT_POKEBALLS   TRUE       // If TRUE, Pokémon encountered when the player is out of Poké Balls won't be shiny
 #define P_SHOW_DYNAMIC_TYPES             TRUE       // If TRUE, all moves with dynamic type changes will be reflected as their current type in battle/summary screens instead of just select ones like in vanilla.
+#define P_BASE_HP_1_SHEDINJA_HANDLING    TRUE       // If TRUE, all species with 1 Base HP will have their handling match Shedinja's.
 
 
 

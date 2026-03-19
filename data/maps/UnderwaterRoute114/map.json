@@ -3,7 +3,7 @@
   "name": "UnderwaterRoute114",
   "layout": "LAYOUT_ROUTE114DIVING",
   "music": "MUS_UNDERWATER",
-  "region_map_section": "MAPSEC_ROUTE_3",
+  "region_map_section": "MAPSEC_UNDERWATER_114",
   "requires_flash": false,
   "weather": "WEATHER_UNDERWATER",
   "map_type": "MAP_TYPE_UNDERWATER",

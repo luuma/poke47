@@ -572,7 +572,7 @@
 #define TRAINER_CATHERINE_5                 565
 #define TRAINER_JULIO                       566
 #define TRAINER_GRUNT_SEAFLOOR_CAVERN_5     567
-#define TRAINER_GRUNT_UNUSED                568
+#define TRAINER_135_SAILOR                568
 #define TRAINER_GRUNT_MT_PYRE_4             569
 #define TRAINER_GRUNT_JAGGED_PASS           570
 #define TRAINER_MARC                        571
@@ -855,16 +855,27 @@
 #define TRAINER_MARIELA                     848
 #define TRAINER_ALVARO                      849
 #define TRAINER_EVERETT                     850
-#define TRAINER_RED                         851
-#define TRAINER_LEAF                        852
-#define TRAINER_BRENDAN_PLACEHOLDER         853
-#define TRAINER_MAY_PLACEHOLDER             854
+#define TRAINER_RED_135_EXPERT                         851
+#define TRAINER_135_SWIMMERF                       852
+#define TRAINER_135_LILY         853
+#define TRAINER_135_SEAMUS             854
+#define TRAINER_INGY_FISHERMAN                         855
+#define TRAINER_INGY_LASS                        856
+#define TRAINER_INGY_YOUNGSTER         857
+#define TRAINER_INGY_BUG             858
+#define TRAINER_135_GUITARIST                         859
+#define TRAINER_135_PSYCHICM                        860
+#define TRAINER_135_PSYCHICF         861
+#define TRAINER_135_BATTLEGIRL             862
+#define TRAINER_135_BLACKBELT             863
+
+
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT_EMERALD     855
+#define TRAINERS_COUNT_EMERALD     864
 #define MAX_TRAINERS_COUNT_EMERALD 864
 
 #if IS_FRLG

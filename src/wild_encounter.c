@@ -46,22 +46,18 @@ extern const u8 EventScript_SprayWoreOff[];
 #define NUM_FISHING_SPOTS_3 149
 #define NUM_FISHING_SPOTS (NUM_FISHING_SPOTS_1 + NUM_FISHING_SPOTS_2 + NUM_FISHING_SPOTS_3)
 
-#define WILD_CHECK_REPEL    (1 << 0)
-#define WILD_CHECK_KEEN_EYE (1 << 1)
-
 static u16 FeebasRandom(void);
 static void FeebasSeedRng(u16 seed);
-static bool8 IsWildLevelAllowedByRepel(u8 level);
 static void ApplyFluteEncounterRateMod(u32 *encRate);
 static void ApplyCleanseTagEncounterRateMod(u32 *encRate);
-static u8 GetMaxLevelOfSpeciesInWildTable(const struct WildPokemon *wildMon, u16 species, enum WildPokemonArea area);
+static u8 GetMaxLevelOfSpeciesInWildTable(const struct WildPokemon *wildMon, enum Species species, enum WildPokemonArea area);
 
 static bool8 TryGetHoldInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum HoldEffect holdEffect, u8 *monIndex, u32 size);
 
 static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex, u32 size);
 
 
-static bool8 IsAbilityAllowingEncounter(u8 level);
+//static bool8 IsAbilityAllowingEncounter(u8 level);
 
 /////////WILL EVENTUALLY BE INVALIDATED // grintoul THANK YOU :)
 static bool32 ShouldRandomizeWildMonForm(u16 species);
@@ -76,7 +72,7 @@ EWRAM_DATA u8 gChainFishingDexNavStreak = 0;
 
 #include "data/wild_encounters.h"
 
-static const struct WildPokemon sWildFeebas = {20, 25, SPECIES_BASCULIN_WHITE_STRIPED};
+const struct WildPokemon gWildFeebas = {20, 25, SPECIES_BASCULIN_WHITE_STRIPED};
 
 static const u16 sRoute119WaterTileData[] =
 {
@@ -136,18 +132,16 @@ static u16 GetFeebasFishingSpotId(s16 targetX, s16 targetY, u8 section)
     return spotId + 1;
 }
 
-static bool8 CheckFeebas(void)
+bool8 CheckFeebasAtCoords(s16 x, s16 y)
 {
     u8 i;
     u16 feebasSpots[NUM_FEEBAS_SPOTS];
-    s16 x, y;
     u8 route119Section = 0;
     u16 spotId;
 
     if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE119)
      && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE119))
     {
-        GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
         x -= MAP_OFFSET;
         y -= MAP_OFFSET;
 
@@ -347,7 +341,7 @@ static u32 ChooseWildMonIndex_Fishing(u8 rod)
     return wildMonIndex;
 }
 
-static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, enum WildPokemonArea area)
+u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIndex, enum WildPokemonArea area)
 {
     u8 min;
     u8 max;
@@ -463,7 +457,7 @@ enum TimeOfDay GetTimeOfDayForEncounters(u32 headerId, enum WildPokemonArea area
         return GenConfigTimeOfDay(timeOfDay);
 }
 
-static u8 PickWildMonNature(u32 species)
+static u8 PickWildMonNature(enum Species species)
 {
     u8 i;
     struct Pokeblock *safariPokeblock;
@@ -488,7 +482,7 @@ static u8 PickWildMonNature(u32 species)
     return GetSynchronizedNature(WILDMON_ORIGIN, species);
 }
 
-void CreateWildMon(u16 species, u8 level)
+void CreateWildMon(enum Species species, u8 level)
 {
     ZeroEnemyPartyMons();
     u32 personality = GetMonPersonality(species, GetSynchronizedGender(WILDMON_ORIGIN, species), PickWildMonNature(species), RANDOM_UNOWN_LETTER);
@@ -499,7 +493,7 @@ void CreateWildMon(u16 species, u8 level)
 #define TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildPokemon, holdEffect, ptr, count) TryGetHoldInfluencedWildMonIndex(wildPokemon, holdEffect, ptr, count)//ADDED
 #define TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildPokemon, type, ability, ptr, count) TryGetAbilityInfluencedWildMonIndex(wildPokemon, type, ability, ptr, count)
 
-static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPokemonArea area, u8 flags)
+bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPokemonArea area, u8 flags)
 {
     u8 wildMonIndex = 0;
     u8 level;
@@ -570,7 +564,7 @@ static bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum 
 static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 rod)
 {
     u8 wildMonIndex = ChooseWildMonIndex_Fishing(rod);
-    u16 wildMonSpecies = wildMonInfo->wildPokemon[wildMonIndex].species;
+    enum Species wildMonSpecies = wildMonInfo->wildPokemon[wildMonIndex].species;
     u8 level = ChooseWildMonLevel(wildMonInfo->wildPokemon, wildMonIndex, WILD_AREA_FISHING);
 
     UpdateChainFishingStreak();
@@ -578,7 +572,7 @@ static u16 GenerateFishingWildMon(const struct WildPokemonInfo *wildMonInfo, u8 
     return wildMonSpecies;
 }
 
-static bool8 SetUpMassOutbreakEncounter(u8 flags)
+bool8 SetUpMassOutbreakEncounter(u8 flags)
 {
     u16 i;
 
@@ -592,7 +586,7 @@ static bool8 SetUpMassOutbreakEncounter(u8 flags)
     return TRUE;
 }
 
-static bool8 DoMassOutbreakEncounterTest(void)
+bool8 DoMassOutbreakEncounterTest(void)
 {
     if (gSaveBlock1Ptr->outbreakPokemonSpecies != SPECIES_NONE
      && gSaveBlock1Ptr->location.mapNum == gSaveBlock1Ptr->outbreakLocationMapNum
@@ -662,7 +656,7 @@ static bool8 AllowWildCheckOnNewMetatile(void)
         return TRUE;
 }
 
-static bool8 AreLegendariesInSootopolisPreventingEncounters(void)
+bool8 AreLegendariesInSootopolisPreventingEncounters(void)
 {
     if (gSaveBlock1Ptr->location.mapGroup != MAP_GROUP(MAP_SOOTOPOLIS_CITY)
      || gSaveBlock1Ptr->location.mapNum != MAP_NUM(MAP_SOOTOPOLIS_CITY))
@@ -714,7 +708,7 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
             else if (TryGenerateWildMon(gBattlePyramidWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo, WILD_AREA_LAND, WILD_CHECK_KEEN_EYE) != TRUE)
                 return FALSE;
 
-            GenerateBattlePyramidWildMon();
+            GenerateBattlePyramidWildMon(SPECIES_NONE);
             BattleSetup_StartWildBattle();
             return TRUE;
         }
@@ -891,7 +885,7 @@ bool8 SweetScentWildEncounter(void)
             if (TryGenerateWildMon(gBattlePyramidWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo, WILD_AREA_LAND, 0) != TRUE)
                 return FALSE;
 
-            GenerateBattlePyramidWildMon();
+            GenerateBattlePyramidWildMon(SPECIES_NONE);
             BattleSetup_StartWildBattle();
             return TRUE;
         }
@@ -956,16 +950,18 @@ bool8 DoesCurrentMapHaveFishingMons(void)
 
 void FishingWildEncounter(u8 rod)
 {
-    u16 species;
+    enum Species species;
     u32 headerId;
+    s16 x, y;
     enum TimeOfDay timeOfDay;
 
     gIsFishingEncounter = TRUE;
-    if (CheckFeebas() == TRUE)
+    GetXYCoordsOneStepInFrontOfPlayer(&x, &y);
+    if (CheckFeebasAtCoords(x, y) == TRUE)
     {
-        u8 level = ChooseWildMonLevel(&sWildFeebas, 0, WILD_AREA_FISHING);
+        u8 level = ChooseWildMonLevel(&gWildFeebas, 0, WILD_AREA_FISHING);
 
-        species = sWildFeebas.species;
+        species = gWildFeebas.species;
         CreateWildMon(species, level);
     }
     else
@@ -1076,7 +1072,7 @@ bool8 UpdateRepelCounter(void)
     return FALSE;
 }
 
-static bool8 IsWildLevelAllowedByRepel(u8 wildLevel)
+bool8 IsWildLevelAllowedByRepel(u8 wildLevel)
 {
     u8 i;
 
@@ -1095,7 +1091,7 @@ static bool8 IsWildLevelAllowedByRepel(u8 wildLevel)
     return FALSE;
 }
 
-static bool8 IsAbilityAllowingEncounter(u8 level)
+bool8 IsAbilityAllowingEncounter(u8 level)
 {
     enum Ability ability;
 
@@ -1136,7 +1132,7 @@ static bool8 TryGetRandomWildMonIndexByType(const struct WildPokemon *wildMon, e
 
 #include "data.h"
 
-static u8 GetMaxLevelOfSpeciesInWildTable(const struct WildPokemon *wildMon, u16 species, enum WildPokemonArea area)
+static u8 GetMaxLevelOfSpeciesInWildTable(const struct WildPokemon *wildMon, enum Species species, enum WildPokemonArea area)
 {
     u8 i, maxLevel = 0, numMon = 0;
 

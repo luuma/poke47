@@ -17,6 +17,7 @@ SINGLE_BATTLE_TEST("Burmy changes form based on the environment it appeared in-b
         PARAMETRIZE { currentForm = sBurmyForms[j]; newForm = SPECIES_BURMY_PLANT; environment = BATTLE_ENVIRONMENT_POND; }
         PARAMETRIZE { currentForm = sBurmyForms[j]; newForm = SPECIES_BURMY_PLANT; environment = BATTLE_ENVIRONMENT_MOUNTAIN; }
         PARAMETRIZE { currentForm = sBurmyForms[j]; newForm = SPECIES_BURMY_PLANT; environment = BATTLE_ENVIRONMENT_PLAIN; }
+        PARAMETRIZE { currentForm = sBurmyForms[j]; newForm = SPECIES_BURMY_PLANT; environment = BATTLE_ENVIRONMENT_SNOW; }
         PARAMETRIZE { currentForm = sBurmyForms[j]; newForm = SPECIES_BURMY_SANDY; environment = BATTLE_ENVIRONMENT_CAVE; }
         PARAMETRIZE { currentForm = sBurmyForms[j]; newForm = SPECIES_BURMY_SANDY; environment = BATTLE_ENVIRONMENT_SAND; }
         PARAMETRIZE { currentForm = sBurmyForms[j]; newForm = SPECIES_BURMY_TRASH; environment = BATTLE_ENVIRONMENT_BUILDING; }

@@ -57,6 +57,10 @@ const u32 gBattleEnvironmentTiles_Rayquaza[] = INCBIN_U32("graphics/battle_envir
 const u16 gBattleEnvironmentPalette_Rayquaza[] = INCBIN_U16("graphics/battle_environment/sky/palette.gbapal");
 const u32 gBattleEnvironmentTilemap_Rayquaza[] = INCBIN_U32("graphics/battle_environment/sky/map.bin.smolTM");
 
+
+const u16 gBattleEnvironmentPalette_SnowGrass[] = INCBIN_U16("graphics/battle_environment/snow_grass/palette.gbapal");
+
+
 const u32 gBattleEnvironmentAnimTiles_TallGrass[] = INCBIN_U32("graphics/battle_environment/tall_grass/anim_tiles.4bpp.smol");
 const u32 gBattleEnvironmentAnimTilemap_TallGrass[] = INCBIN_U32("graphics/battle_environment/tall_grass/anim_map.bin.smolTM");
 

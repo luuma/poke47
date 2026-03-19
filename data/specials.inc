@@ -647,3 +647,5 @@ gSpecials::
 	def_special StickerManGetBragFlags
 	def_special CheckAddCoins
 	def_special CheckContestWinnerFirstSlot @ added for tapu lele
+	def_special CheckFishVsRod @ fishershack
+

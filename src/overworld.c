@@ -69,6 +69,7 @@
 #include "tv.h"
 #include "scanline_effect.h"
 #include "wild_encounter.h"
+#include "wild_encounter_ow.h"
 #include "vs_seeker.h"
 #include "frontier_util.h"
 #include "constants/abilities.h"
@@ -222,7 +223,7 @@ EWRAM_DATA static struct WarpData sFixedDiveWarp = {0};
 EWRAM_DATA static struct WarpData sFixedHoleWarp = {0};
 EWRAM_DATA static mapsec_u16_t sLastMapSectionId = 0;
 EWRAM_DATA static struct InitialPlayerAvatarState sInitialPlayerAvatarState = {0};
-EWRAM_DATA static u16 sAmbientCrySpecies = 0;
+EWRAM_DATA static enum Species sAmbientCrySpecies = SPECIES_NONE;
 EWRAM_DATA static bool8 sIsAmbientCryWaterMon = FALSE;
 EWRAM_DATA static u8 sHoursOverride = 0; // used to override apparent time of day hours
 EWRAM_DATA struct LinkPlayerObjectEvent gLinkPlayerObjectEvents[4] = {0};
@@ -925,6 +926,7 @@ void LoadMapFromCameraTransition(u8 mapGroup, u8 mapNum)
          || gMapHeader.regionMapSectionId != sLastMapSectionId)
             ShowMapNamePopup();
     }
+    SetMinimumOWESpawnTimer();
 }
 
 static void LoadMapFromWarp(bool32 a1)
@@ -985,6 +987,7 @@ static void LoadMapFromWarp(bool32 a1)
         UpdateTVScreensOnMap(gBackupMapLayout.width, gBackupMapLayout.height);
         InitSecretBaseAppearance(TRUE);
     }
+    SetMinimumOWESpawnTimer();
 }
 
 void ResetInitialPlayerAvatarState(void)
@@ -1392,8 +1395,43 @@ void Overworld_FadeOutMapMusic(void)
     FadeOutMapMusic(4);
 }
 
+static bool32 ShouldPlayAmbientCryVanillaOWE(void)
+{
+    bool32 owePlayed = FALSE;
+
+    if (GetNumberOfActiveOWEs(OWE_ANY))
+    {
+        switch (OW_AMBIENT_CRIES)
+        {
+        case OW_AMBIENT_CRIES_OWE_ONLY:
+        case OW_AMBIENT_CRIES_OWE_PRIORITY:
+            PlayAmbientOWECry();
+            owePlayed = TRUE;
+            break;
+
+        default:
+            break;
+        }
+    }
+
+    switch (OW_AMBIENT_CRIES)
+    {
+    case OW_AMBIENT_CRIES_VANILLA:
+        return TRUE;
+
+    case OW_AMBIENT_CRIES_OWE_PRIORITY:
+        return !owePlayed;
+
+    default:
+        return FALSE;
+    }
+}
+
 static void PlayAmbientCry(void)
 {
+    if (!ShouldPlayAmbientCryVanillaOWE())
+        return;
+    
     s16 x, y;
     s8 pan;
     s8 volume;
@@ -1816,6 +1854,7 @@ static void OverworldBasic(void)
             ApplyWeatherColorMapIfIdle(gWeatherPtr->colorMapIndex);
         }
     }
+    OverworldWildEncounters_CB();
 }
 
 // This CB2 is used when starting
@@ -3718,7 +3757,7 @@ void ScriptShowItemDescription(struct ScriptContext *ctx)
     u8 *dst;
     bool8 handleFlash = FALSE;
 
-    if (GetFlashLevel() > 0 || InBattlePyramid_())
+    if (TRUE || GetFlashLevel() > 0 || InBattlePyramid_())
         handleFlash = TRUE;
 
     if (headerType == 1) // berry

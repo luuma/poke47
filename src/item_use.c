@@ -1003,6 +1003,7 @@ static void Task_UseRepel(u8 taskId)
         VarSet(VAR_LAST_REPEL_LURE_USED, gSpecialVar_ItemId);
     #endif
         RemoveUsedItem();
+        SetInstantOWESpawnTimer();
         if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
             DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, CloseItemMessage);
         else
@@ -1325,7 +1326,7 @@ bool32 CannotUseItemsInBattle(enum Item itemId, struct Pokemon *mon)
             cannotUse = TRUE;
             break;
         }
-        u32 ability = GetBattlerAbility(battlerTarget);
+        enum Ability ability = GetBattlerAbility(battlerTarget);
         for (i = STAT_ATK; i < NUM_STATS; i++)
         {
             if (CompareStat(battlerTarget, i, MAX_STAT_STAGE, CMP_EQUAL, ability))

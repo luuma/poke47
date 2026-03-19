@@ -686,7 +686,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
     }
 }
 
-void BattleGfxSfxDummy2(u16 species)
+void BattleGfxSfxDummy2(enum Species species)
 {
 }
 
@@ -1015,7 +1015,7 @@ void HandleSpeciesGfxDataChange(enum BattlerId battlerAtk, enum BattlerId battle
 
 void BattleLoadSubstituteOrMonSpriteGfx(enum BattlerId battler, bool8 loadMonSprite)
 {
-    s32 i, palOffset;
+    s32 palOffset;
     enum BattlerPosition position;
 
     if (!loadMonSprite)
@@ -1032,7 +1032,7 @@ void BattleLoadSubstituteOrMonSpriteGfx(enum BattlerId battler, bool8 loadMonSpr
         else
             DecompressDataWithHeaderVram(gBattleAnimSpriteGfx_SubstituteBack, gMonSpritesGfxPtr->spritesGfx[position]);
 
-        for (i = 1; i < 4; i++)
+        for (u32 i = 1; i < 2; i++)
         {
             Dma3CopyLarge32_(gMonSpritesGfxPtr->spritesGfx[position], &gMonSpritesGfxPtr->spritesGfx[position][MON_PIC_SIZE * i], MON_PIC_SIZE);
         }
@@ -1166,7 +1166,7 @@ void CreateEnemyShadowSprite(enum BattlerId battler)
 {
     if (B_ENEMY_MON_SHADOW_STYLE >= GEN_4 && P_GBA_STYLE_SPECIES_GFX == FALSE)
     {
-        u16 species = GetBattlerVisualSpecies(battler);
+        enum Species species = GetBattlerVisualSpecies(battler);
         u8 size = gSpeciesInfo[species].enemyShadowSize;
 
         gBattleSpritesDataPtr->healthBoxesData[battler].shadowSpriteIdPrimary = CreateSprite(&gSpriteTemplate_EnemyShadow,
@@ -1261,7 +1261,7 @@ void SpriteCB_EnemyShadow(struct Sprite *shadowSprite)
     bool8 invisible = FALSE;
     enum BattlerId battler = shadowSprite->tBattlerId;
     struct Sprite *battlerSprite = &gSprites[gBattlerSpriteIds[battler]];
-    u16 transformSpecies = SanitizeSpeciesId(gBattleSpritesDataPtr->battlerData[battler].transformSpecies);
+    enum Species transformSpecies = SanitizeSpeciesId(gBattleSpritesDataPtr->battlerData[battler].transformSpecies);
 
     if (!battlerSprite->inUse || !IsBattlerSpritePresent(battler))
     {
@@ -1289,7 +1289,7 @@ void SpriteCB_EnemyShadow(struct Sprite *shadowSprite)
     }
     else if (B_ENEMY_MON_SHADOW_STYLE >= GEN_4 && P_GBA_STYLE_SPECIES_GFX == FALSE)
     {
-        u16 species = GetBattlerVisualSpecies(battler);
+        enum Species species = GetBattlerVisualSpecies(battler);
         xOffset = gSpeciesInfo[species].enemyShadowXOffset + (shadowSprite->tSpriteSide == SPRITE_SIDE_LEFT ? -16 : 16);
         yOffset = gSpeciesInfo[species].enemyShadowYOffset + 16;
         size = gSpeciesInfo[species].enemyShadowSize;
@@ -1316,7 +1316,7 @@ void SpriteCB_SetInvisible(struct Sprite *sprite)
     sprite->invisible = TRUE;
 }
 
-void SetBattlerShadowSpriteCallback(enum BattlerId battler, u16 species)
+void SetBattlerShadowSpriteCallback(enum BattlerId battler, enum Species species)
 {
     if (B_ENEMY_MON_SHADOW_STYLE >= GEN_4 && P_GBA_STYLE_SPECIES_GFX == FALSE)
     {
@@ -1407,18 +1407,16 @@ void ClearTemporarySpeciesSpriteData(enum BattlerId battler, bool32 dontClearTra
 
 void AllocateMonSpritesGfx(void)
 {
-    u8 i = 0, j;
-
     gMonSpritesGfxPtr = NULL;
     gMonSpritesGfxPtr = AllocZeroed(sizeof(*gMonSpritesGfxPtr));
-    gMonSpritesGfxPtr->firstDecompressed = AllocZeroed(MON_PIC_SIZE * 4 * MAX_BATTLERS_COUNT);
+    gMonSpritesGfxPtr->firstDecompressed = AllocZeroed(MON_PIC_SIZE * MAX_MON_PIC_FRAMES * MAX_BATTLERS_COUNT);
 
-    for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    for (u32 i = 0; i < MAX_BATTLERS_COUNT; i++)
     {
-        gMonSpritesGfxPtr->spritesGfx[i] = gMonSpritesGfxPtr->firstDecompressed + (i * MON_PIC_SIZE * 4);
+        gMonSpritesGfxPtr->spritesGfx[i] = gMonSpritesGfxPtr->firstDecompressed + (i * MON_PIC_SIZE * MAX_MON_PIC_FRAMES);
         gMonSpritesGfxPtr->templates[i] = gBattlerSpriteTemplates[i];
 
-        for (j = 0; j < MAX_MON_PIC_FRAMES; j++)
+        for (u32 j = 0; j < MAX_MON_PIC_FRAMES; j++)
         {
             if (gMonSpritesGfxPtr->spritesGfx[i])
             {
@@ -1466,7 +1464,7 @@ bool32 ShouldPlayNormalMonCry(struct Pokemon *mon)
     return TRUE;
 }
 
-void DecompressGhostFrontPic(u32 battler)
+void DecompressGhostFrontPic(enum BattlerId battler)
 {
     u16 palOffset;
     enum BattlerPosition position = GetBattlerPosition(battler);

@@ -4,6 +4,8 @@
 #include "palette.h"
 #include "string_util.h"
 #include "text.h"
+#include "battle_anim.h"
+#include "test/test.h"
 
 #define MAX_SPRITE_COPY_REQUESTS 64
 
@@ -28,11 +30,11 @@
 
 #define SPRITE_TILE_IS_ALLOCATED(n) ((sSpriteTileAllocBitmap[(n) / 8] >> ((n) % 8)) & 1)
 
-#if T_SHOULD_RUN_MOVE_ANIM
+#if TESTING
 EWRAM_DATA bool32 gLoadFail = FALSE;
 EWRAM_DATA bool32 gCountAllocs = FALSE;
 EWRAM_DATA s32 gSpriteAllocs = 0;
-#endif // T_SHOULD_RUN_MOVE_ANIM
+#endif // TESTING
 
 struct SpriteCopyRequest
 {
@@ -467,6 +469,14 @@ u32 CreateInvisibleSprite(void (*callback)(struct Sprite *))
 
 u32 CreateSpriteAt(u32 index, const struct SpriteTemplate *template, s16 x, s16 y, u32 subpriority)
 {
+    if (TESTING && template->tileTag > ANIM_SPRITES_START && template->tileTag < ANIM_TAG_COUNT && !IsGfxLoaded(template->tileTag))
+    {
+        assertf(FALSE, "createsprite with unloaded gfx: %u", template->tileTag);
+    }
+    if (TESTING && template->paletteTag > ANIM_SPRITES_START && template->paletteTag < ANIM_TAG_COUNT && !IsPalLoaded(template->paletteTag))
+    {
+        assertf(FALSE, "createsprite with unloaded pal: %u", template->paletteTag);
+    }
     struct Sprite *sprite = &gSprites[index];
 
     ResetSprite(sprite);
@@ -678,6 +688,44 @@ s16 AllocSpriteTiles(u16 tileCount)
         ALLOC_SPRITE_TILE(i);
 
     return start;
+}
+
+bool32 CanAllocSpriteTiles(u16 tileCount)
+{
+    u16 i;
+    u16 numTilesFound;
+
+    if (tileCount == 0)
+        return TRUE;
+
+    i = gReservedSpriteTileCount;
+
+    for (;;)
+    {
+        while (SPRITE_TILE_IS_ALLOCATED(i))
+        {
+            i++;
+            if (i == TOTAL_OBJ_TILE_COUNT)
+                return FALSE;
+        }
+
+        numTilesFound = 1;
+
+        while (numTilesFound != tileCount)
+        {
+            i++;
+            if (i == TOTAL_OBJ_TILE_COUNT)
+                return FALSE;
+
+            if (!SPRITE_TILE_IS_ALLOCATED(i))
+                numTilesFound++;
+            else
+                break;
+        }
+
+        if (numTilesFound == tileCount)
+            return TRUE;
+    }
 }
 
 u8 SpriteTileAllocBitmapOp(u16 bit, u8 op)
@@ -1495,13 +1543,13 @@ void LoadSpriteSheets(const struct SpriteSheet *sheets)
 
 void FreeSpriteTilesByTag(u16 tag)
 {
-#if T_SHOULD_RUN_MOVE_ANIM
-    if (gCountAllocs)
-        gSpriteAllocs--;
-#endif
     u8 index = IndexOfSpriteTileTag(tag);
     if (index != 0xFF)
     {
+#if TESTING
+        if (gCountAllocs)
+            gSpriteAllocs--;
+#endif
         u16 i;
         u16 *rangeStarts;
         u16 *rangeCounts;
@@ -1564,7 +1612,7 @@ u16 GetSpriteTileTagByTileStart(u16 start)
 
 void AllocSpriteTileRange(u16 tag, u16 start, u16 count)
 {
-#if T_SHOULD_RUN_MOVE_ANIM
+#if TESTING
     if (gCountAllocs)
         gSpriteAllocs++;
 #endif
@@ -1592,14 +1640,16 @@ u32 LoadSpritePalette(const struct SpritePalette *palette)
 
     if (index == 0xFF)
     {
-        return 0xFF;
+        TryAndDespawnOldestGeneratedOWE_Palette();
+        index = IndexOfSpritePaletteTag(TAG_NONE);
+        
+        if (index == 0xFF)
+            return 0xFF;
     }
-    else
-    {
-        sSpritePaletteTags[index] = palette->tag;
-        DoLoadSpritePalette(palette->data, PLTT_ID(index));
-        return index;
-    }
+
+    sSpritePaletteTags[index] = palette->tag;
+    DoLoadSpritePalette(palette->data, PLTT_ID(index));
+    return index;
 }
 
 u32 LoadSpritePaletteWithTag(const u16 *pal, u16 tag)
@@ -2104,4 +2154,15 @@ inline u32 GetSpriteWidth(struct Sprite *sprite)
 inline u32 GetSpriteHeight(struct Sprite *sprite)
 {
     return gOamDimensions[sprite->oam.shape][sprite->oam.size].height;
+}
+
+u32 CountFreePaletteSlots(void)
+{
+    u32 i, count = 0;
+
+    for (i = gReservedSpritePaletteCount; i < 16; i++)
+        if (sSpritePaletteTags[i] == TAG_NONE)
+            count++;
+
+    return count;
 }
