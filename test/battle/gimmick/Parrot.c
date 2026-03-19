@@ -56,7 +56,7 @@ DOUBLE_BATTLE_TEST("Dancer can copy Teeter Dance and confuse both opposing targe
 }
 
 
-SINGLE_BATTLE_TEST("Parrot can copy a dance move immediately after it was used and allow the user of PARROT to still use its move")
+SINGLE_BATTLE_TEST("Parrot can copy a move immediately after it was used and allow the user of PARROT to still use its move")
 {
     GIVEN {
         ASSUME(IsDanceMove(MOVE_QUIVER_DANCE));
