@@ -3,7 +3,7 @@
   "name": "Route136",
   "layout": "LAYOUT_ROUTE136LAYOUT",
   "music": "MUS_ROUTE119",
-  "region_map_section": "MAPSEC_ROUTE_4_POKECENTER",
+  "region_map_section": "MAPSEC_136",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -335,8 +335,8 @@
   ],
   "warp_events": [
     {
-      "x": 14,
-      "y": 11,
+      "x": 6,
+      "y": 75,
       "elevation": 0,
       "dest_map": "MAP_ROUTE136",
       "dest_warp_id": "0"
@@ -523,6 +523,13 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route136_EventScript_Lifeorb"
+    },
+    {
+      "type": "secret_base",
+      "x": 32,
+      "y": 41,
+      "elevation": 0,
+      "secret_base_id": "SECRET_BASE_BLUE_CAVE4_4"
     }
   ]
 }

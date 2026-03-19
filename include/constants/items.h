@@ -598,9 +598,9 @@ enum __attribute__((packed)) Item
 
      ITEM_EJECT_PACK = 467, // pickup
     ITEM_FOCUS_SASH = 468, //pickup
-    ITEM_RED_CARD = 469,
+    ITEM_RED_CARD = 469,//////////////////////
     ITEM_WEAKNESS_POLICY = 470, //pickup
-    ITEM_THROAT_SPRAY = 471, //137 INGY
+    ITEM_THROAT_SPRAY = 471, /////////////////////////////
     ITEM_ROOM_SERVICE = 472,// HOUSE
      ITEM_BLUNDER_POLICY = 473, //pickup
 
@@ -640,7 +640,7 @@ enum __attribute__((packed)) Item
      ITEM_RAZOR_FANG = 502, // SCOPE LENS ABANDONED SHIP
      ITEM_EVIOLITE = 503, // MT PYRE
      ITEM_FLOAT_STONE = 504, // granite xave B1F
-     ITEM_ROCKY_HELMET = 505,  // vicrd? late ship?
+     ITEM_ROCKY_HELMET = 505,  // 135
 
      ITEM_RING_TARGET = 506, // Rustboro
      ITEM_BINDING_BAND = 507, // 121
@@ -941,17 +941,17 @@ enum __attribute__((packed)) Item
 
     // GEN IX ITEMS
     ITEM_ABILITY_SHIELD = 758, // PAI
-    ITEM_CLEAR_AMULET = 759, //////////////////
+    ITEM_CLEAR_AMULET = 759, //PAI hid
     ITEM_PUNCHING_GLOVE = 760, ////////// goodness knows 
-    ITEM_COVERT_CLOAK = 761, //////////////// 137 puzzle solve
+    ITEM_COVERT_CLOAK = 761, //  135
     ITEM_LOADED_DICE = 762, // GAME CORNER
-    ITEM_AUSPICIOUS_ARMOR = 763,
+    ITEM_AUSPICIOUS_ARMOR = 763, 
     ITEM_BOOSTER_ENERGY = 764, //unused
     ITEM_BIG_BAMBOO_SHOOT = 765,
     ITEM_GIMMIGHOUL_COIN = 766,
     ITEM_LEADERS_CREST = 767, // wild bisharp
     ITEM_MALICIOUS_ARMOR = 768,
-    ITEM_MIRROR_HERB = 769, //////////////////
+    ITEM_MIRROR_HERB = 769, //137 puzzle
     ITEM_SCROLL_OF_DARKNESS = 770,
     ITEM_SCROLL_OF_WATERS = 771,
     ITEM_TERA_ORB = 772,
@@ -983,9 +983,9 @@ enum __attribute__((packed)) Item
     ITEM_BLACK_AUGURITE = 795,
     ITEM_LINKING_CORD = 796,
     ITEM_PEAT_BLOCK = 797,
-    ITEM_BERSERK_GENE = 798,
+    ITEM_BERSERK_GENE = 798, /// ooo
 
-    ITEM_FAIRY_FEATHER = 799,
+    ITEM_FAIRY_FEATHER = 799, /// oooo
     ITEM_SYRUPY_APPLE = 800,
     ITEM_UNREMARKABLE_TEACUP = 801,
     ITEM_MASTERPIECE_TEACUP = 802,

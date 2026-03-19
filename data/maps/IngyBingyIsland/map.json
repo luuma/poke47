@@ -3,7 +3,7 @@
   "name": "IngyBingyIsland",
   "layout": "LAYOUT_INGY_BINGY_ISLAND",
   "music": "MUS_RG_SEVII_ROUTE",
-  "region_map_section": "MAPSEC_ROUTE_1",
+  "region_map_section": "MAPSEC_137",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
   "map_type": "MAP_TYPE_ROUTE",
@@ -27,9 +27,9 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_MAN_4",
-      "x": 39,
-      "y": 57,
-      "elevation": 0,
+      "x": 37,
+      "y": 54,
+      "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
@@ -40,15 +40,15 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FISHERMAN",
-      "x": 61,
+      "x": 17,
       "y": 41,
       "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "ing_trainer1",
       "flag": "0"
     },
     {
@@ -59,9 +59,9 @@
       "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
       "movement_range_x": 4,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
-      "script": "NULL",
+      "script": "ing_trainer3",
       "flag": "0"
     },
     {
@@ -72,9 +72,9 @@
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "ing_trainer1",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
+      "trainer_sight_or_berry_tree_id": "3",
+      "script": "ing_trainer4",
       "flag": "0"
     },
     {
@@ -124,16 +124,16 @@
       "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
       "movement_range_x": 4,
       "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "4",
-      "script": "NULL",
+      "script": "ing_trainer2",
       "flag": "0"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
-      "x": 43,
+      "x": 44,
       "y": 53,
-      "elevation": 0,
+      "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
@@ -170,8 +170,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 31,
-      "y": 24,
+      "x": 23,
+      "y": 7,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -203,7 +203,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_POTION",
+      "trainer_sight_or_berry_tree_id": "ITEM_SUPER_POTION",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R1379"
     },
@@ -222,14 +222,14 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 34,
-      "y": 21,
+      "x": 31,
+      "y": 24,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_THROAT_SPRAY",
+      "trainer_sight_or_berry_tree_id": "ITEM_ICE_STONE",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R137B"
     },
@@ -244,7 +244,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "annoyfisherman",
       "flag": "0"
     },
     {
@@ -272,6 +272,97 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "ing_sewaddle",
       "flag": "0"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 17,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_16"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 18,
+      "y": 10,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_15"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 20,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_14"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 16,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_18"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 16,
+      "y": 12,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_17"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 15,
+      "y": 11,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_19"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 34,
+      "y": 21,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_MIRROR_HERB",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_137_MIRROR_HERB"
     }
   ],
   "warp_events": [
@@ -280,6 +371,13 @@
       "y": 46,
       "elevation": 0,
       "dest_map": "MAP_INDOOR_ROUTE_136_FISHERMAN",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 37,
+      "y": 49,
+      "elevation": 0,
+      "dest_map": "MAP_INGY_BINGY_ISLAND",
       "dest_warp_id": "0"
     }
   ],
@@ -365,13 +463,6 @@
     },
     {
       "type": "secret_base",
-      "x": 18,
-      "y": 21,
-      "elevation": 0,
-      "secret_base_id": "SECRET_BASE_BLUE_CAVE4_4"
-    },
-    {
-      "type": "secret_base",
       "x": 47,
       "y": 51,
       "elevation": 0,
@@ -390,7 +481,7 @@
       "x": 2,
       "y": 53,
       "elevation": 0,
-      "item": "ITEM_POTION",
+      "item": "ITEM_PREMIER_BALL",
       "flag": "FLAG_R1372"
     },
     {
@@ -422,7 +513,7 @@
       "x": 19,
       "y": 40,
       "elevation": 0,
-      "item": "ITEM_POKE_BALL",
+      "item": "ITEM_GREAT_BALL",
       "flag": "FLAG_R1374"
     },
     {

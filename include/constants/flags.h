@@ -740,14 +740,14 @@
 #define FLAG_R136H7 0x2A5 // Unused Flag
 #define FLAG_R136H8 0x2A6 // Unused Flag
 #define FLAG_R136H9	0x2A7 // Unused Flag
-#define FLAG_UNUSED_0x2A8  0x2A8 // Unused Flag
-#define FLAG_UNUSED_0x2A9  0x2A9 // Unused Flag
-#define FLAG_UNUSED_0x2AA  0x2AA // Unused Flag
-#define FLAG_UNUSED_0x2AB  0x2AB // Unused Flag
-#define FLAG_UNUSED_0x2AC  0x2AC // Unused Flag
-#define FLAG_UNUSED_0x2AD  0x2AD // Unused Flag
-#define FLAG_UNUSED_0x2AE  0x2AE // Unused Flag
-#define FLAG_UNUSED_0x2AF  0x2AF // Unused Flag
+#define FLAG_137_MIRROR_HERB  0x2A8 // 
+#define FLAG_ANNOYING_FISHERMAN_ATSTEPS  0x2A9 // Unused Flag
+#define FLAG_FISHERMAN_MASTER  0x2AA // Unused Flag
+#define FLAG_R135_COVERT_CLOAK  0x2AB // Unused Flag
+#define FLAG_R1351  0x2AC // 
+#define FLAG_R1352  0x2AD // 
+#define FLAG_R1353  0x2AE // HID
+#define FLAG_R1354  0x2AF // HID
 #define FLAG_UNUSED_0x2B0  0x2B0 // Unused Flag
 #define FLAG_UNUSED_0x2B1  0x2B1 // Unused Flag
 #define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag

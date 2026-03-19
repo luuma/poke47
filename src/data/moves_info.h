@@ -23053,6 +23053,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .battleAnimScript = gBattleAnimMove_BaddyBad,
     },
+
     [MOVE_SCREEN_BURN] =
     {
         .name = COMPOUND_STRING("Screen Burn"),
@@ -23100,6 +23101,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_GMaxCuddle,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_RECYCLE_BERRIES,
+            .self = TRUE,
         }),
     },
 
@@ -23125,6 +23127,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_FreezingGlare,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_CRIT_PLUS_SIDE,
+            .self = TRUE,
         }),
     },
 

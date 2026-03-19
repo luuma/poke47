@@ -184,29 +184,6 @@ DOUBLE_BATTLE_TEST("PARROT doesn't trigger when an ally snatches the move")
     }
 }
 
-DOUBLE_BATTLE_TEST("PARROT-called moves doesn't update move to be called by Mirror Move")
-{
-    GIVEN {
-        PLAYER(SPECIES_WOBBUFFET) { Speed(10); }
-        PLAYER(SPECIES_WOBBUFFET) { Speed(30); }
-        OPPONENT(SPECIES_CHATOT) { Ability(ABILITY_PARROT); Speed(50); }
-        OPPONENT(SPECIES_WOBBUFFET) { Speed(5); }
-    } WHEN {
-        TURN { MOVE(opponentLeft, MOVE_SCRATCH, target: playerLeft); MOVE(playerRight, MOVE_SING, target: opponentRight); }
-        TURN { MOVE(playerLeft, MOVE_MIRROR_MOVE, target: opponentLeft); }
-    } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
-        HP_BAR(playerLeft);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SING, playerRight);
-        ABILITY_POPUP(opponentLeft, ABILITY_PARROT);
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SING, opponentLeft);
-        MESSAGE("Wobbuffet used Mirror Move!");
-        MESSAGE("Wobbuffet used Scratch!");
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
-        NOT MESSAGE("Wobbuffet used Sing!");
-    }
-}
-
 
 SINGLE_BATTLE_TEST("PARROT can still copy a move even if it's being forced into a different move - Choice items")
 {
@@ -274,8 +251,6 @@ SINGLE_BATTLE_TEST("PARROT roar")
 DOUBLE_BATTLE_TEST("PARROT roar doubles")
 {
     GIVEN {
-        WITH_CONFIG(B_HEALING_WISH_SWITCH, GEN_7);
-        ASSUME(GetMoveEffect(MOVE_LUNAR_DANCE) == EFFECT_LUNAR_DANCE);
         PLAYER(SPECIES_RIOLU) { Speed(50); }
         PLAYER(SPECIES_CHATOT) { Ability(ABILITY_PARROT); Speed(20); }
         OPPONENT(SPECIES_WOBBUFFET) { Speed(10); }
@@ -292,3 +267,28 @@ DOUBLE_BATTLE_TEST("PARROT roar doubles")
         MESSAGE("The opposing Wynaut was dragged out!");
     }
 }
+
+
+DOUBLE_BATTLE_TEST("PARROT-called moves doesn't update move to be called by Mirror Move")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Speed(10); Item(ITEM_CHESTO_BERRY);}
+        PLAYER(SPECIES_WOBBUFFET) { Speed(30); Item(ITEM_CHESTO_BERRY); }
+        OPPONENT(SPECIES_CHATOT) { Ability(ABILITY_PARROT); Speed(50); }
+        OPPONENT(SPECIES_WOBBUFFET) { Speed(5); Item(ITEM_CHESTO_BERRY);}
+    } WHEN {
+        TURN { MOVE(opponentLeft, MOVE_SCRATCH, target: playerLeft); MOVE(playerRight, MOVE_SING, target: opponentRight); }
+        TURN { MOVE(playerLeft, MOVE_MIRROR_MOVE, target: opponentLeft); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponentLeft);
+        HP_BAR(playerLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SING, playerRight);
+        ABILITY_POPUP(opponentLeft, ABILITY_PARROT);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SING, opponentLeft);
+        MESSAGE("Wobbuffet used Mirror Move!");
+        MESSAGE("Wobbuffet used Scratch!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, playerLeft);
+        NOT MESSAGE("Wobbuffet used Sing!");
+    }
+}
+

@@ -20,7 +20,12 @@ Route118_OnFrame:
 	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
 	.2byte 0
 
-Route118_EventScript_GoodRodFisherman::
+Route118_EventScript_OhAbandonedShip::
+	msgbox Route118_Text_TryYourLuckFishing, MSGBOX_DEFAULT
+	release
+	end
+
+Route118_EventScript_GoodRodFisherman:: @ cut!
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_GOOD_ROD, Route118_EventScript_ReceivedGoodRod
@@ -273,8 +278,11 @@ Route118_Text_IdenticalMindsTakeThis:
 	.string "Take this GOOD ROD!$"
 
 Route118_Text_TryYourLuckFishing:
-	.string "Wherever there's water, try your luck\n"
-	.string "at fishing.$"
+	.string "The FISHING SHACK on Route 137 is a\n"
+	.string "fisherman's paradise.\p"
+	.string "If you know to find Dhelmise in\n"
+	.string "shipwrecks and Froakie in ponds,\l"
+	.string "they'll give you the rod you need!$"
 
 Route118_Text_DontYouLikeToFish:
 	.string "Don't you like to fish?$"

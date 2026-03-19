@@ -1626,6 +1626,54 @@
       "y": 4,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_OLD_HOUSE",
+      "name": "OLD HOUSE",
+      "x": 0,
+      "y": 7,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_136",
+      "name": "ROUTE 136",
+      "x": 9,
+      "y": 1,
+      "width": 1,
+      "height": 4
+    },
+    {
+      "id": "MAPSEC_137",
+      "name": "ROUTE 137",
+      "x": 5,
+      "y": 7,
+      "width": 3,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_DEW_BEACH",
+      "name": "DEW BEACH",
+      "x": 0,
+      "y": 14,
+      "width": 2,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_UNDERWATER_114",
+      "name": "UNDERWATER",
+      "x": 5,
+      "y": 4,
+      "width": 4,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_135",
+      "name": "ROUTE 135",
+      "x": 16,
+      "y": 7,
+      "width": 1,
+      "height": 3
     }
   ]
 }

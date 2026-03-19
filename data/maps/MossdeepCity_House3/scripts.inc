@@ -1,7 +1,17 @@
 MossdeepCity_House3_MapScripts::
 	.byte 0
 
-MossdeepCity_House3_EventScript_SuperRodFisherman::
+MossdeepCity_House3_EventScript_hmfishingshack::
+	msgbox MossdeepCity_House3_Text_Tryharder, MSGBOX_DEFAULT
+	release
+	end
+
+MossdeepCity_House3_Text_Tryharder:
+	.string "Now I'm back from my trip round to\n"
+	.string "PACIFIDLOG, I've finally got all the\n"
+ 	.string "catches I need to earn a SUPER ROD!$"
+
+MossdeepCity_House3_EventScript_SuperRodFisherman::@ cut!
 	lock
 	faceplayer
 	goto_if_set FLAG_RECEIVED_SUPER_ROD, MossdeepCity_House3_EventScript_ReceivedSuperRod

@@ -566,7 +566,7 @@
     },
     {
       "warp_id": "WARP_ID_FLY_ROUTE_110",
-      "x": 20,
+      "x": 17,
       "y": 40,
       "elevation": 0,
       "dest_map": "MAP_ROUTE110",

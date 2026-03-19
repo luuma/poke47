@@ -45,37 +45,6 @@ SINGLE_BATTLE_TEST("ENVELOP's damage depends on the user's base Defense instead 
 
 
 
-DOUBLE_BATTLE_TEST("Just Desserts recycles allies' berries 100% of the time")
-{
-    GIVEN {
-        ASSUME(MoveHasAdditionalEffect(MOVE_JUST_DESSERTS, MOVE_EFFECT_RECYCLE_BERRIES));
-        ASSUME(GetItemHoldEffect(ITEM_APICOT_BERRY) == HOLD_EFFECT_SP_DEFENSE_UP);
-        PLAYER(SPECIES_SNORLAX) { Item(ITEM_APICOT_BERRY); GigantamaxFactor(TRUE); }
-        PLAYER(SPECIES_MUNCHLAX) { Item(ITEM_APICOT_BERRY); Ability(ABILITY_THICK_FAT); }
-        OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_APICOT_BERRY); }
-        OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_APICOT_BERRY); }
-    } WHEN {
-        TURN { MOVE(playerLeft, MOVE_STUFF_CHEEKS); \
-               MOVE(playerRight, MOVE_STUFF_CHEEKS); \
-               MOVE(opponentLeft, MOVE_STUFF_CHEEKS); \
-               MOVE(opponentRight, MOVE_STUFF_CHEEKS); }
-        TURN { MOVE(playerLeft, MOVE_JUST_DESSERTS, target: opponentRight); }
-    } SCENE {
-        // turn 1
-
-        MESSAGE("Using Apicot Berry, the Sp. Def of Snorlax rose!");
-        MESSAGE("Using Apicot Berry, the Sp. Def of Munchlax rose!");
-        MESSAGE("Using Apicot Berry, the Sp. Def of the opposing Wobbuffet rose!");
-        MESSAGE("Using Apicot Berry, the Sp. Def of the opposing Wobbuffet rose!");
-        // turn 2
-        MESSAGE("Snorlax used Just Desserts!");
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_JUST_DESSERTS, playerLeft);
-        MESSAGE("Snorlax found one Apicot Berry!");
-        MESSAGE("Munchlax found one Apicot Berry!");
-    }
-}
-
-
 SINGLE_BATTLE_TEST("Lightbloom SUNlight")
 {
     GIVEN {
@@ -132,36 +101,7 @@ DOUBLE_BATTLE_TEST("mood Crush STILL damages if target is defeatist")
 }
 
 
-DOUBLE_BATTLE_TEST("hawkeye boosts crit chance by 1 stage")
-{
-    u32 j;
-    GIVEN {
-        WITH_CONFIG(B_CRIT_CHANCE, GEN_6);
-        ASSUME(MoveHasAdditionalEffect(MOVE_CRIT_UP_HIT, MOVE_EFFECT_CRIT_PLUS_SIDE));
-        PLAYER(SPECIES_MACHAMP) { GigantamaxFactor(TRUE); }
-        PLAYER(SPECIES_MACHOP);
-        OPPONENT(SPECIES_WOBBUFFET);
-        OPPONENT(SPECIES_WOBBUFFET);
-    } WHEN {
-        TURN { MOVE(playerLeft, MOVE_CRIT_UP_HIT, target: opponentLeft); }
-        TURN { MOVE(playerLeft, MOVE_CRIT_UP_HIT, target: opponentLeft); }
-        TURN { MOVE(playerLeft, MOVE_CRIT_UP_HIT, target: opponentLeft); \
-               MOVE(playerRight, MOVE_FOCUS_ENERGY); }
-        TURN { MOVE(playerRight, MOVE_SCRATCH, target: opponentLeft); }
-    } SCENE {
-        // turn 1 - 3
-        for (j = 0; j < 3; ++j) {
-            MESSAGE("Machamp used Hawkeye!");
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-            MESSAGE("Machamp is getting pumped!");
-            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-            MESSAGE("Machop is getting pumped!");
-        }
-        // turn 4
-        MESSAGE("Machop used Scratch!"); // Machop is at +5 crit stages
-        MESSAGE("A critical hit!");
-    }
-}
+
 
 DOUBLE_BATTLE_TEST("Screen Burn makes the user lose 1/2 of its Max HP in a double battle")
 {
@@ -589,5 +529,66 @@ SINGLE_BATTLE_TEST("Mist blocks secondary effects")
         }
     } THEN { // Can't find good way to test trapping
         EXPECT(!opponent->volatiles.escapePrevention);
+    }
+}
+
+
+DOUBLE_BATTLE_TEST("hawkeye boosts crit chance by 1 stage")
+{
+    u32 j;
+    GIVEN {
+        WITH_CONFIG(B_CRIT_CHANCE, GEN_6);
+        PLAYER(SPECIES_MACHAMP) { GigantamaxFactor(TRUE); }
+        PLAYER(SPECIES_MACHOP);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_CRIT_UP_HIT, target: opponentLeft); }
+        TURN { MOVE(playerLeft, MOVE_CRIT_UP_HIT, target: opponentLeft); }
+        TURN { MOVE(playerLeft, MOVE_CRIT_UP_HIT, target: opponentLeft); \
+               MOVE(playerRight, MOVE_FOCUS_ENERGY); }
+        TURN { MOVE(playerRight, MOVE_SCRATCH, target: opponentLeft); }
+    } SCENE {
+        // turn 1 - 3
+        for (j = 0; j < 3; ++j) {
+            MESSAGE("Machamp used Hawkeye!");
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
+            MESSAGE("Machamp is getting pumped!");
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
+            MESSAGE("Machop is getting pumped!");
+        }
+        // turn 4
+        MESSAGE("Machop used Scratch!"); // Machop is at +5 crit stages
+        MESSAGE("A critical hit!");
+    }
+}
+
+
+DOUBLE_BATTLE_TEST("Just Desserts recycles allies' berries 100% of the time")
+{
+    GIVEN {
+        ASSUME(GetItemHoldEffect(ITEM_APICOT_BERRY) == HOLD_EFFECT_SP_DEFENSE_UP);
+        PLAYER(SPECIES_SNORLAX) { Item(ITEM_APICOT_BERRY); GigantamaxFactor(TRUE); }
+        PLAYER(SPECIES_MUNCHLAX) { Item(ITEM_APICOT_BERRY); Ability(ABILITY_THICK_FAT); }
+        OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_APICOT_BERRY); }
+        OPPONENT(SPECIES_WOBBUFFET) { Item(ITEM_APICOT_BERRY); }
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_STUFF_CHEEKS); \
+               MOVE(playerRight, MOVE_STUFF_CHEEKS); \
+               MOVE(opponentLeft, MOVE_STUFF_CHEEKS); \
+               MOVE(opponentRight, MOVE_STUFF_CHEEKS); }
+        TURN { MOVE(playerLeft, MOVE_JUST_DESSERTS, target: opponentRight); }
+    } SCENE {
+        // turn 1
+
+        MESSAGE("Using Apicot Berry, the Sp. Def of Snorlax rose!");
+        MESSAGE("Using Apicot Berry, the Sp. Def of Munchlax rose!");
+        MESSAGE("Using Apicot Berry, the Sp. Def of the opposing Wobbuffet rose!");
+        MESSAGE("Using Apicot Berry, the Sp. Def of the opposing Wobbuffet rose!");
+        // turn 2
+        MESSAGE("Snorlax used Just Desserts!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_JUST_DESSERTS, playerLeft);
+        MESSAGE("Snorlax found one Apicot Berry!");
+        MESSAGE("Munchlax found one Apicot Berry!");
     }
 }
