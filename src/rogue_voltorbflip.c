@@ -1116,17 +1116,18 @@ static void PrintRowInfo(u8 window, u8 totalValue, u8 totalVoltorbs)
     u8 text[8];
     FillWindowPixelBuffer(window, PIXEL_FILL(0));
 
-    // Top number
-    ConvertUIntToDecimalStringN(gStringVar4, totalValue, STR_CONV_MODE_RIGHT_ALIGN, 2);
-    StringCopy(text, sTextWhite);
-    StringAppend(text, gStringVar4);
-    PrintVoltorbFlipText(window, FONT_SMALL_NARROW, text, 10, 0);
-    
     // Bottom number
     ConvertUIntToDecimalStringN(gStringVar4, totalVoltorbs, STR_CONV_MODE_RIGHT_ALIGN, 1);
     StringCopy(text, sTextGrey);
     StringAppend(text, gStringVar4);
     PrintVoltorbFlipText(window, FONT_SMALL_NARROW, text, 15, 8);
+
+    // Top number
+    ConvertUIntToDecimalStringN(gStringVar4, 10, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    StringCopy(text, sTextWhite);
+    StringAppend(text, gStringVar4);
+    PrintVoltorbFlipText(window, FONT_SMALL_NARROW, text, 10, 0);
+  
 
     PutWindowTilemap(window);
     CopyWindowToVram(window, COPYWIN_FULL);
