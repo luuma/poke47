@@ -4746,7 +4746,7 @@ Level: 12
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Tackle
 - Leer
-- Sand Attack
+- Ancient Power
 - Rock Tomb
 
 Archen
@@ -4755,13 +4755,13 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Peck
 - Mean Look
 - Skill Swap
-- Rock Tomb
+- Ancient Power
 
 Roggenrola  @ Oran Berry
 Level: 14
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Harden
-- Power Gem
+- Ancient Power
 - Sandstorm
 - Rock Tomb
 
@@ -11145,7 +11145,7 @@ Scatterbug
 Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Burmy
+Kricketot
 Level: 4
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -11162,11 +11162,11 @@ Scatterbug
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Scatterbug
+Kricketot
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Scatterbug
+Sewaddle
 Level: 3
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -11187,7 +11187,7 @@ Scatterbug
 Level: 8
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Dewpider
+Combee
 Level: 8
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
