@@ -3516,7 +3516,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .levelUpLearnset = sDrifblimLevelUpLearnset,
         .teachableLearnset = sDrifblimTeachableLearnset,
         .formSpeciesIdTable = sDrifblimFormSpeciesIdTable,
-        .formChangeTable = sDrifblimFormChangeTable,
+        .formChangeTable = sDrifblimGulpMissileFormChangeTable,
     },
 
     [SPECIES_DRIFBLIM_YAMASK] =
@@ -3591,7 +3591,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .levelUpLearnset = sDrifblimLevelUpLearnset,
         .teachableLearnset = sDrifblimTeachableLearnset,
         .formSpeciesIdTable = sDrifblimFormSpeciesIdTable,
-        .formChangeTable = sDrifblimFormChangeTable,
+        .formChangeTable = sDrifblimGulpMissileFormChangeTable,
     },
 
 #endif //P_FAMILY_DRIFLOON

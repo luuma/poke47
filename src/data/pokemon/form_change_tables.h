@@ -1990,6 +1990,17 @@ static const struct FormChange sDrifblimFormChangeTable[] =
     {FORM_CHANGE_TERMINATOR},
 };
 
+static const struct FormChange sDrifblimGulpMissileFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_HIT_BY_MOVE_CATEGORY,   SPECIES_DRIFBLIM,   ABILITY_GULP_MISSILE, DAMAGE_CATEGORY_PHYSICAL},
+    {FORM_CHANGE_BATTLE_HIT_BY_MOVE_CATEGORY,   SPECIES_DRIFBLIM,   ABILITY_GULP_MISSILE, DAMAGE_CATEGORY_SPECIAL},
+    {FORM_CHANGE_BATTLE_SWITCH_OUT,             SPECIES_DRIFBLIM},
+    {FORM_CHANGE_FAINT,                         SPECIES_DRIFBLIM},
+    {FORM_CHANGE_END_BATTLE,                    SPECIES_DRIFBLIM},
+    {FORM_CHANGE_TERMINATOR},
+};
+
+
 #if P_FAMILY_TOXEL
 static const struct FormChange sToxtricityAmpedFormChangeTable[] =
 {

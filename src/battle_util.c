@@ -3065,11 +3065,11 @@ static bool32 TryDancer(void)
         RecordAbilityBattle(gBattlerAttacker, ABILITY_PARROT);
 
         // Set the target to the original target of the mon that first used a Dance move
-        gBattlerTarget = gBattleScripting.savedBattler & 0x3;
+        gBattlerTarget = gBattleStruct->dancerSavedTarget;
 
         // Make sure that the target isn't an ally - if it is, target the original user
         if (IsBattlerAlly(gBattlerTarget, gBattlerAttacker))
-            gBattlerTarget = (gBattleScripting.savedBattler & 0xF0) >> 4;
+            gBattlerTarget = gBattleStruct->dancerSavedAttacker;
 
         BattleScriptExecute(BattleScript_DancerActivates);
         return TRUE;
