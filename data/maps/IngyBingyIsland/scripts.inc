@@ -20,8 +20,7 @@ annoyfisherman::
 	goto_if_set FLAG_ANNOYING_FISHERMAN_ATSTEPS, annoyfishermanToSteps
 	msgbox annoyfish_huhnmovetext1, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, annoyfisherman_OhChill
-	specialvar VAR_RESULT, GetPlayerFacingDirection
-	goto_if_eq VAR_RESULT, DIR_WEST, annoyfishermanyoureintheway
+	goto_if_eq VAR_FACING, DIR_WEST, annoyfishermanyoureintheway
 	applymovement VAR_LAST_TALKED, ing_move3
 	waitmovement 0
 	faceplayer
@@ -36,8 +35,7 @@ annoyfisherman::
 annoyfishermanToSteps::
 	msgbox annoyfish_huhnmovetext2, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, annoyfisherman_OhChill
-	specialvar VAR_RESULT, GetPlayerFacingDirection
-	goto_if_eq VAR_RESULT, DIR_EAST, annoyfishermanyoureintheway
+	goto_if_eq VAR_FACING, DIR_EAST, annoyfishermanyoureintheway
 	applymovement VAR_LAST_TALKED, ing_move3
 	waitmovement 0
 	faceplayer

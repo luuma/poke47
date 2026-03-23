@@ -10614,6 +10614,11 @@ static void FinalizeCapture(void)
         u32 friendship = (B_FRIEND_BALL_MODIFIER >= GEN_8 ? 150 : 200);
         SetMonData(caughtMon, MON_DATA_FRIENDSHIP, &friendship);
     }
+    else if (ballId == BALL_PREMIER && GetAbilityBySpecies(gBattleMons[gBattlerTarget].species, 2) != ABILITY_NONE)
+    {
+	u32 ability = 2;
+        SetMonData(caughtMon, MON_DATA_ABILITY_NUM, &ability);
+    }
 }
 
 struct BallData

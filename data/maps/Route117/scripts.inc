@@ -45,7 +45,7 @@ Route117_EventScript_DaycareMonMaxCompatibility: @ facing; walk in place
 
 Route117_EventScript_TryMoveDayCareMan::
 	goto_if_unset FLAG_PENDING_DAYCARE_EGG, Route117_EventScript_StopMoveDayCareMan
-	setobjectxyperm LOCALID_DAYCARE_MAN, 47, 6
+	setobjectxyperm LOCALID_DAYCARE_MAN, 47, 8
 Route117_EventScript_StopMoveDayCareMan::
 	return
 

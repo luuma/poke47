@@ -5390,7 +5390,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sDarumakaGalarTeachableLearnset,
         .eggMoveLearnset = sDarumakaGalarEggMoveLearnset,
         .formSpeciesIdTable = sDarumakaFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_DARMANITAN_GALAR_STANDARD, CONDITIONS({IF_IN_MAP, MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_DARMANITAN_GALAR_STANDARD, CONDITIONS({IF_IN_MAP, MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM})},
+				{EVO_ITEM, ITEM_ICE_STONE, SPECIES_DARMANITAN_GALAR_STANDARD}),
+
     },
 
     [SPECIES_DARMANITAN_GALAR_STANDARD] =

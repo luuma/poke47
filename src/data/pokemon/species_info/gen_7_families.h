@@ -1421,12 +1421,13 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .levelUpLearnset = sCrabrawlerLevelUpLearnset,
         .teachableLearnset = sCrabrawlerTeachableLearnset,
         .eggMoveLearnset = sCrabrawlerEggMoveLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_CRABOMINABLE, CONDITIONS({IF_IN_MAP, MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 0, SPECIES_CRABOMINABLE, CONDITIONS({IF_IN_MAP, MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM})},
+				{EVO_ITEM, ITEM_ICE_STONE, SPECIES_CRABOMINABLE}),
     },
 
     [SPECIES_CRABOMINABLE] =
     {
-        .baseHP        = 117, //+20
+        .baseHP        = 97,
         .baseAttack    = 132,
         .baseDefense   = 77,
         .baseSpeed     = 43,

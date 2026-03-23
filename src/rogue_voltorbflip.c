@@ -1111,23 +1111,22 @@ static void ShowAllCards()
 static const u8 sTextWhite[] = _("{COLOR WHITE}{SHADOW DARK_GRAY}");
 static const u8 sTextGrey[] = _("{COLOR LIGHT_GRAY}{SHADOW DARK_GRAY}");
 
-static void PrintRowInfo(u8 window, u8 totalValue, u8 totalVoltorbs)
+static void PrintRowInfo(u8 window, u32 totalValue, u32 totalVoltorbs)
 {
     u8 text[8];
     FillWindowPixelBuffer(window, PIXEL_FILL(0));
 
     // Top number
-    ConvertUIntToDecimalStringN(gStringVar4, totalValue, STR_CONV_MODE_RIGHT_ALIGN, 2);
+    ConvertUIntToDecimalStringN(gStringVar4, totalValue, STR_CONV_MODE_RIGHT_ALIGN, 1);// fuck my life. It's fine for a 10+ to be a ? though.
     StringCopy(text, sTextWhite);
     StringAppend(text, gStringVar4);
-    PrintVoltorbFlipText(window, FONT_SMALL_NARROW, text, 10, 0);
-  
+    PrintVoltorbFlipText(window, FONT_SMALL_NARROW, text, 15, 0); // fuck my life.
+    
     // Bottom number
     ConvertUIntToDecimalStringN(gStringVar4, totalVoltorbs, STR_CONV_MODE_RIGHT_ALIGN, 1);
     StringCopy(text, sTextGrey);
     StringAppend(text, gStringVar4);
     PrintVoltorbFlipText(window, FONT_SMALL_NARROW, text, 15, 8);
-
 
     PutWindowTilemap(window);
     CopyWindowToVram(window, COPYWIN_FULL);
@@ -1161,7 +1160,7 @@ static u8 CountRow(u8 y, bool8 countValue)
 static u8 CountColumn(u8 x, bool8 countValue)
 {
     u8 y;
-    u8 total = 0;
+    u32 total = 0;
     for(y = 0; y < BOARD_HEIGHT; ++y)
     {
         if(countValue)

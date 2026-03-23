@@ -132,6 +132,7 @@ SlateportCity_Pokemart_EnergyGuru:
 	.2byte ITEM_CALCIUM
 	.2byte ITEM_HP_UP
 	.2byte ITEM_ABILITY_CAPSULE
+	.2byte ITEM_ABILITY_PATCH
 	pokemartlistend
 
 SlateportCity_EventScript_EffortRibbonWoman::

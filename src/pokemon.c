@@ -749,6 +749,9 @@ static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(MELMETAL),
     HOENN_TO_NATIONAL(KINGAMBIT),
     HOENN_TO_NATIONAL(RUNERIGUS),
+    HOENN_TO_NATIONAL(SNOVER),
+    HOENN_TO_NATIONAL(ABOMASNOW),
+    HOENN_TO_NATIONAL(BASCULEGION),
 };
 
 const struct SpindaSpot gSpindaSpotGraphics[] =
@@ -1647,7 +1650,7 @@ u32 GetMonPersonality(enum Species species, u8 gender, u8 nature, u8 unownLetter
 // This is only used to create Wally's Ralts.
 void CreateMaleMon(struct Pokemon *mon, enum Species species, u8 level)
 {
-    u32 personality = GetMonPersonality(species, MON_GENDER_RANDOM, NATURE_RANDOM, RANDOM_UNOWN_LETTER);// fuck it!
+    u32 personality = GetMonPersonality(species, MON_GENDER_RANDOM, NATURE_RANDOM, RANDOM_UNOWN_LETTER);// fuck it lets go absolutely insane!
     CreateMonWithIVs(mon, species, level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
     GiveMonInitialMoveset(mon);
 }

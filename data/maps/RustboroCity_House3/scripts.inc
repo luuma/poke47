@@ -14,7 +14,7 @@ RustboroCity_House3_EventScript_Pekachu::
 	lock
 	faceplayer
 	waitse
-	playmoncry SPECIES_PIKACHU, CRY_MODE_NORMAL
+	playmoncry SPECIES_PACHIRISU, CRY_MODE_NORMAL
 	msgbox RustboroCity_House3_Text_Pekachu, MSGBOX_DEFAULT
 	waitmoncry
 	release
@@ -28,10 +28,10 @@ RustboroCity_House3_Text_IGivePerfectlySuitedNicknames:
 
 RustboroCity_House3_Text_NamingPikachuPekachu:
 	.string "But giving the name PEKACHU to\n"
-	.string "a PIKACHU? It seems pointless.\p"
+	.string "a PACHIRISU? It seems confusing.\p"
 	.string "I suppose it is good to use a name\n"
-	.string "that's easy to understand, but…$"
+	.string "that's tried and tested, but…$"
 
 RustboroCity_House3_Text_Pekachu:
-	.string "PEKACHU: Peka!$"
+	.string "PEKACHU: Pecha!$"
 

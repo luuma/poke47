@@ -1633,7 +1633,7 @@ MauvilleCity_GameCorner_Text_NeedCoinCaseForCoins:
 
 MauvilleCity_GameCorner_Text_WereYouLookingForCoins:
 	.string "Were you looking for COINS?\p"
-	.string "It's ¥1000 for 50 COINS.\n"
+	.string "It's ¥1,100 for 50 COINS.\n"
 	.string "Would you like some?$"
 
 MauvilleCity_GameCorner_Text_ThankYouHereAreYourCoins:
