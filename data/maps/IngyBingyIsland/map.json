@@ -249,8 +249,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 2,
-      "y": 53,
+      "x": 0,
+      "y": 54,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -363,6 +363,19 @@
       "trainer_sight_or_berry_tree_id": "ITEM_MIRROR_HERB",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_137_MIRROR_HERB"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_PUSHABLE_BOULDER",
+      "x": 6,
+      "y": 57,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "EventScript_StrengthBoulder",
+      "flag": "FLAG_TEMP_1A"
     }
   ],
   "warp_events": [
@@ -485,8 +498,8 @@
     },
     {
       "type": "hidden_item",
-      "x": 1,
-      "y": 58,
+      "x": 15,
+      "y": 63,
       "elevation": 0,
       "item": "ITEM_PREMIER_BALL",
       "flag": "FLAG_R1372"
