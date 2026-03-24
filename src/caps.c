@@ -10,6 +10,7 @@ u32 GetCurrentLevelCap(void)
 {
     static const u32 sLevelCapFlagMap[][2] =
     {
+        {FLAG_RESCUED_BIRCH, 10},//0
         {FLAG_BADGE01_GET, 14},//0
         {FLAG_BADGE02_GET, 18},//1
         {FLAG_BADGE03_GET, 23},//2
@@ -43,6 +44,33 @@ u32 GetCurrentLevelCap(void)
     return MAX_LEVEL;
 }
 
+u32 GetPreviousLevelCapForXP(void)
+{
+    static const u32 sLevelCapFlagMap[][2] =
+    {
+        {FLAG_RESCUED_BIRCH, 6},//0
+        {FLAG_BADGE01_GET, 14},//0
+        {FLAG_BADGE02_GET, 18},//1
+        {FLAG_BADGE03_GET, 23},//2
+        {FLAG_BADGE04_GET, 26},//3
+        {FLAG_BADGE05_GET, 28},//3
+        {FLAG_BADGE06_GET, 32},//slightly higher because this is a long stretch and includes two pointless game lengtheners and a shitload of new fun tools. to playtest though.
+        {FLAG_BADGE07_GET, 38},//4
+        {FLAG_BADGE08_GET, 41},//5
+        {FLAG_SIDNEY_SUCKER_PUNCH, 50},//0. high, to let people full-send champion
+        {FLAG_IS_CHAMPION, 55},// so doubled until lv50.
+    };
+    u32 i;
+
+    for (i = ARRAY_COUNT(sLevelCapFlagMap) - 1; i >= 0; i--)
+    {
+        if (FlagGet(sLevelCapFlagMap[i][0]))
+            return sLevelCapFlagMap[i][1];
+    }
+    return 1;// this will never happen
+}
+
+
 u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
 {
     static const u32 sExpScalingDown[5] = { 4, 8, 16, 32, 64 };
@@ -50,19 +78,19 @@ u32 GetSoftLevelCapExpValue(u32 level, u32 expValue)
 
     u32 levelDifference;
     u32 currentLevelCap = GetCurrentLevelCap();
-
-    if (B_EXP_CAP_TYPE == EXP_CAP_NONE)
-        return expValue;
+    u32 prevLevelCap = GetPreviousLevelCapForXP();
+    //if (B_EXP_CAP_TYPE == EXP_CAP_NONE)
+        //return expValue;
 
     if (level < currentLevelCap)
     {
-        if (B_LEVEL_CAP_EXP_UP)
+        if (level < prevLevelCap)
         {
-            levelDifference = currentLevelCap - level;
+            levelDifference = prevLevelCap - level;
             if (levelDifference > ARRAY_COUNT(sExpScalingUp) - 1)
-                return expValue + (expValue / sExpScalingUp[ARRAY_COUNT(sExpScalingUp) - 1]);
+                return expValue*2;
             else
-                return expValue + (expValue / sExpScalingUp[levelDifference]);
+                return expValue + (expValue / sExpScalingUp[levelDifference]);// boost the leveling rate by about double if you're below the previous level cap.
         }
         else
         {

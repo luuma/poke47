@@ -1665,7 +1665,7 @@ u32 CheckMoveLimitations(enum BattlerId battler, u8 unusableMoves, u16 check)
         // Can't Use Twice flag
         else if (check & MOVE_LIMITATION_CANT_USE_TWICE && MoveCantBeUsedTwice(move) && move == gLastResultingMoves[battler])
             unusableMoves |= 1u << i;
-        else if (check & MOVE_LIMITATION_SPIKY_VEST && holdEffect == HOLD_EFFECT_DAMAGE_BOUNCEABLES && !(IsBattleMoveStatus(move) && moveEffect != EFFECT_ME_FIRST))
+        else if (check & MOVE_LIMITATION_SPIKY_VEST && holdEffect == HOLD_EFFECT_DAMAGE_BOUNCEABLES && !(IsBattleMoveStatus(move) && moveEffect != EFFECT_ME_FIRST && moveEffect != EFFECT_TRICK))
             unusableMoves |= 1u << i;
     }
     return unusableMoves;

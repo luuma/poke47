@@ -85,8 +85,12 @@ EverGrandeCity_SidneysRoom_Text_Defeat:
 
 EverGrandeCity_SidneysRoom_Text_PostFirstVictorySpeech:
 	.string "First time for everything, huh?\n"
+	.string "Sock 'em good, punk.\p"
+	.string "Hey, as a special treat, I'll give\n"
+	.string "a good luck charm.\p"
+	.string "Anything under LV 50 will start\n"
+	.string "raking in a few more Exp. Points.\p"
 	.string "Good work, kid. Take this.\p"
-	.string "Sock 'em good, punk.$"
 
 EverGrandeCity_SidneysRoom_Text_PostBattleSpeech:
 	.string "Well, listen to what this loser has\n"

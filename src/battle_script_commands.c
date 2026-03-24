@@ -4220,7 +4220,7 @@ static void Cmd_getexp(void)
             //if (B_SCALED_EXP >= GEN_5 && B_SCALED_EXP != GEN_6)
                 //calculatedExp /= 5;
             //else
-                calculatedExp /= 6;
+                calculatedExp /= 6; // Seems about right. lma
 
             //if (B_TRAINER_EXP_MULTIPLIER <= GEN_7 && gBattleTypeFlags & BATTLE_TYPE_TRAINER)
                 //calculatedExp = (calculatedExp * 150) / 100;

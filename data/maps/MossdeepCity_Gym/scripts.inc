@@ -582,6 +582,9 @@ MossdeepCity_Gym_Text_ExplainMindBadgeTakeThis:
 	.string "SP. ATK and SP. DEF of POKéMON.\p"
 	.string "LIZA: It also lets you use the HM move\n"
 	.string "DIVE outside of battle.\p"
+	.string "TATE: Also, POKéMON will receive more\n"
+	.string "Exp. Points while below Lv. 38.\p"
+	.string "LIZA: You should take this, too.\n"
 	.string "TATE: You should also take this, too.$"
 
 MossdeepCity_Gym_Text_ExplainCalmMind:

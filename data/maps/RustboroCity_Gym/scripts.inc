@@ -203,6 +203,8 @@ RustboroCity_Gym_Text_ReceivedStoneBadge:
 RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
 	.string "The STONE BADGE lets you use the HM\n"
 	.string "CUT outside of battle.\p"
+	.string "Also, POKéMON will receive more\n"
+	.string "Exp. Points while below LV 14.\p"
 	.string "Please take this with you, too.$"
 
 RustboroCity_Gym_Text_ExplainRockTomb:

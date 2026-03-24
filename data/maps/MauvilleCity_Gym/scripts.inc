@@ -358,6 +358,8 @@ MauvilleCity_Gym_Text_ReceivedDynamoBadge:
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis:
 	.string "With the DYNAMO BADGE, POKéMON can\n"
 	.string "use ROCK SMASH out of battle.\p"
+	.string "Also, POKéMON will receive boosted\n"
+	.string "Exp. Points while below LV 23.\p"
 	.string "Hmm…\n"
 	.string "You should take this, too!$"
 

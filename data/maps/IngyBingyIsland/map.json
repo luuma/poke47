@@ -446,8 +446,8 @@
     },
     {
       "type": "weather",
-      "x": 52,
-      "y": 29,
+      "x": 50,
+      "y": 28,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
@@ -467,7 +467,7 @@
     },
     {
       "type": "weather",
-      "x": 52,
+      "x": 51,
       "y": 28,
       "elevation": 0,
       "weather": "COORD_EVENT_WEATHER_SUNNY"

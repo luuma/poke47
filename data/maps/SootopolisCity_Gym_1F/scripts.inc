@@ -238,6 +238,8 @@ SootopolisCity_Gym_1F_Text_ExplainRainBadgeTakeThis:
 	.string "The RAIN BADGE also allows the use\n"
 	.string "of the HM move WATERFALL to scale\l"
 	.string "walls of cascading water.\p"
+	.string "Also, POKéMON will receive more\n"
+	.string "Exp. Points while below Lv. 41.\p"
 	.string "And, so that you never forget the\n"
 	.string "battle we shared, take this…$"
 
