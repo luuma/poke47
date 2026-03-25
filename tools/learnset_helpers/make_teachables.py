@@ -14,6 +14,7 @@ A move is "teachable" if it is:
        FOREACH_TM macro.
     3. A universal move, as defined by universalMoves in
        src/data/pokemon/special_movesets.json
+    4. In the current level up learnset.
 
 For a given species, a move is considered teachable to that species if:
     1. The species can learn the move via *any* method within any Expansion-

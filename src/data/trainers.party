@@ -563,11 +563,11 @@ Music: Aqua
 Double Battle: No
 AI: Basic Trainer
 
-Carvanha
+Liepard
 Level: 28
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
-Mightyena
+Basculin White Striped
 Level: 28
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 
@@ -2784,7 +2784,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Tentacruel
+Jellicent
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -4488,7 +4488,7 @@ IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Protect
 - Last Resort
 
-Manectric
+Zebstrika
 Level: 39
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 - Thunderclap
@@ -7047,7 +7047,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Basculin White Striped
+Bibarel
 Level: 35
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -8931,7 +8931,7 @@ Crabominable
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Pelipper
+Dhelmise
 Level: 43
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -9217,11 +9217,11 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Chinchou
+Sigilyph
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Hariyama
+Bastiodon
 Level: 33
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
@@ -10363,7 +10363,7 @@ Lurantis
 Level: 39
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
-Roselia
+Roserade
 Level: 39
 IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
@@ -10653,7 +10653,7 @@ Noibat
 Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Poochyena
+Purrloin
 Level: 31
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -12761,11 +12761,11 @@ Music: Swimmer
 Double Battle: Yes
 AI: Check Bad Move
 
-Goldeen
+Frillish
 Level: 27
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Tentacool
+Frillish
 Level: 25
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -12778,19 +12778,19 @@ Music: Hiker
 Double Battle: No
 AI: Check Bad Move
 
-Magikarp
+Clauncher
 Level: 29
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Tentacool
+Tympole
 Level: 20
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Feebas
+Basculin Blue Striped
 Level: 26
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
-Carvanha
+Stunfisk Galar
 Level: 23
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -12941,7 +12941,7 @@ Music: Intense
 Double Battle: No
 AI: Check Bad Move
 
-Makuhita
+Crabrawler
 Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -15722,53 +15722,55 @@ Items: Full Restore / Full Restore / Full Restore / Full Restore
 Double Battle: No
 AI: Basic Trainer
 
-Skarmory
+Melmetal @ Leftovers
+Level: 76
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Double Iron Bash
+- Toxic
+- Protect
+- Earthquake
+
+Bronzong @ Light Clay
 Level: 77
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Toxic
-- Aerial Ace
-- Spikes
-- Steel Wing
-
-Claydol
-Level: 75
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Reflect
-- Light Screen
-- Ancient Power
-- Earthquake
+- Toxic
+- Psychic
+- Speed Swap
 
-Aggron
+Aegislash @ Weakness Policy
+Level: 77
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- King's Shield
+- Shadow Ball
+- Flash Cannon
+- Shadow Sneak
+
+Lucario @ Air Balloon
 Level: 76
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
-- Earthquake
-- Solar Beam
-- Dragon Claw
+- Nasty Plot
+- Steel Beam
+- Vacuum Wave
+- Aura Sphere
 
-Cradily
+Escavalier @ Focus Sash
 Level: 76
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Giga Drain
-- Ancient Power
-- Ingrain
-- Confuse Ray
+- Leech Life
+- Fishious Rend
+- Speed Swap
+- Iron Head
 
-Armaldo
-Level: 76
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Ancient Power
-- Aerial Ace
-- Slash
 
-Metagross @ Sitrus Berry
+Silvally Steel @ Iron Plate
 Level: 78
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Earthquake
-- Psychic
-- Meteor Mash
-- Shadow Ball
+- Protect
+- Thunder Fang
+- Multi Attack
+
 
 === TRAINER_ANABEL ===
 Name: ANABEL

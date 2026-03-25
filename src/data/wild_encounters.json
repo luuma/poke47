@@ -768,27 +768,27 @@
             "encounter_rate": 1,
             "mons": [
               {
-                "min_level": 25,
-                "max_level": 35,
-                "species": "SPECIES_FRILLISH"
-              },
-              {
-                "min_level": 25,
-                "max_level": 30,
-                "species": "SPECIES_SHELLOS_WEST"
-              },
-              {
-                "min_level": 25,
-                "max_level": 30,
-                "species": "SPECIES_SHELLOS_WEST"
-              },
-              {
-                "min_level": 25,
+                "min_level": 5,
                 "max_level": 30,
                 "species": "SPECIES_FRILLISH"
               },
               {
-                "min_level": 25,
+                "min_level": 10,
+                "max_level": 30,
+                "species": "SPECIES_SHELLOS_WEST"
+              },
+              {
+                "min_level": 20,
+                "max_level": 25,
+                "species": "SPECIES_SHELLOS_WEST"
+              },
+              {
+                "min_level": 20,
+                "max_level": 30,
+                "species": "SPECIES_SHELLOS_WEST"
+              },
+              {
+                "min_level": 20,
                 "max_level": 30,
                 "species": "SPECIES_SHELLOS_WEST"
               }
@@ -923,7 +923,7 @@
             "mons": [
               {
                 "min_level": 20,
-                "max_level": 30,
+                "max_level": 25,
                 "species": "SPECIES_BASCULIN_RED_STRIPED"
               },
               {
@@ -1652,7 +1652,7 @@
             "mons": [
               {
                 "min_level": 20,
-                "max_level": 35,
+                "max_level": 25,
                 "species": "SPECIES_FRILLISH"
               },
               {
@@ -1662,17 +1662,17 @@
               },
               {
                 "min_level": 20,
-                "max_level": 35,
+                "max_level": 25,
                 "species": "SPECIES_SHELLOS_EAST"
               },
               {
-                "min_level": 20,
-                "max_level": 30,
+                "min_level": 25,
+                "max_level": 28,
                 "species": "SPECIES_JELLICENT"
               },
               {
-                "min_level": 20,
-                "max_level": 30,
+                "min_level": 25,
+                "max_level": 28,
                 "species": "SPECIES_JELLICENT"
               }
             ]
@@ -2862,7 +2862,7 @@
             "mons": [
               {
                 "min_level": 5,
-                "max_level": 35,
+                "max_level": 30,
                 "species": "SPECIES_FRILLISH"
               },
               {
@@ -2951,7 +2951,7 @@
             "mons": [
               {
                 "min_level": 5,
-                "max_level": 35,
+                "max_level": 30,
                 "species": "SPECIES_FRILLISH"
               },
               {
@@ -3039,12 +3039,12 @@
             "encounter_rate": 1,
             "mons": [
               {
-                "min_level": 20,
-                "max_level": 35,
+                "min_level": 5,
+                "max_level": 30,
                 "species": "SPECIES_FRILLISH"
               },
               {
-                "min_level": 20,
+                "min_level": 10,
                 "max_level": 30,
                 "species": "SPECIES_SHELLOS_WEST"
               },
@@ -3128,12 +3128,12 @@
             "encounter_rate": 1,
             "mons": [
               {
-                "min_level": 20,
-                "max_level": 35,
+                "min_level": 5,
+                "max_level": 30,
                 "species": "SPECIES_FRILLISH"
               },
               {
-                "min_level": 20,
+                "min_level": 10,
                 "max_level": 30,
                 "species": "SPECIES_SHELLOS_WEST"
               },
@@ -3506,7 +3506,7 @@
             "mons": [
               {
                 "min_level": 5,
-                "max_level": 35,
+                "max_level": 25,
                 "species": "SPECIES_BASCULIN_BLUE_STRIPED"
               },
               {
@@ -3520,7 +3520,7 @@
                 "species": "SPECIES_BASCULIN_BLUE_STRIPED"
               },
               {
-                "min_level": 25,
+                "min_level": 20,
                 "max_level": 30,
                 "species": "SPECIES_OSHAWOTT"
               },
@@ -3546,7 +3546,7 @@
               },
               {
                 "min_level": 20,
-                "max_level": 30,
+                "max_level": 28,
                 "species": "SPECIES_BASCULIN_BLUE_STRIPED"
               },
               {
@@ -3814,7 +3814,7 @@
             "mons": [
               {
                 "min_level": 20,
-                "max_level": 35,
+                "max_level": 25,
                 "species": "SPECIES_FRILLISH"
               },
               {
@@ -3824,7 +3824,7 @@
               },
               {
                 "min_level": 20,
-                "max_level": 35,
+                "max_level": 25,
                 "species": "SPECIES_SHELLOS_EAST"
               },
               {
@@ -3903,7 +3903,7 @@
             "mons": [
               {
                 "min_level": 20,
-                "max_level": 35,
+                "max_level": 25,
                 "species": "SPECIES_FRILLISH"
               },
               {
@@ -3913,7 +3913,7 @@
               },
               {
                 "min_level": 20,
-                "max_level": 35,
+                "max_level": 25,
                 "species": "SPECIES_SHELLOS_EAST"
               },
               {
@@ -4067,7 +4067,7 @@
               },
               {
                 "min_level": 30,
-                "max_level": 35,
+                "max_level": 32,
                 "species": "SPECIES_ARAQUANID"
               },
               {
@@ -8777,8 +8777,8 @@
             "encounter_rate": 1,
             "mons": [
               {
-                "min_level": 20,
-                "max_level": 35,
+                "min_level": 5,
+                "max_level": 30,
                 "species": "SPECIES_FRILLISH"
               },
               {
@@ -12114,7 +12114,7 @@
             "mons": [
               {
                 "min_level": 5,
-                "max_level": 35,
+                "max_level": 30,
                 "species": "SPECIES_FRILLISH"
               },
               {
@@ -12366,8 +12366,8 @@
             "encounter_rate": 1,
             "mons": [
               {
-                "min_level": 20,
-                "max_level": 35,
+                "min_level": 5,
+                "max_level": 30,
                 "species": "SPECIES_FRILLISH"
               },
               {
