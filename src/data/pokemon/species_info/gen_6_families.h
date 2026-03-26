@@ -1543,7 +1543,6 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             gOverworldPalette_Vivillon ##form,                                              \
             gShinyOverworldPalette_Vivillon ##form                                          \
         )                                                                                   \
-        .teachingType = ALL_TEACHABLES,                                                     \
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER,                                   \
         .levelUpLearnset = sVivillonLevelUpLearnset,                                        \
         .teachableLearnset = sVivillonTeachableLearnset,                                    \

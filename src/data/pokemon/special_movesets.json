@@ -10,6 +10,9 @@
       "MOVE_RETURN",
       "MOVE_SECRET_POWER",
       "MOVE_SUBSTITUTE",
+      "MOVE_LASER_FOCUS",
+      "MOVE_POWER_SPLIT",
+      "MOVE_COPYCAT",
       "MOVE_TERA_BLAST"
     ],
   "signatureTeachables":
