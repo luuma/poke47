@@ -4772,7 +4772,7 @@ Class: Leader
 Pic: Leader Brawly
 Gender: Male
 Music: Male
-Items: Super Potion / Super Potion
+Items: Potion / Potion / Potion
 Double Battle: No
 AI: Basic Trainer / Ace Pokemon
 
@@ -4781,20 +4781,20 @@ Level: 16
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Bubble Beam
 - Reversal
-- Rock Smash
+- Endure
 - Bulk Up
 
-Hawlucha
+Hawlucha @ Silk Scarf
 Level: 16
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Feint
 - U-Turn
-- Wing Attack
+- Acrobatics
 - Bulk Up
 
 Passimian @ King's Rock
 Level: 19
-IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Bulk Up
 - Bullet Punch
 - Fling
@@ -4904,9 +4904,9 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 
 Bouffalant
 Level: 27
-IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Cotton Guard
-- Swords Dance
+- Bulk Up
 - Pursuit
 - Horn Attack
 
@@ -4914,7 +4914,7 @@ Stoutland
 Level: 29
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Play Rough
-- Covet
+- Facade
 - Work Up
 - Fire Fang
 
@@ -4940,16 +4940,16 @@ Fletchinder
 Level: 29
 IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Tailwind
-- Mirror Move
+- Defog
 - Flamethrower
 - Aerial Ace
 
-Mandibuzz
+Drifblim
 Level: 29
 IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
-- Defog
-- Toxic
-- Foul Play
+- Air Slash
+- Phantom Force
+- Stockpile
 - Tailwind
 
 Swanna
@@ -4958,11 +4958,11 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Aqua Step
 - Roost
 - Substitute
-- Air Slash
+- Aqua Ring
 
 Emolga @ Sitrus Berry
 Level: 31
-IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Tailwind
 - Fake Out
 - Volt Switch
@@ -5028,7 +5028,7 @@ Items: Hyper Potion / Hyper Potion
 Double Battle: No
 AI: Smart Trainer / Ace Pokemon
 
-Abomasnow
+Abomasnow @ Icy Rock
 Level: 41
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Aurora Veil
@@ -5048,7 +5048,7 @@ Darmanitan-Galar @ Focus Sash
 Level: 43
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Ice Punch
-- Work Up
+- Iron Head
 - Close Combat
 - Brick Break
 

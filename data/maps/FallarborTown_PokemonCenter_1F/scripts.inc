@@ -92,11 +92,11 @@ FallarborTown_PokemonCenter_1F_Text_LanetteGreeting:
 	.string "a simple deductive process.\p"
 	.string "You spoke to me because you wanted\n"
 	.string "to access something on this PC.\p"
-	.string "Oh, I'm sorry. I'm LANETTE.\p"
-	.string "Honestly, I'm glad to meet you--it's\n"
-	.string "great you're using the Storage System.\p"
-	.string "If you could, please visit me at home.\n"
-	.string "My house is on ROUTE 114.$"
+	.string "Oop, sorry--such a dork--I'm LANETTE.\p"
+	.string "Honestly, really glad to meet you--it's\n"
+	.string "great you're using the Storage System!\p"
+	.string "You're welcome to drop in on me at home.\n"
+	.string "I live on ROUTE 114. Okay bye. Sorry.$"
 
 FallarborTown_PokemonCenter_1F_Text_FossilManiacEdgeOfTown:
 	.string "I wonder what POKéMON looked like\n"

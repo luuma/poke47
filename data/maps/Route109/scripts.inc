@@ -4,6 +4,32 @@
 Route109_MapScripts::
 	.byte 0
 
+
+ArtShop_SpecialDollLady::
+	lock
+	faceplayer
+	message Route109_Text_DollShop
+	waitmessage
+	pokemartdecoration ArtShop_SpecialDollLady_Dolls
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+	.align 2
+ArtShop_SpecialDollLady_Dolls:
+	.2byte DECOR_PIKACHU2_DOLL
+	.2byte DECOR_PICHU_DOLL
+	.2byte DECOR_WOOPER_DOLL
+	.2byte DECOR_SQUIRTLE_DOLL
+	.2byte DECOR_PORYGON2_DOLL
+	.2byte DECOR_REGICE_DOLL
+	.2byte DECOR_REGIROCK_DOLL
+	.2byte DECOR_REGISTEEL_DOLL
+	pokemartlistend
+
+@ pichu is mimikyu
+
+
 Route109_EventScript_StartDepartForDewford::
 	call EventScript_BackupMrBrineyLocation
 	setobjectsubpriority LOCALID_ROUTE109_BRINEY, MAP_ROUTE109, 0
@@ -366,6 +392,12 @@ Route109_EventScript_Zigzagoon::
 	release
 	end
 
+Route109_EventScript_SeedotDoll::
+	lock
+	msgbox Route109_Text_SeedotDoll, MSGBOX_DEFAULT
+	release
+	end
+
 Route109_EventScript_SeashoreHouseSign::
 	msgbox Route109_Text_SeashoreHouseSign, MSGBOX_SIGN
 	end
@@ -539,6 +571,13 @@ Route109_Text_WereGoingToMakeBigCastle:
 	.string "queen.\p"
 	.string "We'll let you be a servant.$"
 
+Route109_Text_DollShop:
+	.string "Hello hello!\n"
+	.string "Browse for as long as you like.\p"
+	.string "All the dolls in my shop are crocheted\n"
+	.string "by hand!$"
+
+
 Route109_Text_ZigzagoonPicksUpLitter:
 	.string "The water around these parts is clean.\p"
 	.string "But, I get my LILLIPUP to pick up\n"
@@ -550,6 +589,9 @@ Route109_Text_ZigzagoonPicksUpLitter:
 
 Route109_Text_ZigzagoonCry:
 	.string "LILLIPUP: Yiyip?$"
+
+Route109_Text_SeedotDoll:
+	.string "It's a crochet SEEDOT doll.$"
 
 Route109_Text_SeashoreHouseSign:
 	.string "SEASHORE HOUSE\p"

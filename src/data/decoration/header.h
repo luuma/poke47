@@ -915,7 +915,7 @@ const struct Decoration gDecorations[] =
     [DECOR_PICHU_DOLL] =
     {
         .id = DECOR_PICHU_DOLL,
-        .name = _("PICHU DOLL"),
+        .name = _("ODD DOLL"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
@@ -1191,7 +1191,7 @@ const struct Decoration gDecorations[] =
     [DECOR_LOTAD_DOLL] =
     {
         .id = DECOR_LOTAD_DOLL,
-        .name = _("LOTAD DOLL"),
+        .name = _("COTTON DOLL"),
         .permission = DECORPERM_SPRITE,
         .shape = DECORSHAPE_1x1,
         .category = DECORCAT_DOLL,
@@ -1450,5 +1450,77 @@ const struct Decoration gDecorations[] =
         .price = 10000,
         .description = DecorDesc_REGISTEEL_DOLL,
         .tiles = DecorGfx_REGISTEEL_DOLL,
+    },
+
+    [DECOR_NATU_DOLL] =
+    {
+        .id = DECOR_NATU_DOLL,
+        .name = _("NATU DOLL"),
+        .permission = DECORPERM_SPRITE,
+        .shape = DECORSHAPE_1x1,
+        .category = DECORCAT_DOLL,
+        .price = 3000,
+        .description = DecorDesc_NATU_DOLL,
+        .tiles = DecorGfx_NATU_DOLL,
+    },
+
+    [DECOR_MAGNEMITE_DOLL] =
+    {
+        .id = DECOR_MAGNEMITE_DOLL,
+        .name = _("MAGNEMITE DOLL"),
+        .permission = DECORPERM_SPRITE,
+        .shape = DECORSHAPE_1x1,
+        .category = DECORCAT_DOLL,
+        .price = 3000,
+        .description = DecorDesc_MAGNEMITE_DOLL,
+        .tiles = DecorGfx_MAGNEMITE_DOLL,
+    },
+
+    [DECOR_SQUIRTLE_DOLL] =
+    {
+        .id = DECOR_SQUIRTLE_DOLL,
+        .name = _("SQUIRTLE DOLL"),
+        .permission = DECORPERM_SPRITE,
+        .shape = DECORSHAPE_1x1,
+        .category = DECORCAT_DOLL,
+        .price = 3000,
+        .description = DecorDesc_SQUIRTLE_DOLL,
+        .tiles = DecorGfx_SQUIRTLE_DOLL,
+    },
+
+    [DECOR_WOOPER_DOLL] =
+    {
+        .id = DECOR_WOOPER_DOLL,
+        .name = _("WOOPER DOLL"),
+        .permission = DECORPERM_SPRITE,
+        .shape = DECORSHAPE_1x1,
+        .category = DECORCAT_DOLL,
+        .price = 3000,
+        .description = DecorDesc_WOOPER_DOLL,
+        .tiles = DecorGfx_WOOPER_DOLL,
+    },
+
+    [DECOR_PIKACHU2_DOLL] =
+    {
+        .id = DECOR_PIKACHU2_DOLL,
+        .name = _("PIKACHU DOLL"),
+        .permission = DECORPERM_SPRITE,
+        .shape = DECORSHAPE_1x1,
+        .category = DECORCAT_DOLL,
+        .price = 3000,
+        .description = DecorDesc_PIKACHU2_DOLL,
+        .tiles = DecorGfx_PIKACHU2_DOLL,
+    },
+
+    [DECOR_PORYGON2_DOLL] =
+    {
+        .id = DECOR_PORYGON2_DOLL,
+        .name = _("PORYGON2 DOLL"),
+        .permission = DECORPERM_SPRITE,
+        .shape = DECORSHAPE_1x1,
+        .category = DECORCAT_DOLL,
+        .price = 3000,
+        .description = DecorDesc_PORYGON2_DOLL,
+        .tiles = DecorGfx_PORYGON2_DOLL,
     }
 };

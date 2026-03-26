@@ -533,7 +533,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             sPicTable_Popplio,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_SLITHER,
+            TRACKS_BIKE_TIRE,
             sAnimTable_Following,
             gOverworldPalette_Popplio,
             gShinyOverworldPalette_Popplio
@@ -599,7 +599,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             sPicTable_Brionne,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_BIKE_TIRE,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_Brionne,
             gShinyOverworldPalette_Brionne
@@ -664,7 +664,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             sPicTable_Primarina,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_BIKE_TIRE,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_Primarina,
             gShinyOverworldPalette_Primarina
@@ -735,7 +735,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             sPicTable_Pikipek,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_NONE,
+            TRACKS_FOOT,
             sAnimTable_Following,
             gOverworldPalette_Pikipek,
             gShinyOverworldPalette_Pikipek
