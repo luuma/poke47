@@ -12260,7 +12260,7 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM_SOLARBEAM] =
+    [ITEM_TM_SOLAR_BEAM] =
     {
         .name = ITEM_NAME("TM07"),
         .price = 60000,

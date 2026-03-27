@@ -7547,6 +7547,7 @@ static uq4_12_t GetWeatherDamageModifier(struct BattleContext *ctx)
 {
     if (ctx->abilityAtk == ABILITY_MEGA_SOL)
     {
+	//RecordAbilityBattle(ctx->battlerAtk, ctx->abilityAtk);
         if (ctx->moveType != TYPE_FIRE && ctx->moveType != TYPE_WATER)
             return UQ_4_12(1.0);
         return (ctx->moveType == TYPE_WATER) ? UQ_4_12(0.5) : UQ_4_12(1.5);
@@ -9657,13 +9658,14 @@ u32 GetWeather(void)
 
 bool32 IsBattlerWeatherAffected(enum BattlerId battler, u32 weather, u32 weatherFlags)
 {
-    if ((weatherFlags & B_WEATHER_SUN) && (GetBattlerAbility(battler) == ABILITY_MEGA_SOL))
+    if ((weatherFlags & B_WEATHER_SUN) && GetBattlerAbility(battler) == ABILITY_MEGA_SOL)
+	//RecordAbilityBattle(battler, ABILITY_MEGA_SOL);
         return TRUE;
 
     if (weather == B_WEATHER_NONE || !(gBattleWeather & weatherFlags))
         return FALSE;
 
-    if (weather & (B_WEATHER_SUN | B_WEATHER_RAIN) && holdEffect == HOLD_EFFECT_UTILITY_UMBRELLA)
+    if (weather & (B_WEATHER_SUN | B_WEATHER_RAIN) && GetBattlerHoldEffect(battler) == HOLD_EFFECT_UTILITY_UMBRELLA)
         return FALSE;
 
     return TRUE;

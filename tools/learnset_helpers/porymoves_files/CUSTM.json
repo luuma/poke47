@@ -29713,6 +29713,8 @@
       "MOVE_DOUBLE_EDGE",
       "MOVE_MORNING_SUN",
       "MOVE_FOCUS_BLAST",
+      "MOVE_WEATHER_BALL",
+      "MOVE_SOLAR_BEAM",
       "MOVE_SACRED_FIRE"
     ],
     "EggMoves": [],
