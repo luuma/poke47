@@ -9657,7 +9657,7 @@ u32 GetWeather(void)
 
 bool32 IsBattlerWeatherAffected(enum BattlerId battler, u32 weather, u32 weatherFlags)
 {
-    if ((weatherFlags == B_WEATHER_SUN) && (GetBattlerAbility(battler) == ABILITY_MEGA_SOL))
+    if ((weatherFlags & B_WEATHER_SUN) && (GetBattlerAbility(battler) == ABILITY_MEGA_SOL))
         return TRUE;
 
     if (weather == B_WEATHER_NONE || !(gBattleWeather & weatherFlags))
