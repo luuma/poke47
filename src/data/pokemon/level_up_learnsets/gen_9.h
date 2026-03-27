@@ -21437,6 +21437,7 @@ static const struct LevelUpMove sPikipekLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sTrumbeakLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_ROCK_BLAST),
     LEVEL_UP_MOVE( 1, MOVE_ROCK_BLAST),
     LEVEL_UP_MOVE( 1, MOVE_PECK),
     LEVEL_UP_MOVE( 1, MOVE_GROWL),
