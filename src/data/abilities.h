@@ -2415,6 +2415,21 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeTraced = TRUE,
     },
 
+
+    [ABILITY_DRAGONIZE] =
+    {
+        .name = _("Dragonize"),
+        .description = COMPOUND_STRING("Normal moves become Dragon."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_MEGA_SOL] =
+    {
+        .name = _("Mega Sol"),
+        .description = COMPOUND_STRING("Behaves like under sun."),
+        .aiRating = 7,
+    },
+
     [ABILITY_PLANE_SHIFT] =
     {
         .name = _("Plane Shift"),
@@ -2498,6 +2513,4 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Sets Trick Room."),
         .aiRating = 8,
     },
-
-
 };
