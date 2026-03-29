@@ -2264,7 +2264,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
             ADJUST_SCORE(-10);
         break;
     case EFFECT_REST:
-        if (!CanBeSlept(battlerAtk, battlerAtk, aiData->abilities[battlerAtk], NOT_BLOCKED_BY_SLEEP_CLAUSE))
+        if ((!CanBeSlept(battlerAtk, battlerAtk, aiData->abilities[battlerAtk], NOT_BLOCKED_BY_SLEEP_CLAUSE)) && aiData->abilities[battlerAtk] != ABILITY_COMATOSE  )
             ADJUST_SCORE(-10);
         //fallthrough
     case EFFECT_RESTORE_HP:

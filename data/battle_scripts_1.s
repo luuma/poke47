@@ -2658,7 +2658,7 @@ BattleScript_EffectRest::
 	goto BattleScript_PresentHealTarget
 
 BattleScript_RestComatose::
-	tryhealfullhealth BS_TARGET, BattleScript_AlreadyAtFullHp
+	tryhealfullhealth BS_ATTACKER, BattleScript_AlreadyAtFullHp
 	goto BattleScript_PresentHealTarget
 
 BattleScript_RestCantSleep::
