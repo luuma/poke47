@@ -2029,7 +2029,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_AS_ONE_ICE_RIDER] =
     {
         .name = _("As One"),
-        .description = COMPOUND_STRING("Unnerve and Chilling Neigh."),
+        .description = COMPOUND_STRING("Unnerve and Moxie."),
         .aiRating = 10,
         .cantBeCopied = TRUE,
         .cantBeSwapped = TRUE,

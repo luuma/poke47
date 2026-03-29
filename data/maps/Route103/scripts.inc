@@ -9,7 +9,7 @@ Route103_OnTransition:
 	end
 
 Route103_OnLoad:
-	call_if_set FLAG_HIDE_ROUTE_110_RIVAL_ON_BIKE, Route103_EventScript_OpenAlteringCave @CAN pick a flag if you so wish.
+	call_if_set FLAG_HIDE_ROUTE_110_RIVAL, Route103_EventScript_OpenAlteringCave @CAN pick a flag if you so wish.
 	end
 
 Route103_EventScript_OpenAlteringCave::

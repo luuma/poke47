@@ -379,8 +379,8 @@
   ],
   "warp_events": [
     {
-      "x": 15,
-      "y": 18,
+      "x": 18,
+      "y": 85,
       "elevation": 0,
       "dest_map": "MAP_ROUTE135_MAP",
       "dest_warp_id": "0"

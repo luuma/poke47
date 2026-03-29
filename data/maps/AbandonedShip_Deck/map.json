@@ -22,14 +22,14 @@
   "object_events": [],
   "warp_events": [
     {
-      "x": 7,
+      "x": 8,
       "y": 14,
       "elevation": 3,
       "dest_map": "MAP_ROUTE108",
       "dest_warp_id": "0"
     },
     {
-      "x": 8,
+      "x": 9,
       "y": 14,
       "elevation": 3,
       "dest_map": "MAP_ROUTE108",
