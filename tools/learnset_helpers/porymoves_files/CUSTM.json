@@ -33035,6 +33035,8 @@
       "MOVE_DRILL_PECK",
       "MOVE_BULLET_SEED",
       "MOVE_FEATHER_DANCE",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_ROCK_CLIMB",
       "MOVE_HYPER_VOICE"
     ],
     "EggMoves": [],
@@ -33070,6 +33072,10 @@
       "MOVE_DRILL_PECK",
       "MOVE_BULLET_SEED",
       "MOVE_FEATHER_DANCE",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_BLAZE_KICK",
+      "MOVE_TRIPLE_AXEL",
+      "MOVE_ROCK_CLIMB",
       "MOVE_HYPER_VOICE"
     ],
     "EggMoves": [],
@@ -33986,6 +33992,7 @@
       "MOVE_FLAMETHROWER",
       "MOVE_SLUDGE_WAVE",
       "MOVE_DRAGON_PULSE",
+      "MOVE_ANCIENT_POWER",
       "MOVE_PAIN_SPLIT"
     ],
     "EggMoves": [],
@@ -34027,6 +34034,7 @@
       "MOVE_PAIN_SPLIT",
       "MOVE_POWER_UP_PUNCH",
       "MOVE_PSYCHO_CUT",
+      "MOVE_ANCIENT_POWER",
       "MOVE_BLAZE_KICK"
     ],
     "EggMoves": [],
@@ -34229,6 +34237,8 @@
       "MOVE_PLAY_ROUGH",
       "MOVE_AQUA_RING",
       "MOVE_SAFEGUARD",
+      "MOVE_LIFE_DEW",
+      "MOVE_GIGA_DRAIN",
       "MOVE_MIST"
     ],
     "EggMoves": [],
@@ -34391,6 +34401,10 @@
       "MOVE_GIGA_DRAIN",
       "MOVE_SHORE_UP",
       "MOVE_EARTH_POWER",
+      "MOVE_SHADOW_BALL",
+      "MOVE_PAIN_SPLIT",
+      "MOVE_TRICK_ROOM",
+      "MOVE_ANCIENT_POWER",
       "MOVE_IRON_DEFENSE",
       "MOVE_SANDSTORM"
     ],
@@ -34423,6 +34437,10 @@
       "MOVE_GIGA_DRAIN",
       "MOVE_SHORE_UP",
       "MOVE_EARTH_POWER",
+      "MOVE_SHADOW_BALL",
+      "MOVE_PAIN_SPLIT",
+      "MOVE_TRICK_ROOM",
+      "MOVE_ANCIENT_POWER",
       "MOVE_IRON_DEFENSE",
       "MOVE_SANDSTORM",
       "MOVE_TRICK_ROOM"
