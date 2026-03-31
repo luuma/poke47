@@ -190,9 +190,9 @@
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_KNELL_BELL",
+      "trainer_sight_or_berry_tree_id": "ITEM_FAIRY_FEATHER",
       "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_KNELL_BELL"
+      "flag": "FLAG_128_NEW"
     }
   ],
   "warp_events": [
@@ -227,7 +227,7 @@
       "x": 31,
       "y": 33,
       "elevation": 3,
-      "item": "ITEM_HEART_SCALE",
+      "item": "ITEM_DARK_GEM",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_3"
     }
   ]

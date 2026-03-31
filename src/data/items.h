@@ -13270,7 +13270,7 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_TM_VENOM_DRENCH] =
     {
-        .name = ITEM_NAME("TM78"),
+        .name = ITEM_NAME("TM79"),
         .price = 3000,
         .description = COMPOUND_STRING(
     "cuts ATTACK, SP.ATK\n"
@@ -13326,7 +13326,7 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_TM_PHANTOM_FORCE] =
     {
-        .name = ITEM_NAME("TM84"),
+        .name = ITEM_NAME("TM83"),
         .price = 3000,
         .description = COMPOUND_STRING(
     "Vanishes instantly\n"

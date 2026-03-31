@@ -1,3 +1,5 @@
+
+
 AbandonedShip_Corridors_B1F_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, AbandonedShip_Corridors_B1F_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, AbandonedShip_Corridors_B1F_OnLoad
@@ -20,8 +22,23 @@ AbandonedShip_Corridors_B1F_EventScript_UnlockStorageRoom::
 	setmetatile 11, 4, METATILE_InsideShip_IntactDoor_Bottom_Unlocked, TRUE
 	return
 
+
+
+AbandonedShip_Corridors_B1F_EventScript_TuberM_ReceivedRedCard::
+	msgbox AbandonedShip_Corridors_B1F_Text_YayItsAShip, MSGBOX_DEFAULT
+	release
+	end
+
 AbandonedShip_Corridors_B1F_EventScript_TuberM::
-	msgbox AbandonedShip_Corridors_B1F_Text_YayItsAShip, MSGBOX_NPC
+	lock
+	faceplayer
+	goto_if_set FLAG_RED_CARD, AbandonedShip_Corridors_B1F_EventScript_TuberM_ReceivedRedCard
+	msgbox AbandonedShip_Corridors_B1F_Text_ticket, MSGBOX_DEFAULT
+	giveitem ITEM_RED_CARD
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_RED_CARD
+	msgbox AbandonedShip_Corridors_B1F_Text_YayItsAShip, MSGBOX_DEFAULT
+	release
 	end
 
 AbandonedShip_Corridors_B1F_EventScript_StorageRoomDoor::
@@ -67,9 +84,14 @@ AbandonedShip_Corridors_B1F_Text_DuncanPostBattle:
 	.string "If a POKéMON knew how to go underwater,\n"
 	.string "we might make some progress…$"
 
+AbandonedShip_Corridors_B1F_Text_ticket:
+	.string "Wh- I - I'm meant to be here!!/n"
+	.string "You wanna see my ticket? Here!$"
+
 AbandonedShip_Corridors_B1F_Text_YayItsAShip:
+	.string "So I can stay now?\p"
 	.string "Yay!\n"
-	.string "It's a ship!$"
+	.string "I'm on a boat!$"
 
 AbandonedShip_Corridors_B1F_Text_DoorIsLocked:
 	.string "The door is locked.\p"

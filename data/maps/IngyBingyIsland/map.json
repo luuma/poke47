@@ -190,7 +190,7 @@
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NEVERMELTICE",
+      "trainer_sight_or_berry_tree_id": "ITEM_SHARP_BEAK",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_R1378"
     },
@@ -493,7 +493,7 @@
       "x": 34,
       "y": 8,
       "elevation": 0,
-      "item": "ITEM_ICE_GEM",
+      "item": "ITEM_BUG_GEM",
       "flag": "FLAG_R1373"
     },
     {

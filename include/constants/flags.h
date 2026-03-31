@@ -676,7 +676,7 @@
 #define FLAG_UNUSED_0x265  0x265 // DUSK BALLold mansion
 #define FLAG_UNUSED_0x266  0x266 // TRICK ROOM old mansion
 #define FLAG_UNUSED_0x267  0x267 // OLD GATEAT old mansion
-#define FLAG_UNUSED_0x268  0x268 //  hidden power sky pillar
+#define FLAG_UNUSED_0x268  0x268 //  HYPER BEAM sky pillar
 #define FLAG_UNUSED_0x269  0x269 // wish fallarbor
 #define FLAG_UNUSED_0x26A  0x26A // soak aqua hieout
 #define FLAG_UNUSED_0x26B  0x26B // Left blank, likely unused
@@ -748,11 +748,11 @@
 #define FLAG_R1352  0x2AD // 
 #define FLAG_R1353  0x2AE // HID
 #define FLAG_R1354  0x2AF // HID
-#define FLAG_UNUSED_0x2B0  0x2B0 // Unused Flag
-#define FLAG_UNUSED_0x2B1  0x2B1 // Unused Flag
-#define FLAG_UNUSED_0x2B2  0x2B2 // Unused Flag
-#define FLAG_UNUSED_0x2B3  0x2B3 // Unused Flag
-#define FLAG_UNUSED_0x2B4  0x2B4 // Unused Flag
+#define FLAG_128_NEW  0x2B0 // fairy feather 
+#define FLAG_WEAKNESS_POLICY 0x2B1 // Unused Flag
+#define FLAG_RED_CARD  0x2B2 // TUBER ABANDONED SHIP
+#define FLAG_THROAT_SPRAY  0x2B3 // Unused Flag
+#define FLAG_BLUNDER_POLICY  0x2B4 // Unused Flag
 #define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
 #define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
 #define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag

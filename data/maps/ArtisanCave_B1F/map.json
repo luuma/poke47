@@ -103,7 +103,7 @@
       "x": 32,
       "y": 29,
       "elevation": 0,
-      "item": "ITEM_TM_TRIPLE_AXEL",
+      "item": "ITEM_ZINC",
       "flag": "FLAG_HIDDEN_ITEM_ARTISAN_CAVE_B1F_ZINC"
     },
     {
@@ -137,14 +137,6 @@
       "elevation": 0,
       "item": "ITEM_TM_IRON_HEAD",
       "flag": "FLAG_ARTISAN_IRON_HEAD"
-    },
-    {
-      "type": "hidden_item",
-      "x": 20,
-      "y": 24,
-      "elevation": 0,
-      "item": "ITEM_TM_STONE_EDGE",
-      "flag": "FLAG_ARTISAN_STONE_EDGE"
     }
   ]
 }
