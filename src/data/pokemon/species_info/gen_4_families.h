@@ -3083,7 +3083,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_ShellosWestSea,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_ShellosWestSea,
             gShinyOverworldPalette_ShellosWestSea
@@ -3150,7 +3150,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_ShellosEast,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_ShellosEast,
             gShinyOverworldPalette_ShellosEast
@@ -3217,7 +3217,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_GastrodonWestSea,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_GastrodonWestSea,
             gShinyOverworldPalette_GastrodonWestSea
@@ -3282,7 +3282,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_GastrodonEast,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SLITHER,
             sAnimTable_Following,
             gOverworldPalette_GastrodonEast,
             gShinyOverworldPalette_GastrodonEast
