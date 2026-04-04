@@ -6285,9 +6285,9 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .weight = 15,
         .description = COMPOUND_STRING(
             "A clay slab with cursed engravings\n"
-            "took possession of a Yamask. The\n"
-            "slab is said to be absorbing the\n"
-            "Yamask's dark power."),
+            "took possession of a Yamask. When\n"
+            "pained, it is able to evolve by\n"
+            "leveling up."),
         .pokemonScale = 432,
         .pokemonOffset = 13,
         .trainerScale = 256,
@@ -6324,7 +6324,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sYamaskGalarTeachableLearnset,
         .eggMoveLearnset = sYamaskGalarEggMoveLearnset,
         .formSpeciesIdTable = sYamaskFormSpeciesIdTable,
-        .evolutions = EVOLUTION({EVO_SCRIPT_TRIGGER, 0, SPECIES_RUNERIGUS, CONDITIONS({IF_CURRENT_DAMAGE_GE, 49})}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 34, SPECIES_RUNERIGUS, CONDITIONS({IF_CURRENT_DAMAGE_GE, 49})}),
     },
 
     [SPECIES_RUNERIGUS] =

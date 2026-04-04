@@ -45,7 +45,7 @@
 #define OWE_SAVED_MOVEMENT_STATE_FLAG   OWE_FLAG_BIT
 #define OWE_NO_DESPAWN_FLAG             OWE_FLAG_BIT
 
-#define OWE_SPAWNS_MAX                  6
+#define OWE_SPAWNS_MAX                  5
 #define OWE_SPAWN_DISTANCE_LAND         1   // A spawn cannot happen within this many tiles of the player position.
 #define OWE_SPAWN_DISTANCE_WATER        3   // A spawn cannot happen within this many tiles of the player position (while surfing).
 #define OWE_SPAWN_WIDTH_TOTAL           15  // Width of the on-screen spawn area in tiles.
