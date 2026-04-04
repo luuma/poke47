@@ -1866,16 +1866,14 @@ static enum CancelerResult CancelerNotFullyProtected(struct BattleContext *ctx)
 
 static bool32 IsMoveParentalBondAffected(struct BattleContext *ctx)
 {
-    enum BattleMoveEffects effect = GetMoveEffect(ctx->move);
-
     if ((ctx->abilityAtk != ABILITY_PARENTAL_BOND && (ctx->abilityAtk != ABILITY_DOUBLE_WALLOP || gBattleMons[gBattlerTarget].hp >= gBattleMons[gBattlerTarget].maxHP * 3 / 4) )
      || gBattleStruct->numSpreadTargets > 1
      || IsMoveParentalBondBanned(ctx->move)
      || GetMoveCategory(ctx->move) == DAMAGE_CATEGORY_STATUS
-     || gBattleMoveEffects[effect].twoTurnEffect
-     || effect == EFFECT_OHKO
+     || GetMoveEffect(ctx->move) == EFFECT_SEMI_INVULNERABLE
+     || GetMoveEffect(ctx->move) == EFFECT_TWO_TURNS_ATTACK
      || GetActiveGimmick(ctx->battlerAtk) == GIMMICK_Z_MOVE
-     || (effect == EFFECT_PRESENT && gBattleStruct->presentBasePower == 0)
+     || (GetMoveEffect(ctx->move) == EFFECT_PRESENT && gBattleStruct->presentBasePower == 0)
      || ctx->move == MOVE_STRUGGLE)
         return FALSE;
     return TRUE;
