@@ -2847,6 +2847,13 @@ void TryAddLastUsedBallItemSprites(void)
 
         firstBall = GetBagItemId(POCKET_POKE_BALLS, 0);
         if (firstBall > ITEM_NONE)
+	        if (firstBall == ITEM_MASTER_BALL)// skip over master balls
+ 	        {
+		        firstBall = GetBagItemId(POCKET_POKE_BALLS, 1);
+                if (firstBall == ITEM_NONE)
+		            firstBall = GetBagItemId(POCKET_POKE_BALLS, 0);// flips straight back to master ball if it checks and finds the only ball is the master ball
+		        gBallToDisplay = firstBall;
+	        }
             gBallToDisplay = firstBall;
     }
 
