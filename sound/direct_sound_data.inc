@@ -4844,11 +4844,11 @@ Cry_Audino::
 .endif
 
 	.align 2
+
 Cry_AudinoMega::
 .if TESTING == FALSE
 	.incbin "sound/direct_sound_samples/cries/audino_mega.bin"
 .endif
-.endif @ P_MODIFIED_MEGA_CRIES
 .endif @ P_FAMILY_AUDINO
 
 .if P_FAMILY_TIMBURR == TRUE
