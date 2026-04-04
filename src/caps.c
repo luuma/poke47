@@ -18,7 +18,7 @@ u32 GetCurrentLevelCap(void)
         {FLAG_BADGE05_GET, 28},//3
         {FLAG_BADGE06_GET, 30},//3
         {FLAG_BADGE07_GET, 38},//4
-        {FLAG_BADGE08_GET, 41},//5
+        {FLAG_BADGE08_GET, 40},//6
         {FLAG_SIDNEY_SUCKER_PUNCH, 49},//0. high, to let people full-send champion
         {FLAG_PHOEBE_PHANTOM_FORCE, 50},//1
         {FLAG_JUAN_DAZZLING_GLEAM, 51},//2
@@ -54,9 +54,9 @@ u32 GetPreviousLevelCapForXP(void)
         {FLAG_BADGE03_GET, 23},//2
         {FLAG_BADGE04_GET, 26},//3
         {FLAG_BADGE05_GET, 28},//3
-        {FLAG_BADGE06_GET, 32},//slightly higher because this is a long stretch and includes two pointless game lengtheners and a shitload of new fun tools. to playtest though.
+        {FLAG_BADGE06_GET, 31},//slightly higher because this is a long stretch and includes two pointless game lengtheners and a shitload of new fun tools. to playtest though.
         {FLAG_BADGE07_GET, 38},//4
-        {FLAG_BADGE08_GET, 41},//5
+        {FLAG_BADGE08_GET, 41},//5. see above. Long stretch.
         {FLAG_SIDNEY_SUCKER_PUNCH, 50},//0. high, to let people full-send champion
         {FLAG_IS_CHAMPION, 55},// so doubled until lv50.
     };

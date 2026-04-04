@@ -3726,7 +3726,7 @@
               {
                 "min_level": 20,
                 "max_level": 25,
-                "species": "SPECIES_STUNFISK_GALAR"
+                "species": "SPECIES_STUNFISK"
               },
               {
                 "min_level": 35,
@@ -37748,6 +37748,75 @@
                 "min_level": 30,
                 "max_level": 45,
                 "species": "SPECIES_BASCULIN_BLUE_STRIPED"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_UNDERWATER_ROUTE114",
+          "base_label": "gUnderwaterRoute114",
+          "land_mons": {
+            "encounter_rate": 30,
+            "mons": [
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_BASCULIN_RED_STRIPED"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_TYMPOLE"
+              },
+              {
+                "min_level": 32,
+                "max_level": 35,
+                "species": "SPECIES_BASCULIN_RED_STRIPED"
+              },
+              {
+                "min_level": 30,
+                "max_level": 33,
+                "species": "SPECIES_WIMPOD"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_STUNFISK"
+              },
+              {
+                "min_level": 35,
+                "max_level": 38,
+                "species": "SPECIES_BASCULIN_RED_STRIPED"
+              },
+              {
+                "min_level": 30,
+                "max_level": 33,
+                "species": "SPECIES_WIMPOD"
+              },
+              {
+                "min_level": 32,
+                "max_level": 35,
+                "species": "SPECIES_STUNFISK"
+              },
+              {
+                "min_level": 32,
+                "max_level": 35,
+                "species": "SPECIES_STUNFISK"
+              },
+              {
+                "min_level": 32,
+                "max_level": 35,
+                "species": "SPECIES_STUNFISK_GALAR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_STUNFISK_GALAR"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_STUNFISK"
               }
             ]
           }

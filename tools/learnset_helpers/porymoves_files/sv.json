@@ -63812,6 +63812,452 @@
     ],
     "TutorMoves": []
   },
+
+
+  "ORICORIO_BAILE": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_POUND"
+      },
+      {
+        "Level": 4,
+        "Move": "MOVE_GROWL"
+      },
+      {
+        "Level": 6,
+        "Move": "MOVE_PECK"
+      },
+      {
+        "Level": 10,
+        "Move": "MOVE_HELPING_HAND"
+      },
+      {
+        "Level": 13,
+        "Move": "MOVE_AIR_CUTTER"
+      },
+      {
+        "Level": 16,
+        "Move": "MOVE_BATON_PASS"
+      },
+      {
+        "Level": 20,
+        "Move": "MOVE_FEATHER_DANCE"
+      },
+      {
+        "Level": 23,
+        "Move": "MOVE_ACROBATICS"
+      },
+      {
+        "Level": 26,
+        "Move": "MOVE_TEETER_DANCE"
+      },
+      {
+        "Level": 30,
+        "Move": "MOVE_ROOST"
+      },
+      {
+        "Level": 33,
+        "Move": "MOVE_FLATTER"
+      },
+      {
+        "Level": 36,
+        "Move": "MOVE_AIR_SLASH"
+      },
+      {
+        "Level": 40,
+        "Move": "MOVE_REVELATION_DANCE"
+      },
+      {
+        "Level": 43,
+        "Move": "MOVE_AGILITY"
+      },
+      {
+        "Level": 47,
+        "Move": "MOVE_HURRICANE"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
+      "MOVE_TAKE_DOWN",
+      "MOVE_CHARM",
+      "MOVE_AGILITY",
+      "MOVE_PROTECT",
+      "MOVE_ACROBATICS",
+      "MOVE_TRAILBLAZE",
+      "MOVE_FACADE",
+      "MOVE_AERIAL_ACE",
+      "MOVE_SWIFT",
+      "MOVE_ICY_WIND",
+      "MOVE_AIR_CUTTER",
+      "MOVE_ENDURE",
+      "MOVE_SUNNY_DAY",
+      "MOVE_RAIN_DANCE",
+      "MOVE_SANDSTORM",
+      "MOVE_U_TURN",
+      "MOVE_AIR_SLASH",
+      "MOVE_SLEEP_TALK",
+      "MOVE_REST",
+      "MOVE_TAUNT",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_FLY",
+      "MOVE_SUBSTITUTE",
+      "MOVE_TAILWIND",
+      "MOVE_CALM_MIND",
+      "MOVE_HELPING_HAND",
+      "MOVE_BATON_PASS",
+      "MOVE_REVERSAL",
+      "MOVE_HURRICANE",
+      "MOVE_TERA_BLAST",
+      "MOVE_DUAL_WINGBEAT",
+      "MOVE_PSYCH_UP",
+      "MOVE_FEATHER_DANCE",
+      "MOVE_ALLURING_VOICE"
+    ],
+    "EggMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_DEFOG",
+      "MOVE_PLUCK",
+      "MOVE_QUIVER_DANCE",
+      "MOVE_SAFEGUARD"
+    ],
+    "TutorMoves": []
+  },
+
+
+  "ORICORIO_SENSU": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_POUND"
+      },
+      {
+        "Level": 4,
+        "Move": "MOVE_GROWL"
+      },
+      {
+        "Level": 6,
+        "Move": "MOVE_PECK"
+      },
+      {
+        "Level": 10,
+        "Move": "MOVE_HELPING_HAND"
+      },
+      {
+        "Level": 13,
+        "Move": "MOVE_AIR_CUTTER"
+      },
+      {
+        "Level": 16,
+        "Move": "MOVE_BATON_PASS"
+      },
+      {
+        "Level": 20,
+        "Move": "MOVE_FEATHER_DANCE"
+      },
+      {
+        "Level": 23,
+        "Move": "MOVE_ACROBATICS"
+      },
+      {
+        "Level": 26,
+        "Move": "MOVE_TEETER_DANCE"
+      },
+      {
+        "Level": 30,
+        "Move": "MOVE_ROOST"
+      },
+      {
+        "Level": 33,
+        "Move": "MOVE_FLATTER"
+      },
+      {
+        "Level": 36,
+        "Move": "MOVE_AIR_SLASH"
+      },
+      {
+        "Level": 40,
+        "Move": "MOVE_REVELATION_DANCE"
+      },
+      {
+        "Level": 43,
+        "Move": "MOVE_AGILITY"
+      },
+      {
+        "Level": 47,
+        "Move": "MOVE_HURRICANE"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
+      "MOVE_TAKE_DOWN",
+      "MOVE_CHARM",
+      "MOVE_AGILITY",
+      "MOVE_PROTECT",
+      "MOVE_ACROBATICS",
+      "MOVE_TRAILBLAZE",
+      "MOVE_FACADE",
+      "MOVE_AERIAL_ACE",
+      "MOVE_SWIFT",
+      "MOVE_ICY_WIND",
+      "MOVE_AIR_CUTTER",
+      "MOVE_ENDURE",
+      "MOVE_SUNNY_DAY",
+      "MOVE_RAIN_DANCE",
+      "MOVE_SANDSTORM",
+      "MOVE_U_TURN",
+      "MOVE_AIR_SLASH",
+      "MOVE_SLEEP_TALK",
+      "MOVE_REST",
+      "MOVE_TAUNT",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_FLY",
+      "MOVE_SUBSTITUTE",
+      "MOVE_TAILWIND",
+      "MOVE_CALM_MIND",
+      "MOVE_HELPING_HAND",
+      "MOVE_BATON_PASS",
+      "MOVE_REVERSAL",
+      "MOVE_HURRICANE",
+      "MOVE_TERA_BLAST",
+      "MOVE_DUAL_WINGBEAT",
+      "MOVE_PSYCH_UP",
+      "MOVE_FEATHER_DANCE",
+      "MOVE_ALLURING_VOICE"
+    ],
+    "EggMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_DEFOG",
+      "MOVE_PLUCK",
+      "MOVE_QUIVER_DANCE",
+      "MOVE_SAFEGUARD"
+    ],
+    "TutorMoves": []
+  },
+
+
+
+  "ORICORIO_POM_POM": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_POUND"
+      },
+      {
+        "Level": 4,
+        "Move": "MOVE_GROWL"
+      },
+      {
+        "Level": 6,
+        "Move": "MOVE_PECK"
+      },
+      {
+        "Level": 10,
+        "Move": "MOVE_HELPING_HAND"
+      },
+      {
+        "Level": 13,
+        "Move": "MOVE_AIR_CUTTER"
+      },
+      {
+        "Level": 16,
+        "Move": "MOVE_BATON_PASS"
+      },
+      {
+        "Level": 20,
+        "Move": "MOVE_FEATHER_DANCE"
+      },
+      {
+        "Level": 23,
+        "Move": "MOVE_ACROBATICS"
+      },
+      {
+        "Level": 26,
+        "Move": "MOVE_TEETER_DANCE"
+      },
+      {
+        "Level": 30,
+        "Move": "MOVE_ROOST"
+      },
+      {
+        "Level": 33,
+        "Move": "MOVE_FLATTER"
+      },
+      {
+        "Level": 36,
+        "Move": "MOVE_AIR_SLASH"
+      },
+      {
+        "Level": 40,
+        "Move": "MOVE_REVELATION_DANCE"
+      },
+      {
+        "Level": 43,
+        "Move": "MOVE_AGILITY"
+      },
+      {
+        "Level": 47,
+        "Move": "MOVE_HURRICANE"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
+      "MOVE_TAKE_DOWN",
+      "MOVE_CHARM",
+      "MOVE_AGILITY",
+      "MOVE_PROTECT",
+      "MOVE_ACROBATICS",
+      "MOVE_TRAILBLAZE",
+      "MOVE_FACADE",
+      "MOVE_AERIAL_ACE",
+      "MOVE_SWIFT",
+      "MOVE_ICY_WIND",
+      "MOVE_AIR_CUTTER",
+      "MOVE_ENDURE",
+      "MOVE_SUNNY_DAY",
+      "MOVE_RAIN_DANCE",
+      "MOVE_SANDSTORM",
+      "MOVE_U_TURN",
+      "MOVE_AIR_SLASH",
+      "MOVE_SLEEP_TALK",
+      "MOVE_REST",
+      "MOVE_TAUNT",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_FLY",
+      "MOVE_SUBSTITUTE",
+      "MOVE_TAILWIND",
+      "MOVE_CALM_MIND",
+      "MOVE_HELPING_HAND",
+      "MOVE_BATON_PASS",
+      "MOVE_REVERSAL",
+      "MOVE_HURRICANE",
+      "MOVE_TERA_BLAST",
+      "MOVE_DUAL_WINGBEAT",
+      "MOVE_PSYCH_UP",
+      "MOVE_FEATHER_DANCE",
+      "MOVE_ALLURING_VOICE"
+    ],
+    "EggMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_DEFOG",
+      "MOVE_PLUCK",
+      "MOVE_QUIVER_DANCE",
+      "MOVE_SAFEGUARD"
+    ],
+    "TutorMoves": []
+  },
+
+  "ORICORIO_PAU": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_POUND"
+      },
+      {
+        "Level": 4,
+        "Move": "MOVE_GROWL"
+      },
+      {
+        "Level": 6,
+        "Move": "MOVE_PECK"
+      },
+      {
+        "Level": 10,
+        "Move": "MOVE_HELPING_HAND"
+      },
+      {
+        "Level": 13,
+        "Move": "MOVE_AIR_CUTTER"
+      },
+      {
+        "Level": 16,
+        "Move": "MOVE_BATON_PASS"
+      },
+      {
+        "Level": 20,
+        "Move": "MOVE_FEATHER_DANCE"
+      },
+      {
+        "Level": 23,
+        "Move": "MOVE_ACROBATICS"
+      },
+      {
+        "Level": 26,
+        "Move": "MOVE_TEETER_DANCE"
+      },
+      {
+        "Level": 30,
+        "Move": "MOVE_ROOST"
+      },
+      {
+        "Level": 33,
+        "Move": "MOVE_FLATTER"
+      },
+      {
+        "Level": 36,
+        "Move": "MOVE_AIR_SLASH"
+      },
+      {
+        "Level": 40,
+        "Move": "MOVE_REVELATION_DANCE"
+      },
+      {
+        "Level": 43,
+        "Move": "MOVE_AGILITY"
+      },
+      {
+        "Level": 47,
+        "Move": "MOVE_HURRICANE"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
+      "MOVE_TAKE_DOWN",
+      "MOVE_CHARM",
+      "MOVE_AGILITY",
+      "MOVE_PROTECT",
+      "MOVE_ACROBATICS",
+      "MOVE_TRAILBLAZE",
+      "MOVE_FACADE",
+      "MOVE_AERIAL_ACE",
+      "MOVE_SWIFT",
+      "MOVE_ICY_WIND",
+      "MOVE_AIR_CUTTER",
+      "MOVE_ENDURE",
+      "MOVE_SUNNY_DAY",
+      "MOVE_RAIN_DANCE",
+      "MOVE_SANDSTORM",
+      "MOVE_U_TURN",
+      "MOVE_AIR_SLASH",
+      "MOVE_SLEEP_TALK",
+      "MOVE_REST",
+      "MOVE_TAUNT",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_FLY",
+      "MOVE_SUBSTITUTE",
+      "MOVE_TAILWIND",
+      "MOVE_CALM_MIND",
+      "MOVE_HELPING_HAND",
+      "MOVE_BATON_PASS",
+      "MOVE_REVERSAL",
+      "MOVE_HURRICANE",
+      "MOVE_TERA_BLAST",
+      "MOVE_DUAL_WINGBEAT",
+      "MOVE_PSYCH_UP",
+      "MOVE_FEATHER_DANCE",
+      "MOVE_ALLURING_VOICE"
+    ],
+    "EggMoves": [
+      "MOVE_ATTRACT",
+      "MOVE_DEFOG",
+      "MOVE_PLUCK",
+      "MOVE_QUIVER_DANCE",
+      "MOVE_SAFEGUARD"
+    ],
+    "TutorMoves": []
+  },
+
+
   "CUTIEFLY": {
     "LevelMoves": [
       {

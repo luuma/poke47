@@ -33314,9 +33314,27 @@
    },
 
 
-
-
   "ORICORIO": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_TACKLE"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
+      "MOVE_POUND",
+      "MOVE_GROWL",
+      "MOVE_PECK",
+      "MOVE_HELPING_HAND"
+    ],
+    "EggMoves": [],
+    "TutorMoves": []
+   },
+
+
+
+  "ORICORIO_BAILE": {
     "LevelMoves": [
       {
         "Level": 1,
@@ -33344,6 +33362,23 @@
       "MOVE_QUIVER_DANCE",
       "MOVE_HURRICANE",
       "MOVE_DRAGON_CHEER",
+      "MOVE_FLAME_CHARGE",
+      "MOVE_FLAMETHROWER"
+    ],
+    "EggMoves": [],
+    "TutorMoves": []
+   },
+
+
+  "ORICORIO_POM_POM": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_TACKLE"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
       "MOVE_POUND",
       "MOVE_CHARGE",
       "MOVE_GROWL",
@@ -33363,6 +33398,22 @@
       "MOVE_AGILITY",
       "MOVE_HURRICANE",
       "MOVE_DRAGON_CHEER",
+      "MOVE_THUNDERBOLT",
+      "MOVE_LIGHT_SCREEN"
+    ],
+    "EggMoves": [],
+    "TutorMoves": []
+   },
+
+  "ORICORIO_SENSU": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_TACKLE"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
       "MOVE_POUND",
       "MOVE_MIST",
       "MOVE_GROWL",
@@ -33382,6 +33433,23 @@
       "MOVE_AGILITY",
       "MOVE_HURRICANE",
       "MOVE_DRAGON_CHEER",
+      "MOVE_SHADOW_BALL",
+      "MOVE_TAILWIND",
+      "MOVE_WHIRLWIND"
+    ],
+    "EggMoves": [],
+    "TutorMoves": []
+   },
+
+  "ORICORIO_PAU": {
+    "LevelMoves": [
+      {
+        "Level": 1,
+        "Move": "MOVE_TACKLE"
+      }
+    ],
+    "PreEvoMoves": [],
+    "TMMoves": [
       "MOVE_POUND",
       "MOVE_LUCKY_CHANT",
       "MOVE_GROWL",
@@ -33399,7 +33467,11 @@
       "MOVE_CAPTIVATE",
       "MOVE_MIRROR_MOVE",
       "MOVE_QUIVER_DANCE",
-      "MOVE_HURRICANE"
+      "MOVE_HURRICANE",
+      "MOVE_DRAGON_CHEER",
+      "MOVE_PSYCHIC",
+      "MOVE_PSYCHO_CUT",
+      "MOVE_ENERGY_BALL"
     ],
     "EggMoves": [],
     "TutorMoves": []

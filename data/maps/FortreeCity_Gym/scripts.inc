@@ -260,7 +260,7 @@ FortreeCity_Gym_Text_ExplainFeatherBadgeTakeThis:
 	.string "You will also be able to use\n"
 	.string "the HM move FLY outside of battle.\p"
 	.string "Also, POKéMON will receive more\n"
-	.string "Exp. Points while below LV 32.\p"
+	.string "Exp. Points while below LV 31.\p"
 	.string "And this…\n"
 	.string "This is a gift from me.$"
 

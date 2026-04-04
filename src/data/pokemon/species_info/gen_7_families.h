@@ -1616,7 +1616,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         )
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sOricorioBaileLevelUpLearnset,
-        .teachableLearnset = sOricorioTeachableLearnset,
+        .teachableLearnset = sOricorioBaileTeachableLearnset,
         .eggMoveLearnset = sOricorioEggMoveLearnset,
         .formSpeciesIdTable = sOricorioFormSpeciesIdTable,
         .formChangeTable = sOricorioFormChangeTable,
@@ -1684,7 +1684,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         )
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sOricorioPomPomLevelUpLearnset,
-        .teachableLearnset = sOricorioTeachableLearnset,
+        .teachableLearnset = sOricorioPomPomTeachableLearnset,
         .eggMoveLearnset = sOricorioEggMoveLearnset,
         .formSpeciesIdTable = sOricorioFormSpeciesIdTable,
         .formChangeTable = sOricorioFormChangeTable,
@@ -1752,7 +1752,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         )
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sOricorioPauLevelUpLearnset,
-        .teachableLearnset = sOricorioTeachableLearnset,
+        .teachableLearnset = sOricorioPauTeachableLearnset,
         .eggMoveLearnset = sOricorioEggMoveLearnset,
         .formSpeciesIdTable = sOricorioFormSpeciesIdTable,
         .formChangeTable = sOricorioFormChangeTable,
@@ -1820,7 +1820,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         )
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sOricorioSensuLevelUpLearnset,
-        .teachableLearnset = sOricorioTeachableLearnset,
+        .teachableLearnset = sOricorioSensuTeachableLearnset,
         .eggMoveLearnset = sOricorioEggMoveLearnset,
         .formSpeciesIdTable = sOricorioFormSpeciesIdTable,
         .formChangeTable = sOricorioFormChangeTable,

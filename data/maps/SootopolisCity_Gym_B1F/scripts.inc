@@ -134,13 +134,13 @@ SootopolisCity_Gym_B1F_Text_TiffanyIntro:
 	.string "A graceful glide across the ice while\n"
 	.string "crossing no lines…\p"
 	.string "A TRAINER putting on that performance\n"
-	.string "would be elegantly beautiful!$"
+	.string "would be stunningly beautiful!$"
 
 SootopolisCity_Gym_B1F_Text_TiffanyDefeat:
 	.string "Well, excuse me?!$"
 
 SootopolisCity_Gym_B1F_Text_TiffanyPostBattle:
-	.string "This is really obvious, but how strong\n"
+	.string "This is truly obvious, but how strong\n"
 	.string "you are as a TRAINER has nothing to do\l"
 	.string "with how young or old you are.$"
 
@@ -156,7 +156,7 @@ SootopolisCity_Gym_B1F_Text_BethanyPostBattle:
 	.string "before I can manage an “Oops!”$"
 
 SootopolisCity_Gym_B1F_Text_AnnikaIntro:
-	.string "I can battle with really rare POKéMON\n"
+	.string "I can battle with rather rare POKéMON\n"
 	.string "if you'd like.$"
 
 SootopolisCity_Gym_B1F_Text_AnnikaDefeat:
@@ -170,7 +170,7 @@ SootopolisCity_Gym_B1F_Text_AnnikaPostBattle:
 	.string "impress you…$"
 
 SootopolisCity_Gym_B1F_Text_BriannaIntro:
-	.string "Giggle…\n"
+	.string "Ahaha…\n"
 	.string "Your grim look is so charming.$"
 
 SootopolisCity_Gym_B1F_Text_BriannaDefeat:
@@ -179,5 +179,5 @@ SootopolisCity_Gym_B1F_Text_BriannaDefeat:
 
 SootopolisCity_Gym_B1F_Text_BriannaPostBattle:
 	.string "You couldn't lay a finger on\n"
-	.string "GLACIA, I'm sure. Giggle…$"
+	.string "GLACIA, I'm sure. Ahaha…$"
 

@@ -2085,11 +2085,11 @@ Level: 5
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
 === TRAINER_DAPHNE ===
-Name: DAPHNE
-Class: Lady
-Pic: Lady
-Gender: Female
-Music: Female
+Name: DARREN
+Class: Rich Boy
+Pic: Rich Boy
+Gender: Male
+Music: Male
 Items: Full Restore
 Double Battle: No
 AI: Check Bad Move
@@ -2102,13 +2102,13 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Wish
 - Water Pulse
 
-Alomomola @ Nugget
+Furfrou @ Nugget
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Attract
-- Safeguard
+- Entrainment
 - Captivate
-- Water Pulse
+- Shadow Claw
 
 === TRAINER_GRUNT_SPACE_CENTER_2 ===
 Name: GRUNT
@@ -2148,16 +2148,16 @@ IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 - Tail Whip
 
 === TRAINER_BRIANNA ===
-Name: BRIANNA
-Class: Lady
-Pic: Lady
-Gender: Female
-Music: Female
+Name: BRIAN
+Class: Rich Boy
+Pic: Rich Boy
+Gender: Male
+Music: Male
 Items: Full Restore
 Double Battle: No
 AI: Check Bad Move
 
-Lumineon @ Nugget
+Cryogonal @ Nugget
 Level: 40
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
@@ -2307,7 +2307,7 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Skrelp
+Bergmite
 Level: 40
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -2341,12 +2341,12 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Brine
 - Recover
 
-Clawitzer
+Crabominable
 Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Taunt
 - Crabhammer
-- Water Pulse
+- Power Up Punch
 
 Dewott
 Level: 39
@@ -2357,19 +2357,19 @@ IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Water Pulse
 
 === TRAINER_TIFFANY ===
-Name: TIFFANY
-Class: Beauty
-Pic: Beauty
-Gender: Female
-Music: Female
+Name: TYSON
+Class: Cooltrainer
+Pic: Cooltrainer M
+Gender: Male
+Music: Cool
 Double Battle: No
 AI: Check Bad Move
 
-Basculin Blue Striped
+Snover
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Skrelp
+Darmanitan
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -4982,9 +4982,9 @@ Class: Leader
 Pic: Leader Tate And Liza
 Gender: Male
 Music: Female
-Items: Hyper Potion / Hyper Potion / Hyper Potion / Hyper Potion
+Items: Hyper Potion / Hyper Potion / Full Restore
 Double Battle: Yes
-AI: Smart Trainer / Force Setup First Turn
+AI: Smart Trainer
 
 Meowstic-M
 Level: 40
@@ -5025,19 +5025,19 @@ Pic: Elite Four Glacia
 Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
-Double Battle: No
-AI: Smart Trainer / Ace Pokemon
+Double Battle: Yes
+AI: Smart Trainer 
 
 Abomasnow @ Icy Rock
-Level: 41
+Level: 42
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Aurora Veil
-- Ice Shard
-- Snowscape
-- Wood Hammer
+- Giga Drain
+- Leech Seed
+- Blizzard
 
 Beartic @ Salac Berry
-Level: 41
+Level: 42
 IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Belly Drum
 - Icicle Crash
@@ -5060,12 +5060,12 @@ IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
 - Recover
 - Rapid Spin
 
-Aurorus @ Sitrus Berry
+Aurorus @ Assault Vest
 Level: 46
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Diamond Storm
 - Freeze Dry
-- Aurora Veil
+- Earth Power
 - Dragon Pulse
 
 
@@ -5600,15 +5600,15 @@ Music: Twins
 Double Battle: No
 AI: Check Bad Move
 
-Togedemaru @ Oran Berry
+Cubchoo @ Oran Berry
 Level: 35
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Togedemaru @ Oran Berry
+Cubchoo @ Oran Berry
 Level: 37
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Mimikyu @ Oran Berry
+Beartic @ Oran Berry
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
@@ -9054,28 +9054,28 @@ Level: 23
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_ANNIKA ===
-Name: ANNIKA
+Name: YANNIK
 Class: Pokefan
-Pic: Pokefan F
-Gender: Female
+Pic: Pokefan M
+Gender: Male
 Music: Twins
 Double Battle: No
 AI: Check Bad Move
 
-Finneon @ Oran Berry
+Amaura @ Oran Berry
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Flail
-- Water Pulse
-- Return
+- Ancient Power
+- Hail
 - Attract
 
-Finneon @ Oran Berry
+Vanillish @ Oran Berry
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Flail
-- Water Pulse
-- Return
+- Hail
+- Icy Wind
 - Attract
 
 === TRAINER_JAZMYN ===
@@ -11124,11 +11124,11 @@ Music: Female
 Double Battle: No
 AI: Check Bad Move
 
-Bruxish
+Darumaka
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
-Finneon
+Cryogonal
 Level: 39
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
