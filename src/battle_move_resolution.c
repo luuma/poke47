@@ -2668,7 +2668,8 @@ static enum MoveEndResult MoveEndMirrorMove(void)
      && gBattlerAttacker != gBattlerTarget
      && IsBattlerAlive(gBattlerAttacker)
      && IsBattlerAlive(gBattlerTarget)
-     && !IsMoveMirrorMoveBanned(GetOriginallyUsedMove(gChosenMove)))
+     && !IsMoveMirrorMoveBanned(GetOriginallyUsedMove(gChosenMove))
+     && !IsBattlerUnaffectedByMove(gBattlerTarget))
     {
         gBattleStruct->lastTakenMove[gBattlerTarget] = gChosenMove;
         gBattleStruct->lastTakenMoveFrom[gBattlerTarget][gBattlerAttacker] = gChosenMove;
@@ -2966,7 +2967,7 @@ static enum MoveEndResult MoveEndMoveBlock(void)
         if (IsAnyTargetTurnDamaged(gBattlerAttacker, EXCLUDING_SUBSTITUTES)
          && IsBattlerAlive(gBattlerTarget)
          && IsBattlerAlive(gBattlerAttacker)
-         && gBattleStruct->battlerState[gBattlerTarget].commanderSpecies == SPECIES_NONE)
+         && gBattleMons[BATTLE_PARTNER(gBattlerTarget)].volatiles.semiInvulnerable != STATE_COMMANDER)
         {
             enum Ability targetAbility = GetBattlerAbility(gBattlerTarget);
             if (targetAbility == ABILITY_GUARD_DOG)
@@ -3753,7 +3754,7 @@ static enum MoveEndResult MoveEndClearBits(void)
         {
             enum BattlerId partner = BATTLE_PARTNER(i);
             gBattleStruct->battlerState[i].commanderSpecies = SPECIES_NONE;
-            if (gBattleMons[partner].volatiles.semiInvulnerable == STATE_COMMANDER)
+            if (IsBattlerAlive(partner))
                 gBattleMons[partner].volatiles.semiInvulnerable = STATE_NONE;
         }
     }

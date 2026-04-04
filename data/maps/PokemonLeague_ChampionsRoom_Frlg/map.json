@@ -2,7 +2,8 @@
   "id": "MAP_POKEMON_LEAGUE_CHAMPIONS_ROOM",
   "name": "PokemonLeague_ChampionsRoom_Frlg",
   "layout": "LAYOUT_POKEMON_LEAGUE_CHAMPIONS_ROOM",
-  "music": "MUS_RG_VICTORY_ROAD",
+  "music": "MUS_VICTORY_ROAD",
+  "region": "REGION_KANTO",
   "region_map_section": "MAPSEC_POKEMON_LEAGUE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -11,11 +12,13 @@
   "allow_escaping": false,
   "allow_running": false,
   "show_map_name": false,
+  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
   "object_events": [
     {
       "local_id": "LOCALID_KANTO_CHAMPIONS_ROOM_RIVAL",
+      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BLUE",
       "x": 6,
       "y": 8,
@@ -30,6 +33,7 @@
     },
     {
       "local_id": "LOCALID_CHAMPIONS_ROOM_PROF_OAK",
+      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
       "x": 6,
       "y": 15,
@@ -60,7 +64,5 @@
     }
   ],
   "coord_events": [],
-  "bg_events": [],
-  "floor_number": 0,
-  "region": "REGION_KANTO"
+  "bg_events": []
 }

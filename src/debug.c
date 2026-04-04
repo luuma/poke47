@@ -717,7 +717,6 @@ static const u8 *const sDebugMenu_Actions_BagUse_Options[] =
     COMPOUND_STRING("No Bag: {STR_VAR_1}Inactive"),
     COMPOUND_STRING("No Bag: {STR_VAR_1}VS Trainers"),
     COMPOUND_STRING("No Bag: {STR_VAR_1}Active"),
-    COMPOUND_STRING("No Bag: {STR_VAR_1}Invalid value"),
 };
 
 static const struct DebugMenuOption sDebugMenu_Actions_Main[] =
@@ -1159,9 +1158,9 @@ static const u16 sLocationFlags[] =
     FLAG_WORLD_MAP_ROUTE10_POKEMON_CENTER_1F,
 };
 
-static u32 Debug_CheckToggleFlags(u8 id)
+static u8 Debug_CheckToggleFlags(u8 id)
 {
-    u32 result = FALSE;
+    bool32 result = FALSE;
 
     switch (id)
     {
@@ -1184,9 +1183,6 @@ static u32 Debug_CheckToggleFlags(u8 id)
         result = TRUE;
         for (u32 i = 0; i < ARRAY_COUNT(sLocationFlags); i++)
         {
-            if (sLocationFlags[i] == 0) // Location flags for Frlg are set to flag 0 in Emerald and vice versa
-                continue;
-
             if (!FlagGet(sLocationFlags[i]))
             {
                 result = FALSE;
@@ -1233,8 +1229,6 @@ static u32 Debug_CheckToggleFlags(u8 id)
     #endif
     case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE:
         result = VarGet(B_VAR_NO_BAG_USE);
-        if (result >= NO_BAG_INVALID_VALUE)
-            result = NO_BAG_INVALID_VALUE;
         break;
     default:
         result = 0xFF;
@@ -1267,9 +1261,6 @@ static u8 Debug_GenerateListMenuNames(void)
             else
                 name = sDebugMenu_Actions_Flags[i].text;
         }
-
-        if (i == DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE && flagResult == NO_BAG_INVALID_VALUE)
-            flagResult = FALSE;
 
         if (flagResult == 0xFF)
         {
@@ -1584,7 +1575,6 @@ static void DebugAction_Util_Warp_SelectWarp(u8 taskId)
         DoWarp();
         ResetInitialPlayerAvatarState();
         DebugAction_DestroyExtraWindow(taskId);
-        ScriptContext_Stop();
     }
     else if (JOY_NEW(B_BUTTON))
     {
@@ -2525,8 +2515,7 @@ static void DebugAction_FlagsVars_RunningShoes(u8 taskId)
 
 static void DebugAction_FlagsVars_ToggleFlyFlags(u8 taskId)
 {
-    u32 checkedFlag = sLocationFlags[0] == 0 ? sLocationFlags[ARRAY_COUNT(sLocationFlags) - 1] : sLocationFlags[0];
-    if (FlagGet(checkedFlag))
+    if (FlagGet(sLocationFlags[ARRAY_COUNT(sLocationFlags) - 1]))
     {
         PlaySE(SE_PC_OFF);
         for (u32 i = 0; i < ARRAY_COUNT(sLocationFlags); i++)

@@ -2,7 +2,8 @@
   "id": "MAP_INDIGO_PLATEAU_EXTERIOR",
   "name": "IndigoPlateau_Exterior_Frlg",
   "layout": "LAYOUT_INDIGO_PLATEAU_EXTERIOR",
-  "music": "MUS_RG_VICTORY_ROAD",
+  "music": "MUS_VICTORY_ROAD",
+  "region": "REGION_KANTO",
   "region_map_section": "MAPSEC_INDIGO_PLATEAU",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -11,6 +12,7 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
+  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
@@ -22,6 +24,7 @@
   "object_events": [
     {
       "local_id": "LOCALID_CREDITS_RIVAL",
+      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BLUE",
       "x": 11,
       "y": 6,
@@ -36,6 +39,7 @@
     },
     {
       "local_id": "LOCALID_CREDITS_PROF_OAK",
+      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_PROF_OAK",
       "x": 11,
       "y": 6,
@@ -58,8 +62,10 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
-  "bg_events": [],
-  "floor_number": 0,
-  "region": "REGION_KANTO"
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }
