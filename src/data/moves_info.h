@@ -23203,4 +23203,57 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_GMaxReplenish,
     },
 
+    [MOVE_NAVAL_BLOCKADE] =
+    {
+        .name = COMPOUND_STRING("Naval Blockade"),
+        .description = COMPOUND_STRING(
+            "Cuts Sp. Def and makes\n"
+            "foes' stat losses persist."),
+        .effect = EFFECT_NAVAL_BLOCKADE,
+        .power = 0,
+        .type = TYPE_WATER,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .zMove = { .effect = Z_EFFECT_DEF_UP_1 },
+        .magicCoatAffected = TRUE,
+        .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AVOID_STARTLE_ONCE : CONTEST_EFFECT_AVOID_STARTLE,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Defog,
+        .validApprenticeMove = TRUE,
+    },
+
+
+    [MOVE_HIT_DEF] =
+    {
+        .name = COMPOUND_STRING("Vine Wall"),
+        .description = COMPOUND_STRING(
+            "Strikes and sharply\n"
+            "raises its Defense."),
+        .effect = EFFECT_HIT,
+        .power = 60,
+        .type = TYPE_GRASS,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_DEF_PLUS_2,
+            .self = TRUE,
+            .chance = 100,
+        }),
+        .zMove = { .effect = Z_EFFECT_DEF_UP_1 },
+        .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AVOID_STARTLE_ONCE : CONTEST_EFFECT_AVOID_STARTLE,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Barrier,
+        .validApprenticeMove = TRUE,
+    },
+
 };

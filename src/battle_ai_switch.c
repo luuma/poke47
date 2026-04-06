@@ -1210,7 +1210,9 @@ static bool32 ShouldSwitchIfAttackingStatsLowered(enum BattlerId battler)
     // Only use this if AI_FLAG_SMART_SWITCHING is set for the trainer
     if (!(gAiThinkingStruct->aiFlags[battler] & AI_FLAG_SMART_SWITCHING))
         return FALSE;
-
+    // Don't switch if naval blockade is stopping stats from resetting when switch. 
+    if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_NAVAL_BLOCKADE)
+        return FALSE;
     // Physical attacker
     if (gBattleMons[battler].attack > gBattleMons[battler].spAttack)
     {

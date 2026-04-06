@@ -915,6 +915,9 @@ enum __attribute__((packed)) Move
     MOVE_BASTION_WALLS,
     MOVE_LIGHTBLOOM,
     MOVE_ENVELOP,
+    MOVE_NAVAL_BLOCKADE,
+    MOVE_HIT_TRICK,
+    MOVE_HIT_DEF,
     MOVES_COUNT,
 
     // Z Moves

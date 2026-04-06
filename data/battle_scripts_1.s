@@ -3309,6 +3309,21 @@ BattleScript_EffectSafeguard::
 	setsafeguard
 	goto BattleScript_PrintReflectLightScreenSafeguardString
 
+BattleScript_EffectNavalBlockade::
+	attackcanceler
+	setnavalblockade BattleScript_EffectNavalBlockadenotSet
+	attackanimation
+	waitanimation
+	printstring STRINGID_NAVALBLOCKADESTART
+BattleScript_EffectNavalBlockadenotSet::
+	setstatchanger STAT_SPDEF, 1, TRUE
+	statbuffchange BS_TARGET, STAT_CHANGE_ALLOW_PTR, BattleScript_EffectNavalBlockadeNoStat
+	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_CHANGE, BattleScript_EffectNavalBlockadeNoStat
+	printfromtable gStatDownStringIds
+	waitmessage B_WAIT_TIME_LONG
+BattleScript_EffectNavalBlockadeNoStat::
+	goto BattleScript_MoveEnd
+
 BattleScript_EffectBatonPass::
 	attackcanceler
 	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_ButItFailed

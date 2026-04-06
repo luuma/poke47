@@ -150,6 +150,7 @@ struct SideTimer
     u16 rainbowTimer;
     u16 seaOfFireTimer;
     u16 swampTimer;
+    u16 navalBlockadeTimer;
 };
 
 struct FieldTimer

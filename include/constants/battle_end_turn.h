@@ -83,6 +83,7 @@ enum SecondEventBlock
     SECOND_EVENT_BLOCK_SEA_OF_FIRE,
     SECOND_EVENT_BLOCK_SWAMP,
     SECOND_EVENT_BLOCK_AURORA_VEIL,
+    SECOND_EVENT_BLOCK_NAVAL_BLOCKADE,
 };
 
 // Block that handles Uproar, items and non-form changing abilities

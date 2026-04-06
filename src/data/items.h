@@ -8707,7 +8707,7 @@ const struct ItemInfo gItemsInfo[] =
         .holdEffect = HOLD_EFFECT_MACHO_BRACE,
         .description = COMPOUND_STRING(
             "A hold item that\n"
-            "triples IV gains,\n"
+            "triples EV gains,\n"
             "but reduces Speed."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_EV_BOOST_HELD_ITEM,

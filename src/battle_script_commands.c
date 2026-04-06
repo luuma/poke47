@@ -5313,7 +5313,21 @@ static void Cmd_switchindataupdate(void)
             gBattleMons[battler].statStages[i] = oldData.statStages[i];
         }
     }
-
+    else if (gSideStatuses[side] & SIDE_STATUS_NAVAL_BLOCKADE)// Also sorted in battle main dot C.
+    {
+        for (i = 0; i < NUM_BATTLE_STATS; i++)
+        {
+	    if (oldData.statStages[i] < DEFAULT_STAT_STAGE)
+                gBattleMons[battler].statStages[i] = oldData.statStages[i];
+            else
+                gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
+        }
+    }
+    else
+    {
+        for (enum Stat i = 0; i < NUM_BATTLE_STATS; i++)
+            gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
+    }
     SwitchInClearSetData(battler, &oldData.volatiles);
 
     if (gBattleTypeFlags & BATTLE_TYPE_PALACE
@@ -7141,6 +7155,7 @@ static bool32 TryDefogClear(enum BattlerId battlerAtk, bool32 clear)
             DEFOG_CLEAR(SIDE_STATUS_MIST, mistTimer, BattleScript_SideStatusWoreOffReturn, MOVE_MIST);
             DEFOG_CLEAR(SIDE_STATUS_AURORA_VEIL, auroraVeilTimer, BattleScript_SideStatusWoreOffReturn, MOVE_AURORA_VEIL);
             DEFOG_CLEAR(SIDE_STATUS_SAFEGUARD, safeguardTimer, BattleScript_SideStatusWoreOffReturn, MOVE_SAFEGUARD);
+            DEFOG_CLEAR(SIDE_STATUS_NAVAL_BLOCKADE, navalBlockadeTimer, BattleScript_SideStatusWoreOffReturn, MOVE_NAVAL_BLOCKADE);
         }
         if (GetConfig(B_DEFOG_EFFECT_CLEARING) >= GEN_6)
         {
@@ -7277,6 +7292,7 @@ void BS_CourtChangeSwapSideStatuses(void)
     COURTCHANGE_SWAP(SIDE_STATUS_RAINBOW, rainbowTimer, temp);
     COURTCHANGE_SWAP(SIDE_STATUS_SEA_OF_FIRE, seaOfFireTimer, temp);
     COURTCHANGE_SWAP(SIDE_STATUS_SWAMP, swampTimer, temp);
+    COURTCHANGE_SWAP(SIDE_STATUS_NAVAL_BLOCKADE, navalBlockadeTimer, temp);
 
     // Hazards
     u32 tempQueue[HAZARDS_MAX_COUNT] = {HAZARDS_NONE};
@@ -14816,6 +14832,23 @@ void BS_TryEndNeutralizingGas(void)
 
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
+
+
+void BS_SetNavalBlockade(void)
+{
+    NATIVE_ARGS(const u8 *failInstr);
+    enum BattleSide side = GetBattlerSide(gBattlerTarget);
+
+    if (gSideStatuses[side] & SIDE_STATUS_NAVAL_BLOCKADE)
+        gBattlescriptCurrInstr = cmd->failInstr;
+    else
+    {
+        gSideStatuses[side] |= SIDE_STATUS_NAVAL_BLOCKADE;
+        gSideTimers[side].navalBlockadeTimer = 8;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+}
+
 
 static bool32 IsRototillerAffected(enum BattlerId battler, u32 move)
 {

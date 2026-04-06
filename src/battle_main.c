@@ -3183,8 +3183,6 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
     ClearIllusionMon(battler);
     if (effect != EFFECT_BATON_PASS)
     {
-        for (enum Stat i = 0; i < NUM_BATTLE_STATS; i++)
-            gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
         for (enum BattlerId i = 0; i < gBattlersCount; i++)
         {
             if (gBattleMons[i].volatiles.escapePrevention && gBattleMons[i].volatiles.battlerPreventingEscape == battler)
@@ -3322,9 +3320,11 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
 
 void FaintClearSetData(enum BattlerId battler)
 {
-    for (enum Stat i = 0; i < NUM_BATTLE_STATS; i++)
-        gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
-
+    if (!(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_NAVAL_BLOCKADE))
+    {
+        for (enum Stat i = 0; i < NUM_BATTLE_STATS; i++)
+            gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
+    }
     bool32 keepGastroAcid = gBattleMons[battler].volatiles.gastroAcid;
     bool32 keepTransformed = gBattleMons[battler].volatiles.transformed;
     memset(&gBattleMons[battler].volatiles, 0, sizeof(struct Volatiles));

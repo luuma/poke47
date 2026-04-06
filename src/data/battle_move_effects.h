@@ -2254,4 +2254,10 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleScript = BattleScript_EffectHit,
         .battleTvScore = 0, // TODO: Assign points
     },
+    [EFFECT_NAVAL_BLOCKADE] =
+    {
+        .battleScript = BattleScript_EffectNavalBlockade,
+        .battleTvScore = 5,
+        .encourageEncore = TRUE,
+    },
 };

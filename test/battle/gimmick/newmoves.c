@@ -592,3 +592,133 @@ DOUBLE_BATTLE_TEST("Just Desserts recycles allies' berries 100% of the time")
         MESSAGE("Munchlax found one Apicot Berry!");
     }
 }
+
+SINGLE_BATTLE_TEST("naval blockade SETS somethignt hat persists")
+{
+    GIVEN {
+        PLAYER(SPECIES_EMPOLEON);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_NAVAL_BLOCKADE);}
+        TURN { MOVE(player, MOVE_NAVAL_BLOCKADE);}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_NAVAL_BLOCKADE, player);
+	MESSAGE("Empoleon makes lowered stats persist for opponents for 8 turns!");
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+        NONE_OF { 
+		ANIMATION(ANIM_TYPE_MOVE, MOVE_NAVAL_BLOCKADE, player);
+		MESSAGE("Empoleon makes lowered stats persist for opponents for 8 turns!");
+		}
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+    }
+}
+
+
+SINGLE_BATTLE_TEST("naval blockade last 8 turns")
+{
+    GIVEN {
+        PLAYER(SPECIES_EMPOLEON);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_NAVAL_BLOCKADE);}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {}
+        TURN {MOVE(player, MOVE_NAVAL_BLOCKADE);}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_NAVAL_BLOCKADE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_NAVAL_BLOCKADE, player);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("naval blockade LOWER DEF stat changes")
+{
+    GIVEN {
+        PLAYER(SPECIES_EMPOLEON);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_NAVAL_BLOCKADE);}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_NAVAL_BLOCKADE, player);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_SPDEF], DEFAULT_STAT_STAGE - 1);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("leer doesn't lock stat changes")
+{
+    GIVEN {
+        PLAYER(SPECIES_EMPOLEON);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_LEER); MOVE(opponent, MOVE_NAVAL_BLOCKADE);}
+        TURN { SWITCH(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The opposing Wobbuffet's Defense fell!");
+        MESSAGE("2 sent out Wynaut!");
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE);
+    }
+}
+
+
+
+
+
+
+SINGLE_BATTLE_TEST("naval blockade     locks stat changes, switching.")
+{
+    GIVEN {
+        PLAYER(SPECIES_EMPOLEON);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_NAVAL_BLOCKADE);}
+        TURN { MOVE(player, MOVE_SPICY_EXTRACT);}
+        TURN { SWITCH(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The opposing Wobbuffet's Defense harshly fell!");
+        MESSAGE("2 sent out Wynaut!");
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 2);
+        EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("naval blockade     locks stat changes, fainting .")
+{
+    GIVEN {
+        PLAYER(SPECIES_EMPOLEON);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_NAVAL_BLOCKADE);}
+        TURN { MOVE(player, MOVE_SPICY_EXTRACT);}
+        TURN { MOVE(opponent, MOVE_MEMENTO); SEND_OUT(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("2 sent out Wynaut!");
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 2);
+        EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
+    }
+}
+

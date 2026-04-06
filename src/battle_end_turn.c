@@ -1075,6 +1075,16 @@ static bool32 HandleEndTurnSecondEventBlock(enum BattlerId battler)
             PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_AURORA_VEIL);
             effect = TRUE;
         }
+    case SECOND_EVENT_BLOCK_NAVAL_BLOCKADE:
+        if (gSideTimers[side].navalBlockadeTimer > 0 && --gSideTimers[side].navalBlockadeTimer == 0)
+        {
+            gBattlerAttacker = GetBattlerSideForMessage(side);
+            gSideStatuses[side] &= ~SIDE_STATUS_NAVAL_BLOCKADE;
+            BattleScriptExecute(BattleScript_SideStatusWoreOff);
+            gBattleCommunication[MULTISTRING_CHOOSER] = side;
+            PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_NAVAL_BLOCKADE);
+            effect = TRUE;
+        }
         gBattleStruct->eventState.battlerSide++;
         gBattleStruct->eventState.endTurnBlock = 0;
         break;

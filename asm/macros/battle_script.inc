@@ -2115,6 +2115,12 @@
 	.4byte \failInstr
 	.endm
 
+
+	.macro setnavalblockade failInstr:req
+	callnative BS_SetNavalBlockade
+	.4byte \failInstr
+	.endm
+
 	.macro consumeberry battler:req, fromBattler:req
 	callnative BS_ConsumeBerry
 	.byte \battler

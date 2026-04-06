@@ -881,6 +881,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_ZENMODEENDED]                         = COMPOUND_STRING("{B_SCR_ABILITY} ended!"),
     [STRINGID_TARGETPKMNHURTSWITH]                        = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} was hurt by {B_ATK_NAME_WITH_PREFIX2}'s {B_BUFF1}!"),
     [STRINGID_DAMAGEBOUNCEABLESDOESNTALLOW]               = COMPOUND_STRING("The effects of the {B_LAST_ITEM} prevent attacking moves from being used!\p"),
+    [STRINGID_NAVALBLOCKADESTART]               = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} makes lowered stats persist for opponents for 8 turns!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
