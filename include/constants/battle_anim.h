@@ -288,7 +288,7 @@
 #define ANIM_TAG_GEM_3                      (ANIM_SPRITES_START + 276) // unused
 #define ANIM_TAG_SLAM_HIT_2                 (ANIM_SPRITES_START + 277)
 #define ANIM_TAG_RECYCLE                    (ANIM_SPRITES_START + 278)
-#define ANIM_TAG_RED_PARTICLES              (ANIM_SPRITES_START + 279) // unused
+#define ANIM_TAG_GREY_CHAIN              (ANIM_SPRITES_START + 279) // used
 #define ANIM_TAG_PROTECT                    (ANIM_SPRITES_START + 280)
 #define ANIM_TAG_DIRT_MOUND                 (ANIM_SPRITES_START + 281)
 #define ANIM_TAG_SHOCK_3                    (ANIM_SPRITES_START + 282)

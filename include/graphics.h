@@ -2886,6 +2886,7 @@ extern const u32 gBattleAnimSpriteGfx_PowerTrick[];
 extern const u16 gBattleAnimSpritePal_PowerTrick[];
 extern const u32 gBattleAnimSpriteGfx_PurpleChain[];
 extern const u16 gBattleAnimSpritePal_PurpleChain[];
+extern const u16 gBattleAnimSpritePal_GreyChain[];
 extern const u32 gBattleAnimSpriteGfx_PurpleDrake[];
 extern const u16 gBattleAnimSpritePal_PurpleDrake[];
 extern const u32 gBattleAnimSpriteGfx_QuickGuard[];

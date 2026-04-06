@@ -916,7 +916,7 @@ enum __attribute__((packed)) Move
     MOVE_LIGHTBLOOM,
     MOVE_ENVELOP,
     MOVE_NAVAL_BLOCKADE,
-    MOVE_HIT_TRICK,
+    MOVE_CLOUD_SOMERSAULT,
     MOVE_HIT_DEF,
     MOVES_COUNT,
 

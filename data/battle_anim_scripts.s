@@ -428,6 +428,31 @@ gBattleAnimMove_UTurn::
 	blendoff
 	end
 
+
+
+gBattleAnimMove_CloudSomersault::
+	monbg ANIM_DEF_PARTNER
+	splitbgprio ANIM_TARGET
+	setalpha 8, 8
+	invisible ANIM_ATTACKER
+	playsewithpan SE_M_FLAME_WHEEL, SOUND_PAN_ATTACKER
+	createsprite gUTurnBallSpriteTemplate, ANIM_TARGET, 2, 0, 0, 21
+	waitforvisualfinish
+	playsewithpan SE_M_SKY_UPPERCUT, SOUND_PAN_ATTACKER
+	create_basic_hitsplat_sprite ANIM_ATTACKER, 2, x=0, y=0, relative_to=ANIM_TARGET, animation=0
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 3, 0, 14, 1
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 0, 0, RGB_WHITE
+	complex_palette_blend selector=F_PAL_BG | F_PAL_BATTLERS, delay=3, num_blends=1, color1=RGB_BLACK, blend_y1=8, color2=RGB_BLACK, blend_y2=0
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 6, 1
+	call FireSpreadEffect
+	createsprite gUTurnBallBackSpriteTemplate, ANIM_ATTACKER, 3, 4, 0, -16, 36
+	waitforvisualfinish
+	visible ANIM_ATTACKER
+	clearmonbg ANIM_TARGET
+	blendoff
+	end
+
+
 gBattleAnimMove_CloseCombat::
 	monbg ANIM_DEF_PARTNER
 	call SetHighSpeedBg
@@ -9287,6 +9312,9 @@ gBattleAnimMove_SpiritShackle::
 	blendoff
 	end
 
+
+
+
 gBattleAnimMove_DarkestLariat::
 	fadetobg BG_DARK
 	waitbgfadeout
@@ -9933,11 +9961,11 @@ gBattleAnimMove_AnchorShot::
 	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 3, 15, 1
 	waitforvisualfinish
 	loopsewithpan SE_SHINY, SOUND_PAN_ATTACKER 0x1c 0x2
-	createsprite gAnchorShotChainTemplate, ANIM_TARGET, 2, 0xfff0, 0xfff0
-	delay 4
-	createsprite gAnchorShotChainTemplate, ANIM_TARGET, 2, 0xfff0, 0x0
-	delay 4
-	createsprite gAnchorShotChainTemplate, ANIM_TARGET, 2, 0xfff0, 0x10
+	createsprite gChainBindingSpriteTemplateGrey, ANIM_TARGET, 4, 0, 16, 0, 1
+	delay 7
+	createsprite gChainBindingSpriteTemplateGrey, ANIM_TARGET, 2, 0, 8, 1, 1
+	delay 3
+	setarg 7, -1
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
 	end
@@ -12596,6 +12624,7 @@ gBattleAnimMove_BodyPress::
 	createvisualtask AnimTask_SquishTarget, 0x2
 	waitforvisualfinish
 	end
+
 
 gBattleAnimMove_Decorate::
 	goto gBattleAnimMove_FlowerShield
@@ -20836,6 +20865,27 @@ gBattleAnimMove_Safeguard::
 	blendoff
 	end
 
+gBattleAnimMove_NavalBlockade::
+	loopsewithpan SE_M_VICEGRIP, SOUND_PAN_ATTACKER, 28, 2
+	metallic_shine permanent=0, color=RGB(2, 2, 13)
+	waitforvisualfinish
+	monbg ANIM_DEF_PARTNER
+	setalpha 8, 8
+	loopsewithpan SE_M_MIST, SOUND_PAN_TARGET, 6, 2
+	blend_color_cycle selector=F_PAL_DEF_SIDE, delay=0, num_blends=2, initial_blend_y=0, target_blend_y=10, color=RGB(2, 2, 13)
+	delay 20
+	createsprite gChainBindingSpriteTemplateGrey, ANIM_TARGET, 4, 0, 16, 0, 1
+	delay 7
+	createsprite gChainBindingSpriteTemplateGrey, ANIM_TARGET, 2, 0, 8, 1, 1
+	delay 3
+	setarg 7, 0xFFFF
+	playsewithpan SE_M_BIND, SOUND_PAN_TARGET
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
+
 gBattleAnimMove_PainSplit::
 	createsprite gPainSplitProjectileSpriteTemplate, ANIM_ATTACKER, 2, -8, -42, ANIM_ATTACKER
 	createsprite gPainSplitProjectileSpriteTemplate, ANIM_TARGET, 2, -8, -42, ANIM_TARGET
@@ -25407,6 +25457,32 @@ gBattleAnimMove_VitalThrow::
 	clearmonbg ANIM_DEF_PARTNER
 	blendoff
 	end
+
+gBattleAnimMove_Terraforge::
+	monbg ANIM_DEF_PARTNER
+	setalpha 12, 8
+	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
+	simple_palette_blend unused_subpriority_offset=0, selector=F_PAL_BG, delay=3, initial_blend_y=0, target_blend_y=12, color=RGB(1, 11, 5)
+	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 12, 4, 1, 2
+	waitforvisualfinish
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, ANIM_ATTACKER, 20, 0, 0, 4
+	delay 2
+	create_basic_hitsplat_sprite ANIM_ATTACKER, 3, x=0, y=0, relative_to=ANIM_TARGET, animation=1
+	playsewithpan SE_M_VITAL_THROW2, SOUND_PAN_TARGET
+	delay 1
+	createsprite gSlideMonToOffsetSpriteTemplate, ANIM_ATTACKER, 2, ANIM_TARGET, -24, 0, 0, 4
+	simple_palette_blend unused_subpriority_offset=0, selector=F_PAL_BG, delay=3, initial_blend_y=12, target_blend_y=0, color=RGB(1, 11, 5)
+	waitforvisualfinish
+	delay 3
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 0, 0, 7
+	delay 11
+	createsprite gSlideMonToOriginalPosSpriteTemplate, ANIM_ATTACKER, 2, 1, 0, 10
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	blendoff
+	end
+
+
 
 gBattleAnimMove_RockSmash::
 	monbg ANIM_DEF_PARTNER

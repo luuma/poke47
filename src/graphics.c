@@ -246,6 +246,8 @@ const u16 gBattleAnimSpritePal_PowerTrick[] = INCBIN_U16("graphics/battle_anims/
 const u32 gBattleAnimSpriteGfx_PurpleChain[] = INCBIN_U32("graphics/battle_anims/sprites/purple_chain.4bpp.smol");
 const u16 gBattleAnimSpritePal_PurpleChain[] = INCBIN_U16("graphics/battle_anims/sprites/purple_chain.gbapal");
 
+const u16 gBattleAnimSpritePal_GreyChain[] = INCBIN_U16("graphics/battle_anims/sprites/grey_chain.gbapal");
+
 const u32 gBattleAnimSpriteGfx_PurpleDrake[] = INCBIN_U32("graphics/battle_anims/sprites/purple_drake.4bpp.smol");
 const u16 gBattleAnimSpritePal_PurpleDrake[] = INCBIN_U16("graphics/battle_anims/sprites/purple_drake.gbapal");
 
@@ -1655,8 +1657,8 @@ const u16 gBattleAnimSpritePal_GlowyBlueOrb[] = INCBIN_U16("graphics/battle_anim
 const u32 gBattleAnimSpriteGfx_Recycle[] = INCBIN_U32("graphics/battle_anims/sprites/recycle.4bpp.smol");
 const u16 gBattleAnimSpritePal_Recycle[] = INCBIN_U16("graphics/battle_anims/sprites/recycle.gbapal");
 
-const u32 gBattleAnimSpriteGfx_RedParticles[] = INCBIN_U32("graphics/battle_anims/sprites/red_particles.4bpp.smol");
-const u16 gBattleAnimSpritePal_RedParticles[] = INCBIN_U16("graphics/battle_anims/sprites/red_particles.gbapal");
+//const u32 gBattleAnimSpriteGfx_RedParticles[] = INCBIN_U32("graphics/battle_anims/sprites/red_particles.4bpp.smol");
+//const u16 gBattleAnimSpritePal_RedParticles[] = INCBIN_U16("graphics/battle_anims/sprites/red_particles.gbapal");
 
 const u32 gBattleAnimSpriteGfx_DirtMound[] = INCBIN_U32("graphics/battle_anims/sprites/dirt_mound.4bpp.smol");
 const u16 gBattleAnimSpritePal_DirtMound[] = INCBIN_U16("graphics/battle_anims/sprites/dirt_mound.gbapal");

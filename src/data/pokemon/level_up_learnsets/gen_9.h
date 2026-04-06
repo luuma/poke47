@@ -14529,7 +14529,7 @@ static const struct LevelUpMove sGrotleLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sTorterraLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(0, MOVE_BULLDOZE),
+        LEVEL_UP_MOVE(0, MOVE_HIT_DEF),
         LEVEL_UP_MOVE(1, MOVE_LEAF_TORNADO), 
         LEVEL_UP_MOVE(1, MOVE_LEAF_STORM),
         LEVEL_UP_MOVE(1, MOVE_GRAVITY),
@@ -14596,7 +14596,7 @@ static const struct LevelUpMove sMonfernoLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sInfernapeLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(0, MOVE_FEINT),
+        LEVEL_UP_MOVE(0, MOVE_CLOUD_SOMERSAULT),
         LEVEL_UP_MOVE(1, MOVE_BULLET_PUNCH),
         LEVEL_UP_MOVE(1, MOVE_WORK_UP),
         LEVEL_UP_MOVE(1, MOVE_LEER),
@@ -14629,9 +14629,7 @@ static const struct LevelUpMove sPiplupLevelUpLearnset[] = {
         LEVEL_UP_MOVE(10, MOVE_CHARM),
         LEVEL_UP_MOVE(14, MOVE_ICY_WIND),
         LEVEL_UP_MOVE(18, MOVE_WING_ATTACK),
-        LEVEL_UP_MOVE(22, MOVE_STOCKPILE),
-        LEVEL_UP_MOVE(22, MOVE_SPIT_UP),
-        LEVEL_UP_MOVE(22, MOVE_SWALLOW),
+        LEVEL_UP_MOVE(22, MOVE_NAVAL_BLOCKADE),
         LEVEL_UP_MOVE(25, MOVE_MIRROR_MOVE),
         LEVEL_UP_MOVE(28, MOVE_SCALD),
         LEVEL_UP_MOVE(31, MOVE_MIST),
@@ -14652,9 +14650,7 @@ static const struct LevelUpMove sPrinplupLevelUpLearnset[] = {
         LEVEL_UP_MOVE(10, MOVE_METAL_SOUND),
         LEVEL_UP_MOVE(14, MOVE_ICY_WIND),
         LEVEL_UP_MOVE(19, MOVE_METAL_CLAW),
-        LEVEL_UP_MOVE(23, MOVE_STOCKPILE),
-        LEVEL_UP_MOVE(23, MOVE_SPIT_UP),
-        LEVEL_UP_MOVE(23, MOVE_SWALLOW),
+        LEVEL_UP_MOVE(23, MOVE_NAVAL_BLOCKADE),
         LEVEL_UP_MOVE(27, MOVE_METAL_BURST),
         LEVEL_UP_MOVE(31, MOVE_SCALD),
         LEVEL_UP_MOVE(34, MOVE_MIST),
@@ -14666,8 +14662,8 @@ static const struct LevelUpMove sPrinplupLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sEmpoleonLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(0, MOVE_NAVAL_BLOCKADE),
-        LEVEL_UP_MOVE(1, MOVE_AQUA_JET),
+        LEVEL_UP_MOVE(0, MOVE_AQUA_JET),
+        LEVEL_UP_MOVE(1, MOVE_ANCHOR_SHOT),
         LEVEL_UP_MOVE(1, MOVE_HAZE),
         LEVEL_UP_MOVE(1, MOVE_CHARM),
         LEVEL_UP_MOVE(1, MOVE_DEFOG),
@@ -14678,9 +14674,7 @@ static const struct LevelUpMove sEmpoleonLevelUpLearnset[] = {
         LEVEL_UP_MOVE(14, MOVE_ICY_WIND),
         LEVEL_UP_MOVE(16, MOVE_CHILLING_WATER),
         LEVEL_UP_MOVE(19, MOVE_METAL_CLAW),
-        LEVEL_UP_MOVE(23, MOVE_STOCKPILE),
-        LEVEL_UP_MOVE(23, MOVE_SPIT_UP),
-        LEVEL_UP_MOVE(23, MOVE_SWALLOW),
+        LEVEL_UP_MOVE(23, MOVE_NAVAL_BLOCKADE),
         LEVEL_UP_MOVE(27, MOVE_METAL_BURST),
         LEVEL_UP_MOVE(31, MOVE_SCALD),
         LEVEL_UP_MOVE(34, MOVE_MIST),

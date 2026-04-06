@@ -23208,7 +23208,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Naval Blockade"),
         .description = COMPOUND_STRING(
             "Cuts Sp. Def and makes\n"
-            "foes' stat losses persist."),
+            "foes' stat losses persist."), //ANIM TODO
         .effect = EFFECT_NAVAL_BLOCKADE,
         .power = 0,
         .type = TYPE_WATER,
@@ -23223,22 +23223,20 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestCategory = CONTEST_CATEGORY_SMART,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
-        .battleAnimScript = gBattleAnimMove_Defog,
-        .validApprenticeMove = TRUE,
+        .battleAnimScript = gBattleAnimMove_NavalBlockade,
     },
-
 
     [MOVE_HIT_DEF] =
     {
-        .name = COMPOUND_STRING("Vine Wall"),
+        .name = COMPOUND_STRING("Terraforce"),
         .description = COMPOUND_STRING(
-            "Strikes and sharply\n"
-            "raises its Defense."),
+            "An earth-shifting slam that\n"
+            "sharply raises Defense."),
         .effect = EFFECT_HIT,
         .power = 60,
         .type = TYPE_GRASS,
         .accuracy = 100,
-        .pp = 5,
+        .pp = 35,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
@@ -23247,13 +23245,36 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .self = TRUE,
             .chance = 100,
         }),
-        .zMove = { .effect = Z_EFFECT_DEF_UP_1 },
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AVOID_STARTLE_ONCE : CONTEST_EFFECT_AVOID_STARTLE,
         .contestCategory = CONTEST_CATEGORY_TOUGH,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
-        .battleAnimScript = gBattleAnimMove_Barrier,
-        .validApprenticeMove = TRUE,
+        .battleAnimScript = gBattleAnimMove_Terraforge,
+    },
+
+    [MOVE_CLOUD_SOMERSAULT] =
+    {
+        .name = COMPOUND_STRING("Cloud Leap"),
+        .description = COMPOUND_STRING(
+            "Exits with a dizzying\n"
+            "somersault. May flinch."),
+        .effect = EFFECT_HIT_ESCAPE,
+        .power = 60,
+        .type = TYPE_FIRE,
+        .accuracy = 100,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_FLINCH,
+            .chance = 30,
+        }),
+        .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AVOID_STARTLE_ONCE : CONTEST_EFFECT_AVOID_STARTLE,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_CloudSomersault,
     },
 
 };
