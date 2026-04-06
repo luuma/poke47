@@ -1047,11 +1047,7 @@ enum NationalDexOrder
 #if P_GEN_9_POKEMON == TRUE
     #define NATIONAL_DEX_COUNT  NATIONAL_DEX_PECHARUNT
 #elif P_GEN_9_CROSS_EVOS == TRUE
-<<<<<<< HEAD
     #define NATIONAL_DEX_COUNT  NATIONAL_DEX_KINGAMBIT
-=======
-    #define NATIONAL_DEX_COUNT  NATIONAL_DEX_HYDRAPPLE
->>>>>>> parent of dba728c441 (Revert "Merge branch 'master47_15_1' into master47")
 #elif P_PALDEAN_FORMS == TRUE
     #define NATIONAL_DEX_COUNT  NATIONAL_DEX_CLODSIRE
 
