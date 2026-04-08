@@ -310,4 +310,84 @@ DOUBLE_BATTLE_TEST("Pressure's +2PP effect stacks with multiple Pokémon")
 }
 
 
-///GRAND DEBUT, ANALYTIC. NOT MOve relearner sadly.
+
+SINGLE_BATTLE_TEST("Ice Body prevents damage from hail")
+{
+    enum Move move;
+    PARAMETRIZE { move = MOVE_HAIL; }
+    PARAMETRIZE { move = MOVE_SNOWSCAPE; }
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_GLALIE) { Ability(ABILITY_ICE_BODY); }
+    } WHEN {
+        TURN { MOVE(player, move); MOVE(opponent, MOVE_SKILL_SWAP); }
+    } SCENE {
+        NONE_OF { HP_BAR(player); }
+    }
+}
+
+SINGLE_BATTLE_TEST("Ice Body recovers 1/16th of Max HP in hail, not more.")
+{
+    enum Move move;
+    PARAMETRIZE { move = MOVE_HAIL; }
+    PARAMETRIZE { move = MOVE_SNOWSCAPE; }
+    GIVEN {
+        PLAYER(SPECIES_GLALIE) { Ability(ABILITY_ICE_BODY); HP(1); MaxHP(100); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, move); }
+    } SCENE {
+        ABILITY_POPUP(player, ABILITY_ICE_BODY);
+        HP_BAR(player, damage: -(100 / 16));
+        MESSAGE("Glalie's Ice Body healed it a little bit!");
+    }
+}
+
+
+SINGLE_BATTLE_TEST("Comatose tweaked move effects: pSYcho shift.")
+{
+    GIVEN {
+        PLAYER(SPECIES_MUSHARNA) { Ability(ABILITY_COMATOSE); HP(1); MaxHP(100); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_PSYCHO_SHIFT);}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYCHO_SHIFT, player);
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, opponent);
+    }
+}
+
+SINGLE_BATTLE_TEST("Comatose tweaked move effects: rest.")
+{
+    GIVEN {
+        PLAYER(SPECIES_MUSHARNA) { Ability(ABILITY_COMATOSE); HP(1); MaxHP(100); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_REST);}
+        TURN { MOVE(player, MOVE_PSYWAVE);}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_REST, player);
+        HP_BAR(player, damage: -99);
+	NOT ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYWAVE, player);
+    }
+}
+
+SINGLE_BATTLE_TEST("And check that's unique to comatose.")
+{
+    GIVEN {
+        PLAYER(SPECIES_MUSHARNA) { Ability(ABILITY_ROUGH_SKIN); HP(1); MaxHP(100); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_PSYCHO_SHIFT);}
+        TURN { MOVE(player, MOVE_REST);}
+        TURN { }
+    } SCENE {
+	NOT ANIMATION(ANIM_TYPE_MOVE, MOVE_PSYCHO_SHIFT, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_REST, player);
+	ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, player);
+    }
+}
+
+/// ANALYTIC. NOT MOve relearner sadly.

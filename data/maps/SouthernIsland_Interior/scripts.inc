@@ -102,11 +102,11 @@ SouthernIsland_Interior_EventScript_Sign::
 	end
 
 SouthernIsland_Interior_EventScript_SetLatiosBattleVars::
-	seteventmon SPECIES_THUNDURUS, 50, ITEM_SOUL_DEW
+	seteventmon SPECIES_THUNDURUS, 50, ITEM_AMULET_COIN
 	return
 
 SouthernIsland_Interior_EventScript_SetLatiasBattleVars::
-	seteventmon SPECIES_TORNADUS, 50, ITEM_SOUL_DEW
+	seteventmon SPECIES_TORNADUS, 50, ITEM_AMULET_COIN
 	return
 
 SouthernIsland_Interior_Movement_CameraPanUp:

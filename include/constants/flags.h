@@ -741,7 +741,7 @@
 #define FLAG_R136H8 0x2A6 // Unused Flag
 #define FLAG_R136H9	0x2A7 // Unused Flag
 #define FLAG_137_MIRROR_HERB  0x2A8 // 
-#define FLAG_ANNOYING_FISHERMAN_ATSTEPS  0x2A9 // Unused Flag
+#define FLAG_ANNOYING_FISHERMAN_ATSTEPS  0x2A9 
 #define FLAG_FISHERMAN_MASTER  0x2AA // Unused Flag
 #define FLAG_R135_COVERT_CLOAK  0x2AB // Unused Flag
 #define FLAG_R1351  0x2AC // 
@@ -749,11 +749,11 @@
 #define FLAG_R1353  0x2AE // HID
 #define FLAG_R1354  0x2AF // HID
 #define FLAG_128_NEW  0x2B0 // fairy feather 
-#define FLAG_WEAKNESS_POLICY 0x2B1 // Unused Flag
+#define FLAG_WEAKNESS_POLICY 0x2B1 ///// Unused Flag
 #define FLAG_RED_CARD  0x2B2 // TUBER ABANDONED SHIP
-#define FLAG_THROAT_SPRAY  0x2B3 // Unused Flag
-#define FLAG_BLUNDER_POLICY  0x2B4 // Unused Flag
-#define FLAG_UNUSED_0x2B5  0x2B5 // Unused Flag
+#define FLAG_THROAT_SPRAY  0x2B3 ////////////// Unused Flag, POSTGAME item
+#define FLAG_BLUNDER_POLICY  0x2B4 ///////// Unused Flag, pickup item.
+#define FLAG_CHOICE_SCARF  0x2B5 //////////// Unused Flag, intend to use ingame.
 #define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
 #define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
 #define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag

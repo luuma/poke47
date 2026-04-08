@@ -2705,27 +2705,27 @@
               {
                 "min_level": 30,
                 "max_level": 35,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_NOIBAT"
               },
               {
                 "min_level": 30,
                 "max_level": 35,
-                "species": "SPECIES_GOLBAT"
+                "species": "SPECIES_NOIBAT"
               },
               {
                 "min_level": 25,
                 "max_level": 35,
-                "species": "SPECIES_SOLROCK"
+                "species": "SPECIES_MINIOR"
               },
               {
                 "min_level": 15,
                 "max_level": 25,
-                "species": "SPECIES_SOLROCK"
+                "species": "SPECIES_MINIOR"
               },
               {
                 "min_level": 5,
                 "max_level": 15,
-                "species": "SPECIES_SOLROCK"
+                "species": "SPECIES_MINIOR"
               }
             ]
           },
@@ -4537,17 +4537,17 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_MONFERNO"
-              },
-              {
-                "min_level": 29,
-                "max_level": 29,
                 "species": "SPECIES_MIENFOO"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
                 "species": "SPECIES_MIENFOO"
+              },
+              {
+                "min_level": 28,
+                "max_level": 28,
+                "species": "SPECIES_ZORUA_HISUI"
               }
             ]
           }
@@ -37761,7 +37761,7 @@
               {
                 "min_level": 30,
                 "max_level": 35,
-                "species": "SPECIES_BASCULIN_RED_STRIPED"
+                "species": "SPECIES_TYMPOLE"
               },
               {
                 "min_level": 30,

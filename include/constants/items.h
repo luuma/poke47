@@ -485,7 +485,7 @@ enum __attribute__((packed)) Item
     ITEM_ULTRANECROZIUM_Z = 391,
 
     // Species-specific Held Items
-    ITEM_LIGHT_BALL = 392,
+    ITEM_LIGHT_BALL = 392,// route 120
     ITEM_LEEK = 393,
     ITEM_STICK = ITEM_LEEK, // Pre-Gen VIII name
     ITEM_THICK_CLUB = 394,
@@ -520,8 +520,8 @@ enum __attribute__((packed)) Item
     ITEM_YELLOW_SCARF = 417,
 
     // EV Gain Modifiers
-    ITEM_MACHO_BRACE = 418,
-    ITEM_POWER_WEIGHT = 419,
+    ITEM_MACHO_BRACE = 418,// triples evs now.
+    ITEM_POWER_WEIGHT = 419,// TRAINER TOWER
     ITEM_POWER_BRACER = 420,
     ITEM_POWER_BELT = 421,
     ITEM_POWER_LENS = 422,
@@ -529,44 +529,44 @@ enum __attribute__((packed)) Item
     ITEM_POWER_ANKLET = 424,
 
     // Type-boosting Held Items
-    ITEM_SILK_SCARF = 425,
-    ITEM_CHARCOAL = 426,
-    ITEM_MYSTIC_WATER = 427,
-    ITEM_MAGNET = 428,
-    ITEM_MIRACLE_SEED = 429,
-    ITEM_NEVER_MELT_ICE = 430,
+    ITEM_SILK_SCARF = 425,// gift dewford
+    ITEM_CHARCOAL = 426,// lavaridge
+    ITEM_MYSTIC_WATER = 427,// deerling
+    ITEM_MAGNET = 428,// trick house
+    ITEM_MIRACLE_SEED = 429,//petalburg
+    ITEM_NEVER_MELT_ICE = 430,//cold place
     ITEM_NEVERMELTICE = ITEM_NEVER_MELT_ICE, // Pre-Gen VI name
-    ITEM_BLACK_BELT = 431,
+    ITEM_BLACK_BELT = 431,// wild sawk throh
     ITEM_BLACKBELT = ITEM_BLACK_BELT, // Gen II name
-    ITEM_POISON_BARB = 432,
-    ITEM_SOFT_SAND = 433,
-    ITEM_SHARP_BEAK = 434,
-    ITEM_TWISTED_SPOON = 435,
+    ITEM_POISON_BARB = 432,// wilds
+    ITEM_SOFT_SAND = 433,// slateport
+    ITEM_SHARP_BEAK = 434,//137
+    ITEM_TWISTED_SPOON = 435,//136
     ITEM_TWISTEDSPOON = ITEM_TWISTED_SPOON, // ADDED PAI CANYON
-    ITEM_SILVER_POWDER = 436,
+    ITEM_SILVER_POWDER = 436,// trainer tower
     ITEM_SILVERPOWDER = ITEM_SILVER_POWDER, // Pre-Gen VI name
-    ITEM_HARD_STONE = 437,
-    ITEM_SPELL_TAG = 438,
-    ITEM_DRAGON_FANG = 439,
-    ITEM_BLACK_GLASSES = 440,
+    ITEM_HARD_STONE = 437,//about
+    ITEM_SPELL_TAG = 438,// mt pyre
+    ITEM_DRAGON_FANG = 439,// druddigon
+    ITEM_BLACK_GLASSES = 440,//rusturf
     ITEM_BLACKGLASSES = ITEM_BLACK_GLASSES, // Pre-Gen VI name
-    ITEM_METAL_COAT = 441,
+    ITEM_METAL_COAT = 441,//bronzor
 
     // Choice Items
-    ITEM_CHOICE_BAND = 442,
-    ITEM_CHOICE_SPECS = 443,
-    ITEM_CHOICE_SCARF = 444,
+    ITEM_CHOICE_BAND = 442,//replaced with scarf in trainer tower. Post
+    ITEM_CHOICE_SPECS = 443,//post, frontier shop
+    ITEM_CHOICE_SCARF = 444,//TRAINER TOWER as with emerald. 
 
     // Status Orbs
-    ITEM_FLAME_ORB = 445,
+    ITEM_FLAME_ORB = 445, // return/frustration guy
     ITEM_TOXIC_ORB = 446,
 
     // Weather Rocks
-    ITEM_DAMP_ROCK = 447,
+    ITEM_DAMP_ROCK = 447, // game corner
     ITEM_HEAT_ROCK = 448,
     ITEM_SMOOTH_ROCK = 449,
     ITEM_ICY_ROCK = 450,
-    CONSUMABLES_START = ITEM_ICY_ROCK,
+    CONSUMABLES_START = ITEM_ICY_ROCK,// the following items are available from trubbish
 
     // Terrain Seeds
     ITEM_ELECTRIC_SEED = 451,
@@ -582,48 +582,48 @@ enum __attribute__((packed)) Item
 
     // Misc. Held Items
 
-    ITEM_WHITE_HERB = 459,
-    ITEM_MENTAL_HERB = 460,
+    ITEM_WHITE_HERB = 459,// gifts and lavaridge shop
+    ITEM_MENTAL_HERB = 460,//gifts and lavaridge shop
     ITEM_POWER_HERB = 461,
 
 // Other Cheap Consumables
     ITEM_STICKY_BARB = 462,
     ITEM_SHED_SHELL = 463,
-     ITEM_AIR_BALLOON =  464,
+     ITEM_AIR_BALLOON =  464,// drifloon
      ITEM_EJECT_BUTTON = 465,
      ITEM_ADRENALINE_ORB = 466,
 
-    CONSUMABLES_LENGTH = (ITEM_ADRENALINE_ORB - CONSUMABLES_START),
+    CONSUMABLES_LENGTH = (ITEM_ADRENALINE_ORB - CONSUMABLES_START),// thus ends the trubbish items
 
 
-     ITEM_EJECT_PACK = 467, // pickup
+     ITEM_EJECT_PACK = 467, // trick master house
     ITEM_FOCUS_SASH = 468, //pickup
-    ITEM_RED_CARD = 469,//////////////////////
+    ITEM_RED_CARD = 469,//abandoned ship ticket boy
     ITEM_WEAKNESS_POLICY = 470, //pickup
-    ITEM_THROAT_SPRAY = 471, /////////////////////////////
+    ITEM_THROAT_SPRAY = 471, //postgame frontier shop
     ITEM_ROOM_SERVICE = 472,// HOUSE
      ITEM_BLUNDER_POLICY = 473, //pickup
 
-     ITEM_BRIGHT_POWDER = 474,
+     ITEM_BRIGHT_POWDER = 474,// TRAINER TOWER
      ITEM_BRIGHTPOWDER = ITEM_BRIGHT_POWDER, // Pre-Gen VI name
-     ITEM_EXP_SHARE = 475,
+     ITEM_EXP_SHARE = 475,// rustboro
      ITEM_EXP_ALL = ITEM_EXP_SHARE, // Gen I name
-     ITEM_QUICK_CLAW = 476,
-     ITEM_SOOTHE_BELL = 477,
+     ITEM_QUICK_CLAW = 476,// rustboro
+     ITEM_SOOTHE_BELL = 477,// as in emerald
 
-     ITEM_KINGS_ROCK = 478,
-     ITEM_AMULET_COIN = 479,
-     ITEM_CLEANSE_TAG = 480,
-     ITEM_SMOKE_BALL = 481,
-     ITEM_FOCUS_BAND = 482,
-     ITEM_LUCKY_EGG = 483,
+     ITEM_KINGS_ROCK = 478,// Pickup, mossdeep city
+     ITEM_AMULET_COIN = 479,// MUM // GENIES
+     ITEM_CLEANSE_TAG = 480,//pyre
+     ITEM_SMOKE_BALL = 481,//123
+     ITEM_FOCUS_BAND = 482,//low tide room
+     ITEM_LUCKY_EGG = 483,// absent.
      ITEM_SCOPE_LENS = 484, // Abandoned Ship
-     ITEM_LEFTOVERS = 485,
-     ITEM_SHELL_BELL = 486,
+     ITEM_LEFTOVERS = 485,// pickup, ss tidal
+     ITEM_SHELL_BELL = 486,// shoal cave
      ITEM_WIDE_LENS = 487, // Abandoned Ship
-     ITEM_MUSCLE_BAND = 488, // post? THILL
-     ITEM_WISE_GLASSES = 489, // post?
-     ITEM_EXPERT_BELT = 490, // post?
+     ITEM_MUSCLE_BAND = 488, // trainer hill
+     ITEM_WISE_GLASSES = 489, // Trainr hill
+     ITEM_EXPERT_BELT = 490, // trainer hill
      ITEM_LIGHT_CLAY = 491, // Meteor Falls
      ITEM_LIFE_ORB = 492,  // PAI CANYON
 
@@ -633,10 +633,10 @@ enum __attribute__((packed)) Item
      ITEM_LAGGING_TAIL = 496,  // post
      ITEM_DESTINY_KNOT = 497, // DEWBEACH
      ITEM_BLACK_SLUDGE = 498, // Fiery Path
-     ITEM_GRIP_CLAW = 499,  //POST?
+     ITEM_GRIP_CLAW = 499,  //Wild binacle
 
      ITEM_BIG_ROOT = 500, // 119
-     ITEM_RAZOR_CLAW = 501, // post?
+     ITEM_RAZOR_CLAW = 501, // clone of king's rock, ABSENT
      ITEM_RAZOR_FANG = 502, // SCOPE LENS ABANDONED SHIP
      ITEM_EVIOLITE = 503, // MT PYRE
      ITEM_FLOAT_STONE = 504, // granite xave B1F
@@ -645,7 +645,7 @@ enum __attribute__((packed)) Item
      ITEM_RING_TARGET = 506, // Rustboro
      ITEM_BINDING_BAND = 507, // 121
 
-     ITEM_ASSAULT_VEST = 508,  // vicrd??
+     ITEM_ASSAULT_VEST = 508,  //postgame, frontier shop
      ITEM_SAFETY_GOGGLES = 509, // NEW MAUV
 
      ITEM_TERRAIN_EXTENDER = 510, // 119 UP WATERFALL
@@ -859,10 +859,10 @@ enum __attribute__((packed)) Item
     ITEM_EXP_CHARM = 693,
 
     // Form-changing Key Items
-    ITEM_ROTOM_CATALOG = 694,
+    ITEM_ROTOM_CATALOG = 694,// LILYCOVE DEPT STORE
     ITEM_GRACIDEA = 695,
-    ITEM_REVEAL_GLASS = 696,
-    ITEM_DNA_SPLICERS = 697,
+    ITEM_REVEAL_GLASS = 696,//route 114 dive
+    ITEM_DNA_SPLICERS = 697,// absent
     ITEM_ZYGARDE_CUBE = 698,
     ITEM_PRISON_BOTTLE = 699,
     ITEM_N_SOLARIZER = 700,
@@ -942,11 +942,11 @@ enum __attribute__((packed)) Item
     // GEN IX ITEMS
     ITEM_ABILITY_SHIELD = 758, // PAI
     ITEM_CLEAR_AMULET = 759, //PAI hid
-    ITEM_PUNCHING_GLOVE = 760, ////////// goodness knows 
+    ITEM_PUNCHING_GLOVE = 760, //trick master
     ITEM_COVERT_CLOAK = 761, //  135
     ITEM_LOADED_DICE = 762, // GAME CORNER
     ITEM_AUSPICIOUS_ARMOR = 763, 
-    ITEM_BOOSTER_ENERGY = 764, //unused
+    ITEM_BOOSTER_ENERGY = 764, //wild helioptile
     ITEM_BIG_BAMBOO_SHOOT = 765,
     ITEM_GIMMIGHOUL_COIN = 766,
     ITEM_LEADERS_CREST = 767, // wild bisharp

@@ -229,6 +229,14 @@
       "elevation": 3,
       "item": "ITEM_DARK_GEM",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE_128_HEART_SCALE_3"
+    },
+    {
+      "type": "hidden_item",
+      "x": 10,
+      "y": 24,
+      "elevation": 0,
+      "item": "ITEM_BLUNDER_POLICY",
+      "flag": "FLAG_BLUNDER_POLICY"
     }
   ]
 }

@@ -1815,8 +1815,10 @@ MauvilleCity_GameCorner_Text_RouletteTablesDifferentRates:
 	.string "pick a table.$"
 
 MauvilleCity_GameCorner_Text_EasyToLoseTrackOfTime:
-	.string "It's easy to lose track of time in here. \n"
-	.string "I should get back to work.$"
+	.string "I keep trying for that rare STEEL-\n"
+	.string "type POKéMON in the GACHA.\p"
+	.string "Oof… Maybe it's more common in the\n"
+	.string "more expensive machines?$"
 
 MauvilleCity_GameCorner_Text_CoinsAreNeededToPlay:
 	.string "COINS are needed to play here\n"

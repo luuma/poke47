@@ -2487,7 +2487,7 @@ static enum Species GetBerryPestSpecies(u8 berryId)
             return SPECIES_CUTIEFLY;
             break;
         case BERRY_COLOR_PINK:
-            return SPECIES_CHERRIM;
+            return SPECIES_CHERUBI;
             break;
     }
 #endif

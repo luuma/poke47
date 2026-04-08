@@ -62,6 +62,19 @@ SINGLE_BATTLE_TEST("Lightbloom SUNlight")
 }
 
 
+SINGLE_BATTLE_TEST("simiSSEAR AURA wheel fire")
+{
+    GIVEN {
+        OPPONENT(SPECIES_FOONGUS);
+        PLAYER(SPECIES_SIMISEAR);
+    } WHEN {
+        TURN { MOVE(player, MOVE_AURA_WHEEL); MOVE(opponent, MOVE_CELEBRATE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_AURA_WHEEL, player);
+        MESSAGE("It's super effective!");
+    }
+}
+
 SINGLE_BATTLE_TEST("Mood Crush replaces target's ability with dEFEATIST")
 {
     GIVEN {
@@ -721,4 +734,3 @@ SINGLE_BATTLE_TEST("naval blockade     locks stat changes, fainting .")
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
     }
 }
-

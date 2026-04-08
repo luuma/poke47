@@ -25,26 +25,26 @@ static const u16 sFrontierExchangeCorner_Decor2[] =
 
 static const u16 sFrontierExchangeCorner_Vitamins[] =
 {
-    ITEM_PROTEIN,
-    ITEM_CALCIUM,
-    ITEM_IRON,
-    ITEM_ZINC,
-    ITEM_CARBOS,
-    ITEM_HP_UP,
+    ITEM_POWER_WEIGHT,
+    ITEM_POWER_BRACER,
+    ITEM_POWER_BELT,
+    ITEM_POWER_LENS,
+    ITEM_POWER_BAND,
+    ITEM_POWER_ANKLET,
     ITEM_LIST_END
 };
 
 static const u16 sFrontierExchangeCorner_HoldItems[] =
 {
     ITEM_LEFTOVERS,
-    ITEM_WHITE_HERB,
-    ITEM_QUICK_CLAW,
-    ITEM_MENTAL_HERB,
+    ITEM_SILVER_POWDER,
+    ITEM_SPANDEX_FLARES,
+    ITEM_THROAT_SPRAY,
     ITEM_BRIGHT_POWDER,
     ITEM_CHOICE_BAND,
+    ITEM_CHOICE_SPECS,
+    ITEM_ASSAULT_VEST,
     ITEM_KINGS_ROCK,
-    ITEM_FOCUS_BAND,
-    ITEM_SCOPE_LENS,
     ITEM_LIST_END
 };
 

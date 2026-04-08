@@ -231,27 +231,27 @@ BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin::
 	end
 
 BattleFrontier_ExchangeServiceCorner_EventScript_Protein::
-	setitemandprice ITEM_PROTEIN, 1
+	setitemandprice ITEM_POWER_WEIGHT, 1
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
 
 BattleFrontier_ExchangeServiceCorner_EventScript_Calcium::
-	setitemandprice ITEM_CALCIUM, 1
+	setitemandprice ITEM_POWER_BRACER, 1
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
 
 BattleFrontier_ExchangeServiceCorner_EventScript_Iron::
-	setitemandprice ITEM_IRON, 1
+	setitemandprice ITEM_POWER_BELT, 1
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
 
 BattleFrontier_ExchangeServiceCorner_EventScript_Zinc::
-	setitemandprice ITEM_ZINC, 1
+	setitemandprice ITEM_POWER_LENS, 1
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
 
 BattleFrontier_ExchangeServiceCorner_EventScript_Carbos::
-	setitemandprice ITEM_CARBOS, 1
+	setitemandprice ITEM_POWER_BAND, 1
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
 
 BattleFrontier_ExchangeServiceCorner_EventScript_HPUp::
-	setitemandprice ITEM_HP_UP, 1
+	setitemandprice ITEM_POWER_ANKLET, 1
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
 
 
@@ -295,15 +295,15 @@ BattleFrontier_ExchangeServiceCorner_EventScript_Leftovers::
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_WhiteHerb::
-	setitemandprice ITEM_WHITE_HERB, 6
+	setitemandprice ITEM_SILVER_POWDER, 6
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_QuickClaw::
-	setitemandprice ITEM_QUICK_CLAW, 6
+	setitemandprice ITEM_SPANDEX_FLARES, 6
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_MentalHerb::
-	setitemandprice ITEM_MENTAL_HERB, 6
+	setitemandprice ITEM_THROAT_SPRAY, 6
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_Brightpowder::
@@ -315,15 +315,15 @@ BattleFrontier_ExchangeServiceCorner_EventScript_ChoiceBand::
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_KingsRock::
-	setitemandprice ITEM_KINGS_ROCK, 8
+	setitemandprice ITEM_CHOICE_SPECS, 8
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_FocusBand::
-	setitemandprice ITEM_FOCUS_BAND, 8
+	setitemandprice ITEM_ASSAULT_VEST, 8
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_ScopeLens::
-	setitemandprice ITEM_SCOPE_LENS, 8
+	setitemandprice ITEM_KINGS_ROCK, 8
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseHoldItem
 
 BattleFrontier_ExchangeServiceCorner_EventScript_Man::
