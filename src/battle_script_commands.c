@@ -1649,7 +1649,10 @@ static void DoublesHPBarReduction(void)
     for (enum BattlerId battlerDef = 0; battlerDef < gBattlersCount; battlerDef++)
     {
         if (IsBattlerUnaffectedByMove(battlerDef)
-         || gBattleStruct->moveDamage[battlerDef] == 0)
+         || gBattleStruct->moveDamage[battlerDef] == 0
+         || DoesSubstituteBlockMove(gBattlerAttacker, battlerDef, gCurrentMove)
+         || DoesDisguiseBlockMove(battlerDef, gCurrentMove)
+         || DoesIceFaceBlockMove(battlerDef, gCurrentMove))
             continue;
 
         s32 dmgUpdate = min(gBattleStruct->moveDamage[battlerDef], 10000);
@@ -1687,8 +1690,9 @@ static void Cmd_healthbarupdate(void)
         {
             PrepareStringBattle(STRINGID_SUBSTITUTEDAMAGED, battler);
         }
-        else if (!IsBattlerUnaffectedByMove(gBattlerTarget)
-              && !DoesDisguiseBlockMove(battler, gCurrentMove))
+        else if (!IsBattlerUnaffectedByMove(battler)
+              && !DoesDisguiseBlockMove(battler, gCurrentMove)
+              && !DoesIceFaceBlockMove(battler, gCurrentMove))
         {
             s32 damage = min(gBattleStruct->moveDamage[battler], 10000);
             BtlController_EmitHealthBarUpdate(battler, B_COMM_TO_CONTROLLER, damage);
@@ -13514,6 +13518,13 @@ void BS_JumpIfAbilityCantBeReactivated(void)
     NATIVE_ARGS(u8 battler, const u8 *jumpInstr);
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
     enum Ability ability = gBattleMons[battler].ability;
+
+    // TODO: Already fixed on upcoming. Remove once merged
+    if (!IsBattlerAlive(battler))
+    {
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+        return;
+    }
 
     if (GetBattlerHoldEffectIgnoreAbility(battler) == HOLD_EFFECT_ABILITY_SHIELD)
     {
