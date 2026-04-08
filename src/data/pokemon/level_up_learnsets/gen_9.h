@@ -22368,11 +22368,12 @@ static const struct LevelUpMove sSandygastLevelUpLearnset[] = {
     LEVEL_UP_MOVE(25, MOVE_SCORCHING_SANDS), // flann. Phantom force does nowt to the team, same for norman.
     LEVEL_UP_MOVE(28, MOVE_HYPNOSIS),
     LEVEL_UP_MOVE(31, MOVE_NASTY_PLOT),
-    LEVEL_UP_MOVE(34, MOVE_GIGA_DRAIN),//tm shadow ball and giga drain are both here anyway
-    LEVEL_UP_MOVE(38, MOVE_STEALTH_ROCK),// Nice to have
-    LEVEL_UP_MOVE(41, MOVE_SHADOW_BALL),// another TM that was also just obtained. lol
-    LEVEL_UP_MOVE(44, MOVE_EARTH_POWER),
-    LEVEL_UP_MOVE(47, MOVE_IRON_DEFENSE),
+    LEVEL_UP_MOVE(34, MOVE_OBSTRUCT),//tm shadow ball and giga drain are both here anyway
+    LEVEL_UP_MOVE(38, MOVE_GIGA_DRAIN),// I could give earth power sooner but scorching sands is more thematic to sandygast.
+    LEVEL_UP_MOVE(41, MOVE_EARTH_POWER),
+    LEVEL_UP_MOVE(44, MOVE_SHADOW_BALL),
+    LEVEL_UP_MOVE(47, MOVE_STEALTH_ROCK),
+    LEVEL_UP_MOVE(49, MOVE_DESTINY_BOND),
     LEVEL_UP_END
 };
 
@@ -22391,12 +22392,12 @@ static const struct LevelUpMove sPalossandLevelUpLearnset[] = {
     LEVEL_UP_MOVE(25, MOVE_SCORCHING_SANDS), // flann. Phantom force does nowt to the team, same for norman.
     LEVEL_UP_MOVE(28, MOVE_HYPNOSIS),
     LEVEL_UP_MOVE(31, MOVE_NASTY_PLOT),
-    LEVEL_UP_MOVE(34, MOVE_GIGA_DRAIN),//tm shadow ball and giga drain are both here anyway
-    LEVEL_UP_MOVE(38, MOVE_STEALTH_ROCK),
-    LEVEL_UP_MOVE(41, MOVE_SHADOW_BALL),// another TM that was also just obtained. lol
-    LEVEL_UP_MOVE(46, MOVE_EARTH_POWER),
+    LEVEL_UP_MOVE(34, MOVE_OBSTRUCT),//tm shadow ball and giga drain are both here anyway
+    LEVEL_UP_MOVE(38, MOVE_GIGA_DRAIN),
+    LEVEL_UP_MOVE(41, MOVE_EARTH_POWER),
+    LEVEL_UP_MOVE(46, MOVE_SHADOW_BALL),
     LEVEL_UP_MOVE(51, MOVE_STEALTH_ROCK),
-    LEVEL_UP_MOVE(56, MOVE_BASTION_WALLS),
+    LEVEL_UP_MOVE(56, MOVE_DESTINY_BOND),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_SANDYGAST
