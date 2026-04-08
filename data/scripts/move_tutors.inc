@@ -85,7 +85,7 @@ LavaridgeTown_House_EventScript_MimicTutor::
 	//call MoveTutor_EventScript_CanOnlyBeLearnedOnce
 	//goto_if_eq VAR_RESULT, NO, MoveTutor_EventScript_MimicDeclined
 	msgbox MoveTutor_Text_MimicWhichMon, MSGBOX_DEFAULT
-	setvar VAR_0x8005, MOVE_MIMIC
+	setvar VAR_0x8005, MOVE_COPYCAT
 	call MoveTutor_EventScript_OpenPartyMenu
 	//goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_MimicDeclined
 	setflag FLAG_MOVE_TUTOR_TAUGHT_MIMIC
