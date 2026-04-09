@@ -82,6 +82,7 @@ static const u8 *const sFrontierExchangeCorner_VitaminsDescriptions[] =
     BattleFrontier_ExchangeServiceCorner_Text_ZincDesc,
     BattleFrontier_ExchangeServiceCorner_Text_CarbosDesc,
     BattleFrontier_ExchangeServiceCorner_Text_HPUpDesc,
+    BattleFrontier_ExchangeServiceCorner_Text_LuckyEggDesc,
     gText_Exit
 };
 

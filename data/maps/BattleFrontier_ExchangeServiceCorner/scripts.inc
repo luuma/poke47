@@ -256,7 +256,7 @@ BattleFrontier_ExchangeServiceCorner_EventScript_HPUp::
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
 
 BattleFrontier_ExchangeServiceCorner_EventScript_LuckyEgg::
-	setitemandprice ITEM_LUCKY_EGG, 1
+	setitemandprice ITEM_LUCKY_EGG, 4
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
 
 
@@ -470,60 +470,67 @@ BattleFrontier_ExchangeServiceCorner_Text_LargeDollDesc::
 	.string "Place it on a mat or a desk.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ProteinDesc::
-	.string "Raises the stat ATTACK of one\n"
+	.string "Raises the ATTACK growth of one\n"
 	.string "POKéMON.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_CalciumDesc::
-	.string "Raises the stat SP. ATK of one\n"
+	.string "Raises the SP. ATK growth of one\n"
 	.string "POKéMON.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_IronDesc::
-	.string "Raises the stat DEFENSE of one\n"
+	.string "Raises the DEFENSE growth of one\n"
 	.string "POKéMON.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ZincDesc::
-	.string "Raises the stat SP. DEF of one\n"
+	.string "Raises the SP. DEF growth of one\n"
 	.string "POKéMON.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_CarbosDesc::
-	.string "Raises the stat SPEED of one\n"
+	.string "Raises the SPEED growth of one\n"
 	.string "POKéMON.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_HPUpDesc::
-	.string "Raises the HP of one POKéMON.$"
+	.string "Raises the HP growth of one\n"
+	.string "POKéMON.$"
+
+BattleFrontier_ExchangeServiceCorner_Text_LuckyEggDesc::
+	.string "Raises the EXP growth of one\n"
+	.string "POKéMON.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_LeftoversDesc::
 	.string "A hold item that gradually restores\n"
 	.string "HP in battle.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_WhiteHerbDesc::
-	.string "A hold item that restores any\n"
-	.string "lowered stat.$"
+	.string "A hold item that powers up BUG-\n"
+	.string "type attacks and lures BUG-types.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_QuickClawDesc::
-	.string "A hold item that occasionally allows\n"
-	.string "the first strike.$"
+	.string "A hold item that sets Electric\n"
+	.string "Terrain when using a dance move.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_MentalHerbDesc::
-	.string "A hold item that snaps POKéMON out\n"
-	.string "of infatuation.$"
+	.string "A hold item that boosts SP. ATK\n"
+	.string "when using a sound move.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_BrightpowderDesc::
 	.string "A hold item that casts a glare to\n"
 	.string "reduce accuracy.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_ChoiceBandDesc::
-	.string "Raises a move's power, but permits\n"
-	.string "only that move.$"
+	.string "Raises a move's ATTACK power, but\n"
+	.string "permits only that move.$"
 
 BattleFrontier_ExchangeServiceCorner_Text_KingsRockDesc::
+	.string "Raises a move's SP. ATK power, but\n"
+	.string "permits only that move.$"
+
+BattleFrontier_ExchangeServiceCorner_Text_FocusBandDesc::
+	.string "A hold item that blocks use of\n"
+	.string "STATUS moves but boosts SP.DEF.$"
+
+BattleFrontier_ExchangeServiceCorner_Text_ScopeLensDesc::
 	.string "A hold item that may cause flinching\n"
 	.string "when the foe is hit.$"
 
-BattleFrontier_ExchangeServiceCorner_Text_FocusBandDesc::
-	.string "A hold item that occasionally\n"
-	.string "prevents fainting.$"
 
-BattleFrontier_ExchangeServiceCorner_Text_ScopeLensDesc::
-	.string "A hold item that raises the\n"
-	.string "critical-hit rate.$"
