@@ -219,7 +219,8 @@ BattleFrontier_ExchangeServiceCorner_EventScript_ChooseVitamin::
 	case 3, BattleFrontier_ExchangeServiceCorner_EventScript_Zinc
 	case 4, BattleFrontier_ExchangeServiceCorner_EventScript_Carbos
 	case 5, BattleFrontier_ExchangeServiceCorner_EventScript_HPUp
-	case 6, BattleFrontier_ExchangeServiceCorner_EventScript_ClerkGoodbye
+	case 6, BattleFrontier_ExchangeServiceCorner_EventScript_LuckyEgg
+	case 7, BattleFrontier_ExchangeServiceCorner_EventScript_ClerkGoodbye
 	case MULTI_B_PRESSED, BattleFrontier_ExchangeServiceCorner_EventScript_ClerkGoodbye
 	end
 
@@ -253,6 +254,11 @@ BattleFrontier_ExchangeServiceCorner_EventScript_Carbos::
 BattleFrontier_ExchangeServiceCorner_EventScript_HPUp::
 	setitemandprice ITEM_POWER_ANKLET, 1
 	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
+
+BattleFrontier_ExchangeServiceCorner_EventScript_LuckyEgg::
+	setitemandprice ITEM_LUCKY_EGG, 1
+	goto BattleFrontier_ExchangeServiceCorner_EventScript_PurchaseVitamin
+
 
 
 BattleFrontier_ExchangeServiceCorner_EventScript_HoldItemClerk::

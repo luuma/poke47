@@ -112,13 +112,20 @@ Route129_EventScript_beginchallenge2::
 Route129_EventScript_beginchallenge::
 	specialvar VAR_RESULT, GetPlayerAvatarBike
 	goto_if_ne VAR_RESULT, 2, Route129_EventScript_PlayerRidingAcroBike
-	msgbox Route129_Text_RatedForNumberOfCollisions, MSGBOX_YESNO
+	msgbox Route129_Text_RatedForNumberOfCollisions, MSGBOX_DEFAULT
+	call_if_set FLAG_BEAT_RECORD Route129_EventScript_brorecord
+	msgbox Route129_Text_RatedForNumberOfCollisions3, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route129_EventScript_oklame
 	msgbox Route129_Text_321GO, MSGBOX_DEFAULT
 	special Special_BeginCyclingRoadChallenge
 	setvar VAR_129_CYCLE_STATE, 1
 	releaseall
 	end
+
+Route129_EventScript_brorecord::
+	msgbox Route129_Text_RatedForNumberOfCollisions2, MSGBOX_DEFAULT
+	return
+
 
 Route129_EventScript_PlayerRidingAcroBike::
 	msgbox Route129_Text_AcroBikesDoNotQualify, MSGBOX_DEFAULT
@@ -165,7 +172,7 @@ Route129_Text_AlwaysAimHigher:
 
 Route129_Text_AcroBikesDoNotQualify:
 	.string "Hmm. Looks like you're not on a\n"
-	.string "MACH BIKE. MACH BIKES are cool.\p"
+	.string "MACH BIKE… MACH BIKES are cool.\p"
 	.string "My big bro practices by going round\n"
 	.string "2 LAPS of this course every day.$"
 
@@ -173,13 +180,14 @@ Route129_Text_RatedForNumberOfCollisions:
 	.string "Hmm. Looks like you're on a MACH BIKE.\n"
 	.string "MACH BIKES are cool.\p"
 	.string "I bet if you did 2 LAPS of this course,\n"
-	.string "you might beat my big bro's record.\p"
+	.string "you might beat my big bro's record…$"
+
 Route129_Text_RatedForNumberOfCollisions2:
 	.string "If you can beat his record on time\n"
 	.string "and collisions, I'll give you something\l"
 	.string "that's basically priceless.\p"
 Route129_Text_RatedForNumberOfCollisions3:
-	.string "...\n"
+	.string "…\n"
 	.string "So?? Ready??? Or what.$"
 
 
@@ -195,12 +203,14 @@ Route129_EventScript_CyclingChallengeEnd::
 Route129_EventScript_CyclingChallengeResults::
 	special Finish129RoadChallenge
 	msgbox Route110_Text_CyclingChallengeResultSummary, MSGBOX_DEFAULT
+	buffernumberstring STR_VAR_1, VAR_RESULT
+	msgbox Route129_Text_OUTOF10, MSGBOX_DEFAULT
 	switch VAR_RESULT
 	case 10, Route129_EventScript_ChallengeReactionBest
-	case 9, Route129_EventScript_ChallengeReactionGood
-	case 8, Route129_EventScript_ChallengeReactionGood
+	case 9, Route129_EventScript_ChallengeReactionGood2
+	case 8, Route129_EventScript_ChallengeReactionGood2
 	case 7, Route129_EventScript_ChallengeReactionGood
-	case 6, Route129_EventScript_ChallengeReactionOk
+	case 6, Route129_EventScript_ChallengeReactionGood
 	case 5, Route129_EventScript_ChallengeReactionOk
 	case 4, Route129_EventScript_ChallengeReactionOk
 	case 3, Route129_EventScript_ChallengeReactionOk
@@ -209,8 +219,34 @@ Route129_EventScript_CyclingChallengeResults::
 	case 0, Route129_EventScript_ChallengeReactionWorst
 	end
 
+Route129_EventScript_givebiketicket::
+	msgbox Route129_text_waitnoway, MSGBOX_DEFAULT
+	giveitem ITEM_BIKE_VOUCHER
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	setflag FLAG_BEAT_RECORD
+	return
+
+Route129_Text_OUTOF10:
+	.string "I'd give that like a {STR_VAR_1} out of 10.$"
+
+Route129_text_waitnoway:
+	.string "Either way aim higher. Try… \n"
+	.string "Wait wait wait wait wait wait wait\l"
+	.string "You DID IT!\p"
+	.string "You beat big bro's record straight up!\p"
+	.string "Oh! Your prize! It's a BIKE VOUCHER.\n"
+	.string "It's yours! It's yours! Take it!$"
+
+
 Route129_EventScript_ChallengeReactionBest::
 	msgbox Route110_Text_ChallengeReactionBest, MSGBOX_DEFAULT
+	call_if_unset FLAG_BEAT_RECORD, Route129_EventScript_givebiketicket
+	goto Route129_EventScript_EndChallenge
+	end
+
+Route129_EventScript_ChallengeReactionGood2::
+	msgbox Route110_Text_ChallengeReactionGood, MSGBOX_DEFAULT
+	call_if_unset FLAG_BEAT_RECORD, Route129_EventScript_givebiketicket
 	goto Route129_EventScript_EndChallenge
 	end
 

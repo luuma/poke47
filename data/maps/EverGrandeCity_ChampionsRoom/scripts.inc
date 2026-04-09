@@ -80,8 +80,23 @@ EverGrandeCity_ChampionsRoom_EventScript_MayAdvice::
 	waitmovement 0
 	call EverGrandeCity_ChampionsRoom_EventScript_RivalLookBackAndForth
 	msgbox EverGrandeCity_ChampionsRoom_Text_MayItsAlreadyOver, MSGBOX_DEFAULT
+	checkitem ITEM_EXP_CHARM
+	call_if_eq VAR_RESULT, FALSE, EverGrandeCity_HallOfFame_EventScript_giftMay
 	goto EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF
 	end
+
+
+EverGrandeCity_HallOfFame_EventScript_giftMay::
+	msgbox EverGrandeCity_ChampionsRoom_Text_MayCharmGift, MSGBOX_DEFAULT
+	giveitem ITEM_EXP_CHARM
+	return
+
+EverGrandeCity_ChampionsRoom_Text_MayCharmGift:
+	.string "MAY: Wow, you battle fast!\n"
+	.string "No surprise there, {PLAYER}{KUN}\p"
+	.string "Hey, I got you something.\n"
+ 	.string "Don't forget me now you're famous!$"
+
 
 EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice::
 	msgbox EverGrandeCity_ChampionsRoom_Text_BrendanAdvice, MSGBOX_DEFAULT
@@ -93,8 +108,22 @@ EverGrandeCity_ChampionsRoom_EventScript_BrendanAdvice::
 	waitmovement 0
 	call EverGrandeCity_ChampionsRoom_EventScript_RivalLookBackAndForth
 	msgbox EverGrandeCity_ChampionsRoom_Text_BrendanYouveWon, MSGBOX_DEFAULT
+	checkitem ITEM_EXP_CHARM
+	call_if_eq VAR_RESULT, FALSE, EverGrandeCity_HallOfFame_EventScript_giftBrendan
 	goto EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF
 	end
+
+EverGrandeCity_HallOfFame_EventScript_giftBrendan::
+	msgbox EverGrandeCity_ChampionsRoom_Text_BrendanAdvice, MSGBOX_DEFAULT
+	giveitem ITEM_EXP_CHARM
+	return
+
+EverGrandeCity_ChampionsRoom_Text_BrendanCharmGift:
+	.string "BRENDAN: I … … … … \n"
+	.string "I got you this to help, so you\l"
+ 	.string "may as well have it.\p"
+ 	.string "… … Whaaaat! Not like that!\n"
+ 	.string "Hey, it's nothing, okay???$"
 
 EverGrandeCity_ChampionsRoom_EventScript_BirchArrivesExitForHoF::
 	closemessage
@@ -330,6 +359,9 @@ EverGrandeCity_ChampionsRoom_Text_MayCongratulations:
 	.string "That's the rule!\p"
 	.string "{PLAYER}{KUN}!\n"
 	.string "Honestly, congratulations!$"
+
+
+
 
 EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations:
 	.string "BRENDAN: Whaaaat?! … … … … …\n"

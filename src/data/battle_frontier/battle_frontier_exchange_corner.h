@@ -31,6 +31,7 @@ static const u16 sFrontierExchangeCorner_Vitamins[] =
     ITEM_POWER_LENS,
     ITEM_POWER_BAND,
     ITEM_POWER_ANKLET,
+    ITEM_LUCKY_EGG,
     ITEM_LIST_END
 };
 

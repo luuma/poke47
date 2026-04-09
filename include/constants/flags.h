@@ -754,9 +754,9 @@
 #define FLAG_THROAT_SPRAY  0x2B3 ////////////// Unused Flag, POSTGAME item
 #define FLAG_BLUNDER_POLICY  0x2B4 ///////// Unused Flag, pickup item.
 #define FLAG_CHOICE_SCARF  0x2B5 //USED 129. nugget.
-#define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
-#define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
-#define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag
+#define FLAG_SECOND_BIKE  0x2B6 // 
+#define FLAG_BEAT_RECORD 0x2B7 // give biketicket
+#define flag_r1355 0x2B8 // rocky helmet
 #define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
 #define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
 #define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag

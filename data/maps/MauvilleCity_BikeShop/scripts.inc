@@ -4,6 +4,7 @@ MauvilleCity_BikeShop_MapScripts::
 MauvilleCity_BikeShop_EventScript_Rydel::
 	lock
 	faceplayer
+	goto_if_set FLAG_SECOND_BIKE, MauvilleCity_BikeShop_EventScript_Enjoybothbikes
 	goto_if_set FLAG_RECEIVED_BIKE, MauvilleCity_BikeShop_EventScript_AskSwitchBikes
 	goto_if_set FLAG_DECLINED_BIKE, MauvilleCity_BikeShop_EventScript_SkipGreeting
 	msgbox MauvilleCity_BikeShop_Text_RydelGreeting, MSGBOX_DEFAULT
@@ -11,6 +12,50 @@ MauvilleCity_BikeShop_EventScript_Rydel::
 	goto_if_eq VAR_RESULT, YES, MauvilleCity_BikeShop_EventScript_YesFar
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_BikeShop_EventScript_NotFar
 	end
+
+MauvilleCity_BikeShop_EventScript_holyfuck::
+	msgbox MauvilleCity_BikeShop_Text_canigiveyousecondbike, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, MauvilleCity_BikeShop_EventScript_AskSwitchBikes2
+	checkitem ITEM_ACRO_BIKE
+	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_BikeShop_EventScript_givemach
+	giveitem ITEM_ACRO_BIKE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	removeitem ITEM_BIKE_VOUCHER
+	msgbox MauvilleCity_BikeShop_Text_handeditover, MSGBOX_DEFAULT
+	setflag FLAG_SECOND_BIKE
+MauvilleCity_BikeShop_EventScript_Enjoybothbikes::
+	msgbox MauvilleCity_BikeShop_Text_Enjoybothbikes, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_BikeShop_EventScript_givemach::
+	giveitem ITEM_MACH_BIKE
+	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
+	removeitem ITEM_BIKE_VOUCHER
+	msgbox MauvilleCity_BikeShop_Text_handeditover, MSGBOX_DEFAULT
+	setflag FLAG_SECOND_BIKE
+	msgbox MauvilleCity_BikeShop_Text_Enjoybothbikes, MSGBOX_DEFAULT
+	release
+	end
+
+MauvilleCity_BikeShop_Text_canigiveyousecondbike:
+	.string "RYDEL: Oh? Is that a… A BIKE VOUCHER?\n"
+	.string "You're kidding me\p"
+	.string "A kid gave you it? These things are…\n"
+	.string "They're basically priceless!\p"
+	.string "Hey, I'll tell you what. Would you\n"
+	.string "maybe trade this for a second bike?$"
+
+MauvilleCity_BikeShop_Text_handeditover:
+	.string "{PLAYER} handed the BIKE TICKET over\n"
+	.string "in exchange.$"
+
+
+MauvilleCity_BikeShop_Text_Enjoybothbikes:
+	.string "RYDEL: You seem pleased with your bikes!\n"
+	.string "Don't go riding both at once! Hah!$"
+
+
 
 MauvilleCity_BikeShop_EventScript_SkipGreeting::
 	msgbox MauvilleCity_BikeShop_Text_DidYouComeFromFarAway, MSGBOX_YESNO
@@ -59,6 +104,9 @@ MauvilleCity_BikeShop_EventScript_ComeBackToSwitchBikes::
 	end
 
 MauvilleCity_BikeShop_EventScript_AskSwitchBikes::
+	checkitem ITEM_BIKE_VOUCHER
+	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_BikeShop_EventScript_holyfuck
+MauvilleCity_BikeShop_EventScript_AskSwitchBikes2::
 	msgbox MauvilleCity_BikeShop_Text_WantToSwitchBikes, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, MauvilleCity_BikeShop_EventScript_SwitchBikes
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_BikeShop_EventScript_KeepBike

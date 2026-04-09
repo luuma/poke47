@@ -311,13 +311,13 @@ static void Determine129RoadResults(u32 numFrames, u8 numBikeCollisions)
     }
 
     result = 0;
-    if (numBikeCollisions < 5)
+    if (numBikeCollisions < 15)
         result = 5;
-    else if (numBikeCollisions < 10)
+    else if (numBikeCollisions < 20)
         result = 4;
-    else if (numBikeCollisions < 25)
+    else if (numBikeCollisions < 28)
         result = 3;
-    else if (numBikeCollisions < 35)
+    else if (numBikeCollisions < 33)
         result = 2;
     else if (numBikeCollisions < 100)
         result = 1;
@@ -328,7 +328,7 @@ static void Determine129RoadResults(u32 numFrames, u8 numBikeCollisions)
         result += 4;
     else if (numFrames / 60 <= 40)
         result += 3;
-    else if (numFrames / 60 <= 50)
+    else if (numFrames / 60 <= 45)
         result += 2;
     else if (numFrames / 60 < 60)
         result += 1;
@@ -2481,7 +2481,7 @@ void ShowScrollableMultichoice(void)
         break;
     case SCROLL_MULTI_BF_EXCHANGE_CORNER_VITAMIN_VENDOR:
         task->tMaxItemsOnScreen = MAX_SCROLL_MULTI_ON_SCREEN;
-        task->tNumItems = 7;
+        task->tNumItems = 8;
         task->tLeft = 14;
         task->tTop = 1;
         task->tWidth = 15;
@@ -2643,6 +2643,7 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
         COMPOUND_STRING("POWER LENS{CLEAR_TO 0x64}1BP"),
         COMPOUND_STRING("POWER BAND{CLEAR_TO 0x64}1BP"),
         COMPOUND_STRING("POWER ANKLET{CLEAR_TO 0x64}1BP"),
+        COMPOUND_STRING("LUCKY EGG{CLEAR_TO 0x64}1BP"),
         gText_Exit
     },
     [SCROLL_MULTI_BF_EXCHANGE_CORNER_HOLD_ITEM_VENDOR] =
