@@ -487,7 +487,8 @@
     "OldHouseC1_5",
     "OldHouseRoom1",
     "OldHouseRoom1_2",
-    "FourthSealed"
+    "FourthSealed",
+    "Route128_Cavern"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

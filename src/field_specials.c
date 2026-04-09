@@ -284,6 +284,58 @@ static void DetermineCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
     gSpecialVar_Result = result;
 }
 
+static void Determine129RoadResults(u32 numFrames, u8 numBikeCollisions)
+{
+    u8 result;
+
+    if (numBikeCollisions < 100)
+    {
+        ConvertIntToDecimalStringN(gStringVar1, numBikeCollisions, STR_CONV_MODE_LEFT_ALIGN, 2);
+        StringAppend(gStringVar1, sText_SpaceTimes);
+    }
+    else
+    {
+        StringCopy(gStringVar1, sText_99TimesPlus);
+    }
+
+    if (numFrames < 3600)
+    {
+        ConvertIntToDecimalStringN(gStringVar2, numFrames / 60, STR_CONV_MODE_RIGHT_ALIGN, 2);
+        gStringVar2[2] = CHAR_DEC_SEPARATOR;
+        ConvertIntToDecimalStringN(&gStringVar2[3], ((numFrames % 60) * 100) / 60, STR_CONV_MODE_LEADING_ZEROS, 2);
+        StringAppend(gStringVar2, sText_SpaceSeconds);
+    }
+    else
+    {
+        StringCopy(gStringVar2, sText_1MinutePlus);
+    }
+
+    result = 0;
+    if (numBikeCollisions < 5)
+        result = 5;
+    else if (numBikeCollisions < 10)
+        result = 4;
+    else if (numBikeCollisions < 25)
+        result = 3;
+    else if (numBikeCollisions < 35)
+        result = 2;
+    else if (numBikeCollisions < 100)
+        result = 1;
+
+    if (numFrames / 60 <= 30)
+        result += 5;
+    else if (numFrames / 60 <= 35)
+        result += 4;
+    else if (numFrames / 60 <= 40)
+        result += 3;
+    else if (numFrames / 60 <= 50)
+        result += 2;
+    else if (numFrames / 60 < 60)
+        result += 1;
+
+    gSpecialVar_Result = result;
+}
+
 void FinishCyclingRoadChallenge(void)
 {
     const u32 numFrames = gMain.vblankCounter1 - sBikeCyclingTimer;
@@ -291,6 +343,16 @@ void FinishCyclingRoadChallenge(void)
     DetermineCyclingRoadResults(numFrames, gBikeCollisions);
     RecordCyclingRoadResults(numFrames, gBikeCollisions);
 }
+
+void Finish129RoadChallenge(void)
+{
+    const u32 numFrames = gMain.vblankCounter1 - sBikeCyclingTimer;
+
+    Determine129RoadResults(numFrames, gBikeCollisions);
+    //RecordCyclingRoadResults(numFrames, gBikeCollisions);
+}
+
+
 
 static void RecordCyclingRoadResults(u32 numFrames, u8 numBikeCollisions)
 {

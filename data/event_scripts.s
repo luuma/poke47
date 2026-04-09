@@ -1775,3 +1775,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Indoor_route_136_fisherman/scripts.inc"
 
 	.include "data/maps/PetalburgCity_PokemonCenter_1F_2/scripts.inc"
+
+	.include "data/maps/Route128_Cavern/scripts.inc"

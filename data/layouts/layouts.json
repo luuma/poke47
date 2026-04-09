@@ -9708,6 +9708,16 @@
       "border_height": 2,
       "border_width": 2,
       "layout_version": "frlg"
+    },
+    {
+      "id": "LAYOUT_ROUTE128_CAVERN",
+      "name": "Route128_Cavern_Layout",
+      "width": 75,
+      "height": 14,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/Route128_Cavern/border.bin",
+      "blockdata_filepath": "data/layouts/Route128_Cavern/map.bin"
     }
   ]
 }

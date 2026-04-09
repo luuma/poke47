@@ -5005,7 +5005,7 @@
               },
               {
                 "min_level": 34,
-                "max_level": 37,
+                "max_level": 36,
                 "species": "SPECIES_SANDYGAST"
               },
               {
@@ -37817,6 +37817,75 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_STUNFISK"
+              }
+            ]
+          }
+        },
+        {
+          "map": "MAP_ROUTE128_CAVERN",
+          "base_label": "gRoute128_Cavern",
+          "land_mons": {
+            "encounter_rate": 0,
+            "mons": [
+              {
+                "min_level": 34,
+                "max_level": 34,
+                "species": "SPECIES_NOIBAT"
+              },
+              {
+                "min_level": 34,
+                "max_level": 34,
+                "species": "SPECIES_NOIBAT"
+              },
+              {
+                "min_level": 34,
+                "max_level": 34,
+                "species": "SPECIES_NOIBAT"
+              },
+              {
+                "min_level": 34,
+                "max_level": 36,
+                "species": "SPECIES_SHELLOS_EAST"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_WOOBAT"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_WOOBAT"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SHELLOS_EAST"
+              },
+              {
+                "min_level": 32,
+                "max_level": 36,
+                "species": "SPECIES_SHELLOS_EAST"
+              },
+              {
+                "min_level": 34,
+                "max_level": 34,
+                "species": "SPECIES_CLAUNCHER"
+              },
+              {
+                "min_level": 34,
+                "max_level": 34,
+                "species": "SPECIES_CLAUNCHER"
+              },
+              {
+                "min_level": 34,
+                "max_level": 34,
+                "species": "SPECIES_NOIBAT"
+              },
+              {
+                "min_level": 34,
+                "max_level": 34,
+                "species": "SPECIES_NOIBAT"
               }
             ]
           }

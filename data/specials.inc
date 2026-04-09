@@ -648,4 +648,5 @@ gSpecials::
 	def_special CheckAddCoins
 	def_special CheckContestWinnerFirstSlot @ added for tapu lele
 	def_special CheckFishVsRod @ fishershack
+	def_special Finish129RoadChallenge @ 129 cycling
 

@@ -749,11 +749,11 @@
 #define FLAG_R1353  0x2AE // HID
 #define FLAG_R1354  0x2AF // HID
 #define FLAG_128_NEW  0x2B0 // fairy feather 
-#define FLAG_WEAKNESS_POLICY 0x2B1 ///// Unused Flag
+#define FLAG_WEAKNESS_POLICY 0x2B1 //USED 129. IRON
 #define FLAG_RED_CARD  0x2B2 // TUBER ABANDONED SHIP
 #define FLAG_THROAT_SPRAY  0x2B3 ////////////// Unused Flag, POSTGAME item
 #define FLAG_BLUNDER_POLICY  0x2B4 ///////// Unused Flag, pickup item.
-#define FLAG_CHOICE_SCARF  0x2B5 //////////// Unused Flag, intend to use ingame.
+#define FLAG_CHOICE_SCARF  0x2B5 //USED 129. nugget.
 #define FLAG_UNUSED_0x2B6  0x2B6 // Unused Flag
 #define FLAG_UNUSED_0x2B7  0x2B7 // Unused Flag
 #define FLAG_UNUSED_0x2B8  0x2B8 // Unused Flag

@@ -94,6 +94,20 @@
       "trainer_sight_or_berry_tree_id": "5",
       "script": "Route129_EventScript_Clarence",
       "flag": "0"
+    },
+    {
+      "local_id": "LOCALID_BIKEBOY",
+      "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY_3",
+      "x": 55,
+      "y": 19,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "Route129_EventScript_boygo",
+      "flag": "0"
     }
   ],
   "warp_events": [
@@ -103,8 +117,150 @@
       "elevation": 0,
       "dest_map": "MAP_FOURTH_SEALED",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 66,
+      "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE128_CAVERN",
+      "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 53,
+      "y": 35,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "3",
+      "script": "Route129_gate0"
+    },
+    {
+      "type": "trigger",
+      "x": 54,
+      "y": 34,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "3",
+      "script": "Route129_gate0"
+    },
+    {
+      "type": "trigger",
+      "x": 54,
+      "y": 33,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "3",
+      "script": "Route129_gate0"
+    },
+    {
+      "type": "trigger",
+      "x": 47,
+      "y": 21,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "4",
+      "script": "Route129_gaterset2"
+    },
+    {
+      "type": "trigger",
+      "x": 48,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "4",
+      "script": "Route129_gaterset2"
+    },
+    {
+      "type": "trigger",
+      "x": 49,
+      "y": 23,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "4",
+      "script": "Route129_gaterset2"
+    },
+    {
+      "type": "trigger",
+      "x": 58,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_129_CYCLE_STATE",
+      "var_value": "3",
+      "script": "Route129_EventScript_CyclingChallengeEnd"
+    },
+    {
+      "type": "trigger",
+      "x": 58,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_129_CYCLE_STATE",
+      "var_value": "3",
+      "script": "Route129_EventScript_CyclingChallengeEnd"
+    },
+    {
+      "type": "trigger",
+      "x": 64,
+      "y": 2,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "1",
+      "script": "Route129_gate0"
+    },
+    {
+      "type": "trigger",
+      "x": 46,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "4",
+      "script": "Route129_gaterset2"
+    },
+    {
+      "type": "trigger",
+      "x": 70,
+      "y": 29,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "2",
+      "script": "Route129_gate0"
+    },
+    {
+      "type": "trigger",
+      "x": 57,
+      "y": 19,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "Route129_gate0"
+    },
+    {
+      "type": "trigger",
+      "x": 57,
+      "y": 20,
+      "elevation": 0,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "Route129_gate0"
+    }
+  ],
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 52,
+      "y": 26,
+      "elevation": 0,
+      "item": "ITEM_BIG_PEARL",
+      "flag": "FLAG_WEAKNESS_POLICY"
+    },
+    {
+      "type": "hidden_item",
+      "x": 49,
+      "y": 2,
+      "elevation": 0,
+      "item": "ITEM_IRON",
+      "flag": "FLAG_CHOICE_SCARF"
+    }
+  ]
 }
