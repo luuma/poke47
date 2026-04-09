@@ -99,7 +99,7 @@
       "local_id": "LOCALID_BIKEBOY",
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY_3",
       "x": 55,
-      "y": 19,
+      "y": 18,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN_LEFT_AND_RIGHT",
       "movement_range_x": 0,
@@ -121,6 +121,13 @@
     {
       "x": 66,
       "y": 14,
+      "elevation": 0,
+      "dest_map": "MAP_ROUTE128_CAVERN",
+      "dest_warp_id": "0"
+    },
+    {
+      "x": 52,
+      "y": 21,
       "elevation": 0,
       "dest_map": "MAP_ROUTE128_CAVERN",
       "dest_warp_id": "0"

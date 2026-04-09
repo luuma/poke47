@@ -2993,7 +2993,7 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
     return effect;
 }
 
-static bool32 IsRestrictedAbility(enum BattlerId battler, enum Ability ability)
+static bool32 UNUSED IsRestrictedAbility(enum BattlerId battler, enum Ability ability)
 {
     return GetSpeciesAbility(gBattleMons[battler].species, 0) == ability
         || GetSpeciesAbility(gBattleMons[battler].species, 1) == ability
@@ -7502,7 +7502,7 @@ static inline u32 CalcDefenseStat(struct BattleContext *ctx)
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
     // snow def boost for ice types
     if (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE)
-	 && (IsBattlerWeatherAffected(ctx->holdEffectDef, ctx->abilityDef, ctx->weather, B_WEATHER_SNOW) || IsBattlerWeatherAffected(battlerDef, ctx->weather, B_WEATHER_HAIL))
+	 && (IsBattlerWeatherAffected(ctx->holdEffectDef, ctx->abilityDef, ctx->weather, B_WEATHER_SNOW) || IsBattlerWeatherAffected(ctx->holdEffectDef, ctx->abilityDef, ctx->weather, B_WEATHER_HAIL))
 	 && usesDefStat && ctx->abilityAtk != ABILITY_MEGA_SOL)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
 

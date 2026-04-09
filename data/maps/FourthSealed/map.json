@@ -3,7 +3,7 @@
   "name": "FourthSealed",
   "layout": "LAYOUT_FOURTH_SEALED",
   "music": "MUS_SEALED_CHAMBER",
-  "region_map_section": "MAPSEC_ALTERING_CAVE_FRLG",
+  "region_map_section": "MAPSEC_MISTY_CAIRN",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_UNDERGROUND",
