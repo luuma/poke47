@@ -757,9 +757,9 @@
 #define FLAG_SECOND_BIKE  0x2B6 // 
 #define FLAG_BEAT_RECORD 0x2B7 // give biketicket
 #define flag_r1355 0x2B8 // rocky helmet
-#define FLAG_UNUSED_0x2B9  0x2B9 // Unused Flag
-#define FLAG_UNUSED_0x2BA  0x2BA // Unused Flag
-#define FLAG_UNUSED_0x2BB  0x2BB // Unused Flag
+#define FLAG_129_BOULDER  0x2B9 // 
+#define FLAG_129_BOULDER2  0x2BA // wasted I think
+#define FLAG_129_ITEM  0x2BB // Unused Flag
 
 // Event Flags
 #define FLAG_HIDE_ROUTE_101_BIRCH_STARTERS_BAG                      0x2BC

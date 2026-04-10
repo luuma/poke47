@@ -1409,7 +1409,8 @@ u16 GetBoulderRevealFlagByLocalIdAndMap(u8 localId, u8 mapNum, u8 mapGroup)
 
 void HandleBoulderFallThroughHole(struct ObjectEvent * object)
 {
-    if (MapGridGetMetatileBehaviorAt(object->currentCoords.x, object->currentCoords.y) == MB_MT_PYRE_HOLE)
+    u8 metatileBehavior = MapGridGetMetatileBehaviorAt(object->currentCoords.x, object->currentCoords.y);
+    if (metatileBehavior == MB_MT_PYRE_HOLE || metatileBehavior == MB_CRACKED_FLOOR_HOLE)
     {
         PlaySE(SE_FALL);
         RemoveObjectEventByLocalIdAndMap(object->localId, gSaveBlock1Ptr->location.mapNum, gSaveBlock1Ptr->location.mapGroup);

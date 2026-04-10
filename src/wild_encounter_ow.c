@@ -816,7 +816,7 @@ static bool32 TrySelectTileForOWE(s32* outX, s32* outY)
     if (ShouldSpawnWaterOWE() && MetatileBehavior_IsWaterWildEncounter(tileBehavior))
         isEncounterTile = TRUE;
 
-    if (!ShouldSpawnWaterOWE() && (elevation == ELEVATION_OWE || MetatileBehavior_SpawnsOWs(tileBehavior)))
+    if (!ShouldSpawnWaterOWE() && ((elevation == ELEVATION_OWE) != MetatileBehavior_SpawnsOWs(tileBehavior)))
         isEncounterTile = TRUE;
 
     if (gMapHeader.mapLayoutId == LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS

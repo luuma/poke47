@@ -8,7 +8,7 @@ MossdeepCity_House3_EventScript_hmfishingshack::
 
 MossdeepCity_House3_Text_Tryharder:
 	.string "Now I'm back from my trip round to\n"
-	.string "PACIFIDLOG, I've finally got all the\n"
+	.string "PACIFIDLOG, I've finally got all the\l"
  	.string "catches I need to earn a SUPER ROD!$"
 
 MossdeepCity_House3_EventScript_SuperRodFisherman::@ cut!

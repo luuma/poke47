@@ -237,7 +237,7 @@ EventScript_StrengthBoulder::
 	goto_if_unset FLAG_BADGE04_GET, EventScript_CantStrength
 	buffermovename STR_VAR_2, MOVE_STRENGTH
 	checkfieldmove FIELD_MOVE_STRENGTH, TRUE
-	call_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckSecretPowerSmash
+	call_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CheckSecretPowerStrength
 	setfieldeffectargument 0, VAR_RESULT
 	dofieldeffect FLDEFF_USE_STRENGTH
 	waitstate

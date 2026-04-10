@@ -100,7 +100,8 @@ Route129_EventScript_okwhat::
 Route129_EventScript_beginchallenge2::
 	specialvar VAR_RESULT, GetPlayerAvatarBike
 	goto_if_ne VAR_RESULT, 2, Route129_EventScript_PlayerRidingAcroBike
-	msgbox Route129_Text_RatedForNumberOfCollisions2, MSGBOX_YESNO
+	call_if_unset FLAG_BEAT_RECORD Route129_EventScript_brorecord
+	msgbox Route129_Text_RatedForNumberOfCollisions3, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route129_EventScript_oklame
 	msgbox Route129_Text_321GO, MSGBOX_DEFAULT
 	special Special_BeginCyclingRoadChallenge
@@ -113,7 +114,7 @@ Route129_EventScript_beginchallenge::
 	specialvar VAR_RESULT, GetPlayerAvatarBike
 	goto_if_ne VAR_RESULT, 2, Route129_EventScript_PlayerRidingAcroBike
 	msgbox Route129_Text_RatedForNumberOfCollisions, MSGBOX_DEFAULT
-	call_if_set FLAG_BEAT_RECORD Route129_EventScript_brorecord
+	call_if_unset FLAG_BEAT_RECORD Route129_EventScript_brorecord
 	msgbox Route129_Text_RatedForNumberOfCollisions3, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, Route129_EventScript_oklame
 	msgbox Route129_Text_321GO, MSGBOX_DEFAULT
@@ -185,7 +186,8 @@ Route129_Text_RatedForNumberOfCollisions:
 Route129_Text_RatedForNumberOfCollisions2:
 	.string "If you can beat his record on time\n"
 	.string "and collisions, I'll give you something\l"
-	.string "that's basically priceless.\p"
+	.string "that's basically priceless.$"
+
 Route129_Text_RatedForNumberOfCollisions3:
 	.string "…\n"
 	.string "So?? Ready??? Or what.$"
@@ -194,6 +196,7 @@ Route129_Text_RatedForNumberOfCollisions3:
 Route129_EventScript_CyclingChallengeEnd::
 	lockall
 	applymovement LOCALID_BIKEBOY, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	call Route129_EventScript_CyclingChallengeResults
 	msgbox Route129_Text_AlwaysAimHigher, MSGBOX_DEFAULT
