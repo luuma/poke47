@@ -1,4 +1,4 @@
-LittlerootTown_MaysHouse_2F_MapScripts::
+littlerootTown_MaysHouse_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LittlerootTown_MaysHouse_2F_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LittlerootTown_MaysHouse_2F_OnWarp
 	.byte 0
@@ -43,6 +43,14 @@ LittlerootTown_MaysHouse_2F_OnWarp:
 LittlerootTown_MaysHouse_2F_EventScript_CheckInitDecor::
 	checkplayergender
 	goto_if_eq VAR_RESULT, FEMALE, SecretBase_EventScript_InitDecorations
+	end
+
+LittlerootTown_MaysHouse_2F_EventScript_MaysBed::
+	lockall
+	checkplayergender
+	goto_if_eq VAR_RESULT, FEMALE, LittlerootTown_PlayersHouse_2F_EventScript_YourBed
+	msgbox PlayersHouse_2F_Text_NeighborBed, MSGBOX_SIGN
+	releaseall
 	end
 
 LittlerootTown_MaysHouse_2F_EventScript_RivalsPokeBall::

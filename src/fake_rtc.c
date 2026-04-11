@@ -147,7 +147,10 @@ void Script_ToggleFakeRtc(void)
     FlagToggle(OW_FLAG_PAUSE_TIME);
 }
 
-
+void SleepOwnBedAdvance()
+{
+    FakeRtc_ForwardTimeTo(MORNING_HOUR_BEGIN, 0, 0);
+}
 
 void OldLadyRestStopAdvance()
 {
