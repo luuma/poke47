@@ -3730,8 +3730,8 @@ static void DebugAction_TimeMenu_ChangeTimeOfDay(u8 taskId)
         FakeRtc_ForwardTimeTo(EVENING_HOUR_BEGIN, 0, 0);
         break;
     case TIME_NIGHT:
-            FakeRtc_ForwardTimeTo(NIGHT_HOUR_BEGIN, 0, 0);
-            break;
+        FakeRtc_ForwardTimeTo(NIGHT_HOUR_BEGIN, 0, 0);
+        break;
     }
     Debug_DestroyMenu_Full(taskId);
     SetMainCallback2(CB2_LoadMap);

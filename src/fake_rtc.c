@@ -82,6 +82,8 @@ void FakeRtc_ForwardTimeTo(u32 hour, u32 minute, u32 second)
     Script_ResumeFakeRtc();
 }
 
+
+
 static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2)
 {
     result->seconds = t2->seconds - t1->second;
@@ -143,4 +145,16 @@ void Script_ToggleFakeRtc(void)
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 
     FlagToggle(OW_FLAG_PAUSE_TIME);
+}
+
+
+
+void OldLadyRestStopAdvance()
+{
+    FakeRtc_AdvanceTimeBy(0,7,0,0);
+}
+
+void OutOfPartyHealAdvance()
+{
+    FakeRtc_AdvanceTimeBy(0,1,0,0);
 }

@@ -126,9 +126,9 @@ PacifidlogTown_House2_Text_ExplainReturnFrustration:
 
 PacifidlogTown_House2_Text_GetGoodTMInXDays:
 	.string "Oh, yes. In about {STR_VAR_1} or so days,\n"
-	.string "I should be getting a good TM or two.\p"
+	.string "I should be getting a good ORB or two.\p"
 	.string "You should come see me then.\n"
-	.string "I'll give you a TM that's suitable for\l"
+	.string "I'll give you a suitable ORB for\l"
 	.string "your POKéMON.$"
 
 PacifidlogTown_House2_Text_Rururi:

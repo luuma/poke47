@@ -512,6 +512,10 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *position, u8 me
         return EventScript_EmptyTrashCan;
     if (MetatileBehavior_IsShopShelf(metatileBehavior) == TRUE)
         return EventScript_ShopShelf;
+    if (MetatileBehavior_IsBlueClock(metatileBehavior) == TRUE)
+        return LittlerootTown_BrendansHouse_2F_EventScript_WallClock;
+    if (MetatileBehavior_IsRedClock(metatileBehavior) == TRUE)
+        return LittlerootTown_MaysHouse_2F_EventScript_WallClock;
     if (MetatileBehavior_IsBlueprint(metatileBehavior) == TRUE)
         return EventScript_Blueprint;
     if (MetatileBehavior_IsPlayerFacingWirelessBoxResults(metatileBehavior, direction) == TRUE)

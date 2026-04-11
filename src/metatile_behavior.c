@@ -1408,6 +1408,22 @@ bool8 MetatileBehavior_IsShopShelf(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsBlueClock(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_BLUE_CLOCK)
+        return TRUE;
+    else
+        return FALSE;
+}
+
+bool8 MetatileBehavior_IsRedClock(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_RED_CLOCK)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 bool8 MetatileBehavior_IsBlueprint(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_BLUEPRINT)
