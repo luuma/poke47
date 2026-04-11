@@ -521,7 +521,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedex::
 	call_if_eq VAR_RESULT, FEMALE, LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls
 	setvar VAR_BIRCH_LAB_STATE, 5
 	setflag FLAG_ADVENTURE_STARTED
-	goto_if_set FLAG_LEVEL_CAP LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexJump
+	goto_if_set FLAG_LEVEL_CAP, LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexJump
 	setflag FLAG_CAP_GUY
 LittlerootTown_ProfessorBirchsLab_EventScript_GivePokedexJump::
 	setvar VAR_OLDALE_TOWN_STATE, 1

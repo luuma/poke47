@@ -33,12 +33,8 @@ LittlerootTown_BrendansHouse_2F_EventScript_BrendansBed::
 	releaseall
 	end
 
-PlayersHouse_2F_Text_NeighborBed:
-	.string "{PLAYER} decided against sleeping\n"
-	.string "in their neighbor's bed.$"
-
 LittlerootTown_PlayersHouse_2F_EventScript_YourBed::
-	call_if_set FLAG_DAILY_NAP LittlerootTown_BrendansHouse_2F_EventScript_nottired
+	goto_if_set FLAG_DAILY_NAP, LittlerootTown_BrendansHouse_2F_EventScript_nottired
 	msgbox PlayersHouse_2F_Text_YourBed, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_BrendansHouse_2F_EventScript_releaseallend
 	callnative SleepOwnBedAdvance
@@ -49,7 +45,7 @@ LittlerootTown_BrendansHouse_2F_EventScript_releaseallend::
 	releaseall
 	end
 
-LittlerootTown_BrendansHouse_2F_EventScript_nottired
+LittlerootTown_BrendansHouse_2F_EventScript_nottired::
 	msgbox PlayersHouse_2F_Text_Nottiredatall, MSGBOX_SIGN
 	releaseall
 	end
@@ -330,7 +326,7 @@ PlayersHouse_2F_Text_ItsAGameCube:
 	.string "A Game Boy Advance is connected to\n"
 	.string "serve as the Controller.$"
 
-PlayersHouse_2F_Text_nottired:
+PlayersHouse_2F_Text_Nottiredatall:
 	.string "You aren't feeling tired at all!\n"
 	.string "Better get going.$"
 
@@ -338,11 +334,9 @@ PlayersHouse_2F_Text_NeighborBed:
 	.string "{PLAYER} decided against sleeping\n"
 	.string "in their neighbor's bed.$"
 
-
 PlayersHouse_2F_Text_riseandshine:
 	.string "{PLAYER} woke up feeling refreshed!$"
 	
-
 PlayersHouse_2F_Text_YourBed:
 	.string "It's cosy and warm in your bed.\n"
 	.string "You're ready to doze off.\p"
