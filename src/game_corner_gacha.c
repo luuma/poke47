@@ -145,6 +145,7 @@ struct Gacha {
     u8 ownedUncommon;
     u8 ownedRare;
     u8 ownedUltraRare;
+    u8 ownedTotal;
     u8 bouncingPokeballSpriteId;
     u8 timer;
     u8 monSpriteId;
@@ -2062,6 +2063,8 @@ static u16 GetMaxAvailableGachaRaritySpecies(u32 gachaId, u32 rarity)
             return ARRAY_COUNT(sGachaBasicSpeciesRare);
         case RARITY_ULTRA_RARE:
             return ARRAY_COUNT(sGachaBasicSpeciesUltraRare);
+        case 5:
+            return ARRAY_COUNT(sGachaBasicSpeciesUltraRare) + ARRAY_COUNT(sGachaBasicSpeciesRare) + ARRAY_COUNT(sGachaBasicSpeciesUncommon) + ARRAY_COUNT(sGachaBasicSpeciesCommon);
         }
     case GACHA_GREAT:
         switch (rarity)
@@ -2101,6 +2104,8 @@ static u16 GetMaxAvailableGachaRaritySpecies(u32 gachaId, u32 rarity)
             return ARRAY_COUNT(sGachaMasterSpeciesRare);
         case RARITY_ULTRA_RARE:
             return ARRAY_COUNT(sGachaMasterSpeciesUltraRare);
+        case 5:
+            return ARRAY_COUNT(sGachaMasterSpeciesUltraRare) + ARRAY_COUNT(sGachaMasterSpeciesRare) + ARRAY_COUNT(sGachaMasterSpeciesUncommon) + ARRAY_COUNT(sGachaMasterSpeciesCommon);
         }
     }
     return 0; // failsafe
@@ -2273,6 +2278,7 @@ static void GetPokemonOwned(void)
     sGacha->ownedUncommon = 0;
     sGacha->ownedRare = 0;
     sGacha->ownedUltraRare = 0;
+    sGacha->ownedTotal = 0;
 
     switch (sGacha->GachaId)
     {
@@ -2283,24 +2289,29 @@ static void GetPokemonOwned(void)
             species = sGachaBasicSpeciesCommon[i];
             nationalDexNo = SpeciesToNationalPokedexNum(species);
             sGacha->ownedCommon = (sGacha->ownedCommon + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+            sGacha->ownedTotal = (sGacha->ownedTotal + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+
         }
         for (i = 0; i < ARRAY_COUNT(sGachaBasicSpeciesUncommon); i++)
         {
             species = sGachaBasicSpeciesUncommon[i];
             nationalDexNo = SpeciesToNationalPokedexNum(species);
             sGacha->ownedUncommon = (sGacha->ownedUncommon + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+            sGacha->ownedTotal = (sGacha->ownedTotal + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
         }
         for (i = 0; i < ARRAY_COUNT(sGachaBasicSpeciesRare); i++)
         {
             species = sGachaBasicSpeciesRare[i];
             nationalDexNo = SpeciesToNationalPokedexNum(species);
             sGacha->ownedRare = (sGacha->ownedRare + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+            sGacha->ownedTotal = (sGacha->ownedTotal + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
         }
         for (i = 0; i < ARRAY_COUNT(sGachaBasicSpeciesUltraRare); i++)
         {
             species = sGachaBasicSpeciesUltraRare[i];
             nationalDexNo = SpeciesToNationalPokedexNum(species);
             sGacha->ownedUltraRare = (sGacha->ownedUltraRare + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+            sGacha->ownedTotal = (sGacha->ownedTotal + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
         }
         break;
     case GACHA_GREAT:
@@ -2361,24 +2372,28 @@ static void GetPokemonOwned(void)
             species = sGachaMasterSpeciesCommon[i];
             nationalDexNo = SpeciesToNationalPokedexNum(species);
             sGacha->ownedCommon = (sGacha->ownedCommon + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+            sGacha->ownedTotal = (sGacha->ownedTotal + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
         }
         for (i = 0; i < ARRAY_COUNT(sGachaMasterSpeciesUncommon); i++)
         {
             species = sGachaMasterSpeciesUncommon[i];
             nationalDexNo = SpeciesToNationalPokedexNum(species);
             sGacha->ownedUncommon = (sGacha->ownedUncommon + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+            sGacha->ownedTotal = (sGacha->ownedTotal + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
         }
         for (i = 0; i < ARRAY_COUNT(sGachaMasterSpeciesRare); i++)
         {
             species = sGachaMasterSpeciesRare[i];
             nationalDexNo = SpeciesToNationalPokedexNum(species);
             sGacha->ownedRare = (sGacha->ownedRare + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+            sGacha->ownedTotal = (sGacha->ownedTotal + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
         }
         for (i = 0; i < ARRAY_COUNT(sGachaMasterSpeciesUltraRare); i++)
         {
             species = sGachaMasterSpeciesUltraRare[i];
             nationalDexNo = SpeciesToNationalPokedexNum(species);
             sGacha->ownedUltraRare = (sGacha->ownedUltraRare + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
+            sGacha->ownedTotal = (sGacha->ownedTotal + GetSetPokedexFlag(nationalDexNo, FLAG_GET_CAUGHT));
         }
         break;
     }
@@ -2481,9 +2496,9 @@ void DeterminePokemonRarityAndNewStatus(void)
         // Calculate the total number of Pokémon the player doesn't own
         totalNotOwned = totalMax - totalOwned;
 
-        if (totalNotOwned <= 0 && !HasAllMons())//bugfix!
+        if (totalNotOwned <= 0 && sGacha->ownedTotal != GetMaxAvailableGachaRaritySpecies(sGacha->GachaId, 5) )//bugfix!
         {
-            // If all Pokémon of the selected rarity are owned, restart the process (reroll)
+            // If all Pokémon of the selected rarity are owned, restart the process (reroll) UNLESS all pokemon of all rarities are owned.
             continue;  // This will make the loop restart from the beginning
         }
 
