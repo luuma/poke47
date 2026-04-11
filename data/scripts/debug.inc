@@ -301,7 +301,7 @@ DebugScript_Text_EmptyParty::
 	.string "You have no Pokémon nor Eggs.$"
 
 DebugScript_HatchAnEgg_Text_NotAnEgg::
-	.string "That's not a Pokémon Egg.$"
+	.string "That's not a Pokémon Egg!$"
 
 DebugScript_ZeroDaycareMons::
 	msgbox DebugText_DaycareNoPokemon, MSGBOX_DEFAULT

@@ -149,15 +149,15 @@ void Script_ToggleFakeRtc(void)
 
 void SleepOwnBedAdvance()
 {
-    FakeRtc_ForwardTimeTo(MORNING_HOUR_BEGIN, 0, 0);
+    FakeRtc_ForwardTimeTo(7, 10, 0);
 }
 
 void OldLadyRestStopAdvance()
 {
-    FakeRtc_AdvanceTimeBy(0,7,0,0);
+    FakeRtc_AdvanceTimeBy(0,7,40,0);
 }
 
 void OutOfPartyHealAdvance()
 {
-    FakeRtc_AdvanceTimeBy(0,1,0,0);
+    FakeRtc_AdvanceTimeBy(0,0,20,0);
 }

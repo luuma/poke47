@@ -9,6 +9,7 @@ Route111_OldLadysRestStop_OnTransition:
 Route111_OldLadysRestStop_EventScript_OldLady::
 	lock
 	faceplayer
+	goto_if_gt VAR_OLD_LADY, 6 Route111_OldLadysRestStop_EventScript_Overused
 	msgbox Route111_OldLadysRestStop_Text_RestUpHere, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route111_OldLadysRestStop_EventScript_Rest
 	goto_if_eq VAR_RESULT, NO, Route111_OldLadysRestStop_EventScript_DeclineRest
@@ -19,6 +20,8 @@ Route111_OldLadysRestStop_EventScript_Rest::
 	closemessage
 	call Common_EventScript_OutOfCenterPartyHeal
         callnative OldLadyRestStopAdvance
+	addvar VAR_OLD_LADY, 1
+	goto_if_gt VAR_OLD_LADY, 6 Route111_OldLadysRestStop_EventScript_Overused
 	msgbox Route111_OldLadysRestStop_Text_StillTiredTakeAnotherRest, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route111_OldLadysRestStop_EventScript_Rest
 	goto_if_eq VAR_RESULT, NO, Route111_OldLadysRestStop_EventScript_DeclineRest
@@ -26,6 +29,11 @@ Route111_OldLadysRestStop_EventScript_Rest::
 
 Route111_OldLadysRestStop_EventScript_DeclineRest::
 	msgbox Route111_OldLadysRestStop_Text_DontNeedToBeShy, MSGBOX_DEFAULT
+	release
+	end
+
+Route111_OldLadysRestStop_EventScript_Overused::
+	msgbox Route111_OldLadysRestStop_Text_OoImSpooky, MSGBOX_DEFAULT
 	release
 	end
 
@@ -44,6 +52,13 @@ Route111_OldLadysRestStop_Text_StillTiredTakeAnotherRest:
 	.string "Are your POKéMON still tired?\p"
 	.string "You should take another rest here.\n"
 	.string "That's a fine idea. You should do that.$"
+
+Route111_OldLadysRestStop_Text_OoImSpooky:
+	.string "Oh, dear, dear.\n"
+	.string "Aren't you looking exhausted?\p"
+	.string "Oh, but there's no need to rest here.\n"
+	.string "I'm already feeling young again.\p"
+	.string "Thank you for your time, {PLAYER}.$"
 
 Route111_OldLadysRestStop_Text_DontNeedToBeShy:
 	.string "Is that so?\n"

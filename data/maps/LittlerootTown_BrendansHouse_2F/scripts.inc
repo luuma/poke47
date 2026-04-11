@@ -36,10 +36,11 @@ LittlerootTown_BrendansHouse_2F_EventScript_BrendansBed::
 LittlerootTown_PlayersHouse_2F_EventScript_YourBed::
 	goto_if_set FLAG_DAILY_NAP, LittlerootTown_BrendansHouse_2F_EventScript_nottired
 	msgbox PlayersHouse_2F_Text_YourBed, MSGBOX_YESNO
+	closemessage
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_BrendansHouse_2F_EventScript_releaseallend
 	callnative SleepOwnBedAdvance
 	call Common_EventScript_OutOfCenterPartyHeal
-	msgbox PlayersHouse_2F_Text_NeighborBed, MSGBOX_SIGN
+	msgbox PlayersHouse_2F_Text_riseandshine, MSGBOX_SIGN
 	setflag FLAG_DAILY_NAP
 LittlerootTown_BrendansHouse_2F_EventScript_releaseallend::
 	releaseall
@@ -327,8 +328,8 @@ PlayersHouse_2F_Text_ItsAGameCube:
 	.string "serve as the Controller.$"
 
 PlayersHouse_2F_Text_Nottiredatall:
-	.string "You aren't feeling tired at all!\n"
-	.string "Better get going.$"
+	.string "You aren't feeling tired at all…\n"
+	.string "Better get going!$"
 
 PlayersHouse_2F_Text_NeighborBed:
 	.string "{PLAYER} decided against sleeping\n"

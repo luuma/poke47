@@ -239,12 +239,49 @@ LavaridgeTown_EventScript_EggWoman::
 	goto_if_eq VAR_RESULT, PARTY_SIZE, LavaridgeTown_EventScript_NoRoomForEgg
 	msgbox LavaridgeTown_Text_HopeYoullWalkPlentyWithEgg, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_LAVARIDGE_EGG
+	setflag FLAG_LAVARIDGE_DAILY_EGG
 	playfanfare MUS_OBTAIN_ITEM
 	message LavaridgeTown_Text_ReceivedTheEgg
 	waitfanfare
 	giveegg SPECIES_LARVESTA
 	release
 	end
+
+Lavaridge_HatchAnEgg::
+	lockall
+	goto_if_set FLAG_LAVARIDGE_DAILY_EGG, LavaridgeTown_EventScript_WrongTemp
+	msgbox LavaridgeTown_Text_PerfectTempForEgg, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Lavaridge_HatchAnEgg_End
+	getpartysize
+	goto_if_eq VAR_RESULT, 0, Debug_NoPokemon
+	special ChoosePartyMon
+	waitstate
+	goto_if_ge VAR_0x8004, PARTY_SIZE, Debug_HatchAnEgg_End
+	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
+	goto_if_ne VAR_RESULT, SPECIES_EGG, DebugScript_HatchAnEgg_CantForceHatch
+	setflag FLAG_LAVARIDGE_DAILY_EGG
+	special EggHatch
+	waitstate
+Lavaridge_HatchAnEgg_End::
+	releaseall
+	end
+
+LavaridgeTown_Text_PerfectTempForEgg:
+	.string "It's warm in the sand. The perfect\n"
+	.string "temperature to hatch an EGG.\p"
+	.string "Would you like to bury an EGG\n"
+	.string "in the toasty warm sand?$"
+
+LavaridgeTown_EventScript_WrongTemp::
+	msgbox LavaridgeTown_Text_TooWarm, MSGBOX_DEFAULT
+	release
+	end
+
+
+LavaridgeTown_Text_TooWarm:
+	.string "It's very hot in the sand.\n"
+	.string "Perhaps it will cool over time.$"
+
 
 LavaridgeTown_EventScript_ReceivedEgg::
 	msgbox LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare, MSGBOX_DEFAULT
@@ -321,7 +358,7 @@ LavaridgeTown_Text_HaveEggWillYouTakeIt:
 	.string "I have here an EGG.\p"
 	.string "I'd hoped to hatch it by covering it in\n"
 	.string "hot sand by the hot springs.\l"
-	.string "But that doesn't seem to be enough…\p"
+	.string "But that seems hasty, no?\p"
 	.string "I've heard it would be best if it were\n"
 	.string "kept together with POKéMON and\l"
 	.string "carried about.\p"
@@ -349,7 +386,10 @@ LavaridgeTown_Text_AsYouWishThen:
 LavaridgeTown_Text_EverySoOftenEggFoundAtDayCare:
 	.string "Every so often, an EGG will be found at\n"
 	.string "the POKéMON DAY CARE.\p"
-	.string "Or at least that's how the rumor goes.$"
+	.string "Or at least that's how the rumor goes.\p"
+	.string "And now and again, the hot sand becomes\n"
+	.string "the perfect temperature to hatch them.\l"
+	.string "Yes, yes. Patience. That's what it takes.$"
 
 LavaridgeTown_Text_HotSpringsNeverRunDry:
 	.string "We draw as much hot water as we need,\n"
