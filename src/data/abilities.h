@@ -2427,6 +2427,13 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Mega Sol"),
         .description = COMPOUND_STRING("Behaves like under sun."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_SPICY_SPRAY] =
+    {
+        .name = _("Smoldering Air"),
+        .description = COMPOUND_STRING("Burns when damaged."),
         .aiRating = 7,
     },
 
