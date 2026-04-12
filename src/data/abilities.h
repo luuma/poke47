@@ -2433,7 +2433,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_SPICY_SPRAY] =
     {
         .name = _("Smoldering Air"),
-        .description = COMPOUND_STRING("Burns when damaged."),
+        .description = COMPOUND_STRING("Burns attacker if hurt."),
         .aiRating = 7,
     },
 

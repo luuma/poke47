@@ -153,9 +153,9 @@ WILD_BATTLE_TEST("Capture: when CRITICAL_CAPTURE_IF_OWNED is enabled, capture of
 
     GIVEN {
         ASSUME(gSpeciesInfo[SPECIES_CATERPIE].catchRate > 155);
-        GetSetPokedexFlag(SPECIES_CATERPIE, FLAG_SET_SEEN);
+        GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_CATERPIE), FLAG_SET_SEEN);
         if (alreadyOwned)
-            GetSetPokedexFlag(SPECIES_CATERPIE, FLAG_SET_CAUGHT);
+            GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_CATERPIE), FLAG_SET_CAUGHT);
         WITH_CONFIG(B_MISSING_BADGE_CATCH_MALUS, GEN_7);
         WITH_CONFIG(B_CRITICAL_CAPTURE_IF_OWNED, GEN_9);
         PLAYER(SPECIES_WOBBUFFET);
@@ -189,8 +189,8 @@ WILD_BATTLE_TEST("Capture: when CRITICAL_CAPTURE_IF_OWNED is enabled, failed cap
     PARAMETRIZE(success = FALSE);
 
     GIVEN {
-        GetSetPokedexFlag(SPECIES_CATERPIE, FLAG_SET_SEEN);
-        GetSetPokedexFlag(SPECIES_CATERPIE, FLAG_SET_CAUGHT);
+        GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_CATERPIE), FLAG_SET_SEEN);
+        GetSetPokedexFlag(SpeciesToNationalPokedexNum(SPECIES_CATERPIE), FLAG_SET_CAUGHT);
         WITH_CONFIG(B_MISSING_BADGE_CATCH_MALUS, GEN_7);
         WITH_CONFIG(B_CRITICAL_CAPTURE_IF_OWNED, GEN_9);
         PLAYER(SPECIES_WOBBUFFET);

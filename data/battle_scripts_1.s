@@ -2522,9 +2522,9 @@ BattleScript_MirrorArmorReflectEnd:
 
 BattleScript_SpicySprayImmune::
 	pause B_WAIT_TIME_SHORT
-	call BattleScript_AbilityPopUp
+	call BattleScript_AbilityPopUpTarget
 	call BattleScript_MirrorArmorDoesntAffect
-	end2
+	return
 
 BattleScript_MirrorArmorDoesntAffect:
 	swapattackerwithtarget

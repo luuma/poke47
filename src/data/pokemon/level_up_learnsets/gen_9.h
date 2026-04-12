@@ -1,7 +1,7 @@
 
 //// MODIFIED
 
-//Foongus, Pawniard, Frillish, Mienfoo, Vullaby, Rufflet, Deino, Zweilous evolve 10 levels earlier. Larvesta evolves 10 levels earlier or via fire stone.
+//Foongus, Litwick, Pawniard, Frillish, Mienfoo, Vullaby, Rufflet, Deino, Zweilous evolve 10 levels earlier. Larvesta evolves 10 levels earlier or via fire stone.
 //Gurdurr and Boldore evolve at lv36. Phantump and Pumpkaboo evolve at lv30
 
 
@@ -18611,9 +18611,9 @@ static const struct LevelUpMove sLitwickLevelUpLearnset[] = {
         LEVEL_UP_MOVE(22, MOVE_BURNING_JEALOUSY),
         LEVEL_UP_MOVE(25, MOVE_CONFUSE_RAY),
         LEVEL_UP_MOVE(28, MOVE_SHADOW_BALL),
-        LEVEL_UP_MOVE(31, MOVE_INFERNO),
+        LEVEL_UP_MOVE(30, MOVE_OVERHEAT),
         LEVEL_UP_MOVE(34, MOVE_MEMENTO),
-        LEVEL_UP_MOVE(37, MOVE_OVERHEAT),
+        LEVEL_UP_MOVE(37, MOVE_INFERNO),
         LEVEL_UP_MOVE(40, MOVE_IMPRISON),
         LEVEL_UP_MOVE(42, MOVE_INFERNAL_PARADE),
         LEVEL_UP_MOVE(44, MOVE_NASTY_PLOT),
@@ -18632,10 +18632,10 @@ static const struct LevelUpMove sLampentLevelUpLearnset[] = {
         LEVEL_UP_MOVE(22, MOVE_BURNING_JEALOUSY),
         LEVEL_UP_MOVE(25, MOVE_CONFUSE_RAY),
         LEVEL_UP_MOVE(28, MOVE_SHADOW_BALL),
-        LEVEL_UP_MOVE(31, MOVE_INFERNO),
-        LEVEL_UP_MOVE(34, MOVE_MEMENTO),
-        LEVEL_UP_MOVE(37, MOVE_OVERHEAT),
-        LEVEL_UP_MOVE(40, MOVE_IMPRISON),
+        LEVEL_UP_MOVE(30, MOVE_OVERHEAT),
+        LEVEL_UP_MOVE(35, MOVE_MEMENTO),
+        LEVEL_UP_MOVE(38, MOVE_INFERNO),
+        LEVEL_UP_MOVE(42, MOVE_IMPRISON),
         LEVEL_UP_MOVE(44, MOVE_INFERNAL_PARADE),
         LEVEL_UP_MOVE(48, MOVE_NASTY_PLOT),
         LEVEL_UP_MOVE(52, MOVE_SPIRIT_SHACKLE),
@@ -18644,22 +18644,18 @@ static const struct LevelUpMove sLampentLevelUpLearnset[] = {
 static const struct LevelUpMove sChandelureLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_NIGHT_SHADE),
         LEVEL_UP_MOVE(1, MOVE_SMOG),
-        LEVEL_UP_MOVE(3, MOVE_TRICK_OR_TREAT),
-        LEVEL_UP_MOVE(7, MOVE_FIRE_SPIN),
-        LEVEL_UP_MOVE(10, MOVE_PAIN_SPLIT),
-        LEVEL_UP_MOVE(13, MOVE_WILL_O_WISP),
-        LEVEL_UP_MOVE(16, MOVE_STRENGTH_SAP),
-        LEVEL_UP_MOVE(19, MOVE_HEX),
-        LEVEL_UP_MOVE(22, MOVE_BURNING_JEALOUSY),
-        LEVEL_UP_MOVE(25, MOVE_CONFUSE_RAY),
-        LEVEL_UP_MOVE(28, MOVE_SHADOW_BALL),
-        LEVEL_UP_MOVE(31, MOVE_INFERNO),
-        LEVEL_UP_MOVE(34, MOVE_MEMENTO),
-        LEVEL_UP_MOVE(37, MOVE_OVERHEAT),
-        LEVEL_UP_MOVE(40, MOVE_IMPRISON),
-        LEVEL_UP_MOVE(44, MOVE_INFERNAL_PARADE),
-        LEVEL_UP_MOVE(48, MOVE_NASTY_PLOT),
-        LEVEL_UP_MOVE(52, MOVE_SPIRIT_SHACKLE),
+        LEVEL_UP_MOVE(1, MOVE_TRICK_OR_TREAT),
+        LEVEL_UP_MOVE(1, MOVE_FIRE_SPIN),
+        LEVEL_UP_MOVE(1, MOVE_STRENGTH_SAP),
+        LEVEL_UP_MOVE(1, MOVE_HEX),
+        LEVEL_UP_MOVE(1, MOVE_BURNING_JEALOUSY),
+        LEVEL_UP_MOVE(1, MOVE_CONFUSE_RAY),
+        LEVEL_UP_MOVE(1, MOVE_IMPRISON),
+        LEVEL_UP_MOVE(35, MOVE_MEMENTO),
+        LEVEL_UP_MOVE(40, MOVE_INFERNO),
+        LEVEL_UP_MOVE(45, MOVE_INFERNAL_PARADE),
+        LEVEL_UP_MOVE(50, MOVE_NASTY_PLOT),
+        LEVEL_UP_MOVE(55, MOVE_SPIRIT_SHACKLE),
         LEVEL_UP_END
 };
 
