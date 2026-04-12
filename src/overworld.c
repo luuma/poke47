@@ -3812,6 +3812,7 @@ static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash)
     s16 x = 0, y = 0;
     u8 iconSpriteId;
     u8 spriteId2 = MAX_SPRITES;
+    FreeSpriteTilesByTag(ITEM_TAG); 
 
     if (flash)
     {
@@ -3856,13 +3857,15 @@ static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash)
 
 static void DestroyItemIconSprite(void)
 {
-    FreeSpriteTilesByTag(ITEM_TAG);
-    FreeSpritePaletteByTag(ITEM_TAG);
-    FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
-    DestroySprite(&gSprites[sItemIconSpriteId]);
-
+    if (sItemIconSpriteId != MAX_SPRITES)
+    {
+        FreeSpritePaletteByTag(ITEM_TAG);
+        FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
+        DestroySprite(&gSprites[sItemIconSpriteId]);
+    }
     if ((GetFlashLevel() > 0 || InBattlePyramid_()) && sItemIconSpriteId2 != MAX_SPRITES)
     {
+        FreeSpritePaletteByTag(ITEM_TAG);
         FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId2]);
         DestroySprite(&gSprites[sItemIconSpriteId2]);
     }
