@@ -7579,43 +7579,6 @@ void ChangePokemonNicknameWithCallback(void (*callback)(void))
     DoNamingScreen(NAMING_SCREEN_NICKNAME, gStringVar2, GetBoxMonData(boxMon, MON_DATA_SPECIES), GetBoxMonGender(boxMon), GetBoxMonData(boxMon, MON_DATA_PERSONALITY), callback);
 }
 
-u32 OWE_GetMovementTypeFromSpecies(enum Species species)
-{
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[species].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].movementType;
-}
-
-u32 OWE_GetViewDistanceFromSpecies(enum Species species)
-{
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[species].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].viewDistance;
-}
-
-u32 OWE_GetViewWidthFromSpecies(enum Species species)
-{
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[species].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].viewWidth;
-}
-
-u32 OWE_GetViewActiveDistanceFromSpecies(enum Species species)
-{
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[species].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].activeDistance;
-}
-
-enum SpeedOWE OWE_GetIdleSpeedFromSpecies(enum Species species)
-{
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[species].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].idleSpeed;
-}
-
-enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species species)
-{
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[species].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].activeSpeed;
-}
-
-
 bool32 HasShedinjaHPHandling(enum Species species)
 {
     if (species == SPECIES_SHEDINJA)
@@ -7623,4 +7586,46 @@ bool32 HasShedinjaHPHandling(enum Species species)
     if (P_BASE_HP_1_SHEDINJA_HANDLING && GetSpeciesBaseHP(species) == 1)
         return TRUE;
     return FALSE;
+}
+
+u32 OWE_GetMovementTypeFromSpecies(enum Species speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].movementType;
+}
+
+u32 OWE_GetViewDistanceFromSpecies(enum Species speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].viewDistance;
+}
+
+u32 OWE_GetViewWidthFromSpecies(enum Species speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].viewWidth;
+}
+
+u32 OWE_GetViewActiveDistanceFromSpecies(enum Species speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].activeDistance;
+}
+
+enum SpeedOWE OWE_GetIdleSpeedFromSpecies(enum Species speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].idleSpeed;
+}
+
+enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species speciesId)
+{
+    speciesId = SanitizeSpeciesId(speciesId);
+    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    return sOWESpeciesBehavior[behavior].activeSpeed;
 }

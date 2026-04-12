@@ -946,12 +946,12 @@ bool32 IsSpeciesOfType(enum Species species, enum Type type);
 struct BoxPokemon *GetSelectedBoxMonFromPcOrParty(void);
 u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot);
 void ChangePokemonNicknameWithCallback(void (*callback)(void));
-u32 OWE_GetMovementTypeFromSpecies(enum Species species);
-u32 OWE_GetViewDistanceFromSpecies(enum Species species);
-u32 OWE_GetViewWidthFromSpecies(enum Species species);
-u32 OWE_GetViewActiveDistanceFromSpecies(enum Species species);
-enum SpeedOWE OWE_GetIdleSpeedFromSpecies(enum Species species);
-enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species species);
 bool32 HasShedinjaHPHandling(enum Species species);
+u32 OWE_GetMovementTypeFromSpecies(enum Species speciesId);
+u32 OWE_GetViewDistanceFromSpecies(enum Species speciesId);
+u32 OWE_GetViewWidthFromSpecies(enum Species speciesId);
+u32 OWE_GetViewActiveDistanceFromSpecies(enum Species speciesId);
+enum SpeedOWE OWE_GetIdleSpeedFromSpecies(enum Species speciesId);
+enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species);
 
 #endif // GUARD_POKEMON_H

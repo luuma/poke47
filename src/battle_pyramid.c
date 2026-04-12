@@ -1395,7 +1395,7 @@ static bool32 CheckBattlePyramidEvoRequirement(enum Species species, const u16 *
 }
 
 extern u32 GetTotalBaseStat(enum Species species);
-void GenerateBattlePyramidWildMon(void)
+void GenerateBattlePyramidWildMon(enum Species forceSpecies)
 {
     u8 name[POKEMON_NAME_LENGTH + 1];
     int i, j;
@@ -1403,7 +1403,7 @@ void GenerateBattlePyramidWildMon(void)
     u32 lvl = gSaveBlock2Ptr->frontier.lvlMode;
     u16 round = (gSaveBlock2Ptr->frontier.pyramidWinStreaks[lvl] / 7) % TOTAL_PYRAMID_ROUNDS;
     const struct BattlePyramidRequirement *reqs = &sBattlePyramidRequirementsByRound[round];
-    enum Species species;
+    enum Species species = forceSpecies;
     u32 bstLim;
     u16 *moves = NULL;
     u16 *abilities = NULL;
@@ -1568,7 +1568,7 @@ void GenerateBattlePyramidWildMon(void)
     CalculateMonStats(&gEnemyParty[0]);
 }
 #else
-void GenerateBattlePyramidWildMon(u32 forceSpecies)
+void GenerateBattlePyramidWildMon(enum Species forceSpecies)
 {
     u8 name[POKEMON_NAME_LENGTH + 1];
     int i;
