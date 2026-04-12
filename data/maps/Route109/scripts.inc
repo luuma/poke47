@@ -574,7 +574,7 @@ Route109_Text_WereGoingToMakeBigCastle:
 Route109_Text_DollShop:
 	.string "Hello hello!\n"
 	.string "Browse for as long as you like.\p"
-	.string "All the dolls in my shop are crocheted\n"
+	.string "All the dolls in my shop are made\n"
 	.string "by hand!$"
 
 
@@ -591,7 +591,7 @@ Route109_Text_ZigzagoonCry:
 	.string "LILLIPUP: Yiyip?$"
 
 Route109_Text_SeedotDoll:
-	.string "It's a crochet SEEDOT doll.$"
+	.string "It's a handmade DOLL of PORYGON2.$"
 
 Route109_Text_SeashoreHouseSign:
 	.string "SEASHORE HOUSE\p"

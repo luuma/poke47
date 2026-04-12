@@ -3921,7 +3921,8 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Glitter Mail"),
         .pluralName = ITEM_PLURAL_NAME("Glitter Mail"),
-        .price = 50,
+        .holdEffect = HOLD_EFFECT_WISE_GLASSES,
+        .price = 200,
         .description = COMPOUND_STRING(
             "A Pikachu-print\n"
             "Mail to be held by\n"
@@ -3993,7 +3994,8 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Bead Mail"),
         .pluralName = ITEM_PLURAL_NAME("Bead Mail"),
-        .price = 50,
+        .holdEffect = HOLD_EFFECT_FRIENDSHIP_UP,
+        .price = 350,
         .description = sBeadMailDesc,
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
@@ -4044,7 +4046,8 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Dream Mail"),
         .pluralName = ITEM_PLURAL_NAME("Dream Mail"),
-        .price = 50,
+        .holdEffect = HOLD_EFFECT_FRIENDSHIP_UP,
+        .price = 350,
         .description = sBeadMailDesc,
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_MAIL,
@@ -4077,7 +4080,8 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Retro Mail"),
         .pluralName = ITEM_PLURAL_NAME("Retro Mail"),
-        .price = 50,
+        .holdEffect = HOLD_EFFECT_EXPERT_BELT,
+        .price = 200,
         .description = COMPOUND_STRING(
             "Mail featuring the\n"
             "drawings of three\n"

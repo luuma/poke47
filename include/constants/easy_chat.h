@@ -1107,7 +1107,7 @@
 
 #define EC_NUM_ALPHABET_GROUPS 27 // 26 (1 for each letter) + 1 (Others)
 
-#define EC_MAX_WORDS_IN_GROUP 270 // The closest is words by letter S, at 262
+#define EC_MAX_WORDS_IN_GROUP 1000 // The closest is probably the hoenn dex at 386.
 
 // If the Pokémon or Move group tables have an ID higher than 511, the word will be seen as
 // invalid due to the index looping back to the beginning and not matching the proper value.

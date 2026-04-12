@@ -135,6 +135,34 @@ SlateportCity_Pokemart_EnergyGuru:
 	.2byte ITEM_ABILITY_PATCH
 	pokemartlistend
 
+
+SlateportCity_EventScript_StationeryGuy::
+	lock
+	faceplayer
+	message SlateportCity_Text_StationeryGuy
+	waitmessage
+	pokemart SlateportCity_Pokemart_Stationery
+	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
+	release
+	end
+
+
+SlateportCity_Text_StationeryGuy:
+	.string "I - I'm the STATIONERY SELLER.\n"
+	.string "I s-sell all sorts of MAIL\l"
+	.string "that your POKéMON might like!\p"
+	.string "I - I'll do my best to be useful!$"
+
+
+	.align 2
+SlateportCity_Pokemart_Stationery:
+	.2byte ITEM_FAB_MAIL
+	.2byte ITEM_GLITTER_MAIL
+	.2byte ITEM_RETRO_MAIL
+	.2byte ITEM_BEAD_MAIL
+	.2byte ITEM_DREAM_MAIL
+	pokemartlistend
+
 SlateportCity_EventScript_EffortRibbonWoman::
 	lock
 	faceplayer
