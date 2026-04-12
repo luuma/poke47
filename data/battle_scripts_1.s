@@ -2520,6 +2520,12 @@ BattleScript_MirrorArmorReflectPrintString:
 BattleScript_MirrorArmorReflectEnd:
 	return
 
+BattleScript_SpicySprayImmune::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	call BattleScript_MirrorArmorDoesntAffect
+	end2
+
 BattleScript_MirrorArmorDoesntAffect:
 	swapattackerwithtarget
 	printstring STRINGID_ITDOESNTAFFECT
