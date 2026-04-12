@@ -15989,7 +15989,7 @@ static const struct LevelUpMove sPhioneLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_BUBBLE),
         LEVEL_UP_MOVE(1, MOVE_GUARD_SWAP),
         LEVEL_UP_MOVE(1, MOVE_CHARM),
-        LEVEL_UP_MOVE(1, MOVE_FLASH),
+        LEVEL_UP_MOVE(2, MOVE_FLASH),
         LEVEL_UP_MOVE(5, MOVE_WATER_GUN),
         LEVEL_UP_MOVE(10, MOVE_CONFUSE_RAY),
         LEVEL_UP_MOVE(15, MOVE_AURORA_BEAM),
