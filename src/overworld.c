@@ -3859,7 +3859,6 @@ static void DestroyItemIconSprite(void)
 {
     if (sItemIconSpriteId != MAX_SPRITES)
     {
-        FreeSpritePaletteByTag(ITEM_TAG);
         FreeSpritePalette(&gSprites[sItemIconSpriteId]);
         FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
         DestroySprite(&gSprites[sItemIconSpriteId]);
