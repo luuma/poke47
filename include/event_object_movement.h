@@ -122,6 +122,8 @@ extern const union AnimCmd *const sAnimTable_Following[];
 extern const union AnimCmd *const sAnimTable_Following_Asym[];
 extern const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[];
 extern const u8 gReflectionEffectPaletteMap[];
+extern const u8 OWEAutoBattling[];
+
 
 extern const struct SpriteFrameImage *const gBerryTreePicTablePointers[];
 extern const u8 *const gBerryTreePaletteSlotTablePointers[];
@@ -156,6 +158,12 @@ struct Pokemon *GetFirstLiveMon(void);
 enum Species GetOverworldWeatherSpecies(enum Species species);
 void UpdateFollowingPokemon(void);
 void RemoveFollowingPokemon(void);
+
+
+
+void RemoveAutoBattlingPokemon(void);
+
+
 struct ObjectEvent *GetFollowerObject(void);
 enum Direction GetDirectionToFace(s16, s16, s16, s16);
 void UpdateLightSprite(struct Sprite *);

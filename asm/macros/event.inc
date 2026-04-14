@@ -2771,6 +2771,14 @@
 	callnative ScriptUpdateFollowingMon
 	.endm
 
+
+	@ Creates a new follower NPC with the specified graphics id.
+	.macro followertoautobattler x:req, y:req
+	callnative ScriptCreateAutoBattleMonAtCoords
+	.2byte \x
+	.2byte \y
+	.endm
+
 	@ Changes the battle partner of the existing follower NPC.
 	.macro changefollowerbattler battlePartner:req
 	callnative ScriptChangeFollowerNPCBattlePartner

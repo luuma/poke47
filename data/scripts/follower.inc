@@ -11,14 +11,60 @@ gText_WantsToFly::
 	.string "{STR_VAR_1} looks up at the\nsky restlessly.\pWould you like to use FLY?$"
 
 EventScript_Follower::
-	lock
+	lockall
+	faceplayer
 	bufferlivemonnickname STR_VAR_1
 	playfirstmoncry
 	getfolloweraction
 EventScript_FollowerEnd::
 	waitfieldeffect FLDEFF_EMOTE
-	release
+	msgbox gText_FollowerAutoQuestion, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, EventScript_FollowerAuto @AUTOBATTLE
+	releaseall
 	end
+
+gText_FollowerAutoQuestion::
+	.string "Send {STR_VAR_1} on Auto-Battle?$"
+
+
+EventScript_FollowerAuto::
+	@ setflag FLAG_TEMP_1F
+	getobjectxy VAR_LAST_TALKED, CURRENT_POSITION, 0x8004, 0x8005
+	followertoautobattler 0x8004, 0x8005
+	releaseall
+	end
+
+gText_followerstrvar12:
+	.string "{STR_VAR_1} x and {STR_VAR_2} y!$"
+
+
+
+EventScript_FollowerAutou::
+	setflag FLAG_TEMP_1F
+	getplayerxy 0x8004, 0x8005
+	call_if_eq VAR_FACING, DIR_SOUTH, EventScript_FollowerAuto_add1y
+	call_if_eq VAR_FACING, DIR_NORTH, EventScript_FollowerAuto_sub1y
+	call_if_eq VAR_FACING, DIR_WEST, EventScript_FollowerAuto_add1x
+	call_if_eq VAR_FACING, DIR_EAST, EventScript_FollowerAuto_sub1x
+	followertoautobattler 0x8004, 0x8005
+	releaseall
+	end
+
+EventScript_FollowerAuto_add1y:
+	addvar 1, 0x8005
+        return
+
+EventScript_FollowerAuto_sub1y:
+	subvar 1, 0x8005
+        return
+
+EventScript_FollowerAuto_add1x:
+	addvar 1, 0x8004
+        return
+
+EventScript_FollowerAuto_sub1x:
+	subvar 1, 0x8004
+        return
 
 EventScript_FollowerLovesYou::
 	applymovement OBJ_EVENT_ID_FOLLOWER, ContestHall_Movement_Heart

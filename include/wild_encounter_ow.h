@@ -89,5 +89,7 @@ const struct ObjectEventTemplate TryGetObjectEventTemplateForOWE(const struct Ob
 struct SpritePalette GetOWESpawnDespawnAnimFldEffPalette(enum SpawnDespawnTypeOWE spawnAnim);
 
 extern const u8 InteractWithOverworldWildEncounter[];
+extern const u8 OWEAutoBattleOverworldWildEncounter[];
+
 
 #endif // GUARD_WILD_ENCOUNTER_OW_H

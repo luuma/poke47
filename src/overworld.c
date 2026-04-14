@@ -2365,6 +2365,7 @@ static bool32 ReturnToFieldLocal(u8 *state)
         ResetScreenForMapLoad();
         ResumeMap(FALSE);
         InitObjectEventsReturnToField();
+        RemoveAutoBattlingPokemon();
         if (gFieldCallback == FieldCallback_UseFly)
             RemoveFollowingPokemon();
         else

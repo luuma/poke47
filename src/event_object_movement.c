@@ -2175,6 +2175,8 @@ struct ObjectEvent *GetFollowerObject(void)
     return NULL;
 }
 
+
+
 // Return graphicsInfo for a pokemon species & form
 const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(enum Species species, bool32 shiny, bool32 female)
 {
@@ -2440,6 +2442,8 @@ void UpdateFollowingPokemon(void)
         FollowerSetGraphics(objEvent, species, shiny, female);
         objEvent->invisible = TRUE;
     }
+    sprite = &gSprites[objEvent->spriteId];
+
     sprite->data[6] = 0; // set animation data
 }
 
@@ -2451,6 +2455,8 @@ void RemoveFollowingPokemon(void)
         return;
     RemoveObjectEvent(objectEvent);
 }
+
+
 
 // Determine whether follower *should* be visible
 bool32 IsFollowerVisible(void)
@@ -3728,6 +3734,8 @@ static const u8 *GetObjectEventScriptPointerByLocalIdAndMap(u8 localId, u8 mapNu
 {
     if (localId == OBJ_EVENT_ID_FOLLOWER)
         return EventScript_Follower;
+    if (localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)
+        return OWEAutoBattling;
     return GetObjectEventTemplateByLocalIdAndMap(localId, mapNum, mapGroup)->script;
 }
 
@@ -10162,6 +10170,84 @@ void ScriptFaceEachOther(struct ScriptContext *ctx)
     npc = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_LastTalked)];
     ObjectEventsTurnToEachOther(player, npc);
 }
+
+
+
+void ScriptFaceEachOtherFollowerOWE(struct ScriptContext *ctx) //AUTOBATTLE
+{
+    struct ObjectEvent *follower, *npc;
+    npc = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_LastTalked)];
+    follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)];
+    if (follower == NULL)
+        follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER)];
+    if (follower == NULL)
+	return
+    ObjectEventsTurnToEachOther(follower, npc);
+}
+
+struct ObjectEvent *GetFollowerAutobattleObject(void)
+{
+    u32 i;
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE && gObjectEvents[i].active)
+            return &gObjectEvents[i];
+    }
+    return NULL;
+}
+
+void RemoveAutoBattlingPokemon(void)
+{
+    struct ObjectEvent *objectEvent = GetFollowerAutobattleObject();
+    if (objectEvent == NULL)
+        return;
+    RemoveObjectEvent(objectEvent);
+}
+
+void ScriptCreateAutoBattleMonAtCoords(struct ScriptContext *ctx)
+{
+    u32 xcoord = VarGet(ScriptReadHalfword(ctx));
+    u32 ycoord = VarGet(ScriptReadHalfword(ctx));
+
+    u32 species;
+    bool32 shiny;
+    bool32 female;
+    RemoveAutoBattlingPokemon();
+
+    struct ObjectEvent *objEvent = GetFollowerAutobattleObject();
+    struct Sprite *sprite;
+
+    if(!GetFollowerInfo(&species, &shiny, &female)
+     || SpeciesToGraphicsInfo(species, shiny, female) == NULL)
+        assertf(FALSE, "could not spawn autobattler from that!")
+        return;
+    if (objEvent == NULL)
+    {
+        RemoveFollowingPokemon();
+        u32 objectEventId = gPlayerAvatar.objectEventId;
+        // Spawn follower
+        struct ObjectEventTemplate template =
+        {
+            .localId = OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE,
+            .graphicsId = GetGraphicsIdForMon(species, shiny, female),
+            .x = xcoord,
+            .y = ycoord,
+            .elevation = gObjectEvents[objectEventId].active ? gObjectEvents[objectEventId].currentElevation : 3,
+            .movementType = MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE
+        };
+        objectEventId = SpawnSpecialObjectEvent(&template);
+        assertf(objectEventId < OBJECT_EVENTS_COUNT, "could not spawn autobattler. too many object events exist, %d", xcoord)
+        {
+	        RemoveAutoBattlingPokemon();
+            return;
+        }
+        objEvent = &gObjectEvents[objectEventId];
+    }
+    sprite = &gSprites[objEvent->spriteId];
+
+    sprite->data[6] = 0; // set animation data
+}
+
 
 enum Direction DetermineObjectEventDirectionFromObject(struct ObjectEvent *objectOne, struct ObjectEvent *objectTwo)
 {

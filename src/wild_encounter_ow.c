@@ -596,13 +596,15 @@ void TryTriggerOverworldWilEncounter(struct ObjectEvent *obstacle, struct Object
     if (WE_OWE_REPEL_DEXNAV_COLLISION && (FlagGet(DN_FLAG_SEARCHING) || REPEL_STEP_COUNT))
         return;
 
-    bool32 playerIsCollider = (collider->isPlayer && IsOverworldWildEncounter(obstacle, OWE_ANY));
-    bool32 playerIsObstacle = (obstacle->isPlayer && IsOverworldWildEncounter(collider, OWE_ANY));
+    bool32 OWEObstacle = (IsOverworldWildEncounter(obstacle, OWE_ANY));
+    bool32 OWECollider = (IsOverworldWildEncounter(collider, OWE_ANY));
+    bool32 followerHit = (collider->localId == OBJ_EVENT_ID_FOLLOWER || collider->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE);
+    bool32 playerHit = (collider->isPlayer || obstacle->isPlayer );
 
-    if (!(playerIsCollider || playerIsObstacle))
+    if (!((OWEObstacle || OWECollider) && (followerHit || playerHit)))// AUTOBATTLE. This is where the config bool goes.
         return;
 
-    struct ObjectEvent *wildMon = playerIsCollider ? obstacle : collider;
+    struct ObjectEvent *wildMon = OWEObstacle ? obstacle : collider;
     u32 indexRoamerOutbreak = GetOWERoamerIndex(wildMon);
     if (indexRoamerOutbreak
      && indexRoamerOutbreak < OWE_MASS_OUTBREAK_INDEX
@@ -614,13 +616,17 @@ void TryTriggerOverworldWilEncounter(struct ObjectEvent *obstacle, struct Object
 
     gSpecialVar_LastTalked = wildMon->localId;
     gSpecialVar_0x8004 = OW_SPECIES(wildMon);
+    gSpecialVar_0x8005 = OW_SPECIES(wildMon);
     gSelectedObjectEvent = GetObjectEventIdByLocalId(wildMon->localId);
 
     // Stop the bobbing animation.
     if (wildMon->movementActionId >= MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_DOWN && wildMon->movementActionId <= MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_RIGHT)
         ClearObjectEventMovement(wildMon, &gSprites[wildMon->spriteId]);
-
-    ScriptContext_SetupScript(InteractWithOverworldWildEncounter);
+    
+    if (playerHit)
+        ScriptContext_SetupScript(InteractWithOverworldWildEncounter);
+    if (followerHit)
+        ScriptContext_SetupScript(OWEAutoBattleOverworldWildEncounter);
 }
 
 bool32 ShouldRunDefaultOWEScript(u32 objectEventId)
@@ -1058,9 +1064,9 @@ bool32 IsOWEDespawnExempt(struct ObjectEvent *owe)
     return FALSE;
 }
 
-bool32 DespawnOWEDueToNPCCollision(struct ObjectEvent *curObject, struct ObjectEvent *owe)
+bool32 DespawnOWEDueToNPCCollision(struct ObjectEvent *curObject, struct ObjectEvent *owe)// An OWE gets run over
 {
-    if (!IsOverworldWildEncounter(curObject, OWE_GENERATED) || IsOverworldWildEncounter(owe, OWE_ANY) || owe->isPlayer)
+    if (!IsOverworldWildEncounter(curObject, OWE_GENERATED) || IsOverworldWildEncounter(owe, OWE_ANY) || owe->isPlayer || owe->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)
         return FALSE;
 
     RemoveObjectEvent(curObject);
@@ -1682,7 +1688,7 @@ static void Task_OWEApproachForBattle(u8 taskId)
         
         if (CheckRestrictedOWEMovement(OWE, OWE->movementDirection))
         {
-            struct ObjectEvent *followerMon = GetFollowerObject();
+            //struct ObjectEvent *followerMon = GetFollowerObject();
             u32 idFollowerNPC = GetFollowerNPCObjectId();
             struct ObjectEvent *followerNPC = &gObjectEvents[idFollowerNPC];
             s16 x = OWE->currentCoords.x;
@@ -1692,13 +1698,13 @@ static void Task_OWEApproachForBattle(u8 taskId)
             MoveCoords(OWE->movementDirection, &x, &y);
             collidingObject = GetObjectObjectCollidesWith(OWE, x, y, FALSE);
 
-            if (collidingObject == GetObjectEventIdByLocalId(followerMon->localId) && followerMon != NULL && !followerMon->invisible)
-            {
-                ClearObjectEventMovement(followerMon, &gSprites[followerMon->spriteId]);
-                gSprites[followerMon->spriteId].animCmdIndex = 0;
-                ObjectEventSetHeldMovement(followerMon, MOVEMENT_ACTION_ENTER_POKEBALL);
-            }
-            else if (collidingObject == idFollowerNPC && FNPC_ENABLE_NPC_FOLLOWERS && PlayerHasFollowerNPC() && !followerNPC->invisible)
+            //if (collidingObject == GetObjectEventIdByLocalId(followerMon->localId) && followerMon != NULL && !followerMon->invisible)
+            //{
+                //ClearObjectEventMovement(followerMon, &gSprites[followerMon->spriteId]);
+                //gSprites[followerMon->spriteId].animCmdIndex = 0;
+                //ObjectEventSetHeldMovement(followerMon, MOVEMENT_ACTION_ENTER_POKEBALL);
+            ///}
+            if (collidingObject == idFollowerNPC && FNPC_ENABLE_NPC_FOLLOWERS && PlayerHasFollowerNPC() && !followerNPC->invisible)
             {
                 enum Direction direction = DetermineFollowerNPCDirection(&gObjectEvents[gPlayerAvatar.objectEventId], followerNPC);
                 ClearObjectEventMovement(followerNPC, &gSprites[followerNPC->spriteId]);

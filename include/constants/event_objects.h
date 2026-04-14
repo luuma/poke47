@@ -500,11 +500,12 @@ enum
 #define LOCALID_NONE                              0
 #define LOCALID_CAMERA                          127
 #define LOCALID_BERRY_BLENDER_PLAYER_END        240 // This will use 5 (MAX_RFU_PLAYERS) IDs ending at 240, i.e. 236-240
-#define LOCALID_OW_ENCOUNTER_END                252 // This will use 4 (OWE_SPAWNS_MAX) IDs ending at 252, i.e. 249-252
+#define LOCALID_OW_ENCOUNTER_END                251 // This will use 5 (OWE_SPAWNS_MAX) IDs ending at 251, i.e. 246-251
 #define LOCALID_FOLLOWING_POKEMON               254
 #define LOCALID_PLAYER                          255
-#define OBJ_EVENT_ID_FOLLOWER                   0xFE
-#define OBJ_EVENT_ID_NPC_FOLLOWER               0xFD
+#define OBJ_EVENT_ID_FOLLOWER                   0xFE//254
+#define OBJ_EVENT_ID_NPC_FOLLOWER               0xFD//253
+#define OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE        0xFC//252
 
 // Aliases for old names. "object event id" normally refers to an index into gObjectEvents, which these are not.
 // Used for link player OWs in CreateLinkPlayerSprite
