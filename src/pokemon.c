@@ -7630,6 +7630,12 @@ enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species speciesId)
     return sOWESpeciesBehavior[behavior].activeSpeed;
 }
 
+void firstmonhasover1hp(struct ScriptContext *ctx)
+{
+    struct Pokemon *mon = GetFirstLiveMon();
+    gSpecialVar_Result = GetMonData(mon, MON_DATA_HP) > 1;
+    return;
+}
 
 
 void ScriptAutobattle(struct ScriptContext *ctx)
@@ -7655,15 +7661,26 @@ void ScriptAutobattle(struct ScriptContext *ctx)
     return;
 }
 
-static u32 AutoBattlerStatMatchup(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
+static u32 AutoBattlerStatMatchupMonDef(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
 {
-    u16 batk = gSpeciesInfo[speciesFoe].baseAttack;
-    u16 bsatk = gSpeciesInfo[speciesFoe].baseSpAttack;
+    u16 atk = gSpeciesInfo[speciesFoe].baseAttack;
+    u16 satk = gSpeciesInfo[speciesFoe].baseSpAttack;
     u16 def = GetMonData(mon, MON_DATA_DEF);
     u16 sdef = GetMonData(mon, MON_DATA_SPDEF);
 
-    // I've taken a shortcut to avoid problems with uints and fractions. The equivalent formula is ((batk*(levelFoe+iv)*nature/50) +5)/(50*def+2)). Instead I've ditched all of that and divide by 50 later.
-    return(batk/def >= bsatk/sdef ? (batk*levelFoe/def) : (bsatk*levelFoe/sdef));
+    // I've taken a shortcut to avoid problems with a lack of decimal point in fractions.
+    // The equivalent formula is ((batk*(levelFoe+iv)*nature/50) +5)/(50*def+2)). Instead I've ditched all of that and divide by 50 later.
+    return(atk*sdef >= satk*def ? (atk*levelFoe/def) : (satk*levelFoe/sdef));
+}
+
+static u32 AutoBattlerStatMatchupMonAtk(struct Pokemon *mon, enum Species speciesFoe)
+{
+    u16 atk = GetMonData(mon, MON_DATA_ATK);
+    u16 satk = GetMonData(mon, MON_DATA_SPATK);
+    u16 def = gSpeciesInfo[speciesFoe].baseDefense;
+    u16 sdef = gSpeciesInfo[speciesFoe].baseSpDefense;
+    // I've taken a shortcut to avoid problems with a lack of decimal point in fractions.
+    return(atk*sdef >= satk*def ? (atk*50/def) : (satk*50/sdef));
 }
 
 static uq4_12_t AutoBattlerTypeMatchup(enum Species speciesAtk, enum Species speciesDef)
@@ -7701,13 +7718,25 @@ static uq4_12_t AutoBattlerTypeMatchup(enum Species speciesAtk, enum Species spe
 
 u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
 {
-    enum Species speciesParty = GetMonData(mon, MON_DATA_SPECIES);
-    u32 dmg = 40;
-    dmg *= RandomUniform(RNG_DAMAGE_MODIFIER, 0, DMG_ROLL_PERCENT_HI - DMG_ROLL_PERCENT_LO); // 0.85 to 1.
-    dmg *= (2*levelFoe/5 + 2);
-    dmg = uq4_12_multiply_by_int_half_down(AutoBattlerTypeMatchup(speciesFoe, speciesParty), dmg);
-    dmg *= AutoBattlerStatMatchup(mon, levelFoe, speciesFoe);
-    dmg /= 3333; // * 1.5 / 100*50;
+    enum Species speciesMon = GetMonData(mon, MON_DATA_SPECIES);
+    u8 levelMon = GetMonData(mon, MON_DATA_LEVEL);
+    // spoofed damage of a 40 power move
+    u32 dmg = RandomUniform(RNG_DAMAGE_MODIFIER, 850, 1000); // 85 to 100
+    dmg *= ((2*levelMon)/5 + 2);
+    dmg = uq4_12_multiply_by_int_half_down(AutoBattlerTypeMatchup(speciesMon, speciesFoe), dmg);// This handles the fact the formula uses 30 power if very ineffective
+    dmg *= AutoBattlerStatMatchupMonAtk(mon, speciesFoe);
+    dmg /= 41667; // * 1.5 * 40 / 1000*50*50;
+    dmg = max(dmg, 1);
+    u32 numHits = min((((gSpeciesInfo[speciesFoe].baseHP * levelFoe) + (50 * levelFoe) + 500) / (50 * dmg)) + 1, 255);// hits to defeat the foe.
+    numHits = max(numHits, 1);
+    // go again for the foe's damage to the player
+    dmg = RandomUniform(RNG_DAMAGE_MODIFIER, 850, 1000); // 85 to 100
+    dmg *= ((2*levelFoe)/5 + 2);
+    dmg = uq4_12_multiply_by_int_half_down(AutoBattlerTypeMatchup(speciesFoe, speciesMon), dmg);
+    dmg *= AutoBattlerStatMatchupMonDef(mon, levelFoe, speciesFoe);// Note the max possible value sits near uint's size here.
+    dmg /= 41667;  /// /= 41667; // * 1.5 * 40 / 1000*50*50;
+    dmg *= numHits;
+
     u16 GetHP = GetMonData(mon, MON_DATA_MAX_HP);
     u16 loss = 1;
     if (dmg > GetHP)
@@ -7739,14 +7768,10 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
 
     GetHP = GetMonData(mon, MON_DATA_HP); // reuse same uint
     u8 currHP = 1;
-    if (loss >= GetHP)
-    {
+    if (loss < GetHP)
+        currHP = (GetHP - loss); // if not KO'd, set HP. If KO'd, leave it at 1.
+    if (currHP * 4 < GetMonData(mon, MON_DATA_MAX_HP)) // if under 1/4 HP, return "wore itself out" result
         gSpecialVar_0x8006 = 0;
-    }
-    else
-    {
-        currHP = (GetHP - loss);
-    }
     return currHP;
 }
 

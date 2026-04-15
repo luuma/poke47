@@ -29,6 +29,7 @@ annoyfisherman::
 	applymovement VAR_LAST_TALKED, ing_move2
 	waitmovement 0
 	setflag FLAG_ANNOYING_FISHERMAN_ATSTEPS
+	copyobjectxytoperm LOCALID_ANNOYING_FISHERMAN
 	releaseall
 	end
 
@@ -44,6 +45,7 @@ annoyfishermanToSteps::
 	applymovement VAR_LAST_TALKED, ing_move1
 	waitmovement 0
 	clearflag FLAG_ANNOYING_FISHERMAN_ATSTEPS
+	copyobjectxytoperm LOCALID_ANNOYING_FISHERMAN
 	releaseall
 	end
 

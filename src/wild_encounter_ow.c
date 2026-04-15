@@ -598,7 +598,7 @@ void TryTriggerOverworldWilEncounter(struct ObjectEvent *obstacle, struct Object
 
     bool32 OWEObstacle = (IsOverworldWildEncounter(obstacle, OWE_ANY));
     bool32 OWECollider = (IsOverworldWildEncounter(collider, OWE_ANY));
-    bool32 followerHit = (collider->localId == OBJ_EVENT_ID_FOLLOWER || collider->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE);
+    bool32 followerHit = (collider->localId == OBJ_EVENT_ID_FOLLOWER || obstacle->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE);
     bool32 playerHit = (collider->isPlayer || obstacle->isPlayer );
 
     if (!((OWEObstacle || OWECollider) && (followerHit || playerHit)))// AUTOBATTLE. This is where the config bool goes.
@@ -1044,6 +1044,11 @@ void OnOverworldWildEncounterSpawn(struct ObjectEvent *owe)
 
 void OnOverworldWildEncounterDespawn(struct ObjectEvent *owe)
 {
+    if (owe->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)
+    {
+        UpdateFollowingPokemon();
+        return;
+    }
     if (!IsOverworldWildEncounter(owe, OWE_ANY))
         return;
 

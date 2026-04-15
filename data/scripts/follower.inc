@@ -11,27 +11,16 @@ gText_WantsToFly::
 	.string "{STR_VAR_1} looks up at the\nsky restlessly.\pWould you like to use FLY?$"
 
 EventScript_Follower::
-	lockall
+	lock
 	faceplayer
 	bufferlivemonnickname STR_VAR_1
 	playfirstmoncry
 	getfolloweraction
 EventScript_FollowerEnd::
 	waitfieldeffect FLDEFF_EMOTE
-	msgbox gText_FollowerAutoQuestion, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, EventScript_FollowerAuto @AUTOBATTLE
-	releaseall
-	end
-
-gText_FollowerAutoQuestion::
-	.string "Let {STR_VAR_1} roam and battle?$"
-
-
-EventScript_FollowerAuto::
-	@ setflag FLAG_TEMP_1F
-	getobjectxy VAR_LAST_TALKED, CURRENT_POSITION, 0x8004, 0x8005
-	followertoautobattler 0x8004, 0x8005
-	releaseall
+	callnative firstmonhasover1hp
+	call_if_eq VAR_RESULT, TRUE, EventScript_FollowerAuto @ see wild_encounter.inc
+	release
 	end
 
 EventScript_FollowerLovesYou::

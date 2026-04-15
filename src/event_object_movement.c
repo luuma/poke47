@@ -2442,8 +2442,6 @@ void UpdateFollowingPokemon(void)
         FollowerSetGraphics(objEvent, species, shiny, female);
         objEvent->invisible = TRUE;
     }
-    sprite = &gSprites[objEvent->spriteId];
-
     sprite->data[6] = 0; // set animation data
 }
 
@@ -10226,6 +10224,9 @@ void ScriptCreateAutoBattleMonAtCoords(struct ScriptContext *ctx)
         RemoveFollowingPokemon();
         u32 objectEventId = gPlayerAvatar.objectEventId;
         // Spawn follower
+	// Perhaps this is better refactored to save an object event directly into the gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId
+	// like in overworld.c. This doesn't do that, which means the event is temporary and despawns.
+
         struct ObjectEventTemplate template =
         {
             .localId = OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE,
@@ -10239,7 +10240,7 @@ void ScriptCreateAutoBattleMonAtCoords(struct ScriptContext *ctx)
 
         assertf(objectEventId < OBJECT_EVENTS_COUNT, "could not spawn autobattler. too many object events exist, %d", xcoord)
         {
-	        RemoveAutoBattlingPokemon();
+            RemoveAutoBattlingPokemon();
             return;
         }
         objEvent = &gObjectEvents[objectEventId];
