@@ -24,7 +24,7 @@ EventScript_FollowerEnd::
 	end
 
 gText_FollowerAutoQuestion::
-	.string "Send {STR_VAR_1} on Auto-Battle?$"
+	.string "Let {STR_VAR_1} roam and battle?$"
 
 
 EventScript_FollowerAuto::
@@ -33,38 +33,6 @@ EventScript_FollowerAuto::
 	followertoautobattler 0x8004, 0x8005
 	releaseall
 	end
-
-gText_followerstrvar12:
-	.string "{STR_VAR_1} x and {STR_VAR_2} y!$"
-
-
-
-EventScript_FollowerAutou::
-	setflag FLAG_TEMP_1F
-	getplayerxy 0x8004, 0x8005
-	call_if_eq VAR_FACING, DIR_SOUTH, EventScript_FollowerAuto_add1y
-	call_if_eq VAR_FACING, DIR_NORTH, EventScript_FollowerAuto_sub1y
-	call_if_eq VAR_FACING, DIR_WEST, EventScript_FollowerAuto_add1x
-	call_if_eq VAR_FACING, DIR_EAST, EventScript_FollowerAuto_sub1x
-	followertoautobattler 0x8004, 0x8005
-	releaseall
-	end
-
-EventScript_FollowerAuto_add1y:
-	addvar 1, 0x8005
-        return
-
-EventScript_FollowerAuto_sub1y:
-	subvar 1, 0x8005
-        return
-
-EventScript_FollowerAuto_add1x:
-	addvar 1, 0x8004
-        return
-
-EventScript_FollowerAuto_sub1x:
-	subvar 1, 0x8004
-        return
 
 EventScript_FollowerLovesYou::
 	applymovement OBJ_EVENT_ID_FOLLOWER, ContestHall_Movement_Heart

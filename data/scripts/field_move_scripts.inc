@@ -117,7 +117,7 @@ EventScript_FollowerFieldMove:
 EventScript_FollowerFieldMoveEnd:
 	return
 
-EventScript_FollowerSwap:@ AUTOBATTLE
+EventScript_FollowerSwap:
 	switch VAR_0x8005
 	case DIR_NORTH, EventScript_FollowerMoveNorth
 	case DIR_EAST, EventScript_FollowerMoveEast

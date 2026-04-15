@@ -7629,3 +7629,139 @@ enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species speciesId)
     enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
     return sOWESpeciesBehavior[behavior].activeSpeed;
 }
+
+
+
+void ScriptAutobattle(struct ScriptContext *ctx)
+{
+    enum Species speciesFoe = VarGet(ScriptReadHalfword(ctx));
+    u8 levelFoe = VarGet(ScriptReadHalfword(ctx));
+    
+    speciesFoe = SanitizeSpeciesId(speciesFoe);
+    struct Pokemon *mon = GetFirstLiveMon();
+    u8 Level = GetMonData(mon, MON_DATA_LEVEL);
+    if (Level >= GetCurrentLevelCap())
+    {
+        ConvertIntToDecimalStringN(gStringVar3, 0, STR_CONV_MODE_LEFT_ALIGN, 1);
+	return; // fully ignore damage if the front member of the party exceeds level cap.
+    }
+
+    u16 setHP = GetAutoBattleDamage(mon, levelFoe, speciesFoe);
+    SetMonData(mon, MON_DATA_HP, &setHP);
+
+    u32 exp = GiveAutobattleExp(mon, levelFoe, speciesFoe); // gives XP and returns amount given as uint
+    //
+    ConvertIntToDecimalStringN(gStringVar3, exp, STR_CONV_MODE_LEFT_ALIGN, 4);
+    return;
+}
+
+static u32 AutoBattlerStatMatchup(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
+{
+    u16 batk = gSpeciesInfo[speciesFoe].baseAttack;
+    u16 bsatk = gSpeciesInfo[speciesFoe].baseSpAttack;
+    u16 def = GetMonData(mon, MON_DATA_DEF);
+    u16 sdef = GetMonData(mon, MON_DATA_SPDEF);
+
+    // I've taken a shortcut to avoid problems with uints and fractions. The equivalent formula is ((batk*(levelFoe+iv)*nature/50) +5)/(50*def+2)). Instead I've ditched all of that and divide by 50 later.
+    return(batk/def >= bsatk/sdef ? (batk*levelFoe/def) : (bsatk*levelFoe/sdef));
+}
+
+static uq4_12_t AutoBattlerTypeMatchup(enum Species speciesAtk, enum Species speciesDef)
+{
+    // Check type matchup
+    uq4_12_t typeEffectiveness1 = UQ_4_12(1.0), typeEffectiveness2 = UQ_4_12(1.0);
+    enum Type atkType1 = gSpeciesInfo[speciesAtk].types[0], atkType2 = gSpeciesInfo[speciesAtk].types[1];
+    enum Type defType1 = gSpeciesInfo[speciesDef].types[0], defType2 = gSpeciesInfo[speciesDef].types[1];
+    // Add each independent defensive type matchup together
+    typeEffectiveness1 = uq4_12_multiply(typeEffectiveness1, (GetTypeModifier(atkType1, defType1)));
+    if (defType2 != defType1)
+        typeEffectiveness1 = uq4_12_multiply(typeEffectiveness1, (GetTypeModifier(atkType1, defType2)));
+    if (typeEffectiveness1 == 0) // Immunity
+        typeEffectiveness1 = UQ_4_12(0.1);
+    if (typeEffectiveness2 == UQ_4_12(0.25)) // double resist
+	typeEffectiveness2 = UQ_4_12(0.19); // 30 power attack instead
+
+    if (atkType2 != atkType1)
+    {
+        typeEffectiveness2 = uq4_12_multiply(typeEffectiveness2, (GetTypeModifier(atkType2, defType1)));
+        if (defType2 != defType1)
+            typeEffectiveness2 = uq4_12_multiply(typeEffectiveness2, (GetTypeModifier(atkType2, defType2)));
+        if (typeEffectiveness2 == 0) // Immunity
+            typeEffectiveness2 = UQ_4_12(0.1);
+	if (typeEffectiveness2 == UQ_4_12(0.25)) // double resist
+	    typeEffectiveness2 = UQ_4_12(0.19); 
+    }
+    else
+    {
+        return typeEffectiveness1;
+    }
+    return typeEffectiveness1 >= typeEffectiveness2 ? typeEffectiveness1 : typeEffectiveness2;
+}
+
+
+u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
+{
+    enum Species speciesParty = GetMonData(mon, MON_DATA_SPECIES);
+    u32 dmg = 40;
+    dmg *= RandomUniform(RNG_DAMAGE_MODIFIER, 0, DMG_ROLL_PERCENT_HI - DMG_ROLL_PERCENT_LO); // 0.85 to 1.
+    dmg *= (2*levelFoe/5 + 2);
+    dmg = uq4_12_multiply_by_int_half_down(AutoBattlerTypeMatchup(speciesFoe, speciesParty), dmg);
+    dmg *= AutoBattlerStatMatchup(mon, levelFoe, speciesFoe);
+    dmg /= 3333; // * 1.5 / 100*50;
+    u16 GetHP = GetMonData(mon, MON_DATA_MAX_HP);
+    u16 loss = 1;
+    if (dmg > GetHP)
+    {
+	loss = GetHP/2;
+        gSpecialVar_0x8006 = 5;
+    }
+    else if (dmg > GetHP * 3/4)
+    {
+	loss = GetHP/4;
+        gSpecialVar_0x8006 = 4;
+    }
+    else if (dmg > GetHP/2)
+    {
+	loss = GetHP/10;
+        gSpecialVar_0x8006 = 3;
+    }
+    else if (dmg > GetHP/4)
+    {
+	loss = GetHP/20;
+        gSpecialVar_0x8006 = 2;
+    }
+    else
+    {
+        gSpecialVar_0x8006 = 1;
+    }
+    if(loss<1)
+        loss=1;
+
+    GetHP = GetMonData(mon, MON_DATA_HP); // reuse same uint
+    u8 currHP = 1;
+    if (loss >= GetHP)
+    {
+        gSpecialVar_0x8006 = 0;
+    }
+    else
+    {
+        currHP = (GetHP - loss);
+    }
+    return currHP;
+}
+
+
+u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
+{
+    u8 initialLevel = GetMonData(mon, MON_DATA_LEVEL);
+    u32 totalXP = GetMonData(mon, MON_DATA_EXP);
+    u32 addxp = levelFoe * gSpeciesInfo[speciesFoe].expYield;
+    addxp /= 20; // initially this did not do anything.
+    totalXP = addxp + totalXP;
+    SetMonData(mon, MON_DATA_EXP, &totalXP);
+    ApplyDaycareExperience(mon);
+    u8 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
+    if (finalLevel > initialLevel)
+        PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
+    return (addxp);
+}

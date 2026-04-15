@@ -2772,9 +2772,16 @@
 	.endm
 
 
-	@ Creates a new follower NPC with the specified graphics id.
+	@ Removes the follower NPC, and if successful, creates an autobattler NPC at specified coordinates.
 	.macro followertoautobattler x:req, y:req
 	callnative ScriptCreateAutoBattleMonAtCoords
+	.2byte \x
+	.2byte \y
+	.endm
+
+	@ Simulates an S/V style autobattle with the species and level given.
+	.macro autobattle x:req, y:req
+	callnative ScriptAutobattle
 	.2byte \x
 	.2byte \y
 	.endm

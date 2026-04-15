@@ -953,5 +953,7 @@ u32 OWE_GetViewWidthFromSpecies(enum Species speciesId);
 u32 OWE_GetViewActiveDistanceFromSpecies(enum Species speciesId);
 enum SpeedOWE OWE_GetIdleSpeedFromSpecies(enum Species speciesId);
 enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species);
+u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe);
+u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe);
 
 #endif // GUARD_POKEMON_H

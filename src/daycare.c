@@ -313,7 +313,7 @@ static void ShiftDaycareSlots(struct DayCare *daycare)
     }
 }
 
-static void ApplyDaycareExperience(struct Pokemon *mon)
+void ApplyDaycareExperience(struct Pokemon *mon)
 {
     s32 i;
     bool8 firstMove;

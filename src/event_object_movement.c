@@ -10181,7 +10181,7 @@ void ScriptFaceEachOtherFollowerOWE(struct ScriptContext *ctx) //AUTOBATTLE
     if (follower == NULL)
         follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER)];
     if (follower == NULL)
-	return
+	return;
     ObjectEventsTurnToEachOther(follower, npc);
 }
 
@@ -10236,12 +10236,15 @@ void ScriptCreateAutoBattleMonAtCoords(struct ScriptContext *ctx)
             .movementType = MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE
         };
         objectEventId = SpawnSpecialObjectEvent(&template);
+
         assertf(objectEventId < OBJECT_EVENTS_COUNT, "could not spawn autobattler. too many object events exist, %d", xcoord)
         {
 	        RemoveAutoBattlingPokemon();
             return;
         }
         objEvent = &gObjectEvents[objectEventId];
+        objEvent->triggerGroundEffectsOnMove = TRUE;
+        objEvent->active = TRUE;
     }
     sprite = &gSprites[objEvent->spriteId];
 
