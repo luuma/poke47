@@ -6506,7 +6506,7 @@ enum Collision GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, enum 
 
 static enum Collision GetVanillaCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, enum Direction direction)
 {
-    if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y))
+    if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y) && !(objectEvent->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)) // Unlimited movement range
         return COLLISION_OUTSIDE_RANGE;
     else if (MapGridGetCollisionAt(x, y) || GetMapBorderIdAt(x, y) == CONNECTION_INVALID || IsMetatileDirectionallyImpassable(objectEvent, x, y, direction))
         return COLLISION_IMPASSABLE;
@@ -6608,7 +6608,7 @@ u8 GetCollisionFlagsAtCoords(struct ObjectEvent *objectEvent, s16 x, s16 y, enum
 {
     u8 flags = 0;
 
-    if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y))
+    if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y) && !(objectEvent->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)) // Unlimited movement range
         flags |= 1 << (COLLISION_OUTSIDE_RANGE - 1);
     if (MapGridGetCollisionAt(x, y) || GetMapBorderIdAt(x, y) == CONNECTION_INVALID || IsMetatileDirectionallyImpassable(objectEvent, x, y, direction) || (objectEvent->trackedByCamera && !CanCameraMoveInDirection(direction)))
         flags |= 1 << (COLLISION_IMPASSABLE - 1);

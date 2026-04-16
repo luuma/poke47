@@ -7780,8 +7780,8 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
 {
     u8 initialLevel = GetMonData(mon, MON_DATA_LEVEL);
     u32 totalXP = GetMonData(mon, MON_DATA_EXP);
-    u32 addxp = levelFoe * gSpeciesInfo[speciesFoe].expYield;
-    addxp /= 20; // initially this did not do anything.
+    u32 addxp = gSpeciesInfo[speciesFoe].expYield * levelFoe * (levelFoe+2);
+    addxp /= (13*(initialLevel+2));
     totalXP = addxp + totalXP;
     SetMonData(mon, MON_DATA_EXP, &totalXP);
     ApplyDaycareExperience(mon);
