@@ -2213,7 +2213,7 @@
 	.if \animation == FALSE
 		setbyte sSTAT_ANIM_PLAYED, TRUE
 	.endif
-	statbuffchange BS_TARGET, STAT_CHANGE_ALLOW_PTR, \script
+	statbuffchange \battler, STAT_CHANGE_ALLOW_PTR, \script
 	.ifnb \customString
 		printstring \customString
 	.else
