@@ -7637,13 +7637,8 @@ void firstmonhasover1hp(struct ScriptContext *ctx)
     return;
 }
 
-
-void ScriptAutobattle(struct ScriptContext *ctx)
+static void DoAutobattle(enum Species speciesFoe, u8 levelFoe)
 {
-    enum Species speciesFoe = VarGet(ScriptReadHalfword(ctx));
-    u8 levelFoe = VarGet(ScriptReadHalfword(ctx));
-    
-    speciesFoe = SanitizeSpeciesId(speciesFoe);
     struct Pokemon *mon = GetFirstLiveMon();
     u8 Level = GetMonData(mon, MON_DATA_LEVEL);
     if (Level >= GetCurrentLevelCap())
@@ -7789,4 +7784,12 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     if (finalLevel > initialLevel)
         PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
     return (addxp);
+}
+
+void ScriptAutobattle(struct ScriptContext *ctx)
+{
+    enum Species speciesFoe = VarGet(ScriptReadHalfword(ctx));
+    u8 levelFoe = VarGet(ScriptReadHalfword(ctx));
+    speciesFoe = SanitizeSpeciesId(speciesFoe);
+    DoAutobattle(speciesFoe, levelFoe);
 }

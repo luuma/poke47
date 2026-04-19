@@ -2782,8 +2782,8 @@
 	@ Simulates an S/V style autobattle with the species and level given in vars. Loads the battle's result into var 0x8006
 	.macro autobattle varSpecies:req, varLevel:req
 	callnative ScriptAutobattle
-	.2byte \x
-	.2byte \y
+	.2byte \varSpecies
+	.2byte \varLevel
 	.endm
 
 	@ Changes the battle partner of the existing follower NPC.

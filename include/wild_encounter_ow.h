@@ -90,6 +90,8 @@ struct SpritePalette GetOWESpawnDespawnAnimFldEffPalette(enum SpawnDespawnTypeOW
 
 extern const u8 InteractWithOverworldWildEncounter[];
 extern const u8 OWEAutoBattleOverworldWildEncounter[];
+extern const u8 EventScript_AButtonToAutobattle[];
+extern const u8 EventScript_AButtonToEndAutobattle[];
 
 
 #endif // GUARD_WILD_ENCOUNTER_OW_H

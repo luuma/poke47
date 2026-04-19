@@ -60,6 +60,7 @@ static const u8 *GetInteractedMetatileScript(struct MapPosition *, u8, enum Dire
 static const u8 *GetInteractedWaterScript(struct MapPosition *, u8, enum Direction);
 static bool32 TrySetupDiveDownScript(void);
 static bool32 TrySetupDiveEmergeScript(void);
+static bool32 TrySetupAutobattle(void);
 static bool8 TryStartStepBasedScript(struct MapPosition *, u16, enum Direction);
 static bool8 CheckStandardWildEncounter(u16);
 static bool8 TryArrowWarp(struct MapPosition *, u16, enum Direction);
@@ -85,6 +86,7 @@ static void SetMsgSignPostAndVarFacing(enum Direction playerDirection);
 static void SetUpWalkIntoSignScript(const u8 *script, enum Direction playerDirection);
 static u32 GetFacingSignpostType(u16 metatileBehvaior, enum Direction direction);
 static const u8 *GetSignpostScriptAtMapPosition(struct MapPosition *position);
+
 
 void FieldClearPlayerInput(struct FieldInput *input)
 {
@@ -230,6 +232,9 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
         ShowStartMenu();
         return TRUE;
     }
+
+    if (input->pressedAButton && TrySetupAutobattle())
+        return TRUE;
 
     if (input->tookStep && TryFindHiddenPokemon())
         return TRUE;
@@ -681,6 +686,55 @@ static bool32 TrySetupDiveDownScript(void)
     }
     return FALSE;
 }
+
+static bool32 FirstMonOver1HP(void)
+{
+    struct Pokemon *mon = GetFirstLiveMon();
+    return (GetMonData(mon, MON_DATA_HP) > 1);
+}
+
+static bool32 FollowerObjectExistsVisibly(void)
+{
+    u32 i;
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER && gObjectEvents[i].active && !gObjectEvents[i].invisible)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static bool32 FollowerAutobattleObjectExists(void)
+{
+    u32 i;
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE && gObjectEvents[i].active)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+static bool32 TrySetupAutobattle(void)
+{
+    if (!FirstMonOver1HP() || !TRUE)// config goes here.
+        return FALSE; 
+    else if (!FollowerObjectExistsVisibly()) // if there's no follower or it's invisible
+    {
+        if (!FollowerAutobattleObjectExists())// and no autobattler
+            return FALSE;// do nothing
+        else
+            ScriptContext_SetupScript(EventScript_AButtonToEndAutobattle); // despawn it
+            return TRUE; 
+    } 
+    else
+    {
+        gSpecialVar_LastTalked = OBJ_EVENT_ID_FOLLOWER; //This is read by the script and becomes spawn coords
+        ScriptContext_SetupScript(EventScript_AButtonToAutobattle); // spawn it
+        return TRUE;
+    }
+}
+
 
 static bool32 TrySetupDiveEmergeScript(void)
 {

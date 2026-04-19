@@ -10,20 +10,41 @@ InteractWithOverworldWildEncounter::
     end
 
 EventScript_FollowerAuto::
-	msgbox gText_FollowerAutoQuestion, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, Common_EventScript_NopReturn @AUTOBATTLE
+    msgbox gText_FollowerAutoQuestion, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, NO, Common_EventScript_NopReturn @AUTOBATTLE
 EventScript_FollowerAutoBegin:: 
     lockall
-	getobjectxy VAR_LAST_TALKED, CURRENT_POSITION, 0x8004, 0x8005
-	followertoautobattler 0x8004, 0x8005
+    getobjectxy VAR_LAST_TALKED, CURRENT_POSITION, 0x8004, 0x8005
+    followertoautobattler 0x8004, 0x8005
     setvar VAR_LAST_TALKED, OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE
-	releaseall
+    releaseall
+    end
+
+EventScript_AButtonToAutobattle::
+    lockall
+    callnative firstmonhasover1hp
+    call_if_eq VAR_RESULT, TRUE, EventScript_FollowerAutoBegin @ see wild_encounter.inc
+    release
+    end
+
+EventScript_AButtonToEndAutobattle::
+    lockall
+    setvar VAR_LAST_TALKED, OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE
+    applymovement OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE, gMovement_EnterPokeball
+    waitmovement
+    callnative RemoveAutoBattlingPokemon @ this despawn automatically updates following pokemon.
+    releaseall
     end
 
 
 
 gText_FollowerAutoQuestion::
-	.string "Let {STR_VAR_1} roam and battle?$"
+    .string "Let {STR_VAR_1} roam and battle?$"
+
+gMovement_EnterPokeball:
+	enter_pokeball
+	step_end
+
 
 OWEAutoBattleOverworldWildEncounter::
     lockall
@@ -106,6 +127,8 @@ OWEAutoBattling::
     msgbox gText_FollowerAutoQuestion2, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, NO, EventScript_OWEAutoBattling
 EventScript_OWEAutoBattlingEnd::
+    applymovement OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE, gMovement_EnterPokeball
+    waitmovement
     callnative RemoveAutoBattlingPokemon @ this despawn automatically updates following pokemon.
 EventScript_OWEAutoBattling::
     releaseall

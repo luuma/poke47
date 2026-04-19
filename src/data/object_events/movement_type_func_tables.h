@@ -395,6 +395,8 @@ u8 (*const gMovementTypeFuncs_CopyPlayer[])(struct ObjectEvent *, struct Sprite 
     MovementType_CopyPlayer_Step0,
     MovementType_CopyPlayer_Step1,
     MovementType_CopyPlayer_Step2,
+    MovementType_WalkOnSpotCopyPlayerNormal_Step3,
+    MovementType_WalkOnSpotCopyPlayerNormal_Step4, // the manner in which copy player function are implemented means they essentially cannot be extended beyond the four available without breaking a ton of things or a substantial complex refactor.
 };
 
 bool8 (*const gCopyPlayerMovementFuncs[])(struct ObjectEvent *, struct Sprite *, enum Direction, bool8(u8)) = {
@@ -409,6 +411,34 @@ bool8 (*const gCopyPlayerMovementFuncs[])(struct ObjectEvent *, struct Sprite *,
     [COPY_MOVE_JUMP2]               = CopyablePlayerMovement_Jump2,
     [COPY_MOVE_WALK_COLLIDE]        = CopyablePlayerMovement_WalkNormal,
     [COPY_MOVE_WALK_COLLIDE_SLOW]   = CopyablePlayerMovement_WalkSlow,
+};
+
+bool8 (*const gCopyPlayerWalkMovementFuncs[])(struct ObjectEvent *, struct Sprite *, enum Direction, bool8(u8)) = {
+    [COPY_MOVE_NONE]                = CopyablePlayerMovementWalk_Idle,
+    [COPY_MOVE_FACE]                = CopyablePlayerMovementWalk_FaceDirectionIdle,
+    [COPY_MOVE_WALK]                = CopyablePlayerMovement_WalkNormal,
+    [COPY_MOVE_WALK_FAST]           = CopyablePlayerMovement_WalkFast,
+    [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFaster,
+    [COPY_MOVE_SLIDE]               = CopyablePlayerMovement_Slide,
+    [COPY_MOVE_JUMP_IN_PLACE]       = CopyablePlayerMovement_JumpInPlace,
+    [COPY_MOVE_JUMP]                = CopyablePlayerMovement_JumpInPlace,
+    [COPY_MOVE_JUMP2]               = CopyablePlayerMovement_JumpInPlace,
+    [COPY_MOVE_WALK_COLLIDE]        = CopyablePlayerMovement_WalkNormal,
+    [COPY_MOVE_WALK_COLLIDE_SLOW]   = CopyablePlayerMovement_WalkSlow,
+};
+
+bool8 (*const gCopyPlayerRunMovementFuncs[])(struct ObjectEvent *, struct Sprite *, enum Direction, bool8(u8)) = {
+    [COPY_MOVE_NONE]                = CopyablePlayerMovementWalk_Idle,
+    [COPY_MOVE_FACE]                = CopyablePlayerMovementWalk_FaceDirectionIdle,
+    [COPY_MOVE_WALK]                = CopyablePlayerMovement_WalkFast,
+    [COPY_MOVE_WALK_FAST]           = CopyablePlayerMovement_WalkFast,
+    [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFaster,
+    [COPY_MOVE_SLIDE]               = CopyablePlayerMovement_Slide,
+    [COPY_MOVE_JUMP_IN_PLACE]       = CopyablePlayerMovement_JumpInPlace,
+    [COPY_MOVE_JUMP]                = CopyablePlayerMovement_JumpInPlace,
+    [COPY_MOVE_JUMP2]               = CopyablePlayerMovement_JumpInPlace,
+    [COPY_MOVE_WALK_COLLIDE]        = CopyablePlayerMovement_WalkNormal,
+    [COPY_MOVE_WALK_COLLIDE_SLOW]   = CopyablePlayerMovement_WalkNormal,
 };
 
 u8 (*const gMovementTypeFuncs_FollowPlayer[])(struct ObjectEvent *, struct Sprite *) = {

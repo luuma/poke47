@@ -1705,7 +1705,7 @@ static void Task_OWEApproachForBattle(u8 taskId)
             MoveCoords(OWE->movementDirection, &x, &y);
             collidingObject = GetObjectObjectCollidesWith(OWE, x, y, FALSE);
 
-            //if (collidingObject == GetObjectEventIdByLocalId(followerMon->localId) && followerMon != NULL && !followerMon->invisible)
+            //if (collidingObject == GetObjectEventIdByLocalId(followerMon->localId) && followerMon != NULL && !followerMon->invisible)/// autobattleconfig
             //{
                 //ClearObjectEventMovement(followerMon, &gSprites[followerMon->spriteId]);
                 //gSprites[followerMon->spriteId].animCmdIndex = 0;

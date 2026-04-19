@@ -5508,6 +5508,8 @@ bool8 MovementType_CopyPlayer_Step0(struct ObjectEvent *objectEvent, struct Spri
     if (objectEvent->directionSequenceIndex == 0)
         objectEvent->directionSequenceIndex = GetPlayerFacingDirection();
     sprite->sTypeFuncId = 1;
+    if (OW_MON_WANDER_WALK == TRUE && IS_OW_MON_OBJ(objectEvent))
+        sprite->sTypeFuncId = 3;// jump to a separate loop that copies the first but with idle anims.
     return TRUE;
 }
 
@@ -5528,6 +5530,7 @@ bool8 MovementType_CopyPlayer_Step2(struct ObjectEvent *objectEvent, struct Spri
     }
     return FALSE;
 }
+
 
 bool8 CopyablePlayerMovement_None(struct ObjectEvent *objectEvent, struct Sprite *sprite, enum Direction playerDirection, bool8 tileCallback(u8))
 {
@@ -5798,6 +5801,67 @@ static bool8 UpdateFollowerTransformEffect(struct ObjectEvent *objectEvent, stru
     sprite->data[7] = (sprite->data[7] & 0xFF00) | frames;
     return TRUE;
 }
+
+bool8 CopyablePlayerMovementWalk_Idle(struct ObjectEvent *objectEvent, struct Sprite *sprite, enum Direction playerDirection, bool8 tileCallback(u8))
+{
+    if (UpdateMonMoveInPlace(objectEvent, sprite))
+        sprite->sTypeFuncId = 4;
+        return TRUE;
+
+    UpdateFollowerTransformEffect(objectEvent, sprite);
+    return FALSE;
+}
+
+bool8 CopyablePlayerMovementWalk_FaceDirectionIdle(struct ObjectEvent *objectEvent, struct Sprite *sprite, enum Direction playerDirection, bool8 tileCallback(u8))
+{
+    enum Direction direction = GetCopyDirection(gInitialMovementTypeFacingDirections[objectEvent->movementType], objectEvent->directionSequenceIndex, playerDirection);
+    if (direction != objectEvent->facingDirection)// The reason this is such a pain in the neck to implement is that in the default copy movement anims, the sprite is *constantly*
+                                                 // being issued "face direction" commands for the direction it's already facing.
+    {
+        ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(direction));
+        objectEvent->singleMovementActive = TRUE;
+        sprite->sTypeFuncId = 4;
+        return TRUE;
+    }
+    if (UpdateMonMoveInPlace(objectEvent, sprite))
+        sprite->sTypeFuncId = 4;
+        return TRUE;
+
+    UpdateFollowerTransformEffect(objectEvent, sprite);
+    return FALSE;
+}
+
+
+bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step3(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (gCopyPlayerWalkMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), NULL))
+    {
+        sprite->sTypeFuncId = 4;// overwrite
+        return TRUE;
+    }
+    return FALSE;
+}
+
+bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step4(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (gMovementActionFuncs[objectEvent->movementActionId][sprite->sActionFuncId](objectEvent, sprite))
+    {
+        objectEvent->movementActionId = MOVEMENT_ACTION_NONE;
+        sprite->sActionFuncId = 0;
+        objectEvent->singleMovementActive = FALSE;
+        objectEvent->facingDirectionLocked = FALSE;
+        if (sprite->sTypeFuncId) // restore nonzero state
+            sprite->sTypeFuncId = 3;
+    }
+    else if (objectEvent->movementActionId < MOVEMENT_ACTION_EXIT_POKEBALL)
+    {
+        UpdateFollowerTransformEffect(objectEvent, sprite);
+        if (OW_FOLLOWERS_BOBBING == TRUE && (sprite->data[5] & 7) == 2)
+            sprite->y2 ^= -1;
+    }
+    return FALSE;
+}
+
 
 movement_type_def(MovementType_FollowPlayer, gMovementTypeFuncs_FollowPlayer)
 
@@ -10169,90 +10233,6 @@ void ScriptFaceEachOther(struct ScriptContext *ctx)
     ObjectEventsTurnToEachOther(player, npc);
 }
 
-
-
-void ScriptFaceEachOtherFollowerOWE(struct ScriptContext *ctx) //AUTOBATTLE
-{
-    struct ObjectEvent *follower, *npc;
-    npc = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_LastTalked)];
-    follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)];
-    if (follower == NULL)
-        follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER)];
-    if (follower == NULL)
-	return;
-    ObjectEventsTurnToEachOther(follower, npc);
-}
-
-struct ObjectEvent *GetFollowerAutobattleObject(void)
-{
-    u32 i;
-    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
-    {
-        if (gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE && gObjectEvents[i].active)
-            return &gObjectEvents[i];
-    }
-    return NULL;
-}
-
-void RemoveAutoBattlingPokemon(void)
-{
-    struct ObjectEvent *objectEvent = GetFollowerAutobattleObject();
-    if (objectEvent == NULL)
-        return;
-    RemoveObjectEvent(objectEvent);
-}
-
-void ScriptCreateAutoBattleMonAtCoords(struct ScriptContext *ctx)
-{
-    u32 xcoord = VarGet(ScriptReadHalfword(ctx));
-    u32 ycoord = VarGet(ScriptReadHalfword(ctx));
-
-    u32 species;
-    bool32 shiny;
-    bool32 female;
-    RemoveAutoBattlingPokemon();
-
-    struct ObjectEvent *objEvent = GetFollowerAutobattleObject();
-    struct Sprite *sprite;
-
-    if(!GetFollowerInfo(&species, &shiny, &female)
-     || SpeciesToGraphicsInfo(species, shiny, female) == NULL)
-        assertf(FALSE, "could not spawn autobattler from that!")
-        return;
-    if (objEvent == NULL)
-    {
-        RemoveFollowingPokemon();
-        u32 objectEventId = gPlayerAvatar.objectEventId;
-        // Spawn follower
-	// Perhaps this is better refactored to save an object event directly into the gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId
-	// like in overworld.c. This doesn't do that, which means the event is temporary and despawns.
-
-        struct ObjectEventTemplate template =
-        {
-            .localId = OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE,
-            .graphicsId = GetGraphicsIdForMon(species, shiny, female),
-            .x = xcoord,
-            .y = ycoord,
-            .elevation = gObjectEvents[objectEventId].active ? gObjectEvents[objectEventId].currentElevation : 3,
-            .movementType = MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE
-        };
-        objectEventId = SpawnSpecialObjectEvent(&template);
-
-        assertf(objectEventId < OBJECT_EVENTS_COUNT, "could not spawn autobattler. too many object events exist, %d", xcoord)
-        {
-            RemoveAutoBattlingPokemon();
-            return;
-        }
-        objEvent = &gObjectEvents[objectEventId];
-        objEvent->triggerGroundEffectsOnMove = TRUE;
-        objEvent->active = TRUE;
-    }
-    sprite = &gSprites[objEvent->spriteId];
-
-    sprite->data[6] = 0; // set animation data
-}
-
-
 enum Direction DetermineObjectEventDirectionFromObject(struct ObjectEvent *objectOne, struct ObjectEvent *objectTwo)
 {
     s32 dx = objectOne->currentCoords.x - objectTwo->currentCoords.x;
@@ -12416,6 +12396,93 @@ bool8 MovementType_OverworldWildEncounter_Despawn_Step11(struct ObjectEvent *obj
     sDespawnTimer++;
     sprite->sTypeFuncId = 12;
     return TRUE;
+}
+
+
+struct ObjectEvent *GetFollowerAutobattleObject(void)
+{
+    u32 i;
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE && gObjectEvents[i].active)
+            return &gObjectEvents[i];
+    }
+    return NULL;
+}
+
+static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
+{
+    u32 species;
+    bool32 shiny;
+    bool32 female;
+    RemoveAutoBattlingPokemon();
+
+    struct ObjectEvent *objEvent = GetFollowerAutobattleObject();
+    struct Sprite *sprite;
+
+    if(!GetMonInfo(GetFirstLiveMon(), &species, &shiny, &female)
+     || SpeciesToGraphicsInfo(species, shiny, female) == NULL)
+        assertf(FALSE, "could not spawn an autobattler from that!")
+        return;
+    if (objEvent == NULL) // Done only to check it isn't spawned.
+    {
+        RemoveFollowingPokemon();// In general you shouldn't remove following pokemon and should instead set the object event to invisible. However, here, we don't want a ball despawn animation to play, and we don't want t.
+        u32 objectEventId = gPlayerAvatar.objectEventId;
+        // Spawn follower
+	// Perhaps this is better refactored to save an object event directly into the gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId
+	// like in overworld.c. This doesn't do that, which means the event is temporary and despawns.
+
+        struct ObjectEventTemplate template =
+        {
+            .localId = OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE,
+            .graphicsId = GetGraphicsIdForMon(species, shiny, female),
+            .x = xcoord,
+            .y = ycoord,
+            .elevation = gObjectEvents[objectEventId].active ? gObjectEvents[objectEventId].currentElevation : 3,
+            .movementType = MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE
+        };
+        objectEventId = SpawnSpecialObjectEvent(&template);
+
+        assertf(objectEventId < OBJECT_EVENTS_COUNT, "could not spawn autobattler. too many object events exist, %d", xcoord)
+        {
+            RemoveAutoBattlingPokemon();
+            return;
+        }
+        objEvent = &gObjectEvents[objectEventId];
+        objEvent->triggerGroundEffectsOnMove = TRUE;
+        objEvent->active = TRUE;
+    }
+    sprite = &gSprites[objEvent->spriteId];
+
+    sprite->data[6] = 0; // set animation data
+}
+
+void RemoveAutoBattlingPokemon(void)// technically, since some of the time it is called by a script, this should be passed struct ScriptContext *ctx, not void. However it has no impact on this compiler.
+{
+    struct ObjectEvent *objectEvent = GetFollowerAutobattleObject();
+    if (objectEvent == NULL)
+        return;
+    RemoveObjectEvent(objectEvent);
+}
+
+void ScriptFaceEachOtherFollowerOWE(struct ScriptContext *ctx) //AUTOBATTLE
+{
+    struct ObjectEvent *follower, *npc;
+    npc = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_LastTalked)];
+    follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)];
+    if (follower == NULL)
+        follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER)];
+    if (follower == NULL)
+	return;
+    ObjectEventsTurnToEachOther(follower, npc);
+}
+
+void ScriptCreateAutoBattleMonAtCoords(struct ScriptContext *ctx)
+{
+    u16 xcoord = VarGet(ScriptReadHalfword(ctx));
+    u16 ycoord = VarGet(ScriptReadHalfword(ctx));
+
+    CreateAutoBattleMonAtCoords(xcoord, ycoord);
 }
 
 #undef sDespawnTimer
