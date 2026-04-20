@@ -7649,10 +7649,11 @@ static void DoAutobattle(enum Species speciesFoe, u8 levelFoe)
 
     u16 setHP = GetAutoBattleDamage(mon, levelFoe, speciesFoe);
     SetMonData(mon, MON_DATA_HP, &setHP);
-
-    u32 exp = GiveAutobattleExp(mon, levelFoe, speciesFoe); // gives XP and returns amount given as uint
-    //
-    ConvertIntToDecimalStringN(gStringVar3, exp, STR_CONV_MODE_LEFT_ALIGN, 4);
+    if (gSpecialVar_0x8006 <= 5)
+    {
+        u32 exp = GiveAutobattleExp(mon, levelFoe, speciesFoe); // gives XP and returns amount given as uint
+        ConvertIntToDecimalStringN(gStringVar3, exp, STR_CONV_MODE_LEFT_ALIGN, 4);
+    }
     return;
 }
 
@@ -7734,6 +7735,12 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
 
     u16 GetHP = GetMonData(mon, MON_DATA_MAX_HP);
     u16 loss = 1;
+    dmg *= numHits;
+    if (dmg/4 > GetHP)
+    {
+        gSpecialVar_0x8006 = 6;
+        return 1; // current HP is set to 1.
+    }
     if (dmg > GetHP)
     {
 	loss = GetHP/2;
@@ -7765,10 +7772,11 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
     u8 currHP = 1;
     if (loss < GetHP)
         currHP = (GetHP - loss); // if not KO'd, set HP. If KO'd, leave it at 1.
-    if (currHP * 4 < GetMonData(mon, MON_DATA_MAX_HP)) // if under 1/4 HP, return "wore itself out" result
+    if (currHP * 4 < GetMonData(mon, MON_DATA_MAX_HP)) // if under 1/4 HP now, return "defeated and wore itself out" result
         gSpecialVar_0x8006 = 0;
     return currHP;
 }
+
 
 
 u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
@@ -7777,13 +7785,18 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     u32 totalXP = GetMonData(mon, MON_DATA_EXP);
     u32 addxp = gSpeciesInfo[speciesFoe].expYield * levelFoe * (levelFoe+2);
     addxp /= (13*(initialLevel+2));
+    addxp = max(addxp, 1);
     totalXP = addxp + totalXP;
     SetMonData(mon, MON_DATA_EXP, &totalXP);
     ApplyDaycareExperience(mon);
     u8 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (finalLevel > initialLevel)
-        PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
-    return (addxp);
+    if (finalLevel < initialLevel)
+        return (addxp);
+    else
+    {
+        PlayFanfare(MUS_LEVEL_UP);
+        return (addxp);
+    }
 }
 
 void ScriptAutobattle(struct ScriptContext *ctx)

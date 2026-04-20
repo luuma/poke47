@@ -988,7 +988,7 @@ static void Task_VoltorbFlipVictory(u8 taskId)
     {
         if(WaitFanfare(FALSE))
         {
-			VarSet(GAME_CORNER_VAR_WINNINGS, sVflip->curWinnings);
+            VarSet(GAME_CORNER_VAR_WINNINGS, sVflip->curWinnings);
             BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
             gTasks[taskId].func = Task_VoltorbFlipFadeOut;
         }

@@ -5834,7 +5834,7 @@ bool8 CopyablePlayerMovementWalk_FaceDirectionIdle(struct ObjectEvent *objectEve
 
 bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step3(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
-    if (gCopyPlayerWalkMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), NULL))
+    if (gCopyPlayerWalkMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), MetatileBehavior_IsPassableForAutobattlers))
     {
         sprite->sTypeFuncId = 4;// overwrite
         return TRUE;

@@ -61,17 +61,24 @@ OWEAutoBattleOverworldWildEncounter::
     goto_if_eq VAR_0x8006, 3, EventScript_AutoBattleWin3
     goto_if_eq VAR_0x8006, 4, EventScript_AutoBattleWin4
     goto_if_eq VAR_0x8006, 5, EventScript_AutoBattleWin5
-    msgbox gText_WoreItselfOut, MSGBOX_DEFAULT @AUTOBATTLE
+    goto_if_eq VAR_0x8006, 6, EventScript_AutoBattleLoss
+    msgbox gText_BarelyDefeatedWoreItselfOut, MSGBOX_DEFAULT @AUTOBATTLE
     goto_if_eq VAR_0x8006, 0, EventScript_OWEAutoBattlingEnd
     releaseall
     end
 
-gText_WoreItselfOut:
+gText_BarelyDefeatedWoreItselfOut:
 	.string "{STR_VAR_1} barely defeated a {STR_VAR_2}.\n"
 	.string "It gained {STR_VAR_3} EXP.\p"
+gText_Buffer1WoreItselfOut:
 	.string "{STR_VAR_1} wore itself out and\n"
 	.string "came back to you.$"
 
+EventScript_AutoBattleLoss::
+    msgbox gText_Buffer1WoreItselfOut, MSGBOX_DEFAULT @AUTOBATTLE
+    goto EventScript_OWEAutoBattlingEnd
+    releaseall
+    end
 
 EventScript_AutoBattleWin1::
     msgbox gText_Buffer1DefeatedABuffer2easy, MSGBOX_DEFAULT @AUTOBATTLE

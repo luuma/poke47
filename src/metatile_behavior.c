@@ -310,6 +310,19 @@ bool8 MetatileBehavior_IsNonAnimDoor(u8 metatileBehavior)
         return FALSE;
 }
 
+bool8 MetatileBehavior_IsPassableForAutobattlers(u8 metatileBehavior)
+{
+    if (MetatileBehavior_IsForcedMovementTile(metatileBehavior) 
+     || (metatileBehavior >= MB_NON_ANIMATED_DOOR && metatileBehavior <= MB_DEEP_SOUTH_WARP)
+     || metatileBehavior == MB_MT_PYRE_HOLE 
+     || metatileBehavior == MB_SHOAL_CAVE_ENTRANCE
+     || metatileBehavior == MB_SECRET_BASE_HOLE
+)
+        return FALSE;
+    else
+        return TRUE;
+}
+
 bool8 MetatileBehavior_IsDeepSouthWarp(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_DEEP_SOUTH_WARP)
