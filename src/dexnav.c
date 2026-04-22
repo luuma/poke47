@@ -1471,6 +1471,9 @@ static u8 GetEncounterLevelFromMapData(enum Species species, enum EncounterType 
     u8 max = 0;
     u8 i;
 
+    if (headerId == HEADER_NONE)
+        return MON_LEVEL_NONEXISTENT;
+
     switch (environment)
     {
     case ENCOUNTER_TYPE_LAND:    // grass
@@ -1784,6 +1787,8 @@ static bool8 CapturedAllHiddenMons(u32 headerId)
 static void DexNavLoadCapturedAllSymbols(void)
 {
     u32 headerId = GetCurrentMapWildMonHeaderId();
+    if (headerId == HEADER_NONE)
+        return;
 
     LoadCompressedSpriteSheetUsingHeap(&sCapturedAllPokemonSpriteSheet);
 
@@ -1898,6 +1903,9 @@ static void DexNavLoadEncounterData(void)
     u32 i;
     u32 headerId = GetCurrentMapWildMonHeaderId();
     enum TimeOfDay timeOfDay;
+
+    if (headerId == HEADER_NONE)
+        return;
 
     timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_LAND);
     const struct WildPokemonInfo *landMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo;
@@ -2279,6 +2287,12 @@ static void DexNav_RunSetup(void)
 // Entry point for the dexnav GUI
 static void DexNavGuiInit(MainCallback callback)
 {
+    assertf(DEXNAV_ENABLED, "DexNav was opened when DEXNAV_ENABLED config was disabled.\nCheck include/config/dexnav.h")
+    {
+        SetMainCallback2(callback);
+        return;
+    }
+
     if ((sDexNavUiDataPtr = AllocZeroed(sizeof(struct DexNavGUI))) == NULL)
     {
         SetMainCallback2(callback);
@@ -2292,12 +2306,6 @@ static void DexNavGuiInit(MainCallback callback)
 
 void Task_OpenDexNavFromStartMenu(u8 taskId)
 {
-    assertf(DEXNAV_ENABLED, "DexNav was opened when DEXNAV_ENABLED config was disabled! Check include/config/dexnav.h")
-    {
-        DestroyTask(taskId);
-        return;
-    }
-
     if (!gPaletteFade.active)
     {
         CleanupOverworldWindowsAndTilemaps();
@@ -2482,8 +2490,11 @@ bool32 TryFindHiddenPokemon(void)
         u8 index;
         enum Species species;
         enum EncounterType environment;
-        enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_HIDDEN);
 
+        if (headerId == HEADER_NONE)
+            return FALSE;
+
+        enum TimeOfDay timeOfDay = GetTimeOfDayForEncounters(headerId, WILD_AREA_HIDDEN);
         const struct WildPokemonInfo *hiddenMonsInfo = gWildMonHeaders[headerId].encounterTypes[timeOfDay].hiddenMonsInfo;
         bool8 isHiddenMon = FALSE;
 
