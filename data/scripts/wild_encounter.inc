@@ -14,7 +14,7 @@ EventScript_FollowerAuto::
     goto_if_eq VAR_RESULT, NO, Common_EventScript_NopReturn @AUTOBATTLE
 EventScript_FollowerAutoBegin:: 
     lockall
-    getobjectxy VAR_LAST_TALKED, CURRENT_POSITION, 0x8004, 0x8005
+    getobjectxy OBJ_EVENT_ID_FOLLOWER, CURRENT_POSITION, 0x8004, 0x8005
     followertoautobattler 0x8004, 0x8005
     setvar VAR_LAST_TALKED, OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE
     releaseall
@@ -22,7 +22,7 @@ EventScript_FollowerAutoBegin::
 
 EventScript_AButtonToAutobattle::
     lockall
-    callnative firstmonhasover1hp
+    callnative scriptcanautobattle
     call_if_eq VAR_RESULT, TRUE, EventScript_FollowerAutoBegin @ see wild_encounter.inc
     release
     end
@@ -48,20 +48,19 @@ gMovement_EnterPokeball:
 
 OWEAutoBattleOverworldWildEncounter::
     lockall
-    callnative ScriptFaceEachOtherFollowerOWE  
     applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
     playmoncry VAR_0x8004, CRY_MODE_DOUBLES
     waitmoncry
-    removeobject VAR_LAST_TALKED
     bufferlivemonnickname STR_VAR_1
     bufferspeciesname STR_VAR_2, VAR_0x8004
     autobattle VAR_0x8004, VAR_0x8005 @ input a species and level in vars. Loads a battle result into var 0x8006
+    goto_if_eq VAR_0x8006, 6, EventScript_AutoBattleLoss
+    removeobject VAR_LAST_TALKED @ Enemy down
     goto_if_eq VAR_0x8006, 1, EventScript_AutoBattleWin1
     goto_if_eq VAR_0x8006, 2, EventScript_AutoBattleWin2
     goto_if_eq VAR_0x8006, 3, EventScript_AutoBattleWin3
     goto_if_eq VAR_0x8006, 4, EventScript_AutoBattleWin4
     goto_if_eq VAR_0x8006, 5, EventScript_AutoBattleWin5
-    goto_if_eq VAR_0x8006, 6, EventScript_AutoBattleLoss
     msgbox gText_BarelyDefeatedWoreItselfOut, MSGBOX_DEFAULT @AUTOBATTLE
     goto_if_eq VAR_0x8006, 0, EventScript_OWEAutoBattlingEnd
     releaseall

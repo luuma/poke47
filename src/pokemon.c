@@ -7630,13 +7630,6 @@ enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species speciesId)
     return sOWESpeciesBehavior[behavior].activeSpeed;
 }
 
-void firstmonhasover1hp(struct ScriptContext *ctx)
-{
-    struct Pokemon *mon = GetFirstLiveMon();
-    gSpecialVar_Result = GetMonData(mon, MON_DATA_HP) > 1;
-    return;
-}
-
 static void DoAutobattle(enum Species speciesFoe, u8 levelFoe)
 {
     struct Pokemon *mon = GetFirstLiveMon();

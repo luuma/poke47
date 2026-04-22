@@ -687,10 +687,16 @@ static bool32 TrySetupDiveDownScript(void)
     return FALSE;
 }
 
-static bool32 FirstMonOver1HP(void)
+bool32 CanAutobattle(void)// Autobattle config goes here. While this is on, autobattle behaviour cannot begin. 
 {
     struct Pokemon *mon = GetFirstLiveMon();
     return (GetMonData(mon, MON_DATA_HP) > 1);
+}
+
+void scriptcanautobattle(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = CanAutobattle();
+    return;
 }
 
 static bool32 FollowerObjectExistsVisibly(void)
@@ -717,7 +723,7 @@ static bool32 FollowerAutobattleObjectExists(void)
 
 static bool32 TrySetupAutobattle(void)
 {
-    if (!FirstMonOver1HP() || !TRUE)// config goes here.
+    if (!CanAutobattle())
         return FALSE; 
     else if (!FollowerObjectExistsVisibly()) // if there's no follower or it's invisible
     {

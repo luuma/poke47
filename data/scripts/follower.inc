@@ -18,7 +18,7 @@ EventScript_Follower::
 	getfolloweraction
 EventScript_FollowerEnd::
 	waitfieldeffect FLDEFF_EMOTE
-	callnative firstmonhasover1hp
+	callnative scriptcanautobattle
 	call_if_eq VAR_RESULT, TRUE, EventScript_FollowerAuto @ see wild_encounter.inc
 	release
 	end

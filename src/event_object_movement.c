@@ -10237,10 +10237,13 @@ enum Direction DetermineObjectEventDirectionFromObject(struct ObjectEvent *objec
 {
     s32 dx = objectOne->currentCoords.x - objectTwo->currentCoords.x;
     s32 dy = objectOne->currentCoords.y - objectTwo->currentCoords.y;
-
     if (dx == 0 && dy == 0)
-        return DIR_NORTH;//Should really be DIR_NONE but gets mishandled somewhere
-
+    {
+        dx = objectOne->previousCoords.x - objectTwo->previousCoords.x;
+        dy = objectOne->previousCoords.y - objectTwo->previousCoords.y;
+        if (dx == 0 && dy == 0)
+            return DIR_NORTH;//Should really be DIR_NONE but gets mishandled somewhere
+    }
     s32 absX = abs(dx);
     s32 absY = abs(dy);
 
@@ -12426,7 +12429,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
         return;
     if (objEvent == NULL) // Done only to check it isn't spawned.
     {
-        RemoveFollowingPokemon();// In general you shouldn't remove following pokemon and should instead set the object event to invisible. However, here, we don't want a ball despawn animation to play, and we don't want t.
+        RemoveFollowingPokemon();// In general you shouldn't remove following pokemon and should instead set the object event to invisible. However, here, we don't want a ball despawn animation to play.
         u32 objectEventId = gPlayerAvatar.objectEventId;
         // Spawn follower
 	// Perhaps this is better refactored to save an object event directly into the gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId
@@ -12463,18 +12466,6 @@ void RemoveAutoBattlingPokemon(void)// technically, since some of the time it is
     if (objectEvent == NULL)
         return;
     RemoveObjectEvent(objectEvent);
-}
-
-void ScriptFaceEachOtherFollowerOWE(struct ScriptContext *ctx) //AUTOBATTLE
-{
-    struct ObjectEvent *follower, *npc;
-    npc = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_LastTalked)];
-    follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)];
-    if (follower == NULL)
-        follower = &gObjectEvents[GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER)];
-    if (follower == NULL)
-	return;
-    ObjectEventsTurnToEachOther(follower, npc);
 }
 
 void ScriptCreateAutoBattleMonAtCoords(struct ScriptContext *ctx)

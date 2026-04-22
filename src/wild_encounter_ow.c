@@ -9,6 +9,7 @@
 #include "fieldmap.h"
 #include "field_effect.h"
 #include "field_player_avatar.h"
+#include "field_control_avatar.h"
 #include "follower_npc.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
@@ -598,7 +599,8 @@ void TryTriggerOverworldWilEncounter(struct ObjectEvent *obstacle, struct Object
 
     bool32 OWEObstacle = (IsOverworldWildEncounter(obstacle, OWE_ANY));
     bool32 OWECollider = (IsOverworldWildEncounter(collider, OWE_ANY));
-    bool32 followerHit = (collider->localId == OBJ_EVENT_ID_FOLLOWER || obstacle->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE);
+    bool32 followerHit = (CanAutobattle() && (collider->localId == OBJ_EVENT_ID_FOLLOWER || obstacle->localId == OBJ_EVENT_ID_FOLLOWER 
+                                                || collider->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE || obstacle->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE));
     bool32 playerHit = (collider->isPlayer || obstacle->isPlayer );
 
     if (!((OWEObstacle || OWECollider) && (followerHit || playerHit)))// AUTOBATTLE. This is where the config bool goes.
@@ -626,6 +628,8 @@ void TryTriggerOverworldWilEncounter(struct ObjectEvent *obstacle, struct Object
         ScriptContext_SetupScript(InteractWithOverworldWildEncounter);
     if (followerHit)
     {
+        ClearObjectEventMovement(wildMon, &gSprites[wildMon->spriteId]);
+        ObjectEventsTurnToEachOther(obstacle, collider);
         gSpecialVar_0x8005 = GetOWEEncounterLevel(wildMon->sOverworldEncounterLevel);
         ScriptContext_SetupScript(OWEAutoBattleOverworldWildEncounter);
     }
@@ -1046,6 +1050,7 @@ void OnOverworldWildEncounterDespawn(struct ObjectEvent *owe)
 {
     if (owe->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)
     {
+        RemoveFollowingPokemon();
         UpdateFollowingPokemon();
         return;
     }
