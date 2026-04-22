@@ -69,12 +69,14 @@ static void InitializeSwitchinCandidate(enum BattlerId switchinBattler, u32 monI
 {
     u32 storeCurrBattlerPartyIndex = gBattlerPartyIndexes[switchinBattler]; // Rage Fist fix
     PokemonToBattleMon(mon, &gBattleMons[switchinBattler]);
-    gBattlerPartyIndexes[switchinBattler] = monIndex;
-    CopyMonAbilityAndTypesToBattleMon(switchinBattler, mon);
     // Setup switchin battler data
     gAiThinkingStruct->saved[switchinBattler].saved = TRUE;
     SetBattlerAiData(switchinBattler, gAiLogicData);
-    SetBattlerFieldStatusForSwitchin(switchinBattler);
+    u32 switchinWeather = AI_GetSwitchinWeather(switchinBattler);
+    u32 switchinFieldStatus = AI_GetSwitchinFieldStatus(switchinBattler);
+    SetBattlerVolatilesForSwitchin(switchinBattler, switchinWeather, switchinFieldStatus);
+    SetBattlerStatusForSwitchin(switchinBattler);
+    gBattlerPartyIndexes[switchinBattler] = monIndex;
     gAiLogicData->switchInCalc = TRUE;
 
     for (enum BattlerId battlerIndex = 0; battlerIndex < gBattlersCount; battlerIndex++)
