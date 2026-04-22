@@ -1668,15 +1668,12 @@
       "height": 1
     },
     {
-      "id": "MAPSEC_135",
-      "name": "ROUTE 135",
-      "x": 16,
+      "id": "MAPSEC_FISHING_HUT",
+      "name": "ROUTE 137",
+      "x": 6,
       "y": 7,
       "width": 1,
-      "height": 3
-    },
-    {
-      "id": "MAPSEC_MIST"
+      "height": 1
     },
     {
       "id": "MAPSEC_MISTY_CAIRN",
@@ -1685,6 +1682,14 @@
       "y": 10,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_135",
+      "name": "ROUTE 135",
+      "x": 16,
+      "y": 7,
+      "width": 1,
+      "height": 3
     }
   ]
 }

@@ -1455,7 +1455,7 @@ bool32 CanAwareOWESeePlayer(struct ObjectEvent *owe)
     switch (direction)
     {
     case DIR_NORTH:
-        if (player->currentCoords.y < owe->currentCoords.y
+        if (player->currentCoords.y <= owe->currentCoords.y
          && owe->currentCoords.y - player->currentCoords.y <= viewDistance
          && player->currentCoords.x >= owe->currentCoords.x - halfWidth
          && player->currentCoords.x <= owe->currentCoords.x + halfWidth)

@@ -9,7 +9,19 @@ Route125_OnTransition:
 	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_125_WEST, AbnormalWeather_StartKyogreWeather
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_125_EAST, AbnormalWeather_StartKyogreWeather
+	special UpdateShoalTideFlag
+	goto_if_set FLAG_SYS_SHOAL_TIDE, Route125_SetHighTide
+	goto Route125_SetLowTide
 	end
+
+Route125_SetHighTide::
+	setmaplayoutindex LAYOUT_ROUTE125
+	end
+
+Route125_SetLowTide::
+	setmaplayoutindex LAYOUT_ROUTE125_LOW_TIDE
+	end
+
 
 Route125_OnLoad:
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_125_WEST, AbnormalWeather_EventScript_PlaceTilesRoute125West

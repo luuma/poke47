@@ -10239,7 +10239,7 @@ enum Direction DetermineObjectEventDirectionFromObject(struct ObjectEvent *objec
     s32 dy = objectOne->currentCoords.y - objectTwo->currentCoords.y;
 
     if (dx == 0 && dy == 0)
-        return DIR_NONE;
+        return DIR_NORTH;//Should really be DIR_NONE but gets mishandled somewhere
 
     s32 absX = abs(dx);
     s32 absY = abs(dy);

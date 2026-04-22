@@ -7790,7 +7790,7 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     SetMonData(mon, MON_DATA_EXP, &totalXP);
     ApplyDaycareExperience(mon);
     u8 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (finalLevel < initialLevel)
+    if (finalLevel <= initialLevel)
         return (addxp);
     else
     {

@@ -9718,6 +9718,39 @@
       "secondary_tileset": "gTileset_Cave",
       "border_filepath": "data/layouts/Route128_Cavern/border.bin",
       "blockdata_filepath": "data/layouts/Route128_Cavern/map.bin"
+    },
+    {
+      "id": "LAYOUT_DEW_BEACH_LOWTIDE",
+      "name": "DewBeach_Lowtide",
+      "width": 36,
+      "height": 26,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/DewBeach_Lowtide/border.bin",
+      "blockdata_filepath": "data/layouts/DewBeach_Lowtide/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_ROUTE106_LAYOUT_LOWTIDE",
+      "name": "Route106_Layout_2",
+      "width": 80,
+      "height": 20,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Dewford",
+      "border_filepath": "data/layouts/Route106_Layout_2/border.bin",
+      "blockdata_filepath": "data/layouts/Route106_Layout_2/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_ROUTE125_LOW_TIDE",
+      "name": "Route125_LowTide",
+      "width": 80,
+      "height": 40,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Mossdeep",
+      "border_filepath": "data/layouts/Route125_LowTide/border.bin",
+      "blockdata_filepath": "data/layouts/Route125_LowTide/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

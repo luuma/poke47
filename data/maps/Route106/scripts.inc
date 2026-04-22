@@ -1,5 +1,20 @@
 Route106_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route106_OnTransition
 	.byte 0
+
+Route106_OnTransition:
+	special UpdateShoalTideFlag
+	goto_if_set FLAG_SYS_SHOAL_TIDE, Route106_SetHighTide
+	goto Route106_SetLowTide
+
+Route106_SetHighTide::
+	setmaplayoutindex LAYOUT_ROUTE106
+	end
+
+Route106_SetLowTide::
+	setmaplayoutindex LAYOUT_ROUTE106_LAYOUT_LOWTIDE
+	end
+
 
 Route106_EventScript_TrainerTipsSign::
 	msgbox Route106_Text_TrainerTips, MSGBOX_SIGN

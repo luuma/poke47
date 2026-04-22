@@ -174,7 +174,7 @@
     {
       "x": 6,
       "y": 39,
-      "elevation": 9,
+      "elevation": 0,
       "dest_map": "MAP_ROUTE115",
       "dest_warp_id": "0"
     },
