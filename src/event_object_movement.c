@@ -5516,8 +5516,6 @@ bool8 MovementType_CopyPlayer_Step0(struct ObjectEvent *objectEvent, struct Spri
     if (objectEvent->directionSequenceIndex == 0)
         objectEvent->directionSequenceIndex = GetPlayerFacingDirection();
     sprite->sTypeFuncId = 1;
-    if (OW_MON_WANDER_WALK == TRUE && IS_OW_MON_OBJ(objectEvent))
-        sprite->sTypeFuncId = 3;// jump to a separate loop that copies the first but with idle anims.
     return TRUE;
 }
 
@@ -6615,7 +6613,7 @@ enum Collision GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, enum 
 
 static enum Collision GetVanillaCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, enum Direction direction)
 {
-    if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y) ) // Unlimited movement range
+    if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y) )
         return COLLISION_OUTSIDE_RANGE;
     else if (MapGridGetCollisionAt(x, y) || GetMapBorderIdAt(x, y) == CONNECTION_INVALID || IsMetatileDirectionallyImpassable(objectEvent, x, y, direction))
         return COLLISION_IMPASSABLE;
@@ -12479,15 +12477,18 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
         // Spawn follower
 	// Perhaps this is better refactored to save an object event directly into the gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId
 	// like in overworld.c. This doesn't do that, which means the event is temporary and despawns.
-
-        struct ObjectEventTemplate template =
+        species = SanitizeSpeciesId(species);
+        u32 autobattleMovementType = gSpeciesInfo[species].autobattleMovementType;
+        if (autobattleMovementType == MOVEMENT_TYPE_NONE)
+            autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE;
+        struct ObjectEventTemplate template = 
         {
             .localId = OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE,
             .graphicsId = GetGraphicsIdForMon(species, shiny, female),
             .x = xcoord,
             .y = ycoord,
             .elevation = gObjectEvents[objectEventId].active ? gObjectEvents[objectEventId].currentElevation : 3,
-            .movementType = OWE_GetMovementTypeFromSpecies(species) == MOVEMENT_TYPE_CHASE_PLAYER_OWE ? MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST : MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE, //MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE. .overworldEncounterBehavior = OWE_CHASE_PLAYER_SLOW MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE
+            .movementType = autobattleMovementType,
         };
         objectEventId = SpawnSpecialObjectEvent(&template);
 
