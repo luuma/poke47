@@ -351,6 +351,10 @@ static void (*const sMovementTypeCallbacks[])(struct Sprite *) =
     [MOVEMENT_TYPE_WATCH_PLAYER_OWE] = MovementType_OverworldWildEncounter_WatchPlayer,
     [MOVEMENT_TYPE_APPROACH_PLAYER_OWE] = MovementType_OverworldWildEncounter_ApproachPlayer,
     [MOVEMENT_TYPE_DESPAWN_OWE] = MovementType_OverworldWildEncounter_Despawn,
+    [MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE] = MovementType_CopyPlayerAutobattle,
+    [MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST] = MovementType_CopyPlayerAutobattleFast,
+    [MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_TOO_FAST] = MovementType_CopyPlayerAutobattleVeryFast,
+    [MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW] = MovementType_CopyPlayerAutobattleSlow,
 };
 
 static const bool8 sMovementTypeHasRange[NUM_MOVEMENT_TYPES] = {
@@ -486,6 +490,10 @@ const u8 gInitialMovementTypeFacingDirections[NUM_MOVEMENT_TYPES] = {
     [MOVEMENT_TYPE_WATCH_PLAYER_OWE] = DIR_SOUTH,
     [MOVEMENT_TYPE_APPROACH_PLAYER_OWE] = DIR_SOUTH,
     [MOVEMENT_TYPE_DESPAWN_OWE] = DIR_SOUTH,
+    [MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE] = DIR_SOUTH,
+    [MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST] = DIR_SOUTH,
+    [MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_TOO_FAST] = DIR_SOUTH,
+    [MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW] = DIR_SOUTH,
 };
 
 #include "data/object_events/object_event_graphics_info_pointers.h"
@@ -5805,7 +5813,7 @@ static bool8 UpdateFollowerTransformEffect(struct ObjectEvent *objectEvent, stru
 bool8 CopyablePlayerMovementWalk_Idle(struct ObjectEvent *objectEvent, struct Sprite *sprite, enum Direction playerDirection, bool8 tileCallback(u8))
 {
     if (UpdateMonMoveInPlace(objectEvent, sprite))
-        sprite->sTypeFuncId = 4;
+        sprite->sTypeFuncId = 2;
         return TRUE;
 
     UpdateFollowerTransformEffect(objectEvent, sprite);
@@ -5820,29 +5828,37 @@ bool8 CopyablePlayerMovementWalk_FaceDirectionIdle(struct ObjectEvent *objectEve
     {
         ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(direction));
         objectEvent->singleMovementActive = TRUE;
-        sprite->sTypeFuncId = 4;
+        sprite->sTypeFuncId = 2;
         return TRUE;
     }
     if (UpdateMonMoveInPlace(objectEvent, sprite))
-        sprite->sTypeFuncId = 4;
+        sprite->sTypeFuncId = 2;
         return TRUE;
 
     UpdateFollowerTransformEffect(objectEvent, sprite);
     return FALSE;
 }
 
+movement_type_def(MovementType_CopyPlayerAutobattle, gMovementTypeFuncs_CopyPlayerAutobattle)
 
-bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step3(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step0(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    ClearObjectEventMovement(objectEvent, sprite);
+    if (objectEvent->directionSequenceIndex == 0)
+        objectEvent->directionSequenceIndex = GetPlayerFacingDirection();
+    sprite->sTypeFuncId = 1;
+
+    return TRUE;
+}
+bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     if (gCopyPlayerWalkMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), MetatileBehavior_IsPassableForAutobattlers))
-    {
-        sprite->sTypeFuncId = 4;// overwrite
         return TRUE;
-    }
+
     return FALSE;
 }
 
-bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step4(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step2(struct ObjectEvent *objectEvent, struct Sprite *sprite)
 {
     if (gMovementActionFuncs[objectEvent->movementActionId][sprite->sActionFuncId](objectEvent, sprite))
     {
@@ -5851,7 +5867,7 @@ bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step4(struct ObjectEvent *objectEv
         objectEvent->singleMovementActive = FALSE;
         objectEvent->facingDirectionLocked = FALSE;
         if (sprite->sTypeFuncId) // restore nonzero state
-            sprite->sTypeFuncId = 3;
+            sprite->sTypeFuncId = 1;
     }
     else if (objectEvent->movementActionId < MOVEMENT_ACTION_EXIT_POKEBALL)
     {
@@ -5862,6 +5878,35 @@ bool8 MovementType_WalkOnSpotCopyPlayerNormal_Step4(struct ObjectEvent *objectEv
     return FALSE;
 }
 
+movement_type_def(MovementType_CopyPlayerAutobattleFast, gMovementTypeFuncs_CopyPlayerAutobattleFast)
+
+bool8 MovementType_WalkOnSpotCopyPlayerFast_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (gCopyPlayerRunMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), MetatileBehavior_IsPassableForAutobattlers))
+        return TRUE;
+
+    return FALSE;
+}
+
+movement_type_def(MovementType_CopyPlayerAutobattleVeryFast, gMovementTypeFuncs_CopyPlayerAutobattleVeryFast)
+
+bool8 MovementType_WalkOnSpotCopyPlayerVeryFast_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (gCopyPlayerZoomMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), MetatileBehavior_IsPassableForAutobattlers))
+        return TRUE;
+
+    return FALSE;
+}
+
+movement_type_def(MovementType_CopyPlayerAutobattleSlow, gMovementTypeFuncs_CopyPlayerAutobattleSlow)
+
+bool8 MovementType_WalkOnSpotCopyPlayerSlow_Step1(struct ObjectEvent *objectEvent, struct Sprite *sprite)
+{
+    if (gCopyPlayerSlowMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), MetatileBehavior_IsPassableForAutobattlers))
+        return TRUE;
+
+    return FALSE;
+}
 
 movement_type_def(MovementType_FollowPlayer, gMovementTypeFuncs_FollowPlayer)
 
@@ -6570,7 +6615,7 @@ enum Collision GetSidewaysStairsCollision(struct ObjectEvent *objectEvent, enum 
 
 static enum Collision GetVanillaCollision(struct ObjectEvent *objectEvent, s16 x, s16 y, enum Direction direction)
 {
-    if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y) && !(objectEvent->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)) // Unlimited movement range
+    if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y) ) // Unlimited movement range
         return COLLISION_OUTSIDE_RANGE;
     else if (MapGridGetCollisionAt(x, y) || GetMapBorderIdAt(x, y) == CONNECTION_INVALID || IsMetatileDirectionallyImpassable(objectEvent, x, y, direction))
         return COLLISION_IMPASSABLE;
@@ -12442,7 +12487,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
             .x = xcoord,
             .y = ycoord,
             .elevation = gObjectEvents[objectEventId].active ? gObjectEvents[objectEventId].currentElevation : 3,
-            .movementType = MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE
+            .movementType = OWE_GetMovementTypeFromSpecies(species) == MOVEMENT_TYPE_CHASE_PLAYER_OWE ? MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST : MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE, //MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE. .overworldEncounterBehavior = OWE_CHASE_PLAYER_SLOW MOVEMENT_TYPE_COPY_PLAYER_OPPOSITE
         };
         objectEventId = SpawnSpecialObjectEvent(&template);
 

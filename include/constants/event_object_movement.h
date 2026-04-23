@@ -91,7 +91,11 @@
 #define MOVEMENT_TYPE_WATCH_PLAYER_OWE                 0x56
 #define MOVEMENT_TYPE_APPROACH_PLAYER_OWE              0x57
 #define MOVEMENT_TYPE_DESPAWN_OWE                      0x58
-#define NUM_MOVEMENT_TYPES                             0x59// autobattle todo
+#define MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE           0x59
+#define MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST      0x5A
+#define MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_TOO_FAST  0x5B
+#define MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW      0x5C
+#define NUM_MOVEMENT_TYPES                             0x5D// autobattle todo
 
 #define MOVEMENT_ACTION_FACE_DOWN                       0x0
 #define MOVEMENT_ACTION_FACE_UP                         0x1
