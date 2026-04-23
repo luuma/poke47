@@ -25,7 +25,7 @@
 #define FLAG_TEMP_C      (TEMP_FLAGS_START + 0xC)  // Unused Flag
 #define FLAG_TEMP_D      (TEMP_FLAGS_START + 0xD)  // Unused Flag
 #define FLAG_TEMP_E      (TEMP_FLAGS_START + 0xE)  // When set, follower pokemon won't be spawned
-#define FLAG_TEMP_F      (TEMP_FLAGS_START + 0xF)  // Unused Flag
+#define FLAG_TEMP_F      (TEMP_FLAGS_START + 0xF)  // FOLLOWER TEMP INVIS
 #define FLAG_TEMP_10     (TEMP_FLAGS_START + 0x10) // Unused Flag
 #define FLAG_TEMP_11     (TEMP_FLAGS_START + 0x11)
 #define FLAG_TEMP_12     (TEMP_FLAGS_START + 0x12)
@@ -70,7 +70,7 @@
 #define FLAG_TERA    0x28 // Unused Flag
 #define FLAG_CASINO_DERBY_RESET    0x29 // Unused Flag
 #define FLAG_CASINO_DERBY_NICK     0x2A // Unused Flag
-#define FLAG_UNUSED_0x02B    0x2B // Unused Flag
+#define FLAG_UNUSED_0x02B    0x2B // followers
 #define FLAG_UNUSED_0x02C    0x2C // Unused Flag
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
@@ -1667,6 +1667,7 @@
 #define FLAG_TEMP_REGICE_PUZZLE_STARTED         FLAG_TEMP_2
 #define FLAG_TEMP_REGICE_PUZZLE_FAILED          FLAG_TEMP_3
 #define FLAG_TEMP_HIDE_FOLLOWER                 FLAG_TEMP_E
+#define FLAG_TEMP_INVIS_FOLLOWER                FLAG_UNUSED_0x02B
 #define FLAG_TEMP_HIDE_MIRAGE_ISLAND_BERRY_TREE FLAG_TEMP_11
 
 // FRLG flags

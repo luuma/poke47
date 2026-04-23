@@ -2469,7 +2469,8 @@ bool32 IsFollowerVisible(void)
 {
     return !(TestPlayerAvatarFlags(FOLLOWER_INVISIBLE_FLAGS)
             || MetatileBehavior_IsSurfableWaterOrUnderwater(gObjectEvents[gPlayerAvatar.objectEventId].previousMetatileBehavior)
-            || MetatileBehavior_IsForcedMovementTile(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior));
+            || MetatileBehavior_IsForcedMovementTile(gObjectEvents[gPlayerAvatar.objectEventId].currentMetatileBehavior)
+            || FlagGet(FLAG_TEMP_INVIS_FOLLOWER));
 }
 
 static bool8 SpeciesHasType(enum Species species, u8 type)
@@ -12471,7 +12472,8 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
         return;
     if (objEvent == NULL) // Done only to check it isn't spawned.
     {
-        RemoveFollowingPokemon();// In general you shouldn't remove following pokemon and should instead set the object event to invisible. However, here, we don't want a ball despawn animation to play.
+        RemoveFollowingPokemon();// Avoids a ball anim playing.
+        FlagSet(FLAG_TEMP_INVIS_FOLLOWER);// This flag is cleared when an autobattler despawns
         u32 objectEventId = gPlayerAvatar.objectEventId;
         // Spawn follower
 	// Perhaps this is better refactored to save an object event directly into the gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId
@@ -12490,7 +12492,6 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
             .movementType = autobattleMovementType,
         };
         objectEventId = SpawnSpecialObjectEvent(&template);
-
         assertf(objectEventId < OBJECT_EVENTS_COUNT, "could not spawn autobattler. too many object events exist, %d", xcoord)
         {
             RemoveAutoBattlingPokemon();
@@ -12501,7 +12502,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
         objEvent->active = TRUE;
     }
     sprite = &gSprites[objEvent->spriteId];
-
+    UpdateFollowingPokemon();// Ensures that it respawns quickly without garbled graphics.
     sprite->data[6] = 0; // set animation data
 }
 

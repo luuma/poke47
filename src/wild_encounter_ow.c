@@ -1050,7 +1050,7 @@ void OnOverworldWildEncounterDespawn(struct ObjectEvent *owe)
 {
     if (owe->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)
     {
-        RemoveFollowingPokemon();
+        FlagClear(FLAG_TEMP_INVIS_FOLLOWER);
         UpdateFollowingPokemon();
         return;
     }
