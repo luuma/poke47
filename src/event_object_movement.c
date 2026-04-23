@@ -7916,7 +7916,7 @@ static void ObjectEventSetPokeballGfx(struct ObjectEvent *objEvent)
 {
     #if OW_FOLLOWERS_POKEBALLS
     enum PokeBall ball = BALL_STRANGE;
-    if (objEvent->localId == OBJ_EVENT_ID_FOLLOWER)
+    if (objEvent->localId == OBJ_EVENT_ID_FOLLOWER || objEvent->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)
     {
         struct Pokemon *mon = GetFirstLiveMon();
         if (mon)
