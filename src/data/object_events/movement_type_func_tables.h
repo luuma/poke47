@@ -439,10 +439,10 @@ bool8 (*const gCopyPlayerMovementFuncs[])(struct ObjectEvent *, struct Sprite *,
 
 bool8 (*const gCopyPlayerWalkMovementFuncs[])(struct ObjectEvent *, struct Sprite *, enum Direction, bool8(u8)) = {
     [COPY_MOVE_NONE]                = CopyablePlayerMovementWalk_Idle,
-    [COPY_MOVE_FACE]                = CopyablePlayerMovementWalk_FaceDirectionIdle,
+    [COPY_MOVE_FACE]                = CopyablePlayerMovementWalk_FaceDirectionIdle,// The default behaviour is designed to ease people into what is happening.
     [COPY_MOVE_WALK]                = CopyablePlayerMovement_WalkNormal,
     [COPY_MOVE_WALK_FAST]           = CopyablePlayerMovement_WalkFast,
-    [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFaster,
+    [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFast,
     [COPY_MOVE_SLIDE]               = CopyablePlayerMovement_Slide,
     [COPY_MOVE_JUMP_IN_PLACE]       = CopyablePlayerMovement_JumpInPlace,
     [COPY_MOVE_JUMP]                = CopyablePlayerMovement_JumpInPlace,
@@ -453,14 +453,14 @@ bool8 (*const gCopyPlayerWalkMovementFuncs[])(struct ObjectEvent *, struct Sprit
 
 bool8 (*const gCopyPlayerRunMovementFuncs[])(struct ObjectEvent *, struct Sprite *, enum Direction, bool8(u8)) = {
     [COPY_MOVE_NONE]                = CopyablePlayerMovementWalk_Idle,
-    [COPY_MOVE_FACE]                = CopyablePlayerMovementWalk_FaceDirectionIdle,
+    [COPY_MOVE_FACE]                = CopyablePlayerMovement_WalkNormal,// Number one, body movement. No sitting still.
     [COPY_MOVE_WALK]                = CopyablePlayerMovement_WalkFast,
     [COPY_MOVE_WALK_FAST]           = CopyablePlayerMovement_WalkFast,
-    [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFaster,
+    [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFast,
     [COPY_MOVE_SLIDE]               = CopyablePlayerMovement_Slide,
-    [COPY_MOVE_JUMP_IN_PLACE]       = CopyablePlayerMovement_JumpInPlace,
-    [COPY_MOVE_JUMP]                = CopyablePlayerMovement_JumpInPlace,
-    [COPY_MOVE_JUMP2]               = CopyablePlayerMovement_JumpInPlace,
+    [COPY_MOVE_JUMP_IN_PLACE]       = CopyablePlayerMovement_JumpInPlace,// tend to be acrobatic type guys
+    [COPY_MOVE_JUMP]                = CopyablePlayerMovement_Jump,
+    [COPY_MOVE_JUMP2]               = CopyablePlayerMovement_Jump2,
     [COPY_MOVE_WALK_COLLIDE]        = CopyablePlayerMovement_WalkNormal,
     [COPY_MOVE_WALK_COLLIDE_SLOW]   = CopyablePlayerMovement_WalkNormal,
 };
@@ -468,21 +468,21 @@ bool8 (*const gCopyPlayerRunMovementFuncs[])(struct ObjectEvent *, struct Sprite
 
 bool8 (*const gCopyPlayerZoomMovementFuncs[])(struct ObjectEvent *, struct Sprite *, enum Direction, bool8(u8)) = {
     [COPY_MOVE_NONE]                = CopyablePlayerMovementWalk_Idle,
-    [COPY_MOVE_FACE]                = CopyablePlayerMovementWalk_FaceDirectionIdle,
-    [COPY_MOVE_WALK]                = CopyablePlayerMovement_WalkFaster,
-    [COPY_MOVE_WALK_FAST]           = CopyablePlayerMovement_WalkFaster,
-    [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFaster,
+    [COPY_MOVE_FACE]                = CopyablePlayerMovement_WalkFast,// It's really fast
+    [COPY_MOVE_WALK]                = CopyablePlayerMovement_WalkFast,
+    [COPY_MOVE_WALK_FAST]           = CopyablePlayerMovement_WalkFast,
+    [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFast,
     [COPY_MOVE_SLIDE]               = CopyablePlayerMovement_Slide,
     [COPY_MOVE_JUMP_IN_PLACE]       = CopyablePlayerMovement_JumpInPlace,
-    [COPY_MOVE_JUMP]                = CopyablePlayerMovement_JumpInPlace,
-    [COPY_MOVE_JUMP2]               = CopyablePlayerMovement_JumpInPlace,
+    [COPY_MOVE_JUMP]                = CopyablePlayerMovement_Jump,
+    [COPY_MOVE_JUMP2]               = CopyablePlayerMovement_Jump2,
     [COPY_MOVE_WALK_COLLIDE]        = CopyablePlayerMovement_WalkFast,
     [COPY_MOVE_WALK_COLLIDE_SLOW]   = CopyablePlayerMovement_WalkFast,
 };
 
 bool8 (*const gCopyPlayerSlowMovementFuncs[])(struct ObjectEvent *, struct Sprite *, enum Direction, bool8(u8)) = {
     [COPY_MOVE_NONE]                = CopyablePlayerMovementWalk_Idle,
-    [COPY_MOVE_FACE]                = CopyablePlayerMovementWalk_FaceDirectionIdle,
+    [COPY_MOVE_FACE]                = CopyablePlayerMovement_WalkSlow,// Let the player chill.
     [COPY_MOVE_WALK]                = CopyablePlayerMovement_WalkSlow,
     [COPY_MOVE_WALK_FAST]           = CopyablePlayerMovement_WalkNormal,
     [COPY_MOVE_WALK_FASTER]         = CopyablePlayerMovement_WalkFast,

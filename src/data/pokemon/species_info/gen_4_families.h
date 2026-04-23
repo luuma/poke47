@@ -216,7 +216,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Torterra,
             gShinyOverworldPalette_Torterra
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sTorterraLevelUpLearnset,
         .teachableLearnset = sTorterraTeachableLearnset,
@@ -1101,7 +1101,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             TRACKS_FOOT,
             sAnimTable_Following
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_WATCH_PLAYER_OWE,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sBidoofLevelUpLearnset,
         .teachableLearnset = sBidoofTeachableLearnset,
@@ -4300,7 +4300,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Bronzong,
             gShinyOverworldPalette_Bronzong
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_WATCH_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sBronzongLevelUpLearnset,
         .teachableLearnset = sBronzongTeachableLearnset,
@@ -6235,7 +6235,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Rotom,
             gShinyOverworldPalette_Rotom
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_TOO_FAST,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sRotomLevelUpLearnset,
         .teachableLearnset = sRotomTeachableLearnset,

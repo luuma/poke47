@@ -1393,7 +1393,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             gShinyOverworldPalette_Scatterbug                                               \
         )                                                                                   \
         .teachingType = TM_ILLITERATE,                                                      \
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,                    \
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,                    \
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER,                                    \
         .levelUpLearnset = sScatterbugLevelUpLearnset,                                      \
         .teachableLearnset = sScatterbugTeachableLearnset,                                  \
@@ -1479,7 +1479,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             gShinyOverworldPalette_Spewpa                                       \
         )                                                                       \
         .teachingType = TM_ILLITERATE,                                          \
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,         \
+        .autobattleMovementType = MOVEMENT_TYPE_LOOK_AROUND,         \
         .overworldEncounterBehavior = OWE_WATCH_PLAYER_NORMAL,                  \
         .levelUpLearnset = sSpewpaLevelUpLearnset,                              \
         .teachableLearnset = sSpewpaTeachableLearnset,                          \
@@ -3985,7 +3985,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             gOverworldPalette_Binacle,
             gShinyOverworldPalette_Binacle
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_LOOK_AROUND,
         .overworldEncounterBehavior = OWE_WATCH_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sBinacleLevelUpLearnset,
         .teachableLearnset = sBinacleTeachableLearnset,
@@ -5211,7 +5211,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             gOverworldPalette_Carbink,
             gShinyOverworldPalette_Carbink
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_DESPAWN_OWE,
         .overworldEncounterBehavior = OWE_FLEE_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sCarbinkLevelUpLearnset,
         .teachableLearnset = sCarbinkTeachableLearnset,
@@ -5502,7 +5502,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             gShinyOverworldPalette_SliggooHisui
         )
         .isHisuianForm = TRUE,
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sSliggooHisuiLevelUpLearnset,
         .teachableLearnset = sSliggooHisuiTeachableLearnset,
@@ -5802,7 +5802,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
             gOverworldPalette_Trevenant,
             gShinyOverworldPalette_Trevenant
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sTrevenantLevelUpLearnset,
         .teachableLearnset = sTrevenantTeachableLearnset,

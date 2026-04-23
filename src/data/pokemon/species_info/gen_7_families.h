@@ -412,7 +412,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Torracat,
             gShinyOverworldPalette_Torracat
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sTorracatLevelUpLearnset,
         .teachableLearnset = sTorracatTeachableLearnset,
@@ -1231,7 +1231,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Charjabug,
             gShinyOverworldPalette_Charjabug
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sCharjabugLevelUpLearnset,
         .teachableLearnset = sCharjabugTeachableLearnset,
@@ -1506,7 +1506,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Crabominable,
             gShinyOverworldPalette_Crabominable
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_CHASE_PLAYER_SLOW, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sCrabominableLevelUpLearnset,
         .teachableLearnset = sCrabominableTeachableLearnset,
@@ -2489,7 +2489,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_WishiwashiSolo,
             gShinyOverworldPalette_WishiwashiSolo
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_DESPAWN_OWE,
         .overworldEncounterBehavior = OWE_FLEE_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sWishiwashiLevelUpLearnset,
         .teachableLearnset = sWishiwashiTeachableLearnset,
@@ -2689,7 +2689,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Toxapex,
             gShinyOverworldPalette_Toxapex
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sToxapexLevelUpLearnset,
         .teachableLearnset = sToxapexTeachableLearnset,
@@ -3303,7 +3303,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Morelull,
             gShinyOverworldPalette_Morelull
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sMorelullLevelUpLearnset,
         .teachableLearnset = sMorelullTeachableLearnset,
@@ -3372,7 +3372,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Shiinotic,
             gShinyOverworldPalette_Shiinotic
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sShiinoticLevelUpLearnset,
         .teachableLearnset = sShiinoticTeachableLearnset,
@@ -3785,7 +3785,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Bounsweet,
             gShinyOverworldPalette_Bounsweet
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_WALK_SEQUENCE_DOWN_LEFT_UP_RIGHT,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sBounsweetLevelUpLearnset,
         .teachableLearnset = sBounsweetTeachableLearnset,
@@ -4206,7 +4206,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Wimpod,
             gShinyOverworldPalette_Wimpod
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_FLEE_PLAYER_OWE,
         .overworldEncounterBehavior = OWE_FLEE_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sWimpodLevelUpLearnset,
         .teachableLearnset = sWimpodTeachableLearnset,
@@ -4903,7 +4903,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_Komala,
             gShinyOverworldPalette_Komala
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sKomalaLevelUpLearnset,
         .teachableLearnset = sKomalaTeachableLearnset,
@@ -5173,7 +5173,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gOverworldPalette_MimikyuDisguised,
             gShinyOverworldPalette_MimikyuDisguised
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
         .overworldEncounterBehavior = OWE_FLEE_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sMimikyuLevelUpLearnset,
         .teachableLearnset = sMimikyuTeachableLearnset,
@@ -5229,7 +5229,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .pokemonJumpType = PKMN_JUMP_TYPE_NORMAL,
         SHADOW(-3, 1, SHADOW_SIZE_S)
         FOOTPRINT(Mimikyu)
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sMimikyuLevelUpLearnset,
         .teachableLearnset = sMimikyuTeachableLearnset,
@@ -5989,7 +5989,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         )
         .isSubLegendary = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_TOO_FAST,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sTapuKokoLevelUpLearnset,
         .teachableLearnset = sTapuKokoTeachableLearnset,
@@ -6286,7 +6286,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .teachingType = TM_ILLITERATE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_DESPAWN_OWE,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sCosmogLevelUpLearnset,
         .teachableLearnset = sCosmogTeachableLearnset,
@@ -6358,7 +6358,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .teachingType = TM_ILLITERATE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_LOOK_AROUND,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sCosmoemLevelUpLearnset,
         .teachableLearnset = sCosmoemTeachableLearnset,
@@ -8111,7 +8111,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .isMythical = TRUE,
         .isFrontierBanned = TRUE,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sMeltanLevelUpLearnset,
         .teachableLearnset = sMeltanTeachableLearnset,

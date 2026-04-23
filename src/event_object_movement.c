@@ -5892,7 +5892,6 @@ bool8 MovementType_WalkOnSpotCopyPlayerVeryFast_Step1(struct ObjectEvent *object
 {
     if (gCopyPlayerZoomMovementFuncs[PlayerGetCopyableMovement()](objectEvent, sprite, GetPlayerMovementDirection(), MetatileBehavior_IsPassableForAutobattlers))
         return TRUE;
-
     return FALSE;
 }
 
