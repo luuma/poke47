@@ -2609,6 +2609,7 @@ static void InitObjectEventsLocal(void)
     ResetInitialPlayerAvatarState();
     TrySpawnObjectEvents(0, 0);
     FollowerNPC_HandleSprite();
+    FlagClear(FLAG_TEMP_INVIS_FOLLOWER);
     UpdateFollowingPokemon();
     TryRunOnWarpIntoMapScript();
 }

@@ -12509,6 +12509,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
 void RemoveAutoBattlingPokemon(void)// technically, since some of the time it is called by a script, this should be passed struct ScriptContext *ctx, not void. However it has no impact on this compiler.
 {
     struct ObjectEvent *objectEvent = GetFollowerAutobattleObject();
+    FlagClear(FLAG_TEMP_INVIS_FOLLOWER);
     if (objectEvent == NULL)
         return;
     RemoveObjectEvent(objectEvent);

@@ -17975,6 +17975,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
             gShinyOverworldPalette_Ditto
         )
         .teachingType = TM_ILLITERATE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
+        .overworldEncounterBehavior = OWE_IGNORE_PLAYER, 
         .levelUpLearnset = sDittoLevelUpLearnset,
         .teachableLearnset = sDittoTeachableLearnset,
     },

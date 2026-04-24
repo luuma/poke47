@@ -177,7 +177,6 @@ u32 CalculateMoneyTextHorizontalPosition(u32 amount)
 void DrawMoneyBox(int amount, u8 x, u8 y)
 {
     struct WindowTemplate template;
-
     SetWindowTemplateFields(&template, 0, x + 1, y + 1, 10, 2, 15, 8);
     sMoneyBoxWindowId = AddWindow(&template);
     FillWindowPixelBuffer(sMoneyBoxWindowId, PIXEL_FILL(0));
@@ -197,6 +196,7 @@ void HideMoneyBox(void)
 
 void AddMoneyLabelObject(u16 x, u16 y)
 {
+    FreeSpriteTilesByTag(0x2722); 
     LoadCompressedSpriteSheet(&sSpriteSheet_MoneyLabel);
     LoadSpritePalette(&sSpritePalette_MoneyLabel);
     sMoneyLabelSpriteId = CreateSprite(&sSpriteTemplate_MoneyLabel, x, y, 0);
