@@ -23,7 +23,7 @@ u32 GetCurrentLevelCap(void)
         {FLAG_PHOEBE_PHANTOM_FORCE, 50},//1
         {FLAG_JUAN_DAZZLING_GLEAM, 51},//2
         {FLAG_DRAKE_DRAGON_PULSE, 52},//3
-        {FLAG_IS_CHAMPION, 54},//4
+        {FLAG_IS_CHAMPION, 53},//5
     };
 
     u32 i;
@@ -59,6 +59,8 @@ u32 GetPreviousLevelCapForXP(void)
         {FLAG_BADGE08_GET, 41},//5. see above. Long stretch.
         {FLAG_SIDNEY_SUCKER_PUNCH, 50},//0. high, to let people full-send champion
         {FLAG_IS_CHAMPION, 55},// so doubled until lv50.
+        {FLAG_DEFEATED_METEOR_FALLS_STEVEN, 100},// Perma double.
+        //{FLAG_GAUNTLET_CHALLENGE, 5},// Cancels it out while set.
     };
     u32 i;
 

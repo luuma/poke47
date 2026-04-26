@@ -7722,13 +7722,12 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
     dmg = RandomUniform(RNG_DAMAGE_MODIFIER, 850, 1000); // 85 to 100
     dmg *= ((2*levelFoe)/5 + 2);
     dmg = uq4_12_multiply_by_int_half_down(AutoBattlerTypeMatchup(speciesFoe, speciesMon), dmg);
-    dmg *= AutoBattlerStatMatchupMonDef(mon, levelFoe, speciesFoe);// Note the max possible value sits near uint's size here.
+    dmg *= AutoBattlerStatMatchupMonDef(mon, levelFoe, speciesFoe);// Note the max possible value sits near uint's size here, so we divide before multiplying by numhits.
     dmg /= 41667;  /// /= 41667; // * 1.5 * 40 / 1000*50*50;
     dmg *= numHits;
 
     u16 GetHP = GetMonData(mon, MON_DATA_MAX_HP);
     u16 loss = 1;
-    dmg *= numHits;
     if (dmg/4 > GetHP)
     {
         gSpecialVar_0x8006 = 6;
@@ -7778,7 +7777,8 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     u32 totalXP = GetMonData(mon, MON_DATA_EXP);
     u32 addxp = gSpeciesInfo[speciesFoe].expYield * levelFoe * (levelFoe+2);
     addxp /= (13*(initialLevel+2));
-    addxp = max(addxp, 1);
+    addxp = max(addxp, 1); 
+    addxp = GetSoftLevelCapExpValue(initialLevel, addxp);// This is added because users will expect soft level caps to apply to autobattling.
     totalXP = addxp + totalXP;
     SetMonData(mon, MON_DATA_EXP, &totalXP);
     ApplyDaycareExperience(mon);

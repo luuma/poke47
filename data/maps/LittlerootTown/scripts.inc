@@ -248,6 +248,7 @@ LittlerootTown_EventScript_SetRivalBirchPosForDexUpgradeFemale::
 LittlerootTown_EventScript_CapKid::
 	lock
 	faceplayer
+        goto_if_set FLAG_IS_CHAMPION, LittlerootTown_EventScript_CapKidrecognizesgame
 	checkitem ITEM_LEVEL_CAP
 	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_EventScript_CapKidJump
 	goto_if_set FLAG_LEVEL_CAP LittlerootTown_EventScript_CapKidGiveBack
@@ -274,6 +275,17 @@ LittlerootTown_EventScript_CapKidGiveBack::
 	fadescreenswapbuffers FADE_FROM_BLACK
 	releaseall
 	end
+
+LittlerootTown_EventScript_CapKidrecognizesgame::
+	msgbox LittlerootTown_Text_capkidyeahchamp, MSGBOX_NPC
+	release
+	end
+
+LittlerootTown_Text_capkidyeahchamp:
+	.string "Yeah! You're already CHAMPION?\p"
+	.string "No kidding! Heheh. I recognized your\n"
+	.string "gamer cred the second I saw you.\p"
+	.string "Keep that LEVEL CAP - it suits you.$"
 
 LittlerootTown_EventScript_CapKidBelievesInYou::
 	msgbox LittlerootTown_Text_WantGiveCapBackBelieve, MSGBOX_NPC
@@ -1085,7 +1097,8 @@ LittlerootTown_Text_WantGiveCapBackBelieve:
 
 LittlerootTown_Text_GaveCapBackIllBeOff:
 	.string "{PLAYER} returned the LEVEL CAP.\p"
-	.string "Heh. Shame. Smell ya later!$"
+	.string "Wow! Surprisingly lame of you.\n"
+	.string "Heh. Shame. Smell ya later.$"
 
 LittlerootTown_Text_CapKidTooBad:
 	.string "Wow! Surprisingly lame of you.\p"

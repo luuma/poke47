@@ -9751,6 +9751,16 @@
       "border_filepath": "data/layouts/Route125_LowTide/border.bin",
       "blockdata_filepath": "data/layouts/Route125_LowTide/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_ROUTE_100",
+      "name": "ROUTE_100_Layout",
+      "width": 27,
+      "height": 27,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Slateport",
+      "border_filepath": "data/layouts/ROUTE_100/border.bin",
+      "blockdata_filepath": "data/layouts/ROUTE_100/map.bin"
     }
   ]
 }

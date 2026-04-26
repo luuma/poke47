@@ -12204,7 +12204,7 @@
               {
                 "min_level": 19,
                 "max_level": 20,
-                "species": "SPECIES_HERDIER"
+                "species": "SPECIES_TRANQUILL"
               },
               {
                 "min_level": 20,
@@ -12214,7 +12214,7 @@
               {
                 "min_level": 19,
                 "max_level": 20,
-                "species": "SPECIES_TRANQUILL"
+                "species": "SPECIES_MUNNA"
               },
               {
                 "min_level": 22,
@@ -12224,7 +12224,7 @@
               {
                 "min_level": 22,
                 "max_level": 22,
-                "species": "SPECIES_YAMASK"
+                "species": "SPECIES_BRONZOR"
               },
               {
                 "min_level": 20,
@@ -12239,7 +12239,7 @@
               {
                 "min_level": 21,
                 "max_level": 21,
-                "species": "SPECIES_YAMASK"
+                "species": "SPECIES_BRONZOR"
               },
               {
                 "min_level": 22,
