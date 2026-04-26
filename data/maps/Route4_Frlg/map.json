@@ -3,6 +3,7 @@
   "name": "Route4_Frlg",
   "layout": "LAYOUT_ROUTE4",
   "music": "MUS_RG_ROUTE3",
+  "region": "REGION_KANTO",
   "region_map_section": "MAPSEC_ROUTE_4",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -11,6 +12,7 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
+  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
@@ -26,6 +28,7 @@
   ],
   "object_events": [
     {
+      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1_FRLG",
       "x": 9,
       "y": 8,
@@ -39,6 +42,7 @@
       "flag": "0"
     },
     {
+      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_LASS_FRLG",
       "x": 75,
       "y": 3,
@@ -52,6 +56,7 @@
       "flag": "0"
     },
     {
+      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 67,
       "y": 5,
@@ -65,6 +70,7 @@
       "flag": "FLAG_HIDE_ROUTE4_TM05"
     },
     {
+      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BOY",
       "x": 15,
       "y": 14,
@@ -78,7 +84,8 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BLACKBELT",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT_FRLG",
       "x": 47,
       "y": 3,
       "elevation": 3,
@@ -91,7 +98,8 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_BLACKBELT",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_BLACK_BELT_FRLG",
       "x": 50,
       "y": 3,
       "elevation": 3,
@@ -135,7 +143,9 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -183,7 +193,5 @@
       "quantity": 1,
       "underfoot": false
     }
-  ],
-  "floor_number": 0,
-  "region": "REGION_KANTO"
+  ]
 }

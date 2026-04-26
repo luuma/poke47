@@ -244,11 +244,9 @@ DOUBLE_BATTLE_TEST("Blunder Policy activates for Dragon Darts if one target miss
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, playerLeft);
         HP_BAR(finalTarget);
-
-        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
-
         ANIMATION(ANIM_TYPE_MOVE, MOVE_DRAGON_DARTS, playerLeft);
         HP_BAR(finalTarget);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_HELD_ITEM_EFFECT, playerLeft);
     } THEN {
         EXPECT(playerLeft->item == ITEM_NONE);
         EXPECT_EQ(playerLeft->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 2);

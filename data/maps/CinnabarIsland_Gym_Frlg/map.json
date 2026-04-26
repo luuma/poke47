@@ -17,7 +17,8 @@
   "object_events": [
     {
       "local_id": "LOCALID_QUINN",
-      "graphics_id": "OBJ_EVENT_GFX_SUPER_NERD",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_POKE_MANIAC_FRLG",
       "x": 25,
       "y": 11,
       "elevation": 3,
@@ -58,7 +59,8 @@
     },
     {
       "local_id": "LOCALID_RAMON",
-      "graphics_id": "OBJ_EVENT_GFX_SUPER_NERD",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_POKE_MANIAC_FRLG",
       "x": 16,
       "y": 11,
       "elevation": 3,
@@ -86,7 +88,8 @@
     },
     {
       "local_id": "LOCALID_DUSTY",
-      "graphics_id": "OBJ_EVENT_GFX_SUPER_NERD",
+      "type": "object",
+      "graphics_id": "OBJ_EVENT_GFX_POKE_MANIAC_FRLG",
       "x": 4,
       "y": 19,
       "elevation": 3,

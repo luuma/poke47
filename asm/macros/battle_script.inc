@@ -753,10 +753,6 @@
 	.byte B_SCR_OP_NORMALISEBUFFS
 	.endm
 
-	.macro setbide
-	.byte B_SCR_OP_SETBIDE
-	.endm
-
 	.macro twoturnmoveschargestringandanimation
 	.byte B_SCR_OP_TWOTURNMOVESCHARGESTRINGANDANIMATION
 	.4byte 1f @animation then attack string
@@ -809,10 +805,6 @@
 	.byte B_SCR_OP_CHECKNONVOLATILETRIGGER
 	.2byte \nonVolatile
 	.4byte \failInstr
-	.endm
-
-	.macro copybidedmg
-	.byte B_SCR_OP_COPYBIDEDMG
 	.endm
 
 	.macro animatewildpokemonafterfailedpokeball battler:req
@@ -1218,7 +1210,7 @@
 	.byte B_SCR_OP_TRY_CONFUSION_AFTER_SKY_DROP
     .byte \battler
 	.endm
-	
+
 	.macro callnative func:req
 	.byte B_SCR_OP_CALLNATIVE
 	.4byte \func
@@ -1544,10 +1536,6 @@
 	.4byte \failInstr
 	.endm
 
-	.macro setmagiccoattarget
-	callnative BS_SetMagicCoatTarget
-	.endm
-
 	.macro jumpifcommanderactive jumpInstr:req
 	callnative BS_JumpIfCommanderActive
 	.4byte \jumpInstr
@@ -1781,12 +1769,6 @@
 
 	.macro updatenick
 	callnative BS_UpdateNick
-	.endm
-
-	.macro jumpifnotberry battler:req, jumpInstr:req
-	callnative BS_JumpIfNotBerry
-	.byte \battler
-	.4byte \jumpInstr
 	.endm
 
 	.macro gravityonairbornemons
@@ -2154,10 +2136,6 @@
 	.4byte \failInstr
 	.endm
 
-	.macro setpoltergeistmessage
-	callnative BS_SetPoltergeistMessage
-	.endm
-
 	.macro tryresetnegativestatstages
 	callnative BS_TryResetNegativeStatStages
 	.endm
@@ -2254,4 +2232,12 @@
 	callnative BS_TryActivateAbilityWithAbilityShield
 	.byte \battler
 	.byte \switchedItems
+	.endm
+
+	.macro endturnevents
+	callnative BS_EndTurnEvents
+	.endm
+
+	.macro trywakebattlersuproar
+	callnative BS_TryWakeBattlersUproar
 	.endm

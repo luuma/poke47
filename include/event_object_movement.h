@@ -125,8 +125,7 @@ extern const u8 gReflectionEffectPaletteMap[];
 extern const u8 OWEAutoBattling[];
 
 
-extern const struct SpriteFrameImage *const gBerryTreePicTablePointers[];
-extern const u8 *const gBerryTreePaletteSlotTablePointers[];
+extern const struct SpriteFrameImage gPicTable_PechaBerryTree[];
 
 extern const struct SpritePalette gSpritePalette_GeneralFieldEffect0;
 extern const struct SpritePalette gSpritePalette_GeneralFieldEffect1;

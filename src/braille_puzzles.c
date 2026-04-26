@@ -93,11 +93,11 @@ bool8 CheckRelicanthWailord(void)
 {
     // Emerald change: why did they flip it?
     // First comes Wailord
-    if (GetMonData(&gPlayerParty[0], MON_DATA_SPECIES_OR_EGG, 0) == SPECIES_LUMINEON)
+    if (GetMonData(&gParties[B_TRAINER_0][0], MON_DATA_SPECIES_OR_EGG, 0) == SPECIES_LUMINEON)
     {
         CalculatePlayerPartyCount();
         // Last comes Relicanth
-        if (GetMonData(&gPlayerParty[gPlayerPartyCount - 1], MON_DATA_SPECIES_OR_EGG, 0) == SPECIES_SIGILYPH)
+        if (GetMonData(&gParties[B_TRAINER_0][gPartiesCount[B_TRAINER_0] - 1], MON_DATA_SPECIES_OR_EGG, 0) == SPECIES_SIGILYPH)
             return TRUE;
     }
     return FALSE;

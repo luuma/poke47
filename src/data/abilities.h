@@ -2434,19 +2434,46 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .cantBeTraced = TRUE,
     },
 
+    [ABILITY_PIERCING_DRILL] =
+    {
+        .name = _("Piercing Drill"),
+        .description = COMPOUND_STRING("Contact evades protection."),
+    },
 
     [ABILITY_DRAGONIZE] =
     {
         .name = _("Dragonize"),
-        .description = COMPOUND_STRING("Normal moves become Dragon."),
-        .aiRating = 8,
+        .description = COMPOUND_STRING("Normal moves turn Dragon."),
+    },
+
+    [ABILITY_313] =
+    {
+        .name = _("-------"),
+        .description = COMPOUND_STRING("No special ability."),
+    },
+
+    [ABILITY_314] =
+    {
+        .name = _("-------"),
+        .description = COMPOUND_STRING("No special ability."),
     },
 
     [ABILITY_MEGA_SOL] =
     {
         .name = _("Mega Sol"),
-        .description = COMPOUND_STRING("Behaves like under sun."),
-        .aiRating = 8,
+        .description = COMPOUND_STRING("Acts like under sun."),
+    },
+
+    [ABILITY_316] =
+    {
+        .name = _("-------"),
+        .description = COMPOUND_STRING("No special ability."),
+    },
+
+    [ABILITY_317] =
+    {
+        .name = _("-------"),
+        .description = COMPOUND_STRING("No special ability."),
     },
 
     [ABILITY_SPICY_SPRAY] =
