@@ -946,13 +946,13 @@ static enum CancelerResult CancelerPPDeduction(struct BattleCalcValues *cv)
 
     s32 ppToDeduct = 1;
     s32 ppCost = 1;
-    enum MoveTarget moveTarget = GetBattlerMoveTargetType(ctx->battlerAtk, ctx->move);
+    enum MoveTarget moveTarget = GetBattlerMoveTargetType(cv->battlerAtk, cv->move);
     u32 movePosition = gCurrMovePos;
 
     if (gBattleStruct->submoveAnnouncement == SUBMOVE_SUCCESS)
         movePosition = gChosenMovePos;
 
-    if (GetBattlerHoldEffect(ctx->battlerAtk) == HOLD_EFFECT_KNELL_BELL)
+    if (GetBattlerHoldEffect(cv->battlerAtk) == HOLD_EFFECT_KNELL_BELL)
     {
         ppCost *= 4;//
         ppToDeduct = ppCost;
@@ -1973,7 +1973,7 @@ static enum CancelerResult CancelerNotFullyProtected(struct BattleCalcValues *cv
 
 static bool32 IsMoveParentalBondAffected(struct BattleCalcValues *cv)
 {
-    if (cv->abilities[cv->battlerAtk] != ABILITY_PARENTAL_BOND && (cv->abilities[cv->battlerAtk] != ABILITY_DOUBLE_WALLOP || gBattleMons[cv->battlerDef].hp >= gBattleMons[cv->battlerDef].maxHP * 3 / 4) )
+    if ((cv->abilities[cv->battlerAtk] != ABILITY_PARENTAL_BOND && (cv->abilities[cv->battlerAtk] != ABILITY_DOUBLE_WALLOP || gBattleMons[cv->battlerDef].hp >= gBattleMons[cv->battlerDef].maxHP * 3 / 4))
      || gBattleStruct->numSpreadTargets > 1
      || IsMoveParentalBondBanned(cv->move)
      || GetMoveCategory(cv->move) == DAMAGE_CATEGORY_STATUS

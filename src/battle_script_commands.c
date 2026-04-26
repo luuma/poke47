@@ -5357,7 +5357,7 @@ static void Cmd_switchindataupdate(void)
             gBattleMons[battler].statStages[i] = oldData.statStages[i];
         }
     }
-    else if (gSideStatuses[side] & SIDE_STATUS_NAVAL_BLOCKADE)// Also sorted in battle main dot C.
+    else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_NAVAL_BLOCKADE)// Also sorted in battle main dot C.
     {
         for (i = 0; i < NUM_BATTLE_STATS; i++)
         {
@@ -7145,7 +7145,7 @@ u32 IsFlowerVeilProtected(enum BattlerId battler)
 
 u32 IsLeafGuardProtected(enum BattlerId battler, enum Ability ability)
 {
-    if (IsBattlerWeatherAffected(GetBattlerHoldEffect(battler), GetBattlerAbility(battler), GetWeather(), B_WEATHER_SUN))
+    if (IsBattlerWeatherAffected(GetBattlerHoldEffect(battler), GetWeather(), B_WEATHER_SUN))
         return ability == ABILITY_LEAF_GUARD;
     else
         return 0;
@@ -14841,7 +14841,7 @@ void BS_JumpIfWeatherAffected(void)
 {
     NATIVE_ARGS(u16 flags, const u8 *jumpInstr);
     u32 weather = cmd->flags;
-    if (IsBattlerWeatherAffected(GetBattlerHoldEffect(gBattlerAttacker), GetBattlerAbility(gBattlerAttacker), GetWeather(), weather))
+    if (IsBattlerWeatherAffected(GetBattlerHoldEffect(gBattlerAttacker), GetWeather(), weather))
         gBattlescriptCurrInstr = cmd->jumpInstr;
     else
         gBattlescriptCurrInstr = cmd->nextInstr;

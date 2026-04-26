@@ -4547,7 +4547,7 @@ u16 GetInGameTradeSpeciesInfo(void)
     const struct InGameTrade *inGameTrade = &sIngameTrades[gSpecialVar_0x8005];
     StringCopy(gStringVar1, GetSpeciesName(inGameTrade->requestedSpecies));
     StringCopy(gStringVar2, GetSpeciesName(inGameTrade->species));
-    return inGameTrade->requestedSpecies;
+    return inGameTrade->requestedSpecies;// sanitizespeciesID?
 }
 
 static void BufferInGameTradeMonName(void)

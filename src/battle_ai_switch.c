@@ -1218,7 +1218,7 @@ static bool32 ShouldSwitchIfAttackingStatsLowered(struct SwitchAiContext *switch
     if (!(gAiThinkingStruct->aiFlags[switchContext->battler] & AI_FLAG_SMART_SWITCHING))
         return FALSE;
     // Don't switch if naval blockade is stopping stats from resetting when switch. 
-    if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_NAVAL_BLOCKADE)
+    if (gSideStatuses[GetBattlerSide(switchContext->battler)] & SIDE_STATUS_NAVAL_BLOCKADE)
         return FALSE;
     // Physical attacker
     if (gBattleMons[switchContext->battler].attack > gBattleMons[switchContext->battler].spAttack)
