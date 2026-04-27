@@ -316,7 +316,6 @@ static void SetMainMoveSelectorColor(u8);
 static void KeepMoveSelectorVisible(u8);
 static void SummaryScreen_DestroyAnimDelayTask(void);
 static bool32 ShouldShowMoveRelearner(void);
-static bool32 ShouldShowMoveRelearnerInBattle(void);
 static bool32 ShouldShowRename(void);
 static bool32 ShouldShowIvEvPrompt(void);
 static void BufferLeftColumnIvEvStats(void);
@@ -3361,9 +3360,9 @@ static void PutPageWindowTilemaps(u8 page)
         if (sMonSummaryScreen->mode == SUMMARY_MODE_SELECT_MOVE)
         {
             if (sMonSummaryScreen->newMove != MOVE_NONE || sMonSummaryScreen->firstMoveIndex != MAX_MON_MOVES)
+            {
                 PutWindowTilemap(PSS_LABEL_WINDOW_MOVES_POWER_ACC);
-            if (ShouldShowMoveRelearnerInBattle())
-                PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_RELEARN);
+            }
         }
         else
         {
@@ -3378,9 +3377,6 @@ static void PutPageWindowTilemaps(u8 page)
         {
             if (sMonSummaryScreen->newMove != MOVE_NONE || sMonSummaryScreen->firstMoveIndex != MAX_MON_MOVES)
                 PutWindowTilemap(PSS_LABEL_WINDOW_MOVES_APPEAL_JAM);
-            if (ShouldShowMoveRelearnerInBattle())
-                PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_RELEARN);
-
         }
         else
         {
@@ -4761,16 +4757,7 @@ static inline bool32 ShouldShowMoveRelearner(void)
     return (P_SUMMARY_SCREEN_MOVE_RELEARNER
          && sMonSummaryScreen->mode != SUMMARY_MODE_BOX_CURSOR
          && sMonSummaryScreen->hasRelearnableMoves
-         && (IsMoveRelearnerAbilityActive() || (!InBattleFactory() && !InSlateportBattleTent()) ) );
-}
-
-
-static inline bool32 ShouldShowMoveRelearnerInBattle(void) 
-{
-    return (P_SUMMARY_SCREEN_MOVE_RELEARNER
-         && sMonSummaryScreen->mode != SUMMARY_MODE_BOX_CURSOR
-         && sMonSummaryScreen->hasRelearnableMoves
-         && IsMoveRelearnerAbilityActive());
+         && (IsMoveRelearnerAbilityActive() || (!InBattleFactory() && !InSlateportBattleTent() && !sMonSummaryScreen->lockMovesFlag ) ) );
 }
 
 static inline bool32 ShouldShowRename(void)
