@@ -4761,7 +4761,7 @@ static inline bool32 ShouldShowMoveRelearner(void)
     return (P_SUMMARY_SCREEN_MOVE_RELEARNER
          && sMonSummaryScreen->mode != SUMMARY_MODE_BOX_CURSOR
          && sMonSummaryScreen->hasRelearnableMoves
-         && (IsMoveRelearnerAbilityActive() || (!InBattleFactory() && !InSlateportBattleTent()));
+         && (IsMoveRelearnerAbilityActive() || (!InBattleFactory() && !InSlateportBattleTent()) ) );
 }
 
 

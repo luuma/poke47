@@ -3699,14 +3699,14 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 if (gBattleMons[battler].item == ITEM_NONE)
                 {
 		    gLastUsedItem = ITEM_HONEY;
-                    BattleScriptExecute(BattleScript_HoneyGatherActivates);
+                    BattleScriptCall(BattleScript_HoneyGatherActivates);
                     effect++;
                 }
                 break;
             case ABILITY_ITEM_GET:
                 if (gBattleMons[battler].item == ITEM_NONE)
                 {
-                    BattleScriptExecute(BattleScript_PickupActivates);
+                    BattleScriptCall(BattleScript_PickupActivates);
                     effect++;
                 }
                 break;
@@ -3793,9 +3793,8 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             case ABILITY_FOCUS_BOOST:
                 if (CompareStat(battler, STAT_ACC, MAX_STAT_STAGE, CMP_LESS_THAN, gLastUsedAbility) && gBattleStruct->battlerState[battler].isFirstTurn != 2)
                 {
-                    SaveBattlerAttacker(gBattlerAttacker);
                     SET_STATCHANGER(STAT_ACC, 1, FALSE);
-                    BattleScriptExecute(BattleScript_AttackerAbilityStatRaiseEnd2);
+                    BattleScriptCall(BattleScript_AttackerAbilityStatRaise);
                     gBattleScripting.battler = battler;
                     effect++;
                 }
@@ -7381,7 +7380,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
         {
         case ABILITY_FLOWER_GIFT:
             if (gBattleMons[BATTLE_PARTNER(battlerDef)].species == SPECIES_CHERRIM_SUNSHINE
-             && IsBattlerWeatherAffected(ctx->holdEffectDef, ctx->weather, B_WEATHER_SUN) && !usesDefStat)
+             && IsBattlerWeatherAffected(ctx->holdEffects[ctx->battlerDef], ctx->weather, B_WEATHER_SUN) && !usesDefStat)
                 modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
             break;
         default:

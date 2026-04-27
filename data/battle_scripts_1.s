@@ -6160,7 +6160,7 @@ BattleScript_HoneyGatherActivates::
 	printstring STRINGID_HARVESTBERRY
 	waitmessage B_WAIT_TIME_LONG
 BattleScript_HoneyGatherActivatesEnd:
-	end2
+	return
 
 BattleScript_HarvestActivates::
 	pause 5

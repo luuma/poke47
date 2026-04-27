@@ -1529,7 +1529,21 @@ void Task_HandleChooseMonInput(u8 taskId)
                 MoveCursorToConfirm();
             }
             break;
-        case R_BUTTON: // Only used in full-team multis to cycle player/partner parties
+        case R_BUTTON:
+            if (PARTY_MENU_PC_ACCESS
+                && gPartyMenu.action == PARTY_ACTION_CHOOSE_MON
+                && gPartyMenu.layout == PARTY_LAYOUT_SINGLE
+                && (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD
+                    || gPartyMenu.menuType == PARTY_MENU_TYPE_DAYCARE))
+            {
+                PlaySE(SE_SELECT);
+                SavePartyMenuStateForPC();
+                PokemonPC_SetReturnToPartyCallback(CB2_ReopenPartyMenuFromPC);
+                sPartyMenuInternal->exitCallback = CB2_ShowPokemonPCFromParty;
+                PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+                Task_ClosePartyMenu(taskId);
+            }
+        case L_BUTTON: // Only used in full-team multis to cycle player/partner parties
             PlaySE(SE_M_HARDEN);
             UpdatePartyToFieldOrder();
 
@@ -1833,9 +1847,9 @@ static u16 PartyMenuButtonHandler(s8 *slotPtr)
 
     // Cycling player and party teams for in-battle party menu in full-team multis
     if ((gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL || gPartyMenu.layout == PARTY_LAYOUT_MULTI_FULL_PARTNER)
-     && (JOY_NEW(R_BUTTON) || JOY_NEW(L_BUTTON)))
+     && (JOY_NEW(L_BUTTON)))
     {
-        return R_BUTTON;
+        return L_BUTTON;
     }
 
     if (movementDir && gPartiesCount[B_TRAINER_0] != 0)

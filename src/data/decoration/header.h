@@ -1063,7 +1063,7 @@ const struct Decoration gDecorations[] =
         .price = 1000,
         .description = COMPOUND_STRING(
     "A small poster with\n"
-        "a TURTWIG print.");
+        "a TURTWIG print."),
         .tiles = DecorGfx_GREEN_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1078,7 +1078,7 @@ const struct Decoration gDecorations[] =
         .price = 1000,
         .description = COMPOUND_STRING(
     "A small poster with\n"
-        "a CHIMCHAR print.");
+        "a CHIMCHAR print."),
         .tiles = DecorGfx_RED_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1093,7 +1093,7 @@ const struct Decoration gDecorations[] =
         .price = 1000,
         .description = COMPOUND_STRING(
     "A small poster with\n"
-        "a PIPLUP print.");
+        "a PIPLUP print."),
         .tiles = DecorGfx_BLUE_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1108,7 +1108,7 @@ const struct Decoration gDecorations[] =
         .price = 1000,
         .description = COMPOUND_STRING(
     "A small poster with\n"
-        "a WOOLOO print.");
+        "a WOOLOO print."),
         .tiles = DecorGfx_CUTE_POSTER,
         .icon = {NULL, NULL},
     },
@@ -1200,7 +1200,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
     "A curious doll.\n"
         "Place it on a mat\n"
-        "or a desk.");
+        "or a desk."),
         .tiles = DecorGfx_PICHU_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1232,7 +1232,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
     "A GECQUA doll.\n"
         "Place it on a mat\n"
-        "or a desk.");
+        "or a desk."),
         .tiles = DecorGfx_MARILL_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1568,7 +1568,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
     "A WHIMSICOTT\n"
         "doll. Place it on\n"
-        "a mat or a desk.");
+        "a mat or a desk."),
         .tiles = DecorGfx_LOTAD_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1920,8 +1920,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
     "A NATU doll.\n"
         "Place it on a mat\n"
-        "or a desk.");
-        .description = DecorDesc_NATU_DOLL,
+        "or a desk."),
         .tiles = DecorGfx_NATU_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1937,7 +1936,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
                 "A MAGNEMITE\n"
         "doll. Place it on\n"
-        "a mat or a desk.");
+        "a mat or a desk."),
         .tiles = DecorGfx_MAGNEMITE_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1953,7 +1952,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
                 "A SQUIRTLE doll.\n"
         "Place it on a mat\n"
-        "or a desk.");
+        "or a desk."),
         .tiles = DecorGfx_SQUIRTLE_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1969,7 +1968,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
                 "A WOOPER doll.\n"
         "Place it on a mat\n"
-        "or a desk.");
+        "or a desk."),
         .tiles = DecorGfx_WOOPER_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1983,6 +1982,9 @@ const struct Decoration gDecorations[] =
         .category = DECORCAT_DOLL,
         .price = 3000,
         .description = COMPOUND_STRING(
+            "A PIKACHU doll.\n"
+            "Place it on a mat\n"
+            "or a desk."),
         .tiles = DecorGfx_PIKACHU2_DOLL,
         .icon = {NULL, NULL},
     },
@@ -1998,7 +2000,7 @@ const struct Decoration gDecorations[] =
         .description = COMPOUND_STRING(
                 "A PIKACHU doll.\n"
         "Place it on a mat\n"
-        "or a desk.");
+        "or a desk."),
         .tiles = DecorGfx_PORYGON2_DOLL,
         .icon = {NULL, NULL},
     }

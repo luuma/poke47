@@ -2,7 +2,7 @@
 #include "test/battle.h"
 #include "battle_ai_util.h"
 
-SINGLE_BATTLE_TEST("EvioliUM INgot boosts Defense and Sp. Def for unevolved rock or ice Pokemon", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: EvioliUM INgot boosts Defense and Sp. Def for unevolved rock or ice Pokemon", s16 damage)
 {
     u16 move;
     u32 item;
@@ -28,7 +28,7 @@ SINGLE_BATTLE_TEST("EvioliUM INgot boosts Defense and Sp. Def for unevolved rock
     }
 }
 
-SINGLE_BATTLE_TEST("EvioliUM INgot boosts Defense and Sp. Def for unevolved ice Pokemon", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: EvioliUM INgot boosts Defense and Sp. Def for unevolved ice Pokemon", s16 damage)
 {
     u16 move;
     u32 item;
@@ -54,7 +54,7 @@ SINGLE_BATTLE_TEST("EvioliUM INgot boosts Defense and Sp. Def for unevolved ice 
     }
 }
 
-SINGLE_BATTLE_TEST("EvioliUM INgot does not boost Defense or Sp. Def for evolved Pokemon", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: EvioliUM INgot does not boost Defense or Sp. Def for evolved Pokemon", s16 damage)
 {
     u16 move;
     u32 item;
@@ -80,7 +80,7 @@ SINGLE_BATTLE_TEST("EvioliUM INgot does not boost Defense or Sp. Def for evolved
     }
 }
 
-SINGLE_BATTLE_TEST("EvioliUM INgot does not boost Defense or Sp. Def for NON ROCK Pokemon", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: EvioliUM INgot does not boost Defense or Sp. Def for NON ROCK Pokemon", s16 damage)
 {
     u16 move;
     u32 item;
@@ -131,7 +131,7 @@ DOUBLE_BATTLE_TEST("Eviopolymer 1.5x for nfe, 1.1X for full evolved")
 #include "battle_ai_util.h"
 
 
-SINGLE_BATTLE_TEST("Knell Bell causes opponent's moves to use up 4 PP not 1")
+SINGLE_BATTLE_TEST("POKE47: Knell Bell causes opponent's moves to use up 4 PP not 1")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_POUND, 35}); Item(ITEM_KNELL_BELL); }
@@ -143,7 +143,7 @@ SINGLE_BATTLE_TEST("Knell Bell causes opponent's moves to use up 4 PP not 1")
     }
 }
 
-SINGLE_BATTLE_TEST("NORMAL PP")
+SINGLE_BATTLE_TEST("POKE47: NORMAL PP")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_POUND, 35}); }
@@ -186,7 +186,7 @@ DOUBLE_BATTLE_TEST("Knell Bell causes opponent's moves to use 4 PP - TIMES 5 vs 
     }
 }
 
-SINGLE_BATTLE_TEST("kNELL Bell restores 1/4 HP of damage dealt")
+SINGLE_BATTLE_TEST("POKE47: kNELL Bell restores 1/4 HP of damage dealt")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_KNELL_BELL); HP(10); }
@@ -200,7 +200,7 @@ SINGLE_BATTLE_TEST("kNELL Bell restores 1/4 HP of damage dealt")
     }
 }
 
-SINGLE_BATTLE_TEST("Wizard Cape deals 1/6 foe hp when fake tears is used, BUT NOT iron defense. Bounceables only")
+SINGLE_BATTLE_TEST("POKE47: Wizard Cape deals 1/6 foe hp when fake tears is used, BUT NOT iron defense. Bounceables only")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}
@@ -219,7 +219,7 @@ SINGLE_BATTLE_TEST("Wizard Cape deals 1/6 foe hp when fake tears is used, BUT NO
 }
 
 
-SINGLE_BATTLE_TEST("Wizard Cape TEST with message")
+SINGLE_BATTLE_TEST("POKE47: Wizard Cape TEST with message")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}
@@ -254,7 +254,7 @@ DOUBLE_BATTLE_TEST("Wizard Cape in doubles")
     }
 }
 
-SINGLE_BATTLE_TEST("Wizard Cape deals no damage if fail")
+SINGLE_BATTLE_TEST("POKE47: Wizard Cape deals no damage if fail")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}
@@ -285,7 +285,7 @@ SINGLE_BATTLE_TEST("Wizard Cape deals no damage if fail")
 
 
 
-SINGLE_BATTLE_TEST("wonder what happens here!")
+SINGLE_BATTLE_TEST("POKE47: wonder what happens here!")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}
@@ -299,7 +299,7 @@ SINGLE_BATTLE_TEST("wonder what happens here!")
 
 
 
-SINGLE_BATTLE_TEST("SPANDEX flares set electric terrain")
+SINGLE_BATTLE_TEST("POKE47: SPANDEX flares set electric terrain")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_SPANDEX_FLARES); }
@@ -315,7 +315,7 @@ SINGLE_BATTLE_TEST("SPANDEX flares set electric terrain")
     }
 }
 
-SINGLE_BATTLE_TEST("SPANDEX flares set electric terrain 5 turn")
+SINGLE_BATTLE_TEST("POKE47: SPANDEX flares set electric terrain 5 turn")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_SPANDEX_FLARES); }
@@ -335,7 +335,7 @@ SINGLE_BATTLE_TEST("SPANDEX flares set electric terrain 5 turn")
 }
 
 
-SINGLE_BATTLE_TEST("SPANDEX flares doesn't when not dancing")
+SINGLE_BATTLE_TEST("POKE47: SPANDEX flares doesn't when not dancing")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_SPANDEX_FLARES); }

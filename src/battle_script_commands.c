@@ -3203,6 +3203,7 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
                 SetMoveEffect(battlerAtk, effectBattler, MOVE_EFFECT_TOXIC, gBattlescriptCurrInstr, NO_FLAGS);
                 break;
             case HOLD_EFFECT_LIGHT_BALL:
+            case HOLD_EFFECT_HONEY:
                 SetMoveEffect(battlerAtk, effectBattler, MOVE_EFFECT_PARALYSIS, gBattlescriptCurrInstr, NO_FLAGS);
                 break;
             case HOLD_EFFECT_TYPE_POWER:
@@ -10394,30 +10395,17 @@ static void Cmd_tryrecycleitem(void)
     CMD_ARGS(const u8 *failInstr);
 
     u16 *usedHeldItem;
+    usedHeldItem = &GetBattlerPartyState(gBattlerAttacker)->usedHeldItem;
 
     if (gCurrentMove == MOVE_NONE && GetBattlerAbility(gBattlerAttacker) == ABILITY_PICKUP)
         usedHeldItem = &GetBattlerPartyState(gBattlerTarget)->usedHeldItem;
-    else
-        usedHeldItem = &GetBattlerPartyState(gBattlerAttacker)->usedHeldItem;
-    if (gCurrentMove == MOVE_NONE && GetBattlerAbility(gBattlerAttacker) == ABILITY_HONEY_GATHER && gBattleMons[gBattlerAttacker].item == ITEM_NONE)
-   	 {
-		gLastUsedItem = ITEM_HONEY;
-	 	gBattleMons[gBattlerAttacker].item = ITEM_HONEY;
-        	BtlController_EmitSetMonData(gBattlerAttacker, B_COMM_TO_CONTROLLER, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].item), &gBattleMons[gBattlerAttacker].item);
-        	MarkBattlerForControllerExec(gBattlerAttacker);
+    if (gCurrentMove == MOVE_NONE && GetBattlerAbility(gBattlerAttacker) == ABILITY_HONEY_GATHER)
+        *usedHeldItem = ITEM_HONEY;
+    if (gCurrentMove == MOVE_NONE && GetBattlerAbility(gBattlerAttacker) == ABILITY_ITEM_GET)
+        *usedHeldItem = (CONSUMABLES_START + (Random() % CONSUMABLES_LENGTH));
 
-        	gBattlescriptCurrInstr = cmd->nextInstr;
-    	}
-    else if (gCurrentMove == MOVE_NONE && GetBattlerAbility(gBattlerAttacker) == ABILITY_ITEM_GET && gBattleMons[gBattlerAttacker].item == ITEM_NONE)
-   	 {
-		gLastUsedItem = CONSUMABLES_START + (Random() % CONSUMABLES_LENGTH);
-	 	gBattleMons[gBattlerAttacker].item = gLastUsedItem;
-        	BtlController_EmitSetMonData(gBattlerAttacker, B_COMM_TO_CONTROLLER, REQUEST_HELDITEM_BATTLE, 0, sizeof(gBattleMons[gBattlerAttacker].item), &gBattleMons[gBattlerAttacker].item);
-        	MarkBattlerForControllerExec(gBattlerAttacker);
-
-        	gBattlescriptCurrInstr = cmd->nextInstr;
-    	}
-    else if (*usedHeldItem != ITEM_NONE && gBattleMons[gBattlerAttacker].item == ITEM_NONE)
+// otherwise assume recycle effect.
+    if (*usedHeldItem != ITEM_NONE && gBattleMons[gBattlerAttacker].item == ITEM_NONE)
     {
         gLastUsedItem = *usedHeldItem;
         *usedHeldItem = ITEM_NONE;
@@ -10430,9 +10418,9 @@ static void Cmd_tryrecycleitem(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
     else
-	{
-		gBattlescriptCurrInstr = cmd->failInstr;
-	}
+    {
+	gBattlescriptCurrInstr = cmd->failInstr;
+    }
 }
 
 bool32 CanCamouflage(enum BattlerId battler)
@@ -14760,11 +14748,13 @@ void BS_TryEndNeutralizingGas(void)
 
 void BS_SetNavalBlockade(void)
 {
-    NATIVE_ARGS(const u8 *failInstr);
+    NATIVE_ARGS(const u8 *jumpInstr);
     enum BattleSide side = GetBattlerSide(gBattlerTarget);
 
     if (gSideStatuses[side] & SIDE_STATUS_NAVAL_BLOCKADE)
-        gBattlescriptCurrInstr = cmd->failInstr;
+    {
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+    }
     else
     {
         gSideStatuses[side] |= SIDE_STATUS_NAVAL_BLOCKADE;

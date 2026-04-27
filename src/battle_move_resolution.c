@@ -1146,7 +1146,7 @@ static enum CancelerResult CancelerMoveFailure(struct BattleCalcValues *cv)
             battleScript = BattleScript_ButItFailed;
         break;
     case EFFECT_SCREEN_BURN:
-        if (((gSideTimers[GetBattlerSide(ctx->battlerAtk)].reflectTimer > 0) && (gSideTimers[GetBattlerSide(ctx->battlerAtk)].lightscreenTimer > 0)))
+        if (((gSideTimers[GetBattlerSide(cv->battlerAtk)].reflectTimer > 0) && (gSideTimers[GetBattlerSide(cv->battlerAtk)].lightscreenTimer > 0)))
             battleScript = BattleScript_ButItFailed;
         break;
     case EFFECT_CLANGOROUS_SOUL:
