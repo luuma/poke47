@@ -1543,6 +1543,7 @@ void Task_HandleChooseMonInput(u8 taskId)
                 PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
                 Task_ClosePartyMenu(taskId);
             }
+            break;
         case L_BUTTON: // Only used in full-team multis to cycle player/partner parties
             PlaySE(SE_M_HARDEN);
             UpdatePartyToFieldOrder();
