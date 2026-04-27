@@ -2690,7 +2690,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 #if P_FAMILY_HOPPIP
     [SPECIES_HOPPIP] =
     {
-        .baseHP        = 35,
+        .baseHP        = 45,
         .baseAttack    = 35,
         .baseDefense   = 40,
         .baseSpeed     = 50,
@@ -2705,11 +2705,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD, ABILITY_INFILTRATOR },
-    #else
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_INFILTRATOR },
-    #endif
+        .abilities = { ABILITY_PRANKSTER, ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD},
         .bodyColor = BODY_COLOR_PINK,
         .speciesName = _("Hoppip"),
         .cryId = CRY_HOPPIP,
@@ -2765,12 +2761,12 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 
     [SPECIES_SKIPLOOM] =
     {
-        .baseHP        = 55,
-        .baseAttack    = 45,
-        .baseDefense   = 50,
+        .baseHP        = 65,
+        .baseAttack    = 35,
+        .baseDefense   = 70,
         .baseSpeed     = 80,
-        .baseSpAttack  = 45,
-        .baseSpDefense = 65,
+        .baseSpAttack  = 35,
+        .baseSpDefense = 85,
         .types = MON_TYPES(TYPE_GRASS, TYPE_FLYING),
         .catchRate = 120,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 119 : 136,
@@ -2780,11 +2776,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD, ABILITY_INFILTRATOR },
-    #else
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_INFILTRATOR },
-    #endif
+        .abilities = { ABILITY_PRANKSTER, ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD},
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Skiploom"),
         .cryId = CRY_SKIPLOOM,
@@ -2845,10 +2837,10 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
     {
         .baseHP        = 75,
         .baseAttack    = 55,
-        .baseDefense   = 70,
+        .baseDefense   = 80,
         .baseSpeed     = 110,
         .baseSpAttack  = 55,
-        .baseSpDefense = P_UPDATED_STATS >= GEN_6 ? 95 : 85,
+        .baseSpDefense = 105,
         .types = MON_TYPES(TYPE_GRASS, TYPE_FLYING),
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
@@ -2866,11 +2858,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FAIRY, EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_LEAF_GUARD, ABILITY_INFILTRATOR },
-    #else
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_INFILTRATOR },
-    #endif
+        .abilities = { ABILITY_PRANKSTER, ABILITY_HUSTLE, ABILITY_FLUFFY},
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Jumpluff"),
         .cryId = CRY_JUMPLUFF,
