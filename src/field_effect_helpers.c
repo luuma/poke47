@@ -189,7 +189,7 @@ static void LoadObjectHighBridgeReflectionPalette(struct ObjectEvent *objectEven
 {
     u16 blueData[16];
     struct SpritePalette bluePalette = {.tag = HIGH_BRIDGE_PAL_TAG, .data = blueData};
-    CpuFill16(0x55C9, blueData, PLTT_SIZE_4BPP);
+    CpuFill16(RGB(5, 15, 22), blueData, PLTT_SIZE_4BPP);
     sprite->oam.paletteNum = LoadSpritePalette(&bluePalette);
     UpdateSpritePaletteWithWeather(sprite->oam.paletteNum, TRUE);
 }
