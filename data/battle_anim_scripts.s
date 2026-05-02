@@ -8765,37 +8765,37 @@ gBattleAnimMove_ThousandWaves::
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 1, 0, 12, RGB_BLACK
 	waitforvisualfinish
 	playsewithpan SE_M_MEGA_KICK, SOUND_PAN_ATTACKER
-	createsprite gThousandWavesGreenWheelTemplate, ANIM_ATTACKER, 2, 0x0
-	createsprite gThousandWavesGreenWheelTemplate, ANIM_ATTACKER, 2, 0x2b
-	createsprite gThousandWavesGreenWheelTemplate, ANIM_ATTACKER, 2, 0x55
-	createsprite gThousandWavesGreenWheelTemplate, ANIM_ATTACKER, 2, 0x80
-	createsprite gThousandWavesGreenWheelTemplate, ANIM_ATTACKER, 2, 0xaa
-	createsprite gThousandWavesGreenWheelTemplate, ANIM_ATTACKER, 2, 0xd5
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 0
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 43
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 85
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 128
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 170
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 213
 	waitforvisualfinish
 	clearmonbg ANIM_ATK_PARTNER            @I placed this one here, because it ruins the teleport animation
 	loopsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET, 0x3, 0x15
 	call ThousandWavesRecover
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x28, 0xfff6, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 40, -10, 13
 	delay 3
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffdd, 0x8, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -35, 8, 13
 	delay 3
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffdd, 0xfff6, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -35, -10, 13
 	delay 3
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x28, 0x8, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 40, 8, 13
 	delay 3
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xf, 0xffd8, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 15, -40, 13
 	delay 3
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xfff6, 0xffe0, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -10, -32, 13
 	delay 3
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x5, 0x27, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 5, 39, 13
 	delay 3
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x19, 0xffec, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 25, -20, 13
 	delay 3
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffd8, 0xffec, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -40, -20, 13
 	delay 3
 	createvisualtask AnimTask_AttackerStretchAndDisappear, 0x2
 	playsewithpan SE_M_TELEPORT, SOUND_PAN_ATTACKER
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x5, 0xffd8, 0xd
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 5, -40, 13
 	waitforvisualfinish
 	panse SE_M_HYPER_BEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 0x2, 0x0
 	delay 4
@@ -8822,63 +8822,63 @@ gBattleAnimMove_ThousandWaves::
 	clearmonbg ANIM_DEF_PARTNER
 	end
 ThousandWavesRecover:
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x28, 0x28, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 40, 40, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffd8, 0xffd8, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -40, -40, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x0, 0x28, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 0, 40, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x0, 0xffd8, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 0, -40, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x28, 0xffec, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 40, -20, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x28, 0x14, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 40, 20, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffd8, 0xffec, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -40, -20, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffd8, 0x14, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -40, 20, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffec, 0x1e, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -20, 30, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x14, 0xffe2, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 20, -30, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffec, 0xffe2, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -20, -30, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x14, 0x1e, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 20, 30, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0xffd8, 0x0, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -40, 0, 16
 	delay 2
-	createsprite gThousandWavesGreenRecoverTemplate, ANIM_ATTACKER, 2, 0x28, 0x0, 0x10
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 40, 0, 16
 	delay 2
 	return
 ThousandWavesRotatingImpact:
-	createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 0x23, 0x1c, 0x180, 0x32, 0x8, 0x32, 0x1 @1
-	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 0x46, 0x7c0, 0x60, 0x1
+	@createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 35, 28, 384, 50, 8, 50, 1 @1
+	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 70, 1984, 96, 1
 	delay 2
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 0x1, 0x0, 0x0, 0x3
-	createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 0x23, 0x20, 0xf0, 0x28, 0xb, 0xffd2, 0x1    @2
-	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 0x0, 0xb00, 0x60, 0x1
+	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 1, 0, 0, 3
+	@createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 35, 32, 240, 40, 11, -46, 1    @2
+	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 0, 2816, 96, 1
 	delay 2
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 0x1, 0x5, 0xfff4, 0x3
-	createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 0x23, 0x21, 0x1a0, 0x28, 0x4, 0x2a, 0x1  @3
-	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 0x3c, 0xa00, 0x60, 0x1
+	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 1, 5, -12, 3
+	@createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 35, 33, 416, 40, 4, 42, 1  @3
+	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 60, 2560, 96, 1
 	delay 2
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 0x1, 0xfffa, 0x9, 0x3
-	createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 0x23, 0x1f, 0x120, 0x2d, 0x6, 0xffd6, 0x1  @4
-	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 0xa, 0x900, 0x60, 0x1
+	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 1, -6, 9, 3
+	@createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 35, 31, 288, 45, 6, -42, 1  @4
+	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 10, 2304, 96, 1
 	delay 2
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 0x1, 0xfffa, 0xfff4, 0x3
-	createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 0x23, 0x1c, 0x1c0, 0x2d, 0xb, 0x2e, 0x1  @5
-	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 0x5a, 0x800, 0x60, 0x1
+	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 1, -6, -12, 3
+	@createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 35, 28, 448, 45, 11, 46, 1  @5
+	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 90, 2048, 96, 1
 	delay 2
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
-	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 0x1, 0x5, 0x9, 0x3
-	createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 0x23, 0x21, 0x1d0, 0x32, 0xa, 0xffce, 0x1  @6
-	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 0x32, 0xa00, 0x60, 0x1
+	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 1, 5, 9, 3
+	@createsprite gThousandWavesRotatingImpactTemplate, ANIM_TARGET, 2, 35, 33, 464, 50, 10, -50, 1  @6
+	createsprite gThousandWavesGreenWaveTemplate, ANIM_ATTACKER, 40, 50, 2560, 96, 1
 	delay 2
 	playsewithpan SE_M_COMET_PUNCH, SOUND_PAN_TARGET
 	createsprite gThousandWavesPoundImpactTemplate, ANIM_TARGET, 2, 0x1, 0xfffa, 0x0, 0x3
@@ -29699,8 +29699,47 @@ FireGeyser:
 	delay 1
 	return
 
+gBattleAnimGeneral_WishiwashiConstruct::
+	@createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_SNORE_Z, 0, 10, 10, RGB(2, 9, 16)   @Green =RGB(8, 14, 1)
+	monbg ANIM_ATTACKER
+	setalpha 12, 8
+	loopsewithpan SE_M_MEGA_KICK, SOUND_PAN_ATTACKER, 13, 3
+	call FishiParticles
+	call FishiParticles
+	call FishiParticles
+	waitforvisualfinish
+	playsewithpan SE_ORB, SOUND_PAN_ATTACKER
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 0, 0, 0, 0, 0
+	delay 20
+	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 0, 16, RGB_WHITEALPHA
+	waitforvisualfinish
+	createvisualtask AnimTask_HideSwapSprite, 2
+	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 16, 0, RGB_WHITEALPHA
+	createvisualtask AnimTask_HorizontalShake, 5, ANIM_TARGET, 5, 14
+	createvisualtask SoundTask_PlayNormalCry, 0
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
+	end
+FishiParticles:
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 40, -10, 13
+	delay 3
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -35, -10, 13
+	delay 3
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 15, -40, 13
+	delay 3
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -10, -32, 13
+	delay 3
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 25, -20, 13
+	delay 3
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, -40, -20, 13
+	delay 3
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 2, 5, -40, 13 @gPowerConstructSpriteTemplate
+	delay 3
+	return
+
 gBattleAnimGeneral_PowerConstruct::
-	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_SNORE_Z, 0, 10, 10, RGB(8, 14, 1)   @Green
+	@createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_SNORE_Z, 0, 10, 10, RGB(8, 14, 1)   @Green =RGB(8, 14, 1)
 	monbg ANIM_ATTACKER
 	setalpha 12, 8
 	loopsewithpan SE_M_MEGA_KICK, SOUND_PAN_ATTACKER, 13, 3
@@ -29709,7 +29748,7 @@ gBattleAnimGeneral_PowerConstruct::
 	call PowerConstructParticles
 	waitforvisualfinish
 	playsewithpan SE_ORB, SOUND_PAN_ATTACKER
-	createsprite gPowerConstructEmergeSpriteTemplate, ANIM_ATTACKER, 0, 0, 0, 0, 0
+	createsprite gWishiwashiConstructSpriteTemplate, ANIM_ATTACKER, 0, 0, 0, 0, 0
 	delay 20
 	createvisualtask AnimTask_BlendBattleAnimPalExclude, 5, 5, 2, 0, 16, RGB_WHITEALPHA
 	waitforvisualfinish
@@ -29739,7 +29778,7 @@ PowerConstructParticles:
 	delay 3
 	createsprite gPowerConstructSpriteTemplate, ANIM_ATTACKER, 2, -40, -20, 13
 	delay 3
-	createsprite gPowerConstructSpriteTemplate, ANIM_ATTACKER, 2, 5, -40, 13
+	createsprite gPowerConstructSpriteTemplate, ANIM_ATTACKER, 2, 5, -40, 13 @gPowerConstructSpriteTemplate
 	delay 3
 	return
 ZGeyser:

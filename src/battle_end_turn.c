@@ -1363,6 +1363,12 @@ static bool32 HandleEndTurnFormChange(enum BattlerId battler)
         gBattleScripting.abilityPopupOverwrite = ability; // To prevent the new form's ability from pop up
         switch (ability)
         {
+        case ABILITY_SCHOOLING:
+            if (gBattleMons[battler].species == SPECIES_WISHIWASHI_MECH)
+                BattleScriptCall(BattleScript_WishiwashiConstruct);
+            else
+                BattleScriptCall(BattleScript_BattlerFormChange); // Generic animation
+            break;
         case ABILITY_POWER_CONSTRUCT:
             BattleScriptExecute(BattleScript_PowerConstruct);
             break;

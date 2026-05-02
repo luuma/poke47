@@ -1960,6 +1960,7 @@ static const u16 sLycanrocFormSpeciesIdTable[] = {
 static const u16 sWishiwashiFormSpeciesIdTable[] = {
     SPECIES_WISHIWASHI_SOLO,
     SPECIES_WISHIWASHI_SCHOOL,
+    SPECIES_WISHIWASHI_MECH,
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_WISHIWASHI

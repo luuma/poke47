@@ -21921,6 +21921,12 @@ const u32 gObjectEventPic_Substitute[] = INCBIN_COMP("graphics/pokemon/question_
     // const u16 gShinyOverworldPalette_WishiwashiSchool[] = INCBIN_U16("graphics/pokemon/wishiwashi/school/overworld_shiny.gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
+
+    const u32 gMonFrontPic_WishiwashiMech[] = INCBIN_U32("graphics/pokemon/wishiwashi/mech/front.4bpp.smol");
+    const u32 gMonBackPic_WishiwashiMech[] = INCBIN_U32("graphics/pokemon/wishiwashi/mech/back.4bpp.smol");
+
+
+
 #endif //P_FAMILY_WISHIWASHI
 
 #if P_FAMILY_MAREANIE

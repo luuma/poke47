@@ -605,7 +605,9 @@ enum AnimBattler
 #define B_ANIM_SAFARI_REACTION          60
 #define B_ANIM_FORM_CHANGE_INSTANT      61
 #define B_ANIM_FORM_CHANGE_DISGUISE     62
-#define NUM_B_ANIMS_GENERAL             63
+#define B_ANIM_EXISTING                 B_ANIM_FORM_CHANGE_DISGUISE
+#define B_ANIM_WISHIWASHI_CONSTRUCT     B_ANIM_EXISTING +1 
+#define NUM_B_ANIMS_GENERAL             B_ANIM_EXISTING +2
 
 // special animations table (sBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

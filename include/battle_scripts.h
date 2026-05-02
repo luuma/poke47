@@ -819,6 +819,7 @@ extern const u8 BattleScript_SelectingNotAllowedMoveSpikyVest[];
 extern const u8 BattleScript_SelectingNotAllowedMoveSpikyVestInPalace[];
 extern const u8 BattleScript_RaiseStatOnForecast[];
 extern const u8 BattleScript_EffectNavalBlockade[];
+extern const u8 BattleScript_WishiwashiConstruct[];
 
 
 

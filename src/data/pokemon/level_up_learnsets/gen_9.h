@@ -20682,6 +20682,7 @@ static const struct LevelUpMove sHawluchaLevelUpLearnset[] = {
 };
 static const struct LevelUpMove sDedenneLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_FAKE_OUT),
+        LEVEL_UP_MOVE(1, MOVE_TEARFUL_LOOK),
         LEVEL_UP_MOVE(1, MOVE_GEAR_UP),
         LEVEL_UP_MOVE(1, MOVE_THUNDER_WAVE),
         LEVEL_UP_MOVE(5, MOVE_DISARMING_VOICE),
@@ -20690,9 +20691,9 @@ static const struct LevelUpMove sDedenneLevelUpLearnset[] = {
         LEVEL_UP_MOVE(20, MOVE_PARABOLIC_CHARGE),
         LEVEL_UP_MOVE(25, MOVE_FLASH_CANNON),
         LEVEL_UP_MOVE(29, MOVE_NUZZLE),
-        LEVEL_UP_MOVE(33, MOVE_DAZZLING_GLEAM),
-        LEVEL_UP_MOVE(36, MOVE_VOLT_SWITCH),
-        LEVEL_UP_MOVE(39, MOVE_MAGNETIC_FLUX),
+        LEVEL_UP_MOVE(33, MOVE_DRAINING_KISS),
+        LEVEL_UP_MOVE(36, MOVE_MAGNETIC_FLUX),
+        LEVEL_UP_MOVE(39, MOVE_DAZZLING_GLEAM),
         LEVEL_UP_MOVE(42, MOVE_SUPER_FANG),
         LEVEL_UP_MOVE(45, MOVE_VOLT_TACKLE),
         LEVEL_UP_MOVE(48, MOVE_FOLLOW_ME),
@@ -21887,12 +21888,13 @@ static const struct LevelUpMove sWishiwashiLevelUpLearnset[] = {
     LEVEL_UP_MOVE(25, MOVE_DIVE),
     LEVEL_UP_MOVE(30, MOVE_ENDEAVOR),
     LEVEL_UP_MOVE(33, MOVE_FLIP_TURN),
-    LEVEL_UP_MOVE(35, MOVE_IRON_TAIL),
+    LEVEL_UP_MOVE(35, MOVE_THOUSAND_WAVES),
     LEVEL_UP_MOVE(38, MOVE_DOUBLE_EDGE),
-    LEVEL_UP_MOVE(41, MOVE_AQUA_TAIL),
+    LEVEL_UP_MOVE(41, MOVE_LIQUIDATION),
     LEVEL_UP_MOVE(43, MOVE_SOAK),
     LEVEL_UP_MOVE(46, MOVE_HYDRO_PUMP),
-    LEVEL_UP_MOVE(50, MOVE_WAVE_CRASH),
+    LEVEL_UP_MOVE(50, MOVE_IRON_TAIL),
+    LEVEL_UP_MOVE(54, MOVE_WAVE_CRASH),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_WISHIWASHI
@@ -22372,21 +22374,21 @@ static const struct LevelUpMove sGolisopodLevelUpLearnset[] = {
 static const struct LevelUpMove sSandygastLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SANDSTORM),
     LEVEL_UP_MOVE( 1, MOVE_HARDEN),
-    LEVEL_UP_MOVE( 1, MOVE_ABSORB),
+    LEVEL_UP_MOVE( 1, MOVE_MEGA_DRAIN),
     LEVEL_UP_MOVE( 4, MOVE_ASTONISH),
     LEVEL_UP_MOVE( 7, MOVE_SAND_ATTACK),
     LEVEL_UP_MOVE(10, MOVE_SAND_TOMB),
-    LEVEL_UP_MOVE(13, MOVE_MEGA_DRAIN),
+    LEVEL_UP_MOVE(13, MOVE_NIGHT_SHADE),
     LEVEL_UP_MOVE(16, MOVE_SHORE_UP),
     LEVEL_UP_MOVE(19, MOVE_BULLDOZE), 
     LEVEL_UP_MOVE(22, MOVE_PHANTOM_FORCE),  // WATTSON. Must be strong at this point as lv35 to 42 it'll be really shite. May need stat buff.
     LEVEL_UP_MOVE(25, MOVE_SCORCHING_SANDS), // flann. Phantom force does nowt to the team, same for norman.
     LEVEL_UP_MOVE(28, MOVE_HYPNOSIS),
     LEVEL_UP_MOVE(31, MOVE_NASTY_PLOT),
-    LEVEL_UP_MOVE(34, MOVE_OBSTRUCT),//tm shadow ball and giga drain are both here anyway
-    LEVEL_UP_MOVE(38, MOVE_GIGA_DRAIN),// I could give earth power sooner but scorching sands is more thematic to sandygast.
+    LEVEL_UP_MOVE(34, MOVE_SHADOW_BALL),//tm shadow ball and giga drain are both here anyway
+    LEVEL_UP_MOVE(38, MOVE_STRENGTH_SAP),// I could give earth power sooner but scorching sands is more thematic to sandygast.
     LEVEL_UP_MOVE(41, MOVE_EARTH_POWER),
-    LEVEL_UP_MOVE(44, MOVE_SHADOW_BALL),
+    LEVEL_UP_MOVE(44, MOVE_OBSTRUCT),//Not a great fit
     LEVEL_UP_MOVE(47, MOVE_STEALTH_ROCK),
     LEVEL_UP_MOVE(49, MOVE_DESTINY_BOND),
     LEVEL_UP_END
@@ -22394,23 +22396,24 @@ static const struct LevelUpMove sSandygastLevelUpLearnset[] = {
 
 static const struct LevelUpMove sPalossandLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_IRON_DEFENSE),
+    LEVEL_UP_MOVE( 1, MOVE_GIGA_DRAIN),
     LEVEL_UP_MOVE( 1, MOVE_SANDSTORM),
     LEVEL_UP_MOVE( 1, MOVE_HARDEN),
-    LEVEL_UP_MOVE( 1, MOVE_ABSORB),
+    LEVEL_UP_MOVE( 1, MOVE_MEGA_DRAIN),
     LEVEL_UP_MOVE( 4, MOVE_ASTONISH),
     LEVEL_UP_MOVE( 7, MOVE_SAND_ATTACK),
     LEVEL_UP_MOVE(10, MOVE_SAND_TOMB),
-    LEVEL_UP_MOVE(13, MOVE_MEGA_DRAIN),
+    LEVEL_UP_MOVE(13, MOVE_NIGHT_SHADE),
     LEVEL_UP_MOVE(16, MOVE_SHORE_UP),
     LEVEL_UP_MOVE(19, MOVE_BULLDOZE), 
     LEVEL_UP_MOVE(22, MOVE_PHANTOM_FORCE),  // WATTSON. Must be strong at this point as lv35 to 42 it'll be really shite. May need stat buff.
     LEVEL_UP_MOVE(25, MOVE_SCORCHING_SANDS), // flann. Phantom force does nowt to the team, same for norman.
     LEVEL_UP_MOVE(28, MOVE_HYPNOSIS),
     LEVEL_UP_MOVE(31, MOVE_NASTY_PLOT),
-    LEVEL_UP_MOVE(34, MOVE_OBSTRUCT),//tm shadow ball and giga drain are both here anyway
-    LEVEL_UP_MOVE(38, MOVE_GIGA_DRAIN),
+    LEVEL_UP_MOVE(34, MOVE_SHADOW_BALL),//tm shadow ball and giga drain are both here anyway
+    LEVEL_UP_MOVE(38, MOVE_STRENGTH_SAP),
     LEVEL_UP_MOVE(41, MOVE_EARTH_POWER),
-    LEVEL_UP_MOVE(46, MOVE_SHADOW_BALL),
+    LEVEL_UP_MOVE(46, MOVE_OBSTRUCT),//Not a great fit
     LEVEL_UP_MOVE(51, MOVE_STEALTH_ROCK),
     LEVEL_UP_MOVE(56, MOVE_DESTINY_BOND),
     LEVEL_UP_END

@@ -1566,7 +1566,7 @@ const struct SpriteTemplate gThousandArrowsGreenDischargeTemplate =
 const struct SpriteTemplate gThousandWavesGreenWaveTemplate =
 {
     .tileTag = ANIM_TAG_FLYING_DIRT,
-    .paletteTag = ANIM_TAG_LEAF,
+    .paletteTag = ANIM_TAG_SWEAT_BEAD,
     .oam = &gOamData_AffineOff_ObjNormal_32x16,
     .callback = AnimFlyingSandCrescent
 };

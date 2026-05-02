@@ -1150,6 +1150,16 @@ const struct SpriteTemplate gPowerConstructSpriteTemplate =
     .callback = AnimPowerAbsorptionOrb,
 };
 
+const struct SpriteTemplate gWishiwashiConstructSpriteTemplate =
+{
+    .tileTag = ANIM_TAG_WISHIWASHI_FISH,
+    .paletteTag = ANIM_TAG_WISHIWASHI_FISH,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gRazorLeafParticleAnimTable,
+    .affineAnims = gPowerAbsorptionOrbAffineAnimTable,
+    .callback = AnimPowerAbsorptionOrb,
+};
+
 const struct SpriteTemplate gPowerConstructEmergeSpriteTemplate =
 {
     .tileTag = ANIM_TAG_VERTICAL_HEX,

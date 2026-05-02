@@ -3728,7 +3728,10 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             gBattleScripting.battler = battler;
             // To prevent the new form's ability from pop up
             gBattleScripting.abilityPopupOverwrite = ability;
-            BattleScriptCall(BattleScript_BattlerFormChange);
+            if (gBattleMons[battler].species == SPECIES_WISHIWASHI_MECH)
+                BattleScriptCall(BattleScript_WishiwashiConstruct);
+            else
+                BattleScriptCall(BattleScript_BattlerFormChange); // Generic animation
             effect++;
         }
         break;

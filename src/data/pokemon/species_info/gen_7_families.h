@@ -2556,6 +2556,66 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .formSpeciesIdTable = sWishiwashiFormSpeciesIdTable,
         .formChangeTable = sWishiwashiFormChangeTable,
     },
+
+
+    [SPECIES_WISHIWASHI_MECH] =
+    {
+        .baseHP        = 85,//+40
+        .baseAttack    = 145,//+5
+        .baseDefense   = 130,
+        .baseSpeed     = 20,//-10
+        .baseSpAttack  = 140,
+        .baseSpDefense = 100,//-35.// Same BST but insane strength boost
+        .types = MON_TYPES(TYPE_WATER),
+        .catchRate = 60,
+        .expYield = 237,
+        .evYield_HP = 1,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 15,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_2),
+        .abilities = { ABILITY_SCHOOLING, ABILITY_NONE, ABILITY_NONE },
+        .bodyColor = BODY_COLOR_BLUE,
+        .noFlip = TRUE,
+        .speciesName = _("Wishiwashi"),
+        .cryId = CRY_WISHIWASHI_SCHOOL,
+        .natDexNum = NATIONAL_DEX_WISHIWASHI,
+        .categoryName = _("Small Fry"),
+        .height = 74,
+        .weight = 786,
+        .description = COMPOUND_STRING(
+            "When in really tough situations, they\n"
+            "enter an ultimate formation. Its\n"
+            "fists actually do have fish fingers."),
+        .pokemonScale = 682,
+        .pokemonOffset = 24,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_WishiwashiMech,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 4,
+        .frontAnimFrames = sAnims_SingleFramePlaceHolder,
+        //.frontAnimId = ANIM_V_SQUISH_AND_BOUNCE,
+        .backPic = gMonBackPic_WishiwashiMech,
+        .backPicSize = MON_COORDS_SIZE(64, 56),
+        .backPicYOffset = 5,
+        //.backAnimId = BACK_ANIM_NONE,
+        .palette = gMonPalette_WishiwashiSchool,
+        .shinyPalette = gMonShinyPalette_WishiwashiSchool,
+        .iconSprite = gMonIcon_WishiwashiSchool,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-4, 7, SHADOW_SIZE_L)
+        FOOTPRINT(Wishiwashi)
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
+        .levelUpLearnset = sWishiwashiLevelUpLearnset,
+        .teachableLearnset = sWishiwashiTeachableLearnset,
+        .eggMoveLearnset = sWishiwashiEggMoveLearnset,
+        .formSpeciesIdTable = sWishiwashiFormSpeciesIdTable,
+        .formChangeTable = sWishiwashiMechFormChangeTable,
+    },
 #endif //P_FAMILY_WISHIWASHI
 
 #if P_FAMILY_MAREANIE
