@@ -23288,4 +23288,24 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_CloudSomersault,
     },
 
+    [MOVE_CHIEN_POW] =
+    {
+        .name = COMPOUND_STRING("Chien Pow"),
+        .description = COMPOUND_STRING(
+            "Strikes with sophistication.\n"
+            "Matches user's first type."),
+        .effect = EFFECT_REVELATION_DANCE,
+        .power = 85,
+        .type = TYPE_NORMAL,
+        .accuracy = 100,
+        .pp = 25,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .contestEffect = CONTEST_EFFECT_REPETITION_NOT_BORING,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_TeraBlast,
+    },
 };

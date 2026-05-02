@@ -4713,6 +4713,8 @@ u32 GetBattlerTotalSpeedStat(enum BattlerId battler, enum Ability ability, enum 
             speed *= 2;
         else if (ability == ABILITY_SLUSH_RUSH  && (gBattleWeather & B_WEATHER_ICY_ANY))
             speed *= 2;
+        else if (ability == ABILITY_WHITEOUT  && (gBattleWeather & B_WEATHER_ICY_ANY))
+        speed = (speed * 130) / 100;
     }
 
     // other abilities

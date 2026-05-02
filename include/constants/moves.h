@@ -918,6 +918,7 @@ enum __attribute__((packed)) Move
     MOVE_NAVAL_BLOCKADE,
     MOVE_CLOUD_SOMERSAULT,
     MOVE_HIT_DEF,
+    MOVE_CHIEN_POW,
     MOVES_COUNT,
 
     // Z Moves

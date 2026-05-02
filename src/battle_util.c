@@ -8450,9 +8450,16 @@ static inline void MulByTypeEffectiveness(struct BattleContext *ctx, uq4_12_t *m
         if (ctx->updateFlags)
             RecordItemEffectBattle(ctx->battlerDef, HOLD_EFFECT_RING_TARGET);
     }
+    else if (gBattleMons[ctx->battlerDef].volatiles.miracleEye && mod == UQ_4_12(0.0))// miracle eye works on all immunities
+        mod = UQ_4_12(1.0);
     else if ((ctx->moveType == TYPE_FIGHTING || ctx->moveType == TYPE_NORMAL) && defType == TYPE_GHOST && gBattleMons[ctx->battlerDef].volatiles.foresight && mod == UQ_4_12(0.0))
+        mod = UQ_4_12(1.0);
+
+    else if (ctx->abilityAtk == ABILITY_LONG_REACH && mod == UQ_4_12(0.0))
     {
         mod = UQ_4_12(1.0);
+        if (ctx->updateFlags)
+            RecordAbilityBattle(ctx->battlerAtk, ctx->abilityAtk);
     }
     else if ((ctx->moveType == TYPE_FIGHTING || ctx->moveType == TYPE_NORMAL) && defType == TYPE_GHOST
         && (ctx->abilityAtk == ABILITY_SCRAPPY || ctx->abilityAtk == ABILITY_MINDS_EYE)
@@ -8463,8 +8470,6 @@ static inline void MulByTypeEffectiveness(struct BattleContext *ctx, uq4_12_t *m
             RecordAbilityBattle(ctx->battlerAtk, ctx->abilityAtk);
     }
 
-    if (gBattleMons[ctx->battlerDef].volatiles.miracleEye && mod == UQ_4_12(0.0))// miracle eye works on all immunities
-        mod = UQ_4_12(1.0);
     if (GetMoveEffect(ctx->move) == EFFECT_SUPER_EFFECTIVE_ON_ARG && defType == GetMoveArgType(ctx->move) && !ctx->isAnticipation)
         mod = UQ_4_12(2.0);
     if (ctx->moveType == TYPE_GROUND && defType == TYPE_FLYING && IsBattlerGrounded(ctx->battlerDef, ctx->abilityDef, ctx->holdEffectDef) && mod == UQ_4_12(0.0))

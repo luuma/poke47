@@ -2710,7 +2710,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
 #endif //P_FAMILY_PANCHAM
 
 #if P_FAMILY_FURFROU
-#define FURFROU_MISC_INFO(_form, _noFlip, frontWidth, frontYOffset, backWidth, backYOffset, _iconIdx, _overworldAnim)   \
+#define FURFROU_MISC_INFO(_form, _noFlip, frontWidth, frontYOffset, backWidth, backYOffset, _iconIdx, _overworldAnim, type, ability1)   \
     {                                                                                                                   \
         .baseHP        = 75,                                                                                            \
         .baseAttack    = 80,                                                                                            \
@@ -2718,7 +2718,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .baseSpeed     = 102,                                                                                           \
         .baseSpAttack  = 65,                                                                                            \
         .baseSpDefense = 90,                                                                                            \
-        .types = MON_TYPES(TYPE_NORMAL),                                                                                \
+        .types = MON_TYPES(type, TYPE_NORMAL),                                                                                \
         .catchRate = 160,                                                                                               \
         .expYield = 165,                                                                                                \
         .evYield_Speed = 1,                                                                                             \
@@ -2727,7 +2727,7 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .friendship = STANDARD_FRIENDSHIP,                                                                              \
         .growthRate = GROWTH_MEDIUM_FAST,                                                                               \
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),                                                                   \
-        .abilities = { ABILITY_NORMALIZE, ABILITY_NONE, ABILITY_FUR_COAT },                                                  \
+        .abilities = { ability1, ABILITY_NONE, ABILITY_FUR_COAT },                                                  \
         .bodyColor = BODY_COLOR_WHITE,                                                                                  \
         .noFlip = _noFlip,                                                                                              \
         .speciesName = _("Furfrou"),                                                                                    \
@@ -2773,16 +2773,16 @@ const struct SpeciesInfo gSpeciesInfoGen6[] =
         .formChangeTable = sFurfrouFormChangeTable,                                                                     \
     }
 
-    [SPECIES_FURFROU_NATURAL]   = FURFROU_MISC_INFO(Natural,   FALSE, 48, 3, 56, 0, 0, sAnimTable_Following),
-    [SPECIES_FURFROU_HEART]     = FURFROU_MISC_INFO(Heart,     FALSE, 56, 2, 56, 1, 0, sAnimTable_Following),
-    [SPECIES_FURFROU_STAR]      = FURFROU_MISC_INFO(Star,      FALSE, 56, 2, 64, 1, 0, sAnimTable_Following),
-    [SPECIES_FURFROU_DIAMOND]   = FURFROU_MISC_INFO(Diamond,   FALSE, 48, 2, 56, 1, 0, sAnimTable_Following),
-    [SPECIES_FURFROU_DEBUTANTE] = FURFROU_MISC_INFO(Debutante, TRUE,  48, 2, 56, 1, 2, sAnimTable_Following_Asym),
-    [SPECIES_FURFROU_MATRON]    = FURFROU_MISC_INFO(Matron,    FALSE, 48, 2, 56, 1, 2, sAnimTable_Following),
-    [SPECIES_FURFROU_DANDY]     = FURFROU_MISC_INFO(Dandy,     FALSE, 48, 2, 56, 1, 1, sAnimTable_Following),
-    [SPECIES_FURFROU_LA_REINE]  = FURFROU_MISC_INFO(LaReine,   FALSE, 48, 2, 56, 1, 0, sAnimTable_Following),
-    [SPECIES_FURFROU_KABUKI]    = FURFROU_MISC_INFO(Kabuki,    FALSE, 56, 2, 56, 1, 0, sAnimTable_Following),
-    [SPECIES_FURFROU_PHARAOH]   = FURFROU_MISC_INFO(Pharaoh,   FALSE, 48, 2, 56, 1, 0, sAnimTable_Following),
+    [SPECIES_FURFROU_NATURAL]   = FURFROU_MISC_INFO(Natural,   FALSE, 48, 3, 56, 0, 0, sAnimTable_Following, TYPE_NORMAL, ABILITY_NORMALIZE),// signature
+    [SPECIES_FURFROU_HEART]     = FURFROU_MISC_INFO(Heart,     FALSE, 56, 2, 56, 1, 0, sAnimTable_Following, TYPE_FAIRY, ABILITY_PIXILATE),// signature
+    [SPECIES_FURFROU_STAR]      = FURFROU_MISC_INFO(Star,      FALSE, 56, 2, 64, 1, 0, sAnimTable_Following, TYPE_STEEL, ABILITY_COSTAR),// shared with swoob
+    [SPECIES_FURFROU_DIAMOND]   = FURFROU_MISC_INFO(Diamond,   FALSE, 48, 2, 56, 1, 0, sAnimTable_Following, TYPE_ROCK, ABILITY_BULLETPROOF),// Jangmo-o/chesnaut
+    [SPECIES_FURFROU_DEBUTANTE] = FURFROU_MISC_INFO(Debutante, TRUE,  48, 2, 56, 1, 2, sAnimTable_Following_Asym, TYPE_ELECTRIC, ABILITY_SERENE_GRACE),//signature
+    [SPECIES_FURFROU_MATRON]    = FURFROU_MISC_INFO(Matron,    FALSE, 48, 2, 56, 1, 2, sAnimTable_Following, TYPE_PSYCHIC, ABILITY_FOREWARN),// Signature
+    [SPECIES_FURFROU_DANDY]     = FURFROU_MISC_INFO(Dandy,     FALSE, 48, 2, 56, 1, 1, sAnimTable_Following, TYPE_FLYING, ABILITY_HUSTLE),//durant
+    [SPECIES_FURFROU_LA_REINE]  = FURFROU_MISC_INFO(LaReine,   FALSE, 48, 2, 56, 1, 0, sAnimTable_Following, TYPE_ICE, ABILITY_REFRIGERATE),//Signature
+    [SPECIES_FURFROU_KABUKI]    = FURFROU_MISC_INFO(Kabuki,    FALSE, 56, 2, 56, 1, 0, sAnimTable_Following, TYPE_FIGHTING, ABILITY_SCRAPPY),//Lop
+    [SPECIES_FURFROU_PHARAOH]   = FURFROU_MISC_INFO(Pharaoh,   FALSE, 48, 2, 56, 1, 0, sAnimTable_Following, TYPE_DRAGON, ABILITY_MUMMY),
 #endif //P_FAMILY_FURFROU
 
 #if P_FAMILY_ESPURR
