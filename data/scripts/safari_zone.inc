@@ -1,12 +1,24 @@
 SafariZone_EventScript_OutOfBallsMidBattle::
+#if IS_FRLG
+	setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 3
+#else
 	setvar VAR_SAFARI_ZONE_STATE, 1
 	special ExitSafariMode
+#if IS_FRLG
+	setwarp MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 4, 1
+#else
 	setwarp MAP_ROUTE121_SAFARI_ZONE_ENTRANCE, 2, 5
 	end
 
 SafariZone_EventScript_Exit::
+#if IS_FRLG
+	setvar VAR_MAP_SCENE_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 1
+#else
 	setvar VAR_SAFARI_ZONE_STATE, 1
 	special ExitSafariMode
+#if IS_FRLG
+	warp MAP_FUCHSIA_CITY_SAFARI_ZONE_ENTRANCE, 4, 1
+#else
 	warp MAP_ROUTE121_SAFARI_ZONE_ENTRANCE, 2, 5
 	waitstate
 	end
