@@ -5478,6 +5478,19 @@ BattleScript_WishiwashiConstruct::
 	handleformchange BS_SCRIPTING, 1
 	printstring STRINGID_POWERCONSTRUCTTRANSFORM
 	waitmessage B_WAIT_TIME_SHORT
+	end2
+
+BattleScript_WishiwashiConstruct2::
+	flushtextbox
+	printstring STRINGID_POWERCONSTRUCTPRESENCEOFMANY
+	waitmessage B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUpScripting
+	handleformchange BS_SCRIPTING, 0
+	playanimation BS_SCRIPTING, B_ANIM_WISHIWASHI_CONSTRUCT
+	waitanimation
+	handleformchange BS_SCRIPTING, 1
+	printstring STRINGID_POWERCONSTRUCTTRANSFORM
+	waitmessage B_WAIT_TIME_SHORT
 	return
 
 BattleScript_UltraBurst::
