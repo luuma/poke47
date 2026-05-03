@@ -15037,11 +15037,11 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gShinyOverworldPalette_Drifblim[] = INCGFX_U16("graphics/pokemon/drifblim/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
-    const u32 gMonFrontPic_DrifblimYamask[] = INCBIN_U32("graphics/pokemon/drifblim/DrifblimYamask/anim_front.4bpp.smol");
-    const u32 gMonBackPic_DrifblimYamask[] = INCBIN_U32("graphics/pokemon/drifblim/DrifblimYamask/back.4bpp.smol");
+    const u32 gMonFrontPic_DrifblimYamask[] = INCGFX_U32("graphics/pokemon/drifblim/DrifblimYamask/anim_front.png", ".4bpp.smol");
+    const u32 gMonBackPic_DrifblimYamask[] = INCGFX_U32("graphics/pokemon/drifblim/DrifblimYamask/back.png", ".4bpp.smol");
 
-    const u32 gMonFrontPic_DrifblimLitwick[] = INCBIN_U32("graphics/pokemon/drifblim/DrifblimLitwick/anim_front.4bpp.smol");
-    const u32 gMonBackPic_DrifblimLitwick[] = INCBIN_U32("graphics/pokemon/drifblim/DrifblimLitwick/back.4bpp.smol");
+    const u32 gMonFrontPic_DrifblimLitwick[] = INCGFX_U32("graphics/pokemon/drifblim/DrifblimLitwick/anim_front.png", ".4bpp.smol");
+    const u32 gMonBackPic_DrifblimLitwick[] = INCGFX_U32("graphics/pokemon/drifblim/DrifblimLitwick/back.png", ".4bpp.smol");
 
 
 #endif //P_FAMILY_DRIFLOON
@@ -17510,11 +17510,11 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 
-    const u32 gMonFrontPic_CrustleKnockFace[] = INCBIN_U32("graphics/pokemon/crustleKnockFace/anim_front.4bpp.smol");
-    const u16 gMonPalette_CrustleKnockFace[] = INCBIN_U16("graphics/pokemon/crustleKnockFace/normal.gbapal");
-    const u32 gMonBackPic_CrustleKnockFace[] = INCBIN_U32("graphics/pokemon/crustleKnockFace/back.4bpp.smol");
-    const u16 gMonShinyPalette_CrustleKnockFace[] = INCBIN_U16("graphics/pokemon/crustleKnockFace/shiny.gbapal");
-    const u8 gMonIcon_CrustleKnockFace[] = INCBIN_U8("graphics/pokemon/crustleKnockFace/icon.4bpp");
+    const u32 gMonFrontPic_CrustleKnockFace[] = INCGFX_U32("graphics/pokemon/crustleKnockFace/anim_front.png", ".4bpp.smol");
+    const u16 gMonPalette_CrustleKnockFace[] = INCGFX_U16("graphics/pokemon/crustleKnockFace/normal.pal", ".gbapal");
+    const u32 gMonBackPic_CrustleKnockFace[] = INCGFX_U32("graphics/pokemon/crustleKnockFace/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_CrustleKnockFace[] = INCGFX_U16("graphics/pokemon/crustleKnockFace/shiny.pal", ".gbapal");
+    const u8 gMonIcon_CrustleKnockFace[] = INCGFX_U8("graphics/pokemon/crustleKnockFace/icon.png", ".4bpp");
 #endif //P_FAMILY_DWEBBLE
 
 #if P_FAMILY_SCRAGGY
@@ -21924,8 +21924,8 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 
-    const u32 gMonFrontPic_WishiwashiMech[] = INCBIN_U32("graphics/pokemon/wishiwashi/mech/front.4bpp.smol");
-    const u32 gMonBackPic_WishiwashiMech[] = INCBIN_U32("graphics/pokemon/wishiwashi/mech/back.4bpp.smol");
+    const u32 gMonFrontPic_WishiwashiMech[] = INCGFX_U32("graphics/pokemon/wishiwashi/mech/front.png", ".4bpp.smol");
+    const u32 gMonBackPic_WishiwashiMech[] = INCGFX_U32("graphics/pokemon/wishiwashi/mech/back.png", ".4bpp.smol");
 
 
 

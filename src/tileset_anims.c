@@ -76,12 +76,12 @@ static void QueueAnimTiles_EliteFour_GroundLights(u16);
 static void QueueAnimTiles_EliteFour_WallLights(u16);
 static void QueueAnimTiles_Mauville_Game_Corner_Lights(u16);
 
-const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame0[] = INCBIN_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_0.4bpp");
-const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame1[] = INCBIN_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_1.4bpp");
-const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame2[] = INCBIN_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_2.4bpp");
-const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame3[] = INCBIN_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_3.4bpp");
-const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame4[] = INCBIN_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_4.4bpp");
-const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame5[] = INCBIN_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_5.4bpp");
+const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame0[] = INCGFX_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_0.png", ".4bpp");
+const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame1[] = INCGFX_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_1.png", ".4bpp");
+const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame2[] = INCGFX_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_2.png", ".4bpp");
+const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame3[] = INCGFX_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_3.png", ".4bpp");
+const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame4[] = INCGFX_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_4.png", ".4bpp");
+const u16 gTilesetAnims_MauvilleGameCorner_Lights_Frame5[] = INCGFX_U16("data/tilesets/secondary/mauville_game_corner/anim/lights/light_anim_5.png", ".4bpp");
 
 const u16 *const gTilesetAnims_Mauville_Game_Corner_Lights[] = {
     gTilesetAnims_MauvilleGameCorner_Lights_Frame0,

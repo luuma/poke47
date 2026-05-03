@@ -4,16 +4,16 @@ const u16 gItemIconPalette_QuestionMark[] = INCGFX_U16("graphics/items/icon_pale
 const u32 gItemIcon_ReturnToFieldArrow[] = INCGFX_U32("graphics/items/icons/return_to_field_arrow.png", ".4bpp.smol");
 const u16 gItemIconPalette_ReturnToFieldArrow[] = INCGFX_U16("graphics/items/icon_palettes/return_to_field_arrow.pal", ".gbapal");
 
-const u32 gItemIcon_LevelCap[] = INCGFX_U32("graphics/items/icons/level_cap.4bpp.smol");
-const u16 gItemIconPalette_LevelCap[] = INCGFX_U16("graphics/items/icon_palettes/level_cap.gbapal");
+const u32 gItemIcon_LevelCap[] = INCGFX_U32("graphics/items/icons/level_cap.png", ".4bpp.smol");
+const u16 gItemIconPalette_LevelCap[] = INCGFX_U16("graphics/items/icon_palettes/level_cap.pal", ".gbapal");
 
-const u32 gItemIcon_WizardCape[] = INCGFX_U32("graphics/items/icons/wizard_cape.4bpp.smol");
-const u16 gItemIconPalette_WizardCape[] = INCGFX_U16("graphics/items/icon_palettes/wizard_cape.gbapal");
+const u32 gItemIcon_WizardCape[] = INCGFX_U32("graphics/items/icons/wizard_cape.png", ".4bpp.smol");
+const u16 gItemIconPalette_WizardCape[] = INCGFX_U16("graphics/items/icon_palettes/wizard_cape.pal", ".gbapal");
 
-const u32 gItemIcon_SpandexFlares[] = INCGFX_U32("graphics/items/icons/spandex_flares.4bpp.smol");
+const u32 gItemIcon_SpandexFlares[] = INCGFX_U32("graphics/items/icons/spandex_flares.png", ".4bpp.smol");
 
-const u32 gItemIcon_KnellBell[] = INCGFX_U32("graphics/items/icons/knell_bell.4bpp.smol");
-const u16 gItemIconPalette_KnellBell[] = INCGFX_U16("graphics/items/icon_palettes/knell_bell.gbapal");
+const u32 gItemIcon_KnellBell[] = INCGFX_U32("graphics/items/icons/knell_bell.png", ".4bpp.smol");
+const u16 gItemIconPalette_KnellBell[] = INCGFX_U16("graphics/items/icon_palettes/knell_bell.pal", ".gbapal");
 
 
 // Poké Balls
