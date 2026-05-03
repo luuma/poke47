@@ -906,7 +906,6 @@ BattleScript_MoveEffectCoreEnforcer::
 	trytoclearprimalweather
 	call BattleScript_TryRevertWeatherform
 	flushtextbox
-	tryendneutralizinggas
 BattleScript_CoreEnforcerRet:
 	restoretarget
 	return
@@ -7957,19 +7956,23 @@ BattleScript_PastelVeilEnd:
 	return
 
 BattleScript_NeutralizingGasExits::
+	saveattacker
 	savetarget
 	pause B_WAIT_TIME_SHORT
 	printstring STRINGID_NEUTRALIZINGGASOVER
 	waitmessage B_WAIT_TIME_LONG
-	setbyte gBattlerTarget, 0
+	setbyte gBattlerAttacker, 0
 	sortbattlers
 BattleScript_NeutralizingGasExitsLoop:
-	copyarraywithindex gEffectBattler, gBattlersBySpeed, gBattlerTarget, 1
-	jumpifabilitycantbereactivated BS_EFFECT_BATTLER, BattleScript_NeutralizingGasExitsLoopIncrement
-	switchinabilities BS_EFFECT_BATTLER
+	copyarraywithindex gBattlerTarget, gBattlersBySpeed, gBattlerAttacker, 1
+	jumpifabilitycantbereactivated BS_TARGET, BattleScript_NeutralizingGasExitsLoopIncrement
+	saveattacker
+	switchinabilities BS_TARGET
+	restoreattacker
 BattleScript_NeutralizingGasExitsLoopIncrement:
-	addbyte gBattlerTarget, 1
-	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_NeutralizingGasExitsLoop
+	addbyte gBattlerAttacker, 1
+	jumpifbytenotequal gBattlerAttacker, gBattlersCount, BattleScript_NeutralizingGasExitsLoop
+	restoreattacker
 	restoretarget
 	return
 
