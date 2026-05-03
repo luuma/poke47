@@ -92,21 +92,21 @@ void CFile::Preproc()
         {
             if (m_buffer[m_pos] == stringChar)
             {
-                std::putchar(stringChar);
+                putchar(stringChar);
                 m_pos++;
                 stringChar = 0;
             }
             else if (m_buffer[m_pos] == '\\' && m_buffer[m_pos + 1] == stringChar)
             {
-                std::putchar('\\');
-                std::putchar(stringChar);
+                putchar('\\');
+                putchar(stringChar);
                 m_pos += 2;
             }
             else
             {
                 if (m_buffer[m_pos] == '\n')
                     m_lineNum++;
-                std::putchar(m_buffer[m_pos]);
+                putchar(m_buffer[m_pos]);
                 m_pos++;
             }
         }
@@ -121,7 +121,7 @@ void CFile::Preproc()
 
             char c = m_buffer[m_pos++];
 
-            std::putchar(c);
+            putchar(c);
 
             if (c == '\n')
                 m_lineNum++;
@@ -172,7 +172,7 @@ bool CFile::ConsumeNewline()
     {
         m_pos += 2;
         m_lineNum++;
-        std::putchar('\n');
+        putchar('\n');
         return true;
     }
 
@@ -180,7 +180,7 @@ bool CFile::ConsumeNewline()
     {
         m_pos++;
         m_lineNum++;
-        std::putchar('\n');
+        putchar('\n');
         return true;
     }
 
@@ -265,16 +265,16 @@ void CFile::TryConvertString()
 
     SkipWhitespace();
 
-    std::printf("{ ");
+    printf("{ ");
 
     std::vector<unsigned char> converted = ConvertString();
     for (std::size_t i = 0; i < converted.size(); i++)
-        std::printf("0x%02X, ", converted[i]);
+        printf("0x%02X, ", converted[i]);
 
     if (noTerminator)
-        std::printf(" }");
+        printf(" }");
     else
-        std::printf("0xFF }");
+        printf("0xFF }");
 }
 
 static std::uint64_t fnv1a(const std::vector<unsigned char>& bytes)
@@ -313,7 +313,7 @@ void CFile::TryConvertCompoundString()
     m_compoundStrings[converted] = hash;
     // WARNING: Assumes no collisions.
     // TODO: Incorporate filename to prevent cross-TU collisions.
-    std::printf("sCompoundString_%016" PRIx64, hash);
+    printf("sCompoundString_%016" PRIx64, hash);
 }
 
 bool CFile::CheckIdentifier(const std::string& ident)
@@ -407,7 +407,7 @@ void CFile::TryConvertIncbin()
 
     m_pos++;
 
-    std::printf("{");
+    printf("{");
 
     while (true)
     {
@@ -480,7 +480,7 @@ void CFile::TryConvertIncbin()
 
     m_pos++;
 
-    std::printf("}");
+    printf("}");
 }
 
 // Reports a diagnostic message.

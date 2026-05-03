@@ -16088,7 +16088,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Foes hit by holder's\n"
             "STATUS moves lose\n"
-            "1/6 HP. Can't hurt."),
+            "1/6 HP. Bans Attacks."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
