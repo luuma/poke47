@@ -414,7 +414,7 @@ static const u8 *GetInteractedObjectEventScript(struct MapPosition *position, u8
         script = InteractWithOverworldWildEncounter;
     else if (gObjectEvents[objectEventId].localId == OBJ_EVENT_ID_FOLLOWER)
         script = EventScript_Follower;
-    else if (localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)
+    else if (gObjectEvents[objectEventId].localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE)
         script = OWEAutoBattling;
 
     else if (InTrainerHill() == TRUE)

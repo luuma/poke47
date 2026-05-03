@@ -246,7 +246,7 @@ const u16 gBattleAnimSpritePal_PowerTrick[] = INCGFX_U16("graphics/battle_anims/
 const u32 gBattleAnimSpriteGfx_PurpleChain[] = INCGFX_U32("graphics/battle_anims/sprites/purple_chain.png", ".4bpp.smol");
 const u16 gBattleAnimSpritePal_PurpleChain[] = INCGFX_U16("graphics/battle_anims/sprites/purple_chain.png", ".gbapal");
 
-const u16 gBattleAnimSpritePal_GreyChain[] = INCGFX_U16("graphics/battle_anims/sprites/grey_chain.png", ".gbapal");
+const u16 gBattleAnimSpritePal_GreyChain[] = INCGFX_U16("graphics/battle_anims/sprites/grey_chain.pal", ".gbapal");
 
 const u32 gBattleAnimSpriteGfx_PurpleDrake[] = INCGFX_U32("graphics/battle_anims/sprites/purple_drake.png", ".4bpp.smol");
 const u16 gBattleAnimSpritePal_PurpleDrake[] = INCGFX_U16("graphics/battle_anims/sprites/purple_drake.png", ".gbapal");
