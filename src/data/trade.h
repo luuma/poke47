@@ -986,9 +986,9 @@ static const struct InGameTrade sIngameTrades[] =
     },
     [INGAME_TRADE_PLUSLE] =
     {
-        .nickname = _("HOGBERT"),
-        .species = SPECIES_TOGEDEMARU,
-        .ivs = {31, 4, 24, 31, 13, 31},
+        .nickname = _("SERENADE"),
+        .species = SPECIES_ROSELIA,
+        .ivs = {31, 4, 24, 31, 31, 31},
         .abilityNum = 0,
         .otId = 73996,
         .conditions = {5, 5, 30, 5, 5},
@@ -1220,7 +1220,7 @@ static const u16 sIngameTradeMail[][MAIL_WORDS_COUNT + 1] =
         EC_WORD_BE,
         EC_WORD_NICE,
         EC_WORD_TO,
-        EC_POKEMON(TOGEDEMARU),
+        EC_POKEMON(ROSELIA),
         EC_WORD_EXCL,
         EC_WORD_IT_S,
         EC_WORD_PROBABLY,

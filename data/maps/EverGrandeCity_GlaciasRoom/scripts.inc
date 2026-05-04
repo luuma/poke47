@@ -82,7 +82,7 @@ EverGrandeCity_GlaciasRoom_Text_Defeat:
 	.string "Ahahaha, excellent!\n"
 	.string "Very well, you are the winner.\p"
 	.string "From you, I sense the brilliant shine\n"
-	.string "of skill that will overcome all.\p"
+	.string "of skill that will overcome all.$"
 
 EverGrandeCity_Juan_Text_PostFirstVictorySpeech:
 	.string "Ah! That reminds me. Here is just a\n"

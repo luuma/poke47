@@ -6,7 +6,7 @@ SootopolisCity_LotadAndSeedotHouse_EventScript_SeedotBrother::
 	lock
 	faceplayer
 	msgbox SootopolisCity_LotadAndSeedotHouse_Text_PleaseShowMeBigSeedot, MSGBOX_DEFAULT
-	setvar VAR_0x8009, SPECIES_SEEDOT
+	setvar VAR_0x8009, SPECIES_STUNKY
 	chooseboxmon SELECT_PC_MON_TRADE
 	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, SootopolisCity_LotadAndSeedotHouse_EventScript_CancelShowSeedot
@@ -34,7 +34,7 @@ SootopolisCity_LotadAndSeedotHouse_EventScript_SmallSeedot::
 
 SootopolisCity_LotadAndSeedotHouse_EventScript_BigSeedot::
 	msgbox SootopolisCity_LotadAndSeedotHouse_Text_GoshMightBeBiggerThanLotad, MSGBOX_DEFAULT
-	giveitem ITEM_ELIXIR
+	giveitem ITEM_POISON_GEM
 	goto_if_eq VAR_RESULT, FALSE, SootopolisCity_LotadAndSeedotHouse_EventScript_NoRoomForElixir1
 	closemessage
 	release
@@ -50,7 +50,7 @@ SootopolisCity_LotadAndSeedotHouse_EventScript_LotadBrother::
 	lock
 	faceplayer
 	msgbox SootopolisCity_LotadAndSeedotHouse_Text_PleaseShowMeBigLotad, MSGBOX_DEFAULT
-	setvar VAR_0x8009, SPECIES_LOTAD
+	setvar VAR_0x8009, SPECIES_VANILLITE
 	chooseboxmon SELECT_PC_MON_TRADE
 	waitstate
 	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, SootopolisCity_LotadAndSeedotHouse_EventScript_CancelShowLotad
@@ -78,7 +78,7 @@ SootopolisCity_LotadAndSeedotHouse_EventScript_SmallLotad::
 
 SootopolisCity_LotadAndSeedotHouse_EventScript_BigLotad::
 	msgbox SootopolisCity_LotadAndSeedotHouse_Text_WowMightBeBiggerThanSeedot, MSGBOX_DEFAULT
-	giveitem ITEM_ELIXIR
+	giveitem ITEM_WATER_GEM
 	goto_if_eq VAR_RESULT, FALSE, SootopolisCity_LotadAndSeedotHouse_EventScript_NoRoomForElixir2
 	closemessage
 	release
@@ -104,21 +104,21 @@ SootopolisCity_LotadAndSeedotHouse_EventScript_LotadSizeRecord::
 	end
 
 SootopolisCity_LotadAndSeedotHouse_Text_PleaseShowMeBigSeedot:
-	.string "Do you know the POKéMON SEEDOT?\n"
+	.string "Do you know the POKéMON STUNKY?\n"
 	.string "It's hardly ever seen in SOOTOPOLIS.\p"
-	.string "Anyway, I love big SEEDOT.\n"
+	.string "Anyway, I love big STUNKY.\n"
 	.string "The bigger the better.\p"
 	.string "But my younger brother, he says that\n"
-	.string "LOTAD is bigger.\p"
+	.string "VANILLITE is bigger.\p"
 	.string "That's silly.\n"
-	.string "SEEDOT has to be bigger than that!\p"
-	.string "Huh? Do you have a SEEDOT with you?\n"
+	.string "STUNKY has to be bigger than it!\p"
+	.string "Huh? Do you have STUNKY with you?\n"
 	.string "P-p-please, show me!$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_GoshMightBeBiggerThanLotad:
 	.string "{STR_VAR_2}!\n"
 	.string "Oh, my gosh, this is a big one!\p"
-	.string "It might even beat the big LOTAD\n"
+	.string "It might beat the big VANILLITE\n"
 	.string "my younger brother saw!\p"
 	.string "Thanks for showing me.\n"
 	.string "This is my thanks!$"
@@ -133,41 +133,45 @@ SootopolisCity_LotadAndSeedotHouse_Text_BagCrammedFull1:
 
 SootopolisCity_LotadAndSeedotHouse_Text_SeenBiggerSeedot:
 	.string "{STR_VAR_2}, is it?\p"
-	.string "Hmm… I've seen a bigger SEEDOT\n"
+	.string "Hmm… I've seen a bigger STUNKY\n"
 	.string "than this one.$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_ThatsNotSeedot:
 	.string "Oh, now this is quite something…\n"
-	.string "But it's not a SEEDOT!$"
+	.string "But it's not a STUNKY!$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_DontHaveBigSeedot:
-	.string "You don't have a big SEEDOT?\n"
+	.string "You don't have a big STUNKY?\n"
 	.string "That's too bad…\p"
-	.string "If you get a big SEEDOT, please\n"
+	.string "If you get a big STUNKY, please\n"
 	.string "come show me.$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_BiggestSeedotInHistory:
-	.string "The biggest SEEDOT in history!\n"
+	.string "The biggest STUNKY in history!\n"
 	.string "{STR_VAR_2}'s {STR_VAR_3} giant!\p"
-	.string "A SEEDOT bigger than a LOTAD\n"
+	.string "A STUNKY bigger than a VANILLITE\n"
 	.string "always wanted!$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_PleaseShowMeBigLotad:
-	.string "Do you know the POKéMON LOTAD?\n"
+	.string "Do you know the POKéMON VANILLITE?\n"
 	.string "It's rarely seen in SOOTOPOLIS.\p"
-	.string "I love, I mean love, big LOTAD!\p"
-	.string "My big brother says that SEEDOT is\n"
+	.string "I love, I mean love, big VANILLITE!\p"
+	.string "My big brother says that STUNKY is\n"
 	.string "bigger.\p"
 	.string "But that's wrong! Everyone knows that\n"
-	.string "LOTAD is a lot bigger.\p"
-	.string "Hunh? Do you have a LOTAD?\n"
+	.string "VANILLITE is a lot bigger.\p"
+	@.string "And they also know that STUNKY butt\n"
+	@.string "glands were never used to make\l"
+	@.string "vanilla flavoured ice-cream.\p"
+	@.string "It was BIDOOF butt glands.\p"
+	.string "Hunh? Do you have a VANILLITE?\n"
 	.string "P-p-please show me!$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_WowMightBeBiggerThanSeedot:
 	.string "{STR_VAR_2}!\n"
 	.string "Wow, that is big!\p"
 	.string "It might be even bigger than the huge\n"
-	.string "SEEDOT my big brother saw.\p"
+	.string "STUNKY my big brother saw.\p"
 	.string "Thanks for showing me!\n"
 	.string "This is my thanks!$"
 
@@ -181,22 +185,22 @@ SootopolisCity_LotadAndSeedotHouse_Text_BagCrammedFull2:
 
 SootopolisCity_LotadAndSeedotHouse_Text_SeenBiggerLotad:
 	.string "{STR_VAR_2}?\p"
-	.string "Hmm… I've seen a bigger LOTAD\n"
+	.string "Hmm… I've seen a bigger STUNKY\n"
 	.string "than this one here.$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_ThatsNotLotad:
 	.string "Well, isn't this something!\n"
-	.string "But it's no LOTAD!$"
+	.string "But it's no VANILLITE!$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_DontHaveBigLotad:
-	.string "Don't you have a big LOTAD?\n"
+	.string "Don't you have a big VANILLITE?\n"
 	.string "How disappointing…\p"
-	.string "If you get a big LOTAD, please\n"
+	.string "If you get a big VANILLITE, please\n"
 	.string "come show me!$"
 
 SootopolisCity_LotadAndSeedotHouse_Text_BiggestLotadInHistory:
-	.string "The biggest LOTAD in history!\n"
+	.string "The biggest VANILLITE in history!\n"
 	.string "{STR_VAR_2}'s {STR_VAR_3} colossus!\p"
-	.string "A LOTAD bigger than a SEEDOT\n"
+	.string "A VANILLITE bigger than a STUNKY\n"
 	.string "always wanted!$"
 

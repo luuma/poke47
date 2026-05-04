@@ -48,6 +48,7 @@
 #include "constants/event_objects.h"
 #include "constants/field_effects.h"
 #include "constants/items.h"
+#include "constants/layouts.h"
 #include "constants/mauville_old_man.h"
 #include "constants/metatile_behaviors.h"
 #include "constants/rgb.h"
@@ -1894,7 +1895,7 @@ static u8 TrySetupObjectEventSprite(const struct ObjectEventTemplate *objectEven
         spriteTemplate->tileTag = LoadSheetGraphicsInfo(graphicsInfo, objectEvent->graphicsId, NULL);
 
     if (objectEvent->graphicsId & OBJ_EVENT_MON)
-        if (GetSetPokedexFlag(objectEvent->graphicsId & OBJ_EVENT_MON_SPECIES_MASK, FLAG_GET_NONE))
+        if (GetSetPokedexFlag(objectEvent->graphicsId & OBJ_EVENT_MON_SPECIES_MASK, FLAG_GET_NONE) && gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR)
             GetSetPokedexFlag(objectEvent->graphicsId & OBJ_EVENT_MON_SPECIES_MASK, FLAG_SET_SILHOUETTE);
         if (objectEvent->graphicsId & OBJ_EVENT_MON_SHINY)
             objectEvent->shiny = TRUE;

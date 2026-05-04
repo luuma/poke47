@@ -93,7 +93,7 @@ EverGrandeCity_HallOfFame_EventScript_giftMay::
 
 EverGrandeCity_ChampionsRoom_Text_MayCharmGift:
 	.string "MAY: Wow, you battle fast!\n"
-	.string "No surprise there, {PLAYER}{KUN}\p"
+	.string "No surprise there, {PLAYER}{KUN}!\p"
 	.string "Hey, I got you something.\n"
  	.string "Don't forget me now you're famous!$"
 

@@ -7725,8 +7725,8 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .weight = 18,
         .description = COMPOUND_STRING(
             "This Ultra Beast is well enough\n"
-            "liked to be chosen as a\n"
-            "first partner in its own world."),
+            "liked to be chosen as a first\n"
+            "partner in its own world."),
         .pokemonScale = 422,
         .pokemonOffset = 12,
         .trainerScale = 256,

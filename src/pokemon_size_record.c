@@ -183,14 +183,14 @@ void GetSeedotSizeRecordInfo(void)
 {
     u16 *sizeRecord = GetVarPointer(VAR_SEEDOT_SIZE_RECORD);
 
-    GetMonSizeRecordInfo(SPECIES_SEEDOT, sizeRecord);
+    GetMonSizeRecordInfo(SPECIES_STUNKY, sizeRecord);
 }
 
 void CompareSeedotSize(void)
 {
     u16 *sizeRecord = GetVarPointer(VAR_SEEDOT_SIZE_RECORD);
 
-    gSpecialVar_Result = CompareMonSize(SPECIES_SEEDOT, sizeRecord);
+    gSpecialVar_Result = CompareMonSize(SPECIES_STUNKY, sizeRecord);
 }
 
 void InitLotadSizeRecord(void)
@@ -202,14 +202,14 @@ void GetLotadSizeRecordInfo(void)
 {
     u16 *sizeRecord = GetVarPointer(VAR_LOTAD_SIZE_RECORD);
 
-    GetMonSizeRecordInfo(SPECIES_LOTAD, sizeRecord);
+    GetMonSizeRecordInfo(SPECIES_VANILLITE, sizeRecord);
 }
 
 void CompareLotadSize(void)
 {
     u16 *sizeRecord = GetVarPointer(VAR_LOTAD_SIZE_RECORD);
 
-    gSpecialVar_Result = CompareMonSize(SPECIES_LOTAD, sizeRecord);
+    gSpecialVar_Result = CompareMonSize(SPECIES_VANILLITE, sizeRecord);
 }
 
 void InitHeracrossSizeRecord(void)
