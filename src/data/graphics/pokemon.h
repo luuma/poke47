@@ -16903,7 +16903,6 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 
-#if P_MEGA_EVOLUTIONS
     const u32 gMonFrontPic_AudinoMega[] = INCGFX_U32("graphics/pokemon/audino/mega/front.png", ".4bpp.smol");
     const u16 gMonPalette_AudinoMega[] = INCGFX_U16("graphics/pokemon/audino/mega/normal.pal", ".gbapal");
     const u32 gMonBackPic_AudinoMega[] = INCGFX_U32("graphics/pokemon/audino/mega/back.png", ".4bpp.smol");
@@ -16915,7 +16914,11 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     const u16 gOverworldPalette_AudinoMega[] = INCGFX_U16("graphics/pokemon/audino/mega/overworld_normal.pal", ".gbapal");
     const u16 gShinyOverworldPalette_AudinoMega[] = INCGFX_U16("graphics/pokemon/audino/mega/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
+#endif //OW_PKMN_OBJECT_EVENTS
 #endif //P_FAMILY_AUDINO
+#if P_MEGA_EVOLUTIONS
+
+#endif //P_MEGA_EVOLUTIONS
 
 #if P_FAMILY_TIMBURR
     const u32 gMonFrontPic_Timburr[] = INCGFX_U32("graphics/pokemon/timburr/anim_front.png", ".4bpp.smol");
