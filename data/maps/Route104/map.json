@@ -588,8 +588,8 @@
     },
     {
       "type": "sign",
-      "x": 17,
-      "y": 23,
+      "x": 7,
+      "y": 40,
       "elevation": 3,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route104_EventScript_TrainerTipsDoubleBattles"
