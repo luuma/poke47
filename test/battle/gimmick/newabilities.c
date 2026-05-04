@@ -3,7 +3,7 @@
 #include "battle_ai_util.h"
 
 
-SINGLE_BATTLE_TEST("wonderland sets wonder room")
+SINGLE_BATTLE_TEST("POKE47: wonderland sets wonder room")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -17,7 +17,7 @@ SINGLE_BATTLE_TEST("wonderland sets wonder room")
     }
 }
 
-SINGLE_BATTLE_TEST("trickland sets trick room")
+SINGLE_BATTLE_TEST("POKE47: trickland sets trick room")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -31,7 +31,7 @@ SINGLE_BATTLE_TEST("trickland sets trick room")
     }
 }
 
-SINGLE_BATTLE_TEST("ITEM GET")
+SINGLE_BATTLE_TEST("POKE47: ITEM GET")
 {
     GIVEN {
         PLAYER(SPECIES_TRUBBISH) { Ability(ABILITY_ITEM_GET); }
@@ -48,8 +48,26 @@ SINGLE_BATTLE_TEST("ITEM GET")
     }
 }
 
+SINGLE_BATTLE_TEST("POKE47: HONEY GATHER and Paralysis Flung Honey")
+{
+    GIVEN {
+        PLAYER(SPECIES_VESPIQUEN) { Ability(ABILITY_HONEY_GATHER); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { }
+        TURN { MOVE(player, MOVE_FLING); }
+        TURN { MOVE(player, MOVE_FLING); }
+    } SCENE {
+        ABILITY_POPUP(player, ABILITY_HONEY_GATHER);
+        HP_BAR(opponent); // FLING HIT
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PRZ, opponent);
+        HP_BAR(opponent); // fling hit
+    }
+}
 
-SINGLE_BATTLE_TEST("DOUBLE Wallop does hit twice under 3/4 hp")
+
+
+SINGLE_BATTLE_TEST("POKE47: DOUBLE Wallop does hit twice under 3/4 hp")
 {
     GIVEN {
         PLAYER(SPECIES_CRABOMINABLE) { Ability(ABILITY_DOUBLE_WALLOP); MaxHP(200); HP(200);}
@@ -65,7 +83,7 @@ SINGLE_BATTLE_TEST("DOUBLE Wallop does hit twice under 3/4 hp")
 }
 
 
-SINGLE_BATTLE_TEST("DOUBLE Wallop doesnt hit twice over 3/4 hp")
+SINGLE_BATTLE_TEST("POKE47: DOUBLE Wallop doesnt hit twice over 3/4 hp")
 {
     GIVEN {
         PLAYER(SPECIES_CRABOMINABLE) { Ability(ABILITY_DOUBLE_WALLOP); MaxHP(200); HP(130);}
@@ -79,7 +97,7 @@ SINGLE_BATTLE_TEST("DOUBLE Wallop doesnt hit twice over 3/4 hp")
     }
 }
 
-SINGLE_BATTLE_TEST("Whiteout sets up hail for 8 turns with Icy Rock (Gen6-8)")
+SINGLE_BATTLE_TEST("POKE47: Whiteout sets up hail for 8 turns with Icy Rock (Gen6-8)")
 {
     GIVEN {
         PLAYER(SPECIES_KYUREM) { Moves(MOVE_CELEBRATE); Ability(ABILITY_WHITEOUT); Item(ITEM_ICY_ROCK); }
@@ -106,7 +124,7 @@ SINGLE_BATTLE_TEST("Whiteout sets up hail for 8 turns with Icy Rock (Gen6-8)")
     }
 }
 
-SINGLE_BATTLE_TEST("Constrictor Binding Band does 3/4")
+SINGLE_BATTLE_TEST("POKE47: Constrictor Binding Band does 3/4")
 {
     GIVEN {
         PLAYER(SPECIES_CARNIVINE) { Moves(MOVE_WRAP, MOVE_CELEBRATE); Ability(ABILITY_CONSTRICTOR); Item(ITEM_BINDING_BAND); }
@@ -130,7 +148,7 @@ SINGLE_BATTLE_TEST("Constrictor Binding Band does 3/4")
 
 
 
-SINGLE_BATTLE_TEST("7 TURN constrictor withOUT grip claw")
+SINGLE_BATTLE_TEST("POKE47: 7 TURN constrictor withOUT grip claw")
 {
     GIVEN {
         PLAYER(SPECIES_CARNIVINE) { Moves(MOVE_WRAP, MOVE_CELEBRATE); Ability(ABILITY_CONSTRICTOR); }
@@ -176,7 +194,7 @@ SINGLE_BATTLE_TEST("7 TURN constrictor withOUT grip claw")
 }
 
 
-SINGLE_BATTLE_TEST("Ice Bod passes and heals like leftovers.")
+SINGLE_BATTLE_TEST("POKE47: Ice Bod passes and heals like leftovers.")
 {
     GIVEN {
         PLAYER(SPECIES_CARNIVINE) { Moves(MOVE_WRAP, MOVE_CELEBRATE); Ability(ABILITY_CONSTRICTOR); }
@@ -221,7 +239,7 @@ SINGLE_BATTLE_TEST("Ice Bod passes and heals like leftovers.")
     }
 }
 
-SINGLE_BATTLE_TEST("Grand Debut grants damage reduction on switchin Vs not having grand debut", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: Grand Debut grants damage reduction on switchin Vs not having grand debut", s16 damage)
 {
     enum Ability ability;
     PARAMETRIZE { ability = ABILITY_DEFIANT; }
@@ -242,7 +260,7 @@ SINGLE_BATTLE_TEST("Grand Debut grants damage reduction on switchin Vs not havin
 
 
 
-SINGLE_BATTLE_TEST("FOCus boost test fails 1 million times.")
+SINGLE_BATTLE_TEST("POKE47: FOCus boost test fails 1 million times.")
 {
     GIVEN {
         PLAYER(SPECIES_WATCHOG) { Ability(ABILITY_FOCUS_BOOST); MaxHP(263); HP(262); }
@@ -264,7 +282,7 @@ SINGLE_BATTLE_TEST("FOCus boost test fails 1 million times.")
 }
 
 
-SINGLE_BATTLE_TEST("fPREcast raises satk EXClusively on form change.")
+SINGLE_BATTLE_TEST("POKE47: fPREcast raises satk EXClusively on form change.")
 {
     GIVEN {
         PLAYER(SPECIES_DEERLING) { Ability(ABILITY_FORECAST); MaxHP(263); HP(262); }
@@ -283,7 +301,7 @@ SINGLE_BATTLE_TEST("fPREcast raises satk EXClusively on form change.")
     }
 }
 
-SINGLE_BATTLE_TEST("Pressure causes opponent's moves to use up 2 additional PP")
+SINGLE_BATTLE_TEST("POKE47: Pressure causes opponent's moves to use up 2 additional PP")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_POUND, 35}); }
@@ -295,7 +313,7 @@ SINGLE_BATTLE_TEST("Pressure causes opponent's moves to use up 2 additional PP")
     }
 }
 
-DOUBLE_BATTLE_TEST("Pressure's +2PP effect stacks with multiple Pokémon")
+DOUBLE_BATTLE_TEST("POKE47: Pressure's +2PP effect stacks with multiple Pokémon")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_SWIFT, 20}); }
@@ -311,7 +329,7 @@ DOUBLE_BATTLE_TEST("Pressure's +2PP effect stacks with multiple Pokémon")
 
 
 
-SINGLE_BATTLE_TEST("Ice Body prevents damage from hail")
+SINGLE_BATTLE_TEST("POKE47: Ice Body prevents damage from hail")
 {
     enum Move move;
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -326,7 +344,7 @@ SINGLE_BATTLE_TEST("Ice Body prevents damage from hail")
     }
 }
 
-SINGLE_BATTLE_TEST("Ice Body recovers 1/16th of Max HP in hail, not more.")
+SINGLE_BATTLE_TEST("POKE47: Ice Body recovers 1/16th of Max HP in hail, not more.")
 {
     enum Move move;
     PARAMETRIZE { move = MOVE_HAIL; }
@@ -344,7 +362,7 @@ SINGLE_BATTLE_TEST("Ice Body recovers 1/16th of Max HP in hail, not more.")
 }
 
 
-SINGLE_BATTLE_TEST("Comatose tweaked move effects: pSYcho shift.")
+SINGLE_BATTLE_TEST("POKE47: Comatose tweaked move effects: pSYcho shift.")
 {
     GIVEN {
         PLAYER(SPECIES_MUSHARNA) { Ability(ABILITY_COMATOSE); HP(1); MaxHP(100); }
@@ -357,7 +375,7 @@ SINGLE_BATTLE_TEST("Comatose tweaked move effects: pSYcho shift.")
     }
 }
 
-SINGLE_BATTLE_TEST("Comatose tweaked move effects: rest.")
+SINGLE_BATTLE_TEST("POKE47: Comatose tweaked move effects: rest.")
 {
     GIVEN {
         PLAYER(SPECIES_MUSHARNA) { Ability(ABILITY_COMATOSE); HP(1); MaxHP(100); }
@@ -373,7 +391,7 @@ SINGLE_BATTLE_TEST("Comatose tweaked move effects: rest.")
     }
 }
 
-SINGLE_BATTLE_TEST("And check that's unique to comatose.")
+SINGLE_BATTLE_TEST("POKE47: And check that's unique to comatose.")
 {
     GIVEN {
         PLAYER(SPECIES_MUSHARNA) { Ability(ABILITY_ROUGH_SKIN); HP(1); MaxHP(100); }

@@ -3,7 +3,7 @@
 #include "battle_ai_util.h"
 
 
-SINGLE_BATTLE_TEST("eNVELOP uses special defense stat of target", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: eNVELOP uses special defense stat of target", s16 damage)
 {
     enum Move move;
 
@@ -25,7 +25,7 @@ SINGLE_BATTLE_TEST("eNVELOP uses special defense stat of target", s16 damage)
     }
 }
 
-SINGLE_BATTLE_TEST("ENVELOP's damage depends on the user's base Defense instead of its base Attack", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: ENVELOP's damage depends on the user's base Defense instead of its base Attack", s16 damage)
 {
     u32 spdef, spatk;
     PARAMETRIZE { spdef = 150; spatk = 179; } // Atk is higher
@@ -45,7 +45,7 @@ SINGLE_BATTLE_TEST("ENVELOP's damage depends on the user's base Defense instead 
 
 
 
-SINGLE_BATTLE_TEST("Lightbloom SUNlight")
+SINGLE_BATTLE_TEST("POKE47: Lightbloom SUNlight")
 {
     GIVEN {
         ASSUME(MoveHasAdditionalEffect(MOVE_LIGHTBLOOM, MOVE_EFFECT_SUN));
@@ -62,7 +62,7 @@ SINGLE_BATTLE_TEST("Lightbloom SUNlight")
 }
 
 
-SINGLE_BATTLE_TEST("simiSSEAR AURA wheel fire")
+SINGLE_BATTLE_TEST("POKE47: simiSSEAR AURA wheel fire")
 {
     GIVEN {
         OPPONENT(SPECIES_FOONGUS);
@@ -75,7 +75,7 @@ SINGLE_BATTLE_TEST("simiSSEAR AURA wheel fire")
     }
 }
 
-SINGLE_BATTLE_TEST("Mood Crush replaces target's ability with dEFEATIST")
+SINGLE_BATTLE_TEST("POKE47: Mood Crush replaces target's ability with dEFEATIST")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Ability(ABILITY_TELEPATHY); }
@@ -90,7 +90,7 @@ SINGLE_BATTLE_TEST("Mood Crush replaces target's ability with dEFEATIST")
     }
 }
 
-DOUBLE_BATTLE_TEST("mood Crush STILL damages if target is defeatist")
+DOUBLE_BATTLE_TEST("POKE47: mood Crush STILL damages if target is defeatist")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Ability(ABILITY_TELEPATHY); }
@@ -116,7 +116,7 @@ DOUBLE_BATTLE_TEST("mood Crush STILL damages if target is defeatist")
 
 
 
-DOUBLE_BATTLE_TEST("Screen Burn makes the user lose 1/2 of its Max HP in a double battle")
+DOUBLE_BATTLE_TEST("POKE47: Screen Burn makes the user lose 1/2 of its Max HP in a double battle")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { HP(201); MaxHP(400); }
@@ -132,7 +132,7 @@ DOUBLE_BATTLE_TEST("Screen Burn makes the user lose 1/2 of its Max HP in a doubl
     }
 }
 
-DOUBLE_BATTLE_TEST("Screen Burn causes the user to faint when below 1/2 of its Max HP in a double battle")
+DOUBLE_BATTLE_TEST("POKE47: Screen Burn causes the user to faint when below 1/2 of its Max HP in a double battle")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { HP(200); MaxHP(400); }
@@ -149,7 +149,7 @@ DOUBLE_BATTLE_TEST("Screen Burn causes the user to faint when below 1/2 of its M
 }
 
 
-SINGLE_BATTLE_TEST("Screen Burn's Reflect applies for 5 turns")
+SINGLE_BATTLE_TEST("POKE47: Screen Burn's Reflect applies for 5 turns")
 {
     s16 damage[6];
     GIVEN {
@@ -187,7 +187,7 @@ SINGLE_BATTLE_TEST("Screen Burn's Reflect applies for 5 turns")
 }
 
 
-SINGLE_BATTLE_TEST("Screen Burn's Light Screen applies for 5 turns")
+SINGLE_BATTLE_TEST("POKE47: Screen Burn's Light Screen applies for 5 turns")
 {
     s16 damage[6];
     GIVEN {
@@ -224,7 +224,7 @@ SINGLE_BATTLE_TEST("Screen Burn's Light Screen applies for 5 turns")
     }
 }
 
-SINGLE_BATTLE_TEST("Reflect fails if screen burn already active")
+SINGLE_BATTLE_TEST("POKE47: Reflect fails if screen burn already active")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -242,7 +242,7 @@ SINGLE_BATTLE_TEST("Reflect fails if screen burn already active")
     }
 }
 
-SINGLE_BATTLE_TEST("SCREEN BURN DOESN't fail if reflect's active")
+SINGLE_BATTLE_TEST("POKE47: SCREEN BURN DOESN't fail if reflect's active")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -258,7 +258,7 @@ SINGLE_BATTLE_TEST("SCREEN BURN DOESN't fail if reflect's active")
 }
 
 
-SINGLE_BATTLE_TEST("SCREEN BURN fails if screen burn already active.")
+SINGLE_BATTLE_TEST("POKE47: SCREEN BURN fails if screen burn already active.")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -273,7 +273,7 @@ SINGLE_BATTLE_TEST("SCREEN BURN fails if screen burn already active.")
     }
 }
 
-SINGLE_BATTLE_TEST("SCREEN BURN fails if screen burn already active")
+SINGLE_BATTLE_TEST("POKE47: SCREEN BURN fails if screen burn already active")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -291,7 +291,7 @@ SINGLE_BATTLE_TEST("SCREEN BURN fails if screen burn already active")
 }
 
 
-SINGLE_BATTLE_TEST("Emergency Exit will trigger due to recoil damage from screen burn")
+SINGLE_BATTLE_TEST("POKE47: Emergency Exit will trigger due to recoil damage from screen burn")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -306,7 +306,7 @@ SINGLE_BATTLE_TEST("Emergency Exit will trigger due to recoil damage from screen
     }
 }
 
-DOUBLE_BATTLE_TEST("Rototiller boosts Attack and Special Attack of all Grass types on the field")
+DOUBLE_BATTLE_TEST("POKE47: Rototiller boosts Attack and Special Attack of all Grass types on the field")
 {
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_TANGELA, 0) == TYPE_GRASS);
@@ -338,7 +338,7 @@ DOUBLE_BATTLE_TEST("Rototiller boosts Attack and Special Attack of all Grass typ
 }
 
 
-DOUBLE_BATTLE_TEST("Flower Shield sharply raises the sp defense of all Grass-type Pokémon")
+DOUBLE_BATTLE_TEST("POKE47: Flower Shield sharply raises the sp defense of all Grass-type Pokémon")
 {
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_TANGELA, 0) == TYPE_GRASS);
@@ -366,7 +366,7 @@ DOUBLE_BATTLE_TEST("Flower Shield sharply raises the sp defense of all Grass-typ
 }
 
 
-SINGLE_BATTLE_TEST("Laser Focus causes the user's move used on the next turn to result in a Critical Hit")
+SINGLE_BATTLE_TEST("POKE47: Laser Focus causes the user's move used on the next turn to result in a Critical Hit")
 {
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_LASER_FOCUS) == EFFECT_LASER_FOCUS);
@@ -382,7 +382,7 @@ SINGLE_BATTLE_TEST("Laser Focus causes the user's move used on the next turn to 
     }
 }
 
-SINGLE_BATTLE_TEST("Laser Focus Sure Hit for all moves")
+SINGLE_BATTLE_TEST("POKE47: Laser Focus Sure Hit for all moves")
 {
     PASSES_RANDOMLY(100, 100, RNG_ACCURACY);
     GIVEN {
@@ -396,7 +396,7 @@ SINGLE_BATTLE_TEST("Laser Focus Sure Hit for all moves")
     }
 }
 
-SINGLE_BATTLE_TEST("Laser Focus Sure Hit lasts one turn")
+SINGLE_BATTLE_TEST("POKE47: Laser Focus Sure Hit lasts one turn")
 {
     PASSES_RANDOMLY(60, 100, RNG_ACCURACY);
     GIVEN {
@@ -412,7 +412,7 @@ SINGLE_BATTLE_TEST("Laser Focus Sure Hit lasts one turn")
 }
 
 
-SINGLE_BATTLE_TEST("Miracle Eye removes Dark-type immunity to Psychic-type moves")
+SINGLE_BATTLE_TEST("POKE47: Miracle Eye removes Dark-type immunity to Psychic-type moves")
 {
     GIVEN {
         ASSUME(GetMoveType(MOVE_PSYCHIC) == TYPE_PSYCHIC);
@@ -431,7 +431,7 @@ SINGLE_BATTLE_TEST("Miracle Eye removes Dark-type immunity to Psychic-type moves
 }
 
 
-SINGLE_BATTLE_TEST("Miracle Eye removes Steel-type immunity to Poison-type moves")
+SINGLE_BATTLE_TEST("POKE47: Miracle Eye removes Steel-type immunity to Poison-type moves")
 {
     GIVEN {
         ASSUME(GetMoveType(MOVE_SLUDGE_BOMB) == TYPE_POISON);
@@ -450,7 +450,7 @@ SINGLE_BATTLE_TEST("Miracle Eye removes Steel-type immunity to Poison-type moves
 }
 
 
-SINGLE_BATTLE_TEST("Tar Shot doubles the effectiveness of Fire-type moves used on the target AND sharply lowers speed")
+SINGLE_BATTLE_TEST("POKE47: Tar Shot doubles the effectiveness of Fire-type moves used on the target AND sharply lowers speed")
 {
     s16 damage[2];
     u32 species;
@@ -488,7 +488,7 @@ SINGLE_BATTLE_TEST("Tar Shot doubles the effectiveness of Fire-type moves used o
 }
 
 
-SINGLE_BATTLE_TEST("Toxic THREAD inflicts bad poison AND sharply lowers speed")
+SINGLE_BATTLE_TEST("POKE47: Toxic THREAD inflicts bad poison AND sharply lowers speed")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -505,7 +505,7 @@ SINGLE_BATTLE_TEST("Toxic THREAD inflicts bad poison AND sharply lowers speed")
     }
 }
 
-SINGLE_BATTLE_TEST("Mist blocks secondary effects")
+SINGLE_BATTLE_TEST("POKE47: Mist blocks secondary effects")
 {
     enum Move move;
     PARAMETRIZE { move = MOVE_NUZZLE; }
@@ -546,7 +546,7 @@ SINGLE_BATTLE_TEST("Mist blocks secondary effects")
 }
 
 
-DOUBLE_BATTLE_TEST("hawkeye boosts crit chance by 1 stage")
+DOUBLE_BATTLE_TEST("POKE47: hawkeye boosts crit chance by 1 stage")
 {
     u32 j;
     GIVEN {
@@ -577,7 +577,7 @@ DOUBLE_BATTLE_TEST("hawkeye boosts crit chance by 1 stage")
 }
 
 
-DOUBLE_BATTLE_TEST("Just Desserts recycles allies' berries 100% of the time")
+DOUBLE_BATTLE_TEST("POKE47: Just Desserts recycles allies' berries 100% of the time")
 {
     GIVEN {
         ASSUME(GetItemHoldEffect(ITEM_APICOT_BERRY) == HOLD_EFFECT_SP_DEFENSE_UP);
@@ -606,7 +606,7 @@ DOUBLE_BATTLE_TEST("Just Desserts recycles allies' berries 100% of the time")
     }
 }
 
-SINGLE_BATTLE_TEST("naval blockade SETS somethignt hat persists")
+SINGLE_BATTLE_TEST("POKE47: naval blockade SETS somethignt hat persists")
 {
     GIVEN {
         PLAYER(SPECIES_EMPOLEON);
@@ -630,7 +630,7 @@ SINGLE_BATTLE_TEST("naval blockade SETS somethignt hat persists")
 }
 
 
-SINGLE_BATTLE_TEST("naval blockade last 8 turns")
+SINGLE_BATTLE_TEST("POKE47: naval blockade last 8 turns")
 {
     GIVEN {
         PLAYER(SPECIES_EMPOLEON);
@@ -654,7 +654,7 @@ SINGLE_BATTLE_TEST("naval blockade last 8 turns")
 }
 
 
-SINGLE_BATTLE_TEST("naval blockade LOWER DEF stat changes")
+SINGLE_BATTLE_TEST("POKE47: naval blockade LOWER DEF stat changes")
 {
     GIVEN {
         PLAYER(SPECIES_EMPOLEON);
@@ -672,7 +672,7 @@ SINGLE_BATTLE_TEST("naval blockade LOWER DEF stat changes")
 }
 
 
-SINGLE_BATTLE_TEST("leer doesn't lock stat changes")
+SINGLE_BATTLE_TEST("POKE47: leer doesn't lock stat changes")
 {
     GIVEN {
         PLAYER(SPECIES_EMPOLEON);
@@ -695,7 +695,7 @@ SINGLE_BATTLE_TEST("leer doesn't lock stat changes")
 
 
 
-SINGLE_BATTLE_TEST("naval blockade     locks stat changes, switching.")
+SINGLE_BATTLE_TEST("POKE47: naval blockade     locks stat changes, switching.")
 {
     GIVEN {
         PLAYER(SPECIES_EMPOLEON);
@@ -716,7 +716,7 @@ SINGLE_BATTLE_TEST("naval blockade     locks stat changes, switching.")
 }
 
 
-SINGLE_BATTLE_TEST("naval blockade     locks stat changes, fainting .")
+SINGLE_BATTLE_TEST("POKE47: naval blockade     locks stat changes, fainting .")
 {
     GIVEN {
         PLAYER(SPECIES_EMPOLEON);

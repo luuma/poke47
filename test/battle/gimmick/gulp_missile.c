@@ -1,7 +1,7 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Gulp Missile: Cramorant cannot change between Gorging and Gulping Forms")
+SINGLE_BATTLE_TEST("POKE47: Gulp Missile: Cramorant cannot change between Gorging and Gulping Forms")
 {
     u32 species, hp;
     enum Move move;
@@ -27,7 +27,7 @@ SINGLE_BATTLE_TEST("Gulp Missile: Cramorant cannot change between Gorging and Gu
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) If base DRIFBLIM hits target with Surf it transforms into Gulping form if max HP is over 1/2")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) If base DRIFBLIM hits target with Surf it transforms into Gulping form if max HP is over 1/2")
 {
     GIVEN {
         PLAYER(SPECIES_DRIFBLIM) { Ability(ABILITY_GULP_MISSILE); }
@@ -42,7 +42,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) If base DRIFBLIM hits target with Surf it tra
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) If base DRIFBLIM hits target with Surf it transforms into Gorging form if max HP is under 1/2")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) If base DRIFBLIM hits target with Surf it transforms into Gorging form if max HP is under 1/2")
 {
     GIVEN {
         PLAYER(SPECIES_DRIFBLIM) { HP(120); MaxHP(250); Ability(ABILITY_GULP_MISSILE); }
@@ -57,7 +57,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) If base DRIFBLIM hits target with Surf it tra
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) If base DRIFBLIM is under water it transforms into one of its forms")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) If base DRIFBLIM is under water it transforms into one of its forms")
 {
     GIVEN {
         PLAYER(SPECIES_DRIFBLIM) { Ability(ABILITY_GULP_MISSILE); }
@@ -73,7 +73,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) If base DRIFBLIM is under water it transforms
     }
 }
 
-SINGLE_BATTLE_TEST("Gulp Missile: Power Herb does not prevent Cramaront from transforming")
+SINGLE_BATTLE_TEST("POKE47: Gulp Missile: Power Herb does not prevent Cramaront from transforming")
 {
     GIVEN {
         PLAYER(SPECIES_DRIFBLIM) { Ability(ABILITY_GULP_MISSILE); Item(ITEM_POWER_HERB); }
@@ -89,7 +89,7 @@ SINGLE_BATTLE_TEST("Gulp Missile: Power Herb does not prevent Cramaront from tra
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) Transformed DRIFBLIM deal 1/4 of damage opposing mon if hit by a damaging move, Gulping also lowers defense")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) Transformed DRIFBLIM deal 1/4 of damage opposing mon if hit by a damaging move, Gulping also lowers defense")
 {
     s16 gulpMissileDamage;
 
@@ -113,7 +113,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) Transformed DRIFBLIM deal 1/4 of damage oppos
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) DRIFBLIM in LITWICK form BURNs the target if hit by a damaging move")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) DRIFBLIM in LITWICK form BURNs the target if hit by a damaging move")
 {
     GIVEN {
         PLAYER(SPECIES_DRIFBLIM) { HP(120); MaxHP(250); Ability(ABILITY_GULP_MISSILE); }
@@ -131,7 +131,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) DRIFBLIM in LITWICK form BURNs the target if 
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) DRIFBLIM in LITWICK form DOESN'T BURN FIRE TYPE WITH NO CRASH")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) DRIFBLIM in LITWICK form DOESN'T BURN FIRE TYPE WITH NO CRASH")
 {
     GIVEN {
         PLAYER(SPECIES_DRIFBLIM) { HP(120); MaxHP(250); Ability(ABILITY_GULP_MISSILE); }
@@ -152,7 +152,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) DRIFBLIM in LITWICK form DOESN'T BURN FIRE TY
     }
 }
 
-SINGLE_BATTLE_TEST("Gulp Missile: triggers even if the user is fainted by opposing mon")
+SINGLE_BATTLE_TEST("POKE47: Gulp Missile: triggers even if the user is fainted by opposing mon")
 {
     GIVEN {
         PLAYER(SPECIES_DRIFBLIM) { HP(1); MaxHP(250); Ability(ABILITY_GULP_MISSILE); }
@@ -173,7 +173,7 @@ SINGLE_BATTLE_TEST("Gulp Missile: triggers even if the user is fainted by opposi
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) Transformed DRIFBLIM Gulping lowers defense but is prevented by stat reduction preventing abilities")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) Transformed DRIFBLIM Gulping lowers defense but is prevented by stat reduction preventing abilities")
 {
     u32 species;
     enum Ability ability;
@@ -198,7 +198,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) Transformed DRIFBLIM Gulping lowers defense b
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) Transformed DRIFBLIM Gulping lowers defense and still triggers other effects after")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) Transformed DRIFBLIM Gulping lowers defense and still triggers other effects after")
 {
     // Make sure attacker and target are correct after triggering the ability
     enum Ability ability;
@@ -228,7 +228,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) Transformed DRIFBLIM Gulping lowers defense a
     }
 }
 
-SINGLE_BATTLE_TEST("Gulp Missile triggered by explosion doesn't freeze the game")
+SINGLE_BATTLE_TEST("POKE47: Gulp Missile triggered by explosion doesn't freeze the game")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET);
@@ -238,7 +238,7 @@ SINGLE_BATTLE_TEST("Gulp Missile triggered by explosion doesn't freeze the game"
     }
 }
 
-SINGLE_BATTLE_TEST("(Gulp Missile) Cramorant in Gorging damages an electric type without paralysing")
+SINGLE_BATTLE_TEST("POKE47: (Gulp Missile) Cramorant in Gorging damages an electric type without paralysing")
 {
     GIVEN {
         PLAYER(SPECIES_CRAMORANT) { HP(120); MaxHP(250); Ability(ABILITY_GULP_MISSILE); }
@@ -265,7 +265,7 @@ SINGLE_BATTLE_TEST("(Gulp Missile) Cramorant in Gorging damages an electric type
 }
 
 
-SINGLE_BATTLE_TEST("Gulp Missile only changes forms for Cramorant")
+SINGLE_BATTLE_TEST("POKE47: Gulp Missile only changes forms for Cramorant")
 {
     GIVEN {
         ASSUME(!gAbilitiesInfo[ABILITY_GULP_MISSILE].cantBeSwapped);
@@ -286,7 +286,7 @@ SINGLE_BATTLE_TEST("Gulp Missile only changes forms for Cramorant")
     }
 }
 
-SINGLE_BATTLE_TEST("Gulp Missile: If Cramorant loses Gulp Missile, it cannot spit out its prey")
+SINGLE_BATTLE_TEST("POKE47: Gulp Missile: If Cramorant loses Gulp Missile, it cannot spit out its prey")
 {
     GIVEN {
         ASSUME(!gAbilitiesInfo[ABILITY_GULP_MISSILE].cantBeSwapped);
