@@ -8007,7 +8007,8 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     addxp /= sExperienceScalingFactors[levelFoe+initialLevel+10];
     addxp += 1; 
     addxp /= 2.5;
-    totalXP = totalXP + GetSoftLevelCapExpValue(initialLevel, addxp);// This is added because users will expect soft level caps to apply to autobattling.
+    u32 bufferxp = GetSoftLevelCapExpValue(initialLevel, addxp);
+    totalXP = totalXP + bufferxp;// This is added because users will expect soft level caps to apply to autobattling.
     SetMonData(mon, MON_DATA_EXP, &totalXP);
     ApplyDaycareExperience(mon);
     u8 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
@@ -8029,7 +8030,7 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
         if (finalLevel > initialLevel)
             PlayFanfare(MUS_LEVEL_UP);
     }
-    return (addxp);
+    return (bufferxp);
 }
 
 void ScriptAutobattle(struct ScriptContext *ctx)
