@@ -1339,7 +1339,10 @@ PetalburgCity_Gym_Text_GymGuideAdvice:
 	.string "the ACCURACY ROOM.\p"
 	.string "The room's name will be on\n"
 	.string "the door, so choose carefully.\p"
-	.string "Once you've chosen the door…\n"
+	.string "Once you've chosen the doors…\n"
+	.string "The leader will await…\p"
+	.string "Your old man's team is bulky! Chunky!\n"
+	.string "But nimble! And it peaks at Lv. 31.\l"
 	.string "Well, hey, go for it!$"
 
 PetalburgCity_Gym_Text_GymGuidePostVictory:

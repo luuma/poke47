@@ -454,17 +454,21 @@ Route116_Text_TunnelersRestHouse:
 
 Route116_Text_TrainerTipsBToStopEvolution:
 	.string "TRAINER TIPS\p"
-	.string "If you want to stop a POKéMON from\n"
-	.string "evolving, press the B Button while it\l"
-	.string "is trying to evolve.\l"
-	.string "The startled POKéMON will stop.\p"
-	.string "This is called an evolution cancel.$"
+	.string "There are several new MENU controls!\p"
+	.string "Press R in the POKéMON screen\n"
+	.string "to access the PC.\p"
+	.string "Press START while reading the POKéMON\n"
+	.string "MOVE SUMMARY SCREEN to relearn moves,\l"
+	.string "or press L/R first to learn TMs!\p"
+	.string "There's another new control, but to\n"
+	.string "read about that, you need to find the\l"
+	.string "other sign on this route. Where is it?$"
 
 Route116_Text_TrainerTipsBagHasPockets:
 	.string "TRAINER TIPS\p"
 	.string "Your BAG has several POCKETS.\p"
 	.string "Items you obtain are automatically\n"
 	.string "placed in the appropriate POCKETS.\p"
-	.string "No TRAINER can afford to be without\n"
-	.string "a BAG of their own.$"
+	.string "Press START to sort the items in\n"
+	.string "your BAG by Name or Type.$"
 

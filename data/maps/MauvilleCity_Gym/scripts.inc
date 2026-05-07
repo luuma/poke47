@@ -261,10 +261,12 @@ MauvilleCity_Gym_Text_GymGuideAdvice:
 	.string "bound {PLAYER}?\p"
 	.string "WATTSON, the LEADER of MAUVILLE\n"
 	.string "GYM, uses ELECTRIC-type POKéMON.\p"
-	.string "If you challenge him with WATER-type\n"
-	.string "POKéMON, he'll zap them! Bzzt!\p"
 	.string "And, he's put in switch-controlled\n"
 	.string "doors all over his GYM! Eccentric!\p"
+	.string "That GALVANTULA is nasty, and wants\n"
+	.string "to set a Sticky Web! Scary spider!\p"
+	.string "Also, his Lv. 24 ZEBSTRIKA will\n"
+	.string "outpace you with its FLASH CANNON!\p"
 	.string "Hey, go for it!$"
 
 MauvilleCity_Gym_Text_GymGuidePostVictory:

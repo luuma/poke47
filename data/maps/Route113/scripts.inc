@@ -155,10 +155,13 @@ Route113_Text_RouteSignFallarbor:
 
 Route113_Text_TrainerTipsRegisterKeyItems:
 	.string "TRAINER TIPS\p"
-	.string "You may register one of the KEY ITEMS\n"
-	.string "in your BAG as SELECT.\p"
-	.string "Simply press SELECT to use\n"
-	.string "the registered item conveniently.$"
+	.string "The POKéDEX has a plethora of excellent\n"
+	.string "functions!\p"
+	.string "Any POKéMON you have viewed from afar\n"
+	.string "will now appear as a silhouette.\p"
+	.string "Also, caught POKéMON now show information\n"
+	.string "about every move, ability, and forme they\l"
+	.string "have access to in this game.$"
 
 Route113_Text_GlassWorkshopSign:
 	.string "GLASS WORKSHOP\n"

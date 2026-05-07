@@ -458,7 +458,8 @@ PetalburgWoods_Text_MiracleSeedExplanation:
 PetalburgWoods_Text_TrainerTipsExperience:
 	.string "TRAINER TIPS\p"
 	.string "Any POKéMON that appears even once\n"
-	.string "in a battle is awarded EXP Points.\p"
+	.string "in a battle is awarded FULL EXP Points.\p"
+	.string "So are ones with the EXP. SHARE item.\p"
 	.string "To raise a weak POKéMON, put it at the\n"
 	.string "left of the team list.\p"
 	.string "As soon as a battle starts, switch it\n"
@@ -467,9 +468,6 @@ PetalburgWoods_Text_TrainerTipsExperience:
 
 PetalburgWoods_Text_TrainerTipsPP:
 	.string "TRAINER TIPS\p"
-	.string "In addition to Hit Points (HP), POKéMON\n"
-	.string "have Power Points (PP) that are used to\l"
-	.string "make moves during battle.\p"
-	.string "If a POKéMON runs out of PP, it must be\n"
-	.string "taken to a POKéMON CENTER.$"
+	.string "The man by the door in each gym\n"
+	.string "knows useful hints and tips.$"
 

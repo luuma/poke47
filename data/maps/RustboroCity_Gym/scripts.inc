@@ -121,6 +121,8 @@ RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "The ROCK type is very durable, but\n"
 	.string "it can't stand WATER-type and\l"
 	.string "GRASS-type moves.\p"
+	.string "ROXANNE has a Lv. 14 ROGGENROLA.\n"
+	.string "Watch out for its Weak Armor!\p"
 	.string "Come see me afterwards, if you beat\n"
 	.string "the GYM LEADER.\p"
 	.string "Well, go for it!$"

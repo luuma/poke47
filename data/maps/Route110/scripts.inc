@@ -124,8 +124,52 @@ Route110_EventScript_TrainerTipsRegisterItems::
 	end
 
 Route110_EventScript_TrickHouseSign::
-	msgbox Route110_Text_TrickHouseSign, MSGBOX_SIGN
+	call_if_eq VAR_FACING, DIR_WEST, Route110_EventScript_TrickHouseSignLeft
+	call_if_eq VAR_FACING, DIR_EAST, Route110_EventScript_TrickHouseSignRight
+	call_if_eq VAR_FACING, DIR_NORTH, Route110_EventScript_TrickHouseSignUp
+	msgbox Route110_Text_TrickHouseSignfaceDown, MSGBOX_SIGN
 	end
+
+
+Route110_EventScript_TrickHouseSignLeft::
+	msgbox Route110_Text_TrickHouseSignfaceLeft, MSGBOX_SIGN
+	end
+
+Route110_EventScript_TrickHouseSignRight::
+	msgbox Route110_Text_TrickHouseSignfaceRight, MSGBOX_SIGN
+	end
+
+Route110_EventScript_TrickHouseSignUp::
+	msgbox Route110_Text_TrickHouseSignfaceUp, MSGBOX_SIGN
+	end
+
+Route110_Text_TrickHouseSignfaceUp:
+	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
+	.string "to reach the wondrous TRICK HOUSE.”$"
+
+Route110_Text_TrickHouseSignfaceLeft:
+	.string "“Two steps {RIGHT_ARROW} and one step {UP_ARROW}\n"
+	.string "to reach the fabulous TRICK HOUSE.”$"
+
+Route110_Text_TrickHouseSignfaceRight:
+	.string "“One step {DOWN_ARROW}, four steps {RIGHT_ARROW},\n"
+ 	.string "“and two steps {UP_ARROW},\l"
+	.string "to reach the incredible TRICK HOUSE.”$"
+
+Route110_Text_TrickHouseSignfaceDown:
+	.string "“One step {LEFT_ARROW}, and two steps {DOWN_ARROW},\n"
+	.string "“and four steps {RIGHT_ARROW}, and eight steps {DOWN_ARROW},\l"
+	.string "to collide with a fence post.”$"
+
+Route110_EventScript_TrickHouseSignHaha::
+	msgbox Route110_Text_TrickHouseSignHaha, MSGBOX_SIGN
+	end
+
+
+Route110_Text_TrickHouseSignHaha:
+	.string "“Wow, you actually did what I wrote!?”\p"
+	.string "“Unfortunately, this is a shit post.”$"
+
 
 Route110_EventScript_CyclingRoadResultsSign::
 	lockall
@@ -937,19 +981,21 @@ Route110_Text_MauvilleCitySign:
 
 Route110_Text_TrainerTipsPrlzSleep:
 	.string "TRAINER TIPS\p"
-	.string "The foe can be made helpless by\n"
-	.string "paralyzing it or causing it to sleep.\p"
-	.string "It is an important technique for\n"
-	.string "POKéMON battles.$"
+	.string "The BERRY and CHAIN FISHING mechanics\n"
+	.string "in this game match those from X and Y.\p"
+	.string "Time passes at 5 hours per hour.\n"
+	.string "Horticulture is fun and profitable!\l"
+	.string "Don't forget to sleep in your bed!$"
 
 Route110_Text_TrainerTipsRegisterItems:
 	.string "TRAINER TIPS\p"
-	.string "The items in the BAG can be reorganized\n"
-	.string "by pressing SELECT.$"
+	.string "All of the TRAINER TIPS signs show useful\n"
+	.string "information about exclusive features except\l"
+	.string "this one.\p"
+	.string "Here is some trivia instead! ORANGURU shows\n"
+	.string "tiny icons to its trainer in battle, showing\l"
+	.string "its moves' type effectiveness.$"
 
-Route110_Text_TrickHouseSign:
-	.string "“Three steps {RIGHT_ARROW} and two steps {UP_ARROW}\n"
-	.string "to reach the wondrous TRICK HOUSE.”$"
 
 Route110_Text_BestRecord:
 	.string "THE BEST RECORD TO DATE…\p"

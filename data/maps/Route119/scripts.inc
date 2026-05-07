@@ -622,4 +622,4 @@ Route119_Text_TrainerTipsDecoration:
 	.string "a SECRET BASE.\p"
 	.string "Pick your favorite items and create\n"
 	.string "your very own SECRET BASE exactly the\l"
-	.string "way you want.$"
+	.string "way you want. There are some new ones!$"

@@ -141,8 +141,8 @@ FortreeCity_Gym_Text_GymGuideAdvice:
 	.string "a master of FLYING-type POKéMON.\p"
 	.string "She's waiting at the back of this GYM,\n"
 	.string "behind the rotating doors.\p"
-	.string "She's waiting for new challengers\n"
-	.string "who are trying to take wing!\p"
+	.string "Her team will whip the fog and wind\n"
+	.string "well into her favour!\p"
 	.string "Okay, go for it!$"
 
 FortreeCity_Gym_Text_GymGuidePostVictory:
