@@ -82,6 +82,7 @@ Pic: Collector
 Gender: Male
 Music: Hiker
 Double Battle: No
+AI: Basic Trainer
 
 === TRAINER_SAWYER_1 ===
 Name: SAWYER
@@ -7543,6 +7544,7 @@ Gender: Female
 Music: Cool
 Items: Full Restore
 Double Battle: No
+AI: Check Bad Move / Try To Faint
 
 Ribombee
 Level: 43
@@ -7563,6 +7565,7 @@ Pic: Tuber F
 Gender: Female
 Music: Girl
 Double Battle: No
+AI: Check Bad Move / Try To Faint
 
 Palpitoad
 Level: 26
@@ -7575,6 +7578,7 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
+AI: Basic Trainer
 
 Ferroseed
 Level: 17
@@ -7608,6 +7612,7 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
+AI: Basic Trainer
 
 Ferroseed
 Level: 17
@@ -7624,6 +7629,7 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
+AI: Basic Trainer
 
 Ferroseed
 Level: 24
@@ -7663,6 +7669,7 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
+AI: Basic Trainer
 
 Ferroseed
 Level: 27
@@ -7699,6 +7706,7 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
+AI: Basic Trainer
 
 Ferroseed
 Level: 30
@@ -7732,6 +7740,7 @@ Pic: Ninja Boy
 Gender: Male
 Music: Suspicious
 Double Battle: No
+AI: Basic Trainer
 
 Ferroseed
 Level: 33
@@ -8248,7 +8257,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Goldeen
+Clauncher
 Level: 33
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -8321,7 +8330,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Seaking
+Clawitzer
 Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
@@ -16662,6 +16671,7 @@ Pic: Psychic F
 Gender: Female
 Music: Intense
 Double Battle: No
+AI: Basic Trainer
 
 Beheeyem
 Level: 41
@@ -16674,6 +16684,7 @@ Pic: Psychic M
 Gender: Male
 Music: Intense
 Double Battle: No
+AI: Basic Trainer
 
 Drifloon
 Level: 41
@@ -16690,6 +16701,7 @@ Pic: Gentleman
 Gender: Male
 Music: Rich
 Double Battle: No
+AI: Check Bad Move
 
 Spiritomb
 Level: 41

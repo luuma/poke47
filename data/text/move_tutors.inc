@@ -48,8 +48,8 @@ MoveTutor_Text_RolloutTaught:
 	.string "happy. Come on, let's roll!$"
 
 MoveTutor_Text_FuryCutterTeach:
-	.string "There's a move that gets stronger\n"
-	.string "when you keep using it in a row.\p"
+	.string "There's a move that hits twice,\n"
+	.string "and both times can poison.\p"
 	.string "It's a BUG-type move, and it is\n"
 	.string "wickedly cool.\p"
 	.string "It's called TWINEEDLE.\n"
@@ -64,7 +64,7 @@ MoveTutor_Text_FuryCutterWhichMon:
 
 MoveTutor_Text_FuryCutterTaught:
 	.string "I get a thrill watching to see if\n"
-	.string "the move keeps hitting in succession!$"
+	.string "the move poisons the foe!$"
 
 MoveTutor_MimicTeach:
 	.string "Ah, young one!\p"
@@ -151,8 +151,8 @@ MoveTutor_Text_SubstituteTeach:
 
 MoveTutor_Text_SubstituteDeclined:
 	.string "Oh, no?\p"
-	.string "A POKéMON can make a copy of\n"
-	.string "itself using it, you know.$"
+	.string "A POKéMON can trade stats by\n"
+	.string "using it, you know.$"
 
 MoveTutor_Text_SubstituteWhichMon:
 	.string "Giggle…\n"

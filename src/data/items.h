@@ -16086,9 +16086,9 @@ const struct ItemInfo gItemsInfo[] =
         .holdEffect = HOLD_EFFECT_DAMAGE_BOUNCEABLES,//and corresponding MOVE_LIMITATION_SPIKY_VEST
         .holdEffectParam = 6,
         .description = COMPOUND_STRING(
-            "Bans non-status\n"
-            "moves, but hurts\n"
-            "any foe it targets."),
+            "Foes hit by holder's\n"
+            "STATUS moves lose\n"
+            "1/6 HP. Can't hurt."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,

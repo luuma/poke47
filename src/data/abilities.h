@@ -1533,8 +1533,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_LONG_REACH] =
     {
         .name = _("Long Reach"),
-        .description = COMPOUND_STRING("Never makes contact."),
-        .aiRating = 3,
+        .description = COMPOUND_STRING("Ignores contact/immunity."),
+        .aiRating = 7,
     },
 
     [ABILITY_LIQUID_VOICE] =

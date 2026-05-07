@@ -90,7 +90,7 @@ SINGLE_BATTLE_TEST("POKE47: Mood Crush replaces target's ability with dEFEATIST"
     }
 }
 
-DOUBLE_BATTLE_TEST("mood Crush STILL damages if target is defeatist")
+DOUBLE_BATTLE_TEST("POKE47: mood Crush STILL damages if target is defeatist")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Ability(ABILITY_TELEPATHY); }
@@ -116,7 +116,7 @@ DOUBLE_BATTLE_TEST("mood Crush STILL damages if target is defeatist")
 
 
 
-DOUBLE_BATTLE_TEST("Screen Burn makes the user lose 1/2 of its Max HP in a double battle")
+DOUBLE_BATTLE_TEST("POKE47: Screen Burn makes the user lose 1/2 of its Max HP in a double battle")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { HP(201); MaxHP(400); }
@@ -132,7 +132,7 @@ DOUBLE_BATTLE_TEST("Screen Burn makes the user lose 1/2 of its Max HP in a doubl
     }
 }
 
-DOUBLE_BATTLE_TEST("Screen Burn causes the user to faint when below 1/2 of its Max HP in a double battle")
+DOUBLE_BATTLE_TEST("POKE47: Screen Burn causes the user to faint when below 1/2 of its Max HP in a double battle")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { HP(200); MaxHP(400); }
@@ -306,7 +306,7 @@ SINGLE_BATTLE_TEST("POKE47: Emergency Exit will trigger due to recoil damage fro
     }
 }
 
-DOUBLE_BATTLE_TEST("Rototiller boosts Attack and Special Attack of all Grass types on the field")
+DOUBLE_BATTLE_TEST("POKE47: Rototiller boosts Attack and Special Attack of all Grass types on the field")
 {
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_TANGELA, 0) == TYPE_GRASS);
@@ -338,7 +338,7 @@ DOUBLE_BATTLE_TEST("Rototiller boosts Attack and Special Attack of all Grass typ
 }
 
 
-DOUBLE_BATTLE_TEST("Flower Shield sharply raises the sp defense of all Grass-type Pokémon")
+DOUBLE_BATTLE_TEST("POKE47: Flower Shield sharply raises the sp defense of all Grass-type Pokémon")
 {
     GIVEN {
         ASSUME(GetSpeciesType(SPECIES_TANGELA, 0) == TYPE_GRASS);
@@ -546,7 +546,7 @@ SINGLE_BATTLE_TEST("POKE47: Mist blocks secondary effects")
 }
 
 
-DOUBLE_BATTLE_TEST("hawkeye boosts crit chance by 1 stage")
+DOUBLE_BATTLE_TEST("POKE47: hawkeye boosts crit chance by 1 stage")
 {
     u32 j;
     GIVEN {
@@ -577,7 +577,7 @@ DOUBLE_BATTLE_TEST("hawkeye boosts crit chance by 1 stage")
 }
 
 
-DOUBLE_BATTLE_TEST("Just Desserts recycles allies' berries 100% of the time")
+DOUBLE_BATTLE_TEST("POKE47: Just Desserts recycles allies' berries 100% of the time")
 {
     GIVEN {
         ASSUME(GetItemHoldEffect(ITEM_APICOT_BERRY) == HOLD_EFFECT_SP_DEFENSE_UP);

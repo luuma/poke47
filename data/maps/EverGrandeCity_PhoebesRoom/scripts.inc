@@ -59,7 +59,7 @@ EverGrandeCity_PhoebesRoom_EventScript_Defeated::
 	giveitem ITEM_TM_PHANTOM_FORCE
 	setflag FLAG_PHOEBE_PHANTOM_FORCE
 EverGrandeCity_PhoebesRoom_EventScript_PostTMSpeech::
-	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
 

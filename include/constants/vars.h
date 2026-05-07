@@ -97,7 +97,7 @@
 #define VAR_POKELOT_RND1                                 0x404B
 #define VAR_POKELOT_RND2                                 0x404C
 #define VAR_POKELOT_PRIZE_PLACE                          0x404D
-#define VAR_UNUSED_0x404E                                0x404E // Unused Var
+#define VAR_GAUNTLET_1                               			 0x404E // Unused Var
 #define VAR_LOTAD_SIZE_RECORD                            0x404F
 #define VAR_LITTLEROOT_TOWN_STATE                        0x4050
 #define VAR_OLDALE_TOWN_STATE                            0x4051
@@ -138,7 +138,7 @@
 #define VAR_ROUTE121_STATE                               0x4074
 #define VAR_ROUTE122_STATE                               0x4075 // Unused Var
 #define VAR_ROUTE123_STATE                               0x4076 // Unused Var
-#define VAR_ROUTE124_STATE                               0x4077 // Unused Var
+#define VAR_GAUNTLET_2					                              0x4077 // Unused Var
 #define VAR_ROUTE125_STATE                               0x4078 // Unused Var
 #define VAR_VOLTORB_FLIP_DIFFICULTY                      0x4079 
 #define VAR_FLAPPY_HISCORE                               0x407A 
@@ -150,7 +150,7 @@
 #define VAR_DERBY_5                               0x4080 //
 #define VAR_DERBY_6                               0x4081 // 
 #define VAR_LITTLEROOT_HOUSES_STATE_MAY                  0x4082
-#define VAR_UNUSED_0x4083                                0x4083 // Unused Var
+#define VAR_GAUNTLET_3                                0x4083 // Unused Var
 #define VAR_BIRCH_LAB_STATE                              0x4084
 #define VAR_PETALBURG_GYM_STATE                          0x4085 // 0-1: Wally tutorial, 2-6: 0-4 badges, 7: Defeated Norman, 8: Rematch Norman
 #define VAR_CONTEST_HALL_STATE                           0x4086
@@ -241,13 +241,13 @@
 #define VAR_UNUSED_0x40DB                                0x40DB // Unused Var
 #define VAR_UNUSED_0x40DC                                0x40DC // Unused Var
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
-#define VAR_GIFT_UNUSED_1                                0x40DE // Var is written to, but never read
-#define VAR_GIFT_UNUSED_2                                0x40DF // Var is written to, but never read
-#define VAR_GIFT_UNUSED_3                                0x40E0 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_4                                0x40E1 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_5                                0x40E2 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_6                                0x40E3 // Var is written to, but never read
-#define VAR_GIFT_UNUSED_7                                0x40E4 // var is written to, but never read
+#define VAR_GAUNTLET_4                                0x40DE // Var CLEANED
+#define VAR_GAUNTLET_5                                0x40DF // Var CLEANED
+#define VAR_GAUNTLET_6                                0x40E0 // CLEANED
+#define VAR_GAUNTLET_7                                0x40E1 // CLEANED
+#define VAR_GAUNTLET_8                                0x40E2 // CLEANED
+#define VAR_GAUNTLET_BITFIELD_1                                0x40E3 // CLEANED
+#define VAR_GAUNTLET_BITFIELD_2                                0x40E4 // CLEANED
 #define VAR_UNUSED_0x40E5                                0x40E5 // Unused Var
 #define VAR_DAILY_SLOTS                                  0x40E6
 #define VAR_DAILY_WILDS                                  0x40E7
@@ -266,9 +266,9 @@
 #define VAR_ROXANNE_CALL_STEP_COUNTER                    0x40F4
 #define VAR_SCOTT_BF_CALL_STEP_COUNTER                   0x40F5
 #define VAR_RIVAL_RAYQUAZA_CALL_STEP_COUNTER             0x40F6
-#define VAR_PHOTOSTATE                                0x40F7 // Unused Var
-#define VAR_129_CYCLE_STATE                                0x40F8 // Unused Var
-#define VAR_OLD_LADY                                0x40F9 // Unused Var
+#define VAR_PHOTOSTATE                                0x40F7 // Are we seeing photos
+#define VAR_129_CYCLE_STATE                                0x40F8 // cycle time
+#define VAR_OLD_LADY                                0x40F9 // Old lady rest stop punish
 #define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var

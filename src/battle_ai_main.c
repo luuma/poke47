@@ -5007,8 +5007,20 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
                 ADJUST_SCORE(DECENT_EFFECT);
         }
         break;
+    case EFFECT_MIRACLE_EYE:
+        if (aiData->abilities[battlerAtk] == ABILITY_LONG_REACH)
+            break;
+        if ((IS_BATTLER_OF_TYPE(battlerDef, TYPE_DARK) && (HasMoveWithType(battlerAtk, TYPE_PSYCHIC)))
+          || (IS_BATTLER_OF_TYPE(battlerDef, TYPE_GROUND) && (HasMoveWithType(battlerAtk, TYPE_ELECTRIC)))
+          || (IS_BATTLER_OF_TYPE(battlerDef, TYPE_NORMAL) && (HasMoveWithType(battlerAtk, TYPE_GHOST)))
+          || (IS_BATTLER_OF_TYPE(battlerDef, TYPE_FAIRY) && (HasMoveWithType(battlerAtk, TYPE_DRAGON)))
+          || (IS_BATTLER_OF_TYPE(battlerDef, TYPE_FLYING) && (HasMoveWithType(battlerAtk, TYPE_FLYING)))
+          || (IS_BATTLER_OF_TYPE(battlerDef, TYPE_STEEL) && (HasMoveWithType(battlerAtk, TYPE_POISON)))
+		)
+            ADJUST_SCORE(DECENT_EFFECT);
+         // fallthrough
     case EFFECT_FORESIGHT:
-        if (aiData->abilities[battlerAtk] == ABILITY_SCRAPPY || aiData->abilities[battlerAtk] == ABILITY_MINDS_EYE)
+        if (aiData->abilities[battlerAtk] == ABILITY_SCRAPPY || aiData->abilities[battlerAtk] == ABILITY_MINDS_EYE || aiData->abilities[battlerAtk] == ABILITY_LONG_REACH)
             break;
         else if (gBattleMons[battlerDef].statStages[STAT_EVASION] > DEFAULT_STAT_STAGE
          || (IS_BATTLER_OF_TYPE(battlerDef, TYPE_GHOST)
@@ -5016,11 +5028,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
          || HasMoveWithType(battlerAtk, TYPE_FIGHTING))))
             ADJUST_SCORE(DECENT_EFFECT);
         break;
-    case EFFECT_MIRACLE_EYE:
-        if (gBattleMons[battlerDef].statStages[STAT_EVASION] > DEFAULT_STAT_STAGE
-          || (IS_BATTLER_OF_TYPE(battlerDef, TYPE_DARK) && (HasMoveWithType(battlerAtk, TYPE_PSYCHIC))))
-            ADJUST_SCORE(DECENT_EFFECT);
-        break;
+
     case EFFECT_PERISH_SONG:
         if (IsBattlerTrapped(battlerAtk, battlerDef))
             ADJUST_SCORE(GOOD_EFFECT);

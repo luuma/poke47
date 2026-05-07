@@ -304,7 +304,7 @@ SeafloorCavern_Room9_Text_ArchieDontGetAllHighAndMighty:
 	.string "Wasn't it you, TEAM MAGMA, that\n"
 	.string "infuriated RESHIRAM?\p"
 	.string "So long as I have this RED ORB,\n"
-	.string "I should be able to control KYOGRE…\p"
+	.string "I should be able to control ZEKROM…\p"
 	.string "I should be able to control it…$"
 
 SeafloorCavern_Room9_Text_MaxieWeDontHaveTimeToArgue:

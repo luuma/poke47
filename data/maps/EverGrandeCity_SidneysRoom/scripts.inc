@@ -90,7 +90,7 @@ EverGrandeCity_SidneysRoom_Text_PostFirstVictorySpeech:
 	.string "a good luck charm.\p"
 	.string "Anything under LV 50 will start\n"
 	.string "raking in a few more Exp. Points.\p"
-	.string "Good work, kid. Take this.\p"
+	.string "Good work, kid. Take this.$"
 
 EverGrandeCity_SidneysRoom_Text_PostBattleSpeech:
 	.string "Well, listen to what this loser has\n"

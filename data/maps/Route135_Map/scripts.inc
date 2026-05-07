@@ -8,7 +8,7 @@ Route135_sign1::
 	end
 
 Route135_route_sign:
-	.string "Route Route135\p"
+	.string "Route 135\p"
 	.string "Parental advisory:\n"
 	.string "no longer suitable for miners\l"
 	.string "{UP_ARROW} Route 123$"

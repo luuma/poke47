@@ -193,7 +193,7 @@ SINGLE_BATTLE_TEST("POKE47: 7 TURN constrictor withOUT grip claw")
 }
 
 
-SINGLE_BATTLE_TEST("POKE47: Ice Bod 7 TURN wrap constrictor passes and heals like leftovers.")
+SINGLE_BATTLE_TEST("POKE47: Ice Bod passes and heals like leftovers.")
 {
     GIVEN {
         PLAYER(SPECIES_CARNIVINE) { Moves(MOVE_WRAP, MOVE_CELEBRATE); Ability(ABILITY_CONSTRICTOR); }
@@ -312,7 +312,7 @@ SINGLE_BATTLE_TEST("POKE47: Pressure causes opponent's moves to use up 2 additio
     }
 }
 
-DOUBLE_BATTLE_TEST("Pressure's +2PP effect stacks with multiple Pokémon")
+DOUBLE_BATTLE_TEST("POKE47: Pressure's +2PP effect stacks with multiple Pokémon")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_SWIFT, 20}); }

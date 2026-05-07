@@ -107,7 +107,7 @@ SINGLE_BATTLE_TEST("POKE47: EvioliUM INgot does not boost Defense or Sp. Def for
 }
 
 
-DOUBLE_BATTLE_TEST("Eviopolymer 1.5x for nfe, 1.1X for full evolved")
+DOUBLE_BATTLE_TEST("POKE47: Eviopolymer 1.5x for nfe, 1.1X for full evolved")
 {
     GIVEN {
         PLAYER(SPECIES_GEODUDE) { Speed(100); Item(ITEM_EVIOPOLYMER); }
@@ -156,7 +156,7 @@ SINGLE_BATTLE_TEST("POKE47: NORMAL PP")
 }
 
 
-DOUBLE_BATTLE_TEST("Knell Bell causes opponent's moves to use 4 PP - TIMES 3 vs pressure. NORMAL pressure is *3.")
+DOUBLE_BATTLE_TEST("POKE47: Knell Bell causes opponent's moves to use 4 PP - TIMES 3 vs pressure. NORMAL pressure is *3.")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_GROWL, 35}); Item(ITEM_KNELL_BELL); }
@@ -171,7 +171,7 @@ DOUBLE_BATTLE_TEST("Knell Bell causes opponent's moves to use 4 PP - TIMES 3 vs 
     }
 }
 
-DOUBLE_BATTLE_TEST("Knell Bell causes opponent's moves to use 4 PP - TIMES 5 vs double pressure. NORMAL pressure is *5.")
+DOUBLE_BATTLE_TEST("POKE47: Knell Bell causes opponent's moves to use 4 PP - TIMES 5 vs double pressure. NORMAL pressure is *5.")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { MovesWithPP({MOVE_GROWL, 35}); Item(ITEM_KNELL_BELL); }
@@ -233,7 +233,7 @@ SINGLE_BATTLE_TEST("POKE47: Wizard Cape TEST with message")
     }
 }
 
-DOUBLE_BATTLE_TEST("Wizard Cape in doubles")
+DOUBLE_BATTLE_TEST("POKE47: Wizard Cape in doubles")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Level(40); Item(ITEM_DAMAGE_BOUNCEABLES);}

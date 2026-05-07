@@ -74,6 +74,230 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 
+
+// for autobattle
+#include "battle_script_commands.h"
+
+
+// table to avoid ugly powing on gba (courtesy of doesnt)
+// this returns (i^2.5)/4
+// the quarters cancel so no need to re-quadruple them in actual calculation
+static const s32 sExperienceScalingFactors[] =
+{
+    0,
+    0,
+    1,
+    3,
+    8,
+    13,
+    22,
+    32,
+    45,
+    60,
+    79,
+    100,
+    124,
+    152,
+    183,
+    217,
+    256,
+    297,
+    343,
+    393,
+    447,
+    505,
+    567,
+    634,
+    705,
+    781,
+    861,
+    946,
+    1037,
+    1132,
+    1232,
+    1337,
+    1448,
+    1563,
+    1685,
+    1811,
+    1944,
+    2081,
+    2225,
+    2374,
+    2529,
+    2690,
+    2858,
+    3031,
+    3210,
+    3396,
+    3587,
+    3786,
+    3990,
+    4201,
+    4419,
+    4643,
+    4874,
+    5112,
+    5357,
+    5608,
+    5866,
+    6132,
+    6404,
+    6684,
+    6971,
+    7265,
+    7566,
+    7875,
+    8192,
+    8515,
+    8847,
+    9186,
+    9532,
+    9886,
+    10249,
+    10619,
+    10996,
+    11382,
+    11776,
+    12178,
+    12588,
+    13006,
+    13433,
+    13867,
+    14310,
+    14762,
+    15222,
+    15690,
+    16167,
+    16652,
+    17146,
+    17649,
+    18161,
+    18681,
+    19210,
+    19748,
+    20295,
+    20851,
+    21417,
+    21991,
+    22574,
+    23166,
+    23768,
+    24379,
+    25000,
+    25629,
+    26268,
+    26917,
+    27575,
+    28243,
+    28920,
+    29607,
+    30303,
+    31010,
+    31726,
+    32452,
+    33188,
+    33934,
+    34689,
+    35455,
+    36231,
+    37017,
+    37813,
+    38619,
+    39436,
+    40262,
+    41099,
+    41947,
+    42804,
+    43673,
+    44551,
+    45441,
+    46340,
+    47251,
+    48172,
+    49104,
+    50046,
+    50999,
+    51963,
+    52938,
+    53924,
+    54921,
+    55929,
+    56947,
+    57977,
+    59018,
+    60070,
+    61133,
+    62208,
+    63293,
+    64390,
+    65498,
+    66618,
+    67749,
+    68891,
+    70045,
+    71211,
+    72388,
+    73576,
+    74777,
+    75989,
+    77212,
+    78448,
+    79695,
+    80954,
+    82225,
+    83507,
+    84802,
+    86109,
+    87427,
+    88758,
+    90101,
+    91456,
+    92823,
+    94202,
+    95593,
+    96997,
+    98413,
+    99841,
+    101282,
+    102735,
+    104201,
+    105679,
+    107169,
+    108672,
+    110188,
+    111716,
+    113257,
+    114811,
+    116377,
+    117956,
+    119548,
+    121153,
+    122770,
+    124401,
+    126044,
+    127700,
+    129369,
+    131052,
+    132747,
+    134456,
+    136177,
+    137912,
+    139660,
+    141421,
+    143195,
+    144983,
+    146784,
+    148598,
+    150426,
+    152267,
+    154122,
+    155990,
+    157872,
+    159767,
+};
+
+
 extern u16 gSpecialVar_ItemId;
 
 #define FRIENDSHIP_EVO_THRESHOLD ((P_FRIENDSHIP_EVO_THRESHOLD >= GEN_8) ? 160 : 220)
@@ -496,7 +720,15 @@ static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(BASCULEGION),
 };
 
-// In Battle Palace, moves are chosen based on the Pokémon's nature rather than by the player
+const struct SpindaSpot gSpindaSpotGraphics[] =
+{
+    {.x = 16, .y =  7, .image = INCGFX_U16("graphics/pokemon/spinda/spots/spot_0.png", ".1bpp", "-plain -data_width 2")},
+    {.x = 40, .y =  8, .image = INCGFX_U16("graphics/pokemon/spinda/spots/spot_1.png", ".1bpp", "-plain -data_width 2")},
+    {.x = 22, .y = 25, .image = INCGFX_U16("graphics/pokemon/spinda/spots/spot_2.png", ".1bpp", "-plain -data_width 2")},
+    {.x = 34, .y = 26, .image = INCGFX_U16("graphics/pokemon/spinda/spots/spot_3.png", ".1bpp", "-plain -data_width 2")}
+};
+
+// In Battle Palace, moves are chosen based on the pokemons nature rather than by the player
 // Moves are grouped into "Attack", "Defense", or "Support" (see PALACE_MOVE_GROUP_*)
 // Each nature has a certain percent chance of selecting a move from a particular group
 // and a separate percent chance for each group when at or below 50% HP
@@ -7385,23 +7617,40 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
 
 u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
 {
+    if (InBattlePyramid_() || InBattlePike())
+        return(0);// Note this also always fights like a lv1 mon.
     u8 initialLevel = GetMonData(mon, MON_DATA_LEVEL);
     u32 totalXP = GetMonData(mon, MON_DATA_EXP);
-    u32 addxp = gSpeciesInfo[speciesFoe].expYield * levelFoe * (levelFoe+2);
-    addxp /= (13*(initialLevel+2));
-    addxp = max(addxp, 1); 
-    addxp = GetSoftLevelCapExpValue(initialLevel, addxp);// This is added because users will expect soft level caps to apply to autobattling.
-    totalXP = addxp + totalXP;
+    u32 addxp = gSpeciesInfo[speciesFoe].expYield * levelFoe;
+    addxp /= 5;
+    addxp *= sExperienceScalingFactors[(levelFoe * 2) +10];
+    addxp /= sExperienceScalingFactors[levelFoe+initialLevel+10];
+    addxp += 1; 
+    addxp /= 2.5;
+    u32 bufferxp = GetSoftLevelCapExpValue(initialLevel, addxp);
+    totalXP = totalXP + bufferxp;// This is added because users will expect soft level caps to apply to autobattling.
     SetMonData(mon, MON_DATA_EXP, &totalXP);
     ApplyDaycareExperience(mon);
     u8 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
-    if (finalLevel <= initialLevel)
-        return (addxp);
-    else
-    {
+    if (finalLevel > initialLevel)
         PlayFanfare(MUS_LEVEL_UP);
-        return (addxp);
+    //u32 addxp2 = addxp / 2;
+    u32 i;
+    for (i = 1; i < PARTY_SIZE; i++)//skip slot 1 and loop through everything trying to play the trumpet
+    {
+        if (!(GetItemHoldEffect(GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM)) == HOLD_EFFECT_EXP_SHARE))
+            continue;
+        if (!IsValidForBattle(&gPlayerParty[i]))
+            continue;
+        totalXP = GetMonData(&gPlayerParty[i], MON_DATA_EXP);
+        initialLevel = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+        totalXP = totalXP + GetSoftLevelCapExpValue(initialLevel, addxp);// This is added because users will expect soft level caps to apply to autobattling.
+        SetMonData(&gPlayerParty[i], MON_DATA_EXP, &totalXP);
+        finalLevel = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+        if (finalLevel > initialLevel)
+            PlayFanfare(MUS_LEVEL_UP);
     }
+    return (bufferxp);
 }
 
 void ScriptAutobattle(struct ScriptContext *ctx)

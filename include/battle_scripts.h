@@ -11,8 +11,7 @@ extern const u8 BattleScript_MakeMoveMissed[];
 extern const u8 BattleScript_MoveMissedPause[];
 extern const u8 BattleScript_MoveMissedPause[];
 extern const u8 BattleScript_MoveMissed[];
-extern const u8 BattleScript_FlingMissed[];
-extern const u8 BattleScript_FlingMessage[];
+extern const u8 BattleScript_TargetAvoidsAttackEnd[];
 extern const u8 BattleScript_FlingFailConsumeItem[];
 extern const u8 BattleScript_RemoveItem[];
 extern const u8 BattleScript_FlingBlockedByShieldDust[];
@@ -813,6 +812,8 @@ extern const u8 BattleScript_SelectingNotAllowedMoveSpikyVest[];
 extern const u8 BattleScript_SelectingNotAllowedMoveSpikyVestInPalace[];
 extern const u8 BattleScript_RaiseStatOnForecast[];
 extern const u8 BattleScript_EffectNavalBlockade[];
+extern const u8 BattleScript_WishiwashiConstruct[];
+extern const u8 BattleScript_WishiwashiConstruct2[];
 
 
 

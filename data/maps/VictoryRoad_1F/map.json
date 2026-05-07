@@ -195,7 +195,7 @@
       "type": "hidden_item",
       "x": 18,
       "y": 27,
-      "elevation": 4,
+      "elevation": 3,
       "item": "ITEM_MAX_ELIXIR",
       "flag": "FLAG_HIDDEN_ITEM_VICTORY_ROAD_1F_ULTRA_BALL"
     }

@@ -35,7 +35,7 @@ SINGLE_BATTLE_TEST("POKE47: Dancer can copy Teeter Dance")
     }
 }
 
-DOUBLE_BATTLE_TEST("Dancer can copy Teeter Dance and confuse both opposing targets")
+DOUBLE_BATTLE_TEST("POKE47: Dancer can copy Teeter Dance and confuse both opposing targets")
 {
     GIVEN {
         ASSUME(IsDanceMove(MOVE_TEETER_DANCE));
@@ -93,7 +93,7 @@ SINGLE_BATTLE_TEST("POKE47: PARROT doesn't trigger if the original user flinches
     }
 }
 
-DOUBLE_BATTLE_TEST("PARROT still triggers if another PARROT flinches")
+DOUBLE_BATTLE_TEST("POKE47: PARROT still triggers if another PARROT flinches")
 {
     GIVEN {
         ASSUME(MoveHasAdditionalEffectWithChance(MOVE_FAKE_OUT, MOVE_EFFECT_FLINCH, 100));
@@ -138,7 +138,7 @@ SINGLE_BATTLE_TEST("POKE47: PARROT-called attacks do not trigger Life Orb if tar
     }
 }
 
-DOUBLE_BATTLE_TEST("PARROT doesn't trigger on a snatched move")
+DOUBLE_BATTLE_TEST("POKE47: PARROT doesn't trigger on a snatched move")
 {
     GIVEN {
         ASSUME(IsDanceMove(MOVE_CLANGOROUS_SOUL));
@@ -160,7 +160,7 @@ DOUBLE_BATTLE_TEST("PARROT doesn't trigger on a snatched move")
     }
 }
 
-DOUBLE_BATTLE_TEST("PARROT doesn't trigger when an ally snatches the move")
+DOUBLE_BATTLE_TEST("POKE47: PARROT doesn't trigger when an ally snatches the move")
 {
     GIVEN {
         ASSUME(IsDanceMove(MOVE_DRAGON_DANCE));
@@ -206,7 +206,7 @@ SINGLE_BATTLE_TEST("POKE47: PARROT can still copy a move even if it's being forc
 
 
 
-DOUBLE_BATTLE_TEST("PARROT copies parting shot and both users switch successfully.")
+DOUBLE_BATTLE_TEST("POKE47: PARROT copies parting shot and both users switch successfully.")
 {
     GIVEN {
         WITH_CONFIG(B_HEALING_WISH_SWITCH, GEN_7);
@@ -248,7 +248,7 @@ SINGLE_BATTLE_TEST("POKE47: PARROT roar")
 }
 
 
-DOUBLE_BATTLE_TEST("PARROT roar doubles")
+DOUBLE_BATTLE_TEST("POKE47: PARROT roar doubles")
 {
     GIVEN {
         PLAYER(SPECIES_RIOLU) { Speed(50); }
@@ -269,7 +269,7 @@ DOUBLE_BATTLE_TEST("PARROT roar doubles")
 }
 
 
-DOUBLE_BATTLE_TEST("PARROT-called moves doesn't update move to be called by Mirror Move")
+DOUBLE_BATTLE_TEST("POKE47: PARROT-called moves doesn't update move to be called by Mirror Move")
 {
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Speed(10); Item(ITEM_CHESTO_BERRY);}
