@@ -1,6 +1,7 @@
 #include "global.h"
 #include "sprite.h"
 #include "main.h"
+#include "overworld.h"
 #include "palette.h"
 #include "string_util.h"
 #include "text.h"
@@ -1651,8 +1652,18 @@ u32 LoadSpritePalette(const struct SpritePalette *palette)
 
     if (index == 0xFF)
     {
-        TryAndDespawnOldestGeneratedOWE_Palette();
-        index = IndexOfSpritePaletteTag(TAG_NONE);
+        if (gMain.callback2 == CB2_Overworld)
+        {
+            u32 count = GetNumberOfActiveOWEs(OWE_GENERATED);
+
+            for (; count > 0; count--)
+            {
+                RemoveOldestGeneratedOWE();
+                index = IndexOfSpritePaletteTag(TAG_NONE);
+                if (index != 0xFF)
+                    break;
+            }
+        }
         
         if (index == 0xFF)
             return 0xFF;
