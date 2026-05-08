@@ -739,10 +739,10 @@ extern const u8 BattleScript_AttackerItemSpandexFlares[];
 extern const u8 BattleScript_DamageBounceablesActivates[];
 extern const u8 BattleScript_SelectingNotAllowedMoveSpikyVest[];
 extern const u8 BattleScript_SelectingNotAllowedMoveSpikyVestInPalace[];
-extern const u8 BattleScript_RaiseStatOnForecast[];
+extern const u8 BattleScript_RaiseStatOnForecast[];// unnsure if needed but note it there.
 extern const u8 BattleScript_EffectNavalBlockade[];
 extern const u8 BattleScript_WishiwashiConstruct[];
-extern const u8 BattleScript_WishiwashiConstruct2[];
+extern const u8 BattleScript_SpicySprayImmune[];
 
 
 

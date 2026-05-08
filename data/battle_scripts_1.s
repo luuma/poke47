@@ -937,6 +937,16 @@ BattleScript_EffectPsychoShiftComatose:
 	goto BattleScript_MoveEnd
 
 
+
+BattleScript_SpicySprayImmune::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUpTarget
+	swapattackerwithtarget
+	printstring STRINGID_ITDOESNTAFFECT
+	waitmessage B_WAIT_TIME_LONG
+	swapattackerwithtarget
+	return
+
 BattleScript_ItDoesntAffectScrTarget::
 	printstring STRINGID_ITDOESNTAFFECTSCR
 	waitmessage B_WAIT_TIME_SHORT
@@ -2280,18 +2290,9 @@ BattleScript_EffectSafeguard::
 	goto BattleScript_PrintReflectLightScreenSafeguardString
 
 BattleScript_EffectNavalBlockade::
-	attackcanceler
-	setnavalblockade BattleScript_EffectNavalBlockadenotSet
-	attackanimation
-	waitanimation
 	printstring STRINGID_NAVALBLOCKADESTART
-BattleScript_EffectNavalBlockadenotSet::
-	setstatchanger STAT_SPDEF, 1, TRUE
-	statbuffchange BS_TARGET, STAT_CHANGE_ALLOW_PTR, BattleScript_EffectNavalBlockadeNoStat
-	jumpifbyte CMP_EQUAL, cMULTISTRING_CHOOSER, B_MSG_STAT_WONT_CHANGE, BattleScript_EffectNavalBlockadeNoStat
-	printfromtable gStatDownStringIds
 	waitmessage B_WAIT_TIME_LONG
-BattleScript_EffectNavalBlockadeNoStat::
+	trymovestatchanges
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectBatonPass::
@@ -5052,6 +5053,13 @@ BattleScript_MoveUsedPsychicTerrainPrevents::
 	printstring STRINGID_PSYCHICTERRAINPREVENTS
 	waitmessage B_WAIT_TIME_LONG
 	return
+
+BattleScript_TargetAvoidsAttackEnd::
+	pause B_WAIT_TIME_SHORT
+	setbyte cMULTISTRING_CHOOSER, B_MSG_AVOIDED_ATK
+	printfromtable gMissStringIds
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_GrassyTerrainHeals::
 	printstring STRINGID_GRASSYTERRAINHEALS

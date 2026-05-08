@@ -206,7 +206,7 @@ SINGLE_BATTLE_TEST("POKE47: PARROT can still copy a move even if it's being forc
 
 
 
-DOUBLE_BATTLE_TEST("POKE47: PARROT copies parting shot and both users switch successfully.")
+DOUBLE_BATTLE_TEST("POKE47: PARROT copies parting shot and both users switch successfully. Apparently targets the attacker!?")
 {
     GIVEN {
         WITH_CONFIG(B_HEALING_WISH_SWITCH, GEN_7);
@@ -221,11 +221,10 @@ DOUBLE_BATTLE_TEST("POKE47: PARROT copies parting shot and both users switch suc
         TURN { MOVE(playerLeft, MOVE_PARTING_SHOT, target:opponentRight); SEND_OUT(playerLeft, 2); SEND_OUT(playerRight, 3); }
     } SCENE {
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, playerLeft);
-        MESSAGE("Wobbuffet's Attack fell!");
+        //MESSAGE("Wobbuffet's Attack fell!");
+        SEND_IN_MESSAGE("Wynaut");
         ABILITY_POPUP(playerRight, ABILITY_PARROT);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_PARTING_SHOT, playerRight);
-        MESSAGE("Wobbuffet's Attack fell!");
-        SEND_IN_MESSAGE("Wynaut");
         SEND_IN_MESSAGE("Chansey");
     }
 }

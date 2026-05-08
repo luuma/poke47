@@ -2542,7 +2542,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_MOVE_RELEARNER] =
     {
         .name = _("Infinite Wisdom"),
-        .description = COMPOUND_STRING("Self tutor if switched out."),
+        .description = COMPOUND_STRING("Relearn moves in battle."),
         .aiRating = 8,
     },
 

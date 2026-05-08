@@ -551,8 +551,11 @@ static void Task_MoveRelearner_Quit(u8 taskId)
     {
         if (gRelearnMode == RELEARN_MODE_PSS_PAGE_CONTEST_MOVES)
             ShowPokemonSummaryScreen(SUMMARY_MODE_RELEARNER_CONTEST, gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, gPartiesCount[B_TRAINER_0] - 1, gInitialSummaryScreenCallback);
+        else if (gRelearnMode == RELEARN_MODE_BATTLING_PSS_PAGE_BATTLE_MOVES)
+            ShowPokemonSummaryScreen(SUMMARY_MODE_BATTLING_RELEARNER_BATTLE, gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, gPartiesCount[B_TRAINER_0]  - 1, gInitialSummaryScreenCallback);///////////////oranguru sigh..
         else
             ShowPokemonSummaryScreen(SUMMARY_MODE_RELEARNER_BATTLE, gParties[B_TRAINER_0], gTasks[taskId].tPartyIndex, gPartiesCount[B_TRAINER_0] - 1, gInitialSummaryScreenCallback);
+
     }
     else
     {

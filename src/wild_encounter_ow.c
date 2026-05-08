@@ -1056,7 +1056,7 @@ void TryTriggerOverworldWildEncounter(struct ObjectEvent *obstacle, struct Objec
     {
         ClearObjectEventMovement(wildMon, &gSprites[wildMon->spriteId]);
         ObjectEventsTurnToEachOther(obstacle, collider);
-        gSpecialVar_0x8005 = GetOWEEncounterLevel(wildMon->sOverworldEncounterLevel);
+        gSpecialVar_0x8005 = wildMon->sOverworldEncounterLevel;
         ScriptContext_SetupScript(OWEAutoBattleOverworldWildEncounter);
     }
 }

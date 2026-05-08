@@ -162,6 +162,7 @@ static bool32 HandleEndTurnWeatherDamage(enum BattlerId battler)
         if (currBattleWeather == BATTLE_WEATHER_HAIL)
         {
             if (ability != ABILITY_SNOW_CLOAK
+             && ability != ABILITY_ICE_BODY
              && ability != ABILITY_OVERCOAT
              && !IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
              && gBattleMons[battler].volatiles.semiInvulnerable != STATE_UNDERGROUND
@@ -1098,12 +1099,14 @@ static bool32 HandleEndTurnSecondEventBlock(enum BattlerId battler)
             PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_AURORA_VEIL);
             effect = TRUE;
         }
+        gBattleStruct->eventState.endTurnBlock++;
+        break;
     case SECOND_EVENT_BLOCK_NAVAL_BLOCKADE:
         if (gSideTimers[side].navalBlockadeTimer > 0 && --gSideTimers[side].navalBlockadeTimer == 0)
         {
             gBattlerAttacker = GetBattlerSideForMessage(side);
             gSideStatuses[side] &= ~SIDE_STATUS_NAVAL_BLOCKADE;
-            BattleScriptExecute(BattleScript_SideStatusWoreOff);
+            BattleScriptCall(BattleScript_SideStatusWoreOff);
             gBattleCommunication[MULTISTRING_CHOOSER] = side;
             PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_NAVAL_BLOCKADE);
             effect = TRUE;

@@ -1907,7 +1907,7 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
     },
     [EFFECT_NAVAL_BLOCKADE] =
     {
-        .battleScript = BattleScript_EffectNavalBlockade,
+        .battleScript = BattleScript_EffectStatChange,
         .battleTvScore = 5,
         .encourageEncore = TRUE,
     },

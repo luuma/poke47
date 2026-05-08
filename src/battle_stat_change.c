@@ -172,6 +172,18 @@ static bool32 CheckSpecificMoveCondition(struct BattleCalcValues *cv, struct Sta
             }
         }
         break;
+
+    case EFFECT_NAVAL_BLOCKADE:
+        if (!(gSideStatuses[GetBattlerSide(cv->battlerDef)] & SIDE_STATUS_NAVAL_BLOCKADE))
+        {
+            st->additionalEffectTriggers = TRUE;
+            if (!st->onlyChecking)
+            {
+                gSideStatuses[GetBattlerSide(cv->battlerDef)] |= SIDE_STATUS_NAVAL_BLOCKADE;
+                gSideTimers[GetBattlerSide(cv->battlerDef)].navalBlockadeTimer = 8;
+                st->moveScript = BattleScript_EffectNavalBlockade;
+            }
+        }
     default:
         break;
     }

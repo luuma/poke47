@@ -1737,7 +1737,10 @@ static void HandleMoveRelearnerInput(u8 taskId)
     if (JOY_NEW(START_BUTTON))
     {
         sMonSummaryScreen->callback = CB2_InitLearnMove;
-        gRelearnMode = sMonSummaryScreen->currPageIndex;
+        if (gMain.inBattle)
+            gRelearnMode = RELEARN_MODE_BATTLING_PSS_PAGE_BATTLE_MOVES;
+        else
+            gRelearnMode = sMonSummaryScreen->currPageIndex;
         gSpecialVar_MonBoxPos = sMonSummaryScreen->curMonIndex;
         if (sMonSummaryScreen->isBoxMon)
         {
@@ -2056,10 +2059,15 @@ static void Task_ChangeSummaryMon(u8 taskId)
             ChangeStatLabel(SUMMARY_SKILLS_MODE_STATS);
         }
 
-        if (P_SUMMARY_SCREEN_MOVE_RELEARNER && IS_MOVE_PAGE(sMonSummaryScreen->currPageIndex))
+        if (ShouldShowMoveRelearner() && IS_MOVE_PAGE(sMonSummaryScreen->currPageIndex))
         {
             gMoveRelearnerState = MOVE_RELEARNER_LEVEL_UP_MOVES;
             UpdateMoveRelearnerState(FALSE);
+            PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_RELEARN);
+        }
+        else
+        {
+            ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_RELEARN);
         }
         break;
     case 5:
@@ -4756,7 +4764,6 @@ static void KeepMoveSelectorVisible(u8 firstSpriteId)
 static inline bool32 ShouldShowMoveRelearner(void) 
 {
     return (P_SUMMARY_SCREEN_MOVE_RELEARNER
-         && sMonSummaryScreen->mode != SUMMARY_MODE_BOX_CURSOR
          && sMonSummaryScreen->hasRelearnableMoves
          && (IsMoveRelearnerAbilityActive() || (!InBattleFactory() && !InSlateportBattleTent() && !sMonSummaryScreen->lockMovesFlag ) ) );
 }
