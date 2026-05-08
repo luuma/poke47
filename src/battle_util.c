@@ -3608,7 +3608,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             // To prevent the new form's ability from pop up
             gBattleScripting.abilityPopupOverwrite = ability;
             if (gBattleMons[battler].species == SPECIES_WISHIWASHI_MECH)
-                BattleScriptCall(BattleScript_WishiwashiConstruct2);
+                BattleScriptCall(BattleScript_WishiwashiConstruct);
             else
                 BattleScriptCall(BattleScript_BattlerFormChange); // Generic animation
             effect++;
@@ -3728,9 +3728,9 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
             case ABILITY_FOCUS_BOOST:
                 if (CompareStat(battler, STAT_ACC, MAX_STAT_STAGE, CMP_LESS_THAN, gLastUsedAbility) && gBattleStruct->battlerState[battler].isFirstTurn != 2)
                 {
-                    SET_STATCHANGER(STAT_ACC, 1, FALSE);
-                    BattleScriptCall(BattleScript_AttackerAbilityStatRaise);
-                    gBattleScripting.battler = battler;
+                    gEffectBattler = gBattlerAbility = battler;
+                    SetStatChange(battler, STAT_ACC, 1);
+                    BattleScriptCall(BattleScript_AbilityStatChange);
                     effect++;
                 }
                 break;
@@ -4893,10 +4893,10 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 BattleScriptCall(BattleScript_BattlerFormChangeWithString);
                 if (CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN, ability))
                 {
-                    SET_STATCHANGER(STAT_SPATK, 1, FALSE);
-                    PREPARE_STAT_BUFFER(gBattleTextBuff1, STAT_SPATK);
-                    gBattleScripting.animArg1 = GET_STAT_BUFF_ID(STAT_SPATK) + (STAT_ANIM_PLUS1);
-                    BattleScriptCall(BattleScript_RaiseStatOnForecast);
+                    SetStatChange(battler, STAT_SPATK, 1);
+                    gLastUsedAbility = ability;
+                    gEffectBattler = gBattlerAbility = battler;
+                    BattleScriptCall(BattleScript_AbilityStatChange);// hope
                 }
                 effect++;
             }
@@ -8331,11 +8331,11 @@ static inline void MulByTypeEffectiveness(struct DamageContext *ctx, uq4_12_t *m
     else if ((ctx->moveType == TYPE_FIGHTING || ctx->moveType == TYPE_NORMAL) && defType == TYPE_GHOST && gBattleMons[ctx->battlerDef].volatiles.foresight && mod == UQ_4_12(0.0))
         mod = UQ_4_12(1.0);
 
-    else if (ctx->abilityAtk == ABILITY_LONG_REACH && mod == UQ_4_12(0.0))
+    else if (ctx->abilities[ctx->battlerAtk] == ABILITY_LONG_REACH && mod == UQ_4_12(0.0))
     {
         mod = UQ_4_12(1.0);
         if (ctx->updateFlags)
-            RecordAbilityBattle(ctx->battlerAtk, ctx->abilityAtk);
+            RecordAbilityBattle(ctx->battlerAtk, ctx->abilities[ctx->battlerAtk]);
     }
     else if ((ctx->moveType == TYPE_FIGHTING || ctx->moveType == TYPE_NORMAL) && defType == TYPE_GHOST
         && (ctx->abilities[ctx->battlerAtk] == ABILITY_SCRAPPY || ctx->abilities[ctx->battlerAtk] == ABILITY_MINDS_EYE)

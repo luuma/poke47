@@ -7440,48 +7440,6 @@ bool32 HasShedinjaHPHandling(enum Species species)
     return FALSE;
 }
 
-u32 OWE_GetMovementTypeFromSpecies(enum Species speciesId)
-{
-    speciesId = SanitizeSpeciesId(speciesId);
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].movementType;
-}
-
-u32 OWE_GetViewDistanceFromSpecies(enum Species speciesId)
-{
-    speciesId = SanitizeSpeciesId(speciesId);
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].viewDistance;
-}
-
-u32 OWE_GetViewWidthFromSpecies(enum Species speciesId)
-{
-    speciesId = SanitizeSpeciesId(speciesId);
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].viewWidth;
-}
-
-u32 OWE_GetViewActiveDistanceFromSpecies(enum Species speciesId)
-{
-    speciesId = SanitizeSpeciesId(speciesId);
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].activeDistance;
-}
-
-enum SpeedOWE OWE_GetIdleSpeedFromSpecies(enum Species speciesId)
-{
-    speciesId = SanitizeSpeciesId(speciesId);
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].idleSpeed;
-}
-
-enum SpeedOWE OWE_GetActiveSpeedFromSpecies(enum Species speciesId)
-{
-    speciesId = SanitizeSpeciesId(speciesId);
-    enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
-    return sOWESpeciesBehavior[behavior].activeSpeed;
-}
-
 static void DoAutobattle(enum Species speciesFoe, u8 levelFoe)
 {
     struct Pokemon *mon = GetFirstLiveMon();

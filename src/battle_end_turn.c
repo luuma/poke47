@@ -1396,7 +1396,7 @@ static bool32 HandleEndTurnFormChange(enum BattlerId battler)
             if (gBattleMons[battler].species == SPECIES_WISHIWASHI_MECH)
                 BattleScriptExecute(BattleScript_WishiwashiConstruct);
             else
-                BattleScriptExecute(BattleScript_BattlerFormChangeEnd2); // Generic animation
+                BattleScriptExecute(BattleScript_BattlerFormChange); // Generic animation
             break;
         case ABILITY_POWER_CONSTRUCT:
             BattleScriptCall(BattleScript_PowerConstruct);
