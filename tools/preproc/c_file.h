@@ -47,9 +47,9 @@ private:
     long m_lineNum;
     std::string m_filename;
     bool m_isStdin;
+    std::string m_graphicsRoot;
     std::map<std::vector<unsigned char>, std::uint64_t> m_compoundStrings;
     std::string m_output;
-    std::string m_graphicsRoot;
 
     bool ConsumeHorizontalWhitespace();
     bool ConsumeNewline();

@@ -512,19 +512,6 @@ static const u8 sDecorationSlideElevation[] =
     3, 0,
 };
 
-static const u16 sDecorShapeSizes[] = {
-    [DECORSHAPE_1x1] = 4,
-    [DECORSHAPE_2x1] = 8,
-    [DECORSHAPE_3x1] = 16,
-    [DECORSHAPE_4x2] = 32,
-    [DECORSHAPE_2x2] = 16,
-    [DECORSHAPE_1x2] = 8,
-    [DECORSHAPE_1x3] = 16,
-    [DECORSHAPE_2x4] = 32,
-    [DECORSHAPE_3x3] = 64,
-    [DECORSHAPE_3x2] = 32,
-};
-
 static const u16 sBrendanPalette[] = INCGFX_U16("graphics/decorations/brendan.pal", ".gbapal");
 
 static const u16 sMayPalette[] = INCGFX_U16("graphics/decorations/may.pal", ".gbapal");

@@ -103,5 +103,4 @@ const struct SpriteTemplate *const gFieldEffectObjectTemplatePointers[] = {
     [FLDEFFOBJ_SNOW_TRACKS_SPOT]           = &gFieldEffectObjectTemplate_SnowSpotTracks,
     [FLDEFFOBJ_SNOW_TRACKS_BUG]            = &gFieldEffectObjectTemplate_SnowBugTracks,
     [FLDEFFOBJ_SHINY_SPARKLE]         = &gFieldEffectObjectTemplate_ShinySparkle,
-
 };
