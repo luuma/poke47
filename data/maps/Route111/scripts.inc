@@ -661,11 +661,16 @@ Route111_Text_OldLadysRestStopSign:
 
 Route111_Text_TrainerTipsSpAtkSpDef:
 	.string "TRAINER TIPS\p"
-	.string "One of the indicators of a POKéMON's\n"
-	.string "powerfulness is SP. ATK. It stands for\l"
-	.string "“SPECIAL ATTACK.”\p"
-	.string "Likewise, SP. DEF stands for “SPECIAL\n"
-	.string "DEFENSE.”$"
+	.string "Press A to interact with a TRAINER TIPS\n"
+	.string "signpost.\p"
+	.string "Alternately, you can Press A while not\n"
+	.string "facing a signpost to let the POKéMON\l"
+	.string "following you begin AUTOBATTLING,\l"
+	.string "as long as it has more than 1 HP.\p"
+	.string "AUTOBATTLES earn EXP. POINTS by\n"
+	.string "colliding and battling a POKéMON, at\l"
+	.string "1/5 the normal rate, ignoring EXP\l"
+	.string "boosts from TRADE and so on.$"
 
 Route111_Text_ShouldBeMirageTowerAroundHere:
 	.string "There should be a tower made of sand\n"

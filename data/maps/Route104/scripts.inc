@@ -1066,14 +1066,15 @@ Route104_Text_PrettyPetalFlowShop:
 
 Route104_Text_TrainerTipsDoubleBattles:
 	.string "TRAINER TIPS\p"
-	.string "In the HOENN region there are pairs\n"
-	.string "of TRAINERS who challenge others\l"
-	.string "for 2-on-2 POKéMON battles called\l"
-	.string "DOUBLE BATTLES.\p"
-	.string "In a DOUBLE BATTLE, the TRAINER must\n"
-	.string "send out two POKéMON, the one at the\l"
-	.string "left of the list and the top one.\l"
-	.string "Watch how POKéMON are lined up.$"
+	.string "In the HOENN region several POKéMON\n"
+	.string "species evolve at lower levels.\p"
+	.string "Foongus, Pawniard, Frillish, Mienfoo,\n"
+	.string "Vullaby, Rufflet, Deino, Zweilous,\l"
+	.string "and Larvesta evolve 10 levels early.\p"
+	.string "Gurdurr and Boldore evolve at Lv 36.\n"
+	.string "Phantump and Pumpkaboo do at Lv 30.\l"
+	.string "All Yamasks evolve at Lv 34. Lastly,\l"
+	.string "Wishiwashi school at Lv 20 and Lv 40.$"
 
 Route104_Text_MayWeShouldRegister:
 	.string "MAY: Oh, hi, {PLAYER}{KUN}!\p"

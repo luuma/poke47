@@ -185,11 +185,15 @@ LavaridgeTown_Gym_1F_Text_GymGuideAdvice:
 	.string "bound {PLAYER}?\p"
 	.string "LAVARIDGE's GYM LEADER FLANNERY\n"
 	.string "uses FIRE-type POKéMON.\p"
+	.string "Her PYROAR is a scorching menace.\n"
+	.string "It'll Fake you Out, and burn you.\p"
+	.string "Her HEATMOR is Lv. 29. And it's\n"
+	.string "holding a White Herb. Yeeeowch!\p"
 	.string "Her passion for POKéMON burns stronger\n"
 	.string "and hotter than a volcano.\p"
-	.string "Don't get too close to her--you'll burn!\n"
-	.string "Hose her down with water and then\l"
-	.string "go for it!$"
+	.string "Don't let her switch for free--you'll\n"
+	.string "Overheat! Lock her down, make it sting,\l"
+	.string "and then go for it!$"
 
 LavaridgeTown_Gym_1F_Text_GymGuidePostVictory:
 	.string "Yow! That was a scorching-hot battle!$"

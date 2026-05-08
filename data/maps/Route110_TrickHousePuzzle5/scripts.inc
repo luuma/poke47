@@ -922,7 +922,7 @@ Route110_TrickHousePuzzle5_Text_Mechadoll1Quiz2:
 Route110_TrickHousePuzzle5_Text_Mechadoll1Quiz3:
 	.string "MECHADOLL 1 QUIZ.\p"
 	.string "One of these POKéMON does not use\n"
-	.string "LEECH LIFE. Which one is it?$"
+	.string "MEGA DRAIN. Which one is it?$"
 
 Route110_TrickHousePuzzle5_Text_CorrectGoThrough:
 	.string "CONGRATULATIONS. CORRECT YOU ARE.\n"
@@ -983,7 +983,7 @@ Route110_TrickHousePuzzle5_Text_Mechadoll3Quiz3:
 Route110_TrickHousePuzzle5_Text_Mechadoll4Intro:
 	.string "CLICKETY-CLACK…\n"
 	.string "MECHADOLL 4 THAT IS ME!\p"
-	.string "MY QUIZ IS AN OBJECT OF BEAUTY.$"
+	.string "MY QUIZ IS A THING OF STYLE.$"
 
 Route110_TrickHousePuzzle5_Text_Mechadoll4Quiz1:
 	.string "MECHADOLL 4 QUIZ.\p"

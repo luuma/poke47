@@ -111,44 +111,44 @@ static const struct MenuAction MultichoiceList_LevelMode[] =
 
 static const struct MenuAction MultichoiceList_Mechadoll1_Q1[] =
 {
-    {COMPOUND_STRING("ODDISH")},
-    {COMPOUND_STRING("POOCHYENA")},
+    {COMPOUND_STRING("PURRLOIN")},
+    {COMPOUND_STRING("TRUBBISH")},
     {COMPOUND_STRING("TAILLOW")},
 };
 
 static const struct MenuAction MultichoiceList_Mechadoll1_Q2[] =
 {
-    {COMPOUND_STRING("AZURILL")},
-    {COMPOUND_STRING("LOTAD")},
-    {COMPOUND_STRING("WINGULL")},
+    {COMPOUND_STRING("SAWK")},
+    {COMPOUND_STRING("BIBAREL")},
+    {COMPOUND_STRING("PALKIA")},
 };
 
 static const struct MenuAction MultichoiceList_Mechadoll1_Q3[] =
 {
-    {COMPOUND_STRING("DUSTOX")},
-    {COMPOUND_STRING("ZUBAT")},
-    {COMPOUND_STRING("NINCADA")},
+    {COMPOUND_STRING("SKIDDO")},
+    {COMPOUND_STRING("SANDYGAST")},
+    {COMPOUND_STRING("FOONGUS")},
 };
 
 static const struct MenuAction MultichoiceList_Mechadoll2_Q1[] =
 {
     {COMPOUND_STRING("RALTS")},
-    {COMPOUND_STRING("ZIGZAGOON")},
-    {COMPOUND_STRING("SLAKOTH")},
+    {COMPOUND_STRING("LILLIPUP")},
+    {COMPOUND_STRING("FLABEBE")},
 };
 
 static const struct MenuAction MultichoiceList_Mechadoll2_Q2[] =
 {
     {COMPOUND_STRING("POOCHYENA")},
-    {COMPOUND_STRING("SHROOMISH")},
     {COMPOUND_STRING("ZIGZAGOON")},
+    {COMPOUND_STRING("LILLIPUP")},
 };
 
 static const struct MenuAction MultichoiceList_Mechadoll2_Q3[] =
 {
+    {COMPOUND_STRING("PURRLOIN")},
     {COMPOUND_STRING("POOCHYENA")},
-    {COMPOUND_STRING("ZUBAT")},
-    {COMPOUND_STRING("CARVANHA")},
+    {COMPOUND_STRING("NOIBAT")},
 };
 
 static const struct MenuAction MultichoiceList_Mechadoll3_Q1[] =
@@ -174,15 +174,15 @@ static const struct MenuAction MultichoiceList_Mechadoll3_Q3[] =
 
 static const struct MenuAction MultichoiceList_Mechadoll4_Q1[] =
 {
-    {COMPOUND_STRING("Male")},
-    {COMPOUND_STRING("Female")},
+    {COMPOUND_STRING("Men")},
+    {COMPOUND_STRING("Women")},
     {COMPOUND_STRING("Neither")},
 };
 
 static const struct MenuAction MultichoiceList_Mechadoll4_Q2[] =
 {
     {COMPOUND_STRING("Elderly men")},
-    {COMPOUND_STRING("Elderly ladies")},
+    {COMPOUND_STRING("Elderly women")},
     {COMPOUND_STRING("Same number")},
 };
 
