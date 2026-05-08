@@ -180,6 +180,8 @@ SootopolisCity_Gym_1F_Text_GymGuideAdvice:
 	.string "bound {PLAYER}?\p"
 	.string "SOOTOPOLIS's GYM LEADER GLACIA is\n"
 	.string "a master of ICE-type POKéMON.\p"
+	.string "She has an ICE/DRAGON type up her\n"
+	.string "sleeve! Scary!\p"
 	.string "And, to get to GLACIA, an icy floor\n"
 	.string "will hamper your progress…\p"
 	.string "Listen, I'm sorry, but that's all the\n"
