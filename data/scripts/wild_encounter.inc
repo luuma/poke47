@@ -50,6 +50,7 @@ gMovement_EnterPokeball:
 OWEAutoBattleOverworldWildEncounter::
     lockall
     applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
+    getoverworldwildencounterspecies VAR_0x8004
     playmoncry VAR_0x8004, CRY_MODE_DOUBLES
     waitmoncry
     bufferlivemonnickname STR_VAR_1
