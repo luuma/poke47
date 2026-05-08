@@ -2044,11 +2044,17 @@ static void Task_ChangeSummaryMon(u8 taskId)
             ChangeStatLabel(SUMMARY_SKILLS_MODE_STATS);
         }
 
-        if (P_SUMMARY_SCREEN_MOVE_RELEARNER && IS_MOVE_PAGE(sMonSummaryScreen->currPageIndex))
+        if (ShouldShowMoveRelearner() && IS_MOVE_PAGE(sMonSummaryScreen->currPageIndex))
         {
             gMoveRelearnerState = MOVE_RELEARNER_LEVEL_UP_MOVES;
             UpdateMoveRelearnerState(FALSE);
+            PutWindowTilemap(PSS_LABEL_WINDOW_PROMPT_RELEARN);
         }
+        else
+        {
+            ClearWindowTilemap(PSS_LABEL_WINDOW_PROMPT_RELEARN);
+        }
+
         break;
     case 5:
         RemoveAndCreateMonMarkingsSprite(&sMonSummaryScreen->currentMon);
