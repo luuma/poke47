@@ -1641,7 +1641,7 @@ static void TryStartRandomMassOutbreak(void)
             if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_MASS_OUTBREAK)
                 return;
         }
-        if (!rbernoulli(1, 30))
+        if (!rbernoulli(1, 2))
         {
             sCurTVShowSlot = FindFirstEmptyNormalTVShowSlot(gSaveBlock1Ptr->tvShows);
             if (sCurTVShowSlot != -1)
