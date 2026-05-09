@@ -8570,12 +8570,12 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 #if P_FAMILY_BALTOY
     [SPECIES_BALTOY] =
     {
-        .baseHP        = 40,
-        .baseAttack    = 40,
+        .baseHP        = 50,
+        .baseAttack    = 30,
         .baseDefense   = 55,
-        .baseSpeed     = 55,
-        .baseSpAttack  = 40,
-        .baseSpDefense = 70,
+        .baseSpeed     = 75,
+        .baseSpAttack  = 30,
+        .baseSpDefense = 55,
         .types = MON_TYPES(TYPE_GROUND, TYPE_PSYCHIC),
         .catchRate = 255,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 60 : 58,
@@ -8586,7 +8586,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_TRUANT, ABILITY_NONE, ABILITY_LEVITATE },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Baltoy"),
         .cryId = CRY_BALTOY,
@@ -8644,12 +8644,12 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
 
     [SPECIES_CLAYDOL] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 70,
-        .baseDefense   = 105,
+        .baseHP        = 70,
+        .baseAttack    = 55,
+        .baseDefense   = 100,
         .baseSpeed     = 75,
         .baseSpAttack  = 70,
-        .baseSpDefense = 120,
+        .baseSpDefense = 90,
         .types = MON_TYPES(TYPE_GROUND, TYPE_PSYCHIC),
         .catchRate = 90,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 175 : 189,
@@ -8660,7 +8660,7 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities = { ABILITY_LEVITATE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_TRUANT, ABILITY_NONE, ABILITY_LEVITATE },
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Claydol"),
         .cryId = CRY_CLAYDOL,

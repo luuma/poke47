@@ -6393,8 +6393,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseHP        = 35,
         .baseAttack    = 70,
         .baseDefense   = 55,
-        .baseSpeed     = 25,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_2 ? 45 : 55,
+        .baseSpeed     = 45,
+        .baseSpAttack  = 45,
         .baseSpDefense = 55,
         .types = MON_TYPES(TYPE_BUG, TYPE_GRASS),
         .catchRate = 190,
@@ -6407,11 +6407,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
         .abilities = { ABILITY_EFFECT_SPORE, ABILITY_DRY_SKIN, ABILITY_DAMP },
-    #else
-        .abilities = { ABILITY_EFFECT_SPORE, ABILITY_NONE, ABILITY_DAMP },
-    #endif
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Paras"),
         .cryId = CRY_PARAS,
@@ -6483,9 +6479,9 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseAttack    = 95,
         .baseDefense   = 80,
         .baseSpeed     = 30,
-        .baseSpAttack  = P_UPDATED_STATS >= GEN_2 ? 60 : 80,
-        .baseSpDefense = 80,
-        .types = MON_TYPES(TYPE_BUG, TYPE_GRASS),
+        .baseSpAttack  = 60,
+        .baseSpDefense = 120,//+40
+        .types = MON_TYPES(TYPE_BUG, TYPE_GHOST),
         .catchRate = 75,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 142 : 128,
         .evYield_Attack = 2,
@@ -6497,11 +6493,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG, EGG_GROUP_GRASS),
-    #if P_UPDATED_ABILITIES >= GEN_4
-        .abilities = { ABILITY_EFFECT_SPORE, ABILITY_DRY_SKIN, ABILITY_DAMP },
-    #else
-        .abilities = { ABILITY_EFFECT_SPORE, ABILITY_NONE, ABILITY_DAMP },
-    #endif
+        .abilities = { ABILITY_EFFECT_SPORE, ABILITY_DRY_SKIN, ABILITY_RATTLED },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Parasect"),
         .cryId = CRY_PARASECT,

@@ -195,34 +195,34 @@ static const struct {
     u8 location;
 } sPokeOutbreakSpeciesList[] = {
     {
-        .species = SPECIES_SEEDOT,
-        .moves = {MOVE_BIDE, MOVE_HARDEN, MOVE_LEECH_SEED},
-        .level = 3,
+        .species = SPECIES_HOPPIP,
+        .moves = {MOVE_SAFEGUARD, MOVE_TAIL_WHIP, MOVE_POISON_POWDER},
+        .level = 4,
         .location = MAP_NUM(MAP_ROUTE102)
     },
     {
-        .species = SPECIES_NUZLEAF,
-        .moves = {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
+        .species = SPECIES_GIRAFARIG,
+        .moves = {MOVE_POWER_SWAP, MOVE_GUARD_SWAP, MOVE_ASSURANCE, MOVE_CONFUSION},
         .level = 15,
         .location = MAP_NUM(MAP_ROUTE114),
     },
     {
-        .species = SPECIES_SEEDOT,
-        .moves = {MOVE_HARDEN, MOVE_GROWTH, MOVE_NATURE_POWER, MOVE_LEECH_SEED},
-        .level = 13,
+        .species = SPECIES_BALTOY,
+        .moves = {MOVE_SKILL_SWAP, MOVE_RAPID_SPIN, MOVE_PSYBEAM, MOVE_HEAL_BLOCK},
+        .level = 21,
         .location = MAP_NUM(MAP_ROUTE117),
     },
     {
-        .species = SPECIES_SEEDOT,
-        .moves = {MOVE_GIGA_DRAIN, MOVE_FRUSTRATION, MOVE_SOLAR_BEAM, MOVE_LEECH_SEED},
+        .species = SPECIES_SCYTHER,
+        .moves = {MOVE_X_SCISSOR, MOVE_FRUSTRATION, MOVE_SOLAR_BLADE, MOVE_ACROBATICS},
         .level = 25,
         .location = MAP_NUM(MAP_ROUTE120),
     },
     {
-        .species = SPECIES_SKITTY,
-        .moves = {MOVE_GROWL, MOVE_TACKLE, MOVE_TAIL_WHIP, MOVE_ATTRACT},
-        .level = 8,
-        .location = MAP_NUM(MAP_ROUTE116),
+        .species = SPECIES_PARAS,
+        .moves = {MOVE_SCRATCH, MOVE_STUN_SPORE, MOVE_POWDER},
+        .level = 6,
+        .location = MAP_NUM(MAP_ROUTE104),
     }
 };
 
@@ -1494,7 +1494,7 @@ void TryPutSmartShopperOnAir(void)
 
     if (!(gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_TRAINER_HILL_ENTRANCE) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_TRAINER_HILL_ENTRANCE))
      && !(gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_BATTLE_FRONTIER_MART) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_BATTLE_FRONTIER_MART))
-     && !rbernoulli(1, 3))
+     && !rbernoulli(1, 2))
     {
         sCurTVShowSlot = FindFirstEmptyRecordMixTVShowSlot(gSaveBlock1Ptr->tvShows);
         if (sCurTVShowSlot != -1 && IsRecordMixShowAlreadySpawned(TVSHOW_SMART_SHOPPER, FALSE) != TRUE)
@@ -1633,14 +1633,15 @@ static void TryStartRandomMassOutbreak(void)
     u16 outbreakIdx;
     TVShow *show;
 
-    if (FlagGet(FLAG_SYS_GAME_CLEAR))
+    if (FlagGet(FLAG_SYS_GAME_CLEAR))// change to Norman I think.
+
     {
         for (i = 0; i < LAST_TVSHOW_IDX; i++)
         {
             if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_MASS_OUTBREAK)
                 return;
         }
-        if (!rbernoulli(1, 200))
+        if (!rbernoulli(1, 30))
         {
             sCurTVShowSlot = FindFirstEmptyNormalTVShowSlot(gSaveBlock1Ptr->tvShows);
             if (sCurTVShowSlot != -1)
@@ -1686,6 +1687,12 @@ void EndMassOutbreak(void)
     gSaveBlock1Ptr->outbreakUnused3 = 0;
     gSaveBlock1Ptr->outbreakPokemonProbability = 0;
     gSaveBlock1Ptr->outbreakDaysLeft = 0;
+    u32 i;
+    for (i = 0; i < LAST_TVSHOW_IDX; i++)
+    {
+        if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_MASS_OUTBREAK)// && bugfix
+            DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, i);
+    }
 }
 
 void UpdateTVShowsPerDay(u16 days)
@@ -1783,7 +1790,7 @@ static void ResolveWorldOfMastersShow(u16 days)
     TVShow *show = &gSaveBlock1Ptr->tvShows[LAST_TVSHOW_IDX];
     if (show->worldOfMasters.kind == TVSHOW_WORLD_OF_MASTERS)
     {
-        if (show->worldOfMasters.numPokeCaught >= 20)
+        if (show->worldOfMasters.numPokeCaught >= 15)//bumped up.
             TryPutWorldOfMastersOnAir();
 
         DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, LAST_TVSHOW_IDX);
@@ -2506,7 +2513,7 @@ static void TryPutRandomPokeNewsOnAir(void)
     if (FlagGet(FLAG_SYS_GAME_CLEAR))
     {
         sCurTVShowSlot = GetFirstEmptyPokeNewsSlot(gSaveBlock1Ptr->pokeNews);
-        if (sCurTVShowSlot != -1 && rbernoulli(1, 100) != TRUE)
+        if (sCurTVShowSlot != -1 && rbernoulli(1, 20) != TRUE)// up from 1/100
         {
             u8 newsKind = (Random() % NUM_POKENEWS_TYPES) + 1; // +1 to skip over POKENEWS_NONE
             if (IsAddingPokeNewsDisallowed(newsKind) != TRUE)

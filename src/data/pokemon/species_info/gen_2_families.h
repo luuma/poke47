@@ -4295,12 +4295,12 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
 #if P_FAMILY_GIRAFARIG
     [SPECIES_GIRAFARIG] =
     {
-        .baseHP        = 70,
+        .baseHP        = 75,//+5
         .baseAttack    = 80,
-        .baseDefense   = 65,
+        .baseDefense   = 75,//+10
         .baseSpeed     = 85,
         .baseSpAttack  = 90,
-        .baseSpDefense = 65,
+        .baseSpDefense = 80,//+15
         .types = MON_TYPES(TYPE_NORMAL, TYPE_PSYCHIC),
         .catchRate = 60,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 159 : 149,
@@ -4310,7 +4310,7 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities = { ABILITY_INNER_FOCUS, ABILITY_EARLY_BIRD, ABILITY_SAP_SIPPER },
+        .abilities = { ABILITY_CUD_CHEW, ABILITY_OPPOSITE_DAY, ABILITY_SAP_SIPPER },
         .bodyColor = BODY_COLOR_YELLOW,
         .speciesName = _("Girafarig"),
         .cryId = CRY_GIRAFARIG,
