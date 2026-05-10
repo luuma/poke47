@@ -149,7 +149,18 @@ void Script_ToggleFakeRtc(void)
 
 void SleepOwnBedAdvance(void)
 {
-    FakeRtc_ForwardTimeTo(8, 15, 1);
+    Script_PauseFakeRtc();
+    struct Time diff, target;
+    struct SiiRtcInfo *fakeRtc = FakeRtc_GetCurrentTime();
+
+    target.hours = 8;
+    target.minutes = 15;
+    target.seconds = 37;
+
+    FakeRtc_CalcTimeDifference(&diff, fakeRtc, &target);
+    // WHY DOES THE HOURS DIFF DRIFT BY LIKE 10 HOURS???? WHAT IS YOUR SLEEP SCHEDULE BRENDAN???????
+    FakeRtc_AdvanceTimeBy(0, diff.hours, diff.minutes, diff.seconds);
+    Script_ResumeFakeRtc();
 }
 
 void OldLadyRestStopAdvance(void)
