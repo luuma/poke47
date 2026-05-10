@@ -1564,7 +1564,7 @@ void StartMassOutbreak(void)
     gSaveBlock1Ptr->outbreakPokemonMoves[3] = show->massOutbreak.moves[3];
     gSaveBlock1Ptr->outbreakUnused3 = show->massOutbreak.unused3;
     gSaveBlock1Ptr->outbreakPokemonProbability = show->massOutbreak.probability;
-    gSaveBlock1Ptr->outbreakDaysLeft = 2;
+    gSaveBlock1Ptr->outbreakDaysLeft = 1;//down from 2
 }
 
 void PutLilycoveContestLadyShowOnTheAir(void)
@@ -1664,7 +1664,7 @@ static void TryStartRandomMassOutbreak(void)
                 show->massOutbreak.unused4 = 0;
                 show->massOutbreak.probability = 50;
                 show->massOutbreak.unused5 = 0;
-                show->massOutbreak.daysLeft = 1;
+                show->massOutbreak.daysLeft = 1;// 0
                 StorePlayerIdInNormalShow(show);
                 show->massOutbreak.language = gGameLanguage;
             }
@@ -1687,18 +1687,12 @@ void EndMassOutbreak(void)
     gSaveBlock1Ptr->outbreakUnused3 = 0;
     gSaveBlock1Ptr->outbreakPokemonProbability = 0;
     gSaveBlock1Ptr->outbreakDaysLeft = 0;
-    u32 i;
-    for (i = 0; i < LAST_TVSHOW_IDX; i++)
-    {
-        if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_MASS_OUTBREAK)// && bugfix
-            DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, i);
-    }
 }
 
 void UpdateTVShowsPerDay(u16 days)
 {
-    UpdateMassOutbreakTimeLeft(days);
     TryEndMassOutbreak(days);
+    UpdateMassOutbreakTimeLeft(days);// Now, if TV show is clear, we start the next one.
     UpdatePokeNewsCountdown(days);
     ResolveWorldOfMastersShow(days);
     ResolveNumberOneShow(days);
@@ -1713,15 +1707,22 @@ static void UpdateMassOutbreakTimeLeft(u16 days)
     {
         for (i = 0; i < LAST_TVSHOW_IDX; i++)
         {
-            if (gSaveBlock1Ptr->tvShows[i].massOutbreak.kind == TVSHOW_MASS_OUTBREAK && gSaveBlock1Ptr->tvShows[i].massOutbreak.active == TRUE)
+            show = &gSaveBlock1Ptr->tvShows[i];
+            if (gSaveBlock1Ptr->tvShows[i].massOutbreak.kind == TVSHOW_MASS_OUTBREAK)
             {
-                show = &gSaveBlock1Ptr->tvShows[i];
-                if (show->massOutbreak.daysLeft < days)
-                    show->massOutbreak.daysLeft = 0;
-                else
-                    show->massOutbreak.daysLeft -= days;
+                if (gSaveBlock1Ptr->tvShows[i].massOutbreak.active == TRUE)
+                {
+                    show = &gSaveBlock1Ptr->tvShows[i];
 
-                break;
+                    if (show->massOutbreak.daysLeft < days)
+                        show->massOutbreak.daysLeft = 0;
+                    else
+                        show->massOutbreak.daysLeft -= days;
+
+                    break;
+                }
+                else if(show->massOutbreak.daysLeft == 0)
+                    DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, i);// failsafe cull of inactive mass outbreak shows. 
             }
         }
     }
@@ -1729,7 +1730,7 @@ static void UpdateMassOutbreakTimeLeft(u16 days)
 
 static void TryEndMassOutbreak(u16 days)
 {
-    if (gSaveBlock1Ptr->outbreakDaysLeft <= days)
+    if (gSaveBlock1Ptr->outbreakDaysLeft <= days && gSaveBlock1Ptr->outbreakPokemonSpecies != SPECIES_NONE)
         EndMassOutbreak();
     else
         gSaveBlock1Ptr->outbreakDaysLeft -= days;
@@ -4859,6 +4860,12 @@ static void DoTVShowPokemonNewsMassOutbreak(void)
     TVShowDone();
     StartMassOutbreak();
     ShowFieldMessage(sTVMassOutbreakTextGroup[sTVShowState]);
+    u32 i;
+    for (i = 0; i < LAST_TVSHOW_IDX; i++)
+    {
+        if (gSaveBlock1Ptr->tvShows[i].common.kind == TVSHOW_MASS_OUTBREAK)// && bugfix
+            DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, i);
+    }
 }
 
 // TV Show that plays after a Link Contest.
