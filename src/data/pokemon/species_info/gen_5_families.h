@@ -9793,16 +9793,16 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sKlinkLevelUpLearnset,
         .teachableLearnset = sKlinkTeachableLearnset,
-        .evolutions = EVOLUTION({EVO_LEVEL, 38, SPECIES_KLANG}),
+        .evolutions = EVOLUTION({EVO_LEVEL, 28, SPECIES_KLANG}),
     },
 
     [SPECIES_KLANG] =
     {
         .baseHP        = 60,
-        .baseAttack    = 80,
+        .baseAttack    = 70,//-10
         .baseDefense   = 95,
         .baseSpeed     = 50,
-        .baseSpAttack  = 70,
+        .baseSpAttack  = 65,//-5
         .baseSpDefense = 85,
         .types = MON_TYPES(TYPE_STEEL),
         .catchRate = 60,

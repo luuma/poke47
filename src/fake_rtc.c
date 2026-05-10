@@ -147,17 +147,17 @@ void Script_ToggleFakeRtc(void)
     FlagToggle(OW_FLAG_PAUSE_TIME);
 }
 
-void SleepOwnBedAdvance()
+void SleepOwnBedAdvance(void)
 {
-    FakeRtc_ForwardTimeTo(7, 10, 0);
+    FakeRtc_ForwardTimeTo(8, 15, 1);
 }
 
-void OldLadyRestStopAdvance()
+void OldLadyRestStopAdvance(void)
 {
     FakeRtc_AdvanceTimeBy(0,7,40,0);
 }
 
-void OutOfPartyHealAdvance()
+void OutOfPartyHealAdvance(void)
 {
     FakeRtc_AdvanceTimeBy(0,0,20,0);
 }

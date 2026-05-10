@@ -7510,7 +7510,7 @@ static uq4_12_t AutoBattlerTypeMatchup(enum Species speciesAtk, enum Species spe
 u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
 {
     enum Species speciesMon = GetMonData(mon, MON_DATA_SPECIES);
-    u8 levelMon = GetMonData(mon, MON_DATA_LEVEL);
+    u32 levelMon = GetMonData(mon, MON_DATA_LEVEL);
     // spoofed damage of a 40 power move
     u32 dmg = RandomUniform(RNG_DAMAGE_MODIFIER, 850, 1000); // 85 to 100
     dmg *= ((2*levelMon)/5 + 2);
@@ -7528,8 +7528,8 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
     dmg /= 41667;  /// /= 41667; // * 1.5 * 40 / 1000*50*50;
     dmg *= numHits;
 
-    u16 GetHP = GetMonData(mon, MON_DATA_MAX_HP);
-    u16 loss = 1;
+    u32 GetHP = GetMonData(mon, MON_DATA_MAX_HP);
+    u32 loss = 1;
     if (dmg/4 > GetHP)
     {
         gSpecialVar_0x8006 = 6;
@@ -7563,7 +7563,7 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
         loss=1;
 
     GetHP = GetMonData(mon, MON_DATA_HP); // reuse same uint
-    u8 currHP = 1;
+    u32 currHP = 1;
     if (loss < GetHP)
         currHP = (GetHP - loss); // if not KO'd, set HP. If KO'd, leave it at 1.
     if (currHP * 4 < GetMonData(mon, MON_DATA_MAX_HP)) // if under 1/4 HP now, return "defeated and wore itself out" result
@@ -7577,7 +7577,7 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
 {
     if (InBattlePyramid_() || InBattlePike())
         return(0);// Note this also always fights like a lv1 mon.
-    u8 initialLevel = GetMonData(mon, MON_DATA_LEVEL);
+    u32 initialLevel = GetMonData(mon, MON_DATA_LEVEL);
     u32 totalXP = GetMonData(mon, MON_DATA_EXP);
     u32 addxp = gSpeciesInfo[speciesFoe].expYield * levelFoe;
     addxp /= 5;
@@ -7589,7 +7589,7 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     totalXP = totalXP + bufferxp;// This is added because users will expect soft level caps to apply to autobattling.
     SetMonData(mon, MON_DATA_EXP, &totalXP);
     ApplyDaycareExperience(mon);
-    u8 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
+    u32 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
     if (finalLevel > initialLevel)
         PlayFanfare(MUS_LEVEL_UP);
     //u32 addxp2 = addxp / 2;

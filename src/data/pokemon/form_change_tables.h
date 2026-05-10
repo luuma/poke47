@@ -2231,8 +2231,8 @@ static const struct FormChange sPalafinZeroFormChangeTable[] =
 
 static const struct FormChange sCarbinkFormChangeTable[] =
 {
-    {FORM_CHANGE_BATTLE_SWITCH_OUT, SPECIES_DIANCIE},
-    {FORM_CHANGE_END_BATTLE,    SPECIES_CARBINK},
+    {FORM_CHANGE_BATTLE_SWITCH_OUT, SPECIES_DIANCIE, ABILITY_ZERO_TO_HERO},
+    {FORM_CHANGE_END_BATTLE,    SPECIES_CARBINK},// Even if its ability is not zero to hero, it still reverts.
     {FORM_CHANGE_TERMINATOR},
 };
 

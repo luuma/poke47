@@ -38,8 +38,8 @@ LittlerootTown_PlayersHouse_2F_EventScript_YourBed::
 	msgbox PlayersHouse_2F_Text_YourBed, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_BrendansHouse_2F_EventScript_releaseallend
-	callnative SleepOwnBedAdvance
 	call Common_EventScript_OutOfCenterPartyHeal
+	callnative SleepOwnBedAdvance
 	msgbox PlayersHouse_2F_Text_riseandshine, MSGBOX_SIGN
 	setflag FLAG_DAILY_NAP
 LittlerootTown_BrendansHouse_2F_EventScript_releaseallend::
