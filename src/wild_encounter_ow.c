@@ -307,7 +307,7 @@ void UpdateOverworldWildEncounter(void)
         .x = x - MAP_OFFSET,
         .y = y - MAP_OFFSET,
         .elevation = MapGridGetElevationAt(x, y),
-        .movementType = OWE_GetMovementTypeFromSpecies(infoOWE.speciesId),
+        .movementType = OWE_GetMovementTypeFromSpecies(infoOWE.speciesId, infoOWE.noDespawn),
         .trainerType = TRAINER_TYPE_OW_WILD_ENCOUNTER,
     };
     u32 objectEventId = GetObjectEventIdByLocalId(infoOWE.localId);
@@ -320,7 +320,7 @@ void UpdateOverworldWildEncounter(void)
         SetMinimumOWESpawnTimer();
         return;
     }
-
+    
     owe = &gObjectEvents[objectEventId];
     owe->disableCoveringGroundEffects = TRUE;
     owe->sOverworldEncounterLevel = infoOWE.noDespawn ? (infoOWE.level | OWE_NO_DESPAWN_FLAG) : infoOWE.level;
@@ -2151,8 +2151,7 @@ const struct ObjectEventTemplate TryGetObjectEventTemplateForOWE(const struct Ob
         info.isFemale = GetGenderFromSpeciesAndPersonality(info.speciesId, Random32()) == MON_FEMALE;
 
     if (templateOWE.movementType == MOVEMENT_TYPE_NONE)
-        templateOWE.movementType = OWE_GetMovementTypeFromSpecies(info.speciesId);
-
+        templateOWE.movementType = OWE_GetMovementTypeFromSpecies(info.speciesId, info.noDespawn);
     templateOWE.graphicsId = GetGraphicsIdForOWE(&info);
     templateOWE.sOverworldEncounterLevel = info.level;
     

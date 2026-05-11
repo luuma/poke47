@@ -948,10 +948,12 @@ bool32 HasShedinjaHPHandling(enum Species species);
 u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe);
 u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe);
 
-static inline u32 OWE_GetMovementTypeFromSpecies(enum Species speciesId)
+static inline u32 OWE_GetMovementTypeFromSpecies(enum Species speciesId, bool8 noDespawn)
 {
     speciesId = SanitizeSpeciesId(speciesId);
     enum OverworldWildEncounterBehaviors behavior = gSpeciesInfo[speciesId].overworldEncounterBehavior;
+    if (noDespawn && (gOWESpeciesBehavior[behavior].movementType == MOVEMENT_TYPE_FLEE_PLAYER_OWE || gOWESpeciesBehavior[behavior].movementType == MOVEMENT_TYPE_DESPAWN_OWE))
+        return MOVEMENT_TYPE_WATCH_PLAYER_OWE;
     return gOWESpeciesBehavior[behavior].movementType;
 }
 
