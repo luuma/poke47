@@ -7,6 +7,7 @@
 #include "constants/battle.h"
 #include "constants/cries.h"
 #include "constants/egg_ids.h"
+#include "constants/event_object_movement.h"
 #include "constants/form_change_types.h"
 #include "constants/hold_effects.h"
 #include "constants/items.h"

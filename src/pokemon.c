@@ -1425,7 +1425,7 @@ bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
 
     u32 totalRerolls = 0;
     
-    if (CheckBagHasItem(ITEM_SHINY_CHARM, 1))
+    if (CheckBagHasItem(ITEM_SHINY_CHARM, 1) || CheckBagHasItem(ITEM_LEVEL_CAP, 1))
         totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
 
     if (LURE_STEP_COUNT != 0)
