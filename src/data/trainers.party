@@ -3131,7 +3131,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Timburr
-Level: 13
+Level: 14
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 === TRAINER_HITOSHI ===
@@ -4780,7 +4780,7 @@ Double Battle: No
 AI: Basic Trainer / Ace Pokemon
 
 Crabrawler
-Level: 16
+Level: 15
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 - Bubble Beam
 - Reversal
@@ -4796,7 +4796,7 @@ IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Bulk Up
 
 Passimian @ King's Rock
-Level: 19
+Level: 18
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 - Bulk Up
 - Bullet Punch
@@ -7781,7 +7781,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Timburr
-Level: 13
+Level: 14
 IVs: 15 HP / 15 Atk / 15 Def / 15 SpA / 15 SpD / 15 Spe
 
 === TRAINER_LAURA ===
@@ -7794,8 +7794,8 @@ Double Battle: No
 AI: Check Bad Move
 
 Crabrawler
-Level: 13
-IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
+Level: 14
+IVs: 10 HP / 10 Atk / 10 Def / 10 SpA / 10 SpD / 10 Spe
 
 === TRAINER_CYNDY_1 ===
 Name: CYNDY
@@ -10470,7 +10470,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Timburr
-Level: 13
+Level: 14
 IVs: 12 HP / 12 Atk / 12 Def / 12 SpA / 12 SpD / 12 Spe
 
 === TRAINER_LILITH ===
@@ -10483,7 +10483,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Pancham
-Level: 13
+Level: 14
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 === TRAINER_CRISTIAN ===
@@ -10496,7 +10496,7 @@ Double Battle: No
 AI: Check Bad Move
 
 Riolu
-Level: 13
+Level: 14
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_SYLVIA ===
@@ -10747,7 +10747,7 @@ Skiddo
 Level: 13
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-Litleo
+Litten
 Level: 15
 IVs: 6 HP / 6 Atk / 6 Def / 6 SpA / 6 SpD / 6 Spe
 

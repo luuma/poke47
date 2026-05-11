@@ -1390,9 +1390,9 @@ SootopolisCity_Movement_DestroyTask::
 
 SootopolisCity_Text_GymSign:
 	.string "SOOTOPOLIS CITY POKéMON GYM\n"
-	.string "LEADER: JUAN\p"
+	.string "LEADER: GLACIA\p"
 	.string "“The GYM LEADER with the beauty\n"
-	.string "of pure water!”$"
+	.string "of glacial frost!”$"
 
 SootopolisCity_Text_CitySign:
 	.string "SOOTOPOLIS CITY\p"

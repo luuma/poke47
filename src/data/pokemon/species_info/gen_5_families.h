@@ -1846,7 +1846,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 55,
         .types = MON_TYPES(TYPE_PSYCHIC),
         .catchRate = 190,
-        .expYield = 58,
+        .expYield = 100,//+42
         .evYield_HP = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 10,
@@ -2380,7 +2380,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 25,
         .types = MON_TYPES(TYPE_ROCK),
         .catchRate = 255,
-        .expYield = 56,
+        .expYield = 80,//+22
         .evYield_Defense = 1,
         .itemCommon = ITEM_EVERSTONE,
         .itemRare = ITEM_HARD_STONE,
@@ -2622,7 +2622,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 43,
         .types = MON_TYPES(TYPE_PSYCHIC, TYPE_FLYING),
         .catchRate = 190,
-        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_7) ? 65 : 63,
+        .expYield = 75,//+10
         .evYield_Speed = 1,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 15,
@@ -3149,7 +3149,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseSpDefense = 35,
         .types = MON_TYPES(TYPE_FIGHTING),
         .catchRate = 180,
-        .expYield = 61,
+        .expYield = 91,//+30
         .evYield_Attack = 1,
         .genderRatio = PERCENT_FEMALE(25),
         .eggCycles = 20,
@@ -8939,8 +8939,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sKarrablastTeachableLearnset,
         .eggMoveLearnset = sKarrablastEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ESCAVALIER, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_SHELMET})}, 
-				{EVO_LEVEL, 0, SPECIES_ESCAVALIER, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_SHELMET})},
-				{EVO_LEVEL, 0, SPECIES_ESCAVALIER, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_ACCELGOR})}),
+				{EVO_LEVEL, 24, SPECIES_ESCAVALIER, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_SHELMET})},
+				{EVO_LEVEL, 24, SPECIES_ESCAVALIER, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_ACCELGOR})}),
     },
 
     [SPECIES_ESCAVALIER] =
@@ -11176,8 +11176,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .teachableLearnset = sShelmetTeachableLearnset,
         .eggMoveLearnset = sShelmetEggMoveLearnset,
         .evolutions = EVOLUTION({EVO_TRADE, 0, SPECIES_ACCELGOR, CONDITIONS({IF_TRADE_PARTNER_SPECIES, SPECIES_KARRABLAST})},
-				{EVO_LEVEL, 0, SPECIES_ACCELGOR, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_KARRABLAST})},
-				{EVO_LEVEL, 0, SPECIES_ACCELGOR, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_ESCAVALIER})}),
+				{EVO_LEVEL, 24, SPECIES_ACCELGOR, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_KARRABLAST})},
+				{EVO_LEVEL, 24, SPECIES_ACCELGOR, CONDITIONS({IF_SPECIES_IN_PARTY, SPECIES_ESCAVALIER})}),
     },
 
     [SPECIES_ACCELGOR] =

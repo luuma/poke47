@@ -4710,7 +4710,8 @@ static enum AIScore IncreaseStatUpScoreInternal(enum BattlerId battlerAtk, enum 
         break;
     }
     case STAT_SPEED:
-        if ((noOfHitsToFaint >= 3 && !aiIsFaster) || noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
+        bool32 blinkStrikeCheck = (HasMoveWithEffect(battlerAtk, EFFECT_BLINK_STRIKE) && shouldSetUp);
+        if ((noOfHitsToFaint >= 3 && !aiIsFaster)|| blinkStrikeCheck || noOfHitsToFaint == UNKNOWN_NO_OF_HITS)
         {
             if (stages == 1)
                 tempScore += DECENT_EFFECT;

@@ -1911,4 +1911,21 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleTvScore = 5,
         .encourageEncore = TRUE,
     },
+    [EFFECT_SANDBLASTER] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 0, // TODO: Assign points
+    },
+    [EFFECT_FORBIDDEN_FANG] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 6,
+        .encourageEncore = TRUE,
+    },
+    [EFFECT_BLINK_STRIKE] =
+    {
+        .battleScript = BattleScript_EffectHit,
+        .battleTvScore = 0, // TODO: Assign points
+    },
 };
+

@@ -23903,4 +23903,46 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_TeraBlast,
     },
+
+    [MOVE_SANDBLASTER] =
+    {
+        .name = COMPOUND_STRING("Sandblaster"),
+        .description = COMPOUND_STRING(
+            "Scours the foe with a\n"
+            "sand jet. Doubled in sand."),
+        .effect = EFFECT_SANDBLASTER,
+        .power = 75,
+        .type = TYPE_GROUND,
+        .accuracy = 90,
+        .pp = 15,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .contestEffect = CONTEST_EFFECT_REPETITION_NOT_BORING,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_MudShot,
+    },
+
+    [MOVE_BLINK_STRIKE] =
+    {
+        .name = COMPOUND_STRING("Blink Strike"),
+        .description = COMPOUND_STRING(
+            "Calculates damage using\n"
+            "pure Speed."),
+        .effect = EFFECT_BLINK_STRIKE,
+        .power = 55,
+        .type = TYPE_FLYING,
+        .accuracy = 100,
+        .pp = 20,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .contestEffect = CONTEST_EFFECT_REPETITION_NOT_BORING,
+        .contestCategory = CONTEST_CATEGORY_BEAUTY,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_ExtremeSpeed,
+    },
 };

@@ -216,7 +216,7 @@ static const struct {
         .species = SPECIES_SCYTHER,
         .moves = {MOVE_X_SCISSOR, MOVE_FRUSTRATION, MOVE_SOLAR_BLADE, MOVE_ACROBATICS},
         .level = 25,
-        .location = MAP_NUM(MAP_ROUTE120),
+        .location = MAP_NUM(MAP_ROUTE121),
     },
     {
         .species = SPECIES_PARAS,

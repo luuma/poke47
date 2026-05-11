@@ -6931,6 +6931,11 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
                 atkStage = gBattleMons[battlerDef].statStages[STAT_SPATK];
             }
         }
+        if (moveEffect == EFFECT_BLINK_STRIKE)
+        {
+            atkStat = gBattleMons[battlerAtk].speed;
+            atkStage = gBattleMons[battlerDef].statStages[STAT_SPEED];
+        }
         else if (moveEffect == EFFECT_BODY_PRESS)
         {
             if (IsBattleMovePhysical(move))
@@ -7501,6 +7506,8 @@ static uq4_12_t GetWeatherDamageModifier(struct DamageContext *ctx)
         return UQ_4_12(1.0);// This early exit helps limit AI thinking time
     if (GetMoveEffect(ctx->move) == EFFECT_HYDRO_STEAM && (attackerWeather & B_WEATHER_SUN))
         return UQ_4_12(1.5);
+    if (GetMoveEffect(ctx->move) == EFFECT_SANDBLASTER && (attackerWeather | ctx->weather) & B_WEATHER_SANDSTORM)
+        return UQ_4_12(2.0);
     if (ctx->holdEffects[ctx->battlerDef] == HOLD_EFFECT_UTILITY_UMBRELLA)
         return UQ_4_12(1.0);
 

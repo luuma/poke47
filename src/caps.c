@@ -11,8 +11,8 @@ u32 GetCurrentLevelCap(void)
     static const u32 sLevelCapFlagMap[][2] =
     {
         {FLAG_RESCUED_BIRCH, 10},//0
-        {FLAG_BADGE01_GET, 14},//0
-        {FLAG_BADGE02_GET, 18},//1
+        {FLAG_BADGE01_GET, 13},//1
+        {FLAG_BADGE02_GET, 17},//1
         {FLAG_BADGE03_GET, 23},//2
         {FLAG_BADGE04_GET, 26},//3
         {FLAG_BADGE05_GET, 28},//3
@@ -28,7 +28,7 @@ u32 GetCurrentLevelCap(void)
 
     u32 i;
 
-    if (CheckBagHasItem(ITEM_LEVEL_CAP, 1))
+    if (CheckBagHasItem(ITEM_LEVEL_CAP, 1) || !FlagGet(FLAG_RESCUED_BIRCH))
     {
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
         {
@@ -48,8 +48,8 @@ u32 GetPreviousLevelCapForXP(void)
 {
     static const u32 sLevelCapFlagMap[][2] =
     {
-        {FLAG_RESCUED_BIRCH, 6},//0
-        {FLAG_BADGE01_GET, 14},//0
+        {FLAG_RESCUED_BIRCH, 7},//0
+        {FLAG_BADGE01_GET, 15},//+1
         {FLAG_BADGE02_GET, 18},//1
         {FLAG_BADGE03_GET, 23},//2
         {FLAG_BADGE04_GET, 26},//3
