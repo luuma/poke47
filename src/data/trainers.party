@@ -2647,8 +2647,12 @@ Double Battle: No
 AI: Check Bad Move
 
 Gible
-Level: 27
+Level: 26
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
+
+Klink
+Level: 27
+IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
 === TRAINER_STEVE_3 ===
 Name: STEVE
@@ -2663,7 +2667,7 @@ Gabite
 Level: 29
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
-Rockruff
+Klink
 Level: 29
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
@@ -2680,7 +2684,7 @@ Gabite
 Level: 32
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-Lycanroc
+Klang
 Level: 32
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
@@ -2697,7 +2701,7 @@ Gabite
 Level: 35
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
-Lycanroc
+Klang
 Level: 35
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
@@ -3070,7 +3074,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Swanna
+Pyukumuku
 Level: 30
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
@@ -3083,7 +3087,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Floatzel
+Pyukumuku
 Level: 33
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
@@ -3096,11 +3100,11 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Clauncher
+Pyukumuku
 Level: 34
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
-Clawitzer
+Clauncher
 Level: 36
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
@@ -3113,7 +3117,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Dragalge
+Pyukumuku
 Level: 37
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
@@ -7080,7 +7084,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Basculin White Striped
+Bibarel
 Level: 39
 IVs: 1 HP / 1 Atk / 1 Def / 1 SpA / 1 SpD / 1 Spe
 
@@ -7093,7 +7097,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Basculin White Striped
+Bibarel
 Level: 42
 IVs: 2 HP / 2 Atk / 2 Def / 2 SpA / 2 SpD / 2 Spe
 
@@ -7106,7 +7110,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Basculin White Striped
+Bibarel
 Level: 45
 IVs: 3 HP / 3 Atk / 3 Def / 3 SpA / 3 SpD / 3 Spe
 
@@ -7119,7 +7123,11 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Basculegion
+Bibarel
+Level: 48
+IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
+
+Jellicent
 Level: 48
 IVs: 4 HP / 4 Atk / 4 Def / 4 SpA / 4 SpD / 4 Spe
 
@@ -8175,7 +8183,7 @@ Music: Swimmer
 Double Battle: No
 AI: Check Bad Move
 
-Jellicent
+Gastrodon-East
 Level: 34
 IVs: 0 HP / 0 Atk / 0 Def / 0 SpA / 0 SpD / 0 Spe
 
