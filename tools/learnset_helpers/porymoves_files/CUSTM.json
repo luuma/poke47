@@ -1329,6 +1329,8 @@
       "MOVE_FIRE_SPIN",
       "MOVE_SAFEGUARD",
       "MOVE_INFERNO",
+      "MOVE_DESTINY_BOND",
+      "MOVE_PSYCHO_CUT",
       "MOVE_FIRE_BLAST"
     ],
     "EggMoves": [],
@@ -1360,6 +1362,8 @@
       "MOVE_INFERNO",
       "MOVE_QUICK_ATTACK",
       "MOVE_FLAMETHROWER",
+      "MOVE_DESTINY_BOND",
+      "MOVE_PSYCHO_CUT",
       "MOVE_TAIL_WHIP"
     ],
     "EggMoves": [],
@@ -1391,6 +1395,7 @@
       "MOVE_MIST",
       "MOVE_AURORA_VEIL",
       "MOVE_FREEZE_DRY",
+      "MOVE_DESTINY_BOND",
       "MOVE_BLIZZARD"
     ],
     "EggMoves": [],
@@ -1423,6 +1428,7 @@
       "MOVE_TAIL_WHIP",
       "MOVE_BLIZZARD",
       "MOVE_ICY_WIND",
+      "MOVE_DESTINY_BOND",
       "MOVE_IMPRISON"
     ],
     "EggMoves": [],
@@ -1799,6 +1805,12 @@
       "MOVE_GIGA_DRAIN",
       "MOVE_AROMATHERAPY",
       "MOVE_RAGE_POWDER",
+      "MOVE_NIGHT_SLASH",
+      "MOVE_DARK_PULSE",
+      "MOVE_SHADOW_BALL",
+      "MOVE_CURSE",
+      "MOVE_NIGHTMARE",
+      "MOVE_DREAM_EATER",
       "MOVE_X_SCISSOR"
     ],
     "EggMoves": [],
@@ -2011,6 +2023,9 @@
       "MOVE_SCREECH",
       "MOVE_SLASH",
       "MOVE_NASTY_PLOT",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_X_SCISSOR",
+      "MOVE_PSYCHO_CUT",
       "MOVE_PLAY_ROUGH"
     ],
     "EggMoves": [],
@@ -2040,7 +2055,9 @@
       "MOVE_FURY_SWIPES",
       "MOVE_SCREECH",
       "MOVE_SLASH",
-      "MOVE_NASTY_PLOT",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_X_SCISSOR",
+      "MOVE_PSYCHO_CUT",
       "MOVE_PLAY_ROUGH"
     ],
     "EggMoves": [],
@@ -2070,6 +2087,9 @@
       "MOVE_SCREECH",
       "MOVE_NIGHT_SLASH",
       "MOVE_NASTY_PLOT",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_X_SCISSOR",
+      "MOVE_PSYCHO_CUT",
       "MOVE_PLAY_ROUGH"
     ],
     "EggMoves": [],
@@ -2101,6 +2121,9 @@
       "MOVE_SCREECH",
       "MOVE_NIGHT_SLASH",
       "MOVE_NASTY_PLOT",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_X_SCISSOR",
+      "MOVE_PSYCHO_CUT",
       "MOVE_PLAY_ROUGH"
     ],
     "EggMoves": [],
@@ -2131,6 +2154,9 @@
       "MOVE_SCREECH",
       "MOVE_SLASH",
       "MOVE_METAL_SOUND",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_X_SCISSOR",
+      "MOVE_STEEL_BEAM",
       "MOVE_THRASH"
     ],
     "EggMoves": [],
@@ -2162,6 +2188,9 @@
       "MOVE_SCREECH",
       "MOVE_SLASH",
       "MOVE_METAL_SOUND",
+      "MOVE_SWORDS_DANCE",
+      "MOVE_X_SCISSOR",
+      "MOVE_STEEL_BEAM",
       "MOVE_THRASH"
     ],
     "EggMoves": [],
@@ -5594,6 +5623,13 @@
       "MOVE_AGILITY",
       "MOVE_ROCK_SLIDE",
       "MOVE_X_SCISSOR",
+      "MOVE_CURSE",
+      "MOVE_CUT",
+      "MOVE_ROOST",
+      "MOVE_SNORE",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC",
+      "MOVE_IRON_DEFENSE",
       "MOVE_SWORDS_DANCE"
     ],
     "EggMoves": [],
@@ -8214,6 +8250,8 @@
       "MOVE_U_TURN",
       "MOVE_GIGA_DRAIN",
       "MOVE_BOUNCE",
+      "MOVE_TAUNT",
+      "MOVE_WISH",
       "MOVE_MEMENTO"
     ],
     "EggMoves": [],
@@ -8247,6 +8285,8 @@
       "MOVE_U_TURN",
       "MOVE_GIGA_DRAIN",
       "MOVE_BOUNCE",
+      "MOVE_TAUNT",
+      "MOVE_WISH",
       "MOVE_MEMENTO"
     ],
     "EggMoves": [],
@@ -8280,6 +8320,8 @@
       "MOVE_U_TURN",
       "MOVE_GIGA_DRAIN",
       "MOVE_BOUNCE",
+      "MOVE_TAUNT",
+      "MOVE_WISH",
       "MOVE_MEMENTO"
     ],
     "EggMoves": [],
@@ -8800,6 +8842,19 @@
       "MOVE_CRUNCH",
       "MOVE_BATON_PASS",
       "MOVE_NASTY_PLOT",
+      "MOVE_ENCORE",
+      "MOVE_MEGA_KICK",
+      "MOVE_PAIN_SPLIT",
+      "MOVE_DREAM_EATER",
+      "MOVE_FLASH",
+      "MOVE_STRENGTH",
+      "MOVE_ROCK_SMASH",
+      "MOVE_MUD_SLAP",
+      "MOVE_SNORE",
+      "MOVE_SUCKER_PUNCH",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC",
+      "MOVE_NASTY_PLOT",
       "MOVE_PSYCHIC"
     ],
     "EggMoves": [],
@@ -8831,6 +8886,19 @@
       "MOVE_TWIN_BEAM",
       "MOVE_CRUNCH",
       "MOVE_BATON_PASS",
+      "MOVE_NASTY_PLOT",
+      "MOVE_ENCORE",
+      "MOVE_MEGA_KICK",
+      "MOVE_PAIN_SPLIT",
+      "MOVE_DREAM_EATER",
+      "MOVE_FLASH",
+      "MOVE_STRENGTH",
+      "MOVE_ROCK_SMASH",
+      "MOVE_MUD_SLAP",
+      "MOVE_SNORE",
+      "MOVE_SUCKER_PUNCH",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC",
       "MOVE_NASTY_PLOT",
       "MOVE_PSYCHIC"
     ],
@@ -13551,6 +13619,7 @@
     ],
     "PreEvoMoves": [],
     "TMMoves": [
+      "MOVE_WILL_O_WISP",
       "MOVE_HYPER_BEAM",
       "MOVE_HYPER_BEAM",
       "MOVE_TELEPORT",
@@ -23169,6 +23238,7 @@
       "MOVE_SAND_TOMB",
       "MOVE_NATURE_POWER",
       "MOVE_U_TURN",
+      "MOVE_DEFENSE_CURL",
       "MOVE_BATON_PASS"
     ],
     "EggMoves": [],
@@ -23207,6 +23277,7 @@
       "MOVE_SAND_TOMB",
       "MOVE_NATURE_POWER",
       "MOVE_U_TURN",
+      "MOVE_DEFENSE_CURL",
       "MOVE_BATON_PASS"
     ],
     "EggMoves": [],
@@ -23246,6 +23317,7 @@
       "MOVE_SAND_TOMB",
       "MOVE_NATURE_POWER",
       "MOVE_U_TURN",
+      "MOVE_DEFENSE_CURL",
       "MOVE_BATON_PASS"
     ],
     "EggMoves": [],
@@ -24397,6 +24469,7 @@
       "MOVE_QUIVER_DANCE",
       "MOVE_BOUNCE",
       "MOVE_SAFEGUARD",
+      "MOVE_NATURE_POWER",
       "MOVE_HYDRO_PUMP"
     ],
     "EggMoves": [],
@@ -24431,6 +24504,7 @@
       "MOVE_QUIVER_DANCE",
       "MOVE_BOUNCE",
       "MOVE_SAFEGUARD",
+      "MOVE_NATURE_POWER",
       "MOVE_HYDRO_PUMP"
     ],
     "EggMoves": [],
@@ -25623,6 +25697,7 @@
       "MOVE_WORK_UP",
       "MOVE_CRIT_UP_HIT",
       "MOVE_MEGA_KICK",
+      "MOVE_CALM_MIND",
       "MOVE_HURRICANE",
       "MOVE_WISH"
     ],
@@ -26041,6 +26116,7 @@
       "MOVE_DYNAMIC_PUNCH",
       "MOVE_MACH_PUNCH",
       "MOVE_STONE_EDGE",
+      "MOVE_STEEL_BEAM",
       "MOVE_GIGATON_HAMMER"
     ],
     "EggMoves": [],
@@ -26433,6 +26509,8 @@
       "MOVE_PLAY_ROUGH",
       "MOVE_COTTON_GUARD",
       "MOVE_HURRICANE",
+      "MOVE_POLLEN_PUFF",
+      "MOVE_WHIRLWIND",
       "MOVE_MOONBLAST",
       "MOVE_SYNTHESIS"
     ],
@@ -27039,7 +27117,8 @@
       "MOVE_SPIRIT_SHACKLE",
       "MOVE_TRICK_ROOM",
       "MOVE_PSYCHO_CUT",
-      "MOVE_ANCIENT_POWER"
+      "MOVE_ANCIENT_POWER",
+      "MOVE_ROCK_SLIDE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -27073,7 +27152,8 @@
       "MOVE_EARTHQUAKE",
       "MOVE_TRICK_ROOM",
       "MOVE_PSYCHO_CUT",
-      "MOVE_ANCIENT_POWER"
+      "MOVE_ANCIENT_POWER",
+      "MOVE_ROCK_SLIDE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -27110,6 +27190,11 @@
       "MOVE_SPIRIT_SHACKLE",
       "MOVE_TRICK_ROOM",
       "MOVE_MAKE_IT_RAIN"
+      "MOVE_SPIRIT_SHACKLE",
+      "MOVE_TRICK_ROOM",
+      "MOVE_PSYCHO_CUT",
+      "MOVE_ANCIENT_POWER",
+      "MOVE_ROCK_SLIDE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -27148,6 +27233,7 @@
       "MOVE_MAKE_IT_RAIN",
       "MOVE_PSYCHO_CUT",
       "MOVE_ANCIENT_POWER"
+      "MOVE_ROCK_SLIDE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -27798,6 +27884,7 @@
       "MOVE_HYDRO_PUMP",
       "MOVE_SHEER_COLD",
       "MOVE_ENDEAVOR",
+      "MOVE_LIGHT_SCREEN",
       "MOVE_NATURE_POWER"
     ],
     "EggMoves": [],
@@ -29314,6 +29401,14 @@
       "MOVE_IRON_HEAD",
       "MOVE_FINAL_GAMBIT",
       "MOVE_GUILLOTINE",
+      "MOVE_CUT",
+      "MOVE_KNOCK_OFF",
+      "MOVE_POWER_UP_PUNCH",
+      "MOVE_PSYCHO_CUT",
+      "MOVE_ROCK_SMASH",
+      "MOVE_SNORE",
+      "MOVE_SWAGGER",
+      "MOVE_TOXIC",
       "MOVE_BEHEMOTH_BLADE"
     ],
     "EggMoves": [],
@@ -29753,6 +29848,7 @@
       "MOVE_FOCUS_BLAST",
       "MOVE_SACRED_FIRE",
       "MOVE_FIERY_DANCE",
+      "MOVE_WEATHER_BALL",
       "MOVE_HURRICANE"
     ],
     "EggMoves": [],
@@ -32764,6 +32860,7 @@
       "MOVE_TRIPLE_ARROWS",
       "MOVE_BRAVE_BIRD",
       "MOVE_LEAF_STORM"
+      "MOVE_CURSE"
     ],
     "EggMoves": [],
     "TutorMoves": []
@@ -33227,6 +33324,7 @@
       "MOVE_ELECTRO_BALL",
       "MOVE_CHARGE",
       "MOVE_VISE_GRIP",
+      "MOVE_TWINEEDLE",
       "MOVE_STRING_SHOT",
       "MOVE_MUD_SLAP",
       "MOVE_BITE",

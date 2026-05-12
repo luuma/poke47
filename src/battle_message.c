@@ -876,6 +876,8 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_TARGETPKMNHURTSWITH]                        = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX} was hurt by {B_ATK_NAME_WITH_PREFIX2}'s {B_BUFF1}!"),
     [STRINGID_DAMAGEBOUNCEABLESDOESNTALLOW]               = COMPOUND_STRING("The effects of the {B_LAST_ITEM} prevent attacking moves from being used!\p"),
     [STRINGID_NAVALBLOCKADESTART]               = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} makes lowered stats persist for opponents for 8 turns!"),
+    [STRINGID_PKMNHURTSWITHCANNONS]                        = COMPOUND_STRING("{B_DEF_NAME_WITH_PREFIX}'s Cannonade fired upon {B_SCR_NAME_WITH_PREFIX2}!"),
+    [STRINGID_PKMNMANNEDTHECANNONS]                     = COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} manned the artillery!"),
     [STRINGID_SCRCUREDPARALYSIS]                    = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} was cured of paralysis!"),
     [STRINGID_SCRCUREDPOISON]                       = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} was cured of its poisoning!"),
     [STRINGID_SCRCUREDBURN]                         = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX}'s burn was cured!"),
@@ -1450,6 +1452,7 @@ const u16 gHurtByStringIds[] =
 {
     [B_MSG_HURT] = STRINGID_AFTERMATHDMG,
     [B_MSG_HURT_BY_ITEM] = STRINGID_PKMNHURTSWITH,
+    [B_MSG_HURT_BY_CANNONS] = STRINGID_PKMNHURTSWITHCANNONS,
 };
 
 const u16 gBreakScreensStringIds[] =

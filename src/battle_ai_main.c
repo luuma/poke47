@@ -2056,6 +2056,10 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
         if (gBattleMons[battlerAtk].volatiles.root)
             ADJUST_SCORE(-10);
         break;
+    case EFFECT_CANNONADE:
+        if (gBattleMons[battlerAtk].volatiles.cannonade)
+            ADJUST_SCORE(-8);
+        break;
     case EFFECT_AQUA_RING:
         if (gBattleMons[battlerAtk].volatiles.aquaRing)
             ADJUST_SCORE(-10);

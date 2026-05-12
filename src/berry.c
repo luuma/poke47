@@ -1785,6 +1785,39 @@ const struct Berry gBerries[NUM_BERRIES + 1] =
         .berryTreePaletteSlotTable = gBerryTreePaletteSlotTable_Grepa,
     },
 
+    [BERRY_ID_ROSELI] =
+    {
+        .info = {
+            .name = _("Roseli"),
+            .firmness = BERRY_FIRMNESS_HARD,
+            .color = OW_BERRY_COLORS == GEN_6_XY ? BERRY_COLOR_PINK : BERRY_COLOR_RED,
+            .size = 35,
+            .maxYield = YIELD_RATE(5, 5, 20, 10),
+            .minYield = YIELD_RATE(2, 1, 3, 2),
+            .description1 = COMPOUND_STRING("In nature, they grow in wide rings"),
+            .description2 = COMPOUND_STRING("for reasons that are still unknown."),
+            .growthDuration = GROWTH_DURATION(84, 72, 108, 48, 32, 48),
+            .spicy = 0,
+            .dry = 0,
+            .sweet = 25,
+            .bitter = 10,
+            .sour = 0,
+            .smoothness = 35,
+            .drainRate = 6,
+            .waterBonus = 10,
+            .weedsBonus = 1,
+            .pestsBonus = 4,
+        },
+        .naturalGiftType = TYPE_FAIRY,
+        .naturalGiftPower = 80,
+        .berryCrushDifficulty =  60,
+        .berryCrushPowder =  50,
+        .berryPic = gBerryPic_Roseli,
+        .berryPal = gBerryPalette_Roseli,
+        .berryTreePicTable = gPicTable_RoseliBerryTree,
+        .berryTreePaletteSlotTable = gBerryTreePaletteSlotTable_Roseli,
+    },
+
     [BERRY_ID_LIECHI] =
     {
         .info = {
@@ -2179,39 +2212,6 @@ const struct Berry gBerries[NUM_BERRIES + 1] =
         .berryPal = gBerryPalette_Rowap,
         .berryTreePicTable = gPicTable_RowapBerryTree,
         .berryTreePaletteSlotTable = gBerryTreePaletteSlotTable_Rowap,
-    },
-
-    [BERRY_ID_ROSELI] =
-    {
-        .info = {
-            .name = _("Roseli"),
-            .firmness = BERRY_FIRMNESS_HARD,
-            .color = OW_BERRY_COLORS == GEN_6_XY ? BERRY_COLOR_PINK : BERRY_COLOR_RED,
-            .size = 35,
-            .maxYield = YIELD_RATE(5, 5, 20, 10),
-            .minYield = YIELD_RATE(2, 1, 3, 2),
-            .description1 = COMPOUND_STRING("In nature, they grow in wide rings"),
-            .description2 = COMPOUND_STRING("for reasons that are still unknown."),
-            .growthDuration = GROWTH_DURATION(84, 72, 108, 48, 32, 48),
-            .spicy = 0,
-            .dry = 0,
-            .sweet = 25,
-            .bitter = 10,
-            .sour = 0,
-            .smoothness = 35,
-            .drainRate = 6,
-            .waterBonus = 10,
-            .weedsBonus = 1,
-            .pestsBonus = 4,
-        },
-        .naturalGiftType = TYPE_FAIRY,
-        .naturalGiftPower = 80,
-        .berryCrushDifficulty =  60,
-        .berryCrushPowder =  50,
-        .berryPic = gBerryPic_Roseli,
-        .berryPal = gBerryPalette_Roseli,
-        .berryTreePicTable = gPicTable_RoseliBerryTree,
-        .berryTreePaletteSlotTable = gBerryTreePaletteSlotTable_Roseli,
     },
 
     [BERRY_ID_KEE] =
@@ -2949,9 +2949,9 @@ bool8 PlayerHasMulch(void)
 static const u8 sBerryMutations[][3] = {
     {BERRY_ID_IAPAPA, BERRY_ID_MAGO,   BERRY_ID_POMEG},
     {BERRY_ID_CHESTO, BERRY_ID_PERSIM, BERRY_ID_KELPSY},
-    {BERRY_ID_ORAN,   BERRY_ID_PECHA,  BERRY_ID_QUALOT},
-    {BERRY_ID_CHESTO, BERRY_ID_PERSIM, BERRY_ID_KELPSY},
-    {BERRY_ID_ASPEAR, BERRY_ID_LEPPA,  BERRY_ID_HONDEW},
+    {BERRY_ID_ORAN,   BERRY_ID_PECHA,  BERRY_ID_QUALOT},/// oo im here to scare away the compiler
+    //{BERRY_ID_CHESTO, BERRY_ID_PERSIM, BERRY_ID_KELPSY},
+    {BERRY_ID_ASPEAR, BERRY_ID_LEPPA,  BERRY_ID_HONDEW},///aaa dont add here
     {BERRY_ID_AGUAV,  BERRY_ID_FIGY,   BERRY_ID_GREPA},
     {BERRY_ID_LUM,    BERRY_ID_SITRUS, BERRY_ID_TAMATO},
     {BERRY_ID_HONDEW, BERRY_ID_YACHE,  BERRY_ID_LIECHI},
@@ -2963,7 +2963,7 @@ static const u8 sBerryMutations[][3] = {
     {BERRY_ID_SALAC,  BERRY_ID_PETAYA, BERRY_ID_MARANGA},
     {BERRY_ID_TAMATO,  BERRY_ID_OCCA, BERRY_ID_LANSAT},
     {BERRY_ID_KEE, BERRY_ID_MARANGA, BERRY_ID_ENIGMA},
-    // Up to one more Mutation can be added here for a total of 15 (only 4 bits are allocated)
+    // Up to two more Mutations can be added here for a total of 15 (only 4 bits are allocated)
 };
 
 static u8 GetMutationOutcome(u8 berry1, u8 berry2)

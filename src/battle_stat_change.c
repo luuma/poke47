@@ -184,6 +184,19 @@ static bool32 CheckSpecificMoveCondition(struct BattleCalcValues *cv, struct Sta
                 st->moveScript = BattleScript_EffectNavalBlockade;
             }
         }
+    case EFFECT_CANNONADE:
+        if (!gBattleMons[cv->battlerAtk].volatiles.cannonade)
+        {
+            st->additionalEffectTriggers = TRUE;
+            if (!st->onlyChecking)
+            {
+                gBattleMons[cv->battlerAtk].volatiles.cannonade = TRUE;
+                st->moveScript = BattleScript_EffectCannonade;
+            }
+        }
+        break;
+
+
     default:
         break;
     }

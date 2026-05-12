@@ -8337,7 +8337,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A hold item that\n"
             "raises the Sp. Def\n"
-            "of Clamperl."),
+            "of Bruxish."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = EVO_HELD_ITEM_TYPE,
@@ -8357,7 +8357,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "A hold item that\n"
             "raises the Sp. Atk\n"
-            "of Clamperl."),
+            "of Bibarel."),
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = EVO_HELD_ITEM_TYPE,

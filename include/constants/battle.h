@@ -328,6 +328,7 @@ enum VolatileFlags
     F(VOLATILE_UNABLE_TO_USE_MOVE,          unableToUseMove,               (u32, 1)) \
     F(VOLATILE_ACTIVATE_DANCER,             activateDancer,                (u32, 1)) \
     F(VOLATILE_INVERSE,   	            inverse,             	   (u32, 1)) \
+    F(VOLATILE_CANNONADE,                   cannonade,                     (u32, 1), V_BATON_PASSABLE) \
 
 
 

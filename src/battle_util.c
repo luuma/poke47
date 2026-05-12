@@ -7204,12 +7204,14 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_DEEP_SEA_TOOTH:
-        if (gBattleMons[battlerAtk].species == SPECIES_CLAMPERL && IsBattleMoveSpecial(move))
+        if (gBattleMons[battlerAtk].species == SPECIES_BIBAREL && IsBattleMoveSpecial(move))
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_LIGHT_BALL:
         if (atkBaseSpeciesId == SPECIES_PACHIRISU || atkBaseSpeciesId == SPECIES_TOGEDEMARU || atkBaseSpeciesId == SPECIES_DEDENNE || atkBaseSpeciesId == SPECIES_EMOLGA )
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+        else if (atkBaseSpeciesId == SPECIES_PIKACHU || atkBaseSpeciesId == SPECIES_PICHU)
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2));
         break;
     case HOLD_EFFECT_CHOICE_BAND:
         if (IsBattleMovePhysical(move) && GetActiveGimmick(battlerAtk) != GIMMICK_DYNAMAX)
@@ -7400,7 +7402,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     switch (ctx->holdEffects[ctx->battlerDef])
     {
     case HOLD_EFFECT_DEEP_SEA_SCALE:
-        if (gBattleMons[battlerDef].species == SPECIES_CLAMPERL && !usesDefStat)
+        if (gBattleMons[battlerDef].species == SPECIES_BRUXISH && !usesDefStat)
             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         break;
     case HOLD_EFFECT_METAL_POWDER:

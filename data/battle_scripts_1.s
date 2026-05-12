@@ -160,6 +160,12 @@ BattleScript_TarShotMessage::
 	trymovestatchanges
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectCannonade::
+	printstring STRINGID_PKMNMANNEDTHECANNONS
+	waitmessage B_WAIT_TIME_LONG
+	trymovestatchanges
+	goto BattleScript_MoveEnd
+
 BattleScript_AbilityStatChange::
 	call BattleScript_AbilityPopUp
 	trystatchanges BS_EFFECT_BATTLER, STAT_CHANGE_IGNORE_SELF
@@ -5187,6 +5193,19 @@ BattleScript_ImposterActivates::
 	waitmessage B_WAIT_TIME_LONG
 	restoreattacker
 	restoretarget
+	return
+
+BattleScript_HurtCannonadeTarget::
+	playanimation BS_SCRIPTING, B_ANIM_MON_HIT
+	waitanimation
+	effectivenesssound
+	hitanimation BS_SCRIPTING
+	waitstate
+	healthbarupdate BS_SCRIPTING, PASSIVE_HP_UPDATE
+	datahpupdate BS_SCRIPTING, PASSIVE_HP_UPDATE
+	printfromtable gHurtByStringIds
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_SCRIPTING
 	return
 
 BattleScript_HurtAttacker:

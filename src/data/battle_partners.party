@@ -13,15 +13,15 @@ Gender: Male
 Music: Male
 AI: Basic Trainer
 
-Bronzong
-Quiet Nature
+Bastiodon
+Bold Nature
 Level: 42
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-EVs: 100 SpA / 252 Def / 158 SpD
-- Light Screen
-- Confusion
-- Reflect
-- Mirror Shot
+EVs: 100 Atk / 252 Def / 158 SpD
+- Bastion Walls
+- Follow Me
+- Iron Head
+- Taunt
 
 Doublade
 Impish Nature

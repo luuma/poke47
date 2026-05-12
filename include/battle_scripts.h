@@ -743,6 +743,8 @@ extern const u8 BattleScript_RaiseStatOnForecast[];// unnsure if needed but note
 extern const u8 BattleScript_EffectNavalBlockade[];
 extern const u8 BattleScript_WishiwashiConstruct[];
 extern const u8 BattleScript_SpicySprayImmune[];
+extern const u8 BattleScript_EffectCannonade[];
+extern const u8 BattleScript_HurtCannonadeTarget[];
 
 
 

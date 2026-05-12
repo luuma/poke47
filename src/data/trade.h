@@ -989,7 +989,7 @@ static const struct InGameTrade sIngameTrades[] =
         .nickname = _("SERENADE"),
         .species = SPECIES_ROSELIA,
         .ivs = {31, 4, 24, 31, 31, 31},
-        .abilityNum = 0,
+        .abilityNum = 2,
         .otId = 73996,
         .conditions = {5, 5, 30, 5, 5},
         .personality = 0x6F,
@@ -1018,9 +1018,9 @@ static const struct InGameTrade sIngameTrades[] =
     },
     [INGAME_TRADE_MEOWTH] =
     {
-        .nickname = _("MEOWOW"),
-        .species = SPECIES_MEOWTH,
-        .ivs = {4, 5, 4, 5, 4, 4},
+        .nickname = _("FREYR"),
+        .species = SPECIES_MEOWTH_GALAR,
+        .ivs = {31, 25, 21, 31, 15, 31},
         .abilityNum = 0,
         .otId = 91481,
         .conditions = {5, 5, 5, 30, 5},
@@ -1030,7 +1030,7 @@ static const struct InGameTrade sIngameTrades[] =
         .otName = _("ISIS"),
         .otGender = FEMALE,
         .sheen = 10,
-        .requestedSpecies = SPECIES_SKITTY
+        .requestedSpecies = SPECIES_PIKACHU
     },
     [INGAME_TRADE_MR_MIME] = 
     {

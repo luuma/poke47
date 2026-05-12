@@ -54,6 +54,7 @@
     F(COLBUR) \
     F(BABIRI) \
     F(CHILAN) \
+    F(ROSELI) \
     F(LIECHI) \
     F(GANLON) \
     F(SALAC) \
@@ -66,7 +67,6 @@
     F(CUSTAP) \
     F(JABOCA) \
     F(ROWAP) \
-    F(ROSELI) \
     F(KEE) \
     F(MARANGA)
 

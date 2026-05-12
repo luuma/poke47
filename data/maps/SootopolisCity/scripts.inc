@@ -714,14 +714,14 @@ SootopolisCity_EventScript_KiriGiveBerry::
 	special GetPlayerBigGuyGirlString
 	goto_if_set FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY, SootopolisCity_EventScript_KiriReceivedBerry
 	msgbox SootopolisCity_Text_NameIsKiriHaveOneOfThese, MSGBOX_DEFAULT
-	giverandomberry BERRY_ID_CHILAN, BERRY_ID_ROSELI
+	giverandomberry BERRY_ID_OCCA, BERRY_ID_ROSELI
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_DAILY_SOOTOPOLIS_RECEIVED_BERRY
 	msgbox SootopolisCity_Text_GiveYouThisBerryToo, MSGBOX_DEFAULT
 	random 5
 	goto_if_eq VAR_RESULT, 0, SootopolisCity_EventScript_GiveFigyBerry
 	goto_if_eq VAR_RESULT, 1, SootopolisCity_EventScript_GiveIapapaBerry
-	giverandomberry BERRY_ID_CHILAN, BERRY_ID_ROSELI
+	giverandomberry BERRY_ID_OCCA, BERRY_ID_ROSELI
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox SootopolisCity_Text_WhatKindOfWishInYourName, MSGBOX_DEFAULT
 	release

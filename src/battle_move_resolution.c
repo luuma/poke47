@@ -2608,14 +2608,29 @@ static enum MoveEndResult MoveEndSymbiosis(struct BattleCalcValues *cv)
     return result;
 }
 
-static enum MoveEndResult MoveEndSubstitute(struct BattleCalcValues *cv)
+static enum MoveEndResult MoveEndSubstitute(struct BattleCalcValues *cv)// Using this as "moveendvolatiles"
 {
     enum MoveEndResult result = MOVEEND_RESULT_CONTINUE;
 
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
     {
+        if (gBattleMons[i].volatiles.cannonade)
+        {
+            enum BattlerId cannonadeTarget = SetRandomTarget(i);
+            if (IsBattlerTurnDamaged(i, EXCLUDING_SUBSTITUTES)
+     && IsBattlerAlive(cannonadeTarget)
+     && !IsAbilityAndRecord(cannonadeTarget, cv->abilities[cannonadeTarget], ABILITY_MAGIC_GUARD))
+            {
+                SetPassiveDamageAmount(cannonadeTarget, GetNonDynamaxMaxHP(cannonadeTarget) / 6);
+                gBattleScripting.battler = cannonadeTarget;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_HURT_BY_CANNONS;
+                BattleScriptCall(BattleScript_HurtCannonadeTarget);
+                result = MOVEEND_RESULT_RUN_SCRIPT;
+            }
+        }
         if (gBattleMons[i].volatiles.substituteHP == 0)
             gBattleMons[i].volatiles.substitute = FALSE;
+
     }
 
     gBattleScripting.moveendState++;

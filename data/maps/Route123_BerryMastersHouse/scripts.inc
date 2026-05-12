@@ -16,7 +16,7 @@ Route123_BerryMastersHouse_EventScript_BerryMaster::
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_DAILY_BERRY_MASTER_RECEIVED_BERRY
 	msgbox Route123_BerryMastersHouse_Text_WhyBeStingyTakeAnother, MSGBOX_DEFAULT
-	giverandomberry BERRY_ID_CHILAN, BERRY_ID_ROSELI
+	giverandomberry BERRY_ID_OCCA, BERRY_ID_ROSELI
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox Route123_BerryMastersHouse_Text_VisitPrettyPetalFlowerShop, MSGBOX_DEFAULT
 	release

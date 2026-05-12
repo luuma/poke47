@@ -907,25 +907,25 @@ enum __attribute__((packed)) Move
 
     // Add any custom moves here, not further down!
 
-    MOVE_MOOD_CRUSH = MOVES_COUNT_GEN9,
-    MOVE_ICESOAK,
-    MOVE_SCREEN_BURN,
-    MOVE_JUST_DESSERTS,
-    MOVE_CRIT_UP_HIT,
-    MOVE_BASTION_WALLS,
-    MOVE_LIGHTBLOOM,
-    MOVE_ENVELOP,
-    MOVE_NAVAL_BLOCKADE,
-    MOVE_CLOUD_SOMERSAULT,
-    MOVE_HIT_DEF,
+    MOVE_MOOD_CRUSH = MOVES_COUNT_GEN9,//mad
+    MOVE_ICESOAK,//decent design
+    MOVE_SCREEN_BURN,//strong and feels good
+    MOVE_JUST_DESSERTS,//love. Excellent johnny move
+    MOVE_CRIT_UP_HIT,// middling fare
+    MOVE_BASTION_WALLS,//Cannonade. Replaced.
+    MOVE_LIGHTBLOOM,//solid still
+    MOVE_ENVELOP,//middling
+    MOVE_NAVAL_BLOCKADE,//yesddssss
+    MOVE_CLOUD_SOMERSAULT,//yessss
+    MOVE_HIT_DEF,//yessss
     MOVE_CHIEN_POW,
     MOVE_SANDBLASTER,
     MOVE_FORBIDDEN_FANG,//RATICATE sig
-    MOVE_BLINK_STRIKE,
-    MOVE_ARMOR_BREAK,
-    MOVE_FADE,
-    MOVE_PUFF_UP,
-    MOVE_SNAP_FREEZE,
+    MOVE_BLINK_STRIKE,// it's good shit iirc.
+    MOVE_ARMOR_BREAK,// Fuckin bingo. This is an excellent "Jon" move.
+    MOVE_FADE,// Felt decent and spooky
+    MOVE_PUFF_UP,//niche filling
+    MOVE_SNAP_FREEZE,//unsure
     MOVES_COUNT,
 
     // Z Moves
