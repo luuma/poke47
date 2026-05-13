@@ -569,8 +569,8 @@ static void TryPlayStatChangeAnimation(struct BattleCalcValues *cv, struct StatC
         u32 numPositiveStats = 0;
         bool32 isStatChangeByTwo = st->stage > 1;
 
-        numPositiveStats = GetNumPositiveStats(st);
         gBattleStruct->positiveAnimPlayed = TRUE;
+        numPositiveStats = GetNumPositiveStats(st);
 
         statAnimId += isStatChangeByTwo ? STAT_ANIM_PLUS2 : STAT_ANIM_PLUS1;
 
@@ -895,7 +895,7 @@ u32 GetStatStage(u32 stat, const struct AdditionalEffect *additionalEffect)
 static u32 GetNumPositiveStats(struct StatChange *st)
 {
     u32 num = 0;
-    for (u32 i = STAT_ATK; i < st->statStageAmount; i++)
+    for (u32 i = 0; i < st->statStageAmount; i++)
     {
         if (st->statStageQueue[i].stage > 0)
             num++;
@@ -906,7 +906,7 @@ static u32 GetNumPositiveStats(struct StatChange *st)
 static u32 GetNumNegativeStats(struct StatChange *st)
 {
     u32 num = 0;
-    for (u32 i = STAT_ATK; i < st->statStageAmount; i++)
+    for (u32 i = 0; i < st->statStageAmount; i++)
     {
         if (st->statStageQueue[i].stage < 0)
             num++;
