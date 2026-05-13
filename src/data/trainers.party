@@ -14041,38 +14041,38 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Golem
+Golem-Alola @ Air Balloon
 Level: 32
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Protect
 - Rollout
-- Magnitude
 - Explosion
+- Thunder Punch
 
-Kabuto @ Sitrus Berry
-Level: 35
+Gigalith @ Sitrus Berry
+Level: 36
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Ice Beam
-- Surf
+- Iron Defense
+- Earthquake
+- Sandstorm
 - Rock Slide
 
-Onix
-Level: 35
+Lycanroc @ Choice Band
+Level: 32
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Iron Tail
-- Explosion
-- Roar
+- Crunch
+- Slash
+- Accelerock
 - Rock Slide
 
-Nosepass @ Sitrus Berry
-Level: 37
+Archen @ Focus Sash
+Level: 32
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Double Team
-- Explosion
-- Protect
+- Fly
+- Mean Look
+- Skill Swap
 - Rock Slide
 
 === TRAINER_ROXANNE_3 ===
@@ -14083,47 +14083,57 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Omanyte
-Level: 37
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Protect
-- Ice Beam
-- Rock Slide
-- Surf
-
-Golem
-Level: 37
+Golem-Alola @ Air Balloon
+Level: 42
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Protect
 - Rollout
-- Magnitude
 - Explosion
+- Thunder Punch
 
-Kabutops @ Sitrus Berry
-Level: 40
+Gigalith @ Sitrus Berry
+Level: 46
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Ice Beam
-- Surf
+- Recover
+- Stealth Rock
+- Salt Cure
 - Rock Slide
 
-Onix
-Level: 40
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Iron Tail
-- Explosion
-- Roar
-- Rock Slide
-
-Nosepass @ Sitrus Berry
+Lycanroc @ Choice Band
 Level: 42
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Double Team
-- Explosion
-- Protect
+- Crunch
+- Extreme Speed
+- Accelerock
 - Rock Slide
+
+Archeops @ Flying Gem
+Level: 43
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Acrobatics
+- Mean Look
+- Skill Swap
+- Rock Slide
+
+Rampardos @ Focus Sash
+Level: 43
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Head Smash
+- Wild Charge
+- Rock Slide
+- Collision Course
+
+Carracosta @ Leftovers
+Level: 43
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Jet Punch
+- Iron Defense
+- Rock Slide
+- Speed Swap
+
+
 
 === TRAINER_ROXANNE_4 ===
 Name: ROXANNE
@@ -14133,47 +14143,55 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Omastar
-Level: 42
+Golem-Alola @ Air Balloon
+Level: 52
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Protect
-- Ice Beam
-- Rock Slide
-- Surf
+- Rock Blast
+- Explosion
+- Discharge
 
-Golem
-Level: 42
+Gigalith @ Leftovers
+Level: 56
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Protect
-- Rollout
+- Recover
+- Stealth Rock
+- Salt Cure
 - Earthquake
-- Explosion
 
-Kabutops @ Sitrus Berry
-Level: 45
+Lycanroc @ Choice Band
+Level: 52
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Ice Beam
-- Surf
+- Crunch
+- Extreme Speed
+- Accelerock
 - Rock Slide
 
-Onix
-Level: 45
+Archeops @ Flying Gem
+Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Iron Tail
-- Explosion
-- Roar
+- Acrobatics
+- Draco Meteor
+- Skill Swap
 - Rock Slide
 
-Nosepass @ Sitrus Berry
-Level: 47
+Rampardos @ Focus Sash
+Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Double Team
-- Explosion
-- Protect
+- Head Smash
+- Wild Charge
 - Rock Slide
+- Collision Course
+
+Carracosta @ Leftovers
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Jet Punch
+- Iron Defense
+- Rock Slide
+- Speed Swap
 
 === TRAINER_ROXANNE_5 ===
 Name: ROXANNE
@@ -14183,55 +14201,55 @@ Gender: Female
 Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Aerodactyl
-Level: 47
+Golem-Alola @ Air Balloon
+Level: 62
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rock Slide
-- Hyper Beam
-- Supersonic
 - Protect
+- Rock Blast
+- Explosion
+- Discharge
 
-Golem
-Level: 47
+Gigalith @ Leftovers
+Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Focus Punch
-- Rollout
+- Recover
+- Stealth Rock
+- Salt Cure
 - Earthquake
-- Explosion
 
-Omastar
-Level: 47
+Lycanroc @ Choice Band
+Level: 62
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Protect
-- Ice Beam
-- Rock Slide
-- Surf
-
-Kabutops @ Sitrus Berry
-Level: 50
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swords Dance
-- Ice Beam
-- Surf
+- Crunch
+- Extreme Speed
+- Accelerock
 - Rock Slide
 
-Steelix
-Level: 50
+Archeops @ Flying Gem
+Level: 63
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Iron Tail
-- Explosion
-- Roar
+- Acrobatics
+- Draco Meteor
+- Skill Swap
 - Rock Slide
 
-Nosepass @ Sitrus Berry
-Level: 52
+Rampardos @ Focus Sash
+Level: 63
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Double Team
-- Explosion
-- Protect
+- Head Smash
+- Wild Charge
 - Rock Slide
+- Collision Course
+
+Carracosta @ Leftovers
+Level: 63
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Jet Punch
+- Iron Defense
+- Rock Slide
+- Speed Swap
 
 === TRAINER_BRAWLY_2 ===
 Name: BRAWLY
@@ -14435,37 +14453,45 @@ Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Basic Trainer
 
-Mareep
+Charjabug @ Eviolite
 Level: 36
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
-- Protect
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- X Scissor
+- Discharge
 - Thunder Wave
-- Light Screen
+- Crunch
 
-Electrode
-Level: 36
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rollout
-- Thunder
-- Explosion
-- Rain Dance
-
-Magneton @ Sitrus Berry
+Galvantula 
 Level: 38
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Supersonic
-- Protect
-- Thunder
-- Rain Dance
-
-Manectric @ Sitrus Berry
-Level: 40
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Bite
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Sticky Web
+- Skitter Smack
 - Thunder Wave
-- Thunder
-- Protect
+- Electroweb
+
+Luxray
+Level: 36
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Electric Terrain
+- Rising Voltage
+- Dazzling Gleam
+- Howl
+
+Pachirisu @ Salac Berry
+Level: 36
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Charm
+- Shock Wave
+- Super Fang
+- Quick Attack
+
+Zebstrika @ Sitrus Berry
+Level: 40
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Flame Charge
+- Thunder Wave
+- Shock Wave
+- Flash Cannon
 
 === TRAINER_WATTSON_3 ===
 Name: WATTSON
@@ -14477,45 +14503,55 @@ Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
 AI: Basic Trainer
 
-Pikachu
-Level: 39
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
-- Slam
-- Rain Dance
-- Shock Wave
 
-Flaaffy
-Level: 41
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
+Vikavolt @ Zoom Lens
+Level: 42
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Bug Buzz
+- Laser Focus
 - Protect
-- Thunder Wave
-- Light Screen
+- Thunderbolt
 
-Electrode
-Level: 41
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rollout
-- Thunder
-- Explosion
-- Rain Dance
+Galvantula 
+Level: 44
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Sticky Web
+- Skitter Smack
+- Thunderclap
+- Toxic Thread
 
-Magneton @ Sitrus Berry
-Level: 43
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Supersonic
+Luxray
+Level: 42
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Electric Terrain
+- Zing Zap
+- Dazzling Gleam
+- Snarl
+
+Pachirisu @ Salac Berry
+Level: 42
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Nuzzle
+- Follow Me
+- Super Fang
 - Protect
-- Thunder
-- Rain Dance
 
-Manectric @ Sitrus Berry
-Level: 45
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Bite
-- Thunder Wave
-- Thunder
+Zebstrika @ Sitrus Berry
+Level: 46
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Electric Terrain
+- Thunderous Kick
+- High Horsepower
+- Psyblade
+
+Togedemaru @ Light Ball
+Level: 42
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Zing Zap
+- Nuzzle
+- Smart Strike
 - Protect
+
 
 === TRAINER_WATTSON_4 ===
 Name: WATTSON
@@ -14525,47 +14561,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Raichu
-Level: 44
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
-- Slam
-- Rain Dance
+Vikavolt @ Zoom Lens
+Level: 52
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Bug Buzz
+- Laser Focus
 - Protect
+- Thunderbolt
 
-Ampharos
-Level: 46
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
+Galvantula 
+Level: 54
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Sticky Web
+- Skitter Smack
+- Thunderclap
+- Toxic Thread
+
+Luxray
+Level: 52
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Electric Terrain
+- Zing Zap
+- Dazzling Gleam
+- Snarl
+
+Pachirisu @ Light Ball
+Level: 52
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Nuzzle
+- Population Bomb
 - Protect
-- Thunder Wave
-- Light Screen
+- Quick Attack
 
-Electrode
-Level: 46
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rollout
-- Thunder
-- Explosion
-- Rain Dance
+Zebstrika @ Sitrus Berry
+Level: 56
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Electric Terrain
+- Thunderous Kick
+- High Horsepower
+- Psyblade
 
-Magneton @ Sitrus Berry
-Level: 48
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Supersonic
-- Protect
-- Thunder
-- Rain Dance
-
-Manectric @ Sitrus Berry
-Level: 50
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Bite
-- Thunder Wave
-- Thunder
-- Protect
+Togedemaru @ Light Ball
+Level: 52
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Zing Zap
+- Nuzzle
+- Smart Strike
+- Spiky Shield
 
 === TRAINER_WATTSON_5 ===
 Name: WATTSON
@@ -14575,55 +14619,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Electabuzz
-Level: 50
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Swift
-- Focus Punch
-- Thunder Punch
-- Light Screen
-
-Raichu
-Level: 51
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
-- Slam
-- Rain Dance
+Vikavolt @ Zoom Lens
+Level: 62
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Bug Buzz
+- Energy Ball
 - Protect
+- Thunderbolt
 
-Ampharos
-Level: 51
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Thunder
+Galvantula @ Focus Sash
+Level: 64
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Sticky Web
+- Electroweb
+- Thunderclap
+- Silk Trap
+
+Luxray
+Level: 62 @ Assault Vest
+IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
+- Bolt Beak
+- Psychic Fangs
+- Dazzling Gleam
+- Snarl
+
+Pachirisu @ Light Ball
+Level: 62
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Nuzzle
+- Population Bomb
 - Protect
-- Thunder Wave
-- Light Screen
+- Quick Attack
 
-Electrode
-Level: 53
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rollout
-- Thunder
-- Explosion
-- Rain Dance
+Zebstrika @ Sitrus Berry
+Level: 66
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Electric Terrain
+- Thunderous Kick
+- High Horsepower
+- Psyblade
 
-Magneton @ Sitrus Berry
-Level: 53
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Supersonic
-- Protect
-- Thunder
-- Rain Dance
-
-Manectric @ Sitrus Berry
-Level: 55
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Bite
-- Thunder Wave
-- Thunder
-- Protect
+Togedemaru @ Light Ball
+Level: 62
+IVs: 26 HP / 26 Atk / 26 Def / 26 SpA / 26 SpD / 26 Spe
+- Zing Zap
+- Nuzzle
+- Smart Strike
+- Spiky Shield
 
 === TRAINER_FLANNERY_2 ===
 Name: FLANNERY
@@ -15482,220 +15526,236 @@ IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
 - Flamethrower
 
 === TRAINER_JUAN_2 ===
-Name: JUAN
+Name: GLACIA
 Class: Leader
-Pic: Leader Juan
-Gender: Male
-Music: Male
+Pic: Elite Four Glacia
+Gender: Female
+Music: Female
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer 
 
-Poliwag
+Abomasnow @ Icy Rock
 Level: 46
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hypnosis
-- Rain Dance
-- Protect
-- Hydro Pump
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Aurora Veil
+- Wood Hammer
+- Leech Seed
+- Blizzard
 
-Whiscash
+Beartic @ Salac Berry
 Level: 46
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rain Dance
-- Water Pulse
-- Double Team
-- Fissure
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Belly Drum
+- Icicle Crash
+- Headlong Rush
+- Ice Shard
 
-Walrein
+Darmanitan-Galar @ Focus Sash
 Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Body Slam
-- Protect
-- Ice Beam
+- Ice Punch
+- Iron Head
+- Close Combat
+- Brick Break
 
-Crawdaunt @ Chesto Berry
-Level: 48
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rest
-- Crabhammer
-- Taunt
-- Double Team
+Avalugg @ Heavy-Duty Boots
+Level: 48 
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Body Press
+- Iron Defense
+- Recover
+- Rapid Spin
 
-Kingdra @ Chesto Berry
+Aurorus @ Assault Vest
 Level: 51
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Double Team
-- Ice Beam
-- Rest
+- Diamond Storm
+- Freeze Dry
+- Earth Power
+- Dragon Pulse
 
-=== TRAINER_JUAN_3 ===
-Name: JUAN
-Class: Leader
-Pic: Leader Juan
-Gender: Male
-Music: Male
-Items: Full Restore / Full Restore / Full Restore
-Double Battle: Yes
-AI: Basic Trainer
-
-Poliwhirl
-Level: 50
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hypnosis
-- Rain Dance
-- Protect
-- Hydro Pump
-
-Whiscash
-Level: 51
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rain Dance
-- Water Pulse
-- Double Team
-- Fissure
-
-Walrein
-Level: 53
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Body Slam
-- Protect
-- Ice Beam
-
-Crawdaunt @ Chesto Berry
-Level: 53
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rest
-- Guillotine
-- Taunt
-- Double Team
-
-Kingdra @ Chesto Berry
-Level: 56
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Double Team
-- Ice Beam
-- Rest
-
-=== TRAINER_JUAN_4 ===
-Name: JUAN
-Class: Leader
-Pic: Leader Juan
-Gender: Male
-Music: Male
-Items: Full Restore / Full Restore / Full Restore
-Double Battle: Yes
-AI: Basic Trainer
-
-Lapras
-Level: 56
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hydro Pump
-- Perish Song
-- Ice Beam
-- Confuse Ray
-
-Whiscash
-Level: 58
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rain Dance
-- Water Pulse
-- Double Team
-- Fissure
-
-Poliwhirl
-Level: 56
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hypnosis
-- Rain Dance
-- Protect
-- Hydro Pump
-
-Walrein
-Level: 58
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Body Slam
-- Protect
-- Ice Beam
-
-Crawdaunt @ Chesto Berry
-Level: 58
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rest
-- Guillotine
-- Taunt
-- Double Team
-
-Kingdra @ Chesto Berry
-Level: 61
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Double Team
-- Ice Beam
-- Rest
-
-=== TRAINER_JUAN_5 ===
-Name: JUAN
-Class: Leader
-Pic: Leader Juan
-Gender: Male
-Music: Male
-Items: Full Restore / Full Restore / Full Restore
-Double Battle: Yes
-AI: Basic Trainer
-
-Lapras
-Level: 61
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hydro Pump
-- Perish Song
-- Ice Beam
-- Confuse Ray
-
-Whiscash
-Level: 63
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rain Dance
-- Water Pulse
-- Double Team
-- Fissure
-
-Politoed
-Level: 61
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Hypnosis
-- Rain Dance
-- Hydro Pump
-- Perish Song
-
-Walrein
-Level: 63
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Body Slam
-- Protect
+Cryogonal @ Rare Candy
+Level: 46
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Toxic
+- Glaciate
+- Recover
 - Sheer Cold
 
-Crawdaunt @ Chesto Berry
+=== TRAINER_JUAN_3 ===
+Name: GLACIA
+Class: Leader
+Pic: Elite Four Glacia
+Gender: Female
+Music: Female
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer 
+
+Abomasnow @ Icy Rock
+Level: 52
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Aurora Veil
+- Wood Hammer
+- Leech Seed
+- Blizzard
+
+Beartic @ Salac Berry
+Level: 52
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Belly Drum
+- Icicle Crash
+- Headlong Rush
+- Ice Shard
+
+Darmanitan-Galar @ Focus Sash
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Ice Punch
+- Iron Head
+- Close Combat
+- Brick Break
+
+Avalugg @ Heavy-Duty Boots
+Level: 53 
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Body Press
+- Iron Defense
+- Recover
+- Rapid Spin
+
+Aurorus @ Assault Vest
+Level: 56
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Diamond Storm
+- Freeze Dry
+- Earth Power
+- Dragon Pulse
+
+Cryogonal @ Sitrus Berry
+Level: 52
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Toxic
+- Glaciate
+- Recover
+- Sheer Cold
+
+=== TRAINER_JUAN_4 ===
+Name: GLACIA
+Class: Leader
+Pic: Elite Four Glacia
+Gender: Female
+Music: Female
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer 
+
+Abomasnow @ Icy Rock
+Level: 56
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Aurora Veil
+- Wood Hammer
+- Leech Seed
+- Blizzard
+
+Beartic @ Salac Berry
+Level: 56
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Belly Drum
+- Icicle Crash
+- Headlong Rush
+- Ice Shard
+
+Darmanitan-Galar @ Focus Sash
+Level: 58
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Ice Punch
+- Iron Head
+- Close Combat
+- Brick Break
+
+Avalugg @ Heavy-Duty Boots
+Level: 58 
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Body Press
+- Iron Defense
+- Recover
+- Rapid Spin
+
+Aurorus @ Assault Vest
+Level: 61
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Diamond Storm
+- Freeze Dry
+- Earth Power
+- Dragon Pulse
+
+Cryogonal @ Sitrus Berry
+Level: 56
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Toxic
+- Glaciate
+- Recover
+- Sheer Cold
+
+=== TRAINER_JUAN_5 ===
+Name: GLACIA
+Class: Leader
+Pic: Elite Four Glacia
+Gender: Female
+Music: Female
+Items: Full Restore / Full Restore / Full Restore
+Double Battle: Yes
+AI: Smart Trainer 
+
+Abomasnow @ Icy Rock
+Level: 62
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Aurora Veil
+- Wood Hammer
+- Leech Seed
+- Blizzard
+
+Beartic @ Salac Berry
+Level: 62
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Belly Drum
+- Icicle Crash
+- Headlong Rush
+- Ice Shard
+
+Darmanitan-Galar @ Focus Sash
 Level: 63
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Rest
-- Guillotine
-- Taunt
-- Double Team
+- Ice Punch
+- Iron Head
+- Close Combat
+- Brick Break
 
-Kingdra @ Chesto Berry
+Avalugg @ Heavy-Duty Boots
+Level: 63
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Body Press
+- Iron Defense
+- Recover
+- Rapid Spin
+
+Aurorus @ Assault Vest
 Level: 66
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Water Pulse
-- Double Team
-- Ice Beam
-- Rest
+- Diamond Storm
+- Freeze Dry
+- Earth Power
+- Dragon Pulse
+
+Cryogonal @ Sitrus Berry
+Level: 62
+IVs: 30 HP / 30 Atk / 30 Def / 30 SpA / 30 SpD / 30 Spe
+- Toxic
+- Glaciate
+- Recover
+- Sheer Cold
 
 === TRAINER_ANGELO ===
 Name: ANGELO

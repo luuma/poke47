@@ -267,6 +267,8 @@ LittlerootTown_EventScript_CapKidGiveBack::
 	msgbox LittlerootTown_Text_WantGiveCapBack, MSGBOX_YESNO
 	lockall
 	goto_if_eq VAR_RESULT, NO, LittlerootTown_EventScript_CapKidBelievesInYou
+	msgbox LittlerootTown_Text_WantGiveCapBackReally, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, LittlerootTown_EventScript_CapKidBelievesInYou
 	removeitem ITEM_LEVEL_CAP, 1
 	msgbox LittlerootTown_Text_GaveCapBackIllBeOff
 	fadescreenswapbuffers FADE_TO_BLACK
@@ -1091,6 +1093,10 @@ LittlerootTown_Text_WantGiveCapBack:
 	.string "Wow. Cheeks. Don't tell me you're\n"
 	.string "here to give the LEVEL CAP back!\p"
 	.string "Are you really giving it back?$"
+
+LittlerootTown_Text_WantGiveCapBackReally:
+	.string "Really?\n"
+	.string "I won't let you have it again!!!!$"
 
 LittlerootTown_Text_WantGiveCapBackBelieve:
 	.string "I believe in you.$"
