@@ -40,7 +40,7 @@ MauvilleCity_BikeShop_EventScript_givemach::
 
 MauvilleCity_BikeShop_Text_canigiveyousecondbike:
 	.string "RYDEL: Oh? Is that a… A BIKE VOUCHER?\n"
-	.string "You're kidding me\p"
+	.string "You're kidding me.\p"
 	.string "A kid gave you it? These things are…\n"
 	.string "They're basically priceless!\p"
 	.string "Hey, I'll tell you what. Would you\n"

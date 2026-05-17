@@ -3777,6 +3777,7 @@ static const u16 sChatotEggMoveLearnset[] = {
     MOVE_DEFOG,
     MOVE_AIR_CUTTER,
     MOVE_BOOMBURST,
+    MOVE_HEAT_WAVE,
     MOVE_UNAVAILABLE,
 };
 #endif //P_FAMILY_CHATOT

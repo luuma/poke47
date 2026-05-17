@@ -4108,7 +4108,12 @@ static void HandleTurnActionSelectionState(void)
                 }
                 else
                 {
-                    if (gBattleMons[battler].volatiles.multipleTurns
+                    if ((gFieldStatuses & STATUS_FIELD_GRAVITY) && !(gFieldTimers.gravityTimer & 1))//On odd turns of the gravity timer, while gravity is there. 
+                    {
+                        gChosenActionByBattler[battler] = B_ACTION_NOTHING_FAINTED;
+                        gBattleCommunication[battler] = STATE_WAIT_ACTION_CONFIRMED_STANDBY;
+                    }
+                    else if (gBattleMons[battler].volatiles.multipleTurns
                         || gBattleMons[battler].volatiles.rechargeTimer > 0)
                     {
                         gChosenActionByBattler[battler] = B_ACTION_USE_MOVE;

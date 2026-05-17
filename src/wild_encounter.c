@@ -52,9 +52,9 @@ static void ApplyFluteEncounterRateMod(u32 *encRate);
 static void ApplyCleanseTagEncounterRateMod(u32 *encRate);
 static u8 GetMaxLevelOfSpeciesInWildTable(const struct WildPokemon *wildMon, enum Species species, enum WildPokemonArea area);
 
-static bool8 TryGetHoldInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum HoldEffect holdEffect, u8 *monIndex);
+static bool8 TryGetHoldInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum HoldEffect holdEffect, u8 *monIndex, u32 size);
 
-static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex);
+static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex, u32 size);
 
 
 //static bool8 IsAbilityAllowingEncounter(u8 level);
@@ -493,8 +493,8 @@ void CreateWildMon(enum Species species, u8 level)
     GiveMonInitialMoveset(&gParties[B_TRAINER_1][0]);
 }
 
-#define TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildPokemon, holdEffect, ptr) TryGetHoldInfluencedWildMonIndex(wildPokemon, holdEffect, ptr)//ADDED
-#define TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildPokemon, type, ability, ptr) TryGetAbilityInfluencedWildMonIndex(wildPokemon, type, ability, ptr)
+#define TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildPokemon, holdEffect, ptr, count) TryGetHoldInfluencedWildMonIndex(wildPokemon, holdEffect, ptr, count)
+#define TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildPokemon, type, ability, ptr, count) TryGetAbilityInfluencedWildMonIndex(wildPokemon, type, ability, ptr, count)
 
 bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPokemonArea area, u8 flags)
 {
@@ -504,41 +504,37 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
     switch (area)
     {
     case WILD_AREA_LAND:
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex, LAND_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_STATIC, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_STATIC, &wildMonIndex, LAND_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_LIGHTNING_ROD, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_LIGHTNING_ROD, &wildMonIndex, LAND_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_FLASH_FIRE, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_FLASH_FIRE, &wildMonIndex, LAND_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_HARVEST, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_HARVEST, &wildMonIndex, LAND_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, LAND_WILD_COUNT))
             break;
-        if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_PLATE, &wildMonIndex))//ADDED
+        if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_PLATE, &wildMonIndex, LAND_WILD_COUNT))//ADDED
             break;
-        //if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_RESIST_BERRY, &wildMonIndex))//ADDED
-            //break;
         wildMonIndex = ChooseWildMonIndex_Land();
         break;
     case WILD_AREA_WATER:
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_STEEL, ABILITY_MAGNET_PULL, &wildMonIndex, WATER_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_STATIC, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_STATIC, &wildMonIndex, WATER_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_LIGHTNING_ROD, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_ELECTRIC, ABILITY_LIGHTNING_ROD, &wildMonIndex, WATER_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_FLASH_FIRE, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_FIRE, ABILITY_FLASH_FIRE, &wildMonIndex, WATER_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_HARVEST, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_GRASS, ABILITY_HARVEST, &wildMonIndex, WATER_WILD_COUNT))
             break;
-        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex))
+        if (TRY_GET_ABILITY_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, TYPE_WATER, ABILITY_STORM_DRAIN, &wildMonIndex, WATER_WILD_COUNT))
             break;
-        if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_PLATE, &wildMonIndex))//ADDED
+        if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_PLATE, &wildMonIndex, WATER_WILD_COUNT))//ADDED
             break;
-        //if (TRY_GET_HOLD_INFLUENCED_WILD_MON_INDEX(wildMonInfo->wildPokemon, HOLD_EFFECT_RESIST_BERRY, &wildMonIndex))//ADDED
-            //break;
         wildMonIndex = ChooseWildMonIndex_Water();
         break;
     case WILD_AREA_ROCKS:
@@ -555,6 +551,7 @@ bool8 TryGenerateWildMon(const struct WildPokemonInfo *wildMonInfo, enum WildPok
         return FALSE;
     if (gMapHeader.mapLayoutId != LAYOUT_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS && flags & WILD_CHECK_KEEN_EYE && !IsAbilityAllowingEncounter(level))
         return FALSE;
+
 ////////////////////////////////////////// will eventually be invalidated. Return to:     CreateWildMon(wildMonInfo->wildPokemon[wildMonIndex].species, level);
 
     u16 species = wildMonInfo->wildPokemon[wildMonIndex].species;
@@ -1165,7 +1162,7 @@ static u8 GetMaxLevelOfSpeciesInWildTable(const struct WildPokemon *wildMon, enu
     return maxLevel;
 }
 
-static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex)
+static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum Type type, enum Ability ability, u8 *monIndex, u32 size)
 {
     if (GetMonData(&gParties[B_TRAINER_0][0], MON_DATA_SANITY_IS_EGG))
         return FALSE;
@@ -1173,21 +1170,21 @@ static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildM
         return FALSE;
     else if (Random() % 2 != 0)
         return FALSE;
-    return TryGetRandomWildMonIndexByType(wildMon, type, LAND_WILD_COUNT, monIndex);
+    return TryGetRandomWildMonIndexByType(wildMon, type, size, monIndex);
 }
 
 //ADDED 
-static bool8 TryGetHoldInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum HoldEffect holdEffect, u8 *monIndex)
+static bool8 TryGetHoldInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum HoldEffect holdEffect, u8 *monIndex, u32 size)
 {
-    u32 itemId = (GetMonData(&gPlayerParty[0], MON_DATA_HELD_ITEM));
-    if (GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
+    u32 itemId = (GetMonData(&gParties[B_TRAINER_0][0], MON_DATA_HELD_ITEM));
+    if (GetMonData(&gParties[B_TRAINER_0][0], MON_DATA_SANITY_IS_EGG))
         return FALSE;
     else if (GetItemHoldEffect(itemId) != holdEffect)
         return FALSE;
+    else if (Random() % 2 != 0)
+        return FALSE;
     enum Type type = GetItemSecondaryId(itemId);
-    //else if (Random() % 2 != 0)
-        //return FALSE;
-    return TryGetRandomWildMonIndexByType(wildMon, type, LAND_WILD_COUNT, monIndex);
+    return TryGetRandomWildMonIndexByType(wildMon, type, size, monIndex);
 }
 //ADDED
 

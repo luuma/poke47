@@ -2653,7 +2653,7 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
           && !IS_BATTLER_OF_TYPE(battlerAtk, TYPE_FLYING)
           && aiData->holdEffects[battlerAtk] != HOLD_EFFECT_AIR_BALLOON) // Should revert Gravity in this case
           || PartnerMoveIsSameNoTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove))
-            ADJUST_SCORE(-10);
+            ADJUST_SCORE(-5);
         break;
     case EFFECT_ION_DELUGE:
         if (gFieldStatuses & STATUS_FIELD_ION_DELUGE
@@ -5275,8 +5275,13 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
             if (HasMoveWithLowAccuracy(battlerAtk, battlerDef, 90, TRUE)
              || HasMoveWithLowAccuracy(BATTLE_PARTNER(battlerAtk), battlerDef, 90, TRUE))
                 ADJUST_SCORE(WEAK_EFFECT);
-            if (ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_GRAVITY))
+            if (ShouldSetFieldStatus(battlerAtk, STATUS_FIELD_GRAVITY)
+             || gBattleMons[battlerDef].volatiles.leechSeed 
+             || gBattleMons[battlerDef].status1 & (STATUS1_BURN | STATUS1_PSN_ANY)// Time independent DOT effects.
+             || HasBattlerSideMoveWithAdditionalEffect(battlerAtk, MOVE_EFFECT_RECHARGE))
                 ADJUST_SCORE(DECENT_EFFECT);
+            if (gBattleMons[battlerDef].status1 & STATUS1_TOXIC_COUNTER || gBattleMons[battlerDef].volatiles.cursed || gBattleMons[battlerDef].volatiles.nightmare)
+                ADJUST_SCORE(GOOD_EFFECT);
         }
         break;
     case EFFECT_ION_DELUGE:

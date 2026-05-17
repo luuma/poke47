@@ -3258,7 +3258,7 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
         if (!(gFieldStatuses & STATUS_FIELD_GRAVITY))
         {
             gFieldStatuses |= STATUS_FIELD_GRAVITY;
-            gFieldTimers.gravityTimer = 5;
+            gFieldTimers.gravityTimer = 9;
             BattleScriptPush(battleScript);
             gBattlescriptCurrInstr = BattleScript_MoveEffectGravity;
         }
@@ -6282,7 +6282,7 @@ static void Cmd_setgravity(void)
     else
     {
         gFieldStatuses |= STATUS_FIELD_GRAVITY;
-        gFieldTimers.gravityTimer = 5;
+        gFieldTimers.gravityTimer = 9;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }

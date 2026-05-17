@@ -912,7 +912,7 @@ enum __attribute__((packed)) Move
     MOVE_SCREEN_BURN,//strong and feels good
     MOVE_JUST_DESSERTS,//love. Excellent johnny move
     MOVE_CRIT_UP_HIT,// middling fare
-    MOVE_BASTION_WALLS,//Cannonade. Replaced.
+    MOVE_BASTION_WALLS,//Cannonade. Replaced. Love
     MOVE_LIGHTBLOOM,//solid still
     MOVE_ENVELOP,//middling
     MOVE_NAVAL_BLOCKADE,//yesddssss
@@ -922,10 +922,11 @@ enum __attribute__((packed)) Move
     MOVE_SANDBLASTER,
     MOVE_FORBIDDEN_FANG,//RATICATE sig
     MOVE_BLINK_STRIKE,// it's good shit iirc.
-    MOVE_ARMOR_BREAK,// Fuckin bingo. This is an excellent "Jon" move.
-    MOVE_FADE,// Felt decent and spooky
-    MOVE_PUFF_UP,//niche filling
-    MOVE_SNAP_FREEZE,//unsure
+    MOVE_ARMOR_BREAK,// Fuckin bingo. This is an excellent "jonny" move.
+    MOVE_FADE,// Felt decent and spooky. Unused
+    MOVE_PUFF_UP,//niche filling. Unused
+    MOVE_SNAP_FREEZE,//unsure. on vulpix-A
+    MOVE_CRASH_OUT,// Kricketune
     MOVES_COUNT,
 
     // Z Moves

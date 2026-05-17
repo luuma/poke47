@@ -79,8 +79,8 @@ static bool32 HandleEndTurnVarious(enum BattlerId battler)
 
     if (gBattleStruct->incrementEchoedVoice)
     {
-        if (gBattleStruct->echoedVoiceCounter < 4)
-            gBattleStruct->echoedVoiceCounter++;
+        //if (gBattleStruct->echoedVoiceCounter < 4)
+            //gBattleStruct->echoedVoiceCounter++;
         gBattleStruct->incrementEchoedVoice = FALSE;
     }
     else

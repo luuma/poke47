@@ -6069,7 +6069,7 @@ static bool32 IsBattlerGroundedInverseCheck(enum BattlerId battler, enum Ability
         return TRUE;
     if (IsBattlerUngroundedByAbilityItemOrEffect(battler, ability, holdEffect))
         return FALSE;
-    if (IS_BATTLER_OF_TYPE(battler, TYPE_FLYING) && (checkInverse != INVERSE_BATTLE || !FlagGet(B_FLAG_INVERSE_BATTLE)))
+    if (IS_BATTLER_OF_TYPE(battler, TYPE_FLYING) && (checkInverse != INVERSE_BATTLE || (!FlagGet(B_FLAG_INVERSE_BATTLE) && !(gFieldStatuses & STATUS_FIELD_INVERSE))))// if neither, it can return immune, otherwise it shouldn't.
         return FALSE;
     return TRUE;
 }
@@ -7915,6 +7915,9 @@ s32 DoFixedDamageMoveCalc(struct DamageContext *ctx)
     case EFFECT_FIXED_PERCENT_DAMAGE:
         dmg = GetNonDynamaxHP(ctx->battlerDef) * GetMoveDamagePercentage(ctx->move) / 100;
         break;
+    case EFFECT_FORBIDDEN_FANG:
+        dmg = (gBattleMons[ctx->battlerDef].hp * GetMoveDamagePercentage(ctx->move) / 100);
+        break;
     case EFFECT_FINAL_GAMBIT:
         dmg = GetNonDynamaxHP(ctx->battlerAtk);
         break;
@@ -8493,7 +8496,7 @@ static inline uq4_12_t CalcTypeEffectivenessMultiplierInternal(struct DamageCont
         && ctx->holdEffects[ctx->battlerDef] == HOLD_EFFECT_IRON_BALL
         && IS_BATTLER_OF_TYPE(ctx->battlerDef, TYPE_FLYING)
         && !IsBattlerGrounded(ctx->battlerDef, ctx->abilities[ctx->battlerDef], HOLD_EFFECT_NONE) // We want to ignore Iron Ball so skip item check
-        && !FlagGet(B_FLAG_INVERSE_BATTLE))
+        && (FlagGet(B_FLAG_INVERSE_BATTLE) == (gFieldStatuses & STATUS_FIELD_INVERSE)))
     {
         modifier = UQ_4_12(1.0);
     }
@@ -8609,7 +8612,7 @@ uq4_12_t GetOverworldTypeEffectiveness(struct Pokemon *mon, enum Type moveType)
 
 uq4_12_t GetTypeModifier(enum Type atkType, enum Type defType)
 {
-    if ((B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE)) != (gFieldStatuses & STATUS_FIELD_INVERSE)) 
+    if ((B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE)) != (gFieldStatuses & STATUS_FIELD_INVERSE)) // actually should hav a separate command for when both are on, which returns 0.5 for 0x effective moves. But we don't have inverse battles so. whatever
         return GetInverseTypeMultiplier(gTypeEffectivenessTable[atkType][defType]);
     return gTypeEffectivenessTable[atkType][defType];
 }

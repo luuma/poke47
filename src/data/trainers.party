@@ -14259,39 +14259,48 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Machamp @ Sitrus Berry
+Sawk @ Rocky Helmet
 Level: 33
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Karate Chop
-- Rock Slide
+- Reversal
+- Substitute
 - Focus Punch
+- Endeavor
+
+Crabominable
+Level: 36
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Crabhammer
+- Reversal
+- Endure
 - Bulk Up
 
-Meditite
-Level: 33
+Hawlucha @ Mirror Herb
+Level: 36
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Psychic
-- Light Screen
-- Reflect
-- Focus Punch
+- Feint
+- Flying Press
+- Acrobatics
+- Swagger
 
-Hitmontop
-Level: 35
+Passimian @ Choice Scarf
+Level: 40
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Pursuit
-- Counter
-- Protect
-- Triple Kick
+- U Turn
+- Take Down
+- Fling
+- Drain Punch
 
-Hariyama @ Sitrus Berry
-Level: 37
+Bewear
+Level: 34
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Fake Out
-- Focus Punch
-- Belly Drum
 - Earthquake
+- Take Down
+- Bulk Up
+- Drain Punch
+
 
 === TRAINER_BRAWLY_3 ===
 Name: BRAWLY
@@ -14301,39 +14310,56 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Machamp @ Sitrus Berry
-Level: 38
+Chesnaught @ Rocky Helmet
+Level: 45
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Karate Chop
-- Rock Slide
+- Spikes
+- Wood Hammer
+- Body Press
+- Iron Defense
+
+Sawk @ Rocky Helmet
+Level: 45
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Reversal
+- Substitute
 - Focus Punch
+- Endeavor
+
+Hawlucha @ Mirror Herb
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Feint
+- Flying Press
+- Acrobatics
+- Swagger
+
+Crabominable
+Level: 44
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Crabhammer
+- Power Up Punch
+- Waterfall
 - Bulk Up
 
-Medicham
-Level: 38
+Passimian @ Choice Scarf
+Level: 48
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Psychic
-- Light Screen
-- Reflect
-- Focus Punch
+- U Turn
+- Power Up Punch
+- Fling
+- Drain Punch
 
-Hitmontop
-Level: 40
+Bewear
+Level: 45
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Pursuit
-- Counter
-- Protect
-- Triple Kick
-
-Hariyama @ Sitrus Berry
-Level: 42
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Fake Out
-- Focus Punch
-- Belly Drum
 - Earthquake
+- Take Down
+- Bulk Up
+- Drain Punch
+
 
 === TRAINER_BRAWLY_4 ===
 Name: BRAWLY
@@ -14343,47 +14369,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Hitmonchan
-Level: 40
+Chesnaught @ Rocky Helmet
+Level: 54
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Sky Uppercut
-- Protect
-- Fire Punch
-- Ice Punch
+- Spikes
+- Wood Hammer
+- Body Press
+- Iron Defense
 
-Machamp @ Sitrus Berry
-Level: 43
+Pyukumuku @ Damage Bounceables
+Level: 53
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Karate Chop
-- Rock Slide
-- Focus Punch
+- Copycat
+- Gastro Acid
+- Soak
+- Toxic
+
+Hawlucha @ Mirror Herb
+Level: 53
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Roost
+- Flying Press
+- Acrobatics
+- Swagger
+
+Crabominable
+Level: 55
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Crabhammer
+- Power Up Punch
+- Waterfall
 - Bulk Up
 
-Medicham
-Level: 43
+Passimian @ Choice Band
+Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Focus Punch
-- Light Screen
-- Reflect
-- Psychic
+- U Turn
+- Power Up Punch
+- Fling
+- Drain Punch
 
-Hitmontop
-Level: 45
+Bewear
+Level: 55
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Pursuit
-- Counter
-- Protect
-- Triple Kick
-
-Hariyama @ Sitrus Berry
-Level: 47
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Fake Out
-- Focus Punch
-- Belly Drum
-- Earthquake
+- Octolock
+- Double Edge
+- Bulk Up
+- Drain Punch
 
 === TRAINER_BRAWLY_5 ===
 Name: BRAWLY
@@ -14393,55 +14427,55 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore
 Double Battle: Yes
-AI: Basic Trainer
+AI: Smart Trainer
 
-Hitmonlee
-Level: 46
+Chesnaught @ Rocky Helmet
+Level: 64
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Mega Kick
-- Focus Punch
-- Earthquake
+- Spikes
+- Stealth Rock
+- Body Press
+- Iron Defense
+
+Pyukumuku @ Damage Bounceables
+Level: 63
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Copycat
+- Gastro Acid
+- Trick Room
+- Toxic
+
+Hawlucha @ Mirror Herb
+Level: 63
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Roost
+- Flying Press
+- Acrobatics
+- Swagger
+
+Crabominable @ Room Service
+Level: 66
+IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
+- Crabhammer
+- Power Up Punch
+- Ice Hammer
 - Bulk Up
 
-Hitmonchan
-Level: 46
+Passimian @ Choice Band
+Level: 64
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Sky Uppercut
-- Protect
-- Fire Punch
-- Ice Punch
+- U Turn
+- Power Up Punch
+- Fling
+- Drain Punch
 
-Machamp @ Sitrus Berry
-Level: 48
+Bewear @ Assault Vest
+Level: 65
 IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Cross Chop
-- Rock Slide
-- Focus Punch
-- Bulk Up
-
-Medicham
-Level: 48
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Focus Punch
-- Light Screen
-- Reflect
-- Psychic
-
-Hitmontop
-Level: 50
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Pursuit
-- Counter
-- Protect
-- Triple Kick
-
-Hariyama @ Sitrus Berry
-Level: 52
-IVs: 31 HP / 31 Atk / 31 Def / 31 SpA / 31 SpD / 31 Spe
-- Fake Out
-- Focus Punch
-- Belly Drum
 - Earthquake
+- Double Edge
+- Outrage
+- Drain Punch
 
 === TRAINER_WATTSON_2 ===
 Name: WATTSON

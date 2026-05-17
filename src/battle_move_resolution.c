@@ -2621,7 +2621,7 @@ static enum MoveEndResult MoveEndSubstitute(struct BattleCalcValues *cv)// Using
      && IsBattlerAlive(cannonadeTarget)
      && !IsAbilityAndRecord(cannonadeTarget, cv->abilities[cannonadeTarget], ABILITY_MAGIC_GUARD))
             {
-                SetPassiveDamageAmount(cannonadeTarget, GetNonDynamaxMaxHP(cannonadeTarget) / 8);
+                SetPassiveDamageAmount(cannonadeTarget, GetNonDynamaxMaxHP(cannonadeTarget) / 6);
                 gBattleScripting.battler = cannonadeTarget;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_HURT_BY_CANNONS;
                 BattleScriptCall(BattleScript_HurtCannonadeTarget);
@@ -4643,7 +4643,11 @@ static void SetSameMoveTurnValues(enum BattleMoveEffects moveEffect)
         break;
     case EFFECT_ECHOED_VOICE:
         if (!gBattleStruct->unableToUseMove) // Increment even if targets unaffected
+        {
             gBattleStruct->incrementEchoedVoice = TRUE;
+            if (gBattleStruct->echoedVoiceCounter < 4)
+                gBattleStruct->echoedVoiceCounter++;// go off chatot go off
+        }
         break;
     default: // not consecutive
         gBattleMons[gBattlerAttacker].volatiles.rolloutTimer = 0;

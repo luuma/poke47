@@ -4515,6 +4515,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_BONEMERANG",
       "MOVE_THRASH",
+      "MOVE_U_TURN",
       "MOVE_DOUBLE_EDGE"
     ],
     "EggMoves": [],
@@ -4544,6 +4545,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_BONEMERANG",
       "MOVE_THRASH",
+      "MOVE_U_TURN",
       "MOVE_DOUBLE_EDGE"
     ],
     "EggMoves": [],
@@ -4580,6 +4582,7 @@
       "MOVE_ENDEAVOR",
       "MOVE_BONEMERANG",
       "MOVE_THRASH",
+      "MOVE_U_TURN",
       "MOVE_FLARE_BLITZ"
     ],
     "EggMoves": [],
@@ -22846,6 +22849,8 @@
       "MOVE_BUG_BUZZ",
       "MOVE_SWORDS_DANCE",
       "MOVE_PERISH_SONG",
+      "MOVE_TWINEEDLE",
+      "MOVE_DRAGON_CHEER",
       "MOVE_BOOMBURST"
     ],
     "EggMoves": [],
@@ -26266,6 +26271,7 @@
       "MOVE_LIFE_DEW",
       "MOVE_DYNAMIC_PUNCH",
       "MOVE_ENDURE",
+      "MOVE_ENDEAVOR",
       "MOVE_CLOSE_COMBAT"
     ],
     "EggMoves": [],
@@ -34652,6 +34658,7 @@
       "MOVE_SOAK",
       "MOVE_MEMENTO",
       "MOVE_SPIKES",
+      "MOVE_TRICK_ROOM",
       "MOVE_ENDEAVOR"
     ],
     "EggMoves": [],

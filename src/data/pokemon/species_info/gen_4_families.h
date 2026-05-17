@@ -1297,7 +1297,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .baseAttack    = 85,
         .baseDefense   = 51,
         .baseSpeed     = 65,
-        .baseSpAttack  = 85,
+        .baseSpAttack  = 85,//+30
         .baseSpDefense = 51,
         .types = MON_TYPES(TYPE_BUG),
         .catchRate = 45,
@@ -1309,7 +1309,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_BUG),
-        .abilities = { ABILITY_SWARM, ABILITY_TECHNICIAN, ABILITY_PARROT },
+        .abilities = { ABILITY_TECHNICIAN, ABILITY_PUNK_ROCK, ABILITY_PARROT },
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Kricketune"),
         .cryId = CRY_KRICKETUNE,
@@ -4310,12 +4310,12 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 #if P_FAMILY_CHATOT
     [SPECIES_CHATOT] =
     {
-        .baseHP        = 76,
-        .baseAttack    = 55,
+        .baseHP        = 86,//+10
+        .baseAttack    = 55,//-10
         .baseDefense   = 45,
         .baseSpeed     = 91,
         .baseSpAttack  = 92,
-        .baseSpDefense = 42,
+        .baseSpDefense = 42,// it just has to get stat buffs it's ass
         .types = MON_TYPES(TYPE_NORMAL, TYPE_FLYING),
         .catchRate = 30,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 144 : 107,

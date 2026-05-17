@@ -181,7 +181,9 @@ Route129_Text_RatedForNumberOfCollisions:
 	.string "Hmm. Looks like you're on a MACH BIKE.\n"
 	.string "MACH BIKES are cool.\p"
 	.string "I bet if you did 2 LAPS of this course,\n"
-	.string "you might beat my big bro's record…$"
+	.string "you might beat my big bro's record…\p"
+	.string "Start by heading this way {RIGHT_ARROW} {RIGHT_ARROW} {RIGHT_ARROW}\n"
+	.string "and do 2 LAPS of the whole island.$"
 
 Route129_Text_RatedForNumberOfCollisions2:
 	.string "If you can beat his record on time\n"
