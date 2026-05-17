@@ -10,8 +10,6 @@ extern const u8 BattleScript_MoveEnd[];
 extern const u8 BattleScript_MakeMoveMissed[];
 extern const u8 BattleScript_MoveMissedPause[];
 extern const u8 BattleScript_MoveMissed[];
-extern const u8 BattleScript_TargetAvoidsAttackEnd[];/////////////
-extern const u8 BattleScript_FlingMissed[];//////////////////////unsure. 1705 merge
 extern const u8 BattleScript_FlingMessage[];
 extern const u8 BattleScript_FlingFailConsumeItem[];
 extern const u8 BattleScript_RemoveItem[];

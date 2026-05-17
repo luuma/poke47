@@ -2224,37 +2224,40 @@ MatchCall_Text_TateLiza4::
 	.string "LIZA: We could all battle again!$"
 
 MatchCall_Text_Juan1::
-	.string "JUAN: Hmm…\n"
-	.string "{PLAYER}{KUN}… Was it?\p"
+	.string "GLACIA: {PLAYER}{KUN}! Ah, yes.\p"
 	.string "Our battle together--it brought\n"
 	.string "to me memories of when I first\l"
-	.string "encountered WALLACE.\p"
-	.string "Perhaps you are a genius who may\n"
-	.string "yet surpass WALLACE!$"
+	.string "spoke with WALLACE.\p"
+	.string "And if you don't demolish that\n"
+	.string "man, I'll be very embarrassed\l"
+	.string "to have lost to you!$"
 
 MatchCall_Text_Juan2::
-	.string "JUAN: Fufu… {PLAYER}{KUN}…\n"
-	.string "You've finally achieved your goal.\p"
-	.string "My eye for appraising talent wasn't\n"
-	.string "mistaken…\p"
-	.string "I wish for another chance to meet\n"
-	.string "you, for you have scaled the peak\l"
-	.string "of power and prestige.$"
+	.string "GLACIA: Darling! Oh, imagine how I\n"
+	.string "felt when I heard I'd missed your\l"
+	.string "ELITE FOUR run, {PLAYER}{KUN}!\p"
+	.string "Oh, it gives me chills just to think\n"
+	.string "of it…\p"
+	.string "Do you know, darling, don't laugh,\n"
+	.string "but I'm still getting ready for\l"
+	.string "your next encounter with me.\p"
+	.string "I hope you brace yourself too!$"
+
 
 MatchCall_Text_Juan3::
-	.string "JUAN: Hoho… {PLAYER}{KUN}…\p"
-	.string "Our SOOTOPOLIS GYM has finally\n"
-	.string "reopened.\p"
-	.string "If you wish to see me, you are\n"
-	.string "welcome to visit anytime.$"
+	.string "GLACIA: {PLAYER}{KUN}! Dearest! What\n"
+	.string "a pleasure to hear from you!\p"
+	.string "SOOTOPOLIS GYM's doors are open\n"
+	.string "once more. I've just been\l"
+	.string "preening AURORUS' mane!\l"
+	.string "Don't keep a lady waiting.$"
 
 MatchCall_Text_Juan4::
-	.string "JUAN: {PLAYER}{KUN}…\p"
-	.string "Like the finest music, the battles\n"
-	.string "we wage together strike chords\l"
-	.string "of inspiration in my heart…\p"
-	.string "When I close my eyes, I see visions\n"
-	.string "of you soaring with the melody…$"
+	.string "GLACIA: {PLAYER}{KUN}, you are enough\n"
+	.string "to drive a girl mad.\p"
+	.string "I really thought I had you beat!\p"
+	.string "Oh, we are HAVING a rematch.\n"
+	.string "Just you wait.\p"
 
 MatchCall_Text_Sidney::
 	.string "SIDNEY: Yo, {PLAYER}!\p"

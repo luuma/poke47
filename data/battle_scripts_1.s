@@ -5049,13 +5049,6 @@ BattleScript_MoveUsedPsychicTerrainPrevents::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
-BattleScript_TargetAvoidsAttackEnd::
-	pause B_WAIT_TIME_SHORT
-	setbyte cMULTISTRING_CHOOSER, B_MSG_AVOIDED_ATK
-	printfromtable gMissStringIds
-	waitmessage B_WAIT_TIME_LONG
-	goto BattleScript_MoveEnd
-
 BattleScript_GrassyTerrainHeals::
 	printstring STRINGID_GRASSYTERRAINHEALS
 	waitmessage B_WAIT_TIME_LONG
