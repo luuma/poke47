@@ -1,36 +1,26 @@
+
+# Download at https://www.hackdex.app/hack/poke47
+
 # About `poke47`
 
-Download at https://www.hackdex.app/hack/poke47
+![Image of a sewaddle running back and forth in snow making footprints while the player watches](https://images.hackdex.app/poke47/1773931253238-3.png)![Gif that shows the game's start menu, with Kyurem](https://images.hackdex.app/poke47/1777208057027-9.gif)![Image of the player flying to a new route - a dramatic canyon](https://images.hackdex.app/poke47/1773931248565-0.png) 
+=========================================================================================================================================================================================================
+![Image showing the autobattle mechanic - the player's Sliggoo is fighting a starly in the overworld!](https://images.hackdex.app/poke47/1776628470989-8.png)![Gif that shows an expanded region map](https://images.hackdex.app/poke47/1777211690399-1.gif)![Image showing an Inkay battling a Furfrou with its ability Opposite Day, inverting the type chart](https://images.hackdex.app/poke47/1773931251614-2.png)
 
-Pokemon ____(4) _______(7) is a rombase that replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with properly playtested and overhauled movepools, new abilities, new TMs, and a couple of new maps. This was a one-month sprint, followed by another month polishing. It's a complete and playable hack. Every pokémon got something new and exciting but none of the changes should get in your way or require you to relearn anything.
+Pokemon ____(4) _______(7) is a patch for Pokémon Emerald. It replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with properly playtested and overhauled movepools, new abilities, new TMs, and a handful of new routes, shown in the gif above. 
+[This ROM is **extensively documented**, courtesy of JTebbe's Obstagoon, and some excellent work by Menace.](https://menace791.github.io/poke47-docs/)
 
-For example:
-- Gulp Missile Drifblim (it throws litwick or yamask)
-- Honey Gather gathers honey every turn if possible. Honey provides 1.3x defense to bug types and is great when flung.
-- Opposite Day: Sets 5 turns of inverse battle on switchin (Inkay, Malamar)
-- Infinite Wisdom: can use TMs and relearn its own moves during battle (Oranguru, Drampa)
-- Wonder Surge: on switchin, sets a bizarre room that swaps Attack for Defense, and Sp.Atk for Sp.Def (Sigilyph)
-- Rest stacks with Comatose now
+This is a from-scratch disassembly port of my previous QOL/engine hack, Altered Emerald. Along the way I have made a few cuts, a few map additions, and some extra changes:
 
-- Miracle Seed guarantees encounters with grass types and so on for all the other type items. This change is just great actually.
+- The population of Hoenn is replaced with mons from generations 4 to 7 and all of those are rebalanced with new movesets and abilities. All the items, moves, and abilities from Gen 9 (and Champions) have been gifted to those 350 Pokémon. There's a handful of **custom moves, new abilities, and new hold items** to play with, too, and these are virtually exclusive to the player - enemy trainers won't confuse you with them. Check out the link above.
 
-The Usual Good Stuff:
-- Follower pokemon, HGSS dex with complete documentation, and other exceptional features from the RHH pokeemerald-expansion,  Press R to access the PC from the mon menu. Voltorb Flip.
-- Surfing, healing, cutting etc is quicker. HM09 Nature power has the same functionality as altered emerald - you use it in place of most HMs.
-- Berries are revamped. Try growing some purple ones.
+- **A blitz of QOL changes**.A better list of reusable TMs and movetutors. A more sensible system for HMs (starting before gym 4). Berry farming that's actually engaging. A better Pokédex. New maps, routes, and cycle challenges. Access the PC from the party menu, and relearn moves/TMs from the summary screen. Pokabbie/Bivurnum/HashtagMarky's overworld encounters, Chris Piche's updated game corner, Merrp's follower pokemon, and a gen 9 battle engine. A proper, polished, disassembly hack.
 
-Notes for players
-- Press R to access box from the menu.
-- Not all legendaries make the cut, just yet. No megas/giganta/tera stuff except if you're audino.
-- The pokedex is in the order you encounter the mons in, and it's really useful.
-- The game corner is fun now and so is growing berries.
-- Evo methods:
-  - Evolve to Hisuian forms with Dawn Stone. You'll have enough stones to evolve everything once, and all of them can be obtained repeatably. Green minior hold dawn stones, for example.
-  - Trade mons use items or some accessable approximation of their conditions. Gurdurr and Boldore evolve at lv36. Phantump and Pumpkaboo evolve at lv30
-  - Foongus, Pawniard, Frillish, Mienfoo, Vullaby, Rufflet, Deino, Zweilous, and Larvesta evolve 10 levels earlier, to keep it simple to remember.
-- There is only one type change: aurorus is ice/dragon.
-- 11 new abilities and 8 new moves. The new moves are mostly unique
 
+- Vanilla+ Difficulty, and a Level Cap for those who prefer a challenge. it is a hat. Nuzlocking this game isn't for the faint of heart!
+
+
+- (19/4) I've successfully coded Scarlet/Violet-style **overworld autobattling** to the game, from scratch, based on the follower pokemon and overworld pokemon code. Press A to let the mon following you roam freely. Different mons will behave in different ways.
 
 
 # About Pokémon Emerald Game Corner Expansion
@@ -40,15 +30,6 @@ Currently, this adds a new config file that uses some flags by default but can b
 Some new music and changes to the Mauville Corner have been made as well, so keep that in mind if you plan to merge this into your
 existing project. Credits to AsparagusEduardo for the basis of this merge here, I just mainly tweaked things around to help
 out any developers who may want to use this as well.
-
-Updated to pokeemerald-expansion v1.12.0
-
-To pull from this branch here, just simply use these commands here:
-```
-git remote add AGSMG https://github.com/agsmgmaster64/worldlinkdeluxe-ame/
-git pull AGSMG gacha-expansion
-```
-
 
 Below is the rest of the original description from Chris Piche himself:
 
