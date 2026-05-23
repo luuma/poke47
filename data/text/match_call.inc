@@ -2276,11 +2276,11 @@ MatchCall_Text_Phoebe::
 	.string "POKéMON.$"
 
 MatchCall_Text_Glacia::
-	.string "GLACIA: Hello, {PLAYER}.\p"
+	.string "JUAN: Ah, {PLAYER}.\p"
 	.string "I trust you haven't become\n"
-	.string "complacent with your power?\p"
-	.string "If you feel the need to cool your\n"
-	.string "hot emotions just a little, do come\l"
+	.string "complacent with your laurels?\p"
+	.string "If you feel a certain, euh,\n"
+	.string "lack of elegance, do return\l"
 	.string "to the POKéMON LEAGUE…$"
 
 MatchCall_Text_Drake::

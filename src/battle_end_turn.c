@@ -509,7 +509,7 @@ static bool32 HandleEndTurnPoison(enum BattlerId battler)
         {
             if (!IsBattlerAtMaxHp(battler) && !gBattleMons[battler].volatiles.healBlock)
             {
-                SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 8);
+                SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 8);// Lmao I forget how busted this ability is. Ice heal is fine.
                 BattleScriptCall(BattleScript_PoisonHealActivates);
                 effect = TRUE;
             }
@@ -517,7 +517,8 @@ static bool32 HandleEndTurnPoison(enum BattlerId battler)
         else if (gBattleMons[battler].status1 & STATUS1_TOXIC_POISON)
         {
             SetPassiveDamageAmount(battler, GetNonDynamaxMaxHP(battler) / 16);
-            if ((gBattleMons[battler].status1 & STATUS1_TOXIC_COUNTER) != STATUS1_TOXIC_TURN(15)) // not 16 turns
+            if ((gBattleMons[battler].status1 & STATUS1_TOXIC_COUNTER) != STATUS1_TOXIC_TURN(15) 
+              && !((gFieldStatuses & STATUS_FIELD_GRAVITY) && !(gFieldTimers.gravityTimer & 1))) // Increment up if not 16 turns and not a gravity skip turn.
                 gBattleMons[battler].status1 += STATUS1_TOXIC_TURN(1);
             gBattleStruct->passiveHpUpdate[battler] *= (gBattleMons[battler].status1 & STATUS1_TOXIC_COUNTER) >> 8;
             BattleScriptCall(BattleScript_PoisonTurnDmg);

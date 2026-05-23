@@ -15710,7 +15710,8 @@ static const struct LevelUpMove sChatotLevelUpLearnset[] = {
         LEVEL_UP_MOVE(34, MOVE_ECHOED_VOICE),
         LEVEL_UP_MOVE(38, MOVE_PARTING_SHOT),
         LEVEL_UP_MOVE(41, MOVE_SYNCHRONOISE),
-        LEVEL_UP_MOVE(44, MOVE_TAUNT),
+        LEVEL_UP_MOVE(43, MOVE_TAUNT),
+        LEVEL_UP_MOVE(44, MOVE_MINIMIZE),//tangled feet 
         LEVEL_UP_MOVE(47, MOVE_COPYCAT),
         LEVEL_UP_MOVE(50, MOVE_ROOST),
         LEVEL_UP_MOVE(53, MOVE_BOOMBURST),

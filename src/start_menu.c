@@ -126,7 +126,7 @@ static u8 SaveYesNoCallback(void);
 static u8 SaveConfirmInputCallback(void);
 static u8 SaveFileExistsCallback(void);
 static u8 SaveConfirmOverwriteDefaultNoCallback(void);
-static u8 SaveConfirmOverwriteCallback(void);
+//static u8 SaveConfirmOverwriteCallback(void);
 static u8 SaveOverwriteInputCallback(void);
 static u8 SaveSavingMessageCallback(void);
 static u8 SaveDoSaveCallback(void);
@@ -137,6 +137,8 @@ static u8 SaveReturnErrorCallback(void);
 static u8 BattlePyramidConfirmRetireCallback(void);
 static u8 BattlePyramidRetireYesNoCallback(void);
 static u8 BattlePyramidRetireInputCallback(void);
+
+static u8 BeginSaveCallback(void);//new faster saving
 
 // Task callbacks
 static void StartMenuTask(u8 taskId);
@@ -1053,11 +1055,36 @@ static u8 SaveConfirmSaveCallback(void)
     }
     else
     {
-        ShowSaveMessage(gText_ConfirmSave, SaveYesNoCallback);
+        sSaveDialogCallback = BeginSaveCallback;
     }
 
     return SAVE_IN_PROGRESS;
 }
+
+static u8 BeginSaveCallback(void)
+{
+        switch (gSaveFileStatus)
+        {
+        case SAVE_STATUS_EMPTY:
+        case SAVE_STATUS_CORRUPT:
+            if (gDifferentSaveFile == FALSE && !SKIP_SAVE_CONFIRMATION)
+            {
+                sSaveDialogCallback = SaveFileExistsCallback;
+                return SAVE_IN_PROGRESS;
+            }
+
+            sSaveDialogCallback = SaveSavingMessageCallback;
+            return SAVE_IN_PROGRESS;
+        default:
+            if (SKIP_SAVE_CONFIRMATION)
+                sSaveDialogCallback = SaveSavingMessageCallback;
+            else
+                sSaveDialogCallback = SaveFileExistsCallback;
+            return SAVE_IN_PROGRESS;
+        }
+    return SAVE_IN_PROGRESS;
+}
+
 
 static u8 SaveYesNoCallback(void)
 {
@@ -1109,7 +1136,7 @@ static u8 SaveFileExistsCallback(void)
     }
     else
     {
-        ShowSaveMessage(gText_AlreadySavedFile, SaveConfirmOverwriteCallback);
+        sSaveDialogCallback = SaveSavingMessageCallback;// bypass saveconfirmoverwritecallback
     }
 
     return SAVE_IN_PROGRESS;
@@ -1122,12 +1149,15 @@ static u8 SaveConfirmOverwriteDefaultNoCallback(void)
     return SAVE_IN_PROGRESS;
 }
 
+/*
+//unused
 static u8 SaveConfirmOverwriteCallback(void)
 {
     DisplayYesNoMenuDefaultYes(); // Show Yes/No menu
     sSaveDialogCallback = SaveOverwriteInputCallback;
     return SAVE_IN_PROGRESS;
 }
+*/
 
 static u8 SaveOverwriteInputCallback(void)
 {
