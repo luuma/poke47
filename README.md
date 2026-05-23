@@ -1,5 +1,7 @@
 # About `poke47`
 
+Download at https://www.hackdex.app/hack/poke47
+
 Pokemon ____(4) _______(7) is a rombase that replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with properly playtested and overhauled movepools, new abilities, new TMs, and a couple of new maps. This was a one-month sprint, followed by another month polishing. It's a complete and playable hack. Every pokémon got something new and exciting but none of the changes should get in your way or require you to relearn anything.
 
 For example:
