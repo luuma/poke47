@@ -9816,6 +9816,39 @@
       "border_filepath": "data/layouts/AEGauntlet6_cave_3/border.bin",
       "blockdata_filepath": "data/layouts/AEGauntlet6_cave_3/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET7",
+      "name": "AEGauntlet7",
+      "width": 58,
+      "height": 65,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/AEGauntlet7/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntlet7/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET7_2",
+      "name": "AEGauntlet7_2",
+      "width": 58,
+      "height": 65,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/AEGauntlet7_2/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntlet7_2/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET5_2",
+      "name": "AEGauntlet5_2",
+      "width": 50,
+      "height": 55,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Unused1",
+      "border_filepath": "data/layouts/AEGauntlet5_2/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntlet5_2/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

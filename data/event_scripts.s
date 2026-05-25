@@ -1781,3 +1781,5 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/Route128_Cavern/scripts.inc"
 
 	.include "data/maps/ROUTE_100/scripts.inc"
+
+	.include "data/maps/GauntletIslandSoutheast/scripts.inc"
