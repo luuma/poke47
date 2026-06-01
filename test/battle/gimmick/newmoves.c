@@ -2,6 +2,117 @@
 #include "test/battle.h"
 #include "battle_ai_util.h"
 
+SINGLE_BATTLE_TEST("POKE47: Armor Break style effect")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_ARMOR_BREAK); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ARMOR_BREAK, player);
+        HP_BAR(player);
+        HP_BAR(player);
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 2);
+        EXPECT_EQ(player->statStages[STAT_SPDEF], DEFAULT_STAT_STAGE + 2);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Armor Break style effect, on Rattled")
+{
+    GIVEN {
+        PLAYER(SPECIES_BEARTIC) { Ability(ABILITY_RATTLED); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_ARMOR_BREAK); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ARMOR_BREAK, player);
+        HP_BAR(player);
+        HP_BAR(player);
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 2);
+        EXPECT_EQ(player->statStages[STAT_SPDEF], DEFAULT_STAT_STAGE + 2);
+        EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 2);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Gravity does two turns. Challenging to test becase")
+{
+    s16 sandstormDamage;
+    s16 sandstormDamage2;
+    GIVEN {
+        PLAYER(SPECIES_MINIOR);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_SANDSTORM); MOVE(player, MOVE_GRAVITY); }
+    } SCENE {
+        MESSAGE("The opposing Wobbuffet is buffeted by the sandstorm!");
+        HP_BAR(opponent, captureDamage: &sandstormDamage);
+        MESSAGE("The opposing Wobbuffet is buffeted by the sandstorm!");
+        HP_BAR(opponent, captureDamage: &sandstormDamage2);
+    } THEN { 
+    EXPECT_EQ(sandstormDamage, opponent->maxHP / 16); 
+    EXPECT_EQ(sandstormDamage2, opponent->maxHP / 16); 
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Gravity does two turns WITHOUT advancing toxic counter")
+{
+    GIVEN {
+        PLAYER(SPECIES_GRIMER);
+        OPPONENT(SPECIES_ELGYEM);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_CELEBRATE); MOVE(player, MOVE_TOXIC); }
+        TURN { MOVE(opponent, MOVE_GRAVITY); MOVE(player, MOVE_CELEBRATE); }
+    } SCENE {
+        s32 maxHP = GetMonData(&OPPONENT_PARTY[0], MON_DATA_MAX_HP);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TOXIC, player);
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
+        HP_BAR(opponent, damage: maxHP / 16);
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
+        HP_BAR(opponent, damage: maxHP / 8);
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_PSN, opponent);
+        HP_BAR(opponent, damage: maxHP / 8);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Forbidden Fang")
+{
+    GIVEN {
+        PLAYER(SPECIES_RATICATE);
+        OPPONENT(SPECIES_ELGYEM);
+    } WHEN {
+        TURN { MOVE(player, MOVE_FORBIDDEN_FANG); }
+        TURN { MOVE(player, MOVE_FORBIDDEN_FANG); }
+    } SCENE {
+        s32 maxHP = GetMonData(&OPPONENT_PARTY[0], MON_DATA_MAX_HP);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FORBIDDEN_FANG, player);
+        HP_BAR(opponent, damage: maxHP / 2);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FORBIDDEN_FANG, player);
+        HP_BAR(opponent, damage: maxHP / 2);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Cannonade 1/6th HP")
+{
+    GIVEN {
+        PLAYER(SPECIES_BASTIODON);
+        OPPONENT(SPECIES_ELGYEM);
+    } WHEN {
+        TURN { MOVE(player, MOVE_BASTION_WALLS); MOVE(opponent, MOVE_DOUBLE_HIT); }
+    } SCENE {
+        s32 maxHP = GetMonData(&OPPONENT_PARTY[0], MON_DATA_MAX_HP);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_BASTION_WALLS, player);
+        HP_BAR(player);
+        HP_BAR(opponent, damage: maxHP / 6);
+        HP_BAR(player);
+        HP_BAR(opponent, damage: maxHP / 6);
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_DEF], DEFAULT_STAT_STAGE + 1);
+    }
+}
+
 
 SINGLE_BATTLE_TEST("POKE47: eNVELOP uses special defense stat of target", s16 damage)
 {
@@ -21,6 +132,32 @@ SINGLE_BATTLE_TEST("POKE47: eNVELOP uses special defense stat of target", s16 da
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, Q_4_12(2.0), results[1].damage);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Blink Strike", s16 damage)
+{
+    enum Move move;
+    u32 speed, atk;
+    PARAMETRIZE { speed = 150; atk = 150; move = MOVE_BLINK_STRIKE; } // 
+    PARAMETRIZE { speed = 150; atk = 150; move = MOVE_ACROBATICS; } // 
+    PARAMETRIZE { speed = 200; atk = 150; move = MOVE_BLINK_STRIKE; } // faster
+    PARAMETRIZE { speed = 200; atk = 150; move = MOVE_ACROBATICS; } // faster
+
+    GIVEN {
+        PLAYER(SPECIES_MEW) {Speed(speed); Attack(atk); Item(ITEM_SILK_SCARF); }
+        OPPONENT(SPECIES_SHELLDER) {Speed(100); Defense(100); SpDefense(100);}
+    } WHEN {
+        TURN {MOVE(player, MOVE_AGILITY); }
+        TURN {MOVE(player, move); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_AGILITY, player);
+        ANIMATION(ANIM_TYPE_MOVE, move, player);
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[1].damage, Q_4_12(2.0), results[0].damage);
+        EXPECT_MUL_EQ(results[3].damage, Q_4_12(1.0), results[1].damage);
+        EXPECT_GT(results[2].damage, results[0].damage);
     }
 }
 

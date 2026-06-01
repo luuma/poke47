@@ -6954,10 +6954,10 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
                 atkStage = gBattleMons[battlerDef].statStages[STAT_SPATK];
             }
         }
-        if (moveEffect == EFFECT_BLINK_STRIKE)
+        else if (moveEffect == EFFECT_BLINK_STRIKE)
         {
             atkStat = gBattleMons[battlerAtk].speed;
-            atkStage = gBattleMons[battlerDef].statStages[STAT_SPEED];
+            atkStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
         }
         else if (moveEffect == EFFECT_BODY_PRESS)
         {
@@ -6998,6 +6998,11 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
             atkStat = gBattleMons[battlerDef].spAttack;
             atkStage = gBattleMons[battlerDef].statStages[STAT_SPATK];
         }
+    }
+    else if (moveEffect == EFFECT_BLINK_STRIKE)
+    {
+        atkStat = gBattleMons[battlerAtk].speed;
+        atkStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
     }
     else if (moveEffect == EFFECT_BODY_PRESS)
     {
@@ -7939,7 +7944,7 @@ s32 DoFixedDamageMoveCalc(struct DamageContext *ctx)
         dmg = GetNonDynamaxHP(ctx->battlerDef) * GetMoveDamagePercentage(ctx->move) / 100;
         break;
     case EFFECT_FORBIDDEN_FANG:
-        dmg = (gBattleMons[ctx->battlerDef].hp * GetMoveDamagePercentage(ctx->move) / 100);
+        dmg = (gBattleMons[ctx->battlerDef].maxHP * GetMoveDamagePercentage(ctx->move) / 100);
         break;
     case EFFECT_FINAL_GAMBIT:
         dmg = GetNonDynamaxHP(ctx->battlerAtk);

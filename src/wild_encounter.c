@@ -1176,8 +1176,8 @@ static bool8 TryGetAbilityInfluencedWildMonIndex(const struct WildPokemon *wildM
 //ADDED 
 static bool8 TryGetHoldInfluencedWildMonIndex(const struct WildPokemon *wildMon, enum HoldEffect holdEffect, u8 *monIndex, u32 size)
 {
-    u32 itemId = (GetMonData(&gParties[B_TRAINER_0][0], MON_DATA_HELD_ITEM));
-    if (GetMonData(&gParties[B_TRAINER_0][0], MON_DATA_SANITY_IS_EGG))
+    u32 itemId = (GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_HELD_ITEM));
+    if (GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SANITY_IS_EGG))
         return FALSE;
     else if (GetItemHoldEffect(itemId) != holdEffect)
         return FALSE;

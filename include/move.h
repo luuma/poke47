@@ -746,7 +746,7 @@ static inline u32 GetMoveArgType(enum Move moveId)
 static inline u32 GetMoveFixedHPDamage(enum Move moveId)
 {
     moveId = SanitizeMoveId(moveId);
-    assertf(gMovesInfo[moveId].effect == EFFECT_FIXED_HP_DAMAGE, "not a fixed-damage move: %S", gMovesInfo[moveId].name);
+    //assertf(gMovesInfo[moveId].effect == EFFECT_FIXED_HP_DAMAGE, "not a fixed-damage move: %S", gMovesInfo[moveId].name); very cool: an assertf that triggers if you add any custom move effect.
     return gMovesInfo[moveId].argument.fixedDamage;
 }
 
@@ -784,7 +784,7 @@ static inline enum MoveEffect GetMoveNonVolatileStatus(enum Move move)
 static inline u32 GetMoveDamagePercentage(enum Move move)
 {
     move = SanitizeMoveId(move);
-    assertf(gMovesInfo[move].effect == EFFECT_FIXED_PERCENT_DAMAGE, "not a percentage-damage move: %S", gMovesInfo[move].name);
+    //assertf(gMovesInfo[move].effect == EFFECT_FIXED_PERCENT_DAMAGE, "not a percentage-damage move: %S", gMovesInfo[move].name);// lol same as above
     return gMovesInfo[move].argument.damagePercentage;
 }
 

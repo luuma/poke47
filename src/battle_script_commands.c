@@ -470,7 +470,7 @@ static void Cmd_setreflect(void);
 static void Cmd_setseeded(void);
 static void Cmd_manipulatedamage(void);
 static void Cmd_trysetrest(void);
-static void Cmd_tryhealfullhealth(void);
+void Cmd_tryhealfullhealth(void);
 static void Cmd_jumpifuproarwakes(void);
 static void Cmd_stockpiletohpheal(void);
 static void Cmd_normalisebuffs(void);
@@ -779,7 +779,6 @@ void (*const gBattleScriptingCommandsTable[])(void) =
     [B_SCR_OP_AVERAGESTATS]                          = Cmd_averagestats,
     [B_SCR_OP_SETNONVOLATILESTATUS]                  = Cmd_setnonvolatilestatus,
     [B_SCR_OP_TRYOVERWRITEABILITY]                   = Cmd_tryoverwriteability,
-    [B_SCR_OP_TRYHEALFULLHEALTH]                              = Cmd_tryhealfullhealth,
     [B_SCR_OP_TRY_SYNCHRONIZE]                       = Cmd_trysynchronize,
     [B_SCR_OP_TRY_CONFUSION_AFTER_SKY_DROP]          = Cmd_tryconfusionafterskydrop,
     [B_SCR_OP_TRYMOVESTATCHANGES]                    = Cmd_trymovestatchanges,
@@ -7179,9 +7178,9 @@ static void Cmd_trysetrest(void)
 }
 
 
-static void Cmd_tryhealfullhealth(void)
+void Cmd_tryhealfullhealth(void)
 {
-    CMD_ARGS(u8 battler, const u8 *failInstr);
+    NATIVE_ARGS(u8 battler, const u8 *failInstr);
 
     const u8 *failInstr = cmd->failInstr;
 
@@ -9505,7 +9504,7 @@ static void Cmd_pickup(void)
                 && heldItem == ITEM_NONE)
             {
                     heldItem = ITEM_HONEY; // no longer has randomness as the ability procs every turn.
-                    SetMonData(&gParties[B_TRAINER_0][i], MON_DATA_HELD_ITEM, &heldItem);
+                    SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &heldItem);
             }
             else if (P_SHUCKLE_BERRY_JUICE == GEN_2
                 && species == SPECIES_SHUCKLE

@@ -703,7 +703,7 @@
 	.endm
 
 	.macro tryhealfullhealth battler:req, failInstr:req
-	.byte B_SCR_OP_TRYHEALFULLHEALTH
+	callnative Cmd_tryhealfullhealth
 	.byte \battler
 	.4byte \failInstr
 	.endm

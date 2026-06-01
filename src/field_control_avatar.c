@@ -61,7 +61,7 @@ static const u8 *GetInteractedWaterScript(struct MapPosition *, u8, enum Directi
 static bool32 TrySetupDiveDownScript(void);
 static bool32 TrySetupDiveEmergeScript(void);
 static bool32 TrySetupAutobattle(void);
-static bool8 TryStartStepBasedScript(struct MapPosition *, u16, enum Direction);
+bool8 TryStartStepBasedScript(struct MapPosition *, u16, enum Direction);
 static bool8 CheckStandardWildEncounter(u16);
 static bool8 TryArrowWarp(struct MapPosition *, u16, enum Direction);
 static bool8 IsWarpMetatileBehavior(u16);
