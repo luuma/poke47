@@ -161,6 +161,32 @@ SINGLE_BATTLE_TEST("POKE47: Blink Strike", s16 damage)
     }
 }
 
+SINGLE_BATTLE_TEST("POKE47: Blink Strike and Wonder Room", s16 damage)
+{
+    enum Move move;
+    u32 speed, atk;
+    PARAMETRIZE { speed = 150; atk = 150; move = MOVE_BLINK_STRIKE; } // 
+    PARAMETRIZE { speed = 150; atk = 150; move = MOVE_ACROBATICS; } // 
+    PARAMETRIZE { speed = 200; atk = 150; move = MOVE_BLINK_STRIKE; } // faster
+    PARAMETRIZE { speed = 200; atk = 150; move = MOVE_ACROBATICS; } // faster
+
+    GIVEN {
+        PLAYER(SPECIES_MEW) {Speed(speed); Attack(atk); Item(ITEM_SILK_SCARF); }
+        OPPONENT(SPECIES_SHELLDER) {Speed(100); Defense(100); SpDefense(100);}
+    } WHEN {
+        TURN {MOVE(player, MOVE_AGILITY);  MOVE(opponent, MOVE_WONDER_ROOM);}
+        TURN {MOVE(player, move); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_AGILITY, player);
+        ANIMATION(ANIM_TYPE_MOVE, move, player);
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[1].damage, Q_4_12(2.0), results[0].damage);
+        EXPECT_MUL_EQ(results[3].damage, Q_4_12(1.0), results[1].damage);
+        EXPECT_GT(results[2].damage, results[0].damage);
+    }
+}
+
 SINGLE_BATTLE_TEST("POKE47: ENVELOP's damage depends on the user's base Defense instead of its base Attack", s16 damage)
 {
     u32 spdef, spatk;
