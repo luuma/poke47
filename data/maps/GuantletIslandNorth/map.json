@@ -1,0 +1,41 @@
+{
+  "id": "MAP_GUANTLET_ISLAND_NORTH",
+  "name": "GuantletIslandNorth",
+  "layout": "LAYOUT_AEGAUNTLET3",
+  "music": "MUS_DUMMY",
+  "region_map_section": "MAPSEC_135",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_NONE",
+  "allow_cycling": false,
+  "allow_escaping": false,
+  "allow_running": false,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": [
+    {
+      "map": "MAP_GAUNTLET_ISLAND_SOUTH",
+      "offset": 10,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_GAUNTLET_ISLAND_SOUTHEAST",
+      "offset": 40,
+      "direction": "down"
+    },
+    {
+      "map": "MAP_GAUNTLET_ISLAND_NORTHWEST",
+      "offset": 0,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_GAUNTLET_ISLAND_SOUTHWEST",
+      "offset": -50,
+      "direction": "down"
+    }
+  ],
+  "object_events": [],
+  "warp_events": [],
+  "coord_events": [],
+  "bg_events": []
+}

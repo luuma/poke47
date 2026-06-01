@@ -136,6 +136,7 @@ SlateportCity_SternsShipyard_1F_Text_SeaIsLikeLivingThing:
 	.string "The sea is like a living thing!$"
 
 SlateportCity_SternsShipyard_1F_Text_GetSeasickEasily:
-	.string "I get seasick real easily.\n"
-	.string "So I get to help out here instead.$"
+	.string "These steel girders… Are they…?\n"
+	.string "No. No. It can't be. It can't be\l"
+	.string "that accursed pattern. Not here too.$"
 

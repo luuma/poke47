@@ -9765,7 +9765,7 @@
     {
       "id": "LAYOUT_AEGAUNTLET6",
       "name": "AEGauntlet6",
-      "width": 58,
+      "width": 57,
       "height": 54,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Unused1",

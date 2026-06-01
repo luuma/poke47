@@ -140,7 +140,12 @@
     "Route136",
     "IngyBingyIsland",
     "ROUTE_100",
-    "GauntletIslandSoutheast"
+    "GauntletIslandSoutheast",
+    "GauntletIslandSouth",
+    "GauntletIslandSouthwest",
+    "GauntletIslandNorthwest",
+    "GuantletIslandNorth",
+    "GauntletIslandFinale"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

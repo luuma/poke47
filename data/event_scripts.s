@@ -1783,3 +1783,13 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/ROUTE_100/scripts.inc"
 
 	.include "data/maps/GauntletIslandSoutheast/scripts.inc"
+
+	.include "data/maps/GauntletIslandSouth/scripts.inc"
+
+	.include "data/maps/GauntletIslandNorthwest/scripts.inc"
+
+	.include "data/maps/GuantletIslandNorth/scripts.inc"
+
+	.include "data/maps/GauntletIslandSouthwest/scripts.inc"
+
+	.include "data/maps/GauntletIslandFinale/scripts.inc"
