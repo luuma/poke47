@@ -1075,12 +1075,7 @@ enum __attribute__((packed)) Item
     ITEM_EVIOPOLYMER,
     ITEM_KNELL_BELL,
     ITEM_DAMAGE_BOUNCEABLES,
-
-'
-[POIUYT]
-
-\zl
-    `1EM_CURSED_SHELL,
+    ITEM_CURSED_SHELL,
     ITEM_space6,
     ITEM_space7,
     ITEM_space8,
@@ -1123,8 +1118,7 @@ enum BerryId
 #define MAX_PC_ITEM_CAPACITY          999
 #define MAX_PYRAMID_BAG_ITEM_CAPACITY  99 // Values higher than 255 require free SaveBlock2 space.
 
-#define MAX_ITEM_DIGITS 
-        ((MAX_BAG_ITEM_CAPACITY > 99) ? 3 : 2)
+#define MAX_ITEM_DIGITS         ((MAX_BAG_ITEM_CAPACITY > 99) ? 3 : 2)
 #define MAX_PYRAMID_ITEM_DIGITS ((MAX_PYRAMID_BAG_ITEM_CAPACITY > 99) ? 3 : 2)
 
 // Secondary IDs for rods
