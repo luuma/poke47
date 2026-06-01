@@ -3297,20 +3297,22 @@ void FreeShinyStars(void)
 
 enum BattleTrainer GetBattlerTrainer(enum BattlerId battler)
 {
-    if (gBattleTypeFlags & BATTLE_TYPE_LINK && gBattleTypeFlags & BATTLE_TYPE_MULTI)
+    if (gBattleTypeFlags & BATTLE_TYPE_LINK)
     {
         switch (gBattlerBattleController[battler])
         {
         case BATTLE_CONTROLLER_PLAYER:
         case BATTLE_CONTROLLER_RECORDED_PLAYER:
-            return B_TRAINER_0;
+            return B_TRAINER_PLAYER;
         case BATTLE_CONTROLLER_LINK_PARTNER:
         case BATTLE_CONTROLLER_RECORDED_PARTNER:
-            return B_TRAINER_2;
+            return B_TRAINER_PARTNER;
         case BATTLE_CONTROLLER_LINK_OPPONENT:
         case BATTLE_CONTROLLER_RECORDED_OPPONENT:
         case BATTLE_CONTROLLER_OPPONENT:
-            return (battler & BIT_FLANK) ? B_TRAINER_3 : B_TRAINER_1;
+            if (gBattleTypeFlags & BATTLE_TYPE_MULTI)
+                return (battler & BIT_FLANK) ? B_TRAINER_OPPONENT_B : B_TRAINER_OPPONENT_A;
+            return B_TRAINER_OPPONENT_A;
         default:
             break;
         }
@@ -3339,5 +3341,5 @@ bool32 BattlersShareParty(enum BattlerId battler1, enum BattlerId battler2)
 
 bool32 TrainerHasParty(enum BattleTrainer trainer)
 {
-    return (trainer < B_TRAINER_2 || BattleSideHasTwoTrainers((enum BattleSide)(trainer & BIT_SIDE)));
+    return (trainer < B_TRAINER_PARTNER || BattleSideHasTwoTrainers((enum BattleSide)(trainer & BIT_SIDE)));
 }
