@@ -23953,7 +23953,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_TeraBlast,
     },
 
-    [MOVE_SANDBLASTER] =// NEEDS TESTS FOR THESE
+    [MOVE_SANDBLASTER] =// NEEDS TESTS 
     {
         .name = COMPOUND_STRING("Sandblaster"),
         .description = COMPOUND_STRING(
@@ -23995,7 +23995,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_ExtremeSpeed,
     },
 
-    [MOVE_FADE] =
+    [MOVE_FADE] = //"needs tests"
     {
         .name = COMPOUND_STRING("Fade"),
         .description = COMPOUND_STRING(
@@ -24057,7 +24057,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .validApprenticeMove = TRUE,
     },
 
-    [MOVE_SNAP_FREEZE] =
+    [MOVE_SNAP_FREEZE] =// "needs tests"
     {
         .name = COMPOUND_STRING("Snap Freeze"),
         .description = COMPOUND_STRING(
@@ -24110,7 +24110,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
 
-    [MOVE_CRASH_OUT] =
+    [MOVE_CRASH_OUT] =//"needs tests"
     {
         .name = COMPOUND_STRING("Crash Out"),
         .description = COMPOUND_STRING(
