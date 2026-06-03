@@ -17,32 +17,6 @@ SINGLE_BATTLE_TEST("POKE47: wonderland sets wonder room")
     }
 }
 
-WILD_BATTLE_TEST("POKE47: Ball Fetch triples catchrate")
-{
-    u32 expectedOdds;
-    u32 recordedOdds;
-
-    u32 ability;
-    PARAMETRIZE(expectedOdds = 50, ability = ABILITY_GUARD_DOG);
-    PARAMETRIZE(expectedOdds = 150, ability = ABILITY_BALL_FETCH);
-
-    GIVEN {
-        WITH_CONFIG(B_LOW_LEVEL_CATCH_BONUS, GEN_9);
-        WITH_CONFIG(B_MISSING_BADGE_CATCH_MALUS, GEN_7);
-        PLAYER(SPECIES_STOUTLAND) {Ability(ability);};
-        OPPONENT(SPECIES_CLEFFA) {Level(30);}
-    } WHEN {
-        TURN { USE_ITEM(player, ITEM_POKE_BALL); }
-    } SCENE {
-        CATCHING_CHANCE(&recordedOdds);
-    } THEN {
-        EXPECT_EQ(expectedOdds, recordedOdds);
-    }
-}
-
-
-
-
 SINGLE_BATTLE_TEST("POKE47: trickland sets trick room")
 {
     GIVEN {

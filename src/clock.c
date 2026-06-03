@@ -7,7 +7,6 @@
 #include "field_weather.h"
 #include "lottery_corner.h"
 #include "main.h"
-#include "mass_outbreak.h"
 #include "overworld.h"
 #include "pokerus.h"
 #include "random.h"
@@ -44,25 +43,6 @@ void UpdateDailySeed(void)
     gSaveBlock1Ptr->dailySeed = Random32();
 }
 
-void DoDailyEvents(u32 daysSince)
-{
-    ClearDailyFlags();
-    UpdateDailySeed();
-    UpdateMassOutbreakDaysLeft(daysSince);
-    UpdateDewfordTrendPerDay(daysSince);
-    UpdateTVShowsPerDay(daysSince);
-    UpdateWeatherPerDay(daysSince);
-    UpdatePartyPokerusTime(daysSince);
-    UpdateMirageRnd(daysSince);
-    UpdateBirchState(daysSince);
-    UpdateFrontierManiac(daysSince);
-    UpdateFrontierGambler(daysSince);
-    SetShoalItemFlag(daysSince);
-    SetRandomLotteryNumber(daysSince);
-    UpdateDaysPassedSinceFormChange(daysSince);
-    DailyResetApricornTrees();
-}
-
 static void UpdatePerDay(struct Time *localTime)
 {
     u16 *days = GetVarPointer(VAR_DAYS);
@@ -71,7 +51,20 @@ static void UpdatePerDay(struct Time *localTime)
     if (*days != localTime->days && *days <= localTime->days)
     {
         daysSince = localTime->days - *days;
-        DoDailyEvents(daysSince);
+        ClearDailyFlags();
+        UpdateDailySeed();
+        UpdateDewfordTrendPerDay(daysSince);
+        UpdateTVShowsPerDay(daysSince);
+        UpdateWeatherPerDay(daysSince);
+        UpdatePartyPokerusTime(daysSince);
+        UpdateMirageRnd(daysSince);
+        UpdateBirchState(daysSince);
+        UpdateFrontierManiac(daysSince);
+        UpdateFrontierGambler(daysSince);
+        SetShoalItemFlag(daysSince);
+        SetRandomLotteryNumber(daysSince);
+        UpdateDaysPassedSinceFormChange(daysSince);
+        DailyResetApricornTrees();
         *days = localTime->days;
     }
 }

@@ -651,9 +651,7 @@ void Script_RequestWriteVar_Internal(u32 varId)
 {
     if (varId == 0)
         return;
-
-    if ((!gMapHeader.writeSpecialVarIsEffect)
-     && (SPECIAL_VARS_START <= varId && varId <= SPECIAL_VARS_END))
+    if (SPECIAL_VARS_START <= varId && varId <= SPECIAL_VARS_END)
         return;
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
 }
