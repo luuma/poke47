@@ -21,6 +21,8 @@
 #include "script_menu.h"
 #include "trader.h"
 #include "m4a.h"
+#include "fake_rtc.h"
+
 #include "constants/mauville_old_man.h"
 
 static void InitGiddyTaleList(void);
@@ -110,35 +112,59 @@ static void SetupTrader(void)
     TraderSetup();
 }
 
-void SetMauvilleOldMan(void)
+
+
+
+void SetMauvilleOldMan(void)// OCCURS ONCE IN NEWGAME
 {
-    u16 trainerId = (gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0];
-
-
-    // Determine man based on the last digit of the player's trainer ID.
-    switch ((trainerId % 10) / 2)
+    struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
+    assertf(FALSE, "day: %d", rtc->dayOfWeek)
+    switch (rtc->dayOfWeek % WEEKDAY_COUNT)
     {
-    case MAUVILLE_MAN_BARD:
+    case 6:
         SetupBard();
         break;
-    case MAUVILLE_MAN_HIPSTER:
-        SetupHipster();
-        break;
-    case MAUVILLE_MAN_TRADER:
-        SetupTrader();
-        break;
-    case MAUVILLE_MAN_STORYTELLER:
-        SetupStoryteller();
-        break;
-    case MAUVILLE_MAN_GIDDY:
-        SetupGiddy();
-        break;
+    case 1:
+            SetupHipster();
+            break;
+    case 2:
+            SetupTrader();
+            break;
+    case 3:
+            SetupStoryteller();
+            break;
+    case 4:
+            SetupGiddy();
+            break;
+    case 5:
+    case 0:
+    // Determine man based on the last digit of the player's trainer ID.
+        u16 trainerId = (gSaveBlock2Ptr->playerTrainerId[1] << 8) | gSaveBlock2Ptr->playerTrainerId[0];
+        switch ((trainerId % 10) / 2)
+        {
+        case MAUVILLE_MAN_BARD:
+            SetupBard();
+            break;
+        case MAUVILLE_MAN_HIPSTER:
+            SetupHipster();
+            break;
+        case MAUVILLE_MAN_TRADER:
+            SetupTrader();
+            break;
+        case MAUVILLE_MAN_STORYTELLER:
+            SetupStoryteller();
+            break;
+        case MAUVILLE_MAN_GIDDY:
+            SetupGiddy();
+            break;
+        }
     }
     SetMauvilleOldManObjEventGfx();
 }
 
 u8 GetCurrentMauvilleOldMan(void)
 {
+
     return gSaveBlock1Ptr->oldMan.common.id;
 }
 
