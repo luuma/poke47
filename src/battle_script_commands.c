@@ -10018,6 +10018,9 @@ static u32 ComputeCaptureOdds(u32 wildMonBattler, u32 playerBattler)
             odds = odds * 4 / 5;
     }
 
+    if (GetBattlerAbility(playerBattler) == ABILITY_BALL_FETCH)
+        odds = odds * 3;
+
     if (GetConfig(B_LOW_LEVEL_CATCH_BONUS) == GEN_8 && battleMon->level <= 20)
          odds = odds * (30 - battleMon->level) / 10;
     else if (GetConfig(B_LOW_LEVEL_CATCH_BONUS) >= GEN_9 && battleMon->level <= 13)

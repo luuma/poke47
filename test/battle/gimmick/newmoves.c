@@ -145,8 +145,8 @@ SINGLE_BATTLE_TEST("POKE47: Blink Strike", s16 damage)
     PARAMETRIZE { speed = 200; atk = 150; move = MOVE_ACROBATICS; } // faster
 
     GIVEN {
-        PLAYER(SPECIES_MEW) {Speed(speed); Attack(atk); Item(ITEM_SILK_SCARF); }
-        OPPONENT(SPECIES_SHELLDER) {Speed(100); Defense(100); SpDefense(100);}
+        PLAYER(SPECIES_MEW) {Speed(speed); Defense(atk); Item(ITEM_SILK_SCARF); }
+        OPPONENT(SPECIES_SHELLDER) {Speed(100); Attack(100); SpAttack(100);}
     } WHEN {
         TURN {MOVE(player, MOVE_AGILITY); }
         TURN {MOVE(player, move); }
