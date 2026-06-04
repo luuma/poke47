@@ -60,6 +60,116 @@ Text_CantCut:
 	.string "This tree looks like it can be\n"
 	.string "CUT down!$"
 
+@ Use Rototiller from party menu
+EventScript_UseFutureSight::
+	lockall
+	isfollowerfieldmoveuser VAR_0x8004
+	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
+	dofieldeffect FLDEFF_USE_FUTURE_SIGHT
+	waitstate @ This actually drops script execution here because why not
+	@ end
+EventScript_RototillerDone:: @ what a marathon! Overworld anims can fuck off.
+	msgbox Text_Rototiller, MSGBOX_DEFAULT
+	callnative Overworld_Rototiller
+	releaseall
+	end
+
+Text_Rototiller:
+	.string "{STR_VAR_1} enriched the soil!\n"
+	.string "It's great for BERRY yields…\p"
+	.string "…But weeds sprouted on the BERRY\n"
+	.string "trees, and need to be pulled out!$"
+
+@ Use Future Sight from party menu
+EventScript_UseFutureSightUNUSED::
+	lockall
+	isfollowerfieldmoveuser VAR_0x8004
+	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
+	dofieldeffect FLDEFF_USE_FUTURE_SIGHT
+	waitstate
+        addvar VAR_TEMP_6, 2
+	buffernumberstring STR_VAR_1, VAR_TEMP_6
+	msgbox Text_TimeSkip, MSGBOX_DEFAULT
+	fadescreenswapbuffers FADE_TO_BLACK
+	playse SE_M_SUPERSONIC
+	delay 8
+	waitse
+	callnative FutureSightAdvance
+	fadescreenswapbuffers FADE_FROM_BLACK @ probably doesn't do anything as futuresightadvance reloads the map
+	releaseall
+	end
+
+Text_TimeSkip:
+	.string "{PLAYER} leapt forward {STR_VAR_1} hours\p"
+	.string "into the future!$"
+
+
+@ Use sPLASHfrom party menu
+EventScript_UseSplash::
+	lockall
+	isfollowerfieldmoveuser VAR_0x8004
+	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
+	dofieldeffect FLDEFF_USE_SPLASH
+	waitstate
+	applymovement LOCALID_PLAYER, Movement_JumpSplash
+	waitmovement 0
+	msgbox Text_SplashNothingHappened, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Movement_JumpSplash:
+	jump_in_place_down
+	jump_in_place_down
+	step_end
+
+Text_SplashNothingHappened:
+	.string "… … … … … … … … … … …\p"
+	.string "Nothing happened…$"
+
+@ Use cAMOUFLAGE or shadow sneak or phantom force from party menu
+EventScript_UseFade::
+	lockall
+	isfollowerfieldmoveuser VAR_0x8004
+	setfieldeffectargument 3, VAR_0x8004 @ skip pose if so
+	dofieldeffect FLDEFF_USE_FADE
+	waitstate
+	setflag FLAG_FADED
+        setvar VAR_FADE_STEP_COUNTER, 0
+	playse SE_REPEL
+	applymovement LOCALID_PLAYER, Movement_vanish1
+	delay 16
+	applymovement LOCALID_PLAYER, Movement_blink1
+	delay 16
+	applymovement LOCALID_PLAYER, Movement_vanish1
+	delay 8
+	applymovement LOCALID_PLAYER, Movement_blink1
+	delay 8
+	applymovement LOCALID_PLAYER, Movement_vanish1
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Movement_blink1
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Movement_vanish1
+	waitmovement 0
+	releaseall
+	end
+
+Movement_vanish1:
+	set_invisible
+	step_end
+
+Movement_blink1:
+	set_visible
+	step_end
+
+EventScript_BecomeVisible::
+	lockall
+	playse SE_REPEL
+	applymovement LOCALID_PLAYER, Movement_blink1
+	waitmovement 0
+	releaseall
+	end
+
+
 @ Use rock smash from party menu
 EventScript_UseRockSmash::
 	lockall

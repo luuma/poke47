@@ -238,4 +238,46 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .moveID = MOVE_DEFOG,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
     },
+    [FIELD_MOVE_CAMOUFLAGE] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_FadeMove,
+        .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
+        .moveID = MOVE_CAMOUFLAGE,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
+    [FIELD_MOVE_PHANTOM_FORCE] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_FadeMove,
+        .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
+        .moveID = MOVE_PHANTOM_FORCE,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
+    [FIELD_MOVE_SHADOW_SNEAK] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_FadeMove,
+        .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
+        .moveID = MOVE_SHADOW_SNEAK,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
+    [FIELD_MOVE_SPLASH] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_Splash,
+        .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
+        .moveID = MOVE_SPLASH,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
+    [FIELD_MOVE_FUTURE_SIGHT] =// ROTOTILLER
+    {
+        .fieldMoveFunc = SetUpFieldMove_FutureSight,
+        .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
+        .moveID = MOVE_ROTOTILLER,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
+    [FIELD_MOVE_GRASSY_TERRAIN] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_FutureSight,
+        .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
+        .moveID = MOVE_GRASSY_TERRAIN,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
 };

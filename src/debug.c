@@ -4718,6 +4718,20 @@ static void DebugAction_BerryFunctions_Weeds(u8 taskId)
     Debug_DestroyMenu_Full(taskId);
 }
 
+void Overworld_Rototiller(void)
+{
+    u8 i;
+
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].movementType == MOVEMENT_TYPE_BERRY_TREE_GROWTH)
+        {
+            gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(i)].weeds = TRUE;
+        }
+    }
+    return;
+}
+
 // *******************************
 // Actions Party/Boxes
 

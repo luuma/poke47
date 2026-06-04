@@ -13,8 +13,8 @@
 #define VAR_TEMP_2                 (TEMP_VARS_START + 0x2)
 #define VAR_TEMP_3                 (TEMP_VARS_START + 0x3) // Note: Used when the player checks a TV
 #define VAR_TEMP_4                 (TEMP_VARS_START + 0x4) // used by the new game corner
-#define VAR_TEMP_5                 (TEMP_VARS_START + 0x5)
-#define VAR_TEMP_6                 (TEMP_VARS_START + 0x6) 
+#define VAR_TEMP_5                 (TEMP_VARS_START + 0x5) 
+#define VAR_TEMP_6                 (TEMP_VARS_START + 0x6) //used by futuresight And tanoby
 #define VAR_TEMP_7                 (TEMP_VARS_START + 0x7)
 #define VAR_TEMP_8                 (TEMP_VARS_START + 0x8)
 #define VAR_TEMP_9                 (TEMP_VARS_START + 0x9)
@@ -269,7 +269,7 @@
 #define VAR_PHOTOSTATE                                0x40F7 // Are we seeing photos
 #define VAR_129_CYCLE_STATE                                0x40F8 // cycle time
 #define VAR_OLD_LADY                                0x40F9 // Old lady rest stop punish
-#define VAR_UNUSED_0x40FA                                0x40FA // Unused Var
+#define VAR_FADE_STEP_COUNTER                                0x40FA // USED
 #define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var

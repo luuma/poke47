@@ -55,6 +55,17 @@ bool8 FldEff_UseRockSmash(void);
 bool32 SetUpFieldMove_Defog(void);
 bool8 FldEff_Defog(void);
 
+// FADE
+bool32 SetUpFieldMove_FadeMove(void);//NEW
+bool8 FldEff_UseFadeMove(void);//NEW
+// FADE
+bool32 SetUpFieldMove_Splash(void);//NEW
+bool8 FldEff_UseSplash(void);//NEW
+// FADE
+bool32 SetUpFieldMove_FutureSight(void);//NEW
+bool8 FldEff_UseFutureSight(void);//NEW
+
+
 void Task_EnterCaveTransition2(u8 taskId);
 
 #endif // GUARD_FLDEFF_H

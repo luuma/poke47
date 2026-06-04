@@ -67,7 +67,7 @@ MauvilleCity_GameCorner_EventScript_Blackjack::
 	msgbox MauvilleCity_GameCorner_Text_BlackJack, MSGBOX_YESNO
 	closemessage
 	goto_if_eq VAR_RESULT, NO, MauvilleCity_GameCorner_CancelBJ
-	playbgm MUS_GAME_CORNER, FALSE
+	playbgm MUS_RG_CINNABAR, FALSE
 	special StartBlackJack
 	waitstate
 	savebgm MUS_DUMMY
@@ -320,7 +320,7 @@ MauvilleCity_GameCorner_EventScript_VoltorbFlip::
 	playse SE_SHOP
 	delay 40
 	hidecoinsbox 0, 5
-	playbgm MUS_RG_CINNABAR, FALSE
+	playbgm MUS_HGSS_CASINO, FALSE
 	setvar GAME_CORNER_VAR_WINNINGS, 0
 	special Special_ViewVoltorbFlip
 	waitstate

@@ -108,6 +108,7 @@ Route135_Ninjaboy::
 	msgbox Route135_watchthiiis, MSGBOX_DEFAULT
 	delay 3
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_PLAYER, Movement_SmashRock135
 	setmetatile 33, 39, 0x3C7, 3
 	setmetatile 33, 40, 0x3C7, 3
 	special DrawWholeMapView
@@ -121,6 +122,9 @@ Route135_Ninjaboy::
 	releaseall
 	end
 
+Movement_SmashRock135:
+	rock_smash_break
+	step_end
 
 Route135_watchthiiis:
 	.string "Watch this!$"

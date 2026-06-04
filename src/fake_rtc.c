@@ -8,6 +8,11 @@
 #include "event_data.h"
 #include "script.h"
 
+
+#include "overworld.h"
+#include "main.h"
+
+
 static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2);
 
 void FakeRtc_Reset(void)
@@ -171,4 +176,11 @@ void OldLadyRestStopAdvance(void)
 void OutOfPartyHealAdvance(void)
 {
     FakeRtc_AdvanceTimeBy(0,0,20,0);
+}
+
+void FutureSightAdvance(void)
+{
+    u32 hours = VarGet(VAR_TEMP_6);
+    FakeRtc_AdvanceTimeBy(0,hours,0,0);
+    SetMainCallback2(CB2_LoadMap);
 }

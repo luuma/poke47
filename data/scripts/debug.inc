@@ -201,8 +201,32 @@ Debug_EventScript_Text_DefensiveIVs:
 	.string "HP IVs: {STR_VAR_1}, DEF IVs: {STR_VAR_2}, SPDEF IVs: {STR_VAR_3}$"
 
 Debug_EventScript_Script_1::
-	release
+	lockall
+	playse SE_REPEL
+	applymovement LOCALID_PLAYER, Movement_vanish
+	delay 16
+	applymovement LOCALID_PLAYER, Movement_blink
+	delay 16
+	applymovement LOCALID_PLAYER, Movement_vanish
+	delay 8
+	applymovement LOCALID_PLAYER, Movement_blink
+	delay 8
+	applymovement LOCALID_PLAYER, Movement_vanish
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Movement_blink
+	waitmovement 0
+	applymovement LOCALID_PLAYER, Movement_vanish
+	waitmovement 0
+	releaseall
 	end
+
+Movement_vanish:
+	set_invisible
+	step_end
+
+Movement_blink:
+	set_visible
+	step_end
 
 Debug_EventScript_Script_2::
 	release

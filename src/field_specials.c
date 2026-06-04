@@ -546,6 +546,39 @@ bool32 ShouldDoScottBattleFrontierCall(void)
     return TRUE;
 }
 
+bool32 ShouldBecomeVisible(void)
+{
+    if (FlagGet(FLAG_FADED))
+    {
+        switch (gMapHeader.mapType)
+        {
+        case MAP_TYPE_TOWN:
+        case MAP_TYPE_CITY:
+        case MAP_TYPE_ROUTE:
+        case MAP_TYPE_OCEAN_ROUTE:
+            if (++(*GetVarPointer(VAR_FADE_STEP_COUNTER)) < 50)
+                return FALSE;
+            break;
+        default:
+            return FALSE;
+        }
+    }
+    else
+    {
+        return FALSE;
+    }
+    FlagClear(FLAG_FADED);
+    VarSet(VAR_FADE_STEP_COUNTER, 0);
+    u32 objectId = GetObjectEventIdByLocalId(LOCALID_PLAYER);
+    struct ObjectEvent* objEvent;
+    objEvent = &gObjectEvents[objectId];
+    if (objEvent->invisible)
+    {
+        return TRUE;
+    }
+    return FALSE;
+}
+
 bool32 ShouldDoRoxanneCall(void)
 {
     if (FlagGet(FLAG_ENABLE_ROXANNE_FIRST_CALL))

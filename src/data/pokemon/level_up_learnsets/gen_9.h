@@ -18969,6 +18969,7 @@ static const struct LevelUpMove sShelmetLevelUpLearnset[] = {
 };
 static const struct LevelUpMove sAccelgorLevelUpLearnset[] = {
         LEVEL_UP_MOVE(0, MOVE_WATER_SHURIKEN),
+        LEVEL_UP_MOVE(1, MOVE_CAMOUFLAGE),
         LEVEL_UP_MOVE(1, MOVE_BLINK_STRIKE),
         LEVEL_UP_MOVE(1, MOVE_FALSE_SWIPE),
         LEVEL_UP_MOVE(1, MOVE_ENDURE),

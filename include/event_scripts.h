@@ -408,6 +408,12 @@ extern const u8 EventScript_UseRockSmash[];
 extern const u8 EventScript_UseDig[];
 extern const u8 EventScript_UseCutGrass[];
 extern const u8 EventScript_UseDefog[];
+extern const u8 EventScript_UseFade[];//ADDED
+extern const u8 EventScript_BecomeVisible[];//ADDED
+extern const u8 EventScript_UseSplash[];//ADDED
+extern const u8 EventScript_UseFutureSight[];//ADDED
+extern const u8 EventScript_RototillerDone[];//ADDED
+
 
 //player pc
 extern const u8 EventScript_PalletTown_PlayersHouse_2F_ShutDownPC[];

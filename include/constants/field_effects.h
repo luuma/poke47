@@ -89,6 +89,9 @@
 #define FLDEFF_HALL_OF_FAME_RECORD_FRLG  84
 #define FLDEFF_PHOTO_FLASH               85
 #define FLDEFF_OW_ENCOUNTER_SPAWN_ANIM   86
+#define FLDEFF_USE_FADE   87
+#define FLDEFF_USE_FUTURE_SIGHT   88
+#define FLDEFF_USE_SPLASH   89
 
 
 #define FLDEFFOBJ_SHADOW_S              0
@@ -159,7 +162,7 @@
 #define FLDEFF_PAL_TAG_CAVE_DUST          0x1012
 #define FLDEFF_PAL_TAG_DUST_CLOUD         0x1013
 #define FLDEFF_PAL_TAG_ORAS_DOWSE         0x1014
-#define FLDEFF_PAL_TAG_SNOW_TRACKS        0x1215
+#define FLDEFF_PAL_TAG_SNOW_TRACKS        0x1225
 #define FLDEFF_PAL_TAG_FIELD_MOVE_MON     0x8400
 
 // tile tags, for field effects that may have many copies on screen at once
