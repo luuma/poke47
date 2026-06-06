@@ -125,7 +125,7 @@ static void TryPutPokemonTodayFailedOnTheAir(void);
 static void TryStartRandomMassOutbreak(void);
 static void TryPutRandomPokeNewsOnAir(void);
 static void SortPurchasesByQuantity(void);
-static void UpdateMassOutbreakTimeLeft(u16);
+static void UpdateTimeBeforeMassOutbreak(u16);
 static void TryEndMassOutbreak(u16);
 static void UpdatePokeNewsCountdown(u16);
 static void ResolveWorldOfMastersShow(u16);
@@ -796,7 +796,7 @@ u8 GetRandomActiveShowIdx(void)
         else
         {
             show = &gSaveBlock1Ptr->tvShows[j];
-            if (show->massOutbreak.daysLeft == 0 && show->massOutbreak.active == TRUE)
+            if (show->massOutbreak.daysBeforeOutbreak == 0 && show->massOutbreak.active == TRUE)
                 return j;
         }
 
@@ -3574,7 +3574,7 @@ static bool8 TryMixOutbreakTVShow(TVShow *dest, TVShow *src, u8 idx)
     src->common.srcTrainerIdHi = linkTrainerId >> 8;
     *dest = *src;
     dest->common.active = TRUE;
-    dest->massOutbreak.daysLeft = 1;
+    dest->massOutbreak.daysBeforeOutbreak = 1;
     return TRUE;
 }
 
