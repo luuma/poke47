@@ -6944,7 +6944,12 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
 
     atkBaseSpeciesId = GET_BASE_SPECIES_ID(gBattleMons[battlerAtk].species);
 
-    if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM)
+    if (moveEffect == EFFECT_BLINK_STRIKE)
+    {
+        atkStat = gBattleMons[battlerAtk].speed;
+        atkStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
+    }
+    else if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM)
     {
         if (moveEffect == EFFECT_FOUL_PLAY)
         {
@@ -6958,11 +6963,6 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
                 atkStat = gBattleMons[battlerDef].spDefense;
                 atkStage = gBattleMons[battlerDef].statStages[STAT_SPATK];
             }
-        }
-        else if (moveEffect == EFFECT_BLINK_STRIKE)
-        {
-            atkStat = gBattleMons[battlerAtk].speed;
-            atkStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
         }
         else if (moveEffect == EFFECT_BODY_PRESS)
         {
@@ -7003,11 +7003,6 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
             atkStat = gBattleMons[battlerDef].spAttack;
             atkStage = gBattleMons[battlerDef].statStages[STAT_SPATK];
         }
-    }
-    else if (moveEffect == EFFECT_BLINK_STRIKE)
-    {
-        atkStat = gBattleMons[battlerAtk].speed;
-        atkStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
     }
     else if (moveEffect == EFFECT_BODY_PRESS)
     {

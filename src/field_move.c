@@ -280,4 +280,11 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .moveID = MOVE_GRASSY_TERRAIN,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
     },
+    [FIELD_MOVE_TERRAFORCE] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_FutureSight,
+        .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
+        .moveID = MOVE_HIT_DEF,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
 };
