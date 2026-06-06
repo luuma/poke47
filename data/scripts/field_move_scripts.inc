@@ -69,8 +69,14 @@ EventScript_UseFutureSight::
 	waitstate @ This actually drops script execution here because why not
 	@ end
 EventScript_RototillerDone:: @ what a marathon! Overworld anims can fuck off.
-	msgbox Text_Rototiller, MSGBOX_DEFAULT
 	callnative Overworld_Rototiller
+	goto_if_eq VAR_RESULT, FALSE, EventScript_RototillerFail
+	msgbox Text_Rototiller, MSGBOX_DEFAULT
+	releaseall
+	end
+
+EventScript_RototillerFail:: 
+	msgbox Text_RototillerFail, MSGBOX_DEFAULT
 	releaseall
 	end
 
@@ -79,6 +85,10 @@ Text_Rototiller:
 	.string "It's great for BERRY yields…\p"
 	.string "…But weeds sprouted on the BERRY\n"
 	.string "trees, and need to be pulled out!$"
+
+Text_RototillerFail:
+	.string "{STR_VAR_1} enriched the soil!\n"
+	.string "But no BERRIES were enriched…$"
 
 @ Use Future Sight from party menu
 EventScript_UseFutureSightUNUSED::
