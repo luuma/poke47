@@ -125,7 +125,7 @@ static void TryPutPokemonTodayFailedOnTheAir(void);
 static void TryStartRandomMassOutbreak(void);
 static void TryPutRandomPokeNewsOnAir(void);
 static void SortPurchasesByQuantity(void);
-static void UpdateTimeBeforeMassOutbreak(u16);
+static void UpdateMassOutbreakTimeLeft(u16);
 static void TryEndMassOutbreak(u16);
 static void UpdatePokeNewsCountdown(u16);
 static void ResolveWorldOfMastersShow(u16);
@@ -1664,7 +1664,7 @@ static void TryStartRandomMassOutbreak(void)
                 show->massOutbreak.unused4 = 0;
                 show->massOutbreak.probability = 50;
                 show->massOutbreak.unused5 = 0;
-                show->massOutbreak.daysLeft = 1;// 0
+                show->massOutbreak.daysBeforeOutbreak = 1;// 0
                 StorePlayerIdInNormalShow(show);
                 show->massOutbreak.language = gGameLanguage;
             }
@@ -1714,14 +1714,14 @@ static void UpdateMassOutbreakTimeLeft(u16 days)
                 {
                     show = &gSaveBlock1Ptr->tvShows[i];
 
-                    if (show->massOutbreak.daysLeft < days)
-                        show->massOutbreak.daysLeft = 0;
+                    if (show->massOutbreak.daysBeforeOutbreak < days)
+                        show->massOutbreak.daysBeforeOutbreak = 0;
                     else
-                        show->massOutbreak.daysLeft -= days;
+                        show->massOutbreak.daysBeforeOutbreak -= days;
 
                     break;
                 }
-                else if(show->massOutbreak.daysLeft == 0)
+                else if(show->massOutbreak.daysBeforeOutbreak == 0)
                     DeleteTVShowInArrayByIdx(gSaveBlock1Ptr->tvShows, i);// failsafe cull of inactive mass outbreak shows. 
             }
         }
