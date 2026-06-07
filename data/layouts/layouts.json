@@ -9849,6 +9849,16 @@
       "border_filepath": "data/layouts/AEGauntlet5_2/border.bin",
       "blockdata_filepath": "data/layouts/AEGauntlet5_2/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_AEGAUNTLET_SOUTHEAST_ISLAND",
+      "name": "AEGauntletSoutheastIsland",
+      "width": 31,
+      "height": 25,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/AEGauntletSoutheastIsland/border.bin",
+      "blockdata_filepath": "data/layouts/AEGauntletSoutheastIsland/map.bin"
     }
   ]
 }
