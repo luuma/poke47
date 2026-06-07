@@ -20831,8 +20831,8 @@ static const struct LevelUpMove sHawluchaLevelUpLearnset[] = {
 };
 static const struct LevelUpMove sDedenneLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_FAKE_OUT),
-        LEVEL_UP_MOVE(1, MOVE_TEARFUL_LOOK),
         LEVEL_UP_MOVE(1, MOVE_GEAR_UP),
+        LEVEL_UP_MOVE(1, MOVE_TEARFUL_LOOK),
         LEVEL_UP_MOVE(1, MOVE_THUNDER_WAVE),
         LEVEL_UP_MOVE(5, MOVE_DISARMING_VOICE),
         LEVEL_UP_MOVE(10, MOVE_HELPING_HAND),

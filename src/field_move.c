@@ -286,5 +286,5 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
         .moveID = MOVE_HIT_DEF,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
-    },
+    }
 };
