@@ -14903,7 +14903,8 @@ static const struct LevelUpMove sBidoofLevelUpLearnset[] = {
         LEVEL_UP_MOVE(30, MOVE_ACUPRESSURE),
         LEVEL_UP_MOVE(33, MOVE_DOUBLE_EDGE),
         LEVEL_UP_MOVE(35, MOVE_SUPERPOWER),
-        LEVEL_UP_MOVE(50, MOVE_DYNAMAX_CANNON),
+        LEVEL_UP_MOVE(40, MOVE_DYNAMAX_CANNON),
+        LEVEL_UP_MOVE(40, MOVE_BRIGHTEST_DAWN),
         LEVEL_UP_END
 };
 static const struct LevelUpMove sBibarelLevelUpLearnset[] = {
@@ -16152,12 +16153,12 @@ static const struct LevelUpMove sPhioneLevelUpLearnset[] = {
         LEVEL_UP_MOVE(20, MOVE_AQUA_RING),
         LEVEL_UP_MOVE(25, MOVE_WATER_PULSE),
         LEVEL_UP_MOVE(30, MOVE_ENERGY_BALL),
-        LEVEL_UP_MOVE(35, MOVE_BRIGHTEST_DAWN),
+        LEVEL_UP_MOVE(35, MOVE_LIFE_DEW),
         LEVEL_UP_MOVE(40, MOVE_WHIRLPOOL),
         LEVEL_UP_MOVE(45, MOVE_DIVE),
         LEVEL_UP_MOVE(50, MOVE_TAIL_GLOW),
         LEVEL_UP_MOVE(55, MOVE_HYDRO_PUMP),
-        LEVEL_UP_MOVE(60, MOVE_LIFE_DEW),
+        LEVEL_UP_MOVE(60, MOVE_BRIGHTEST_DAWN),// it's the fastest user, too
         LEVEL_UP_END
 };
 static const struct LevelUpMove sManaphyLevelUpLearnset[] = {
