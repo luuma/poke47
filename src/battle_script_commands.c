@@ -12017,6 +12017,8 @@ void BS_StoreHealingWish(void)
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
     if (GetMoveEffect(gCurrentMove) == EFFECT_LUNAR_DANCE)
         gBattleStruct->battlerState[battler].storedLunarDance = TRUE;
+    else if (GetMoveEffect(gCurrentMove) == EFFECT_BRIGHTEST_DAWN)
+        gBattleStruct->battlerState[battler].storedBrightestDawn = TRUE;
     else
         gBattleStruct->battlerState[battler].storedHealingWish = TRUE;
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -12415,6 +12417,9 @@ void BS_JumpIfCanGigantamax(void)
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
 
     if (GetMonData(GetBattlerMon(battler), MON_DATA_GIGANTAMAX_FACTOR)
+      && GetGMaxTargetSpecies(gBattleMons[battler].species) != SPECIES_NONE)
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+    else if ((gBattleMons[battler].volatiles.dynamaxEnabled)
       && GetGMaxTargetSpecies(gBattleMons[battler].species) != SPECIES_NONE)
         gBattlescriptCurrInstr = cmd->jumpInstr;
     else

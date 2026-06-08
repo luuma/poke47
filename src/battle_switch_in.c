@@ -214,7 +214,15 @@ static bool32 FirstEventBlockEvents(struct BattleCalcValues *calcValues)
     switch (gBattleStruct->eventState.battlerSwitchIn)
     {
     case FIRST_EVENT_BLOCK_HEALING_WISH:
-        if (!gBattleStruct->battlerState[battler].switchIn || !CanBattlerBeHealed(battler))
+        if (gBattleStruct->battlerState[battler].storedBrightestDawn)
+        {
+            gBattleStruct->battlerState[battler].storedBrightestDawn = FALSE;
+            gBattleMons[battler].volatiles.dynamaxEnabled = TRUE;
+            //gBattleScripting.battler = battler;
+            //BattleScriptCall(BattleScript_LunarDanceActivates);
+            effect = TRUE; // realistically this prevents us from adding z effect: heal replacement but there are no z moves.
+        }
+        else if (!gBattleStruct->battlerState[battler].switchIn || !CanBattlerBeHealed(battler))
         {
             effect = FALSE;
         }

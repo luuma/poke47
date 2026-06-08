@@ -1937,5 +1937,10 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_BRIGHTEST_DAWN] =
+    {
+        .battleScript = BattleScript_EffectHealingWish,
+        .battleTvScore = 0, // TODO: Assign points
+    },
 };
 

@@ -82,8 +82,8 @@ bool32 CanDynamax(enum BattlerId battler)
     if (!TESTING && (GetBattlerPosition(battler) == B_POSITION_PLAYER_LEFT
         || (!(gBattleTypeFlags & BATTLE_TYPE_MULTI) && GetBattlerPosition(battler) == B_POSITION_PLAYER_RIGHT)))
     {
-        if (GET_BASE_SPECIES_ID(species) != SPECIES_AUDINO)
-	    return FALSE;
+        if (GET_BASE_SPECIES_ID(species) != SPECIES_AUDINO && !(gBattleMons[battler].volatiles.dynamaxEnabled))
+	        return FALSE;
 	//if (!CheckBagHasItem(ITEM_DYNAMAX_BAND, 1))
             //return FALSE;
         //if (B_FLAG_DYNAMAX_BATTLE == 0 || (B_FLAG_DYNAMAX_BATTLE != 0 && !FlagGet(B_FLAG_DYNAMAX_BATTLE)))
@@ -124,13 +124,13 @@ bool32 CanDynamax(enum BattlerId battler)
 bool32 IsGigantamaxed(enum BattlerId battler)
 {
     struct Pokemon *mon = GetBattlerMon(battler);
-    if ((gSpeciesInfo[gBattleMons[battler].species].isGigantamax) && GetMonData(mon, MON_DATA_GIGANTAMAX_FACTOR))
+    if ((gSpeciesInfo[gBattleMons[battler].species].isGigantamax) && (gBattleMons[battler].volatiles.dynamaxEnabled || GetMonData(mon, MON_DATA_GIGANTAMAX_FACTOR)) )
         return TRUE;
     return FALSE;
 }
 
 // Applies the HP Multiplier for Dynamaxed Pokemon and Raid Bosses.
-void ApplyDynamaxHPMultiplier(struct Pokemon* mon)
+void ApplyDynamaxHPMultiplier(struct Pokemon* mon, bool32 maxOut)
 {
     if (HasShedinjaHPHandling(GetMonData(mon, MON_DATA_SPECIES)))
     {
@@ -138,7 +138,7 @@ void ApplyDynamaxHPMultiplier(struct Pokemon* mon)
     }
     else
     {
-        uq4_12_t multiplier = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), FALSE);
+        uq4_12_t multiplier = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), FALSE, maxOut);
         u32 hp = UQ_4_12_TO_INT((GetMonData(mon, MON_DATA_HP) * multiplier) + UQ_4_12_ROUND);
         u32 maxHP = UQ_4_12_TO_INT((GetMonData(mon, MON_DATA_MAX_HP) * multiplier) + UQ_4_12_ROUND);
         SetMonData(mon, MON_DATA_HP, &hp);
@@ -156,7 +156,7 @@ u32 GetNonDynamaxHP(enum BattlerId battler)
     else
     {
         struct Pokemon *mon = GetBattlerMon(battler);
-        uq4_12_t mult = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), TRUE);
+        uq4_12_t mult = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
         u32 hp = UQ_4_12_TO_INT((gBattleMons[battler].hp * mult) + UQ_4_12_ROUND);
         return hp;
     }
@@ -172,7 +172,7 @@ u32 GetNonDynamaxMaxHP(enum BattlerId battler)
     else
     {
         struct Pokemon *mon = GetBattlerMon(battler);
-        uq4_12_t mult = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), TRUE);
+        uq4_12_t mult = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
         u32 maxHP = UQ_4_12_TO_INT((gBattleMons[battler].maxHP * mult) + UQ_4_12_ROUND);
         return maxHP;
     }
@@ -207,7 +207,7 @@ void UndoDynamax(enum BattlerId battler)
     if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX)
     {
         struct Pokemon *mon = GetBattlerMon(battler);
-        uq4_12_t mult = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), TRUE);
+        uq4_12_t mult = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
         gBattleMons[battler].hp = UQ_4_12_TO_INT((GetMonData(mon, MON_DATA_HP) * mult + 1) + UQ_4_12_ROUND); // round up
         SetMonData(mon, MON_DATA_HP, &gBattleMons[battler].hp);
         CalculateMonStats(mon);

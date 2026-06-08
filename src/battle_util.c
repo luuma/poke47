@@ -8859,7 +8859,7 @@ enum Species GetBattleFormChangeTargetSpecies(enum BattlerId battler, enum FormC
         .heldItem = gBattleMons[battler].item,
         .ability = ability,
         .status = gBattleMons[battler].status1,
-        .gmaxFactor = GetMonData(GetBattlerMon(battler), MON_DATA_GIGANTAMAX_FACTOR),
+        .gmaxFactor = (gBattleMons[battler].volatiles.dynamaxEnabled || GetMonData(GetBattlerMon(battler), MON_DATA_GIGANTAMAX_FACTOR)),//A unique change, for "brightest dawn move". oRIGINALLY ,
         .hp = gBattleMons[battler].hp,
         .maxHP = gBattleMons[battler].maxHP,
         .teraType = GetBattlerTeraType(battler),
@@ -9705,7 +9705,7 @@ void RecalcBattlerStats(enum BattlerId battler, struct Pokemon *mon, bool32 isDy
     CalculateMonStats(mon);
     if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX && gChosenActionByBattler[battler] != B_ACTION_SWITCH)
     {
-        ApplyDynamaxHPMultiplier(mon);
+        ApplyDynamaxHPMultiplier(mon, gBattleMons[battler].volatiles.dynamaxEnabled);
         u32 newMaxHp = GetMonData(mon, MON_DATA_MAX_HP);
         if (!isDynamaxing)
         {

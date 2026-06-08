@@ -635,7 +635,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
     {
         species = gBattleSpritesDataPtr->battlerData[battler].transformSpecies;
         // If battler has Gigantamax factor, try convert gfx to G-Max version
-        if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX && GetMonData(mon, MON_DATA_GIGANTAMAX_FACTOR))
+        if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX && (GetMonData(mon, MON_DATA_GIGANTAMAX_FACTOR) || gBattleMons[battler].volatiles.dynamaxEnabled))
             gBattleSpritesDataPtr->battlerData[battler].transformSpecies = species = GetGMaxTargetSpecies(species);
 
         if (gBattleMons[battler].volatiles.transformed)

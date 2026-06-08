@@ -158,14 +158,14 @@ SINGLE_BATTLE_TEST("Dynamax: Dynamax expires after three turns and correctly con
     } THEN {
         finalHP = player->hp;
         if (dynamax)
-            EXPECT_MUL_EQ(finalHP, GetDynamaxLevelHPMultiplier(dynamaxLevel, FALSE), capturedHP);
+            EXPECT_MUL_EQ(finalHP, GetDynamaxLevelHPMultiplier(dynamaxLevel, FALSE, FALSE), capturedHP);
         EXPECT_LE(finalHP, 200);
         EXPECT_GE(finalHP, 200 - capturedDamage);
     }
 }
 
 // Visual test to make sure Zoroark appears as Wobbuffet/Zigzagoon until illusion breaks
-SINGLE_BATTLE_TEST("Dynamax: Illusion doesn't break upon Dynamaxing when illusioned")
+SINGLE_BATTLE_TEST("POKE47: Dynamax tests are all meaningless and Illusion doesn't break upon Dynamaxing when illusioned")
 {
     u32 species;
     PARAMETRIZE { species = SPECIES_WOBBUFFET; }
@@ -182,18 +182,91 @@ SINGLE_BATTLE_TEST("Dynamax: Illusion doesn't break upon Dynamaxing when illusio
     }
 }
 
-SINGLE_BATTLE_TEST("Dynamax: Dynamaxed Pokemon cannot be flinched")
+SINGLE_BATTLE_TEST("POKE47: Brightest Dawn does double HP", u16 hp)
+{
+    u32 dynamax, level;
+    enum Move move;
+    PARAMETRIZE { dynamax = GIMMICK_NONE; level = 0; move = MOVE_HEALING_WISH;}
+    PARAMETRIZE { dynamax = GIMMICK_DYNAMAX; level = 0; move = MOVE_HEALING_WISH;}
+    PARAMETRIZE { dynamax = GIMMICK_DYNAMAX; level = 7; move = MOVE_HEALING_WISH;}
+    PARAMETRIZE { dynamax = GIMMICK_DYNAMAX; level = 2; move = MOVE_BRIGHTEST_DAWN;}
+    GIVEN {
+        PLAYER(SPECIES_WYNAUT);
+        PLAYER(SPECIES_WOBBUFFET) { DynamaxLevel(level); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, move); MOVE(opponent, MOVE_CELEBRATE); SEND_OUT(player, 1); }
+        TURN { MOVE(player, MOVE_SCRATCH, gimmick: dynamax); MOVE(opponent, MOVE_CELEBRATE); }
+    } SCENE {
+        MESSAGE("Wynaut fainted!");
+        if (dynamax) {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_DYNAMAX_GROWTH, player);
+            MESSAGE("Wobbuffet used Max Strike!");
+        }
+        MESSAGE("The opposing Wobbuffet used Celebrate!");
+    } THEN {
+        results[i].hp = player->hp;
+    } FINALLY {
+        EXPECT_MUL_EQ(results[0].hp, Q_4_12(1.5), results[1].hp);
+        EXPECT_MUL_EQ(results[0].hp, Q_4_12(1.85), results[2].hp);
+        EXPECT_MUL_EQ(results[0].hp, Q_4_12(2), results[3].hp);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Dynamax works for Audino and Dynamaxed Pokemon cannot be flinched")
 {
     GIVEN {
         ASSUME(GetMoveEffect(MOVE_FAKE_OUT) == EFFECT_FIRST_TURN_ONLY);
-        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_AUDINO);
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
         TURN { MOVE(opponent, MOVE_FAKE_OUT); MOVE(player, MOVE_SCRATCH, gimmick: GIMMICK_DYNAMAX); }
     } SCENE {
         MESSAGE("The opposing Wobbuffet used Fake Out!");
-        NONE_OF { MESSAGE("Wobbuffet flinched and couldn't move!"); }
-        MESSAGE("Wobbuffet used Max Strike!");
+        NONE_OF { MESSAGE("Audino flinched and couldn't move!"); }
+        MESSAGE("Audino used Max Strike!");
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Brightest Dawn does double HP AND EXPires correctly", u16 hp)
+{
+    u32 dynamax, level;
+    u16 capturedHP, finalHP;
+    s16 capturedDamage;
+    enum Move move;
+    PARAMETRIZE { dynamax = GIMMICK_NONE; level = 0; move = MOVE_TELEPORT;}// LMAO
+    PARAMETRIZE { dynamax = GIMMICK_DYNAMAX; level = 2; move = MOVE_BRIGHTEST_DAWN;}
+    GIVEN {
+        PLAYER(SPECIES_WYNAUT);
+        PLAYER(SPECIES_WOBBUFFET) { DynamaxLevel(level); HP(200);}
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, move); MOVE(opponent, MOVE_CELEBRATE); SEND_OUT(player, 1); }
+        TURN { MOVE(player, MOVE_SCRATCH, gimmick: dynamax);  }
+        TURN { MOVE(player, MOVE_SCRATCH); MOVE(opponent, MOVE_SCRATCH, WITH_RNG(RNG_DAMAGE_MODIFIER, 24)); }
+        TURN { }
+        TURN { }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
+        if (dynamax) {
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_DYNAMAX_GROWTH, player);
+            MESSAGE("Wobbuffet used Max Strike!");
+        }
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SCRATCH, opponent);
+        if (dynamax)
+            HP_BAR(player, captureHP: &capturedHP);
+        else
+            HP_BAR(player, captureDamage: &capturedDamage);
+
+        MESSAGE("The opposing Wobbuffet used Celebrate!");
+    } THEN {
+        finalHP = player->hp;
+        EXPECT_LE(finalHP, 200);
+        EXPECT_GE(finalHP, 200 - capturedDamage);
+        if (move == MOVE_BRIGHTEST_DAWN)
+            EXPECT_MUL_EQ(finalHP, Q_4_12(2.0), capturedHP);
     }
 }
 
@@ -457,7 +530,7 @@ SINGLE_BATTLE_TEST("Dynamax: Dynamaxed Pokemon that changes forms does not gain 
         ANIMATION(ANIM_TYPE_MOVE, MOVE_MAX_STRIKE, player);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_POWER_CONSTRUCT, player);
     } THEN {
-        EXPECT_MUL_EQ(maxHP - hp, GetDynamaxLevelHPMultiplier(0, FALSE), player->maxHP - player->hp);
+        EXPECT_MUL_EQ(maxHP - hp, GetDynamaxLevelHPMultiplier(0, FALSE, FALSE), player->maxHP - player->hp);
     }
 }
 

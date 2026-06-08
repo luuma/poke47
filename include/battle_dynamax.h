@@ -5,7 +5,7 @@
 
 bool32 CanDynamax(enum BattlerId battler);
 bool32 IsGigantamaxed(enum BattlerId battler);
-void ApplyDynamaxHPMultiplier(struct Pokemon *mon);
+void ApplyDynamaxHPMultiplier(struct Pokemon *mon, bool32 maxOut);
 void ActivateDynamax(enum BattlerId battler);
 u32 GetNonDynamaxHP(enum BattlerId battler);
 u32 GetNonDynamaxMaxHP(enum BattlerId battler);

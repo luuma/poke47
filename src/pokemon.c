@@ -7325,11 +7325,19 @@ enum Type CheckDynamicMoveType(struct Pokemon *mon, enum Move move, enum Battler
     return GetMoveType(move);
 }
 
-uq4_12_t GetDynamaxLevelHPMultiplier(u32 dynamaxLevel, bool32 inverseMultiplier)
+uq4_12_t GetDynamaxLevelHPMultiplier(u32 dynamaxLevel, bool32 inverseMultiplier, bool32 maxOut)
 {
-    if (inverseMultiplier)
+    if (maxOut)
+    {
+        if (inverseMultiplier)
+            return UQ_4_12(1.0/2.0);
+        return UQ_4_12(2.0);
+    }
+    else if (inverseMultiplier)
         return UQ_4_12(1.0/(1.5 + 0.05 * dynamaxLevel));
-    return UQ_4_12(1.5 + 0.05 * dynamaxLevel);
+    else
+        return UQ_4_12(1.5 + 0.05 * dynamaxLevel);
+
 }
 
 bool32 IsSpeciesRegionalForm(enum Species species)

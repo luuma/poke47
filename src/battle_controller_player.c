@@ -1406,7 +1406,7 @@ void Task_PlayerController_RestoreBgmAfterCry(u8 taskId)
 
 static void DynamaxModifyHPLevelUp(struct Pokemon *mon, enum BattlerId battler, u32 oldMaxHP)
 {
-    ApplyDynamaxHPMultiplier(mon);
+    ApplyDynamaxHPMultiplier(mon, gBattleMons[battler].volatiles.dynamaxEnabled);
     gBattleScripting.levelUpHP = GetMonData(mon, MON_DATA_MAX_HP) - oldMaxHP; // overwrite levelUpHP since it overflows
     gBattleMons[battler].hp += gBattleScripting.levelUpHP;
     SetMonData(mon, MON_DATA_HP, &gBattleMons[battler].hp);
