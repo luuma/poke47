@@ -1699,7 +1699,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_RECEIVER] =
     {
         .name = _("Receiver"),
-        .description = COMPOUND_STRING("Copies ally's ability."),
+        .description = COMPOUND_STRING("Receives more calls."),
         .aiRating = 0,
         .cantBeCopied = TRUE,
         .cantBeTraced = TRUE,
@@ -2500,7 +2500,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_GRAND_DEBUT] =
     {
         .name = _("Showboater"),
-        .description = COMPOUND_STRING("1.5x Defense on switchin."),
+        .description = COMPOUND_STRING("1.5x Defenses on switchin."),
         .aiRating = 8,
     },
 

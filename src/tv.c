@@ -201,16 +201,22 @@ static const struct {
         .location = MAP_NUM(MAP_ROUTE102)
     },
     {
+        .species = SPECIES_BALTOY,
+        .moves = {MOVE_SKILL_SWAP, MOVE_RAPID_SPIN, MOVE_PSYBEAM, MOVE_HEAL_BLOCK},
+        .level = 21,
+        .location = MAP_NUM(MAP_ROUTE111),
+    },
+    {
+        .species = SPECIES_NINCADA,
+        .moves = {MOVE_MUD_SLAP, MOVE_FALSE_SWIPE, MOVE_ABSORB, MOVE_SAND_ATTACK},
+        .level = 14,
+        .location = MAP_NUM(MAP_ROUTE113),
+    },
+    {
         .species = SPECIES_GIRAFARIG,
         .moves = {MOVE_POWER_SWAP, MOVE_GUARD_SWAP, MOVE_ASSURANCE, MOVE_CONFUSION},
         .level = 15,
         .location = MAP_NUM(MAP_ROUTE114),
-    },
-    {
-        .species = SPECIES_BALTOY,
-        .moves = {MOVE_SKILL_SWAP, MOVE_RAPID_SPIN, MOVE_PSYBEAM, MOVE_HEAL_BLOCK},
-        .level = 21,
-        .location = MAP_NUM(MAP_ROUTE117),
     },
     {
         .species = SPECIES_SCYTHER,

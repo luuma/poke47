@@ -2003,7 +2003,7 @@ void CalculateMonStats(struct Pokemon *mon)
 
     if (HasShedinjaHPHandling(species))
     {
-        newMaxHP = 1;
+        newMaxHP = 3;//3!!
     }
     else
     {

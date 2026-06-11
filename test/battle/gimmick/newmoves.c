@@ -216,7 +216,7 @@ SINGLE_BATTLE_TEST("POKE47: Lightbloom SUNlight")
     } WHEN {
         TURN { MOVE(player, MOVE_LIGHTBLOOM); MOVE(opponent, MOVE_CELEBRATE); }
     } SCENE {
-        MESSAGE("Wobbuffet used Light Bloom!");
+        MESSAGE("Wobbuffet used Solar Dance!");
         MESSAGE("The sunlight turned harsh!");
         MESSAGE("The opposing Wobbuffet used Celebrate!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_SUN_CONTINUES);

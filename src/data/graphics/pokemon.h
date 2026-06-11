@@ -17753,7 +17753,6 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 
-#if P_GIGANTAMAX_FORMS
     const u32 gMonFrontPic_GarbodorGmax[] = INCGFX_U32("graphics/pokemon/garbodor/gmax/front.png", ".4bpp.smol");
     const u32 gMonBackPic_GarbodorGmax[] = INCGFX_U32("graphics/pokemon/garbodor/gmax/back.png", ".4bpp.smol");
     const u16 gMonPalette_GarbodorGmax[] = INCGFX_U16("graphics/pokemon/garbodor/gmax/normal.pal", ".gbapal");
@@ -17766,7 +17765,6 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     // const u16 gShinyOverworldPalette_GarbodorGmax[] = INCGFX_U16("graphics/pokemon/garbodor/gmax/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
-#endif //P_GIGANTAMAX_FORMS
 #endif //P_FAMILY_TRUBBISH
 
 #if P_FAMILY_ZORUA
@@ -23249,7 +23247,6 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 
-#if P_GIGANTAMAX_FORMS
     const u32 gMonFrontPic_MelmetalGmax[] = INCGFX_U32("graphics/pokemon/melmetal/gmax/front.png", ".4bpp.smol");
     const u32 gMonBackPic_MelmetalGmax[] = INCGFX_U32("graphics/pokemon/melmetal/gmax/back.png", ".4bpp.smol");
     const u16 gMonPalette_MelmetalGmax[] = INCGFX_U16("graphics/pokemon/melmetal/gmax/normal.pal", ".gbapal");
@@ -23262,7 +23259,6 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
     // const u16 gShinyOverworldPalette_MelmetalGmax[] = INCGFX_U16("graphics/pokemon/melmetal/gmax/overworld_shiny.pal", ".gbapal");
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
-#endif //P_GIGANTAMAX_FORMS
 #endif //P_FAMILY_MELTAN
 
 #if P_FAMILY_GROOKEY

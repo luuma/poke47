@@ -263,7 +263,7 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
     {
         .fieldMoveFunc = SetUpFieldMove_Splash,
         .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
-        .moveID = MOVE_SPLASH,
+        .moveID = MOVE_ION_DELUGE,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
     },
     [FIELD_MOVE_FUTURE_SIGHT] =// ROTOTILLER
@@ -285,6 +285,13 @@ const struct FieldMoveInfo gFieldMoveInfo[FIELD_MOVES_COUNT] =
         .fieldMoveFunc = SetUpFieldMove_FutureSight,
         .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
         .moveID = MOVE_HIT_DEF,
+        .partyMsgID = PARTY_MSG_CANT_USE_HERE,
+    },
+    [FIELD_MOVE_SCREEN_BURN] =
+    {
+        .fieldMoveFunc = SetUpFieldMove_Splash,// BLOCK NAV CALLS
+        .isUnlockedFunc = IsFieldMoveUnlocked_SweetScent,
+        .moveID = MOVE_SCREEN_BURN,
         .partyMsgID = PARTY_MSG_CANT_USE_HERE,
     }
 };

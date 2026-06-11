@@ -1423,9 +1423,7 @@ static const u16 sYamaskFormSpeciesIdTable[] = {
 #if P_FAMILY_TRUBBISH
 static const u16 sGarbodorFormSpeciesIdTable[] = {
     SPECIES_GARBODOR,
-#if P_GIGANTAMAX_FORMS
     SPECIES_GARBODOR_GMAX,
-#endif
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_TRUBBISH
@@ -2116,9 +2114,7 @@ static const u16 sZeraoraFormSpeciesIdTable[] = {
 #if P_FAMILY_MELTAN
 static const u16 sMelmetalFormSpeciesIdTable[] = {
     SPECIES_MELMETAL,
-#if P_GIGANTAMAX_FORMS
     SPECIES_MELMETAL_GMAX,
-#endif
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_MELTAN

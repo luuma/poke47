@@ -110,7 +110,7 @@ EventScript_UseFutureSightUNUSED::
 	end
 
 Text_TimeSkip:
-	.string "{PLAYER} leapt forward {STR_VAR_1} hours\p"
+	.string "{PLAYER} leapt forward {STR_VAR_1} hours\n"
 	.string "into the future!$"
 
 
@@ -123,18 +123,44 @@ EventScript_UseSplash::
 	waitstate
 	applymovement LOCALID_PLAYER, Movement_JumpSplash
 	waitmovement 0
+	playse SE_M_SUPERSONIC
+	delay 8
+	waitse
+        goto_if_unset FLAG_ADDED_MATCH_CALL_TO_POKENAV, EventScript_huhnavnothing
+        goto_if_set FLAG_NO_NAV_CALLS, EventScript_navOn
+        setflag FLAG_NO_NAV_CALLS
+	msgbox Text_FlipOnAirplaneMode, MSGBOX_DEFAULT
+	releaseall
+	end
+
+EventScript_huhnavnothing::
 	msgbox Text_SplashNothingHappened, MSGBOX_DEFAULT
 	releaseall
 	end
 
+
+EventScript_navOn::
+        clearflag FLAG_NO_NAV_CALLS
+	msgbox Text_FlipOffAirplaneMode, MSGBOX_DEFAULT
+	releaseall
+	end
+
 Movement_JumpSplash:
-	jump_in_place_down
 	jump_in_place_down
 	step_end
 
 Text_SplashNothingHappened:
 	.string "… … … … … … … … … … …\p"
 	.string "Nothing happened…$"
+
+Text_FlipOnAirplaneMode:
+	.string "{PLAYER} set the POKéNAV\n"
+	.string "to block all incoming calls!$"
+
+Text_FlipOffAirplaneMode:
+	.string "{PLAYER} set the POKéNAV\n"
+	.string "to receive incoming calls again!$"
+
 
 @ Use cAMOUFLAGE or shadow sneak or phantom force from party menu
 EventScript_UseFade::

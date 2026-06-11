@@ -6580,6 +6580,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .danceMove = TRUE,// added.... i often forget this sin't true, and it works with spandex flares well.
         .argument = { .weatherType = BATTLE_WEATHER_RAIN },
         .contestEffect = CONTEST_EFFECT_BETTER_WHEN_AUDIENCE_EXCITED,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_BEAUTY : CONTEST_CATEGORY_TOUGH,
@@ -23806,7 +23807,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_LIGHTBLOOM] =
     {
-        .name = COMPOUND_STRING("Light Bloom"),
+        .name = COMPOUND_STRING("Solar Dance"),
         .description = COMPOUND_STRING(
             "A blossoming fire that\n"
             "intensifies sun for 5 turns."),
@@ -23818,6 +23819,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_PHYSICAL,
+        .danceMove = TRUE,
         .contestEffect = CONTEST_EFFECT_BETTER_WHEN_AUDIENCE_EXCITED,
         .contestCategory = CONTEST_CATEGORY_COOL,
         .contestComboStarterId = 0,
@@ -24096,7 +24098,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_STAT_PLUS,
             .defense = 1,
-            .spDef = 1,
+            .spDef = 1,// possibly nerf to "accuracy"
             .self = TRUE,
             .chance = 100,
         }),
@@ -24168,7 +24170,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_BRIGHTEST_DAWN] =
     {
-        .name = COMPOUND_STRING("Dynamax Dawn"),
+        .name = COMPOUND_STRING("Dragonform Call"),
         .description = COMPOUND_STRING(
             "The user faints to let\n"
             "its recipient Dynamax."),
@@ -24183,6 +24185,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .snatchAffected = B_UPDATED_MOVE_FLAGS >= GEN_5,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .soundMove = TRUE,
         .contestEffect = CONTEST_EFFECT_GREAT_APPEAL_BUT_NO_MORE_MOVES,
         .contestCategory = C_UPDATED_MOVE_CATEGORIES >= GEN_6 ? CONTEST_CATEGORY_BEAUTY : CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = 0,

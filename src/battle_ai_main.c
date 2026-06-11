@@ -1458,6 +1458,19 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
         {
             RETURN_SCORE_MINUS(20);
         }
+	if (HasShedinjaHPHandling(gBattleMons[battlerDef].species))// burn sheddy to win
+        {
+            switch (moveEffect)
+            {
+            case EFFECT_NON_VOLATILE_STATUS:
+            case EFFECT_LEECH_SEED:
+	        if (nonVolatileStatus != MOVE_EFFECT_SLEEP)
+                    ADJUST_SCORE(+20);
+                break;
+            default:
+                break;
+            }
+        }
     } // end check TARGET_USER
 
 // the following checks apply to any target (including user)

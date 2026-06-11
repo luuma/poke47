@@ -16096,7 +16096,26 @@ const struct ItemInfo gItemsInfo[] =
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
-        .flingPower = 160,//If you manage it, kill em.
+        .flingPower = 210,//Lopunnium Z
+        .iconPic = gItemIcon_WizardCape,
+        .iconPalette = gItemIconPalette_WizardCape,
+    },
+
+    [ITEM_ALEMBIC] =
+    {
+        .name = ITEM_NAME("Alembic"),
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_ALEMBIC,
+        .holdEffectParam = 15,// MULT BY 10 DIVIDE BY PARAM
+        .description = COMPOUND_STRING(
+            "Ignores 1/3 of lowest\n"
+            "Defense/Sp. Def stat\n"
+            "if foe has STATUS."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
         .iconPic = gItemIcon_WizardCape,
         .iconPalette = gItemIconPalette_WizardCape,
     },

@@ -31,6 +31,39 @@ SINGLE_BATTLE_TEST("POKE47: trickland sets trick room")
     }
 }
 
+SINGLE_BATTLE_TEST("POKE47: opposite day sets inverse")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_INKAY) { Ability(ABILITY_OPPOSITE_DAY); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_PSYBEAM); }
+    } SCENE {
+        ABILITY_POPUP(opponent, ABILITY_OPPOSITE_DAY);
+        MESSAGE("It's super effective!");
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: opposite day lasts 5 turns")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_INKAY) { Ability(ABILITY_OPPOSITE_DAY); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_PSYBEAM); }
+        TURN { }
+        TURN { }
+        TURN { }
+        TURN { }
+        TURN { MOVE(opponent, MOVE_PSYBEAM);  }
+    } SCENE {
+        ABILITY_POPUP(opponent, ABILITY_OPPOSITE_DAY);
+        MESSAGE("It's super effective!");
+        MESSAGE("The twisted dimensions returned to normal!");
+        MESSAGE("It's not very effective…");
+    }
+}
+
 WILD_BATTLE_TEST("POKE47: Ball Fetch triples catchrate")
 {
     u32 expectedOdds;

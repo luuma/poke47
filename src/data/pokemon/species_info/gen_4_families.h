@@ -630,11 +630,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_FIELD),
-    #if P_UPDATED_ABILITIES >= GEN_9
-        .abilities  = {ABILITY_TORRENT, ABILITY_PURIFYING_SALT, ABILITY_SUPREME_OVERLORD},
-    #else
-        .abilities  = {ABILITY_TORRENT, ABILITY_PURIFYING_SALT, ABILITY_SUPREME_OVERLORD},
-    #endif
+        .abilities  = {ABILITY_TORRENT, ABILITY_PURIFYING_SALT, ABILITY_REFRIGERATE},
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Empoleon"),
         .cryId = CRY_EMPOLEON,

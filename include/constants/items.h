@@ -1076,7 +1076,7 @@ enum __attribute__((packed)) Item
     ITEM_KNELL_BELL,
     ITEM_DAMAGE_BOUNCEABLES,
     ITEM_CURSED_SHELL,
-    ITEM_space6,
+    ITEM_ALEMBIC,
     ITEM_space7,
     ITEM_space8,
     ITEM_OVAL_CHARM,// 	why the 	fuck is this saying there are multiple definitions.

@@ -1171,9 +1171,7 @@ static const struct FormChange sScraftyFormChangeTable[] =
 #if P_FAMILY_TRUBBISH
 static const struct FormChange sGarbodorFormChangeTable[] =
 {
-#if P_GIGANTAMAX_FORMS
     {FORM_CHANGE_BATTLE_GIGANTAMAX, SPECIES_GARBODOR_GMAX},
-#endif
     {FORM_CHANGE_FAINT,             SPECIES_GARBODOR},
     {FORM_CHANGE_END_BATTLE,        SPECIES_GARBODOR},
     {FORM_CHANGE_TERMINATOR},
@@ -1842,9 +1840,7 @@ static const struct FormChange sZeraoraFormChangeTable[] = {
 #if P_FAMILY_MELTAN
 static const struct FormChange sMelmetalFormChangeTable[] =
 {
-#if P_GIGANTAMAX_FORMS
     {FORM_CHANGE_BATTLE_GIGANTAMAX, SPECIES_MELMETAL_GMAX},
-#endif
     {FORM_CHANGE_FAINT,             SPECIES_MELMETAL},
     {FORM_CHANGE_END_BATTLE,        SPECIES_MELMETAL},
     {FORM_CHANGE_TERMINATOR},

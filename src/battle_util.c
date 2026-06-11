@@ -3385,7 +3385,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 break;
             else if (!(gFieldStatuses & STATUS_FIELD_INVERSE))
             {
-		BattleScriptPushCursorAndCallback(BattleScript_OppositeDayActivates);
+		BattleScriptCall(BattleScript_OppositeDayActivates);
 	        gFieldStatuses |= STATUS_FIELD_INVERSE;
                 gFieldTimers.inverseTimer = 5;
                 effect++;
@@ -3396,14 +3396,14 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 break;
 	    if (!(gFieldStatuses & STATUS_FIELD_WONDER_ROOM))
                 {
-		    BattleScriptPushCursorAndCallback(BattleScript_WonderlandActivates);
+		    BattleScriptCall(BattleScript_WonderlandActivates);
 	            gFieldStatuses |= STATUS_FIELD_WONDER_ROOM;
                     gFieldTimers.wonderRoomTimer = 5;
                     effect++;
                 }
             else
                 {
-		    BattleScriptPushCursorAndCallback(BattleScript_WonderlandWonderRoomEnds);
+		    BattleScriptCall(BattleScript_WonderlandWonderRoomEnds);
 	            gFieldStatuses &= ~STATUS_FIELD_WONDER_ROOM;
                     effect++;
                 }
@@ -3413,14 +3413,14 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 break;
 	    if (!(gFieldStatuses & STATUS_FIELD_TRICK_ROOM))
             {
-		BattleScriptPushCursorAndCallback(BattleScript_TricklandActivates);
+		BattleScriptCall(BattleScript_TricklandActivates);
 	        gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
                 gFieldTimers.trickRoomTimer = 5;
                 effect++;
             }
             else
             {
-		BattleScriptPushCursorAndCallback(BattleScript_TricklandTrickRoomEnds);
+		BattleScriptCall(BattleScript_TricklandTrickRoomEnds);
 	        gFieldStatuses &= ~STATUS_FIELD_TRICK_ROOM;
                 effect++;
 	    }
@@ -7290,7 +7290,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     spDef = gBattleMons[battlerDef].spDefense;
     spAtk = gBattleMons[battlerDef].spAttack;
     atk = gBattleMons[battlerDef].attack;
-
+ 
     if (moveEffect == EFFECT_PSYSHOCK || IsBattleMovePhysical(move)) // uses defense stat instead of sp.def
     {
         if (ctx->fieldStatuses & STATUS_FIELD_WONDER_ROOM) // the BASE defense stats are swapped 
@@ -7320,13 +7320,12 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
         defStage = gBattleMons[battlerDef].statStages[STAT_SPDEF];
     }
 
+    modifier = UQ_4_12(1.0); // defined earlier due to hold effect alembic
+
     // Self-destruct / Explosion cut defense in half
     if (GetConfig(B_EXPLOSION_DEFENSE) < GEN_5 && IsExplosionMove(ctx->move))
         defStat /= 2;
 
-    // critical hits ignore positive stat changes
-    if (ctx->isCrit && defStage > DEFAULT_STAT_STAGE)
-        defStage = DEFAULT_STAT_STAGE;
     // Pokémon with unaware ignore defense stat changes while dealing damage
     if (ctx->abilities[ctx->battlerAtk] == ABILITY_UNAWARE)
         defStage = DEFAULT_STAT_STAGE;
@@ -7334,11 +7333,37 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     if (MoveIgnoresDefenseEvasionStages(move))
         defStage = DEFAULT_STAT_STAGE;
 
+    if (ctx->holdEffects[ctx->battlerAtk] == HOLD_EFFECT_ALEMBIC && gBattleMons[battlerDef].status1 & STATUS1_ANY)//ignore 1/3 of target's lowest defense stat, factoring in stat changes but not magically factoring in crits because that would sometimes take off the mult when you crit.
+    {
+        if (usesDefStat)
+	{
+            u32 defcalc = def * gStatStageRatios[defStage][0];
+            defcalc *= gStatStageRatios[defStage][1];
+            u32 otherstatStage = gBattleMons[battlerDef].statStages[STAT_SPDEF];
+            u32 spdefcalc = spDef * gStatStageRatios[otherstatStage][0];
+            spdefcalc *= gStatStageRatios[otherstatStage][1];
+            if (defcalc <= spdefcalc)
+                modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.67));
+        }
+        else
+	{
+            u32 otherstatStage = gBattleMons[battlerDef].statStages[STAT_DEF];
+            u32 defcalc = spDef * gStatStageRatios[otherstatStage][0];
+            defcalc *= gStatStageRatios[otherstatStage][1];
+            u32 spdefcalc = def * gStatStageRatios[defStage][0];
+            spdefcalc *= gStatStageRatios[defStage][1];
+            if (spdefcalc <= defcalc)
+                modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.67));
+        }
+    }
+    // critical hits ignore positive stat changes. Defined later due to hold effect alembic
+    if (ctx->isCrit && defStage > DEFAULT_STAT_STAGE)
+        defStage = DEFAULT_STAT_STAGE;
+
     defStat *= gStatStageRatios[defStage][0];
     defStat /= gStatStageRatios[defStage][1];
 
     // apply defense stat modifiers
-    modifier = UQ_4_12(1.0);
 
     if (ctx->isSelfInflicted)
         return uq4_12_multiply_by_int_half_down(ApplyDefensiveBadgeBoost(modifier, battlerDef, move), defStat);
@@ -7427,6 +7452,9 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
         modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.75));
 
     // target's hold effects
+
+
+
     switch (ctx->holdEffects[ctx->battlerDef])
     {
     case HOLD_EFFECT_DEEP_SEA_SCALE:

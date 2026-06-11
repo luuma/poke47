@@ -4768,7 +4768,7 @@ BattleScript_OppositeDayActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_TYPECHARTINVERTED
 	waitmessage B_WAIT_TIME_LONG
-	end3
+	return
 
 
 BattleScript_WonderlandActivates::
@@ -4776,7 +4776,7 @@ BattleScript_WonderlandActivates::
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_SWAPSDEFANDSPDEFOFALLPOKEMON
 	waitmessage B_WAIT_TIME_LONG
-	end3
+	return
 
 BattleScript_TricklandActivates::
 	pause B_WAIT_TIME_SHORT
@@ -4784,21 +4784,21 @@ BattleScript_TricklandActivates::
 	printstring STRINGID_PKMNTWISTEDDIMENSIONS
 	waitmessage B_WAIT_TIME_MED
 	call BattleScript_TryRoomServiceLoop
-	end3
+	return
 
 BattleScript_WonderlandWonderRoomEnds::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_WONDERROOMENDS
 	waitmessage B_WAIT_TIME_LONG
-	end3
+	return
 
 BattleScript_TricklandTrickRoomEnds::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_TRICKROOMENDS
 	waitmessage B_WAIT_TIME_LONG
-	end3
+	return
 
 
 BattleScript_SupremeOverlordActivates::

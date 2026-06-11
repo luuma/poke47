@@ -2135,7 +2135,7 @@ static void CalcDomeMonStats(const struct TrainerMon *fmon, int level, u8 ivs, i
 
     if (HasShedinjaHPHandling(fmon->species))
     {
-        stats[STAT_HP] = 1;
+        stats[STAT_HP] = 3;
     }
     else
     {

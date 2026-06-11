@@ -1149,7 +1149,7 @@ static bool32 HandleEndTurnInverse(enum BattlerId battler)
     if (gFieldTimers.inverseTimer > 0 && --gFieldTimers.inverseTimer == 0)
     {
         gFieldStatuses &= ~STATUS_FIELD_INVERSE;
-        BattleScriptExecute(BattleScript_TrickRoomEnds);
+        BattleScriptCall(BattleScript_TrickRoomEnds);
         effect = TRUE;
     }
 

@@ -341,13 +341,12 @@ SINGLE_BATTLE_TEST("POKE47: SPANDEX flares doesn't when not dancing")
         PLAYER(SPECIES_WOBBUFFET) { Item(ITEM_SPANDEX_FLARES); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
-        TURN { MOVE(player, MOVE_RAIN_DANCE); }
-        TURN { MOVE(player, MOVE_RAIN_DANCE); MOVE(opponent, MOVE_SPORE); }
+        TURN { MOVE(player, MOVE_SUNNY_DAY); }
+        TURN { MOVE(player, MOVE_SUNNY_DAY); MOVE(opponent, MOVE_SPORE); }
     } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_RAIN_DANCE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SUNNY_DAY, player);
         MESSAGE("The opposing Wobbuffet used Spore!");
         STATUS_ICON(player, sleep: TRUE);
-
     }
 }
 

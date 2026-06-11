@@ -72,7 +72,7 @@
 #define FLAG_CASINO_DERBY_NICK     0x2A // Unused Flag
 #define FLAG_UNUSED_0x02B    0x2B // followers
 #define FLAG_FADED    0x2C // FADE
-#define FLAG_UNUSED_0x02D    0x2D // Unused Flag
+#define FLAG_NO_NAV_CALLS    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
 #define FLAG_UNUSED_0x030    0x30 // Unused Flag
