@@ -26,11 +26,15 @@
 #include "test_runner.h"
 #include "constants/rgb.h"
 
+#include "palette.h"
+
+
 static void VBlankIntr(void);
 static void HBlankIntr(void);
 static void VCountIntr(void);
 static void SerialIntr(void);
 static void IntrDummy(void);
+static bool32 SpeedupFrameSkip(void);
 
 // Defined in the linker script so that the test build can override it.
 extern void gInitialMainCB2(void);
@@ -169,9 +173,31 @@ void AgbMainLoop(void)
 
         PlayTimeCounter_Update();
         MapMusicMain();
-        WaitForVBlank();
+        if (!SpeedupFrameSkip())
+            WaitForVBlank();
     }
 }
+
+EWRAM_DATA u32 sSkipCounter = 0;
+
+static bool32 SpeedupFrameSkip(void)
+{
+    if (!gSaveBlock2Ptr->optionsEmuSpeed)// if 0
+        return FALSE;
+
+    if (sSkipCounter >= gSaveBlock2Ptr->optionsEmuSpeed)
+    {
+        sSkipCounter = 0;
+        return FALSE;
+    }
+    else
+    {
+        UpdatePaletteFade();
+        sSkipCounter++;
+        return TRUE;
+    }
+}
+
 
 static void UpdateLinkAndCallCallbacks(void)
 {
