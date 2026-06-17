@@ -3538,6 +3538,7 @@ static void DoBattleIntro(void)
     case BATTLE_INTRO_STATE_INTRO_TEXT:
         if (!IsBattlerMarkedForControllerExec(GetBattlerAtPosition(B_POSITION_PLAYER_LEFT)))
         {
+            gSaveBlock2Ptr->optionsEmuSpeedSuppress = 1;
             PrepareStringBattle(STRINGID_INTROMSG, GetBattlerAtPosition(B_POSITION_PLAYER_LEFT));
             gBattleStruct->eventState.battleIntro++;
         }
