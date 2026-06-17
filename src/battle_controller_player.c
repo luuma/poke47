@@ -2011,6 +2011,7 @@ static void HandleChooseActionAfterDma3(enum BattlerId battler)
             gBattleStruct->aiDelayTimer = 0;
             gBattleStruct->aiDelayFrames = 0;
         }
+        gSaveBlock2Ptr->optionsEmuSpeedSuppress = 0;
         gBattlerControllerFuncs[battler] = HandleInputChooseAction;
     }
 }

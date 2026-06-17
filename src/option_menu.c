@@ -93,7 +93,7 @@ static const u8 gText_ButtonTypeLR[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
 static const u8 gText_EmuSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}None");
 static const u8 gText_EmuSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}2x");
-static const u8 gText_EmuSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3x(silly)");
+static const u8 gText_EmuSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3x(buggy)");
 
 static const u16 sOptionMenuText_Pal[] = INCGFX_U16("graphics/interface/option_menu_text.pal", ".gbapal");
 // note: this is only used in the Japanese release
@@ -107,7 +107,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
-    [MENUITEM_CANCEL]      = COMPOUND_STRING("Frameskip Speedup"),
+    [MENUITEM_CANCEL]      = COMPOUND_STRING("Frameskip Speed"),
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =

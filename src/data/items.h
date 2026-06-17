@@ -16035,7 +16035,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Doubles defenses\n"
             "for unevolved\n"
-            "Rock or Ice types."),
+            "Rock or Ice types."),// Fully in game but doesn't feel fun so not available to players yet.
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -16053,7 +16053,7 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Boosts Speed 1.1x,\n"
             "or 1.5x if the\n"
-            "holder can evolve."),
+            "holder can evolve."),// Fully in game but doesn't feel fun so not available to players yet.
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -16106,18 +16106,18 @@ const struct ItemInfo gItemsInfo[] =
         .name = ITEM_NAME("Alembic"),
         .price = 10000,
         .holdEffect = HOLD_EFFECT_ALEMBIC,
-        .holdEffectParam = 15,// MULT BY 10 DIVIDE BY PARAM
+        .holdEffectParam = 15,// param unused.
         .description = COMPOUND_STRING(
-            "Ignores 1/3 of lowest\n"
-            "Defense/Sp. Def stat\n"
-            "if foe has STATUS."),
+            "Ignores 1/3 lower\n"
+            "Def/Sp. Def stat\n"
+            "if foe has STATUS."),// Fully in game but doesn't feel fun so not available to players yet.
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
-        .iconPic = gItemIcon_WizardCape,
-        .iconPalette = gItemIconPalette_WizardCape,
+        .iconPic = gItemIcon_Alembic,
+        .iconPalette = gItemIconPalette_LustrousOrb,
     },
 };
 

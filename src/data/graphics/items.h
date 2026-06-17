@@ -10,6 +10,8 @@ const u16 gItemIconPalette_LevelCap[] = INCGFX_U16("graphics/items/icon_palettes
 const u32 gItemIcon_WizardCape[] = INCGFX_U32("graphics/items/icons/wizard_cape.png", ".4bpp.smol");
 const u16 gItemIconPalette_WizardCape[] = INCGFX_U16("graphics/items/icon_palettes/wizard_cape.pal", ".gbapal");
 
+const u32 gItemIcon_Alembic[] = INCGFX_U32("graphics/items/icons/alembic.png", ".4bpp.smol");
+
 const u32 gItemIcon_SpandexFlares[] = INCGFX_U32("graphics/items/icons/spandex_flares.png", ".4bpp.smol");
 
 const u32 gItemIcon_KnellBell[] = INCGFX_U32("graphics/items/icons/knell_bell.png", ".4bpp.smol");

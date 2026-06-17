@@ -350,3 +350,80 @@ SINGLE_BATTLE_TEST("POKE47: SPANDEX flares doesn't when not dancing")
     }
 }
 
+SINGLE_BATTLE_TEST("POKE47: Alembic and Defense < sdef", s16 damage)
+{
+    u16 move;
+    u32 item;
+
+    PARAMETRIZE { move = MOVE_SCRATCH;   item = ITEM_ALEMBIC; }
+    PARAMETRIZE { move = MOVE_SCRATCH;   item = ITEM_NONE; }
+    PARAMETRIZE { move = MOVE_WATER_GUN; item = ITEM_ALEMBIC; }
+    PARAMETRIZE { move = MOVE_WATER_GUN; item = ITEM_NONE; }
+
+    GIVEN {
+        ASSUME(GetMoveCategory(MOVE_SCRATCH) == DAMAGE_CATEGORY_PHYSICAL);
+        ASSUME(GetMoveCategory(MOVE_WATER_GUN) == DAMAGE_CATEGORY_SPECIAL);
+        PLAYER(SPECIES_PIKACHU) { SpDefense(150); Defense(148); Status1(STATUS1_POISON);}
+        OPPONENT(SPECIES_MUK) { Item(item); }
+    } WHEN {
+        TURN { MOVE(opponent, move); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, move, opponent);
+        HP_BAR(player, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[1].damage, Q_4_12(1.5), results[0].damage);
+        EXPECT_MUL_EQ(results[3].damage, Q_4_12(1.0), results[2].damage);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Alembic and Defense > sdef", s16 damage)
+{
+    u16 move;
+    u32 item;
+
+    PARAMETRIZE { move = MOVE_SCRATCH;   item = ITEM_ALEMBIC; }
+    PARAMETRIZE { move = MOVE_SCRATCH;   item = ITEM_NONE; }
+    PARAMETRIZE { move = MOVE_WATER_GUN; item = ITEM_ALEMBIC; }
+    PARAMETRIZE { move = MOVE_WATER_GUN; item = ITEM_NONE; }
+
+    GIVEN {
+        ASSUME(GetMoveCategory(MOVE_SCRATCH) == DAMAGE_CATEGORY_PHYSICAL);
+        ASSUME(GetMoveCategory(MOVE_WATER_GUN) == DAMAGE_CATEGORY_SPECIAL);
+        PLAYER(SPECIES_PIKACHU) { SpDefense(150); Defense(152); Status1(STATUS1_POISON);}
+        OPPONENT(SPECIES_MUK) { Item(item); }
+    } WHEN {
+        TURN { MOVE(opponent, move); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, move, opponent);
+        HP_BAR(player, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[1].damage, Q_4_12(1.0), results[0].damage);
+        EXPECT_MUL_EQ(results[3].damage, Q_4_12(1.5), results[2].damage);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Alembic only under status", s16 damage)
+{
+    u16 move;
+    u32 item;
+
+    PARAMETRIZE { move = MOVE_SCRATCH;   item = ITEM_ALEMBIC; }
+    PARAMETRIZE { move = MOVE_SCRATCH;   item = ITEM_NONE; }
+    PARAMETRIZE { move = MOVE_WATER_GUN; item = ITEM_ALEMBIC; }
+    PARAMETRIZE { move = MOVE_WATER_GUN; item = ITEM_NONE; }
+
+    GIVEN {
+        ASSUME(GetMoveCategory(MOVE_SCRATCH) == DAMAGE_CATEGORY_PHYSICAL);
+        ASSUME(GetMoveCategory(MOVE_WATER_GUN) == DAMAGE_CATEGORY_SPECIAL);
+        PLAYER(SPECIES_PIKACHU) { SpDefense(150); Defense(148);}
+        OPPONENT(SPECIES_MUK) { Item(item); }
+    } WHEN {
+        TURN { MOVE(opponent, move); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, move, opponent);
+        HP_BAR(player, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[0].damage, Q_4_12(1.0), results[1].damage);
+        EXPECT_MUL_EQ(results[2].damage, Q_4_12(1.0), results[3].damage);
+    }
+}

@@ -7,7 +7,7 @@ Route113_GlassWorkshop_MapScripts::
 	.set RED_FLUTE_PRICE,    250
 	.set WHITE_FLUTE_PRICE,  500
 	.set BLACK_FLUTE_PRICE,  500
-	.set SAND_TOMB_PRICE, 	 500
+	.set SAND_TOMB_PRICE, 	 750
 	.set PRETTY_CHAIR_PRICE, 1500
 	.set PRETTY_DESK_PRICE,  2500
 	.set LOWEST_ASH_PRICE,   BLUE_FLUTE_PRICE
@@ -159,8 +159,7 @@ Route113_GlassWorkshop_EventScript_PrettyDesk::
 	end
 
 Route113_GlassWorkshop_EventScript_TMSandTomb::
-	goto_if_set FLAG_UNUSED_0x26C, Route113_GlassWorkshop_EventScript_NoRoomForFlute
-	setvar VAR_0x8008, ITEM_TM_SAND_TOMB
+	setvar VAR_0x8008, ITEM_ALEMBIC
 	bufferitemname STR_VAR_1, VAR_0x8008
 	setvar VAR_0x800A, SAND_TOMB_PRICE
 	goto_if_lt VAR_ASH_GATHER_COUNT, SAND_TOMB_PRICE, Route113_GlassWorkshop_EventScript_NotEnoughAshForItem
@@ -168,7 +167,6 @@ Route113_GlassWorkshop_EventScript_TMSandTomb::
 	goto_if_eq VAR_RESULT, NO, Route113_GlassWorkshop_EventScript_ChooseDifferentItem
 	setvar VAR_GLASS_WORKSHOP_STATE, 14
 	subvar VAR_ASH_GATHER_COUNT, SAND_TOMB_PRICE
-	setflag FLAG_UNUSED_0x26C
 	goto Route113_GlassWorkshop_EventScript_MakeGlassItem
 	end
 

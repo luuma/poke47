@@ -7278,7 +7278,7 @@ bool32 CanEvolve(enum Species species)
 static inline u32 CalcDefenseStat(struct DamageContext *ctx)
 {
     bool32 usesDefStat;
-    u8 defStage;
+    u8 defStage, otherStage;
     u32 defStat, def, spDef;
     u8 atk;
     u8 spAtk;
@@ -7304,6 +7304,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
             usesDefStat = TRUE;
         }
         defStage = gBattleMons[battlerDef].statStages[STAT_DEF];
+        otherStage = gBattleMons[battlerDef].statStages[STAT_SPDEF];
     }
     else // is special
     {
@@ -7318,6 +7319,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
             usesDefStat = FALSE;
         }
         defStage = gBattleMons[battlerDef].statStages[STAT_SPDEF];
+        otherStage = gBattleMons[battlerDef].statStages[STAT_DEF];
     }
 
     modifier = UQ_4_12(1.0); // defined earlier due to hold effect alembic
@@ -7329,31 +7331,35 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
     // Pokémon with unaware ignore defense stat changes while dealing damage
     if (ctx->abilities[ctx->battlerAtk] == ABILITY_UNAWARE)
         defStage = DEFAULT_STAT_STAGE;
+        otherStage = DEFAULT_STAT_STAGE;
     // certain moves also ignore stat changes
     if (MoveIgnoresDefenseEvasionStages(move))
         defStage = DEFAULT_STAT_STAGE;
+        otherStage = DEFAULT_STAT_STAGE;
 
     if (ctx->holdEffects[ctx->battlerAtk] == HOLD_EFFECT_ALEMBIC && gBattleMons[battlerDef].status1 & STATUS1_ANY)//ignore 1/3 of target's lowest defense stat, factoring in stat changes but not magically factoring in crits because that would sometimes take off the mult when you crit.
     {
         if (usesDefStat)
 	{
             u32 defcalc = def * gStatStageRatios[defStage][0];
-            defcalc *= gStatStageRatios[defStage][1];
-            u32 otherstatStage = gBattleMons[battlerDef].statStages[STAT_SPDEF];
-            u32 spdefcalc = spDef * gStatStageRatios[otherstatStage][0];
-            spdefcalc *= gStatStageRatios[otherstatStage][1];
+            defcalc /= gStatStageRatios[defStage][1];
+            u32 spdefcalc = spDef * gStatStageRatios[otherStage][0];
+            spdefcalc /= gStatStageRatios[otherStage][1];
             if (defcalc <= spdefcalc)
+            {
                 modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.67));
+            }
         }
         else
 	{
-            u32 otherstatStage = gBattleMons[battlerDef].statStages[STAT_DEF];
-            u32 defcalc = spDef * gStatStageRatios[otherstatStage][0];
-            defcalc *= gStatStageRatios[otherstatStage][1];
-            u32 spdefcalc = def * gStatStageRatios[defStage][0];
-            spdefcalc *= gStatStageRatios[defStage][1];
+            u32 defcalc = def * gStatStageRatios[otherStage][0];
+            defcalc /= gStatStageRatios[otherStage][1];
+            u32 spdefcalc = spDef * gStatStageRatios[defStage][0];
+            spdefcalc /= gStatStageRatios[defStage][1];
             if (spdefcalc <= defcalc)
+            {
                 modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.67));
+            }
         }
     }
     // critical hits ignore positive stat changes. Defined later due to hold effect alembic

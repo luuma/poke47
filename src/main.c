@@ -182,7 +182,7 @@ EWRAM_DATA u32 sSkipCounter = 0;
 
 static bool32 SpeedupFrameSkip(void)
 {
-    if (!gSaveBlock2Ptr->optionsEmuSpeed)// if 0
+    if (!gSaveBlock2Ptr->optionsEmuSpeed || gSaveBlock2Ptr->optionsEmuSpeedSuppress)// if 0, or if suppression on. Am I a hack? I think I am a hack
         return FALSE;
 
     if (sSkipCounter >= gSaveBlock2Ptr->optionsEmuSpeed)

@@ -2625,7 +2625,7 @@ static const u8 *const sScrollableMultichoiceOptions[][MAX_SCROLL_MULTI_LENGTH] 
         COMPOUND_STRING("RED FLUTE"),
         COMPOUND_STRING("WHITE FLUTE"),
         COMPOUND_STRING("BLACK FLUTE"),
-        COMPOUND_STRING("TM SAND TOMB"),
+        COMPOUND_STRING("ALEMBIC"),
         COMPOUND_STRING("PRETTY CHAIR"),
         COMPOUND_STRING("PRETTY DESK"),
         gText_Exit

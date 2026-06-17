@@ -1453,8 +1453,8 @@ gText_RegisteredTrainerinPokeNav::
 	.string "in the POKéNAV.$"
 
 gText_ComeBackWithSecretPower::
-	.string "Do you know the HM SECRET POWER?\p"
-	.string "Our group, we love the HM SECRET\n"
+	.string "Do you know the HM NATURE POWER?\p"
+	.string "Our group, we love the HM NATURE\n"
 	.string "POWER.\p"
 	.string "One of our members will give it to you.\n"
 	.string "Come back and show me if you get it.\p"

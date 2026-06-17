@@ -3,7 +3,6 @@
   "name": "Route119",
   "layout": "LAYOUT_ROUTE119",
   "music": "MUS_ROUTE119",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_119",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -943,5 +942,6 @@
       "item": "ITEM_EON_TICKET",
       "flag": "FLAG_EONTICKET_ITEM"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

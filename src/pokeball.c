@@ -477,7 +477,7 @@ static inline void DoPokeballSendOutSoundEffect(enum BattlerId battler)
 
     if (!IsBattlerPlayer(battler) && B_ENEMY_THROW_BALLS_SOUND < GEN_5)
         return;
-
+     gSaveBlock2Ptr->optionsEmuSpeedSuppress = 1;
      PlaySE(SE_BALL_THROW);
 }
 
