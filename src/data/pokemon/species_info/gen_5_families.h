@@ -11530,7 +11530,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Mienshao,
             gShinyOverworldPalette_Mienshao
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sMienshaoLevelUpLearnset,
         .teachableLearnset = sMienshaoTeachableLearnset,

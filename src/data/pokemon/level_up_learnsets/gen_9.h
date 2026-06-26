@@ -19073,7 +19073,7 @@ static const struct LevelUpMove sMienfooLevelUpLearnset[] = {
         LEVEL_UP_MOVE(11, MOVE_DRAIN_PUNCH),
         LEVEL_UP_MOVE(15, MOVE_HEAL_PULSE),
         LEVEL_UP_MOVE(19, MOVE_VACUUM_WAVE),
-        LEVEL_UP_MOVE(23, MOVE_GUARD_SPLIT),
+        LEVEL_UP_MOVE(23, MOVE_GUARD_SPLIT),// it fucking Ruuuuules. An entirely new strat! 
         LEVEL_UP_MOVE(27, MOVE_CIRCLE_THROW),
         LEVEL_UP_MOVE(31, MOVE_CALM_MIND),
         LEVEL_UP_MOVE(35, MOVE_JUMP_KICK),
