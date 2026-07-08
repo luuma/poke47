@@ -60,7 +60,7 @@ u32 GetPreviousLevelCapForXP(void)
         {FLAG_SIDNEY_SUCKER_PUNCH, 50},//0. high, to let people full-send champion
         {FLAG_IS_CHAMPION, 55},// so doubled until lv50.
         {FLAG_DEFEATED_METEOR_FALLS_STEVEN, 100},// Perma double.
-        //{FLAG_GAUNTLET_CHALLENGE, 5},// Cancels it out while set.
+        {FLAG_GAUNTLET_CHALLENGE, 5},// Cancels it out while set.
     };
     u32 i;
 

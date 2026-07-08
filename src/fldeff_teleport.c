@@ -6,6 +6,7 @@
 #include "party_menu.h"
 #include "overworld.h"
 #include "task.h"
+#include "event_data.h"
 #include "constants/field_effects.h"
 
 static void FieldCallback_Teleport(void);
@@ -13,7 +14,7 @@ static void StartTeleportFieldEffect(void);
 
 bool32 SetUpFieldMove_Teleport(void)
 {
-    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
+    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE) || FlagGet(FLAG_GAUNTLET_CHALLENGE))
         return FALSE;
 
     if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)

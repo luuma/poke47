@@ -7288,6 +7288,56 @@ enum Species GetSpeciesPreEvolution(enum Species species)
     return SPECIES_NONE;
 }
 
+enum Species GetSpeciesLowestPreEvolution(enum Species species)/// new bullshit which assumes evos appear prior in the dex. fuck you magmar and that lot
+{
+    int k;
+    enum Species i = species;
+    if (i <= SPECIES_ROSELIA)
+        i = SPECIES_MANTYKE; // We are slower for pre gen 4 mons so that edge cases are less shit. This ensures we never loop over more than half the dex, and often loop over two mons total.
+    enum Species loopPoint = i;
+    enum Species j = i;
+    do
+    {
+        if (!IsSpeciesEnabled(i))
+            continue;
+
+        const struct Evolution *evolutions = GetSpeciesEvolutions(i);
+        if (evolutions == NULL)
+            continue;
+
+        for (k = 0; evolutions[k].method != EVOLUTIONS_END; k++)
+        {
+            if (IsSpeciesEnabled(evolutions[k].targetSpecies) && SanitizeSpeciesId(evolutions[k].targetSpecies) == species)
+                break;
+        }
+        i--;
+        if (i == SPECIES_NONE)
+            i = NUM_SPECIES;
+    } while (i != loopPoint);
+    if (i == SPECIES_NONE)
+        return SPECIES_NONE;
+
+    do
+    {
+        if (!IsSpeciesEnabled(j))
+            continue;
+
+        const struct Evolution *evolutions = GetSpeciesEvolutions(j);
+        if (evolutions == NULL)
+            continue;
+
+        for (k = 0; evolutions[k].method != EVOLUTIONS_END; k++)
+        {
+            if (IsSpeciesEnabled(evolutions[k].targetSpecies) && SanitizeSpeciesId(evolutions[k].targetSpecies) == i)
+                return j;
+        }
+        i--;
+        if (j == SPECIES_NONE)
+            j = NUM_SPECIES;
+    } while (j != loopPoint);
+    return i;
+}
+
 void UpdateDaysPassedSinceFormChange(u16 days)
 {
     u32 i;

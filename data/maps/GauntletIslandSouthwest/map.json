@@ -2,20 +2,20 @@
   "id": "MAP_GAUNTLET_ISLAND_SOUTHWEST",
   "name": "GauntletIslandSouthwest",
   "layout": "LAYOUT_AEGAUNTLET1",
-  "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_135",
+  "music": "MUS_MT_PYRE_EXTERIOR",
+  "region_map_section": "MAPSEC_GAUNTLETSW",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
-  "allow_cycling": false,
+  "allow_cycling": true,
   "allow_escaping": false,
-  "allow_running": false,
+  "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
       "map": "MAP_GAUNTLET_ISLAND_SOUTH",
-      "offset": 0,
+      "offset": 25,
       "direction": "right"
     },
     {
@@ -25,8 +25,8 @@
     },
     {
       "map": "MAP_GUANTLET_ISLAND_NORTH",
-      "offset": 50,
-      "direction": "up"
+      "offset": -49,
+      "direction": "right"
     }
   ],
   "object_events": [],

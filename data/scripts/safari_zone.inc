@@ -28,6 +28,7 @@ SafariZone_EventScript_Exit::
 
 SafariZone_EventScript_RetirePrompt::
 	lockall
+        goto_if_set FLAG_GAUNTLET_CHALLENGE, GauntletIsland_EventScript_RetirePrompt
 	msgbox SafariZone_Text_WouldYouLikeToExit, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, SafariZone_EventScript_Retire
 	releaseall
@@ -35,6 +36,25 @@ SafariZone_EventScript_RetirePrompt::
 
 SafariZone_EventScript_Retire::
 	goto SafariZone_EventScript_Exit
+
+
+GauntletIsland_EventScript_RetirePrompt::
+	msgbox GauntletIsland_Text_WouldYouLikeToExit, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, YES, GauntletIsland_EventScript_EndGauntletChallenge
+	releaseall
+	end
+
+GauntletIsland_Text_WouldYouLikeToExit:
+	.string "Would you like to end your attempt\n"
+	.string "at GAUNTLET ISLAND and leave now?$"
+
+
+GauntletIsland_EventScript_EndGauntletChallenge::
+	warp MAP_ROUTE_100, 3, 11
+	waitstate
+	end
+
+
 
 SafariZone_EventScript_TimesUp::
 	lockall

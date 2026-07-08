@@ -104,3 +104,22 @@ void SetWhiteoutRespawnWarpAndHealerNPC(struct WarpData *warp)
     gSpecialVar_LastTalked = healNpcLocalId;
     gSpecialVar_0x800B = healNpcLocalId;
 }
+
+void GauntletWhiteout(struct WarpData *warp)
+{
+    u32 healNpcLocalId = LOCALID_WITCH;
+
+    if (!healNpcLocalId)
+    {
+        *(warp) = gSaveBlock1Ptr->lastHealLocation;
+        return;
+    }
+
+    warp->mapGroup = MAP_GROUP(MAP_ROUTE_100);
+    warp->mapNum = MAP_NUM(MAP_ROUTE_100);
+    warp->warpId = WARP_ID_NONE;
+    warp->x = 3;
+    warp->y = 11;
+    gSpecialVar_LastTalked = healNpcLocalId;
+    gSpecialVar_0x800B = healNpcLocalId;
+}

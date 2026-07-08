@@ -257,6 +257,7 @@ static void BuildLinkModeStartMenu(void);
 static void BuildUnionRoomStartMenu(void);
 static void BuildBattlePikeStartMenu(void);
 static void BuildBattlePyramidStartMenu(void);
+static void BuildGauntletIslandStartMenu(void);
 static void BuildMultiPartnerRoomStartMenu(void);
 static void ShowSafariBallsWindow(void);
 static void ShowPyramidFloorWindow(void);
@@ -308,6 +309,10 @@ static void BuildStartMenuActions(void)
     else if (InBattlePike())
     {
         BuildBattlePikeStartMenu();
+    }
+    else if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
+    {
+        BuildGauntletIslandStartMenu();
     }
     else if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
     {
@@ -417,6 +422,23 @@ static void BuildBattlePikeStartMenu(void)
     AddStartMenuAction(MENU_ACTION_OPTION);
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
+
+
+static void BuildGauntletIslandStartMenu(void)
+{
+    AddStartMenuAction(MENU_ACTION_POKEDEX);
+    AddStartMenuAction(MENU_ACTION_POKEMON);
+    AddStartMenuAction(MENU_ACTION_PYRAMID_BAG);
+
+    if (FlagGet(FLAG_SYS_POKENAV_GET) == TRUE)
+        AddStartMenuAction(MENU_ACTION_POKENAV);
+
+    AddStartMenuAction(MENU_ACTION_PLAYER);
+    AddStartMenuAction(MENU_ACTION_SAVE);
+    AddStartMenuAction(MENU_ACTION_RETIRE_SAFARI);// MODIFIED GauntletIsland_EventScript_RetirePrompt.
+    AddStartMenuAction(MENU_ACTION_OPTION);
+}
+
 
 static void BuildBattlePyramidStartMenu(void)
 {

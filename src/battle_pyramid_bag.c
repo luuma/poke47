@@ -598,7 +598,7 @@ static bool8 LoadPyramidBagGfx(void)
 static void SetBagItemsListTemplate(void)
 {
     u16 i;
-    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 
     for (i = 0; i < gPyramidBagMenu->listMenuCount - 1; i++)
     {
@@ -640,7 +640,7 @@ static void BagCursorMoved(s32 itemIndex, bool8 onInit, struct ListMenu *list)
     {
         FreeItemIconSpriteByAltId(gPyramidBagMenu->isAltIcon ^ 1);
         if (itemIndex != LIST_CANCEL)
-            ShowItemIcon(gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode][itemIndex], gPyramidBagMenu->isAltIcon);
+            ShowItemIcon(gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)][itemIndex], gPyramidBagMenu->isAltIcon);
         else
             ShowItemIcon(ITEM_LIST_END, gPyramidBagMenu->isAltIcon); // Show exit arrow if on Cancel
         gPyramidBagMenu->isAltIcon ^= 1;
@@ -665,7 +665,7 @@ static void PrintItemQuantity(u8 windowId, u32 itemIndex, u8 y)
     }
 
     ConvertIntToDecimalStringN(gStringVar1,
-                               gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode][itemIndex],
+                               gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)][itemIndex],
                                STR_CONV_MODE_RIGHT_ALIGN,
                                MAX_PYRAMID_ITEM_DIGITS);
     StringExpandPlaceholders(gStringVar4, gText_xVar1);
@@ -678,7 +678,7 @@ static void PrintItemDescription(s32 listMenuId)
     const u8 *desc;
     if (listMenuId != LIST_CANCEL)
     {
-        desc = GetItemDescription(gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode][listMenuId]);
+        desc = GetItemDescription(gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)][listMenuId]);
     }
     else
     {
@@ -723,11 +723,11 @@ static void CreatePyramidBagInputTask(void)
 static void SwapItems(u8 id1, u8 id2)
 {
     u16 temp;
-    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #if MAX_PYRAMID_BAG_ITEM_CAPACITY > 255
-    u16 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    u16 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #else
-    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #endif
 
     SWAP(itemIds[id1], itemIds[id2], temp);
@@ -736,11 +736,11 @@ static void SwapItems(u8 id1, u8 id2)
 
 static void MovePyramidBagItemSlotInList(u8 from, u8 to)
 {
-    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #if MAX_PYRAMID_BAG_ITEM_CAPACITY > 255
-    u16 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    u16 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #else
-    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #endif
 
     if (from != to)
@@ -774,11 +774,11 @@ static void MovePyramidBagItemSlotInList(u8 from, u8 to)
 static void CompactItems(void)
 {
     u8 i, j;
-    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #if MAX_PYRAMID_BAG_ITEM_CAPACITY > 255
-    u16 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    u16 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #else
-    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode];
+    u8 *quantities = gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 #endif
 
     for (i = 0; i < PYRAMID_BAG_ITEMS_COUNT; i++)
@@ -802,7 +802,7 @@ static void CompactItems(void)
 void UpdatePyramidBagList(void)
 {
     u16 i;
-    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode];
+    u16 *itemIds = gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)];
 
     CompactItems();
     gPyramidBagMenu->listMenuCount = 0;
@@ -924,9 +924,9 @@ static void Task_HandlePyramidBagInput(u8 taskId)
             break;
         default:
             PlaySE(SE_SELECT);
-            gSpecialVar_ItemId = gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode][listId];
+            gSpecialVar_ItemId = gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)][listId];
             tListPos = listId;
-            tQuantity = gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode][listId];
+            tQuantity = gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)][listId];
             if (gPyramidBagMenuState.location == PYRAMIDBAG_LOC_PARTY)
                 TryCloseBagToGiveItem(taskId);
             else
@@ -1098,8 +1098,12 @@ static void BagAction_UseOnField(u8 taskId)
 
     if (pocketId == POCKET_KEY_ITEMS
         || pocketId == POCKET_POKE_BALLS
-        || pocketId == POCKET_TM_HM
         || ItemIsMail(gSpecialVar_ItemId) == TRUE)
+    {
+        CloseMenuActionWindow();
+        DisplayItemMessageInBattlePyramid(taskId, gText_DadsAdvice, Task_CloseBattlePyramidBagMessage);
+    }
+    else if (pocketId == POCKET_TM_HM && !FLAG_GAUNTLET_CHALLENGE)
     {
         CloseMenuActionWindow();
         DisplayItemMessageInBattlePyramid(taskId, gText_DadsAdvice, Task_CloseBattlePyramidBagMessage);
@@ -1329,7 +1333,7 @@ static void Task_BeginItemSwap(u8 taskId)
     tListPos = gPyramidBagMenuState.scrollPosition + gPyramidBagMenuState.cursorPosition;
     gPyramidBagMenu->toSwapPos = tListPos;
     ListMenuSetTemplateField(tListTaskId, LISTFIELD_CURSORKIND, CURSOR_INVISIBLE);
-    CopyItemName(gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode][tListPos], gStringVar1);
+    CopyItemName(gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)][tListPos], gStringVar1);
     StringExpandPlaceholders(gStringVar4, gText_MoveVar1Where);
     FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
     PyramidBagPrint(WIN_INFO, gStringVar4, 3, 0, 0, 1, 0, COLORID_DARK_GRAY);
@@ -1428,16 +1432,16 @@ void TryStoreHeldItemsInPyramidBag(void)
 #endif
     u16 heldItem;
 
-    memcpy(newItems, gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode], PYRAMID_BAG_ITEMS_COUNT * sizeof(*newItems));
-    memcpy(newQuantities, gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode], PYRAMID_BAG_ITEMS_COUNT * sizeof(*newQuantities));
+    memcpy(newItems, gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)], PYRAMID_BAG_ITEMS_COUNT * sizeof(*newItems));
+    memcpy(newQuantities, gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)], PYRAMID_BAG_ITEMS_COUNT * sizeof(*newQuantities));
     for (i = 0; i < FRONTIER_PARTY_SIZE; i++)
     {
         heldItem = GetMonData(&party[i], MON_DATA_HELD_ITEM);
         if (heldItem != ITEM_NONE && !AddBagItem(heldItem, 1))
         {
             // Cant store party held items in pyramid bag because bag is full
-            memcpy(gSaveBlock2Ptr->frontier.pyramidBag.itemId[gSaveBlock2Ptr->frontier.lvlMode], newItems, PYRAMID_BAG_ITEMS_COUNT * sizeof(*newItems));
-            memcpy(gSaveBlock2Ptr->frontier.pyramidBag.quantity[gSaveBlock2Ptr->frontier.lvlMode], newQuantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(*newQuantities));
+            memcpy(gSaveBlock2Ptr->frontier.pyramidBag.itemId[FlagGet(FLAG_GAUNTLET_CHALLENGE)], newItems, PYRAMID_BAG_ITEMS_COUNT * sizeof(*newItems));
+            memcpy(gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)], newQuantities, PYRAMID_BAG_ITEMS_COUNT * sizeof(*newQuantities));
             Free(newItems);
             Free(newQuantities);
             gSpecialVar_Result = 1;
@@ -1557,7 +1561,7 @@ static void LoadPyramidBagPalette(void)
 {
     struct SpritePalette spritePalette;
 
-    spritePalette.data = gBattlePyramidBag_Pal + PLTT_ID(gSaveBlock2Ptr->frontier.lvlMode);
+    spritePalette.data = gBattlePyramidBag_Pal + PLTT_ID(FlagGet(FLAG_GAUNTLET_CHALLENGE));
     spritePalette.tag = TAG_PYRAMID_BAG;
     LoadSpritePalette(&spritePalette);
 }

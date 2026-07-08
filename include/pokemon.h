@@ -940,6 +940,7 @@ enum Species SanitizeSpeciesId(enum Species species);
 bool32 IsSpeciesEnabled(enum Species species);
 enum PokemonCry GetCryIdBySpecies(enum Species species);
 enum Species GetSpeciesPreEvolution(enum Species species);
+enum Species GetSpeciesLowestPreEvolution(enum Species species);
 void HealPokemon(struct Pokemon *mon);
 void HealBoxPokemon(struct BoxPokemon *boxMon);
 void UpdateDaysPassedSinceFormChange(u16 days);

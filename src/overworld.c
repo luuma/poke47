@@ -733,7 +733,7 @@ void SetWarpDestinationToDynamicWarp(u8 unusedWarpId)
     sWarpDestination = gSaveBlock1Ptr->dynamicWarp;
 }
 
-void SetWarpDestinationToHealLocation(u8 healLocationId)
+void SetWarpDestinationToHealLocation(u8 healLocationId)// used when fly is used so nothing to do with gauntlet which will bypass fly's entire effect.
 {
     const struct HealLocation *healLocation = GetHealLocation(healLocationId);
     if (healLocation)
@@ -742,15 +742,18 @@ void SetWarpDestinationToHealLocation(u8 healLocationId)
 
 static bool32 IsWhiteoutCutscene(void)
 {
-    if (OW_WHITEOUT_CUTSCENE < GEN_4)
-        return FALSE;
     return GetHealNpcLocalId(GetHealLocationIndexByWarpData(&gSaveBlock1Ptr->lastHealLocation)) != LOCALID_NONE;
 }
 
 void SetWarpDestinationToLastHealLocation(void)
 {
     if (IsWhiteoutCutscene())
-        SetWhiteoutRespawnWarpAndHealerNPC(&sWarpDestination);
+    {
+        if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
+            GauntletWhiteout(&sWarpDestination);// this means gauntlet island doesn't use a unique whiteout location
+        else
+            SetWhiteoutRespawnWarpAndHealerNPC(&sWarpDestination);
+    }
     else
         sWarpDestination = gSaveBlock1Ptr->lastHealLocation;
 }
@@ -1943,7 +1946,7 @@ void CB2_WhiteOut(void)
         ResetInitialPlayerAvatarState();
         ScriptContext_Init();
         UnlockPlayerFieldControls();
-        if (IsWhiteoutCutscene())
+        if (IsWhiteoutCutscene() && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
             gFieldCallback = FieldCB_RushInjuredPokemonToCenter;
         else
             gFieldCallback = FieldCB_WarpExitFadeFromBlack;

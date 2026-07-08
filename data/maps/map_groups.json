@@ -1,6 +1,7 @@
 {
   "group_order": [
     "gMapGroup_TownsAndRoutes",
+    "gMapGroup_GauntletIsland",
     "gMapGroup_IndoorLittleroot",
     "gMapGroup_IndoorOldale",
     "gMapGroup_IndoorDewford",
@@ -139,13 +140,17 @@
     "Route135_Map",
     "Route136",
     "IngyBingyIsland",
-    "ROUTE_100",
+    "ROUTE_100"
+  ],
+  "gMapGroup_GauntletIsland": [
     "GauntletIslandSoutheast",
     "GauntletIslandSouth",
     "GauntletIslandSouthwest",
     "GauntletIslandNorthwest",
     "GuantletIslandNorth",
-    "GauntletIslandFinale"
+    "GauntletIslandFinale",
+    "GauntletIslandNortheast",
+    "GauntletIslandWhirlpools"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

@@ -1690,6 +1690,38 @@
       "y": 7,
       "width": 1,
       "height": 3
+    },
+    {
+      "id": "MAPSEC_GAUNTLETNW",
+      "name": "GAUNTLET ISLAND",
+      "x": 24,
+      "y": 12,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_GAUNTLETNE",
+      "name": "GAUNTLET ISLAND",
+      "x": 25,
+      "y": 12,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_GAUNTLETSW",
+      "name": "GAUNTLET ISLAND",
+      "x": 24,
+      "y": 13,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "id": "MAPSEC_GAUNTLETSE",
+      "name": "GAUNTLET ISLAND",
+      "x": 25,
+      "y": 13,
+      "width": 1,
+      "height": 1
     }
   ]
 }

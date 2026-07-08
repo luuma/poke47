@@ -2,8 +2,8 @@
   "id": "MAP_GAUNTLET_ISLAND_SOUTHEAST",
   "name": "GauntletIslandSoutheast",
   "layout": "LAYOUT_AEGAUNTLET6",
-  "music": "MUS_DUMMY",
-  "region_map_section": "MAPSEC_137",
+  "music": "MUS_GAUNTLET_OPENER",
+  "region_map_section": "MAPSEC_GAUNTLETSE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
   "map_type": "MAP_TYPE_NONE",
@@ -15,20 +15,30 @@
   "connections": [
     {
       "map": "MAP_GAUNTLET_ISLAND_SOUTH",
-      "offset": 0,
+      "offset": 4,
       "direction": "left"
     },
     {
       "map": "MAP_GUANTLET_ISLAND_NORTH",
-      "offset": -40,
+      "offset": -70,
+      "direction": "left"
+    },
+    {
+      "map": "MAP_GAUNTLET_ISLAND_NORTHEAST",
+      "offset": 0,
       "direction": "up"
+    },
+    {
+      "map": "MAP_GAUNTLET_ISLAND_WHIRLPOOLS",
+      "offset": 21,
+      "direction": "down"
     }
   ],
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 18,
-      "y": 48,
+      "y": 33,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -41,7 +51,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 36,
-      "y": 44,
+      "y": 29,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -54,71 +64,6 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 37,
-      "y": 37,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 52,
-      "y": 31,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 32,
-      "y": 23,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 17,
-      "y": 13,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 8,
-      "y": 6,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 47,
       "y": 22,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -131,8 +76,73 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 52,
+      "y": 16,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 32,
+      "y": 8,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 17,
+      "y": -2,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 8,
+      "y": -9,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 47,
+      "y": 7,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 39,
-      "y": 6,
+      "y": -9,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -145,7 +155,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 22,
-      "y": 36,
+      "y": 21,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -159,21 +169,21 @@
   "warp_events": [
     {
       "x": 8,
-      "y": 3,
+      "y": -12,
       "elevation": 0,
       "dest_map": "MAP_GAUNTLET_ISLAND_SOUTHEAST",
       "dest_warp_id": "0"
     },
     {
       "x": 42,
-      "y": 20,
+      "y": 5,
       "elevation": 0,
       "dest_map": "MAP_GAUNTLET_ISLAND_SOUTHEAST",
       "dest_warp_id": "0"
     },
     {
       "x": 18,
-      "y": 24,
+      "y": 9,
       "elevation": 0,
       "dest_map": "MAP_GAUNTLET_ISLAND_SOUTHEAST",
       "dest_warp_id": "0"

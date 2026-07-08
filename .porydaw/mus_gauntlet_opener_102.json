@@ -1,0 +1,32 @@
+{
+    "view": {
+        "editCursorTick": 144,
+        "emptyLanes": [
+            {
+                "cc": 255,
+                "track": 0
+            }
+        ],
+        "keyHeight": 11,
+        "laneHeight": 128,
+        "laneHeights": {
+            "cc:0:10": 36,
+            "cc:0:255": 128,
+            "cc:0:7": 36,
+            "cc:4:7": 128,
+            "cc:5:255": 128,
+            "tempo": 128,
+            "voice:0": 36,
+            "voice:4": 128,
+            "voice:5": 128
+        },
+        "pxPerBeat": 5.731771417273567,
+        "scrollPx": 0,
+        "scrollY": 215,
+        "selectedTrack": 1,
+        "splitter": [
+            522,
+            332
+        ]
+    }
+}

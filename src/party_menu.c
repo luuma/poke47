@@ -4372,7 +4372,7 @@ static void DisplayCantUseSurfMessage(void)
 
 bool32 SetUpFieldMove_Fly(void)
 {
-    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE))
+    if (!CheckFollowerNPCFlag(FOLLOWER_NPC_FLAG_CAN_LEAVE_ROUTE) || FlagGet(FLAG_GAUNTLET_CHALLENGE))
         return FALSE;
 
     if (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)
