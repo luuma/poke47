@@ -295,7 +295,7 @@ SINGLE_BATTLE_TEST("POKE47: Ice Bod passes and heals like leftovers.")
     }
 }
 
-SINGLE_BATTLE_TEST("POKE47: Showboater halves incoming damage while it "hasn't yet acted", starting from switchin", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: Showboater halves incoming damage while it hasn't yet acted, starting from switchin", s16 damage)
 {
     enum Ability ability;
     PARAMETRIZE { ability = ABILITY_DEFIANT; }
@@ -316,7 +316,7 @@ SINGLE_BATTLE_TEST("POKE47: Showboater halves incoming damage while it "hasn't y
     } FINALLY {
         EXPECT_MUL_EQ(results[0].damage, UQ_4_12(0.5), results[3].damage); // badabing
         EXPECT_MUL_EQ(results[0].damage, UQ_4_12(0.5), results[4].damage); // badabing
-        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[5].damage); // badabing
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[5].damage); // 
     }
 }
 
@@ -338,9 +338,9 @@ SINGLE_BATTLE_TEST("POKE47: Showboater halves incoming damage while it hasn't ye
         HP_BAR(player, captureDamage: &results[j+1].damage);
         HP_BAR(player, captureDamage: &results[j+2].damage);
     } FINALLY {
-        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(0.5), results[3].damage); // badabing
-        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[4].damage); // badabing
-        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[5].damage); // badabing
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(0.5), results[3].damage); // 
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[4].damage); // 
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[5].damage); // 
     }
 }
 

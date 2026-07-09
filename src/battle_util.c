@@ -11081,17 +11081,13 @@ bool32 IsUsableWhileAsleepEffect(enum BattleMoveEffects effect)
 void SetWrapTurns(enum BattlerId battler, enum HoldEffect holdEffect, enum Ability ability)
 {
     u32 normalWrapTurns = B_WRAP_TURNS - 4; // 5 turns
-    gBattleMons[battler].volatiles.wrappedBindingBand = holdEffect == HOLD_EFFECT_BINDING_BAND;// this refactor is really ass for me.
+    gBattleMons[battler].volatiles.wrappedBindingBand = ((holdEffect == HOLD_EFFECT_BINDING_BAND) + (ability == ABILITY_CONSTRICTOR));
 
     if (holdEffect == HOLD_EFFECT_GRIP_CLAW && ability == ABILITY_CONSTRICTOR)
         gBattleMons[battler].volatiles.wrapTurns = B_WRAP_TURNS;
 
-    else if (GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_GRIP_CLAW || GetBattlerAbility(gBattlerAttacker) == ABILITY_CONSTRICTOR)
+    else if (holdEffect == HOLD_EFFECT_GRIP_CLAW || ability == ABILITY_CONSTRICTOR)
         gBattleMons[battler].volatiles.wrapTurns = B_WRAP_TURNS -2;
-
-    u32 normalWrapTurns = B_WRAP_TURNS - 2; // 5 turns
-    if (holdEffect == HOLD_EFFECT_GRIP_CLAW)
-        gBattleMons[battler].volatiles.wrapTurns = GetConfig(B_BINDING_TURNS) >= GEN_5 ? B_WRAP_TURNS : normalWrapTurns;
 
     else
         gBattleMons[battler].volatiles.wrapTurns = GetConfig(B_BINDING_TURNS) >= GEN_5 ? RandomUniform(RNG_WRAP, 4, normalWrapTurns) : RandomUniform(RNG_WRAP, 2, normalWrapTurns);
