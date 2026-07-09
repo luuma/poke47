@@ -667,10 +667,10 @@ static bool32 HandleEndTurnWrap(enum BattlerId battler)
             PREPARE_MOVE_BUFFER(gBattleTextBuff1, gBattleMons[battler].volatiles.wrappedMove);
             BattleScriptCall(BattleScript_WrapTurnDmg);
             s32 bindDamage = 0;
-            if (GetBattlerHoldEffect(gBattleMons[battler].volatiles.wrappedBy) == HOLD_EFFECT_BINDING_BAND 
-		&& GetBattlerAbility(gBattleMons[battler].volatiles.wrappedBy) == ABILITY_CONSTRICTOR)
+            if (gBattleMons[battler].volatiles.wrappedBindingBand 
+		&& GetBattlerAbility(gBattleMons[battler].volatiles.wrappedBy) == ABILITY_CONSTRICTOR)// hope this still works rip.
                 bindDamage = GetNonDynamaxMaxHP(battler) / 4;
-            else if (GetBattlerHoldEffect(gBattleMons[battler].volatiles.wrappedBy) == HOLD_EFFECT_BINDING_BAND
+            else if (gBattleMons[battler].volatiles.wrappedBindingBand
 		|| GetBattlerAbility(gBattleMons[battler].volatiles.wrappedBy) == ABILITY_CONSTRICTOR)
                 bindDamage = GetNonDynamaxMaxHP(battler) / 6;
             else

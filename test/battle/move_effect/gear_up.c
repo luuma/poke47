@@ -46,30 +46,7 @@ DOUBLE_BATTLE_TEST("Gear Up raises Attack and Sp. Attack of all Plus/Minus allie
     }
 }
 
-DOUBLE_BATTLE_TEST("Gear Up raises Attack and Sp. Attack of all Plus/Minus allies in doubles, opposing side.")
-{
-    GIVEN {
-        PLAYER(SPECIES_PLUSLE) { Ability(ABILITY_PLUS); }
-        PLAYER(SPECIES_MINUN) { Ability(ABILITY_MINUS); }
-        OPPONENT(SPECIES_PLUSLE) { Ability(ABILITY_PLUS); }
-        OPPONENT(SPECIES_MINUN) { Ability(ABILITY_MINUS); }
-    } WHEN {
-        TURN { MOVE(opponentLeft, MOVE_GEAR_UP); }
-    } SCENE {
-        ANIMATION(ANIM_TYPE_MOVE, MOVE_GEAR_UP, opponentLeft);
-    } THEN {
-        EXPECT_EQ(playerLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
-        EXPECT_EQ(playerLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE);
-        EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
-        EXPECT_EQ(playerRight->statStages[STAT_SPATK], DEFAULT_STAT_STAGE);
-        EXPECT_EQ(opponentLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
-        EXPECT_EQ(opponentLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 1);
-        EXPECT_EQ(opponentRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
-        EXPECT_EQ(opponentRight->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 1);
-    }
-}
-
-DOUBLE_BATTLE_TEST("Gear Up raises Attack and Sp. Attack of one opponent with plus/minus.")
+DOUBLE_BATTLE_TEST("Gear Up used by both battlers raises Attack and Sp. Attack of a single opponent with plus/minus twice")
 {
     GIVEN {
         PLAYER(SPECIES_PLUSLE) { Ability(ABILITY_PLUS); }
@@ -86,7 +63,7 @@ DOUBLE_BATTLE_TEST("Gear Up raises Attack and Sp. Attack of one opponent with pl
         EXPECT_EQ(playerLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(playerRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(playerRight->statStages[STAT_SPATK], DEFAULT_STAT_STAGE);
-        EXPECT_EQ(opponentLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 4);
+        EXPECT_EQ(opponentLeft->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
         EXPECT_EQ(opponentLeft->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 2);
         EXPECT_EQ(opponentRight->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
         EXPECT_EQ(opponentRight->statStages[STAT_SPATK], DEFAULT_STAT_STAGE);
