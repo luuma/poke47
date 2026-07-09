@@ -1,12 +1,12 @@
 {
     "view": {
-        "editCursorTick": 0,
+        "editCursorTick": 36,
         "keyHeight": 11,
         "laneHeight": 48,
-        "pxPerBeat": 32,
+        "pxPerBeat": 10.875853903016015,
         "scrollPx": 0,
-        "scrollY": 432,
-        "selectedTrack": 0,
+        "scrollY": 403,
+        "selectedTrack": 3,
         "splitter": [
             522,
             332

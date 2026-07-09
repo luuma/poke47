@@ -252,10 +252,10 @@ bool32 GetZoomDisabled(void)
 
 bool32 OpenPokenavRegionMap(void)
 {
+    gSaveBlock2Ptr->optionsEmuSpeedSuppress = 1;
     struct Pokenav_RegionMapGfx *state = AllocSubstruct(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM, sizeof(struct Pokenav_RegionMapGfx));
     if (!state)
         return FALSE;
-
     state->loopTaskId = CreateLoopedTask(LoopedTask_OpenRegionMap, 1);
     state->isTaskActiveCB = GetCurrentLoopedTaskActive;
     return TRUE;
@@ -280,6 +280,7 @@ void FreeRegionMapSubstruct2(void)
     FreeRegionMapIconResources();
     FreeCityZoomViewGfx();
     RemoveWindow(state->infoWindowId);
+    gSaveBlock2Ptr->optionsEmuSpeedSuppress = 0;
     FreePokenavSubstruct(POKENAV_SUBSTRUCT_REGION_MAP);
     FreePokenavSubstruct(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     SetPokenavVBlankCallback();

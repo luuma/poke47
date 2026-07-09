@@ -5761,7 +5761,12 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
         expPoints = gExperienceTables[gSpeciesInfo[species].growthRate][MAX_LEVEL];
         SetMonData(mon, MON_DATA_EXP, &expPoints);
     }
-    if (nextLevel > GetCurrentLevelCap() || expPoints < gExperienceTables[gSpeciesInfo[species].growthRate][nextLevel])
+    u8 cap = GetCurrentLevelCap()
+
+    if (GetMonData(mon, MON_DATA_EARTH_RIBBON, 0) && FlagGet(FLAG_GAUNTLET_CHALLENGE)) // for gauntlet island lead mon to have an advantage.
+        cap += 2;
+
+    if (nextLevel > cap || expPoints < gExperienceTables[gSpeciesInfo[species].growthRate][nextLevel])
     {
         return FALSE;
     }

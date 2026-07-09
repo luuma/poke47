@@ -1,0 +1,15 @@
+{
+    "view": {
+        "editCursorTick": 4800,
+        "keyHeight": 8,
+        "laneHeight": 48,
+        "pxPerBeat": 6.340449653282165,
+        "scrollPx": 0,
+        "scrollY": 185,
+        "selectedTrack": 0,
+        "splitter": [
+            522,
+            332
+        ]
+    }
+}

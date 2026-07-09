@@ -25,10 +25,26 @@ u32 GetCurrentLevelCap(void)
         {FLAG_DRAKE_DRAGON_PULSE, 52},//3
         {FLAG_IS_CHAMPION, 53},//5
     };
-
+    static const u32 sGauntletCapFlagMap[][2] =
+    {
+        {FLAG_GAUNTLET_HP_ALTAR, 7},//hp
+        {FLAG_GAUNTLET_ATK_ALTAR, 10},//atk
+        {FLAG_GAUNTLET_DEF_ALTAR, 15},//def
+        {FLAG_GAUNTLET_SPEED_ALTAR, 20},//speed
+        {FLAG_GAUNTLET_SPATK_ALTAR, 23},//spatk
+        {FLAG_GAUNTLET_SPDEF_ALTAR, 26},//sdef
+        {FLAG_GAUNTLET_BOSS_ALTAR, 30},//sdef
+    };
     u32 i;
-
-    if (CheckBagHasItem(ITEM_LEVEL_CAP, 1) || !FlagGet(FLAG_RESCUED_BIRCH))
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE))// starts later
+    {
+        for (i = 0; i < ARRAY_COUNT(sGauntletCapFlagMap); i++)
+        {
+            if (!FlagGet(sLevelCapFlagMap[i][0]))
+                return sLevelCapFlagMap[i][1];
+        }
+    }
+    else if (CheckBagHasItem(ITEM_LEVEL_CAP, 1) || !FlagGet(FLAG_RESCUED_BIRCH))
     {
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
         {
@@ -36,6 +52,8 @@ u32 GetCurrentLevelCap(void)
                 return sLevelCapFlagMap[i][1];
         }
     }
+
+
     else if (B_LEVEL_CAP_TYPE == LEVEL_CAP_VARIABLE)
     {
         return VarGet(B_LEVEL_CAP_VARIABLE);
@@ -54,13 +72,19 @@ u32 GetPreviousLevelCapForXP(void)
         {FLAG_BADGE03_GET, 23},//2
         {FLAG_BADGE04_GET, 26},//3
         {FLAG_BADGE05_GET, 28},//3
-        {FLAG_BADGE06_GET, 31},//slightly higher because this is a long stretch and includes two pointless game lengtheners and a shitload of new fun tools. to playtest though.
+        {FLAG_BADGE06_GET, 31},//slightly higher because this is a long stretch and includes two pointless game lengtheners and a shitload of new fun tools.          
         {FLAG_BADGE07_GET, 38},//4
         {FLAG_BADGE08_GET, 41},//5. see above. Long stretch.
         {FLAG_SIDNEY_SUCKER_PUNCH, 50},//0. high, to let people full-send champion
         {FLAG_IS_CHAMPION, 55},// so doubled until lv50.
-        {FLAG_DEFEATED_METEOR_FALLS_STEVEN, 100},// Perma double.
-        {FLAG_GAUNTLET_CHALLENGE, 5},// Cancels it out while set.
+        {FLAG_DEFEATED_METEOR_FALLS_STEVEN, 105},// Perma double.
+        {FLAG_GAUNTLET_CHALLENGE, 105},// Ensures boost while set. 
+        //{FLAG_GAUNTLET_HP_ALTAR, 7},// Cancels all other boosts while set.
+        //{FLAG_GAUNTLET_ATK_ALTAR, 10},// Cancels it out while set.
+        //{FLAG_GAUNTLET_DEF_ALTAR, 15},// Cancels it out while set.
+        //{FLAG_GAUNTLET_SPEED_ALTAR, 20},// Cancels it out while set.
+        //{FLAG_GAUNTLET_SPATK_ALTAR, 23},// Cancels it out while set.
+        //{FLAG_GAUNTLET_SPDEF_ALTAR, 26},// Cancels it out while set.
     };
     u32 i;
 

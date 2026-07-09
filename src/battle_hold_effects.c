@@ -519,7 +519,7 @@ static enum ItemEffect TryDamageBounceables(enum BattlerId battlerAtk, enum Batt
     enum ItemEffect effect = ITEM_NO_EFFECT;
     //u16 asdf = gBattleStruct->moveResultFlags[battlerAtk];
 
-    if (MoveCanBeBouncedBack(gCurrentMove)
+    if ( (MoveCanBeBouncedBack(gCurrentMove) || !MoveIgnoresProtect(gCurrentMove))
      && gMultiHitCounter == 0
      && IsBattlerAlive(battlerDef)
      && !gBattleStruct->unableToUseMove

@@ -16110,13 +16110,31 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Ignores 1/3 lower\n"
             "Def/Sp. Def stat\n"
-            "if foe has STATUS."),// Fully in game but doesn't feel fun so not available to players yet.
+            "if foe has STATUS."),//
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
         .iconPic = gItemIcon_Alembic,
+        .iconPalette = gItemIconPalette_LustrousOrb,
+    },
+    [ITEM_SHOCK_SHIELD] =
+    {
+        .name = ITEM_NAME("Shock Shield"),
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_SHOCK_SHIELD,
+        .holdEffectParam = 2,// param unused.
+        .description = COMPOUND_STRING(
+            "Has 1.5x defenses\n"
+            "while the wielder\n"
+            "hasn't yet acted."),//
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+        .iconPic = gItemIcon_AbilityShield,
         .iconPalette = gItemIconPalette_LustrousOrb,
     },
 };

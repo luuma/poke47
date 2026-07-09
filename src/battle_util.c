@@ -1532,7 +1532,7 @@ u32 TrySetCantSelectMoveBattleScript(enum BattlerId battler)
             limitations++;
         }
     }
-    else if (holdEffect == HOLD_EFFECT_DAMAGE_BOUNCEABLES && (moveEffect == EFFECT_ME_FIRST || moveEffect == EFFECT_TRICK || !IsBattleMoveStatus(move)))
+    else if (holdEffect == HOLD_EFFECT_DAMAGE_BOUNCEABLES && (moveEffect == EFFECT_TRICK || !IsBattleMoveStatus(move))) // moveEffect == EFFECT_ME_FIRST 
     {
         if ((GetActiveGimmick(battler) == GIMMICK_DYNAMAX))
             gCurrentMove = MOVE_MAX_GUARD;
@@ -7377,9 +7377,9 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
         }
         break;
     case ABILITY_GRAND_DEBUT:
-        if (gBattleStruct->battlerState[battlerDef].isFirstTurn == 2)// just switched in
+        if ((gBattleStruct->battlerState[battlerDef].isFirstTurn + !HasBattlerActedThisTurn(battlerDef)) >= 2)// just switched in (isfirstturn ==2), OR on turn two (isfirstturn ==1) and hasn't acted yet (hasbattleractedthisturn == false, so  ! == 1).
         {
-            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2));
             if (ctx->updateFlags)
                 RecordAbilityBattle(battlerDef, ABILITY_GRAND_DEBUT);
         }
@@ -7484,6 +7484,10 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
             if (CanEvolve(species) && (IS_BATTLER_OF_TYPE(battlerDef, TYPE_ICE)||IS_BATTLER_OF_TYPE(battlerDef, TYPE_ROCK)))
                 modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(2.0));
         }
+        break;
+    case HOLD_EFFECT_SHOCK_SHIELD:
+        if ((gBattleStruct->battlerState[battlerDef].isFirstTurn + !HasBattlerActedThisTurn(battlerDef)) >= 2)// just switched in, OR on turn two and hasn't acted                
+            modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.5));
         break;
     case HOLD_EFFECT_ASSAULT_VEST:
         if (!usesDefStat)

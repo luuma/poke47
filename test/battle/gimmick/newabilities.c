@@ -295,25 +295,54 @@ SINGLE_BATTLE_TEST("POKE47: Ice Bod passes and heals like leftovers.")
     }
 }
 
-SINGLE_BATTLE_TEST("POKE47: Grand Debut grants damage reduction on switchin Vs not having grand debut", s16 damage)
+SINGLE_BATTLE_TEST("POKE47: Showboater halves incoming damage while it "hasn't yet acted", starting from switchin", s16 damage)
 {
     enum Ability ability;
     PARAMETRIZE { ability = ABILITY_DEFIANT; }
     PARAMETRIZE { ability = ABILITY_GRAND_DEBUT; }
-
+    u32 j = 3*i;
     GIVEN {
-        PLAYER(SPECIES_WOBBUFFET);
-        PLAYER(SPECIES_PASSIMIAN) { Ability(ability); }
-        OPPONENT(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET) { Speed(145); }
+        PLAYER(SPECIES_PASSIMIAN) { Ability(ability); Speed(140); }
+        OPPONENT(SPECIES_WOBBUFFET) { Speed(145); }
     } WHEN {
-        TURN {MOVE(opponent, MOVE_POUND); SWITCH(player, 1);}
+        TURN {MOVE(opponent, MOVE_BOOMBURST); SWITCH(player, 1);}
+        TURN {MOVE(opponent, MOVE_BOOMBURST); MOVE(player, MOVE_CELEBRATE); }
+        TURN {MOVE(opponent, MOVE_BOOMBURST); MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
-        HP_BAR(player, captureDamage: &results[i].damage);
+        HP_BAR(player, captureDamage: &results[j].damage);
+        HP_BAR(player, captureDamage: &results[j+1].damage);
+        HP_BAR(player, captureDamage: &results[j+2].damage);
     } FINALLY {
-        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(0.66), results[1].damage); // badabing
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(0.5), results[3].damage); // badabing
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(0.5), results[4].damage); // badabing
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[5].damage); // badabing
     }
 }
 
+SINGLE_BATTLE_TEST("POKE47: Showboater halves incoming damage while it hasn't yet acted, starting from battle begin", s16 damage)
+{
+    enum Ability ability;
+    PARAMETRIZE { ability = ABILITY_DEFIANT; }
+    PARAMETRIZE { ability = ABILITY_GRAND_DEBUT; }
+    u32 j = 3*i;
+    GIVEN {
+        PLAYER(SPECIES_PASSIMIAN) { Ability(ability); Speed(146); }
+        OPPONENT(SPECIES_WOBBUFFET) { Speed(145); }
+    } WHEN {
+        TURN {MOVE(opponent, MOVE_BOOMBURST); MOVE(player, MOVE_COUNTER); }
+        TURN {MOVE(opponent, MOVE_BOOMBURST); MOVE(player, MOVE_COUNTER); }
+        TURN {MOVE(opponent, MOVE_BOOMBURST); MOVE(player, MOVE_COUNTER); }
+    } SCENE {
+        HP_BAR(player, captureDamage: &results[j].damage);
+        HP_BAR(player, captureDamage: &results[j+1].damage);
+        HP_BAR(player, captureDamage: &results[j+2].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(0.5), results[3].damage); // badabing
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[4].damage); // badabing
+        EXPECT_MUL_EQ(results[0].damage, UQ_4_12(1), results[5].damage); // badabing
+    }
+}
 
 
 SINGLE_BATTLE_TEST("POKE47: FOCus boost test fails 1 million times.")
