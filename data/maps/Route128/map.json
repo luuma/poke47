@@ -3,7 +3,6 @@
   "name": "Route128",
   "layout": "LAYOUT_ROUTE128",
   "music": "MUS_ROUTE120",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_128",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -239,5 +238,6 @@
       "item": "ITEM_BLUNDER_POLICY",
       "flag": "FLAG_BLUNDER_POLICY"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

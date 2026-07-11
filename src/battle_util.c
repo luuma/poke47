@@ -5788,6 +5788,8 @@ enum Obedience GetAttackerObedienceForAction(void)
         return OBEYS;
     if (FlagGet(FLAG_BADGE08_GET)) // Rain Badge, ignore obedience altogether
         return OBEYS;
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE)) // DURING gauntlet, ignore obedience altogether.
+        return OBEYS;
 
     obedienceLevel = 10;
 
@@ -9469,7 +9471,21 @@ void TryRestoreHeldItems(void)
     u32 i;
     u32 j;
     bool32 returnNPCItems = B_RETURN_STOLEN_NPC_ITEMS >= GEN_5 && gBattleTypeFlags & BATTLE_TYPE_TRAINER;
-
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
+    {
+        for (i = 0; i < PARTY_SIZE; i++)
+        {
+    	    for (j = 0; j < MAX_MON_MOVES; ++j)
+    	    {
+		u32 pp = GetMovePP(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MOVE1 + j))* 2 / 5;
+		if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j) < pp)
+      		    SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j, &pp);
+	    }
+            u32 hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MAX_HP) * 2 / 5;
+            if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP) < hp)
+      		SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, &hp);
+        }
+    }
     for (i = 0; i < PARTY_SIZE; i++)
     {
         // Check if held items should be restored after battle based on generation
@@ -9489,10 +9505,10 @@ void TryRestoreHeldItems(void)
         {
     	    for (j = 0; j < MAX_MON_MOVES; ++j)
     	    {
-		u32 pp = GetMovePP(GetMonData(&gPlayerParty[i], MON_DATA_MOVE1 + j))* 2 / 5;
-		if (GetMonData(&gPlayerParty[i], MON_DATA_PP1 + j) < pp)
+		u32 pp = GetMovePP(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MOVE1 + j))* 2 / 5;
+		if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j) < pp)
 		{
-      		    SetMonData(&gPlayerParty[i], MON_DATA_PP1 + j, &pp);
+      		    SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j, &pp);
 		}
 	    }
     	}

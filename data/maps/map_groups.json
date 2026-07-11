@@ -140,7 +140,10 @@
     "Route135_Map",
     "Route136",
     "IngyBingyIsland",
-    "ROUTE_100"
+    "ROUTE_100",
+    "GauntletSoutheastCave",
+    "GauntletSoutheastCave1f",
+    "GauntletSoutheastCave2f"
   ],
   "gMapGroup_GauntletIsland": [
     "GauntletIslandSoutheast",

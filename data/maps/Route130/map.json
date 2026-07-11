@@ -3,7 +3,6 @@
   "name": "Route130",
   "layout": "LAYOUT_ROUTE130",
   "music": "MUS_ROUTE119",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_ROUTE_130",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -90,5 +89,6 @@
       "item": "ITEM_AURORA_TICKET",
       "flag": "FLAG_AURORATICKET_ITEM"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

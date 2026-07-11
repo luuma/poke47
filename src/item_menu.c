@@ -595,7 +595,7 @@ void CB2_BagMenuFromStartMenu(void)
 
 void CB2_BagMenuFromBattle(void)
 {
-    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
+    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
         GoToBagMenu(ITEMMENULOCATION_BATTLE, POCKETS_COUNT, CB2_SetUpReshowBattleScreenAfterMenu2);
     else
         GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_BATTLE, CB2_SetUpReshowBattleScreenAfterMenu2);
@@ -604,13 +604,20 @@ void CB2_BagMenuFromBattle(void)
 // Choosing berry to plant
 void CB2_ChooseBerry(void)
 {
-    GoToBagMenu(ITEMMENULOCATION_BERRY_TREE, POCKET_BERRIES, CB2_ReturnToFieldContinueScript);
+    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
+        GoToBagMenu(ITEMMENULOCATION_BERRY_TREE, POCKET_BERRIES, CB2_ReturnToFieldContinueScript);
+    else
+        GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_FIELD, CB2_ReturnToFieldContinueScript);
 }
 
 // Choosing mulch to use
 void CB2_ChooseMulch(void)
 {
-    GoToBagMenu(ITEMMENULOCATION_BERRY_TREE_MULCH, POCKET_ITEMS, CB2_ReturnToFieldContinueScript);
+    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
+        GoToBagMenu(ITEMMENULOCATION_BERRY_TREE_MULCH, POCKET_BERRIES, CB2_ReturnToFieldContinueScript);
+    else
+        GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_FIELD, CB2_ReturnToFieldContinueScript);
+
 }
 
 // Choosing berry for Berry Blender or Berry Crush
@@ -1959,7 +1966,7 @@ static void ConfirmToss(u8 taskId)
     StringExpandPlaceholders(gStringVar4, gText_ThrewAwayVar2Var1s);
     FillWindowPixelBuffer(WIN_DESCRIPTION, PIXEL_FILL(0));
     BagMenu_Print(WIN_DESCRIPTION, FONT_NORMAL, gStringVar4, 3, 1, 0, 0, 0, COLORID_NORMAL);
-    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE)
+    if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || FlagGet(FLAG_STORING_ITEMS_IN_PYRAMID_BAG) == TRUE || FlagGet(FLAG_GAUNTLET_CHALLENGE))
         gTasks[taskId].func = Task_RemoveItemFromBag;
     else
         gTasks[taskId].func = Task_TossItemFromBag;

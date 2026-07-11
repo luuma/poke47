@@ -248,7 +248,7 @@
 #define VAR_GAUNTLET_8                                0x40E2 // CLEANED
 #define VAR_GAUNTLET_BITFIELD_1                                0x40E3 // CLEANED
 #define VAR_GAUNTLET_BITFIELD_2                                0x40E4 // CLEANED
-#define VAR_UNUSED_0x40E5                                0x40E5 // Unused Var
+#define VAR_GAUNTLET_9                                0x40E5 // goes to 4 for tutorial shit in gauntlet island.
 #define VAR_DAILY_SLOTS                                  0x40E6
 #define VAR_DAILY_WILDS                                  0x40E7
 #define VAR_DAILY_BLENDER                                0x40E8
@@ -270,7 +270,7 @@
 #define VAR_129_CYCLE_STATE                                0x40F8 // cycle time
 #define VAR_OLD_LADY                                0x40F9 // Old lady rest stop punish
 #define VAR_FADE_STEP_COUNTER                                0x40FA // USED
-#define VAR_UNUSED_0x40FB                                0x40FB // Unused Var
+#define VAR_WILD_AI_FLAGS                                0x40FB // used gauntlet island
 #define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var

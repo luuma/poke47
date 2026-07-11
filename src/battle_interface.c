@@ -34,6 +34,7 @@
 #include "constants/songs.h"
 #include "constants/items.h"
 #include "caps.h"
+#include "event_data.h"
 
 #define HEALTHBOX_BG_INDEX 2
 
@@ -3042,6 +3043,9 @@ void TryHideLastUsedBall(void)
     if (B_LAST_USED_BALL_BUTTON == L_BUTTON && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
         return;
 
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE)) 
+        return;
+
     if (B_LAST_USED_BALL == TRUE)
         TryHideOrRestoreLastUsedBall(0);
 }
@@ -3052,6 +3056,9 @@ void TryRestoreLastUsedBall(void)
         return;
 
     if (B_LAST_USED_BALL_BUTTON == L_BUTTON && gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
+        return;
+
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE)) 
         return;
 
     if (gBattleStruct->ballSpriteIds[0] != MAX_SPRITES)

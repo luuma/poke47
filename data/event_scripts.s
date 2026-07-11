@@ -1796,3 +1796,9 @@ EventScript_PalletTown_PlayersHouse_2F_TurnOnPC::
 	.include "data/maps/GauntletIslandNortheast/scripts.inc"
 
 	.include "data/maps/GauntletIslandWhirlpools/scripts.inc"
+
+	.include "data/maps/GauntletSoutheastCave/scripts.inc"
+
+	.include "data/maps/GauntletSoutheastCave1f/scripts.inc"
+
+	.include "data/maps/GauntletSoutheastCave2f/scripts.inc"

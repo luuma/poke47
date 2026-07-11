@@ -4007,11 +4007,13 @@ static void Cmd_getexp(void)
 
                     ApplyExperienceMultipliers(&gBattleStruct->battlerExpReward, *expMonId, gBattlerFainted);
 
-                    if (CheckBagHasItem(ITEM_LEVEL_CAP, 1) && gBattleStruct->battlerExpReward != 0)
+                    if ((CheckBagHasItem(ITEM_LEVEL_CAP, 1) || FlagGet(FLAG_GAUNTLET_CHALLENGE)) && gBattleStruct->battlerExpReward != 0)
                     {
                         enum GrowthRate growthRate = gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][*expMonId], MON_DATA_SPECIES)].growthRate;
                         u32 currentExp = GetMonData(&gParties[B_TRAINER_PLAYER][*expMonId], MON_DATA_EXP);
                         u32 levelCap = GetCurrentLevelCap();
+                        if (GetMonData(&gParties[B_TRAINER_PLAYER][*expMonId], MON_DATA_EARTH_RIBBON) && FlagGet(FLAG_GAUNTLET_CHALLENGE)) // for gauntlet island lead mon to have an advantage.
+                           levelCap += 2;
 
                         if (GetMonData(&gParties[B_TRAINER_PLAYER][*expMonId], MON_DATA_LEVEL) >= levelCap)
                             gBattleStruct->battlerExpReward = 0;
@@ -10068,7 +10070,7 @@ static void Cmd_handleballthrow(void)
 
     gBattlerTarget = GetCatchingBattler();
 
-    if (gBattleTypeFlags & BATTLE_TYPE_GHOST)
+    if ((gBattleTypeFlags & BATTLE_TYPE_GHOST) || VarGet(VAR_WILD_AI_FLAGS) != 0)
     {
         BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, BALL_GHOST_DODGE);
         MarkBattlerForControllerExec(gBattlerAttacker);

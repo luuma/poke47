@@ -118,7 +118,7 @@ void GauntletWhiteout(struct WarpData *warp)
     warp->mapGroup = MAP_GROUP(MAP_ROUTE_100);
     warp->mapNum = MAP_NUM(MAP_ROUTE_100);
     warp->warpId = WARP_ID_NONE;
-    warp->x = 3;
+    warp->x = 8;
     warp->y = 11;
     gSpecialVar_LastTalked = healNpcLocalId;
     gSpecialVar_0x800B = healNpcLocalId;

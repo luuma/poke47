@@ -6139,7 +6139,7 @@ bool32 CanPlayerForfeitNormalTrainerBattle(void)
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_INVALID)
         return FALSE;
 
-    return (gBattleTypeFlags & BATTLE_TYPE_TRAINER);
+    return ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) || VarGet(VAR_WILD_AI_FLAGS) != 0);
 }
 
 bool32 DidPlayerForfeitNormalTrainerBattle(void)

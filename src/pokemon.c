@@ -7293,14 +7293,14 @@ enum Species GetSpeciesPreEvolution(enum Species species)
     return SPECIES_NONE;
 }
 
-enum Species GetSpeciesLowestPreEvolution(enum Species species)/// new bullshit which assumes evos appear prior in the dex. fuck you magmar and that lot
+enum Species GetSpeciesLowestPreEvolution(enum Species species)//unused. who cares about efficiency anyway lmao
 {
-    int k;
+    u32 k;
     enum Species i = species;
     if (i <= SPECIES_ROSELIA)
         i = SPECIES_MANTYKE; // We are slower for pre gen 4 mons so that edge cases are less shit. This ensures we never loop over more than half the dex, and often loop over two mons total.
-    enum Species loopPoint = i;
-    enum Species j = i;
+    enum Species loopPoint = i+1;
+    enum Species j = i - 1;
     do
     {
         if (!IsSpeciesEnabled(i))
@@ -7321,7 +7321,7 @@ enum Species GetSpeciesLowestPreEvolution(enum Species species)/// new bullshit 
     } while (i != loopPoint);
     if (i == SPECIES_NONE)
         return SPECIES_NONE;
-
+    assertf(FALSE, "here, %d", i)
     do
     {
         if (!IsSpeciesEnabled(j))
@@ -7330,13 +7330,12 @@ enum Species GetSpeciesLowestPreEvolution(enum Species species)/// new bullshit 
         const struct Evolution *evolutions = GetSpeciesEvolutions(j);
         if (evolutions == NULL)
             continue;
-
+        j--;
         for (k = 0; evolutions[k].method != EVOLUTIONS_END; k++)
         {
             if (IsSpeciesEnabled(evolutions[k].targetSpecies) && SanitizeSpeciesId(evolutions[k].targetSpecies) == i)
                 return j;
         }
-        i--;
         if (j == SPECIES_NONE)
             j = NUM_SPECIES;
     } while (j != loopPoint);
@@ -7557,12 +7556,19 @@ static void DoAutobattle(enum Species speciesFoe, u8 levelFoe)
 {
     struct Pokemon *mon = GetFirstLiveMon();
     u8 Level = GetMonData(mon, MON_DATA_LEVEL);
-    if (Level >= GetCurrentLevelCap())
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE) || CheckBagHasItem(ITEM_LEVEL_CAP, 1))
     {
-        ConvertIntToDecimalStringN(gStringVar3, 0, STR_CONV_MODE_LEFT_ALIGN, 1);
-	return; // fully ignore damage if the front member of the party exceeds level cap.
-    }
+    	u8 Cap = GetCurrentLevelCap();
+    	if (GetMonData(mon, MON_DATA_EARTH_RIBBON) && FlagGet(FLAG_GAUNTLET_CHALLENGE)) // for gauntlet island lead mon to have an advantage.
+            Cap += 2;
 
+    	if (Level >= Cap)
+    	{
+            gSpecialVar_0x8006 = 1;
+            ConvertIntToDecimalStringN(gStringVar3, 0, STR_CONV_MODE_LEFT_ALIGN, 1);
+	    return; // fully ignore damage if the front member of the party exceeds level cap.
+    	}
+    }
     u16 setHP = GetAutoBattleDamage(mon, levelFoe, speciesFoe);
     SetMonData(mon, MON_DATA_HP, &setHP);
     if (gSpecialVar_0x8006 <= 5)
@@ -7717,15 +7723,15 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     u32 i;
     for (i = 1; i < PARTY_SIZE; i++)//skip slot 1 and loop through everything trying to play the trumpet
     {
-        if (!(GetItemHoldEffect(GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM)) == HOLD_EFFECT_EXP_SHARE))
+        if (!(GetItemHoldEffect(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM)) == HOLD_EFFECT_EXP_SHARE))
             continue;
-        if (!IsValidForBattle(&gPlayerParty[i]))
+        if (!IsValidForBattle(&gParties[B_TRAINER_PLAYER][i]))
             continue;
-        totalXP = GetMonData(&gPlayerParty[i], MON_DATA_EXP);
-        initialLevel = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+        totalXP = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_EXP);
+        initialLevel = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL);
         totalXP = totalXP + GetSoftLevelCapExpValue(initialLevel, addxp);// This is added because users will expect soft level caps to apply to autobattling.
-        SetMonData(&gPlayerParty[i], MON_DATA_EXP, &totalXP);
-        finalLevel = GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
+        SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_EXP, &totalXP);
+        finalLevel = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL);
         if (finalLevel > initialLevel)
             PlayFanfare(MUS_LEVEL_UP);
     }

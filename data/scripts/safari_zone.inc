@@ -50,7 +50,7 @@ GauntletIsland_Text_WouldYouLikeToExit:
 
 
 GauntletIsland_EventScript_EndGauntletChallenge::
-	warp MAP_ROUTE_100, 3, 11
+	warp MAP_ROUTE_100, 8, 11
 	waitstate
 	end
 

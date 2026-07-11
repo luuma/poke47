@@ -27,21 +27,24 @@ u32 GetCurrentLevelCap(void)
     };
     static const u32 sGauntletCapFlagMap[][2] =
     {
-        {FLAG_GAUNTLET_HP_ALTAR, 7},//hp
-        {FLAG_GAUNTLET_ATK_ALTAR, 10},//atk
-        {FLAG_GAUNTLET_DEF_ALTAR, 15},//def
-        {FLAG_GAUNTLET_SPEED_ALTAR, 20},//speed
-        {FLAG_GAUNTLET_SPATK_ALTAR, 23},//spatk
-        {FLAG_GAUNTLET_SPDEF_ALTAR, 26},//sdef
-        {FLAG_GAUNTLET_BOSS_ALTAR, 30},//sdef
+        {FLAG_GAUNTLET_HP_ALTAR, 7},//hp. This boss is easy enough.
+        {FLAG_GAUNTLET_ATK_ALTAR, 14},//atk. This boss should try to kick yuor Ass.
+        {FLAG_GAUNTLET_DEF_ALTAR, 18},//def
+        {FLAG_GAUNTLET_SPEED_ALTAR, 21},//speed
+        {FLAG_GAUNTLET_SPATK_ALTAR, 24},//spatk
+        {FLAG_GAUNTLET_SPDEF_ALTAR, 27},//sdef
+        {FLAG_GAUNTLET_BOSS_ALTAR, 31},//sdef
     };
     u32 i;
+
     if (FlagGet(FLAG_GAUNTLET_CHALLENGE))// starts later
     {
+        if (VarGet(VAR_WILD_AI_FLAGS) != 0)
+            return 90;
         for (i = 0; i < ARRAY_COUNT(sGauntletCapFlagMap); i++)
         {
-            if (!FlagGet(sLevelCapFlagMap[i][0]))
-                return sLevelCapFlagMap[i][1];
+            if (!FlagGet(sGauntletCapFlagMap[i][0]))
+                return sGauntletCapFlagMap[i][1];
         }
     }
     else if (CheckBagHasItem(ITEM_LEVEL_CAP, 1) || !FlagGet(FLAG_RESCUED_BIRCH))

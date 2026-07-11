@@ -246,7 +246,7 @@ void ReducePlayerPartyToSelectedMons(void)
 
 void CanHyperTrain(struct ScriptContext *ctx)
 {
-    u32 stat = ScriptReadByte(ctx);
+    u32 stat = VarGet(ScriptReadHalfword(ctx));
     u32 partyIndex = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1);
@@ -277,7 +277,7 @@ void CanHyperTrain(struct ScriptContext *ctx)
 
 void HyperTrain(struct ScriptContext *ctx)
 {
-    u32 stat = ScriptReadByte(ctx);
+    u32 stat = VarGet(ScriptReadHalfword(ctx));
     u32 partyIndex = VarGet(ScriptReadHalfword(ctx));
 
     Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);

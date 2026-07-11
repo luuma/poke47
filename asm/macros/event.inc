@@ -2287,14 +2287,14 @@
 	@ FALSE otherwise.
 	.macro canhypertrain stat:req, slot:req
 	callnative CanHyperTrain, requests_effects=1
-	.byte \stat
+	.2byte \stat
 	.2byte \slot
 	.endm
 
 	@ Hyper Trains a stat.
 	.macro hypertrain stat:req, slot:req
 	callnative HyperTrain, requests_effects=1
-	.byte \stat
+	.2byte \stat
 	.2byte \slot
 	.endm
 

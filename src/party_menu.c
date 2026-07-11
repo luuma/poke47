@@ -309,6 +309,7 @@ static void HandleChooseMonCancel(u8, s8 *);
 static void HandleChooseMonSelection(u8, s8 *);
 static u16 PartyMenuButtonHandler(s8 *);
 static s8 *GetCurrentPartySlotPtr(void);
+static bool8 CanUseBoxFromPartyMenu(void);
 static bool8 IsSelectedMonNotEgg(u8 *);
 static bool8 DoesSelectedMonKnowHM(u8 *);
 static void PartyMenuRemoveWindow(u8 *);
@@ -1530,11 +1531,7 @@ void Task_HandleChooseMonInput(u8 taskId)
             }
             break;
         case R_BUTTON:
-            if (PARTY_MENU_PC_ACCESS
-                && gPartyMenu.action == PARTY_ACTION_CHOOSE_MON
-                && gPartyMenu.layout == PARTY_LAYOUT_SINGLE
-                && (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD
-                    || gPartyMenu.menuType == PARTY_MENU_TYPE_DAYCARE))
+            if (CanUseBoxFromPartyMenu())
             {
                 PlaySE(SE_SELECT);
                 SavePartyMenuStateForPC();
@@ -1562,6 +1559,16 @@ void Task_HandleChooseMonInput(u8 taskId)
             break;
         }
     }
+}
+
+static bool8 CanUseBoxFromPartyMenu(void)
+{
+   return (PARTY_MENU_PC_ACCESS
+                && !FlagGet(FLAG_GAUNTLET_CHALLENGE)
+                && gPartyMenu.action == PARTY_ACTION_CHOOSE_MON
+                && gPartyMenu.layout == PARTY_LAYOUT_SINGLE
+                && (gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD
+                    || gPartyMenu.menuType == PARTY_MENU_TYPE_DAYCARE));
 }
 
 static s8 *GetCurrentPartySlotPtr(void)
@@ -2884,7 +2891,8 @@ void DisplayPartyMenuStdMessage(u32 stringId)
                 stringId = PARTY_MSG_CHOOSE_MON_AND_CONFIRM;
             else if (!ShouldUseChooseMonText())
                 stringId = PARTY_MSG_CHOOSE_MON_OR_CANCEL;
-
+            if (!CanUseBoxFromPartyMenu())
+                stringId = PARTY_MSG_CHOOSE_MON_2;// can't use box so doesn't show message alluding to it.
             if (gPartiesCount[B_TRAINER_PLAYER] == 0)
                 stringId = PARTY_MSG_NO_POKEMON;
         }
@@ -3535,7 +3543,7 @@ static void CursorCb_Give(u8 taskId)
 
 static void CB2_SelectBagItemToGive(void)
 {
-    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
+    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
         GoToBagMenu(ITEMMENULOCATION_PARTY, POCKETS_COUNT, CB2_GiveHoldItem);
     else
         GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_PARTY, CB2_GiveHoldItem);
@@ -4795,7 +4803,7 @@ void CB2_ShowPartyMenuForItemUse(void)
 
 static void CB2_ReturnToBagMenu(void)
 {
-    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE)
+    if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
         GoToBagMenu(ITEMMENULOCATION_LAST, POCKETS_COUNT, NULL);
     else
         GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_PREV, gPyramidBagMenuState.exitCallback);
@@ -7144,7 +7152,7 @@ void CB2_PartyMenuFromStartMenu(void)
 // As opposted to by selecting Give in the party menu, which is handled by CursorCb_Give
 void CB2_ChooseMonToGiveItem(void)
 {
-    MainCallback callback = (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE) ? CB2_ReturnToBagMenu : CB2_ReturnToPyramidBagMenu;
+    MainCallback callback = (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE)) ? CB2_ReturnToBagMenu : CB2_ReturnToPyramidBagMenu;
     InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_GIVE_ITEM, FALSE, PARTY_MSG_GIVE_TO_WHICH_MON, Task_HandleChooseMonInput, callback);
     gPartyMenu.bagItem = gSpecialVar_ItemId;
 }

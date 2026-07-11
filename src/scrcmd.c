@@ -68,6 +68,9 @@
 #include "constants/map_types.h"
 #include "constants/party_menu.h"
 
+#include "pokemon.h"//added
+#include "ow_abilities.h"//added
+
 typedef u16 (*SpecialFunc)(void);
 typedef void (*NativeFunc)(struct ScriptContext *ctx);
 
@@ -3425,3 +3428,161 @@ bool8 ScrCmd_getbraillestringwidth(struct ScriptContext * ctx)
     gSpecialVar_0x8004 = GetStringWidth(FONT_BRAILLE, msg, -1);
     return FALSE;
 }
+
+
+const struct {
+    enum Species species;
+    u16 moves[MAX_MON_MOVES];
+    u8 level;
+    enum Item item;
+} sGauntletBossList[] = {
+// altar 1 hp elder wyrm
+    {
+        .species = SPECIES_GABITE,
+        .moves = {MOVE_BULLDOZE, MOVE_DRAGON_BREATH, MOVE_SPIKES, MOVE_SAND_TOMB},
+        .level = 10,
+        .item = ITEM_ORAN_BERRY,
+    },
+    {
+        .species = SPECIES_TURTONATOR,
+        .moves = {MOVE_EMBER, MOVE_RAPID_SPIN, MOVE_SMOG, MOVE_FLAIL},
+        .level = 11,
+        .item = ITEM_ORAN_BERRY,
+    },
+    {
+        .species = SPECIES_FRAXURE,
+        .moves = {MOVE_SLASH, MOVE_X_SCISSOR, MOVE_DRAGON_DANCE, MOVE_NIGHT_SLASH},
+        .level = 10,
+        .item = ITEM_ORAN_BERRY,
+    },
+//altar 2 atk groudon
+    {
+        .species = SPECIES_BOLDORE,
+        .moves = {MOVE_ROCK_SLIDE, MOVE_SALT_CURE, MOVE_RECOVER, MOVE_POWER_GEM},
+        .level = 24,
+        .item = ITEM_ORAN_BERRY,
+    },
+    {
+        .species = SPECIES_MUDSDALE,
+        .moves = {MOVE_BULLDOZE, MOVE_DOUBLE_KICK, MOVE_BULK_UP, MOVE_HEAVY_SLAM},
+        .level = 23,
+        .item = ITEM_ORAN_BERRY,
+    },
+    {
+        .species = SPECIES_BRONZONG,
+        .moves = {MOVE_EXTRASENSORY, MOVE_MIRROR_SHOT, MOVE_HYPNOSIS, MOVE_SPEED_SWAP},
+        .level = 23,
+        .item = ITEM_ORAN_BERRY,
+    },
+// altar 3 def kyo
+    {
+        .species = SPECIES_ABOMASNOW,
+        .moves = {MOVE_ROTOTILLER, MOVE_BLIZZARD, MOVE_WOOD_HAMMER, MOVE_INGRAIN},
+        .level = 30,
+        .item = ITEM_OCCA_BERRY,
+    },
+    {
+        .species = SPECIES_PRIMARINA,
+        .moves = {MOVE_DAZZLING_GLEAM, MOVE_SPARKLING_ARIA, MOVE_ICY_WIND, MOVE_GROWL},
+        .level = 30,
+        .item = ITEM_LEFTOVERS,
+    },
+    {
+        .species = SPECIES_SWANNA,
+        .moves = {MOVE_SURF, MOVE_HURRICANE, MOVE_ROOST, MOVE_ICY_WIND},
+        .level = 33,
+        .item = ITEM_DAMP_ROCK,
+    },
+/// altar 4 speed winged lion
+    {
+        .species = SPECIES_SWANNA,
+        .moves = {MOVE_AQUA_STEP, MOVE_HURRICANE, MOVE_ROOST, MOVE_SAFEGUARD},
+        .level = 37,
+        .item = ITEM_DAMP_ROCK,
+    },
+    {
+        .species = SPECIES_BRAVIARY,
+        .moves = {MOVE_STRENGTH, MOVE_BRAVE_BIRD, MOVE_SKY_DROP, MOVE_SUPERPOWER},
+        .level = 37,
+        .item = ITEM_FLYING_GEM,
+    },
+    {
+        .species = SPECIES_LUCARIO,
+        .moves = {MOVE_AURA_SPHERE, MOVE_FLASH_CANNON, MOVE_NASTY_PLOT, MOVE_BULLET_PUNCH},
+        .level = 37,
+        .item = ITEM_SITRUS_BERRY,
+    },
+/// altar 5 SATK dsotm dark void
+    {
+        .species = SPECIES_BEHEEYEM,
+        .moves = {MOVE_EXPANDING_FORCE, MOVE_PSYCHIC_TERRAIN, MOVE_FOCUS_BLAST, MOVE_ZAP_CANNON},
+        .level = 41,
+        .item = ITEM_CHOICE_BAND,
+    },
+    {
+        .species = SPECIES_BRAVIARY,
+        .moves = {MOVE_STRENGTH, MOVE_BRAVE_BIRD, MOVE_SKY_DROP, MOVE_SUPERPOWER},
+        .level = 37,
+        .item = ITEM_FLYING_GEM,
+    },
+    {
+        .species = SPECIES_LUCARIO,
+        .moves = {MOVE_AURA_SPHERE, MOVE_FLASH_CANNON, MOVE_NASTY_PLOT, MOVE_BULLET_PUNCH},
+        .level = 37,
+        .item = ITEM_SITRUS_BERRY,
+    },
+/// altar 6 sdef saphrotroph //ScriptSetTotemBoost must be used lmao.
+    {
+        .species = SPECIES_LURANTIS_TOTEM,
+        .moves = {MOVE_BITTER_BLADE, MOVE_PETAL_BLIZZARD, MOVE_LIGHTBLOOM, MOVE_GROWTH},
+        .level = 45,
+        .item = ITEM_HEAT_ROCK,
+    },
+    {
+        .species = SPECIES_RIBOMBEE_TOTEM,
+        .moves = {MOVE_POLLEN_PUFF, MOVE_DAZZLING_GLEAM, MOVE_STICKY_WEB, MOVE_MORNING_SUN},
+        .level = 37,
+        .item = ITEM_FLYING_GEM,
+    },
+    {
+        .species = SPECIES_LUCARIO,
+        .moves = {MOVE_AURA_SPHERE, MOVE_FLASH_CANNON, MOVE_NASTY_PLOT, MOVE_BULLET_PUNCH},
+        .level = 37,
+        .item = ITEM_SITRUS_BERRY,
+    },
+/// altar 7
+    {
+        .species = SPECIES_KYUREM,
+        .moves = {MOVE_GLACIATE, MOVE_ICY_WIND, MOVE_BREAKING_SWIPE, MOVE_CALM_MIND},
+        .level = 60,
+        .item = ITEM_SITRUS_BERRY,
+    },
+};
+
+
+
+void ScrCmd_SetGauntletBossBattle(struct ScriptContext *ctx)
+{
+    u8 altar = ScriptReadByte(ctx);
+
+    ZeroEnemyPartyMons();
+    u32 i;
+    u32 bossIdx = altar + Random() %3; 
+    enum Species species = sGauntletBossList[bossIdx].species;
+
+    u32 personality = GetMonPersonality(species,
+        GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species),
+        GetSynchronizedNature(STATIC_WILDMON_ORIGIN, species),
+        RANDOM_UNOWN_LETTER);
+    CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], species, sGauntletBossList[bossIdx].level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    
+    for (i = 0; i < MAX_MON_MOVES; i++)
+        SetMonMoveSlot(&gParties[B_TRAINER_OPPONENT_A][0], sGauntletBossList[bossIdx].moves[i], i);
+
+    SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, &sGauntletBossList[bossIdx].item);
+
+    Script_RequestEffects(SCREFF_V1);
+
+    sIsScriptedWildDouble = TRUE;// i dont know whether this sends out a ?????????? or not lmao.
+    VarSet(VAR_RESULT, species);
+}// after this, we call dowildbattle
