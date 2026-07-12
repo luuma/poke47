@@ -11,35 +11,35 @@ static bool32 SquashEarthRibbonInfo(void);
 
 
 const int GauntletItemsLow[8] = {
-    ITEM_POTION,
-    ITEM_POTION,
+    ITEM_HP_UP,
+    ITEM_PP_UP,
     ITEM_POTION,
     ITEM_FLUFFY_TAIL,
-    ITEM_ANTIDOTE,
+    ITEM_PECHA_BERRY,
     ITEM_ORAN_BERRY,
-    ITEM_X_ACCURACY,
-    ITEM_POTION
+    ITEM_FULL_HEAL,
+    ITEM_ABILITY_PATCH
 };
 
 const int GauntletItemsMed[8] = {
-    ITEM_POTION,
-    ITEM_POTION,
+    ITEM_PROTEIN,
+    ITEM_IRON,
     ITEM_SUPER_POTION,
-    ITEM_PECHA_BERRY,
+    ITEM_CHERI_BERRY,
     ITEM_PERSIM_BERRY,
     ITEM_X_ATTACK,
     ITEM_X_DEFEND,
-    ITEM_ORAN_BERRY
+    ITEM_ABILITY_CAPSULE
 };
 
 const int GauntletItemsHigh[8] = {
-    ITEM_SUPER_POTION,
-    ITEM_SUPER_POTION,
-    ITEM_FULL_HEAL,
-    ITEM_ETHER,
+    ITEM_ZINC,
+    ITEM_CALCIUM,
+    ITEM_CARBOS,
     ITEM_X_SPECIAL,
     ITEM_X_SP_DEF,
     ITEM_X_SPEED,
+    ITEM_FULL_HEAL,
     ITEM_FULL_RESTORE
 };
 

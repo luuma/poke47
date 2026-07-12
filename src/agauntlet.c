@@ -210,3 +210,18 @@ void CallnativeGauntletItemBall(struct ScriptContext *ctx)
    VarSet(VAR_RESULT, ITEM_BERRY_JUICE); 
    return;
 }
+
+void CallnativeGauntletItemBallMultichoice(struct ScriptContext *ctx)
+{
+   enum ItemPool itemPool = ScriptReadByte(ctx);
+   u32 rand = (Random() % 8);
+   switch (itemPool){
+      case GAUNTLET_ITEM_POOL_LOW:  VarSet(VAR_RESULT,  GauntletItemsLow[rand]); return;
+      case GAUNTLET_ITEM_POOL_MED:  VarSet(VAR_RESULT,  GauntletItemsMed[rand]); return;
+      case GAUNTLET_ITEM_POOL_HIGH: VarSet(VAR_RESULT, GauntletItemsHigh[rand]); return;
+      case GAUNTLET_ITEM_POOL_END:  VarSet(VAR_RESULT,  GauntletItemsEnd[rand]); return;
+      default: break;
+   }
+   VarSet(VAR_RESULT, ITEM_BERRY_JUICE); 
+   return;
+}

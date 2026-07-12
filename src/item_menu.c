@@ -607,7 +607,7 @@ void CB2_ChooseBerry(void)
     if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
         GoToBagMenu(ITEMMENULOCATION_BERRY_TREE, POCKET_BERRIES, CB2_ReturnToFieldContinueScript);
     else
-        GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_FIELD, CB2_ReturnToFieldContinueScript);
+        GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_BERRY, CB2_ReturnToFieldContinueScript);
 }
 
 // Choosing mulch to use
@@ -616,7 +616,7 @@ void CB2_ChooseMulch(void)
     if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
         GoToBagMenu(ITEMMENULOCATION_BERRY_TREE_MULCH, POCKET_BERRIES, CB2_ReturnToFieldContinueScript);
     else
-        GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_FIELD, CB2_ReturnToFieldContinueScript);
+        GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_MULCH, CB2_ReturnToFieldContinueScript);
 
 }
 

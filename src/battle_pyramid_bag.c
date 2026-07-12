@@ -185,6 +185,7 @@ static const u8 sMenuActionIds_Field[] = {ACTION_USE_FIELD, ACTION_GIVE, ACTION_
 static const u8 sMenuActionIds_ChooseToss[] = {ACTION_TOSS, ACTION_CANCEL};
 static const u8 sMenuActionIds_Battle[] = {ACTION_USE_BATTLE, ACTION_CANCEL};
 static const u8 sMenuActionIds_BattleCannotUse[] = {ACTION_CANCEL};
+//something for use_berry
 
 static const struct YesNoFuncTable sYesNoTossFuncions =
 {
@@ -929,6 +930,17 @@ static void Task_HandlePyramidBagInput(u8 taskId)
             tQuantity = gSaveBlock2Ptr->frontier.pyramidBag.quantity[FlagGet(FLAG_GAUNTLET_CHALLENGE)][listId];
             if (gPyramidBagMenuState.location == PYRAMIDBAG_LOC_PARTY)
                 TryCloseBagToGiveItem(taskId);
+            else if (gPyramidBagMenuState.location == PYRAMIDBAG_LOC_BERRY &&  GetItemPocket(gSpecialVar_ItemId) == POCKET_BERRIES)
+                CloseBattlePyramidBag(taskId);
+            else if (gPyramidBagMenuState.location == PYRAMIDBAG_LOC_MULCH && (gSpecialVar_ItemId == ITEM_GROWTH_MULCH ||
+        gSpecialVar_ItemId == ITEM_DAMP_MULCH ||
+        gSpecialVar_ItemId == ITEM_STABLE_MULCH ||
+        gSpecialVar_ItemId == ITEM_GOOEY_MULCH ||
+        gSpecialVar_ItemId == ITEM_RICH_MULCH ||
+        gSpecialVar_ItemId == ITEM_SURPRISE_MULCH ||
+        gSpecialVar_ItemId == ITEM_BOOST_MULCH ||
+        gSpecialVar_ItemId == ITEM_AMAZE_MULCH))
+                CloseBattlePyramidBag(taskId);
             else
                 OpenContextMenu(taskId);
             break;
@@ -967,7 +979,6 @@ static void OpenContextMenu(u8 taskId)
         gPyramidBagMenu->menuActionsCount = ARRAY_COUNT(sMenuActionIds_ChooseToss);
         break;
     }
-
     CopyItemName(gSpecialVar_ItemId, gStringVar1);
     StringExpandPlaceholders(gStringVar4, gText_Var1IsSelected);
     FillWindowPixelBuffer(WIN_INFO, PIXEL_FILL(0));
