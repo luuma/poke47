@@ -3,7 +3,6 @@
   "name": "LavaridgeTown",
   "layout": "LAYOUT_LAVARIDGE_TOWN",
   "music": "MUS_OLDALE",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_LAVARIDGE_TOWN",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
@@ -269,5 +268,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_SOUTH",
       "script": "Lavaridge_HatchAnEgg"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

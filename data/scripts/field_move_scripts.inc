@@ -236,6 +236,8 @@ EventScript_SmashRock:: @ fallthrough
 	removeobject VAR_LAST_TALKED
 	specialvar VAR_RESULT, TryUpdateRusturfTunnelState
 	goto_if_eq VAR_RESULT, TRUE, EventScript_EndSmash
+        callnative TryUpdateRocksReveal
+	goto_if_ne VAR_RESULT, FALSE, EventScript_GauntletReveal
 	special RockSmashWildEncounter
 	goto_if_eq VAR_RESULT, FALSE, EventScript_EndSmash
 	waitstate
@@ -319,7 +321,53 @@ EventScript_FollowerJumpWest:
 	waitmovement 0
 	return
 
+
+
+EventScript_GauntletReveal::
+	goto_if_eq VAR_RESULT, 2, EventScript_GauntletRevealRock2
+	goto_if_eq VAR_RESULT, 3, EventScript_GauntletRevealRock3
+	goto_if_eq VAR_RESULT, 4, EventScript_GauntletRevealRock4
+	@ fadescreenswapbuffers FADE_TO_BLACK. There is a bug where we run this command until the item is collected. Fuck it idgaf.
+        removeobject LOCALID_ROCK_1
+	setobjectxyperm LOCALID_ROCK_1, 23, 40
+        addobject LOCALID_ROCK_1
+        showobjectat LOCALID_ROCK_1, MAP_GAUNTLET_ISLAND_SOUTHWEST
+        copyobjectxytoperm LOCALID_ROCK_1
+	@ fadescreenswapbuffers FADE_FROM_BLACK
 EventScript_EndSmash::
+	releaseall
+	end
+
+EventScript_GauntletRevealRock2::
+	@ fadescreenswapbuffers FADE_TO_BLACK
+        removeobject LOCALID_ROCK_2
+	setobjectxyperm LOCALID_ROCK_2, 40, 59
+        addobject LOCALID_ROCK_2
+        showobjectat LOCALID_ROCK_2, MAP_GAUNTLET_ISLAND_SOUTHWEST
+        copyobjectxytoperm LOCALID_ROCK_2
+	@ fadescreenswapbuffers FADE_FROM_BLACK
+	releaseall
+	end
+
+EventScript_GauntletRevealRock3::
+	@ fadescreenswapbuffers FADE_TO_BLACK
+        removeobject LOCALID_ROCK_3
+	setobjectxyperm LOCALID_ROCK_3, 2, 12
+        addobject LOCALID_ROCK_3
+        showobjectat LOCALID_ROCK_3, MAP_GAUNTLET_ISLAND_SOUTH
+        copyobjectxytoperm LOCALID_ROCK_3
+	@ fadescreenswapbuffers FADE_FROM_BLACK
+	releaseall
+	end
+
+EventScript_GauntletRevealRock4::
+	@ fadescreenswapbuffers FADE_TO_BLACK
+        removeobject LOCALID_ROCK_4
+	setobjectxyperm LOCALID_ROCK_4, 0, 12
+        addobject LOCALID_ROCK_4
+        showobjectat LOCALID_ROCK_4, MAP_GAUNTLET_ISLAND_SOUTH
+        copyobjectxytoperm LOCALID_ROCK_4
+	@ fadescreenswapbuffers FADE_FROM_BLACK
 	releaseall
 	end
 

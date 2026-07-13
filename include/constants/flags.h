@@ -673,14 +673,10 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 #define FLAG_UNUSED_0x264  0x264 // ROOM SERVICE (old mansion
-#define FLAG_UNUSED_0x265  0x265 // DUSK BALLold mansion
-#define FLAG_UNUSED_0x266  0x266 // TRICK ROOM old mansion
-#define FLAG_UNUSED_0x267  0x267 // OLD GATEAT old mansion
-#define FLAG_UNUSED_0x268  0x268 //  HYPER BEAM sky pillar
-#define FLAG_UNUSED_0x269  0x269 // wish fallarbor
-#define FLAG_UNUSED_0x26A  0x26A // soak aqua hieout
-#define FLAG_UNUSED_0x26B  0x26B // Left blank, likely unused
-#define FLAG_UNUSED_0x26C  0x26C // sand tomb ashblower
+
+
+
+#define FLAG_UNUSED_0x26C  0x26C // sand tomb ashblower UNUSED NOW
 #define FLAG_UNUSED_0x26D  0x26D // carbos
 #define FLAG_UNUSED_0x26E  0x26E // sticky web petalburg woods
 #define FLAG_ARTISAN_VOLT_SWITCH  0x26F // 
@@ -1229,7 +1225,6 @@
 #define FLAG_ITEM_MAGMA_HIDEOUT_4F_MAX_REVIVE                       0x490
 #define FLAG_ITEM_SAFARI_ZONE_NORTH_EAST_NUGGET                     0x491
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
-
 #define FLAG_GAUNTLET_3                                           0x493 // Unused Flag
 #define FLAG_GAUNTLET_4                                           0x494 // Unused Flag
 #define FLAG_GAUNTLET_5                                           0x495 // Unused Flag
@@ -1285,44 +1280,60 @@
 #define FLAG_GAUNTLET_SPATK_ALTAR                                           0x4C7 // Unused Flag
 #define FLAG_GAUNTLET_SPDEF_ALTAR                                           0x4C8 // Unused Flag
 #define FLAG_GAUNTLET_BOSS_ALTAR                                           0x4C9 // Unused Flag
-#define FLAG_UNUSED_0x4CA                                           0x4CA // Unused Flag
-#define FLAG_UNUSED_0x4CB                                           0x4CB // Unused Flag
-#define FLAG_UNUSED_0x4CC                                           0x4CC // Unused Flag
-#define FLAG_UNUSED_0x4CD                                           0x4CD // Unused Flag
-#define FLAG_UNUSED_0x4CE                                           0x4CE // Unused Flag
-#define FLAG_UNUSED_0x4CF                                           0x4CF // Unused Flag
-#define FLAG_GAUNTLET_TALKED_WITCH                                           0x4D0 // Unused Flag
-#define FLAG_UNUSED_0x4D1                                           0x4D1 // Unused Flag
-#define FLAG_UNUSED_0x4D2                                           0x4D2 // Unused Flag
-#define FLAG_UNUSED_0x4D3                                           0x4D3 // Unused Flag
-#define FLAG_UNUSED_0x4D4                                           0x4D4 // Unused Flag
-#define FLAG_UNUSED_0x4D5                                           0x4D5 // Unused Flag
-#define FLAG_UNUSED_0x4D6                                           0x4D6 // Unused Flag
-#define FLAG_UNUSED_0x4D7                                           0x4D7 // Unused Flag
-#define FLAG_UNUSED_0x4D8                                           0x4D8 // Unused Flag
-#define FLAG_UNUSED_0x4D9                                           0x4D9 // Unused Flag
-#define FLAG_UNUSED_0x4DA                                           0x4DA // Unused Flag
-#define FLAG_UNUSED_0x4DB                                           0x4DB // Unused Flag
-#define FLAG_UNUSED_0x4DC                                           0x4DC // Unused Flag
-#define FLAG_UNUSED_0x4DD                                           0x4DD // Unused Flag
-#define FLAG_UNUSED_0x4DE                                           0x4DE // Unused Flag
-#define FLAG_UNUSED_0x4DF                                           0x4DF // Unused Flag
-#define FLAG_UNUSED_0x4E0                                           0x4E0 // Unused Flag
-#define FLAG_UNUSED_0x4E1                                           0x4E1 // Unused Flag
-#define FLAG_UNUSED_0x4E2                                           0x4E2 // Unused Flag
-#define FLAG_UNUSED_0x4E3                                           0x4E3 // Unused Flag
-#define FLAG_UNUSED_0x4E4                                           0x4E4 // Unused Flag
-#define FLAG_UNUSED_0x4E5                                           0x4E5 // Unused Flag
-#define FLAG_UNUSED_0x4E6                                           0x4E6 // Unused Flag
-#define FLAG_UNUSED_0x4E7                                           0x4E7 // Unused Flag
-#define FLAG_UNUSED_0x4E8                                           0x4E8 // Unused Flag
-#define FLAG_UNUSED_0x4E9                                           0x4E9 // Unused Flag
-#define FLAG_UNUSED_0x4EA                                           0x4EA // Unused Flag
-#define FLAG_UNUSED_0x4EB                                           0x4EB // Unused Flag
-#define FLAG_UNUSED_0x4EC                                           0x4EC // Unused Flag
-#define FLAG_UNUSED_0x4ED                                           0x4ED // Unused Flag
-#define FLAG_UNUSED_0x4EE                                           0x4EE // Unused Flag
-#define FLAG_UNUSED_0x4EF                                           0x4EF // Unused Flag
+#define FLAG_GAUNTLET_30                                           0x4CA // Unused Flag
+#define FLAG_GAUNTLET_31                                           0x4CB // Unused Flag
+#define FLAG_GAUNTLET_32                                           0x4CC // Unused Flag
+#define FLAG_GAUNTLET_33                                           0x4CD // Unused Flag
+#define FLAG_GAUNTLET_34                                           0x4CE // Unused Flag
+#define FLAG_GAUNTLET_35                                           0x4CF // Unused Flag
+#define FLAG_GAUNTLET_36                                           0x4D0 // Unused Flag
+#define FLAG_GAUNTLET_37                                           0x4D1 // Unused Flag
+#define FLAG_GAUNTLET_38                                           0x4D2 // Unused Flag
+#define FLAG_GAUNTLET_39                                           0x4D3 //HEREHEREHERE
+#define FLAG_GAUNTLET_3A                                           0x4D4 //  Flag
+#define FLAG_GAUNTLET_3B                                           0x4D5 // Unused Flag
+#define FLAG_GAUNTLET_3C                                           0x4D6 // Unused Flag
+#define FLAG_GAUNTLET_3D                                           0x4D7 // Unused Flag
+#define FLAG_GAUNTLET_3E                                           0x4D8 // Unused Flag
+#define FLAG_GAUNTLET_3F                                           0x4D9 // Unused Flag
+#define FLAG_GAUNTLET_40 0x4DA  // DUSK BALLold mansion
+#define FLAG_GAUNTLET_41 0x4DB  // TRICK ROOM old mansion
+#define FLAG_GAUNTLET_42 0x4DC  // OLD GATEAT old mansion
+#define FLAG_GAUNTLET_43 0x4DD  //  HYPER BEAM sky pillar
+#define FLAG_GAUNTLET_44 0x4DE  // wish fallarbor
+#define FLAG_GAUNTLET_45 0x4DF  // soak aqua hieout
+
+
+#define FLAG_GAUNTLET_MINT_A                                           0x265 // HIDDS
+#define FLAG_GAUNTLET_MINT_B                                           0x266 // HIDDS Flag
+#define FLAG_GAUNTLET_MINT_C                                           0x267 // HIDDS Flag
+#define FLAG_GAUNTLET_MINT_D                                           0x268 // HIDDS Flag
+#define FLAG_GAUNTLET_MINT_E                                           0x269 // HIDDS Flag
+#define FLAG_GAUNTLET_MINT_F                                           0x26A // HIDDS Flag
+#define FLAG_UNUSED_0x26B  0x26B // Left blank, likely unused
+
+#define FLAG_GAUNTLET_SHOWROCK_1                                           0x4E0 // Unused Flag
+#define FLAG_GAUNTLET_SHOWROCK_2                                            0x4E1 // Unused Flag
+#define FLAG_GAUNTLET_SHOWROCK_3                                           0x4E2 // Unused Flag
+#define FLAG_GAUNTLET_SHOWROCK_4                                           0x4E3 // Unused Flag
+#define FLAG_GAUNTLET_1FBOULDER1                                           0x4E4 // Unused Flag
+#define FLAG_GAUNTLET_1FBOULDER2                                          0x4E5 // Unused Flag
+#define FLAG_GAUNTLET_1FBOULDER3                                          0x4E6 // Unused Flag
+#define FLAG_GAUNTLET_0FBOULDER1                         0x4E7 // Unused Flag
+#define FLAG_GAUNTLET_0FBOULDER2                                           0x4E8 // Unused Flag
+#define FLAG_UNUSED_0x265 0x4E9 // DUSK BALLold mansion
+#define FLAG_UNUSED_0x266 0x4EA // TRICK ROOM old mansion
+#define FLAG_UNUSED_0x267 0x4EB // OLD GATEAT old mansion
+#define FLAG_UNUSED_0x268 0x4EC //  HYPER BEAM sky pillar
+#define FLAG_UNUSED_0x269 0x4ED // wish fallarbor
+#define FLAG_UNUSED_0x26A 0x4EE  // soak aqua hieout
+
+#define FLAG_GAUNTLET_TALKED_WITCH                                           0x4EF // Unused Flag
+
+
+#define FLAG_GAUNTLET_LAST FLAG_GAUNTLET_SHOWROCK_4// WIPED
+#define FLAGS_GAUNTLET FLAG_GAUNTLET_3F - FLAG_GAUNTLET_3// RANDOMLY SET
+
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0
 #define FLAG_DEFEATED_DEWFORD_GYM                                   0x4F1
@@ -1335,7 +1346,7 @@
 #define FLAG_DEFEATED_METEOR_FALLS_STEVEN                           0x4F8
 
 #define FLAG_GAUNTLET_CHALLENGE                                           0x4F9 // WHile on, has pyramid bag, probably changes items too.
-#define FLAG_UNUSED_0x4FA                                           0x4FA // Unused Flag
+#define FLAG_GAUNTLET_0FBOULDER3                                           0x4FA // Unused Flag
 
 #define FLAG_DEFEATED_ELITE_4_SIDNEY                                0x4FB
 #define FLAG_DEFEATED_ELITE_4_PHOEBE                                0x4FC

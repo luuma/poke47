@@ -4,6 +4,7 @@
 u32 ScriptGiveMon(enum Species species, u8 level, enum Item item);
 u8 ScriptGiveEgg(enum Species species);
 void CreateScriptedWildMon(enum Species species, u8 level, enum Item item);
+void SetScriptedWildDouble(bool32 bool);
 void CreateScriptedDoubleWildMon(enum Species species, u8 level, enum Item item, enum Species species2, u8 level2, enum Item item2);
 void ScriptSetMonMoveSlot(u8 monIndex, enum Move move, u8 slot);
 void ReducePlayerPartyToSelectedMons(void);

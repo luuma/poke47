@@ -1,6 +1,7 @@
 
 
 GauntletIslandSouth_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume @ 	setstepcallback STEP_CB_ASH ; end
 	.byte 0
 
 GauntletIsland_IslandStirs::
@@ -16,9 +17,9 @@ GauntletIsland_TxtTheIslandStirs:
 
 GauntletIsland_AltarsLit::
     lockall
-    playse SE_TRUCK_MOVE
+    playse SE_LAVARIDGE_FALL_WARP
     special DoSealedChamberShakingEffect_Long
-    delay 40
+    waitse
     msgbox GauntletIsland_TxtTheAltarsFlareToLife 
     addvar VAR_GAUNTLET_9, 1
     release

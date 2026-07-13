@@ -37904,7 +37904,7 @@
               {
                 "min_level": 5,
                 "max_level": 6,
-                "species": "SPECIES_FOMANTIS"
+                "species": "SPECIES_PETILIL"
               },
               {
                 "min_level": 5,
@@ -37985,6 +37985,36 @@
                 "min_level": 5,
                 "max_level": 5,
                 "species": "SPECIES_NONE"
+              }
+            ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 50,
+            "mons": [
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_ROGGENROLA"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_ROGGENROLA"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_ROGGENROLA"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_ROGGENROLA"
+              },
+              {
+                "min_level": 5,
+                "max_level": 5,
+                "species": "SPECIES_ROGGENROLA"
               }
             ]
           },
@@ -38291,7 +38321,7 @@
               {
                 "min_level": 13,
                 "max_level": 13,
-                "species": "SPECIES_CUBCHOO"
+                "species": "SPECIES_INKAY"
               },
               {
                 "min_level": 13,
@@ -38332,6 +38362,36 @@
                 "min_level": 15,
                 "max_level": 17,
                 "species": "SPECIES_SANDSHREW_ALOLA"
+              }
+            ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 50,
+            "mons": [
+              {
+                "min_level": 15,
+                "max_level": 15,
+                "species": "SPECIES_BOLDORE"
+              },
+              {
+                "min_level": 15,
+                "max_level": 15,
+                "species": "SPECIES_BOLDORE"
+              },
+              {
+                "min_level": 15,
+                "max_level": 15,
+                "species": "SPECIES_BOLDORE"
+              },
+              {
+                "min_level": 15,
+                "max_level": 15,
+                "species": "SPECIES_BOLDORE"
+              },
+              {
+                "min_level": 15,
+                "max_level": 15,
+                "species": "SPECIES_BOLDORE"
               }
             ]
           }
@@ -38547,7 +38607,7 @@
           "map": "MAP_GAUNTLET_ISLAND_SOUTHWEST",
           "base_label": "gGauntletIslandSouthwest",
           "land_mons": {
-            "encounter_rate": 7,
+            "encounter_rate": 25,
             "mons": [
               {
                 "min_level": 24,
@@ -38615,29 +38675,29 @@
             "encounter_rate": 50,
             "mons": [
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 25,
+                "max_level": 26,
+                "species": "SPECIES_BOLDORE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 25,
+                "max_level": 26,
+                "species": "SPECIES_BOLDORE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 25,
+                "max_level": 26,
+                "species": "SPECIES_BOLDORE"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 27,
+                "max_level": 27,
+                "species": "SPECIES_RUNERIGUS"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 25,
+                "max_level": 27,
+                "species": "SPECIES_RUNERIGUS"
               }
             ]
           }
@@ -38659,9 +38719,9 @@
                 "species": "SPECIES_STARAVIA"
               },
               {
-                "min_level": 5,
-                "max_level": 5,
-                "species": "SPECIES_NONE"
+                "min_level": 34,
+                "max_level": 35,
+                "species": "SPECIES_LAMPENT"
               },
               {
                 "min_level": 5,

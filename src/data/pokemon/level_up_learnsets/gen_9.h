@@ -14852,9 +14852,9 @@ static const struct LevelUpMove sEmpoleonLevelUpLearnset[] = {
 static const struct LevelUpMove sStarlyLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_PECK),
         LEVEL_UP_MOVE(1, MOVE_FEATHER_DANCE),
-        LEVEL_UP_MOVE(5, MOVE_WHIRLWIND),
+        LEVEL_UP_MOVE(5, MOVE_DETECT),
         LEVEL_UP_MOVE(9, MOVE_FEINT),
-        LEVEL_UP_MOVE(12, MOVE_DETECT),
+        LEVEL_UP_MOVE(12, MOVE_WHIRLWIND),
         LEVEL_UP_MOVE(17, MOVE_ENDEAVOR),
         LEVEL_UP_MOVE(20, MOVE_AERIAL_ACE),
         LEVEL_UP_MOVE(22, MOVE_TAILWIND),
@@ -14868,11 +14868,11 @@ static const struct LevelUpMove sStarlyLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sStaraviaLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_WHIRLWIND),
         LEVEL_UP_MOVE(1, MOVE_PECK),
         LEVEL_UP_MOVE(1, MOVE_FEATHER_DANCE),
-        LEVEL_UP_MOVE(5, MOVE_WHIRLWIND),
+        LEVEL_UP_MOVE(5, MOVE_DETECT),
         LEVEL_UP_MOVE(9, MOVE_FEINT),
-        LEVEL_UP_MOVE(12, MOVE_DETECT),
         LEVEL_UP_MOVE(17, MOVE_ENDEAVOR),
         LEVEL_UP_MOVE(21, MOVE_AERIAL_ACE),
         LEVEL_UP_MOVE(25, MOVE_TAILWIND),

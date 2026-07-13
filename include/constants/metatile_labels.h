@@ -268,6 +268,7 @@
 #define METATILE_General_Door_Gym              0x1CD
 #define METATILE_General_Door_PokeCenter       0x061
 #define METATILE_General_Door_PokeMart         0x041
+#define METATILE_General_DoubleGrass           0x1A2
 #define METATILE_General_Grass                 0x001
 #define METATILE_General_Grass_TreeLeft        0x1CE
 #define METATILE_General_Grass_TreeRight       0x1CF
@@ -1016,8 +1017,12 @@
 #define METATILE_Underwater_RockWall     0x21E
 
 // gTileset_Unused1
-#define METATILE_Unused1_Snow       0x27C
-#define METATILE_Unused1_SnowGrass  0x2A4
+#define METATILE_Unused1_Gauntlet_Ash_Grass      0x209
+#define METATILE_Unused1_Gauntlet_Snow_Ashgrass  0x3B4
+#define METATILE_Unused1_Gauntlet_Snow_Vanish    0x3B5
+#define METATILE_Unused1_Gauntlet_Vanish_Grass   0x206
+#define METATILE_Unused1_Snow                    0x27C
+#define METATILE_Unused1_SnowGrass               0x2A4
 
 // gTileset_VermilionCity
 #define METATILE_VermilionCity_Door        0x29E

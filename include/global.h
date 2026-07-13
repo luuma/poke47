@@ -518,7 +518,7 @@ struct BattleFrontier
     /*0xE22*/ u16 pyramidRandoms[4];
     /*0xE2A*/ u8 pyramidTrainerFlags; // 1 bit for each trainer (MAX_PYRAMID_TRAINERS)
     /*0xE2B*/ //u8 padding3;
-    /*0xE2C*/ struct PyramidBag pyramidBag;
+    /*0xE2C*/ struct PyramidBag pyramidBag;//FLAG_GAUNTLET_CHALLENGE
     /*0xE68*/ u8 pyramidLightRadius;
     /*0xE69*/ //u8 padding4;
     /*0xE6A*/ u16 verdanturfTentPrize;

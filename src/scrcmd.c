@@ -67,6 +67,7 @@
 #include "constants/event_objects.h"
 #include "constants/map_types.h"
 #include "constants/party_menu.h"
+#include "constants/AGauntlet.h"//added
 
 #include "pokemon.h"//added
 #include "ow_abilities.h"//added
@@ -83,7 +84,7 @@ static EWRAM_DATA u16 sMovingNpcMapNum = 0;
 static EWRAM_DATA u16 sFieldEffectScriptId = 0;
 
 static u8 sBrailleWindowId;
-static bool8 sIsScriptedWildDouble;
+bool8 sIsScriptedWildDouble;
 
 extern const SpecialFunc gSpecials[];
 extern const u8 *gStdScripts[];
@@ -2515,6 +2516,11 @@ bool8 ScrCmd_cleartrainerflag(struct ScriptContext *ctx)
     return FALSE;
 }
 
+void SetScriptedWildDouble(bool32 bool)
+{
+    sIsScriptedWildDouble = bool;
+}
+
 bool8 ScrCmd_setwildbattle(struct ScriptContext *ctx)
 {
     enum Species species = ScriptReadHalfword(ctx);
@@ -3439,9 +3445,9 @@ const struct {
 // altar 1 hp elder wyrm
     {
         .species = SPECIES_GABITE,
-        .moves = {MOVE_BULLDOZE, MOVE_DRAGON_BREATH, MOVE_SPIKES, MOVE_SAND_TOMB},
+        .moves = {MOVE_BULLDOZE, MOVE_DRAGON_BREATH, MOVE_FIRE_FANG, MOVE_SAND_TOMB},
         .level = 10,
-        .item = ITEM_ORAN_BERRY,
+        .item = ITEM_NONE,
     },
     {
         .species = SPECIES_TURTONATOR,
@@ -3453,7 +3459,7 @@ const struct {
         .species = SPECIES_FRAXURE,
         .moves = {MOVE_SLASH, MOVE_X_SCISSOR, MOVE_DRAGON_DANCE, MOVE_NIGHT_SLASH},
         .level = 10,
-        .item = ITEM_ORAN_BERRY,
+        .item = ITEM_NONE,
     },
 //altar 2 atk groudon
     {
@@ -3567,7 +3573,7 @@ void ScrCmd_SetGauntletBossBattle(struct ScriptContext *ctx)
 
     ZeroEnemyPartyMons();
     u32 i;
-    u32 bossIdx = altar + Random() %3; 
+    u32 bossIdx = altar + GauntletReadRng(3); 
     enum Species species = sGauntletBossList[bossIdx].species;
 
     u32 personality = GetMonPersonality(species,

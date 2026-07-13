@@ -4,55 +4,12 @@
 void GauntletStart(struct ScriptContext *ctx);
 void GauntletEnd(struct ScriptContext *ctx);
 void CallnativeGauntletItemBall(struct ScriptContext *ctx);
-static void InitGauntletBagItems(void);
-static void RespawnAbout24RandomGauntletItemBalls(void);
-static bool32 GauntletPartySetup(void);
-static bool32 SquashEarthRibbonInfo(void);
-
-
-const int GauntletItemsLow[8] = {
-    ITEM_HP_UP,
-    ITEM_PP_UP,
-    ITEM_POTION,
-    ITEM_FLUFFY_TAIL,
-    ITEM_PECHA_BERRY,
-    ITEM_ORAN_BERRY,
-    ITEM_FULL_HEAL,
-    ITEM_ABILITY_PATCH
-};
-
-const int GauntletItemsMed[8] = {
-    ITEM_PROTEIN,
-    ITEM_IRON,
-    ITEM_SUPER_POTION,
-    ITEM_CHERI_BERRY,
-    ITEM_PERSIM_BERRY,
-    ITEM_X_ATTACK,
-    ITEM_X_DEFEND,
-    ITEM_ABILITY_CAPSULE
-};
-
-const int GauntletItemsHigh[8] = {
-    ITEM_ZINC,
-    ITEM_CALCIUM,
-    ITEM_CARBOS,
-    ITEM_X_SPECIAL,
-    ITEM_X_SP_DEF,
-    ITEM_X_SPEED,
-    ITEM_FULL_HEAL,
-    ITEM_FULL_RESTORE
-};
-
-const int GauntletItemsEnd[8] = {
-    ITEM_SUPER_POTION,
-    ITEM_SUPER_POTION,
-    ITEM_HYPER_POTION,
-    ITEM_FULL_RESTORE,
-    ITEM_FULL_HEAL,
-    ITEM_LEPPA_BERRY,
-    ITEM_LUM_BERRY,
-    ITEM_REVIVE
-};
+//static void InitGauntletBagItems(void);
+//static void RespawnAbout24RandomGauntletItemBalls(void);
+//static bool32 GauntletPartySetup(void);
+//static bool32 SquashEarthRibbonInfo(void);
+u32 GauntletReadRng(u32 integer);
+void TryUpdateRocksReveal(void);
 
 
 enum ItemPool {

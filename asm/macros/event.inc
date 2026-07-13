@@ -2232,6 +2232,15 @@
 	.endm
 
 	@ useful totem boost macros
+	.macro totemboost_defsdef battler:req
+	settotemboost \battler, 0, 1, 0, 0, 1
+	.endm
+
+	.macro totemboost_defsdefspe battler:req
+	settotemboost \battler, 0, 1, 1, 0, 1
+	.endm
+
+
 	.macro totemboost_atk1 battler:req
 	settotemboost \battler, 1
 	.endm

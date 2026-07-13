@@ -2888,6 +2888,7 @@ bool8 ObjectEventInteractionBerryHasPests(void)
     species = GetBerryPestSpecies(gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].berry);
     if (species == SPECIES_NONE)
         return FALSE;
+    SetScriptedWildDouble(FALSE);
     CreateScriptedWildMon(species, 10 + Random() % 6, ITEM_RICH_MULCH + Random() % 4); // any of the four XY mulches.
     gSaveBlock1Ptr->berryTrees[GetObjectEventBerryTreeId(gSelectedObjectEvent)].pests = FALSE;
     return TRUE;

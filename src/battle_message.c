@@ -897,6 +897,8 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_LIGHTSCREENWOREOFF]                   = COMPOUND_STRING("{B_DEF_TEAM1} team's Light Screen wore off!"),
     [STRINGID_AURORAVEILWOREOFF]                    = COMPOUND_STRING("{B_DEF_TEAM1} team's Aurora Veil wore off!"),
     [STRINGID_STICKYWEBDISAPPEAREDFROMYOU]          = COMPOUND_STRING("The sticky web has disappeared from the ground around you!"),
+    [STRINGID_PKMNTWISTEDDIMENSIONSSCR]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} twisted the dimensions!"),
+    [STRINGID_SWAPSDEFANDSPDEFOFALLPOKEMONSCR]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} created a bizarre area!\nDefense swaps with Attack,\land Sp.Def swaps with Sp.Atk!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =

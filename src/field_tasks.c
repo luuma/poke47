@@ -774,16 +774,27 @@ static void AshGrassPerStepCallback(u8 taskId)
 
     tPrevX = x;
     tPrevY = y;
+    bool8 hasSack = CheckBagHasItem(ITEM_SOOT_SACK, 1);
     if (MetatileBehavior_IsAshGrass(MapGridGetMetatileBehaviorAt(x, y)))
     {
         // Remove ash from grass
         if (MapGridGetMetatileIdAt(x, y) == METATILE_Fallarbor_AshGrass)
             StartAshFieldEffect(x, y, METATILE_Fallarbor_NormalGrass, 4);
+        else if (MapGridGetMetatileIdAt(x, y) == METATILE_Unused1_Gauntlet_Ash_Grass)
+        {
+            StartAshFieldEffect(x, y, METATILE_Unused1_Gauntlet_Vanish_Grass, 4);
+            hasSack = FALSE;
+        }
+        else if (MapGridGetMetatileIdAt(x, y) == METATILE_Unused1_Gauntlet_Snow_Ashgrass)
+        {
+            StartAshFieldEffect(x, y, METATILE_Unused1_Gauntlet_Snow_Vanish, 4);
+            hasSack = FALSE;
+        }
         else
             StartAshFieldEffect(x, y, METATILE_Lavaridge_NormalGrass, 4);
 
         // Try to gather ash
-        if (CheckBagHasItem(ITEM_SOOT_SACK, 1))
+        if (hasSack)
         {
             ashGatherCount = GetVarPointer(VAR_ASH_GATHER_COUNT);
             if (*ashGatherCount < 9999)

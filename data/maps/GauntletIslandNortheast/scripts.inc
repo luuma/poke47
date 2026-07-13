@@ -1,5 +1,20 @@
 GauntletIslandNortheast_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume @ 	setstepcallback STEP_CB_ASH ; end
+	map_script MAP_SCRIPT_ON_TRANSITION, GauntletIslandNortheast_OnTransition
 	.byte 0
+
+GauntletIslandNortheast_OnTransition:
+	goto_if_unset FLAG_GAUNTLET_1FBOULDER1, GauntletIslandNortheast_ice
+	goto_if_unset FLAG_GAUNTLET_1FBOULDER2, GauntletIslandNortheast_ice
+	goto GauntletIslandNortheast_fire
+
+GauntletIslandNortheast_ice::
+	setmaplayoutindex LAYOUT_AEGAUNTLET7
+	end
+
+GauntletIslandNortheast_fire::
+	setmaplayoutindex LAYOUT_AEGAUNTLET7_2
+	end
 
 
 
@@ -111,6 +126,7 @@ GauntletIsland_AltarSpatk::
     playmoncry VAR_RESULT, CRY_MODE_ENCOUNTER
     delay 40
     waitmoncry
+    totemboost_defsdef B_POSITION_OPPONENT_LEFT
     dowildbattle
     specialvar VAR_RESULT, GetBattleOutcome
     goto_if_eq VAR_RESULT, B_OUTCOME_LOST, GauntletIsland_AltarLoss
@@ -144,5 +160,49 @@ GauntletIsland_AltarSpatkVictory:
 	.string "Your party's SP.ATK stat potential\l"
 	.string "is now maximised.$"
 
+GauntletIsland_AltarSpeed::
+    lockall
+    msgbox GauntletIsland_AltarSpeedInscription 
+    goto_if_set FLAG_GAUNTLET_SPEED_ALTAR, GauntletIsland_AltarQuiet
+    msgbox GauntletIsland_AltarSpeedTouch MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
+    closemessage
+    setvar B_VAR_WILD_AI_FLAGS 3@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    call Common_EventScript_OutOfCenterPartyHeal
+    callnative ScrCmd_SetGauntletBossBattle
+    .byte 9
+    playmoncry VAR_RESULT, CRY_MODE_ENCOUNTER
+    delay 40
+    waitmoncry
+    totemboost_defsdefspe B_POSITION_OPPONENT_LEFT
+    dowildbattle
+    specialvar VAR_RESULT, GetBattleOutcome
+    goto_if_eq VAR_RESULT, B_OUTCOME_LOST, GauntletIsland_AltarLoss
+    goto_if_eq VAR_RESULT, B_OUTCOME_DREW, GauntletIsland_AltarLoss
+    goto_if_eq VAR_RESULT, B_OUTCOME_RAN, GauntletIsland_AltarLoss
+    goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, GauntletIsland_AltarLoss
+    goto_if_eq VAR_RESULT, B_OUTCOME_FORFEITED, GauntletIsland_AltarLoss
+    call Common_EventScript_OutOfCenterPartyHeal
+    setvar B_VAR_WILD_AI_FLAGS, 0
+    setvar VAR_0x8008, STAT_HP
+    call GauntletIsland_AltarBlessing
+    setflag FLAG_GAUNTLET_SPEED_ALTAR
+    msgbox GauntletIsland_AltarSpeedVictory
+    releaseall
+    end
 
+
+GauntletIsland_AltarSpeedInscription:
+	.string "An engraving on the ALTAR reads\n"
+	.string "IN DEVOTION TO THE HEAVENS.$"
+
+
+GauntletIsland_AltarSpeedTouch:
+	.string "Its sanctity is awe-inspiring.\p"
+	.string "Touch the ALTAR?$"
+
+GauntletIsland_AltarSpeedVictory:
+	.string "The light of judgment heals you.\n"
+	.string "Your party's SPEED stat potential\l"
+	.string "is now maximised.$"
 

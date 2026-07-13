@@ -29,9 +29,9 @@ u32 GetCurrentLevelCap(void)
     {
         {FLAG_GAUNTLET_HP_ALTAR, 7},//hp. This boss is easy enough.
         {FLAG_GAUNTLET_ATK_ALTAR, 14},//atk. This boss should try to kick yuor Ass.
-        {FLAG_GAUNTLET_DEF_ALTAR, 18},//def
-        {FLAG_GAUNTLET_SPEED_ALTAR, 21},//speed
-        {FLAG_GAUNTLET_SPATK_ALTAR, 24},//spatk
+        {FLAG_GAUNTLET_SPATK_ALTAR, 18},//def
+        {FLAG_GAUNTLET_SPEED_ALTAR, 23},//speed
+        {FLAG_GAUNTLET_DEF_ALTAR, 24},//spatk
         {FLAG_GAUNTLET_SPDEF_ALTAR, 27},//sdef
         {FLAG_GAUNTLET_BOSS_ALTAR, 31},//sdef
     };

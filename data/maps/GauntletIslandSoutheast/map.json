@@ -268,5 +268,14 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [
+    {
+      "type": "hidden_item",
+      "x": 32,
+      "y": 22,
+      "elevation": 0,
+      "item": "ITEM_BRAVE_MINT",
+      "flag": "FLAG_GAUNTLET_MINT_A"
+    }
+  ]
 }
