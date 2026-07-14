@@ -408,14 +408,17 @@ struct BoonGauntlet
 
 const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_TOXIC] =      {         .name =_("TM TOXIC"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_TOXIC,     },
+[GB_30_RANDOM_BERRIES] =      {         .name =_("30 RANDOM BERRIES"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_30_BERRIES,         .special = 0,     },
 [GB_LIFE_DEW] =      {         .name =_("TM LIFE DEW"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_LIFE_DEW,     },
 [GB_EXP_SHARE] =      {         .name =_("EXP SHARE"),         .altar = TYPE_NEREID,         .boonType = BOON_ITEM,         .special = ITEM_EXP_SHARE,     },
 [GB_CHOICE_SCARF] =      {         .name =_("CHOICE SCARF"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_CHOICE_SCARF,     },
 [GB_LIFE_ORB] =      {         .name =_("LIFE ORB"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_LIFE_ORB,     },
 [GB_PROTECT] =      {         .name =_("TM PROTECT"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_PROTECT,     },
 [GB_EVIOLITE] =      {         .name =_("EVIOLITE"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_EVIOLITE,     },
+[GB_10X_HYPER_POTION] =      {         .name =_("10X HYPER POTION"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10XITEM,         .special = 0,     },
 [GB_SHOCK_SHIELD] =      {         .name =_("SHOCK SHIELD"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_SHOCK_SHIELD,     },
 [GB_FOCUS_SASH] =      {         .name =_("FOCUS SASH"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_FOCUS_SASH,     },
+[GB_REROLL_INTO_WINGED_LION] =      {         .name =_("REROLL INTO WINGED LION"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_REROLL,         .special = 0,     },
 [GB_AROMATHERAPY] =      {         .name =_("TM AROMATHERAPY"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_AROMATHERAPY,     },
 [GB_LEECH_SEED] =      {         .name =_("TM LEECH SEED"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_LEECH_SEED,     },
 [GB_WORRY_SEED] =      {         .name =_("TM WORRY SEED"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_WORRY_SEED,     },
@@ -425,7 +428,9 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_VENOSHOCK] =      {         .name =_("TM VENOSHOCK"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_VENOSHOCK,     },
 [GB_BLACK_SLUDGE] =      {         .name =_("BLACK SLUDGE"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_BLACK_SLUDGE,     },
 [GB_SHED_SHELL] =      {         .name =_("SHED SHELL"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_SHED_SHELL,     },
+[GB_20_TERRAIN_SEEDS] =      {         .name =_("20 TERRAIN SEEDS"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TERRAIN_SEEDS,         .special = 0,     },
 [GB_BIG_ROOT] =      {         .name =_("BIG ROOT"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_BIG_ROOT,     },
+[GB_TOXIC_ORB_AND_FLAME_ORB] =      {         .name =_("TOXIC ORB AND FLAME ORB"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TOXICANDFLAMEORB,         .special = 0,     },
 [GB_MIRACLE_SEED] =      {         .name =_("MIRACLE SEED"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_MIRACLE_SEED,     },
 [GB_SILVER_POWDER] =      {         .name =_("SILVER POWDER"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_SILVER_POWDER,     },
 [GB_POISON_BARB] =      {         .name =_("POISON BARB"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_POISON_BARB,     },
@@ -438,6 +443,7 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_AURORA_VEIL] =      {         .name =_("TM AURORA VEIL"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_AURORA_VEIL,     },
 [GB_HAIL] =      {         .name =_("TM HAIL"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_HAIL,     },
 [GB_DRAINING_KISS] =      {         .name =_("TM DRAINING KISS"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_DRAINING_KISS,     },
+[GB_MONEY] =      {         .name =_("MONEY"),         .altar = TYPE_NEREID,         .boonType = BOON_MONEY,         .special = 10000,     },
 [GB_ICE_PUNCH] =      {         .name =_("TUTOR ICE PUNCH"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_ICE_PUNCH,     },
 [GB_FLAME_CHARGE] =      {         .name =_("TM FLAME CHARGE"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_FLAME_CHARGE,     },
 [GB_SUNNY_DAY] =      {         .name =_("TM SUNNY DAY"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_SUNNY_DAY,     },
@@ -493,7 +499,9 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_ROCKY_HELMET] =      {         .name =_("ROCKY HELMET"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_ROCKY_HELMET,     },
 [GB_ASSAULT_VEST] =      {         .name =_("ASSAULT VEST"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_ASSAULT_VEST,     },
 [GB_HEAVY_DUTY_BOOTS] =      {         .name =_("HEAVY DUTY BOOTS"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_HEAVY_DUTY_BOOTS,     },
+[GB_10X_FULL_RESTORE] =      {         .name =_("10X FULL RESTORE"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10XITEM,         .special = ITEM_FULL_RESTORE,     },
 [GB_COVERT_CLOAK] =      {         .name =_("COVERT CLOAK"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_COVERT_CLOAK,     },
+[GB_10X_PP_UP] =      {         .name =_("10X PP UP"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10XITEM,         .special = ITEM_PP_UP,     },
 [GB_BULK_UP] =      {         .name =_("TM BULK UP"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_BULK_UP,     },
 [GB_COACHING] =      {         .name =_("TM COACHING"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_COACHING,     },
 [GB_POWER_UP_PUNCH] =      {         .name =_("TM POWER UP PUNCH"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_POWER_UP_PUNCH,     },
@@ -510,8 +518,10 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_RED_CARD] =      {         .name =_("RED CARD"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_RED_CARD,     },
 [GB_AIR_BALLOON] =      {         .name =_("AIR BALLOON"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_AIR_BALLOON,     },
 [GB_FLYING_GEM] =      {         .name =_("FLYING GEM"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_FLYING_GEM,     },
+[GB_TUTOR_METRONOME_AND_REROLL] =      {         .name =_("TUTOR METRONOME AND REROLL"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_REROLLPLUSTUTOR,         .special = MOVE_METRONOME,     },
 [GB_FLAIL] =      {         .name =_("TUTOR FLAIL"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_FLAIL,     },
 [GB_ENDURE] =      {         .name =_("TUTOR ENDURE"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_ENDURE,     },
+[GB_10X_X_SPEED] =      {         .name =_("10X X SPEED"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_10XITEM,         .special = ITEM_X_SPEED,     },
 [GB_FALSE_SWIPE] =      {         .name =_("TUTOR FALSE SWIPE"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_FALSE_SWIPE,     },
 [GB_MEGA_KICK] =      {         .name =_("TUTOR MEGA KICK"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_MEGA_KICK,     },
 [GB_MEGA_PUNCH] =      {         .name =_("TUTOR MEGA PUNCH"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_MEGA_PUNCH,     },
@@ -557,6 +567,7 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_METEOR_BEAM] =      {         .name =_("TM METEOR BEAM"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_METEOR_BEAM,     },
 [GB_ROCK_SLIDE] =      {         .name =_("TM ROCK SLIDE"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_ROCK_SLIDE,     },
 [GB_SCORCHING_SANDS] =      {         .name =_("TM SCORCHING SANDS"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_SCORCHING_SANDS,     },
+[GB_10X_IRON_10X_HP_UP_10X_ZINC] =      {         .name =_("10X IRON, 10X HP UP, 10X ZINC"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10IRON10HPUP10ZINC,         .special = 0,     },
 [GB_BRICK_BREAK] =      {         .name =_("TM BRICK BREAK"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_BRICK_BREAK,     },
 [GB_DRAIN_PUNCH] =      {         .name =_("TM DRAIN PUNCH"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_DRAIN_PUNCH,     },
 [GB_ACROBATICS] =      {         .name =_("TM ACROBATICS"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_ACROBATICS,     },
@@ -571,6 +582,7 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_SURF] =      {         .name =_("HM SURF"),         .altar = TYPE_NEREID,         .boonType = BOON_HM,         .special = ITEM_HM_SURF,     },
 [GB_ICE_BEAM] =      {         .name =_("TM ICE BEAM"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_ICE_BEAM,     },
 [GB_PLAY_ROUGH] =      {         .name =_("TM PLAY ROUGH"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_PLAY_ROUGH,     },
+[GB_MORE_MONEY] =      {         .name =_("MORE MONEY"),         .altar = TYPE_NEREID,         .boonType = BOON_MONEY,         .special = 30000,     },
 [GB_DRACO_METEOR] =      {         .name =_("TM DRACO METEOR"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_DRACO_METEOR,     },
 [GB_CHOICE_SPECS] =      {         .name =_("CHOICE SPECS"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_CHOICE_SPECS,     },
 [GB_CHOICE_BAND] =      {         .name =_("CHOICE BAND"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_CHOICE_BAND,     },
@@ -580,6 +592,7 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_DOUBLE_EDGE] =      {         .name =_("TUTOR DOUBLE EDGE"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_DOUBLE_EDGE,     },
 [GB_STONE_EDGE] =      {         .name =_("TM STONE EDGE"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_STONE_EDGE,     },
 [GB_EARTHQUAKE] =      {         .name =_("TM EARTHQUAKE"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_EARTHQUAKE,     },
+[GB_10X_REVIVE] =      {         .name =_("10X REVIVE"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10XITEM,         .special = ITEM_REVIVE,     },
 [GB_FOCUS_BLAST] =      {         .name =_("TM FOCUS BLAST"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_FOCUS_BLAST,     },
 };
 
@@ -900,7 +913,9 @@ static u8 GetGauntletBoon(enum GauntletTypes type, enum GauntletRarity rarity, u
             }
             break;
         }
-    } while (i == choice1 || i == choice2 || i == choice3 || i == choice4 || i == choice5 || i == choice6 || i == choice7 || i == choice8 || i == MultichoiceOptions[1] || i == MultichoiceOptions[2] || i == MultichoiceOptions[3]|| i == MultichoiceOptions[0] || BoonList[i].special == 0); 
+    } while (i == choice1 || i == choice2 || i == choice3 || i == choice4 || i == choice5 || i == choice6 || i == choice7 || i == choice8 
+|| i == MultichoiceOptions[1] || i == MultichoiceOptions[2] || i == MultichoiceOptions[3]|| i == MultichoiceOptions[0] 
+|| BoonList[i].special == 0); 
     return i;
 }
 

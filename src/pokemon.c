@@ -5787,7 +5787,7 @@ u8 CanLearnTeachableMove(enum Species species, enum Move move)
         if (teachableLearnset[i] == move)
             return TRUE;
     }
-    return FALSE;
+    return FlagGet(FLAG_GAUNTLET_CHALLENGE);
 }
 
 u8 GetLevelUpMovesBySpecies(enum Species species, u16 *moves)
