@@ -6,10 +6,10 @@
   "region_map_section": "MAPSEC_GAUNTLETSE",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
-  "allow_cycling": false,
-  "allow_escaping": false,
-  "allow_running": false,
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
   "show_map_name": true,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": null,
@@ -22,7 +22,7 @@
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
       "movement_range_y": 0,
-      "trainer_type": "FLAG_GAUNTLET_0FBOULDER2",
+      "trainer_type": "FLAG_GAUNTLET_0FBOULDER1",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
       "flag": "FLAG_GAUNTLET_1FBOULDER1"
@@ -95,7 +95,7 @@
   ],
   "warp_events": [
     {
-      "x": 5,
+      "x": 4,
       "y": 7,
       "elevation": 0,
       "dest_map": "MAP_GAUNTLET_SOUTHEAST_CAVE",
@@ -107,8 +107,16 @@
       "elevation": 0,
       "dest_map": "MAP_GAUNTLET_SOUTHEAST_CAVE2F",
       "dest_warp_id": "0"
+    },
+    {
+      "x": 19,
+      "y": 7,
+      "elevation": 0,
+      "dest_map": "MAP_GAUNTLET_SOUTHEAST_CAVE",
+      "dest_warp_id": "3"
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

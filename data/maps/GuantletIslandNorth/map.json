@@ -5,8 +5,8 @@
   "music": "MUS_MT_PYRE_EXTERIOR",
   "region_map_section": "MAPSEC_GAUNTLETNW",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -213,6 +213,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
       "flag": "FLAG_GAUNTLET_3C"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 9,
+      "y": 18,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
+      "script": "GauntletIslandHigh_ItemBall",
+      "flag": "FLAG_GAUNTLET_3D"
     }
   ],
   "warp_events": [],
@@ -225,6 +238,23 @@
       "elevation": 0,
       "item": "ITEM_HASTY_MINT",
       "flag": "FLAG_GAUNTLET_MINT_D"
+    },
+    {
+      "type": "sign",
+      "x": 17,
+      "y": 49,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
+      "script": "GuantletIslandNorth_EventScript_SignLocked"
+    },
+    {
+      "type": "sign",
+      "x": 21,
+      "y": 26,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "GuantletIslandNorth_EventScript_SignTown"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

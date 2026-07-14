@@ -5,8 +5,8 @@
   "music": "MUS_GAUNTLET_OPENER",
   "region_map_section": "MAPSEC_GAUNTLETNE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -22,6 +22,11 @@
       "map": "MAP_GAUNTLET_ISLAND_SOUTHEAST",
       "offset": 0,
       "direction": "down"
+    },
+    {
+      "map": "MAP_GAUNTLET_ISLAND_NORTHEAST_DIVE",
+      "offset": 0,
+      "direction": "dive"
     }
   ],
   "object_events": [
@@ -91,6 +96,7 @@
       "flag": "FLAG_GAUNTLET_16"
     },
     {
+      "local_id": "localid_atk",
       "graphics_id": "OBJ_EVENT_GFX_REGICE",
       "x": 37,
       "y": 38,
@@ -336,6 +342,32 @@
       "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
       "script": "GauntletIslandMed_ItemBall",
       "flag": "FLAG_GAUNTLET_3A"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 52,
+      "y": 22,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GauntletIslandMed_ItemBall",
+      "flag": "FLAG_GAUNTLET_3F"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 54,
+      "y": 25,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GauntletIslandMed_ItemBall",
+      "flag": "FLAG_GAUNTLET_3E"
     }
   ],
   "warp_events": [
@@ -347,7 +379,61 @@
       "dest_warp_id": "1"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 13,
+      "y": 22,
+      "elevation": 0,
+      "var": "VAR_GAUNTLET_9",
+      "var_value": "40",
+      "script": "GauntletIsland_TheLake"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 24,
+      "elevation": 0,
+      "var": "VAR_GAUNTLET_9",
+      "var_value": "40",
+      "script": "GauntletIsland_TheLake"
+    },
+    {
+      "type": "weather",
+      "x": 25,
+      "y": 40,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SNOW"
+    },
+    {
+      "type": "weather",
+      "x": 25,
+      "y": 39,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SNOW"
+    },
+    {
+      "type": "weather",
+      "x": 26,
+      "y": 38,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SNOW"
+    },
+    {
+      "type": "weather",
+      "x": 27,
+      "y": 37,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SNOW"
+    },
+    {
+      "type": "weather",
+      "x": 28,
+      "y": 36,
+      "elevation": 0,
+      "weather": "COORD_EVENT_WEATHER_SNOW"
+    }
+  ],
   "bg_events": [
     {
       "type": "hidden_item",
@@ -357,5 +443,6 @@
       "item": "ITEM_IMPISH_MINT",
       "flag": "FLAG_GAUNTLET_MINT_C"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

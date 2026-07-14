@@ -1310,7 +1310,7 @@
 #define FLAG_GAUNTLET_MINT_D                                           0x268 // HIDDS Flag
 #define FLAG_GAUNTLET_MINT_E                                           0x269 // HIDDS Flag
 #define FLAG_GAUNTLET_MINT_F                                           0x26A // HIDDS Flag
-#define FLAG_UNUSED_0x26B  0x26B // Left blank, likely unused
+#define FLAG_GAUNTLET_MINT_G  0x26B // Left blank, likely unused
 
 #define FLAG_GAUNTLET_SHOWROCK_1                                           0x4E0 // Unused Flag
 #define FLAG_GAUNTLET_SHOWROCK_2                                            0x4E1 // Unused Flag
@@ -1331,7 +1331,7 @@
 #define FLAG_GAUNTLET_TALKED_WITCH                                           0x4EF // Unused Flag
 
 
-#define FLAG_GAUNTLET_LAST FLAG_GAUNTLET_SHOWROCK_4// WIPED
+#define FLAG_GAUNTLET_LAST FLAG_GAUNTLET_SHOWROCK_4// CLEARED
 #define FLAGS_GAUNTLET FLAG_GAUNTLET_3F - FLAG_GAUNTLET_3// RANDOMLY SET
 
 

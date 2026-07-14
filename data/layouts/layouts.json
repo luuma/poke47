@@ -9859,6 +9859,28 @@
       "secondary_tileset": "gTileset_Pacifidlog",
       "border_filepath": "data/layouts/AEGauntletSoutheastIsland/border.bin",
       "blockdata_filepath": "data/layouts/AEGauntletSoutheastIsland/map.bin"
+    },
+    {
+      "id": "LAYOUT_GAUNTLET_ISLAND_NORTHEAST_DIVE",
+      "name": "GauntletIslandNortheast_Dive_Layout",
+      "width": 32,
+      "height": 36,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Underwater",
+      "border_filepath": "data/layouts/GauntletIslandNortheast_Dive/border.bin",
+      "blockdata_filepath": "data/layouts/GauntletIslandNortheast_Dive/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_GAUNTLET_NORTHEAST_SECRET_CAVE",
+      "name": "GauntletNortheastSecretCave_Layout",
+      "width": 19,
+      "height": 24,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/GauntletNortheastSecretCave/border.bin",
+      "blockdata_filepath": "data/layouts/GauntletNortheastSecretCave/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

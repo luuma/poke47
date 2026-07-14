@@ -5,8 +5,8 @@
   "music": "MUS_MT_PYRE_EXTERIOR",
   "region_map_section": "MAPSEC_GAUNTLETSW",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -31,7 +31,8 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_REGISTEEL",
+      "local_id": "localid_spatk",
+      "graphics_id": "OBJ_EVENT_GFX_REGICE",
       "x": 26,
       "y": 14,
       "elevation": 0,
@@ -357,8 +358,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
-      "x": 44,
-      "y": 25,
+      "x": 42,
+      "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -410,8 +411,8 @@
     {
       "local_id": "LOCALID_ROCK_1",
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": -5,
-      "y": 30,
+      "x": -4,
+      "y": 40,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -424,8 +425,8 @@
     {
       "local_id": "LOCALID_ROCK_2",
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": -5,
-      "y": 34,
+      "x": -4,
+      "y": 58,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -455,5 +456,6 @@
       "item": "ITEM_MILD_MINT",
       "flag": "FLAG_GAUNTLET_MINT_F"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

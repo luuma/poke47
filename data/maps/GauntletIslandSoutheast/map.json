@@ -5,8 +5,8 @@
   "music": "MUS_GAUNTLET_OPENER",
   "region_map_section": "MAPSEC_GAUNTLETSE",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -115,19 +115,6 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 8,
-      "y": -9,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 47,
       "y": 7,
       "elevation": 3,
@@ -138,19 +125,6 @@
       "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
       "script": "GauntletIslandLow_ItemBall",
       "flag": "FLAG_GAUNTLET_8"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 39,
-      "y": -9,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_AQUA_HIDEOUT_B2F_NEST_BALL"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -258,13 +232,6 @@
       "elevation": 0,
       "dest_map": "MAP_GAUNTLET_SOUTHEAST_CAVE",
       "dest_warp_id": "1"
-    },
-    {
-      "x": 8,
-      "y": -12,
-      "elevation": 0,
-      "dest_map": "MAP_GAUNTLET_ISLAND_SOUTHEAST",
-      "dest_warp_id": "0"
     }
   ],
   "coord_events": [],
@@ -277,5 +244,6 @@
       "item": "ITEM_BRAVE_MINT",
       "flag": "FLAG_GAUNTLET_MINT_A"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

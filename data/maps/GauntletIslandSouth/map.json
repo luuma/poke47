@@ -5,8 +5,8 @@
   "music": "MUS_GAUNTLET_OPENER",
   "region_map_section": "MAPSEC_GAUNTLETSW",
   "requires_flash": false,
-  "weather": "WEATHER_NONE",
-  "map_type": "MAP_TYPE_NONE",
+  "weather": "WEATHER_SUNNY",
+  "map_type": "MAP_TYPE_ROUTE",
   "allow_cycling": true,
   "allow_escaping": false,
   "allow_running": true,
@@ -40,10 +40,11 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
+      "script": "GauntletIsland_EventScript_RetirePrompt",
       "flag": "0"
     },
     {
+      "local_id": "localid_hp",
       "graphics_id": "OBJ_EVENT_GFX_REGICE",
       "x": 24,
       "y": 2,
@@ -254,8 +255,8 @@
     {
       "local_id": "LOCALID_ROCK_3",
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 2,
-      "y": 43,
+      "x": 3,
+      "y": 47,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -268,8 +269,8 @@
     {
       "local_id": "LOCALID_ROCK_4",
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 4,
-      "y": 43,
+      "x": 1,
+      "y": 47,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -278,6 +279,19 @@
       "trainer_sight_or_berry_tree_id": "ITEM_LUCKY_EGG",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_GAUNTLET_SHOWROCK_4"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 24,
+      "y": 6,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
+      "script": "GauntletIsland_Boon1",
+      "flag": "0"
     }
   ],
   "warp_events": [],
@@ -337,5 +351,6 @@
       "item": "ITEM_SERIOUS_MINT",
       "flag": "FLAG_GAUNTLET_MINT_B"
     }
-  ]
+  ],
+  "region": "REGION_HOENN"
 }

@@ -1901,6 +1901,25 @@ bool8 ScrCmd_dynmultipush(struct ScriptContext *ctx)
     return FALSE;
 }
 
+// hey wat if
+bool8 ScrCmd_dynmultipushBuffered(struct ScriptContext *ctx)// strvar must be UNIQUE until scrcmd multichoice called.
+{
+    u8 stringVarIndex = ScriptReadByte(ctx);//.byte gStringVar1
+    u32 id = VarGet(ScriptReadHalfword(ctx));// .2byte var_xyz
+
+    u8 *name = sScriptStringVars[stringVarIndex];
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    u8 *nameBuffer = Alloc(100);
+    struct ListMenuItem item;
+    StringExpandPlaceholders(nameBuffer, name);
+    item.name = nameBuffer;
+    item.id = id;
+    MultichoiceDynamic_PushElement(item);
+    return FALSE;
+}
+
 bool8 ScrCmd_multichoice(struct ScriptContext *ctx)
 {
     u8 left = ScriptReadByte(ctx);

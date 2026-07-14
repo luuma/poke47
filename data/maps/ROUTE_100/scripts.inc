@@ -85,7 +85,7 @@ Route100_EventScript_GauntletSetup::
         callnative GauntletStart
         goto_if_eq VAR_RESULT, FALSE, Route100_EventScript_Failsafe
 	msgbox Route100_Text_GauntletChallengeBegin
-	applymovement VAR_LAST_TALKED, Common_Movement_WalkUp2
+	applymovement VAR_LAST_TALKED, Common_Movement_WalkUp
 	waitmovement 0
 	delay 30
 	hideobjectat VAR_LAST_TALKED, MAP_ROUTE_100
@@ -122,6 +122,9 @@ Route100_EventScript_DepositTime::
 ROUTE_100_EventScript_Witch_First::
         msgbox Route100_Text_IwaswaitingforyouArrive
         setflag FLAG_GAUNTLET_TALKED_WITCH
+        setflag FLAG_GAUNTLET_0FBOULDER1
+        setflag FLAG_GAUNTLET_0FBOULDER2
+        setflag FLAG_GAUNTLET_0FBOULDER3
         msgbox Route100_Text_GauntletChallengeExplain, MSGBOX_YESNO
         goto ROUTE_100_Power        
 

@@ -1722,6 +1722,14 @@
       "y": 13,
       "width": 1,
       "height": 1
+    },
+    {
+      "id": "MAPSEC_ROUTE_100",
+      "name": "ROUTE 100",
+      "x": 4,
+      "y": 12,
+      "width": 1,
+      "height": 1
     }
   ]
 }

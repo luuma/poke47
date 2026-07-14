@@ -1,5 +1,4 @@
 
-
 GauntletIslandSouth_MapScripts::
 	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume @ 	setstepcallback STEP_CB_ASH ; end
 	.byte 0
@@ -79,9 +78,93 @@ GauntletIsland_AltarTrain::
     end
 
 GauntletIsland_AltarQuiet::
-    msgbox GauntletIsland_AltarQuiettxt
-    release
-    end
+    msgbox GauntletIsland_AltarQuiettxt, MSGBOX_DEFAULT 
+	call_if_set FLAG_GAUNTLET_HP_ALTAR, GauntletIsland_Multipushhp
+	call_if_set FLAG_GAUNTLET_ATK_ALTAR,  GauntletIsland_MultipushATK 
+	call_if_set FLAG_GAUNTLET_SPATK_ALTAR,  GauntletIsland_MultipushSPATK 
+	call_if_set FLAG_GAUNTLET_SPEED_ALTAR,  GauntletIsland_MultipushSPE
+	goto_if_ge VAR_TEMP_2, 1, GauntletIsland_Teleportmenu
+	closemessage
+	release
+	end
+
+GauntletIsland_Multipushhp::
+        goto_if_eq VAR_LAST_TALKED, localid_hp, GauntletIsland_ret
+	setvar VAR_0x8008 1
+    	dynmultipush GauntletIsland_south, 1
+	addvar VAR_TEMP_2, 1
+GauntletIsland_ret::
+	return
+
+GauntletIsland_MultipushATK::
+        goto_if_eq VAR_LAST_TALKED, localid_atk, GauntletIsland_ret
+	setvar VAR_0x8008 2
+    	dynmultipush GauntletIsland_east, 2
+	addvar VAR_TEMP_2, 1
+	return
+
+GauntletIsland_MultipushSPATK::
+        goto_if_eq VAR_LAST_TALKED, localid_spatk, GauntletIsland_ret
+	setvar VAR_0x8008 3
+    	dynmultipush GauntletIsland_west, 3
+	addvar VAR_TEMP_2, 1
+	return
+
+GauntletIsland_MultipushSPE::
+        goto_if_eq VAR_LAST_TALKED, localid_speed, GauntletIsland_ret
+	setvar VAR_0x8008 4
+    	dynmultipush GauntletIsland_north, 4
+	addvar VAR_TEMP_2, 1
+	return
+
+GauntletIsland_south:
+   	.string "SOUTH$"
+
+GauntletIsland_east:
+   	.string "EAST$"
+
+GauntletIsland_west:
+   	.string "WEST$"
+
+GauntletIsland_north:
+   	.string "NORTH$"
+
+GauntletIsland_Altarteletext:
+	.string "Would you like to use the\n"
+	.string "ALTAR to teleport?$"
+
+
+GauntletIsland_Teleportmenu::
+	message GauntletIsland_Altarteletext
+	waitmessage
+        dynmultistack 0, 0, FALSE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	copyvar VAR_0x8008, VAR_RESULT
+        goto_if_eq VAR_0x8008, MULTI_B_PRESSED, RustboroCity_DevonCorp_2F_EventScript_CancelFossilSelect
+        goto_if_eq VAR_0x8008, 1, GauntletIsland_Warp_hp
+        goto_if_eq VAR_0x8008, 2, GauntletIsland_Warp_atk
+        goto_if_eq VAR_0x8008, 3, GauntletIsland_Warp_satk
+        goto_if_eq VAR_0x8008, 4, GauntletIsland_Warp_spe
+        end
+
+GauntletIsland_Warp_hp::
+	warpteleport MAP_GAUNTLET_ISLAND_SOUTH, 24, 3
+	waitstate
+	end
+
+GauntletIsland_Warp_atk::
+	warpteleport MAP_GAUNTLET_ISLAND_NORTHEAST, 37, 39
+	waitstate
+	end
+
+GauntletIsland_Warp_satk::
+	warpteleport MAP_GAUNTLET_ISLAND_SOUTHWEST, 26, 15
+	waitstate
+	end
+
+GauntletIsland_Warp_spe::
+	warpteleport MAP_GAUNTLET_ISLAND_FINALE, 10, 41
+	waitstate
+	end
 
 GauntletIsland_AltarQuiettxt:
 	.string "The ALTAR is quiet.$"

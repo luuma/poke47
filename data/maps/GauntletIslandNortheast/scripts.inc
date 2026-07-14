@@ -6,6 +6,8 @@ GauntletIslandNortheast_MapScripts::
 GauntletIslandNortheast_OnTransition:
 	goto_if_unset FLAG_GAUNTLET_1FBOULDER1, GauntletIslandNortheast_ice
 	goto_if_unset FLAG_GAUNTLET_1FBOULDER2, GauntletIslandNortheast_ice
+	goto_if_unset FLAG_GAUNTLET_0FBOULDER2, GauntletIslandNortheast_ice
+	goto_if_unset FLAG_GAUNTLET_0FBOULDER2, GauntletIslandNortheast_ice
 	goto GauntletIslandNortheast_fire
 
 GauntletIslandNortheast_ice::
@@ -16,7 +18,17 @@ GauntletIslandNortheast_fire::
 	setmaplayoutindex LAYOUT_AEGAUNTLET7_2
 	end
 
+GauntletIsland_TheLake::
+    lockall
+    special DoSealedChamberShakingEffect_Short
+    msgbox GauntletIsland_TxtDanielMullins 
+    addvar VAR_GAUNTLET_9, 1
+    releaseall
+    end
 
+GauntletIsland_TxtDanielMullins::
+	.string "Deep under the ice, you hear\n"
+	.string "something writhe.$"
 
 GauntletIsland_AltarHP::
     lockall
@@ -52,7 +64,7 @@ GauntletIsland_AltarHP::
 
 GauntletIsland_AltarHPInscription:
 	.string "An engraving on the ALTAR reads\n"
-	.string "IN DEVOTION TO THE ELDER WYRM.$"
+	.string "“IN DEVOTION TO THE ELDER WYRM.”$"
 
 
 GauntletIsland_AltarHPTouch:
@@ -99,7 +111,7 @@ GauntletIsland_Altaratk::
 
 GauntletIsland_AltaratkInscription:
 	.string "An engraving on the ALTAR reads\n"
-	.string "IN DEVOTION TO THE MOUNTAIN.$"
+	.string "“IN DEVOTION TO THE MOUNTAIN.”$"
 
 
 GauntletIsland_AltaratkTouch:
@@ -148,7 +160,7 @@ GauntletIsland_AltarSpatk::
 
 GauntletIsland_AltarSpatkInscription:
 	.string "An engraving on the ALTAR reads\n"
-	.string "IN DEVOTION TO THE DEPTHS.$"
+	.string "“IN DEVOTION TO THE DEPTHS.”$"
 
 
 GauntletIsland_AltarSpatkTouch:
@@ -194,7 +206,7 @@ GauntletIsland_AltarSpeed::
 
 GauntletIsland_AltarSpeedInscription:
 	.string "An engraving on the ALTAR reads\n"
-	.string "IN DEVOTION TO THE HEAVENS.$"
+	.string "“IN DEVOTION TO THE HEAVENS.”$"
 
 
 GauntletIsland_AltarSpeedTouch:

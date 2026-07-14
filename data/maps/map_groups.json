@@ -143,7 +143,8 @@
     "ROUTE_100",
     "GauntletSoutheastCave",
     "GauntletSoutheastCave1f",
-    "GauntletSoutheastCave2f"
+    "GauntletSoutheastCave2f",
+    "GauntletNortheastSecretCave"
   ],
   "gMapGroup_GauntletIsland": [
     "GauntletIslandSoutheast",
@@ -153,7 +154,8 @@
     "GuantletIslandNorth",
     "GauntletIslandFinale",
     "GauntletIslandNortheast",
-    "GauntletIslandWhirlpools"
+    "GauntletIslandWhirlpools",
+    "GauntletIslandNortheast_Dive"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

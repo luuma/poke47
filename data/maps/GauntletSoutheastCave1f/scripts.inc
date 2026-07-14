@@ -1,4 +1,6 @@
 GauntletSoutheastCave1f_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, CaveHole_CheckFallDownHole
+	map_script MAP_SCRIPT_ON_TRANSITION, CaveHole_FixCrackedGround
 	map_script MAP_SCRIPT_ON_RESUME, GauntSECave_SetHoleWarp
 	.byte 0
 
