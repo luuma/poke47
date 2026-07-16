@@ -29,6 +29,7 @@ const u8 gWeatherSnow2Tiles[] = INCGFX_U8("graphics/weather/snow1.png", ".4bpp")
 const u8 gWeatherBubbleTiles[] = INCGFX_U8("graphics/weather/bubble.png", ".4bpp");
 const u8 gWeatherAshTiles[] = INCGFX_U8("graphics/weather/ash.png", ".4bpp");
 const u8 gWeatherRainTiles[] = INCGFX_U8("graphics/weather/rain.png", ".4bpp");
+const u8 gWeatherHailTiles[] = INCGFX_U8("graphics/weather/hail.png", ".4bpp");
 const u8 gWeatherSandstormTiles[] = INCGFX_U8("graphics/weather/sandstorm.png", ".4bpp");
 
 //------------------------------------------------------------------------------
@@ -361,6 +362,7 @@ static void UpdateDroughtBlend(u8 taskId)
 //------------------------------------------------------------------------------
 
 static void LoadRainSpriteSheet(void);
+static void LoadHailSpriteSheet(void);
 static bool8 CreateRainSprite(void);
 static void UpdateRainSprite(struct Sprite *sprite);
 static bool8 UpdateVisibleRainSprites(void);
@@ -472,6 +474,14 @@ static const struct SpriteSheet sRainSpriteSheet =
     .tag = GFXTAG_RAIN,
 };
 
+static const struct SpriteSheet sHailSpriteSheet =
+{
+    .data = gWeatherHailTiles,
+    .size = sizeof(gWeatherHailTiles),
+    .tag = GFXTAG_RAIN,
+};
+
+
 void Rain_InitVars(void)
 {
     gWeatherPtr->initStep = 0;
@@ -500,6 +510,35 @@ void Rain_Main(void)
     {
     case 0:
         LoadRainSpriteSheet();
+        gWeatherPtr->initStep++;
+        break;
+    case 1:
+        if (!CreateRainSprite())
+            gWeatherPtr->initStep++;
+        break;
+    case 2:
+        if (!UpdateVisibleRainSprites())
+        {
+            gWeatherPtr->weatherGfxLoaded = TRUE;
+            gWeatherPtr->initStep++;
+        }
+        break;
+    }
+}
+
+void Hail_InitAll(void)
+{
+    Rain_InitVars();
+    while (!gWeatherPtr->weatherGfxLoaded)
+        Hail_Main();
+}
+
+void Hail_Main(void)
+{
+    switch (gWeatherPtr->initStep)
+    {
+    case 0:
+        LoadHailSpriteSheet();
         gWeatherPtr->initStep++;
         break;
     case 1:
@@ -667,6 +706,12 @@ static void LoadRainSpriteSheet(void)
 {
     LoadSpriteSheet(&sRainSpriteSheet);
 }
+
+static void LoadHailSpriteSheet(void)
+{
+    LoadSpriteSheet(&sHailSpriteSheet);
+}
+
 
 static bool8 CreateRainSprite(void)
 {
@@ -2688,6 +2733,7 @@ static u8 TranslateWeatherNum(u8 weather)
     case WEATHER_DOWNPOUR:           return WEATHER_DOWNPOUR;
     case WEATHER_UNDERWATER_BUBBLES: return WEATHER_UNDERWATER_BUBBLES;
     case WEATHER_ABNORMAL:           return WEATHER_ABNORMAL;
+    case WEATHER_SNOW_HAIL:          return WEATHER_SNOW_HAIL;
     case WEATHER_ROUTE119_CYCLE:     return sWeatherCycleRoute119[gSaveBlock1Ptr->weatherCycleStage];
     case WEATHER_ROUTE123_CYCLE:     return sWeatherCycleRoute123[gSaveBlock1Ptr->weatherCycleStage];
     case WEATHER_DYNAMIC:            return GetDynamicWeather();

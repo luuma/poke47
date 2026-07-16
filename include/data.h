@@ -106,7 +106,7 @@ enum MultiTeamSize
 struct StartingStatuses
 {
     STARTING_STATUS_DEFINITIONS(UNPACK_STARTING_STATUSES_STRUCT)
-    // Expands to:
+    // Expands to:// no it fucking doesnt.
     // u32 electricTerrain:1;
     // u32 mistyTerrain:1;
     // u32 grassyTerrain:1;

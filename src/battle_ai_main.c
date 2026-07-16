@@ -243,7 +243,7 @@ static u64 GetWildAiFlags(void)
             flags |= AI_FLAG_GAUNTLET_CONSERVATIVE;
         else if (VarGet(B_VAR_WILD_AI_FLAGS) == 2)
             flags |= AI_FLAG_GAUNTLET_RISKY;
-        else if (VarGet(B_VAR_WILD_AI_FLAGS) == 3)
+        else if (VarGet(B_VAR_WILD_AI_FLAGS) >= 3)
             flags |= AI_FLAG_GAUNTLET_BOSS;
     }
     return flags;

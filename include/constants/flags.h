@@ -1298,10 +1298,10 @@
 #define FLAG_GAUNTLET_3F                                           0x4D9 // Unused Flag
 #define FLAG_GAUNTLET_40 0x4DA  // DUSK BALLold mansion
 #define FLAG_GAUNTLET_41 0x4DB  // TRICK ROOM old mansion
-#define FLAG_GAUNTLET_42 0x4DC  // OLD GATEAT old mansion
-#define FLAG_GAUNTLET_43 0x4DD  //  HYPER BEAM sky pillar
-#define FLAG_GAUNTLET_44 0x4DE  // wish fallarbor
-#define FLAG_GAUNTLET_45 0x4DF  // soak aqua hieout
+#define FLAG_GAUNTLET_boon2 0x4DC  // OLD GATEAT old mansion
+#define FLAG_GAUNTLET_boon4 0x4DD  //  HYPER BEAM sky pillar
+#define FLAG_GAUNTLET_boon6 0x4DE  // wish fallarbor
+#define FLAG_GAUNTLET_boon8 0x4DF  // soak aqua hieout
 
 
 #define FLAG_GAUNTLET_MINT_A                                           0x265 // HIDDS

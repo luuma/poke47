@@ -4,10 +4,12 @@ GauntletIslandSoutheast_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, GauntletIslandSoutheast_OnTransition
 	.byte 0
 
-GauntletIslandSoutheast_OnTransition:
+GauntletIslandSoutheast_OnTransition::
+	call GauntletIsland_EventScript_SetAbnormalWeather
 	special UpdateShoalTideFlag
 	goto_if_set FLAG_SYS_SHOAL_TIDE, GauntletIslandSoutheast_SetHighTide
 	goto GauntletIslandSoutheast_SetLowTide
+        end
 
 GauntletIslandSoutheast_SetHighTide::
 	setmaplayoutindex LAYOUT_AEGAUNTLET6

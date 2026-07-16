@@ -397,41 +397,6 @@
       "var": "VAR_GAUNTLET_9",
       "var_value": "40",
       "script": "GauntletIsland_TheLake"
-    },
-    {
-      "type": "weather",
-      "x": 25,
-      "y": 40,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SNOW"
-    },
-    {
-      "type": "weather",
-      "x": 25,
-      "y": 39,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SNOW"
-    },
-    {
-      "type": "weather",
-      "x": 26,
-      "y": 38,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SNOW"
-    },
-    {
-      "type": "weather",
-      "x": 27,
-      "y": 37,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SNOW"
-    },
-    {
-      "type": "weather",
-      "x": 28,
-      "y": 36,
-      "elevation": 0,
-      "weather": "COORD_EVENT_WEATHER_SNOW"
     }
   ],
   "bg_events": [

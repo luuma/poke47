@@ -2524,6 +2524,16 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
             gStartingStatuses.psychicTerrainTemporary = gStartingStatuses.psychicTerrain = FALSE;
             isTerrain = TRUE;
         }
+        else if (gStartingStatuses.inverse)
+        {
+            effect = SetStartingFieldStatus(
+                        STATUS_FIELD_INVERSE,
+                        B_MSG_SET_INVERTED,
+                        0,
+                        &gFieldTimers.inverseTimer, 0 );
+            gStartingStatuses.inverse = FALSE;
+        }
+
         else if (gStartingStatuses.trickRoom || gStartingStatuses.trickRoomTemporary)
         {
             effect = SetStartingFieldStatus(
@@ -2769,7 +2779,7 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
             BattleScriptPushCursorAndCallback(BattleScript_OverworldTerrain);
             effect = TRUE;
         }
-        else if (B_OVERWORLD_FOG >= GEN_8
+        else if (FlagGet(FLAG_GAUNTLET_CHALLENGE)
               && (GetCurrentWeather() == WEATHER_FOG_HORIZONTAL || GetCurrentWeather() == WEATHER_FOG_DIAGONAL)
               && !(gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
         {
@@ -2836,6 +2846,15 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
                     effect = TRUE;
                 }
                 break;
+            case WEATHER_SNOW_HAIL:
+                if (!(gBattleWeather & B_WEATHER_ICY_ANY))
+                {
+                    gBattleWeather = B_WEATHER_HAIL;
+                    gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+                    effect = TRUE;
+                }
+                break;
+
             }
         }
         if (effect)

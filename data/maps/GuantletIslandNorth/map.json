@@ -226,6 +226,32 @@
       "trainer_sight_or_berry_tree_id": "ITEM_NEST_BALL",
       "script": "GauntletIslandHigh_ItemBall",
       "flag": "FLAG_GAUNTLET_3D"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KIRLIA",
+      "x": 21,
+      "y": 12,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GauntletIsland_Boon4",
+      "flag": "FLAG_GAUNTLET_boon4"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_KIRLIA",
+      "x": 17,
+      "y": 64,
+      "elevation": 4,
+      "movement_type": "MOVEMENT_TYPE_NONE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "GauntletIsland_Boon6",
+      "flag": "FLAG_GAUNTLET_boon6"
     }
   ],
   "warp_events": [],

@@ -57,6 +57,15 @@ POKEBLOCK   = 55 56 57 58 59
 '%'         = 5B
 '('         = 5C
 ')'         = 5D
+
+SAPROTROPH	= 60
+NEREID		= 61
+ELDWYRM		= 62
+DSOTM		= 63
+MONOLITH	= 64
+WINGED_LION	= 65
+
+
 'â'         = 68
 'í'         = 6F
 UNK_SPACER  = 77

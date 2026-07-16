@@ -48,6 +48,7 @@
 #define CHAR_SUPER_ER          0x2C
 #define CHAR_AMPERSAND         0x2D
 #define CHAR_PLUS              0x2E
+
 //
 #define CHAR_LV                0x34
 #define CHAR_EQUALS            0x35
@@ -68,6 +69,15 @@
 #define CHAR_PERCENT           0x5B
 #define CHAR_LEFT_PAREN        0x5C
 #define CHAR_RIGHT_PAREN       0x5D
+//
+
+#define CHAR_SAPROTROPH              0x60
+#define CHAR_NEREID              0x61
+#define CHAR_ELDWYRM              0x62
+#define CHAR_DSOTM              0x63
+#define CHAR_MONOLITH              0x64
+#define CHAR_WINGED_LION              0x65
+
 //
 #define CHAR_a_CIRCUMFLEX      0x68
 //

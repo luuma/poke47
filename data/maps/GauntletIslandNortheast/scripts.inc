@@ -3,7 +3,8 @@ GauntletIslandNortheast_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, GauntletIslandNortheast_OnTransition
 	.byte 0
 
-GauntletIslandNortheast_OnTransition:
+GauntletIslandNortheast_OnTransition::
+	call GauntletIsland_EventScript_SetAbnormalWeather
 	goto_if_unset FLAG_GAUNTLET_1FBOULDER1, GauntletIslandNortheast_ice
 	goto_if_unset FLAG_GAUNTLET_1FBOULDER2, GauntletIslandNortheast_ice
 	goto_if_unset FLAG_GAUNTLET_0FBOULDER2, GauntletIslandNortheast_ice
@@ -37,7 +38,7 @@ GauntletIsland_AltarHP::
     msgbox GauntletIsland_AltarHPTouch MSGBOX_YESNO
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
-    setvar B_VAR_WILD_AI_FLAGS 1@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    setvar B_VAR_WILD_AI_FLAGS 2@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, 5 = , other =normal
     call Common_EventScript_OutOfCenterPartyHeal
     callnative ScrCmd_SetGauntletBossBattle
     .byte 0
@@ -58,6 +59,7 @@ GauntletIsland_AltarHP::
     setflag FLAG_GAUNTLET_HP_ALTAR
     addvar VAR_GAUNTLET_9, 1
     msgbox GauntletIsland_AltarHPVictory
+    goto GauntletIsland_Boon1
     releaseall
     end
 
@@ -105,6 +107,7 @@ GauntletIsland_Altaratk::
     setflag FLAG_GAUNTLET_ATK_ALTAR
     addvar VAR_GAUNTLET_9, 1
     msgbox GauntletIsland_AltaratkVictory
+    goto GauntletIsland_Boon3
     releaseall
     end
 
@@ -131,14 +134,14 @@ GauntletIsland_AltarSpatk::
     msgbox GauntletIsland_AltarSpatkTouch MSGBOX_YESNO
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
-    setvar B_VAR_WILD_AI_FLAGS 1@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    setvar B_VAR_WILD_AI_FLAGS 3@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
     call Common_EventScript_OutOfCenterPartyHeal
     callnative ScrCmd_SetGauntletBossBattle
     .byte 6
     playmoncry VAR_RESULT, CRY_MODE_ENCOUNTER
     delay 40
     waitmoncry
-    totemboost_defsdef B_POSITION_OPPONENT_LEFT
+    totemboost_defsdef B_POSITION_OPPONENT_LEFT @ I cant tell if this even fucking works.
     dowildbattle
     specialvar VAR_RESULT, GetBattleOutcome
     goto_if_eq VAR_RESULT, B_OUTCOME_LOST, GauntletIsland_AltarLoss
@@ -154,6 +157,7 @@ GauntletIsland_AltarSpatk::
     @call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_SPATK_ALTAR
     msgbox GauntletIsland_AltarSpatkVictory
+    goto GauntletIsland_Boon5
     releaseall
     end
 
@@ -179,7 +183,7 @@ GauntletIsland_AltarSpeed::
     msgbox GauntletIsland_AltarSpeedTouch MSGBOX_YESNO
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
-    setvar B_VAR_WILD_AI_FLAGS 3@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    setvar B_VAR_WILD_AI_FLAGS 10 @ 1 == CONSERVATIVE, 2 == RISKY,  <3=BOSS and Dynamax level, <5 = treat the number as a dynamax level to max 10.
     call Common_EventScript_OutOfCenterPartyHeal
     callnative ScrCmd_SetGauntletBossBattle
     .byte 9
@@ -200,6 +204,7 @@ GauntletIsland_AltarSpeed::
     call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_SPEED_ALTAR
     msgbox GauntletIsland_AltarSpeedVictory
+    goto GauntletIsland_Boon7
     releaseall
     end
 

@@ -2,15 +2,15 @@
 
 
 GauntletIslandWhirlpools_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, GauntletIslandOnTransition
 	.byte 0
 
 GauntletIsland_Boon1::
         lockall
-	callnative ScrCmd_DoGauntletBoonList
-	.byte 0
 	checkitemspace ITEM_BERRY_JUICE
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
-
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 0
 	message GauntletIsland_txtWhichBoon
 	waitmessage
         dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
@@ -18,37 +18,160 @@ GauntletIsland_Boon1::
         copyvar VAR_GAUNTLET_1, VAR_RESULT
         goto gauntlet_boon_handler
 
-gauntlet_boon_handler::
-        goto_if_eq VAR_0x8009, 0, gauntlet_giveitemboon
-        goto_if_eq VAR_0x8009, 1, gauntlet_giveitemboon @ This should check whether the TM can be learned by any member of the party and return to dynmultistack if player decides against it. Actually fuck that. it should just be possible to teach anything to anyone.
-        goto_if_eq VAR_0x8009, 2, gauntlet_giveitemboon @ ditto for HMs
-        goto_if_eq VAR_0x8009, 3, gauntlet_setflagboon
-        goto_if_eq VAR_0x8009, 4, gauntlet_tutorboon
-        goto_if_eq VAR_0x8009, 5, gauntlet_30berryboon
-        goto_if_eq VAR_0x8009, 6, gauntlet_terrainSeeds
-        goto_if_eq VAR_0x8009, 7, gauntlet_givemoneyboon
-        goto_if_eq VAR_0x8009, 8, gauntlet_DEFSDEF
-        @ goto_if_eq VAR_0x8009, 9, gauntlet_3randtms
+GauntletIsland_Boon2::
+        lockall
+	checkitemspace ITEM_BERRY_JUICE
+	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 1
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+        copyvar VAR_GAUNTLET_2, VAR_RESULT
+	setflag FLAG_GAUNTLET_boon2
+        removeobject VAR_LAST_TALKED
+        goto gauntlet_boon_handler
 
-        goto_if_eq VAR_0x8009, 10, gauntlet_giveitemboon
-        goto_if_eq VAR_0x8009, 11, gauntlet_giveironhpupzinc
-        goto_if_eq VAR_0x8009, 13, gauntlet_tutorboon//rerollplustutor
-        goto_if_eq VAR_0x8009, 14, gauntlet_TOXICFLAME
+
+GauntletIsland_Boon3::
+        lockall
+	checkitemspace ITEM_BERRY_JUICE
+	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 2
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+        copyvar VAR_GAUNTLET_3, VAR_RESULT
+        goto gauntlet_boon_handler
+
+GauntletIsland_Boon4::
+        lockall
+	checkitemspace ITEM_BERRY_JUICE
+	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 2
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+        copyvar VAR_GAUNTLET_4, VAR_RESULT
+	setflag FLAG_GAUNTLET_boon4
+        removeobject VAR_LAST_TALKED
+        goto gauntlet_boon_handler
+
+GauntletIsland_Boon5::
+        lockall
+	checkitemspace ITEM_BERRY_JUICE
+	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 3
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+        copyvar VAR_GAUNTLET_5, VAR_RESULT
+        goto gauntlet_boon_handler
+
+GauntletIsland_Boon6::
+        lockall
+	checkitemspace ITEM_BERRY_JUICE
+	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 3
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+        copyvar VAR_GAUNTLET_6, VAR_RESULT
+	setflag FLAG_GAUNTLET_boon6
+        removeobject VAR_LAST_TALKED
+        goto gauntlet_boon_handler
+
+GauntletIsland_Boon7::
+        lockall
+	checkitemspace ITEM_BERRY_JUICE
+	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 3
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+        copyvar VAR_GAUNTLET_7, VAR_RESULT
+        goto gauntlet_boon_handler
+
+GauntletIsland_Boon8::
+        lockall
+	checkitemspace ITEM_BERRY_JUICE
+	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 5
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+        copyvar VAR_GAUNTLET_8, VAR_RESULT
+	setflag FLAG_GAUNTLET_boon8
+        removeobject VAR_LAST_TALKED
+        goto gauntlet_boon_handler
+
+GauntletIsland_Reroll::
+	callnative ScrCmd_DoGauntletBoonList
+	.byte 3
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+gauntlet_boon_handler::
+        goto_if_eq VAR_0x8007, 15, gauntlet_giveitemboon
+        goto_if_eq VAR_0x8007, 1, gauntlet_giveitemboon @ This should check whether the TM can be learned by any member of the party and return to dynmultistack if player decides against it. Actually fuck that. it should just be possible to teach anything to anyone.
+        goto_if_eq VAR_0x8007, 2, gauntlet_giveitemboon @ ditto for HMs
+        goto_if_eq VAR_0x8007, 3, gauntlet_setflagboon
+        goto_if_eq VAR_0x8007, 4, gauntlet_tutorboon
+        goto_if_eq VAR_0x8007, 5, gauntlet_30berryboon
+        goto_if_eq VAR_0x8007, 6, gauntlet_terrainSeeds
+        goto_if_eq VAR_0x8007, 7, gauntlet_givemoneyboon
+        goto_if_eq VAR_0x8007, 8, gauntlet_DEFSDEF
+        @ goto_if_eq VAR_0x8007, 9, gauntlet_3randtms
+
+        goto_if_eq VAR_0x8007, 10, gauntlet_giveitemboon10
+        goto_if_eq VAR_0x8007, 11, gauntlet_giveironhpupzinc
+        goto_if_eq VAR_0x8007, 13, gauntlet_tutorboon//rerollplustutor
+        goto_if_eq VAR_0x8007, 14, gauntlet_TOXICFLAME
+        goto_if_eq VAR_0x8007, 17, gauntlet_setweather
+        goto_if_eq VAR_0x8007, 18, gauntlet_setstartingstatus
+        @ goto gauntlet_giveitemboon. FML i hope this isn't necessary
 GauntletIsland_return::
         callnative AddDevotionTo0x8008
-        goto_if_eq VAR_0x8009, 12, GauntletIsland_Boon1
-        goto_if_eq VAR_0x8009, 13, GauntletIsland_Boon1//rerollplustutor
+        call_if_eq VAR_0x8008, 0, GauntletIsland_saphmsg
+        call_if_eq VAR_0x8008, 1, GauntletIsland_nereidmsg
+        call_if_eq VAR_0x8008, 2, GauntletIsland_eldwmsg
+        call_if_eq VAR_0x8008, 3, GauntletIsland_dsotm
+        call_if_eq VAR_0x8008, 4, GauntletIsland_lith
+        call_if_eq VAR_0x8008, 5, GauntletIsland_Wingymsg
+        call_if_ge VAR_0x8008, 6, GauntletIsland_islandmsg
+
+        goto_if_eq VAR_0x8007, 12, GauntletIsland_Reroll
+        goto_if_eq VAR_0x8007, 13, GauntletIsland_Reroll//rerollplustutor
+
         releaseall
         end
 
 gauntlet_bag_space::
-	message GauntletIsland_BagSpace
+	msgbox GauntletIsland_BagSpace
         releaseall
         end
 
-
 gauntlet_giveitemboon::
-	giveitem VAR_0x8005, VAR_0x8004
+	giveitem VAR_0x8005, 1
+        goto GauntletIsland_return
+	end
+
+gauntlet_giveitemboon10::
+	giveitem VAR_0x8005, 10
         goto GauntletIsland_return
 	end
 
@@ -58,25 +181,83 @@ gauntlet_setflagboon::
 	end
 
 gauntlet_tutorboon::
+	copyvar VAR_0x8006, VAR_0x8005
 	call MoveTutor_EventScript_OpenPartyMenu
-	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_FuryCutterDeclined
+	goto_if_eq VAR_RESULT, 0, gauntlet_tutorboon_DeclinedOnce
 	goto GauntletIsland_return
 	end
 
 
+gauntlet_tutorboon_DeclinedOnce::
+	msgbox GauntletIsland_TutorAnotherMon MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_gauntletdeclined
+	copyvar VAR_0x8005, VAR_0x8006
+	goto gauntlet_tutorboon
+	end
+
 MoveTutor_EventScript_gauntletdeclined::
-	message GauntletIsland_Compensated
-        giveitem ITEM_HYPER_POTION
+	msgbox GauntletIsland_Compensated
+        giveitem ITEM_HYPER_POTION @ we know we have bag space.
 	goto GauntletIsland_return
 	end
 
 
 gauntlet_givemoneyboon::
-	showmoneybox 0, 0
-	addmoney VAR_0x8005
-	updatemoneybox
-	hidemoneybox
+	goto_if_gt VAR_0x8005, 9000, gauntlet_givemoneyboonbig
 	message GauntletIsland_Compensated
+	waitmessage
+	showmoneybox 0, 0
+        delay 40
+	addmoney 1000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	addmoney 1000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	addmoney 1000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	addmoney 1000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	addmoney 1000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	hidemoneybox
+        goto GauntletIsland_return
+	end
+
+gauntlet_givemoneyboonbig::
+	message GauntletIsland_Compensated
+	waitmessage
+	showmoneybox 0, 0
+        delay 40
+	addmoney 10000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	addmoney 10000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	addmoney 10000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	addmoney 10000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	addmoney 10000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	hidemoneybox
         goto GauntletIsland_return
 	end
 
@@ -136,6 +317,78 @@ gauntlet_TOXICFLAME::
 	end
 
 
+gauntlet_setweather::
+        copyvar VAR_GAUNTLET_WEATHER, VAR_0x8005
+        setweather VAR_GAUNTLET_WEATHER
+	doweather
+	special WaitWeather
+	delay 30
+        goto GauntletIsland_return
+	end
+
+gauntlet_setstartingstatus::
+        callnative ScrCmd_SetGauntletVarStartingStatus
+        goto GauntletIsland_return
+	end
+
+
+GauntletIsland_saphmsg::
+	msgbox GauntletIsland_txtsaphmsg
+        return
+
+GauntletIsland_nereidmsg::
+	msgbox GauntletIsland_txtnereidmsg
+        return
+
+GauntletIsland_eldwmsg::
+	msgbox GauntletIsland_txteldwmsg
+        return
+
+GauntletIsland_lith::
+	msgbox GauntletIsland_txtlithmsg
+        return
+
+GauntletIsland_dsotm::
+	msgbox GauntletIsland_txtdsotmmsg
+        return
+
+GauntletIsland_Wingymsg::
+	msgbox GauntletIsland_txtWingymsg
+        return
+
+GauntletIsland_islandmsg::
+	msgbox GauntletIsland_txtdevotiontoislandmsg
+        return
+
+GauntletIsland_txtsaphmsg:
+	.string "Your devotion to the cycle of.\n"
+	.string "harvest and decay is noted.$"
+
+GauntletIsland_txtnereidmsg:
+	.string "Your devotion to the tricks\n"
+	.string "of the ocean nereids is noted.$"
+
+GauntletIsland_txteldwmsg:
+	.string "Your devotion to the strength\n"
+	.string "of the elder dragon is noted.$"
+
+GauntletIsland_txtlithmsg:
+	.string "Your devotion to the might and\n"
+	.string "patience of the mountain is noted.$"
+
+GauntletIsland_txtdsotmmsg:
+	.string "Your devotion to the curious\n"
+	.string "and eerie is noted.$"
+
+GauntletIsland_txtWingymsg:
+	.string "Your devotion to the glory and\n"
+	.string "justice of the Winged Lion is noted.$"
+
+GauntletIsland_txtdevotiontoislandmsg:
+	.string "Your devotion to the island\n"
+	.string "is noted.$"
+
+
 GauntletIsland_txtWhichBoon:
 	.string "Possibilities swirl before you.\n"
 	.string "Which boon will be chosen?$"
@@ -147,6 +400,10 @@ GauntletIsland_txtHeyThatsDumbOfYou:
 	.string "No POKéMON in your PARTY can\n"
 	.string "currently be taught this.\p"
 	.string "Continue anyway?$"
+
+GauntletIsland_TutorAnotherMon:
+	.string "Tutor a different POKéMON?$"
+
 
 GauntletIsland_BagSpace:
 	.string "There is not enough space in.\n"

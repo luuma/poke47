@@ -3687,6 +3687,21 @@ static void DoBattleIntro(void)
             struct StartingStatuses statusesOpponentB = {0};
 
             // Try to set a status to start the battle with
+            if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
+            {
+                u16 GSSBitfield = VarGet(VAR_GAUNTLET_STARTING_STATUS);
+                gStartingStatuses.psychicTerrain = (GSSBitfield & 1<<0) != 0;
+                gStartingStatuses.grassyTerrain = (GSSBitfield & 1<<1) != 0;
+                gStartingStatuses.trickRoom = (GSSBitfield & 1<<2) != 0;
+                gStartingStatuses.magicRoom = (GSSBitfield & 1<<3) != 0;
+                gStartingStatuses.wonderRoom = (GSSBitfield & 1<<4) != 0;
+                gStartingStatuses.tailwindPlayer = (GSSBitfield & 1<<5) != 0;
+                gStartingStatuses.rainbowPlayer = (GSSBitfield & 1<<6) != 0;
+                gStartingStatuses.inverse = (GSSBitfield & 1<<7) != 0;
+                //gStartingStatuses. = (GSSBitfield & 1<<8);
+                //gStartingStatuses. = (GSSBitfield & 1<<9);
+                //gStartingStatuses. = (GSSBitfield & 1<<10);
+            }
             if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && !IsSpecialTrainer(TRAINER_BATTLE_PARAM.opponentA))
             {
                 statusesOpponentA = GetTrainerStartingStatusFromId(TRAINER_BATTLE_PARAM.opponentA);
@@ -5867,6 +5882,7 @@ enum Type GetDynamicMoveType(struct Pokemon *mon, enum Move move, enum BattlerId
                     return TYPE_WATER;
                 break;
             case WEATHER_SNOW:
+            case WEATHER_SNOW_HAIL:
                 return TYPE_ICE;
             case WEATHER_SANDSTORM:
                 return TYPE_ROCK;

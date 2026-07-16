@@ -4038,7 +4038,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Statue = {
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kirlia = {
     .tileTag = TAG_NONE,
-    .paletteTag = OBJ_EVENT_PAL_TAG_NPC_3,
+    .paletteTag = OBJ_EVENT_PAL_TAG_BALL_LUXURY,
     .reflectionPaletteTag = OBJ_EVENT_PAL_TAG_NONE,
     .size = 256,
     .width = 16,
@@ -4051,7 +4051,7 @@ const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Kirlia = {
     .oam = &gObjectEventBaseOam_16x32,
     .subspriteTables = sOamTables_16x32,
     .anims = sAnimTable_Standard,
-    .images = sPicTable_KirliaOld,
+    .images = sPicTable_Ball_LUXURY,
 };
 
 const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Dusclops = {
