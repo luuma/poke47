@@ -149,24 +149,17 @@ void ApplyDynamaxHPMultiplier(struct Pokemon* mon, bool32 maxOut)
 // Returns the non-Dynamax HP of a Pokemon.
 u32 GetNonDynamaxHP(enum BattlerId battler)
 {
-    u32 wildai = VarGet(VAR_WILD_AI_FLAGS);
-    if ((GetActiveGimmick(battler) != GIMMICK_DYNAMAX && wildai<=3) || HasShedinjaHPHandling(gBattleMons[battler].species) )
+    struct Pokemon *mon = GetBattlerMon(battler);
+
+    u32 dynlevel = GetMonData(mon, MON_DATA_DYNAMAX_LEVEL); // USED BY BOSSES.
+    if ((GetActiveGimmick(battler) != GIMMICK_DYNAMAX && dynlevel <= 1) || HasShedinjaHPHandling(gBattleMons[battler].species) )
     {
         return gBattleMons[battler].hp;
     }
     
-    else if (wildai >= 5)
-    {
-        if (wildai > 10)
-            wildai = 10;
-        uq4_12_t mult = GetDynamaxLevelHPMultiplier(wildai, TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
-        u32 hp = UQ_4_12_TO_INT((gBattleMons[battler].hp * mult) + UQ_4_12_ROUND);
-        return hp;
-    }
     else
     {
-        struct Pokemon *mon = GetBattlerMon(battler);
-        uq4_12_t mult = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
+        uq4_12_t mult = GetDynamaxLevelHPMultiplier(dynlevel, TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
         u32 hp = UQ_4_12_TO_INT((gBattleMons[battler].hp * mult) + UQ_4_12_ROUND);
         return hp;
     }
@@ -175,25 +168,17 @@ u32 GetNonDynamaxHP(enum BattlerId battler)
 // Returns the non-Dynamax Max HP of a Pokemon.
 u32 GetNonDynamaxMaxHP(enum BattlerId battler)
 {
-    u32 wildai = VarGet(VAR_WILD_AI_FLAGS);
+    struct Pokemon *mon = GetBattlerMon(battler);
 
-    if ((GetActiveGimmick(battler) != GIMMICK_DYNAMAX && wildai<=3) || HasShedinjaHPHandling(gBattleMons[battler].species) )
+    u32 dynlevel = GetMonData(mon, MON_DATA_DYNAMAX_LEVEL); // USED BY BOSSES.
+    if ((GetActiveGimmick(battler) != GIMMICK_DYNAMAX && dynlevel <= 1) || HasShedinjaHPHandling(gBattleMons[battler].species) )
     {
         return gBattleMons[battler].maxHP;
-    }
-    else if (wildai >= 5)
-    {
-        if (wildai > 10)
-            wildai = 10;
-        uq4_12_t mult = GetDynamaxLevelHPMultiplier(wildai, TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
-        u32 maxHP = UQ_4_12_TO_INT((gBattleMons[battler].maxHP * mult) + UQ_4_12_ROUND);
-        return maxHP;
     }
 
     else
     {
-        struct Pokemon *mon = GetBattlerMon(battler);
-        uq4_12_t mult = GetDynamaxLevelHPMultiplier(GetMonData(mon, MON_DATA_DYNAMAX_LEVEL), TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
+        uq4_12_t mult = GetDynamaxLevelHPMultiplier(dynlevel, TRUE, gBattleMons[battler].volatiles.dynamaxEnabled);
         u32 maxHP = UQ_4_12_TO_INT((gBattleMons[battler].maxHP * mult) + UQ_4_12_ROUND);
         return maxHP;
     }

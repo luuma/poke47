@@ -90,7 +90,7 @@ GauntletIsland_AltarQuiet::
 	end
 
 GauntletIsland_Multipushhp::
-        goto_if_eq VAR_LAST_TALKED, localid_hp, GauntletIsland_ret
+        goto_if_eq VAR_LAST_TALKED, localid_hp, GauntletIsland_ret @ 2
 	setvar VAR_0x8008 1
     	dynmultipush GauntletIsland_south, 1
 	addvar VAR_TEMP_2, 1
@@ -98,21 +98,21 @@ GauntletIsland_ret::
 	return
 
 GauntletIsland_MultipushATK::
-        goto_if_eq VAR_LAST_TALKED, localid_atk, GauntletIsland_ret
+        goto_if_eq VAR_LAST_TALKED, localid_atk, GauntletIsland_ret @ 6
 	setvar VAR_0x8008 2
     	dynmultipush GauntletIsland_east, 2
 	addvar VAR_TEMP_2, 1
 	return
 
 GauntletIsland_MultipushSPATK::
-        goto_if_eq VAR_LAST_TALKED, localid_spatk, GauntletIsland_ret
+        goto_if_eq VAR_LAST_TALKED, localid_spatk, GauntletIsland_ret @ 31
 	setvar VAR_0x8008 3
     	dynmultipush GauntletIsland_west, 3
 	addvar VAR_TEMP_2, 1
 	return
 
 GauntletIsland_MultipushSPE::
-        goto_if_eq VAR_LAST_TALKED, localid_speed, GauntletIsland_ret
+        goto_if_eq VAR_LAST_TALKED, localid_speed, GauntletIsland_ret @ 1
 	setvar VAR_0x8008 4
     	dynmultipush GauntletIsland_north, 4
 	addvar VAR_TEMP_2, 1

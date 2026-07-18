@@ -11,9 +11,10 @@ GauntletIsland_Boon1::
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 0
+	.byte 1
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
         copyvar VAR_GAUNTLET_1, VAR_RESULT
         goto gauntlet_boon_handler
@@ -24,9 +25,10 @@ GauntletIsland_Boon2::
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 1
+	.byte 2
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
         copyvar VAR_GAUNTLET_2, VAR_RESULT
 	setflag FLAG_GAUNTLET_boon2
@@ -40,9 +42,10 @@ GauntletIsland_Boon3::
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 2
+	.byte 3
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
         copyvar VAR_GAUNTLET_3, VAR_RESULT
         goto gauntlet_boon_handler
@@ -53,9 +56,10 @@ GauntletIsland_Boon4::
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 2
+	.byte 4
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
         copyvar VAR_GAUNTLET_4, VAR_RESULT
 	setflag FLAG_GAUNTLET_boon4
@@ -68,9 +72,10 @@ GauntletIsland_Boon5::
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 3
+	.byte 5
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
         copyvar VAR_GAUNTLET_5, VAR_RESULT
         goto gauntlet_boon_handler
@@ -81,9 +86,10 @@ GauntletIsland_Boon6::
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 3
+	.byte 6
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
         copyvar VAR_GAUNTLET_6, VAR_RESULT
 	setflag FLAG_GAUNTLET_boon6
@@ -96,24 +102,24 @@ GauntletIsland_Boon7::
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 3
+	.byte 7
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
-        copyvar VAR_GAUNTLET_7, VAR_RESULT
         goto gauntlet_boon_handler
 
 GauntletIsland_Boon8::
         lockall
 	checkitemspace ITEM_BERRY_JUICE
 	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
-	callnative ScrCmd_DoGauntletBoonList
+	callnative ScrCmd_DoGauntletBoonList @ also loads an internal value that is later corresponded to a var in setvartoboon.
 	.byte 5
+	.byte 8
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
-        copyvar VAR_GAUNTLET_8, VAR_RESULT
 	setflag FLAG_GAUNTLET_boon8
         removeobject VAR_LAST_TALKED
         goto gauntlet_boon_handler
@@ -121,9 +127,10 @@ GauntletIsland_Boon8::
 GauntletIsland_Reroll::
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 3
+	.byte 12 @ Doesn't load the result into a defined var.
 	message GauntletIsland_txtWhichBoon
 	waitmessage
-        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
 	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
 gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 15, gauntlet_giveitemboon
@@ -135,7 +142,9 @@ gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 6, gauntlet_terrainSeeds
         goto_if_eq VAR_0x8007, 7, gauntlet_givemoneyboon
         goto_if_eq VAR_0x8007, 8, gauntlet_DEFSDEF
-        @ goto_if_eq VAR_0x8007, 9, gauntlet_3randtms
+        goto_if_eq VAR_0x8007, 9, gauntlet_giveHerbReroll
+        goto_if_eq VAR_0x8007, 19, gauntlet_giveitemboon3
+        @goto_if_eq VAR_0x8007, 20, gauntlet_evolve
 
         goto_if_eq VAR_0x8007, 10, gauntlet_giveitemboon10
         goto_if_eq VAR_0x8007, 11, gauntlet_giveironhpupzinc
@@ -143,6 +152,7 @@ gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 14, gauntlet_TOXICFLAME
         goto_if_eq VAR_0x8007, 17, gauntlet_setweather
         goto_if_eq VAR_0x8007, 18, gauntlet_setstartingstatus
+
         @ goto gauntlet_giveitemboon. FML i hope this isn't necessary
 GauntletIsland_return::
         callnative AddDevotionTo0x8008
@@ -154,9 +164,10 @@ GauntletIsland_return::
         call_if_eq VAR_0x8008, 5, GauntletIsland_Wingymsg
         call_if_ge VAR_0x8008, 6, GauntletIsland_islandmsg
 
+        goto_if_eq VAR_0x8007, 9, GauntletIsland_Reroll
         goto_if_eq VAR_0x8007, 12, GauntletIsland_Reroll
         goto_if_eq VAR_0x8007, 13, GauntletIsland_Reroll//rerollplustutor
-
+        callnative ScrCmd_SetvarToBoon
         releaseall
         end
 
@@ -174,6 +185,20 @@ gauntlet_giveitemboon10::
 	giveitem VAR_0x8005, 10
         goto GauntletIsland_return
 	end
+
+gauntlet_giveitemboon3::
+	giveitem VAR_0x8005, 3
+        goto GauntletIsland_return
+	end
+
+gauntlet_giveHerbReroll:: @ This doesn't use as many vars to buffer info. Giveitem uses 0x8004 to 0x8007 inclusive. also there can only be one: this doesn't handle a full bag.
+        bufferitemname STR_VAR_2, ITEM_REVIVAL_HERB
+        giveitem_msg Gauntlet_Text_Obtained, ITEM_REVIVAL_HERB, 1
+        goto GauntletIsland_return
+	end
+
+Gauntlet_Text_Obtained::
+	.string "Obtained a {STR_VAR_2}!$"
 
 gauntlet_setflagboon::
         setflag VAR_0x8008
@@ -197,7 +222,14 @@ gauntlet_tutorboon_DeclinedOnce::
 
 MoveTutor_EventScript_gauntletdeclined::
 	msgbox GauntletIsland_Compensated
-        giveitem ITEM_HYPER_POTION @ we know we have bag space.
+	waitmessage
+	showmoneybox 0, 0
+        delay 40
+	addmoney 1000
+	updatemoneybox
+        playse SE_ITEMFINDER
+        waitse
+	hidemoneybox
 	goto GauntletIsland_return
 	end
 
@@ -361,7 +393,7 @@ GauntletIsland_islandmsg::
         return
 
 GauntletIsland_txtsaphmsg:
-	.string "Your devotion to the cycle of.\n"
+	.string "Your devotion to the cycle of\n"
 	.string "harvest and decay is noted.$"
 
 GauntletIsland_txtnereidmsg:
@@ -391,7 +423,7 @@ GauntletIsland_txtdevotiontoislandmsg:
 
 GauntletIsland_txtWhichBoon:
 	.string "Possibilities swirl before you.\n"
-	.string "Which boon will be chosen?$"
+	.string "Which BOON will be chosen?$"
 
 GauntletIsland_Compensated:
 	.string "{PLAYER} received compensation.$"

@@ -806,7 +806,8 @@ static inline void CalcDynamicMoveDamage(struct DamageContext *ctx, u16 *medianD
             random *= RandomUniform(RNG_AI_DMG_ROLL_RANDOM, 2, 5);
         }
     }
-    else if (ctx->abilities[ctx->battlerAtk] == ABILITY_PARENTAL_BOND
+    else if (   (ctx->abilities[ctx->battlerAtk] == ABILITY_PARENTAL_BOND 
+          || (GetBattlerSide(ctx->battlerAtk) == B_SIDE_PLAYER && FlagGet(FLAG_PARENTAL_BOND_BATTLE))   )
           && strikeCount == 0
           && !AI_IsDoubleSpreadMove(ctx->battlerAtk, ctx->move))
     {

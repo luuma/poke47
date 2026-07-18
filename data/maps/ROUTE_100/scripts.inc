@@ -3,7 +3,7 @@ ROUTE_100_MapScripts::
 	.byte 0
 
 ROUTE_100_OnFrame::
-	map_script_2 VAR_GAUNTLET_8, 1, Route100_EventScript_GauntletEnd
+	map_script_2 VAR_GAUNTLET_ACTIVE, 1, Route100_EventScript_GauntletEnd
 	.2byte 0
 
 Route100_EventScript_GauntletEnd::

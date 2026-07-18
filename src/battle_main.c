@@ -3793,7 +3793,6 @@ static void TryDoEventsBeforeFirstTurn(void)
                         gBattleMons[battler].statStages[stat] = MIN_STAT_STAGE;
                 }
             }
-
             gBattlerAttacker = battler;
             gQueuedStatBoosts[battler].stats = 0;
             BattleScriptPushCursorAndCallback(BattleScript_TotemBoost);

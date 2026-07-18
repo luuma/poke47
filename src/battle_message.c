@@ -899,6 +899,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_STICKYWEBDISAPPEAREDFROMYOU]          = COMPOUND_STRING("The sticky web has disappeared from the ground around you!"),
     [STRINGID_PKMNTWISTEDDIMENSIONSSCR]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} twisted the dimensions!"),
     [STRINGID_SWAPSDEFANDSPDEFOFALLPOKEMONSCR]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} created a bizarre area!\nDefense swaps with Attack,\land Sp.Def swaps with Sp.Atk!"),
+    [STRINGID_SOMETHINGTYPECHARTINVERTED]  		    = COMPOUND_STRING("The type chart is inverted!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -945,7 +946,7 @@ const u16 gStartingStatusStringIds[B_MSG_STARTING_STATUS_COUNT] =
     [B_MSG_SET_STICKY_WEB]       = STRINGID_STICKYWEBUSED,
     [B_MSG_SET_STEALTH_ROCK]     = STRINGID_POINTEDSTONESFLOAT,
     [B_MSG_SET_SHARP_STEEL]      = STRINGID_SHARPSTEELFLOATS,
-    [B_MSG_SET_INVERTED]      = STRINGID_TYPECHARTINVERTED,
+    [B_MSG_SET_INVERTED]    = STRINGID_SOMETHINGTYPECHARTINVERTED,
 };
 
 const u16 gTerrainStringIds[B_MSG_TERRAIN_COUNT] =

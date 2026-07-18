@@ -30,7 +30,7 @@ u32 GetCurrentLevelCap(void)
         {FLAG_GAUNTLET_HP_ALTAR, 7},//hp. This boss is easy enough.
         {FLAG_GAUNTLET_ATK_ALTAR, 14},//atk. This boss should try to kick yuor Ass.
         {FLAG_GAUNTLET_SPATK_ALTAR, 18},//def
-        {FLAG_GAUNTLET_SPEED_ALTAR, 23},//speed
+        {FLAG_GAUNTLET_SPEED_ALTAR, 25},//speed
         {FLAG_GAUNTLET_DEF_ALTAR, 24},//spatk
         {FLAG_GAUNTLET_SPDEF_ALTAR, 27},//sdef
         {FLAG_GAUNTLET_BOSS_ALTAR, 31},//sdef
@@ -44,7 +44,12 @@ u32 GetCurrentLevelCap(void)
         for (i = 0; i < ARRAY_COUNT(sGauntletCapFlagMap); i++)
         {
             if (!FlagGet(sGauntletCapFlagMap[i][0]))
-                return sGauntletCapFlagMap[i][1];
+            {
+                if (FlagGet(FLAG_RAISE_LEVEL_CAP))
+                     return sGauntletCapFlagMap[i][1] + 3;
+                else
+                    return sGauntletCapFlagMap[i][1];
+            }
         }
     }
     else if (CheckBagHasItem(ITEM_LEVEL_CAP, 1) || !FlagGet(FLAG_RESCUED_BIRCH))

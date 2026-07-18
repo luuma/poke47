@@ -34,7 +34,7 @@ GauntletIsland_TxtDanielMullins::
 GauntletIsland_AltarHP::
     lockall
     msgbox GauntletIsland_AltarHPInscription 
-    goto_if_set FLAG_GAUNTLET_HP_ALTAR, GauntletIsland_AltarQuiet
+    goto_if_set FLAG_GAUNTLET_HP_ALTAR, GauntletIsland_AltarHPjUMP
     msgbox GauntletIsland_AltarHPTouch MSGBOX_YESNO
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
@@ -59,7 +59,9 @@ GauntletIsland_AltarHP::
     setflag FLAG_GAUNTLET_HP_ALTAR
     addvar VAR_GAUNTLET_9, 1
     msgbox GauntletIsland_AltarHPVictory
-    goto GauntletIsland_Boon1
+GauntletIsland_AltarHPjUMP::
+    goto_if_gt VAR_GAUNTLET_1, 0, GauntletIsland_AltarQuiet
+    goto_if_eq VAR_GAUNTLET_1, 0, GauntletIsland_Boon1
     releaseall
     end
 
@@ -81,7 +83,7 @@ GauntletIsland_AltarHPVictory:
 GauntletIsland_Altaratk::
     lockall
     msgbox GauntletIsland_AltaratkInscription 
-    goto_if_set FLAG_GAUNTLET_ATK_ALTAR, GauntletIsland_AltarQuiet
+    goto_if_set FLAG_GAUNTLET_ATK_ALTAR, GauntletIsland_AltarATKjUMP
     msgbox GauntletIsland_AltaratkTouch MSGBOX_YESNO
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
@@ -105,9 +107,10 @@ GauntletIsland_Altaratk::
     setvar VAR_0x8008, STAT_ATK
     call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_ATK_ALTAR
-    addvar VAR_GAUNTLET_9, 1
     msgbox GauntletIsland_AltaratkVictory
-    goto GauntletIsland_Boon3
+GauntletIsland_AltarATKjUMP::
+    goto_if_gt VAR_GAUNTLET_3, 0, GauntletIsland_AltarQuiet
+    goto_if_eq VAR_GAUNTLET_3, 0, GauntletIsland_Boon3
     releaseall
     end
 
@@ -130,7 +133,7 @@ GauntletIsland_AltaratkVictory:
 GauntletIsland_AltarSpatk::
     lockall
     msgbox GauntletIsland_AltarSpatkInscription 
-    goto_if_set FLAG_GAUNTLET_SPATK_ALTAR, GauntletIsland_AltarQuiet
+    goto_if_set FLAG_GAUNTLET_SPATK_ALTAR, GauntletIsland_AltarSATKjUMP
     msgbox GauntletIsland_AltarSpatkTouch MSGBOX_YESNO
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
@@ -157,7 +160,9 @@ GauntletIsland_AltarSpatk::
     @call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_SPATK_ALTAR
     msgbox GauntletIsland_AltarSpatkVictory
-    goto GauntletIsland_Boon5
+GauntletIsland_AltarSATKjUMP::
+    goto_if_gt VAR_GAUNTLET_5, 0, GauntletIsland_AltarQuiet
+    goto_if_eq VAR_GAUNTLET_5, 0, GauntletIsland_Boon5
     releaseall
     end
 
@@ -179,11 +184,11 @@ GauntletIsland_AltarSpatkVictory:
 GauntletIsland_AltarSpeed::
     lockall
     msgbox GauntletIsland_AltarSpeedInscription 
-    goto_if_set FLAG_GAUNTLET_SPEED_ALTAR, GauntletIsland_AltarQuiet
+    goto_if_set FLAG_GAUNTLET_SPEED_ALTAR, GauntletIsland_AltarSpeedjUMP
     msgbox GauntletIsland_AltarSpeedTouch MSGBOX_YESNO
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
-    setvar B_VAR_WILD_AI_FLAGS 10 @ 1 == CONSERVATIVE, 2 == RISKY,  <3=BOSS and Dynamax level, <5 = treat the number as a dynamax level to max 10.
+    setvar B_VAR_WILD_AI_FLAGS 3 @ 1 == CONSERVATIVE, 2 == RISKY,  <3=BOSS
     call Common_EventScript_OutOfCenterPartyHeal
     callnative ScrCmd_SetGauntletBossBattle
     .byte 9
@@ -204,7 +209,9 @@ GauntletIsland_AltarSpeed::
     call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_SPEED_ALTAR
     msgbox GauntletIsland_AltarSpeedVictory
-    goto GauntletIsland_Boon7
+GauntletIsland_AltarSpeedjUMP::
+    goto_if_gt VAR_GAUNTLET_7, 0, GauntletIsland_AltarQuiet
+    goto_if_eq VAR_GAUNTLET_7, 0, GauntletIsland_Boon7
     releaseall
     end
 

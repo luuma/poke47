@@ -1107,14 +1107,13 @@ static void BagAction_UseOnField(u8 taskId)
 {
     u8 pocketId = GetItemPocket(gSpecialVar_ItemId);
 
-    if (pocketId == POCKET_KEY_ITEMS
-        || pocketId == POCKET_POKE_BALLS
+    if (pocketId == POCKET_POKE_BALLS
         || ItemIsMail(gSpecialVar_ItemId) == TRUE)
     {
         CloseMenuActionWindow();
         DisplayItemMessageInBattlePyramid(taskId, gText_DadsAdvice, Task_CloseBattlePyramidBagMessage);
     }
-    else if (pocketId == POCKET_TM_HM && !FLAG_GAUNTLET_CHALLENGE)
+    else if ((pocketId == POCKET_TM_HM || pocketId == POCKET_KEY_ITEMS) && !FLAG_GAUNTLET_CHALLENGE)
     {
         CloseMenuActionWindow();
         DisplayItemMessageInBattlePyramid(taskId, gText_DadsAdvice, Task_CloseBattlePyramidBagMessage);

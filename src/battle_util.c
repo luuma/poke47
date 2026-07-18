@@ -7070,7 +7070,22 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
 
     if (ctx->isSelfInflicted)
         return uq4_12_multiply_by_int_half_down(ApplyOffensiveBadgeBoost(modifier, battlerAtk, move), atkStat);
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE)) // so we don't slow down calc in any other scenario.
+    {
+    if (FlagGet(FLAG_DAMAGE_DEVOTION) && IsOnPlayerSide(battlerAtk))
+    {
+         u32 mod = ((VarGet(VAR_GAUNTLET_BITFIELD_2) & 0b11100) >> 2);
+         u32 i;
+         for (i=0; i<mod; i++)
+         {
+             modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(1.05));
+         }
+         assertf(FALSE, "MOD %d", modifier);
+    }
 
+    if (FlagGet(FLAG_STATUSED_FOES_BATTLE) && !IsOnPlayerSide(battlerAtk) && (gBattleMons[battlerAtk].status1 & STATUS1_ANY))
+        modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.5));
+    }
     // attacker's abilities
     switch (ctx->abilities[battlerAtk])
     {
@@ -7576,7 +7591,7 @@ static inline uq4_12_t GetParentalBondModifier(enum BattlerId battlerAtk)
 {
     if (gSpecialStatuses[battlerAtk].parentalBondState != PARENTAL_BOND_2ND_HIT)
         return UQ_4_12(1.0);
-    return GetBattlerAbility(battlerAtk) == ABILITY_PARENTAL_BOND ? UQ_4_12(0.25) : UQ_4_12(1);// all good for double wallop still.
+    return GetBattlerAbility(battlerAtk) != ABILITY_DOUBLE_WALLOP ? UQ_4_12(0.25) : UQ_4_12(1);// all good for double wallop still.
 }
 
 static inline uq4_12_t GetSameTypeAttackBonusModifier(struct DamageContext *ctx)
@@ -8323,6 +8338,13 @@ s32 GetAdjustedDamage(struct DamageContext *ctx, s32 damage)
     {
         enduredHit = TRUE;
     }
+    else if (IsOnPlayerSide(ctx->battlerDef) && FlagGet(FLAG_EVERYONE_IS_STURDY) && IsBattlerAtMaxHp(ctx->battlerDef))
+    {
+        enduredHit = TRUE;
+        gBattleStruct->moveResultFlags[ctx->battlerDef] |= MOVE_RESULT_FOE_ENDURED_AFFECTION;
+    }
+
+
     else if (GetConfig(B_STURDY) >= GEN_5 && ctx->abilities[ctx->battlerDef] == ABILITY_STURDY && IsBattlerAtMaxHp(ctx->battlerDef))
     {
         enduredHit = TRUE;
@@ -8330,7 +8352,15 @@ s32 GetAdjustedDamage(struct DamageContext *ctx, s32 damage)
         gLastUsedAbility = ABILITY_STURDY;
         gBattleStruct->moveResultFlags[ctx->battlerDef] |= MOVE_RESULT_STURDIED;
     }
+
     else if (ctx->holdEffects[ctx->battlerDef] == HOLD_EFFECT_FOCUS_BAND && rand < GetBattlerHoldEffectParam(ctx->battlerDef))
+    {
+        enduredHit = TRUE;
+        RecordItemEffectBattle(ctx->battlerDef, ctx->holdEffects[ctx->battlerDef]);
+        gLastUsedItem = gBattleMons[ctx->battlerDef].item;
+        gBattleStruct->moveResultFlags[ctx->battlerDef] |= MOVE_RESULT_FOE_HUNG_ON;
+    }
+    else if (ctx->holdEffects[ctx->battlerDef] == HOLD_EFFECT_FOCUS_SASH && IsBattlerAtMaxHp(ctx->battlerDef))
     {
         enduredHit = TRUE;
         RecordItemEffectBattle(ctx->battlerDef, ctx->holdEffects[ctx->battlerDef]);
@@ -9494,15 +9524,24 @@ void TryRestoreHeldItems(void)
     {
         for (i = 0; i < PARTY_SIZE; i++)
         {
-    	    for (j = 0; j < MAX_MON_MOVES; ++j)
-    	    {
-		u32 pp = GetMovePP(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MOVE1 + j))* 2 / 5;
-		if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j) < pp)
-      		    SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j, &pp);
-	    }
-            u32 hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MAX_HP) * 2 / 5;
-            if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP) < hp)
-      		SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, &hp);
+            u32 hp;
+            if (!(FlagGet(FLAG_FULL_RECOVERY_EACH_BATTLE)))
+            {
+                hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MAX_HP) * 2 / 5;
+                if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP) < hp)
+      		    SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, &hp);
+            }
+            else
+            {
+                hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MAX_HP);
+  		SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, &hp);
+      		SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_STATUS, STATUS1_NONE);
+    	        for (j = 0; j < MAX_MON_MOVES; ++j)
+    	        {
+		    hp = GetMovePP(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MOVE1 + j));
+		    SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j, &hp);
+	        }
+            }
         }
     }
     for (i = 0; i < PARTY_SIZE; i++)
@@ -9520,7 +9559,7 @@ void TryRestoreHeldItems(void)
             if ((lostItem != ITEM_NONE || returnNPCItems) && GetItemPocket(lostItem) != POCKET_BERRIES)
                 SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &lostItem);
         }
-	if (GetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM) == ITEM_KNELL_BELL)
+	if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM) == ITEM_KNELL_BELL)
         {
     	    for (j = 0; j < MAX_MON_MOVES; ++j)
     	    {

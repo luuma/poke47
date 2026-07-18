@@ -12,6 +12,8 @@
 #include "item.h"
 #include "battle_controllers.h"
 #include "move.h"
+#include "event_data.h"
+
 #include "constants/battle_move_resolution.h"
 
 static void ValidateBattlers(void);
@@ -2269,7 +2271,10 @@ static enum CancelerResult CancelerAccuracyCheck(struct BattleCalcValues *cv)
 
 static bool32 IsMoveParentalBondAffected(struct BattleCalcValues *cv)
 {
-    if ((cv->abilities[cv->battlerAtk] != ABILITY_PARENTAL_BOND && (cv->abilities[cv->battlerAtk] != ABILITY_DOUBLE_WALLOP || gBattleMons[cv->battlerDef].hp >= gBattleMons[cv->battlerDef].maxHP * 3 / 4))
+    if (!(cv->abilities[cv->battlerAtk] == ABILITY_PARENTAL_BOND 
+|| (cv->abilities[cv->battlerAtk] == ABILITY_DOUBLE_WALLOP && gBattleMons[cv->battlerDef].hp < gBattleMons[cv->battlerDef].maxHP * 3 / 4)
+|| (IsOnPlayerSide(cv->battlerAtk) && FlagGet(FLAG_PARENTAL_BOND_BATTLE))   ) //GetBattlerSide(cv->battlerAtk) == B_SIDE_PLAYER
+
      || gBattleStruct->numSpreadTargets > 1
      || IsMoveParentalBondBanned(cv->move)
      || GetMoveCategory(cv->move) == DAMAGE_CATEGORY_STATUS

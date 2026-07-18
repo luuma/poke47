@@ -1526,13 +1526,13 @@
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
-#define FLAG_UNUSED_0x8E5                           (SYSTEM_FLAGS + 0x85) // Unused Flag
-#define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
-#define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
-#define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
-#define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
-#define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag
-#define FLAG_UNUSED_0x8EB                           (SYSTEM_FLAGS + 0x8B) // Unused Flag
+#define FLAG_FIVE_BOONS                           			(SYSTEM_FLAGS + 0x85) // GAUNTLET done!!
+#define FLAG_FULL_RECOVERY_EACH_BATTLE                                (SYSTEM_FLAGS + 0x86) // done!
+#define FLAG_RAISE_LEVEL_CAP                     			(SYSTEM_FLAGS + 0x87) // don!
+#define FLAG_PARENTAL_BOND_BATTLE                  			(SYSTEM_FLAGS + 0x88) // done gauntlet!
+#define FLAG_STATUSED_FOES_BATTLE                  			(SYSTEM_FLAGS + 0x89) // DONE!!!
+#define FLAG_DAMAGE_DEVOTION                                            (SYSTEM_FLAGS + 0x8A) // done!
+#define FLAG_EVERYONE_IS_STURDY                    			(SYSTEM_FLAGS + 0x8B) // done gauntlet!!
 #define FLAG_UNUSED_0x8EC                           (SYSTEM_FLAGS + 0x8C) // Unused Flag
 #define FLAG_UNUSED_0x8ED                           (SYSTEM_FLAGS + 0x8D) // Unused Flag
 #define FLAG_UNUSED_0x8EE                           (SYSTEM_FLAGS + 0x8E) // Unused Flag

@@ -70,6 +70,8 @@ static void ItemUseOnFieldCB_WailmerPailSudowoodo(u8);
 static bool8 TryToWaterSudowoodo(void);
 static void BootUpSoundTMHM(u8);
 static void Task_ShowTMHMContainedMessage(u8);
+static void BootUpSoundTMHMPyramid(u8 taskId);
+static void Task_ShowTMHMContainedMessagePyramid(u8 taskId);
 static void UseTMHMYesNo(u8);
 static void UseTMHM(u8);
 static void Task_StartUseRepel(u8);
@@ -930,9 +932,19 @@ void ItemUseOutOfBattle_DynamaxCandy(u8 taskId)
 void ItemUseOutOfBattle_TMHM(u8 taskId)
 {
     if (GetItemTMHMIndex(gSpecialVar_ItemId) > NUM_TECHNICAL_MACHINES)
-        DisplayItemMessage(taskId, FONT_NORMAL, sText_BootedUpHM, BootUpSoundTMHM); // HM
+    {
+        if (IsntPyramidBag())
+            DisplayItemMessage(taskId, FONT_NORMAL, sText_BootedUpHM, BootUpSoundTMHM); // HM
+        else
+            DisplayItemMessageInBattlePyramid(taskId, sText_BootedUpHM, BootUpSoundTMHMPyramid);
+    }
     else
-        DisplayItemMessage(taskId, FONT_NORMAL, sText_BootedUpTM, BootUpSoundTMHM); // TM
+    {
+        if (IsntPyramidBag())
+            DisplayItemMessage(taskId, FONT_NORMAL, sText_BootedUpTM, BootUpSoundTMHM); // HM
+        else
+            DisplayItemMessageInBattlePyramid(taskId, sText_BootedUpTM, BootUpSoundTMHMPyramid);
+    }
 }
 
 static void BootUpSoundTMHM(u8 taskId)
@@ -948,6 +960,22 @@ static void Task_ShowTMHMContainedMessage(u8 taskId)
         StringCopy(gStringVar1, GetMoveName(ItemIdToBattleMoveId(gSpecialVar_ItemId)));
         StringExpandPlaceholders(gStringVar4, sText_TMHMContainedVar1);
         DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, UseTMHMYesNo);
+    }
+}
+
+static void BootUpSoundTMHMPyramid(u8 taskId)
+{
+    PlaySE(SE_PC_LOGIN);
+    gTasks[taskId].func = Task_ShowTMHMContainedMessagePyramid;
+}
+
+static void Task_ShowTMHMContainedMessagePyramid(u8 taskId)
+{
+    if (JOY_NEW(A_BUTTON | B_BUTTON))
+    {
+        StringCopy(gStringVar1, GetMoveName(ItemIdToBattleMoveId(gSpecialVar_ItemId)));
+        StringExpandPlaceholders(gStringVar4, sText_TMHMContainedVar1);
+        DisplayItemMessageInBattlePyramid(taskId, gStringVar4, UseTMHMYesNo);
     }
 }
 
