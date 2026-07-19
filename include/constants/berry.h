@@ -157,6 +157,11 @@ enum __attribute__((__packed__)) Flavor
 #define BERRY_TREE_GAUNTLET_2   102 
 #define BERRY_TREE_GAUNTLET_3    103 
 #define BERRY_TREE_GAUNTLET_4    104 
+#define BERRY_TREE_GAUNTLET_5    105 
+#define BERRY_TREE_GAUNTLET_6    106 
+#define BERRY_TREE_GAUNTLET_7    107 
+#define BERRY_TREE_GAUNTLET_8    108 
+#define BERRY_TREE_GAUNTLET_9    109 
 
 
 

@@ -124,6 +124,23 @@ GauntletIsland_Boon8::
         removeobject VAR_LAST_TALKED
         goto gauntlet_boon_handler
 
+GauntletIsland_Boon9::
+        lockall
+	checkitemspace ITEM_BERRY_JUICE
+	goto_if_eq VAR_RESULT, FALSE, gauntlet_bag_space
+	callnative ScrCmd_DoGauntletBoonList @ also loads an internal value that is later corresponded to a var in setvartoboon.
+	.byte 5
+	.byte 9
+	message GauntletIsland_txtWhichBoon
+	waitmessage
+        dynmultistack 4, 2, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+	setflag FLAG_GAUNTLET_boon9 // uses var gauntlet A. Only for sake of record-keeping.
+        removeobject VAR_LAST_TALKED
+        goto gauntlet_boon_handler
+
+
+
 GauntletIsland_Reroll::
 	callnative ScrCmd_DoGauntletBoonList
 	.byte 3
@@ -138,20 +155,23 @@ gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 2, gauntlet_giveitemboon @ ditto for HMs
         @ goto_if_eq VAR_0x8007, 3, gauntlet_setflagboon @ handled in ScrCmd_LoadGauntletBoonInVarResultToboosboog. 
         goto_if_eq VAR_0x8007, 4, gauntlet_tutorboon
+
         goto_if_eq VAR_0x8007, 13, gauntlet_tutorboon//rerollplustutor
         goto_if_eq VAR_0x8007, 9, gauntlet_giveHerbReroll
         goto_if_eq VAR_0x8007, 10, gauntlet_giveitemboon10
-        goto_if_eq VAR_0x8007, 19, gauntlet_giveitemboon3
         goto_if_eq VAR_0x8007, 17, gauntlet_setweather
         goto_if_eq VAR_0x8007, 18, gauntlet_setstartingstatus
+        goto_if_eq VAR_0x8007, 19, gauntlet_giveitemboon3
 
-        goto_if_eq VAR_0x8007, 20, gauntlet_evolve
         goto_if_eq VAR_0x8007, 5, gauntlet_30berryboon
         goto_if_eq VAR_0x8007, 6, gauntlet_terrainSeeds
         goto_if_eq VAR_0x8007, 7, gauntlet_givemoneyboon
+
         goto_if_eq VAR_0x8007, 8, gauntlet_DEFSDEF
         goto_if_eq VAR_0x8007, 11, gauntlet_giveironhpupzinc
         goto_if_eq VAR_0x8007, 14, gauntlet_TOXICFLAME
+        goto_if_eq VAR_0x8007, 16, gauntlet_rods
+        goto_if_eq VAR_0x8007, 20, gauntlet_evolve
 
 GauntletIsland_return::
         callnative AddDevotionTo0x8008
@@ -304,58 +324,79 @@ gauntlet_givemoneyboonbig::
         goto GauntletIsland_return
 	end
 
+Gauntlet_EventScript_ShowBagIsFull::
+	msgbox gText_TooBadBagIsFull, MSGBOX_DEFAULT
+        goto GauntletIsland_return
+        end
+
 gauntlet_30berryboon::
         giverandomberryX5 BERRY_ID_LIECHI, BERRY_ID_STARF
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         giverandomberryX5 BERRY_ID_OCCA, BERRY_ID_ROSELI
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         giverandomberryX5 BERRY_ID_POMEG, BERRY_ID_TAMATO
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         giverandomberryX5 BERRY_ID_FIGY, BERRY_ID_IAPAPA
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         giverandomberryX5 BERRY_ID_CHERI, BERRY_ID_SITRUS
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         giverandomberryX5 BERRY_ID_CHERI, BERRY_ID_SITRUS
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         goto GauntletIsland_return
 	end
 
 gauntlet_terrainSeeds::
 	giveitem ITEM_GRASSY_SEED, 5
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
 	giveitem ITEM_MISTY_SEED, 5
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
 	giveitem ITEM_ELECTRIC_SEED, 5
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
 	giveitem ITEM_PSYCHIC_SEED, 5
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         goto GauntletIsland_return
 	end
 
+gauntlet_rods::
+        giveitem ITEM_OLD_ROD
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
+	setvar VAR_0x8004, 1
+	specialvar VAR_RESULT, CheckFishVsRod
+        goto_if_eq VAR_RESULT, FALSE, GauntletIsland_return @ DONE IN Same way as the fisher shack.
+        giveitem ITEM_GOOD_ROD
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
+	setvar VAR_0x8004, 2
+	specialvar VAR_RESULT, CheckFishVsRod
+        goto_if_eq VAR_RESULT, FALSE, GauntletIsland_return
+        giveitem ITEM_SUPER_ROD
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
+        goto GauntletIsland_return
+        end
+
 gauntlet_giveironhpupzinc::
 	giveitem ITEM_HP_UP, 10
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
 	giveitem ITEM_IRON, 10
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
 	giveitem ITEM_ZINC, 10
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         goto GauntletIsland_return
 	end
 
 gauntlet_DEFSDEF::
 	giveitem ITEM_X_DEFEND, 10
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
 	giveitem ITEM_X_SP_DEF, 10
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         goto GauntletIsland_return
 	end
 
 
 gauntlet_TOXICFLAME::
 	giveitem ITEM_TOXIC_ORB, 2
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
 	giveitem ITEM_FLAME_ORB, 2
-	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         goto GauntletIsland_return
 	end
 

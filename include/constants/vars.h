@@ -271,7 +271,7 @@
 #define VAR_OLD_LADY                                0x40F9 // Old lady rest stop punish
 #define VAR_FADE_STEP_COUNTER                                0x40FA // USED
 #define VAR_WILD_AI_FLAGS                                0x40FB // used gauntlet island
-#define VAR_UNUSED_0x40FC                                0x40FC // Unused Var
+#define VAR_GAUNTLET_A                                0x40FC // 
 #define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var

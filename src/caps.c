@@ -52,7 +52,7 @@ u32 GetCurrentLevelCap(void)
             }
         }
     }
-    else if (CheckBagHasItem(ITEM_LEVEL_CAP, 1) || !FlagGet(FLAG_RESCUED_BIRCH))
+    else if (CheckBagHasItem(ITEM_LEVEL_CAP, 1) || !FlagGet(FLAG_RESCUED_BIRCH) || VarGet(VAR_GAUNTLET_ACTIVE) == 1) // When exiting gauntlet, flag gauntlet challenge is cleared, then we check caps, then this is cleared.
     {
         for (i = 0; i < ARRAY_COUNT(sLevelCapFlagMap); i++)
         {

@@ -8,6 +8,7 @@
 #include "pokemon.h"
 #include "random.h"
 #include "script.h"
+#include "caps.h"
 
 // boons
 #include "malloc.h"
@@ -22,6 +23,7 @@ static void InitGauntletBagItems(void);
 static void RespawnAbout24RandomGauntletItemBalls(void);
 static bool32 GauntletPartySetup(void);
 static bool32 SquashEarthRibbonInfo(void);
+static void shrinknonearthribbonpartymember(u32 PartyIndex);
 
 //static enum BoonType GetGauntletBnType(u32 id);
 //static enum GauntletTypes GetGauntletAltar(u32 id);
@@ -42,11 +44,17 @@ static void RespawnAbout24RandomGauntletItemBalls(void)
 
     for (i = FLAG_GAUNTLET_MINT_A; i <= FLAG_GAUNTLET_MINT_G; i++)
         FlagClear(i);
+//Roll 34 random sets in the flags. Giving roughly 48*(1-(47/48)^34) item balls, or 24.04 item balls. But could be anywhere from 1 to 34 removed!
 
-    for (i = 0; i < 34; i++)
-        FlagSet(FLAG_GAUNTLET_3 + ((Random()+i) % FLAGS_GAUNTLET));
+    FlagClear(FLAG_GAUNTLET_0FBOULDER3);
+    FlagClear(FLAG_GAUNTLET_boon9);
+    for (i = FLAG_GAUNTLET_3; i <= FLAG_GAUNTLET_LAST; i++)
+        FlagClear(i);
 
-    return;//Roll 34 random sets in the flags. Giving roughly 48*(1-(47/48)^34) item balls, or 24.04 item balls. But could be anywhere from 1 to 34 removed!
+    for (i = FLAG_FIVE_BOONS; i <= FLAG_EVERYONE_IS_STURDY; i++)
+        FlagClear(i);
+
+    return;
 }
 
 static void InitGauntletBagItems(void)//COPY of initpyramiditems but gives some heal balls
@@ -65,6 +73,10 @@ static bool32 GauntletPartySetup(void)
 {
     //if (GetMonData(&gParties[B_TRAINER_PLAYER][1], MON_DATA_SPECIES) != SPECIES_NONE)
         //return FALSE;// check if party count is more than one and if so, go to EventScript_AccessPokemonStorage.
+
+// can't remember why I'm not using struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][0] but I think it had some quirks
+
+
     if (GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
         return FALSE;// Failsafe
     if (GetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_HP) == 0)
@@ -126,6 +138,43 @@ static u8 Squash(struct Pokemon *mon1, struct BoxPokemon *checkingMon)
                 return Level;
 }
 
+static void shrinknonearthribbonpartymember(u32 PartyIndex) // Shrink to the current level cap. If petalburg not beaten, devolve. Remove moves and items.
+{
+    struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][PartyIndex];
+
+    if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
+        return;// Failsafe
+    if (GetMonData(mon, MON_DATA_HP) == 0)
+        return;// Failsafe
+
+    enum Species species = GetMonData(mon, MON_DATA_SPECIES);
+    u32 lv = GetCurrentLevelCap();
+
+    u32 expPoints = gExperienceTables[gSpeciesInfo[species].growthRate][lv];
+    if (GetMonData(mon, MON_DATA_EXP) > expPoints)
+    {
+        SetMonData(mon, MON_DATA_EXP, &expPoints);
+        SetMonData(mon, MON_DATA_LEVEL, &lv);
+    }
+    //devolve. fuck it lol.
+    if (!FlagGet(FLAG_BADGE05_GET))// NECESSARY to avoid level 5 gumshoos 1 million 
+    {
+        enum Species prespecies = GetSpeciesPreEvolution(species);
+        if (prespecies != SPECIES_NONE)
+        {
+            enum Species prespecies2 = GetSpeciesPreEvolution(prespecies);
+            if (prespecies2 != SPECIES_NONE)
+                SetMonData(mon, MON_DATA_SPECIES, &prespecies2);
+            else
+                SetMonData(mon, MON_DATA_SPECIES, &prespecies);
+        }
+    }
+    enum Item itemNone = ITEM_NONE;
+    SetMonData(mon, MON_DATA_HELD_ITEM, &itemNone);// NECESSARY to avoid item duplication
+    GiveMonInitialMoveset(mon);// necessary to avoid spore on everyone
+    CalculateMonStats(mon);
+}
+
 static bool32 SquashEarthRibbonInfo(void)
 {
     u32 h;
@@ -137,16 +186,15 @@ static bool32 SquashEarthRibbonInfo(void)
         {
             contd = TRUE;
             mon = &gParties[B_TRAINER_PLAYER][h];
-            break;
         }
+        else
+            shrinknonearthribbonpartymember(h);
     }
     if (!contd)
         return FALSE; 
 
     u32 i, j;
     contd = FALSE;
-    u8 Level = 5;
-    enum Species species;
     SetPCBoxToSendMon(VarGet(VAR_PC_BOX_TO_SEND_MON));
     i = StorageGetCurrentBox();
 
@@ -160,7 +208,7 @@ static bool32 SquashEarthRibbonInfo(void)
             contd = GetBoxMonData(checkingMon, MON_DATA_EARTH_RIBBON);
             if (contd == TRUE)
             {
-                Level = Squash(mon, checkingMon);
+                u8 Level = Squash(mon, checkingMon);// unused
                 ZeroBoxMonAt(i,j);
                 bool32 neveragain = FALSE;
                 SetMonData(mon, MON_DATA_EARTH_RIBBON, &neveragain);
@@ -175,21 +223,6 @@ static bool32 SquashEarthRibbonInfo(void)
             i = 0;
     } while (i != StorageGetCurrentBox());
 
-
-    for (i = 0; i < PARTY_SIZE; i++)
-    {
-        if (i == h)
-            continue;
-        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES) == SPECIES_NONE)
-            continue;
-        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL) > Level)
-        {
-            species = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES);
-            SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL, &Level);
-            u32 expPoints = gExperienceTables[gSpeciesInfo[species].growthRate][Level];// has to be done from scratch or else we do some delevel shit.
-            SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_EXP, &expPoints);
-        }
-    }
     return contd;
 }
 
@@ -252,8 +285,9 @@ static void ResetGauntletVars(void)
     VarSet(VAR_GAUNTLET_7, 0);
     VarSet(VAR_GAUNTLET_8, 0);
     VarSet(VAR_GAUNTLET_BITFIELD_1, 0);
-    VarSet(VAR_GAUNTLET_BITFIELD_2, 0);
+    VarSet(VAR_GAUNTLET_BITFIELD_2, 0); // completely fucking unnecessary var. I forgot these are halfwords!
     VarSet(VAR_GAUNTLET_9, 0);
+    VarSet(VAR_GAUNTLET_A, 0);
     VarSet(VAR_GAUNTLET_STARTING_STATUS, 0);
     VarSet(VAR_GAUNTLET_WEATHER, 0);
 }
@@ -279,38 +313,45 @@ void GauntletStart(struct ScriptContext *ctx)
 
 void GauntletEnd(struct ScriptContext *ctx)// Called in map script in route 100 while var gauntlet active is 1.
 {
-    bool32 SuccessfulSquash = SquashEarthRibbonInfo();
     FlagClear(FLAG_GAUNTLET_CHALLENGE);
-    VarSet(VAR_GAUNTLET_ACTIVE, 0);
     FlagClear(FLAG_STORING_ITEMS_IN_PYRAMID_BAG);//PRObably not needed.
     ResetGauntletVars();
+    bool32 SuccessfulSquash = SquashEarthRibbonInfo(); // this is done after gauntlet challenge is cleared, so it can read information about the current level cap.
+    VarSet(VAR_GAUNTLET_ACTIVE, 0);// this is done after successfulsquash so it knows "hey do this cap even if theyve not got a level cap in bag"
     VarSet(VAR_RESULT, SuccessfulSquash);
     return;
 }
 
+#define G_LEN_LOW 8
 
-const int GauntletItemsLow[7] = {
+const int GauntletItemsLow[G_LEN_LOW] = {
     ITEM_HP_UP,
     ITEM_PP_UP,
     ITEM_POTION,
     ITEM_FLUFFY_TAIL,
     ITEM_PECHA_BERRY,
     ITEM_ORAN_BERRY,
+    ITEM_SUPER_REPEL,
     ITEM_FULL_HEAL
 };
 
-const int GauntletItemsMed[8] = {
+#define G_LEN_MED 9
+
+const int GauntletItemsMed[G_LEN_MED] = {
     ITEM_PROTEIN,
     ITEM_IRON,
     ITEM_SUPER_POTION,
     ITEM_CHERI_BERRY,
-    ITEM_PERSIM_BERRY,
+    ITEM_ASPEAR_BERRY,
     ITEM_X_ATTACK,
     ITEM_X_DEFEND,
+    ITEM_SUPER_REPEL,
     ITEM_ABILITY_CAPSULE
 };
 
-const int GauntletItemsHigh[9] = {
+#define G_LEN_HI 9
+
+const int GauntletItemsHigh[G_LEN_HI] = {
     ITEM_ZINC,
     ITEM_CALCIUM,
     ITEM_CARBOS,
@@ -322,9 +363,11 @@ const int GauntletItemsHigh[9] = {
     ITEM_ABILITY_PATCH
 };
 
-const int GauntletItemsEnd[8] = {
-    ITEM_SUPER_POTION,
-    ITEM_SUPER_POTION,
+#define G_LEN_END 8
+
+const int GauntletItemsEnd[G_LEN_END] = {
+    ITEM_SUPER_REPEL,
+    ITEM_SUPER_REPEL,
     ITEM_HYPER_POTION,
     ITEM_FULL_RESTORE,
     ITEM_FULL_HEAL,
@@ -340,19 +383,19 @@ void CallnativeGauntletItemBall(struct ScriptContext *ctx)
    enum Item item = ITEM_BERRY_JUICE;
    switch (itemPool){
       case GAUNTLET_ITEM_POOL_LOW:
-          rand = LocalRandom32(&gSaveBlock3Ptr->seedItems) % 7;
+          rand = LocalRandom32(&gSaveBlock3Ptr->seedItems) % G_LEN_LOW;
           item =  GauntletItemsLow[rand];
           break;
       case GAUNTLET_ITEM_POOL_MED:
-          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemsmed) % 8;
+          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemsmed) % G_LEN_MED;
           item =  GauntletItemsMed[rand];
           break;
       case GAUNTLET_ITEM_POOL_HIGH:
-          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemshigh) % 9;
+          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemshigh) % G_LEN_HI;
           item =  GauntletItemsHigh[rand];
           break;
       case GAUNTLET_ITEM_POOL_END:
-          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemsend) % 8;
+          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemsend) % G_LEN_END;
           item =  GauntletItemsEnd[rand];
           break;
       default: break;
@@ -766,8 +809,9 @@ void ScrCmd_SetvarToBoon(struct ScriptContext *ctx)
         case 5: VarSet(VAR_GAUNTLET_5, BoonID); break;
         case 6: VarSet(VAR_GAUNTLET_6, BoonID); break;
         case 7: VarSet(VAR_GAUNTLET_7, BoonID); break;
-        case 8: 
-        default: VarSet(VAR_GAUNTLET_8, BoonID); break;
+        case 9: VarSet(VAR_GAUNTLET_A, BoonID); break;
+        case 8: VarSet(VAR_GAUNTLET_8, BoonID); break;
+        default: break;
     }
     //assertf(FALSE, "VAR ID = %d", VarId);
     BoonID = 0;
@@ -869,7 +913,7 @@ void BufferDevotionToStrVar4(void)// RUN on menu load.
  
 static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, u8 epicWeight)
 {
-    u32 devotions1 = VarGet(VAR_GAUNTLET_BITFIELD_1);
+    u32 devotions1 = VarGet(VAR_GAUNTLET_BITFIELD_1);// VARS ARE FUCKIGN U16???????????????????????????????????
     u32 devotions2 = VarGet(VAR_GAUNTLET_BITFIELD_2);
 
     u8 playerDevotions[TYPE_DEVOTION_LENGTH] =
@@ -1053,7 +1097,8 @@ static u8 GetGauntletBoon(enum GauntletTypes type, enum GauntletRarity rarity, u
     u32 choice6 = VarGet(VAR_GAUNTLET_6);
     u32 choice7 = VarGet(VAR_GAUNTLET_7);
     u32 choice8 = VarGet(VAR_GAUNTLET_8);
-    
+    //u32 choice9 = VarGet(VAR_GAUNTLET_A); unnecessary. We do not ever need to check this is a dupe. it's the last one!
+
     u32 i = 0;
     u32 j = 0;
     do {
