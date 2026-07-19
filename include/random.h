@@ -19,7 +19,7 @@
 *
 * Random2_32() was added, even though it is not used directly, because the
 * underlying RNG always outputs 32 bits.
-*/
+
 
 struct Sfc32State {
     u32 a;
@@ -30,6 +30,9 @@ struct Sfc32State {
 
 typedef struct Sfc32State rng_value_t;
 
+now in global
+
+*/
 #define RNG_VALUE_EMPTY {0}
 
 // Calling this function directly is discouraged.

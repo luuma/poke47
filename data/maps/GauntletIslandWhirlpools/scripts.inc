@@ -138,20 +138,20 @@ gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 2, gauntlet_giveitemboon @ ditto for HMs
         @ goto_if_eq VAR_0x8007, 3, gauntlet_setflagboon @ handled in ScrCmd_LoadGauntletBoonInVarResultToboosboog. 
         goto_if_eq VAR_0x8007, 4, gauntlet_tutorboon
+        goto_if_eq VAR_0x8007, 13, gauntlet_tutorboon//rerollplustutor
+        goto_if_eq VAR_0x8007, 9, gauntlet_giveHerbReroll
+        goto_if_eq VAR_0x8007, 10, gauntlet_giveitemboon10
+        goto_if_eq VAR_0x8007, 19, gauntlet_giveitemboon3
+        goto_if_eq VAR_0x8007, 17, gauntlet_setweather
+        goto_if_eq VAR_0x8007, 18, gauntlet_setstartingstatus
+
+        goto_if_eq VAR_0x8007, 20, gauntlet_evolve
         goto_if_eq VAR_0x8007, 5, gauntlet_30berryboon
         goto_if_eq VAR_0x8007, 6, gauntlet_terrainSeeds
         goto_if_eq VAR_0x8007, 7, gauntlet_givemoneyboon
         goto_if_eq VAR_0x8007, 8, gauntlet_DEFSDEF
-        goto_if_eq VAR_0x8007, 9, gauntlet_giveHerbReroll
-        goto_if_eq VAR_0x8007, 19, gauntlet_giveitemboon3
-        goto_if_eq VAR_0x8007, 20, gauntlet_evolve
-
-        goto_if_eq VAR_0x8007, 10, gauntlet_giveitemboon10
         goto_if_eq VAR_0x8007, 11, gauntlet_giveironhpupzinc
-        goto_if_eq VAR_0x8007, 13, gauntlet_tutorboon//rerollplustutor
         goto_if_eq VAR_0x8007, 14, gauntlet_TOXICFLAME
-        goto_if_eq VAR_0x8007, 17, gauntlet_setweather
-        goto_if_eq VAR_0x8007, 18, gauntlet_setstartingstatus
 
 GauntletIsland_return::
         callnative AddDevotionTo0x8008
@@ -211,11 +211,6 @@ gauntlet_tutorboon::
 	goto GauntletIsland_return
 	end
 
-gauntlet_evolve::
-	pickpartymon SELECT_PC_MON_EVOLUTION
-	callnative Script_GauntletTriggerUniqueEvolution
-        goto GauntletIsland_return
-	end
 
 gauntlet_tutorboon_DeclinedOnce::
 	msgbox GauntletIsland_TutorAnotherMon MSGBOX_YESNO
@@ -237,6 +232,18 @@ MoveTutor_EventScript_gauntletdeclined::
 	goto GauntletIsland_return
 	end
 
+gauntlet_evolve::
+	special ChoosePartyMon
+	goto_if_ge VAR_0x8004, PARTY_SIZE, gauntlet_evoboon_DeclinedOnce
+	callnative Script_GauntletTriggerUniqueEvolution
+        goto GauntletIsland_return
+	end
+
+gauntlet_evoboon_DeclinedOnce::
+	msgbox GauntletIsland_EvoAMon MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_gauntletdeclined
+	goto gauntlet_evolve
+	end
 
 gauntlet_givemoneyboon::
 	goto_if_gt VAR_0x8005, 9000, gauntlet_givemoneyboonbig
@@ -440,6 +447,8 @@ GauntletIsland_txtHeyThatsDumbOfYou:
 GauntletIsland_TutorAnotherMon:
 	.string "Tutor a different POKéMON?$"
 
+GauntletIsland_EvoAMon:
+	.string "Evolve a POKéMON?$"
 
 GauntletIsland_BagSpace:
 	.string "There is not enough space in.\n"

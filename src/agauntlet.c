@@ -193,41 +193,51 @@ static bool32 SquashEarthRibbonInfo(void)
     return contd;
 }
 
-/// These need to go in the save file.
-static rng_value_t seedBoss;
-static rng_value_t seedItems;
-static rng_value_t seedItemsmed;
-static rng_value_t seedItemshigh;
-static rng_value_t seedItemsend;
-static rng_value_t seedMintHaha;
-
-static rng_value_t seedBoons;
-
 static void GauntletSeedRng(void)
 {
     u32 setup = Random32();
-    seedBoss = LocalRandomSeed(setup);
-    seedItems = LocalRandomSeed(setup);
-    seedItemsmed = LocalRandomSeed(setup);
-    seedItemshigh = LocalRandomSeed(setup);
-    seedItemsend = LocalRandomSeed(setup);
-    seedMintHaha = LocalRandomSeed(setup);
-    seedBoons = LocalRandomSeed(setup);
+    gSaveBlock3Ptr->seedBoss = LocalRandomSeed(setup);
+    gSaveBlock3Ptr->seedItems = LocalRandomSeed(setup);
+    gSaveBlock3Ptr->seedItemsmed = LocalRandomSeed(setup);
+    gSaveBlock3Ptr->seedItemshigh = LocalRandomSeed(setup);
+    gSaveBlock3Ptr->seedItemsend = LocalRandomSeed(setup);
+    gSaveBlock3Ptr->seedMintHaha = LocalRandomSeed(setup);
+    gSaveBlock3Ptr->seedBoons = LocalRandomSeed(setup);
 }
 
 u32 GauntletReadRng(u32 integer)//Nearly working but not quite.
 { 
-    return LocalRandom32(&seedBoss) % integer;
+    return LocalRandom32(&gSaveBlock3Ptr->seedBoss) % integer;
 }
 
 static u32 GauntletReadRngBoons(u32 integer)
 { 
-    return LocalRandom32(&seedBoons) % integer;
+    return LocalRandom32(&gSaveBlock3Ptr->seedBoons) % integer;
 }
+
+// Returns a random index according to a list of weights
+u8 RandomGauntletBoonWeightedIndex(u8 *weights, u8 length)
+{
+    u32 i;
+    u16 randomValue;
+    u16 weightSum = 0;
+    for (i = 0; i < length; i++)
+        weightSum += weights[i];
+    randomValue = weightSum > 0 ? LocalRandom32(&gSaveBlock3Ptr->seedBoons) % weightSum : 0;
+    weightSum = 0;
+    for (i = 0; i < length; i++)
+    {
+        weightSum += weights[i];
+        if (randomValue < weightSum)
+            return i;
+    }
+    return 0;
+}
+
 
 enum Item GauntletReturnRngMint(void)
 { 
-    return ITEM_LONELY_MINT + LocalRandom32(&seedMintHaha) % 21;// number between 0 and 20, with serious mint being item 101.
+    return ITEM_LONELY_MINT + LocalRandom32(&gSaveBlock3Ptr->seedMintHaha) % 21;// number between 0 and 20, with serious mint being item 101.
 }
 
 
@@ -330,19 +340,19 @@ void CallnativeGauntletItemBall(struct ScriptContext *ctx)
    enum Item item = ITEM_BERRY_JUICE;
    switch (itemPool){
       case GAUNTLET_ITEM_POOL_LOW:
-          rand = LocalRandom32(&seedItems) % 7;
+          rand = LocalRandom32(&gSaveBlock3Ptr->seedItems) % 7;
           item =  GauntletItemsLow[rand];
           break;
       case GAUNTLET_ITEM_POOL_MED:
-          rand = LocalRandom32(&seedItemsmed) % 8;
+          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemsmed) % 8;
           item =  GauntletItemsMed[rand];
           break;
       case GAUNTLET_ITEM_POOL_HIGH:
-          rand = LocalRandom32(&seedItemshigh) % 9;
+          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemshigh) % 9;
           item =  GauntletItemsHigh[rand];
           break;
       case GAUNTLET_ITEM_POOL_END:
-          rand = LocalRandom32(&seedItemsend) % 8;
+          rand = LocalRandom32(&gSaveBlock3Ptr->seedItemsend) % 8;
           item =  GauntletItemsEnd[rand];
           break;
       default: break;
@@ -828,7 +838,7 @@ static const u8 BoonListStrings[TYPE_COLOURLESS][8] =
 static const u8 gauntletBasetext[] = _("    DEVOTION\n");
 static const u8 gauntletspacetext[] = _(" ");
 
-void BufferDevotionToStrVar4(void)
+void BufferDevotionToStrVar4(void)// RUN on menu load.
 {
     u32 devotions1 = VarGet(VAR_GAUNTLET_BITFIELD_1);
     u32 devotions2 = VarGet(VAR_GAUNTLET_BITFIELD_2);
@@ -883,8 +893,8 @@ static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, 
     for (u32 menuNum=0; menuNum < optionsNo; menuNum++)
     {
         bool32 CanDuo = FALSE;
-        enum GauntletRarity rarity = RandomWeightedIndex(rarity_weight, 4);// of max devotion
-        u32 devotionNeeded = RandomWeightedIndex(devotion_weight, 4);// of max devotion
+        enum GauntletRarity rarity = RandomGauntletBoonWeightedIndex(rarity_weight, 4);// of max devotion
+        u32 devotionNeeded = RandomGauntletBoonWeightedIndex(devotion_weight, 4);// of max devotion
         u32 i=0;
         enum GauntletTypes deityChosen = TYPE_COLOURLESS;
         do

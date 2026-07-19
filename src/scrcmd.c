@@ -3360,16 +3360,16 @@ static bool32 GauntletEventEvolution(u32 partyIndex)
     if (targetSpecies != SPECIES_NONE)
     {
     gSpecialVar_Result = EVO_EVENT_SUCCESSFUL;
-    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_ITEM_USE, gSpecialVar_0x8005, NULL, &canStopEvo, DO_EVO);
+    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_ITEM_USE, 6, NULL, &canStopEvo, DO_EVO);
     BeginEvolutionScene(&gParties[B_TRAINER_PLAYER][partyIndex], targetSpecies, canStopEvo, partyIndex);
     ScriptContext_Stop();
     return TRUE;
     }
-    targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 6, NULL, &canStopEvo, CHECK_EVO);
+    targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 6, NULL, &canStopEvo, CHECK_EVO);// CHEKCING if an evo occurs with heal ball bypasses level adn item checks.
     if (targetSpecies != SPECIES_NONE)
     {
     gSpecialVar_Result = EVO_EVENT_SUCCESSFUL;
-    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 1, NULL, &canStopEvo, DO_EVO);
+    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 6, NULL, &canStopEvo, DO_EVO);
     BeginEvolutionScene(&gParties[B_TRAINER_PLAYER][partyIndex], targetSpecies, canStopEvo, partyIndex);
     ScriptContext_Stop();
     return TRUE;

@@ -5159,7 +5159,7 @@ enum Species GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode m
             switch (evolutions[i].method)
             {
             case EVO_LEVEL:
-                if (evolutions[i].param <= level)
+                if ((evolutions[i].param <= level) || evolutionItem == 6)
                     conditionsMet = TRUE;
                 break;
             case EVO_LEVEL_BATTLE_ONLY:
@@ -5168,7 +5168,7 @@ enum Species GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode m
                 break;
             }
 
-            if (conditionsMet && DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, canStopEvo, evoState))
+            if (conditionsMet && (DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, canStopEvo, evoState) || evolutionItem == 6))
             {
                 // All checks passed, so stop checking the rest of the evolutions.
                 // This is different from vanilla where the loop continues.
@@ -5213,12 +5213,12 @@ enum Species GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode m
             switch (evolutions[i].method)
             {
             case EVO_ITEM:
-                if (evolutions[i].param == evolutionItem || evolutionItem == 6)
+                if ((evolutions[i].param == evolutionItem) || evolutionItem == 6)
                     conditionsMet = TRUE;
                 break;
             }
 
-            if (conditionsMet && DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, canStopEvo, evoState))
+            if (conditionsMet && (DoesMonMeetAdditionalConditions(mon, evolutions[i].params, NULL, PARTY_SIZE, canStopEvo, evoState) || evolutionItem == 6))
             {
                 // All checks passed, so stop checking the rest of the evolutions.
                 // This is different from vanilla where the loop continues.

@@ -455,6 +455,14 @@
       "elevation": 0,
       "item": "ITEM_MILD_MINT",
       "flag": "FLAG_GAUNTLET_MINT_F"
+    },
+    {
+      "type": "sign",
+      "x": 20,
+      "y": 8,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "GauntletIsland_TIPSIGNAURA"
     }
   ],
   "region": "REGION_HOENN"

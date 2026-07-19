@@ -118,6 +118,44 @@ GauntletIsland_MultipushSPE::
 	addvar VAR_TEMP_2, 1
 	return
 
+GauntletIsland_TIPSIGNAURA::
+    msgbox GauntletIsland_GauntletTIPSAURA MSGBOX_SIGN
+    end
+
+
+GauntletIsland_GauntletTIPSAURA:
+   	.string "GAUNTLET CHALLENGE TIPS: AURA\p"
+
+   	.string "Certain foes have AURA\p"
+
+   	.string "This raises defenses 1.5x and\n"
+   	.string "halves HP-changing effects, like\l"
+   	.string "POISON, or healing, or HAIL.\p"
+
+   	.string "Effectively, they have 2 HP bars.$"
+
+
+GauntletIsland_TIPSIGNDEVOTION::
+    msgbox GauntletIsland_GauntletTIPS MSGBOX_SIGN
+    end
+
+
+GauntletIsland_GauntletTIPS:
+   	.string "GAUNTLET CHALLENGE TIPS: DEVOTION\p"
+
+   	.string "When you choose a BOON, you gain DEVOTION\n"
+   	.string "to its DEITY.\p"
+
+   	.string "This raises the chance of that DEITY\n"
+   	.string "blessing you in future.\p"
+
+   	.string "Once you have 2 or more DEVOTION to 2\n"
+   	.string "different DEITIES, you are likely to see\l"
+   	.string "their powerful DUO BOONs appear.\p"
+
+   	.string "It's rare to be blessed by more\n"
+   	.string "than 3 DEITIES.$"
+
 GauntletIsland_south:
    	.string "SOUTH$"
 

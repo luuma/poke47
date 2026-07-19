@@ -215,8 +215,9 @@ EventScript_ExampleScript_Text_3::
     .string "Choice 3$"
 
 Debug_EventScript_Script_2::
-	release
-	end
+        setvar VAR_RESULT 214
+	callnative ScrCmd_LoadGauntletBoonInVarResultToboosboog
+        goto gauntlet_boon_handler
 
 Debug_EventScript_Script_3::
 	release

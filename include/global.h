@@ -253,16 +253,35 @@ struct NPCFollower
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
+struct Sfc32State {
+    u32 a;
+    u32 b;
+    u32 c;
+    u32 ctr;
+};
+
+typedef struct Sfc32State rng_value_t;
+
+
 struct SaveBlock3
 {
 #if OW_USE_FAKE_RTC//ENABLED
     struct SiiRtcInfo fakeRTC;
 #endif
-#if FNPC_ENABLE_NPC_FOLLOWERS
-    struct NPCFollower NPCfollower;
-#endif
 #if OW_SHOW_ITEM_DESCRIPTIONS == OW_ITEM_DESCRIPTIONS_FIRST_TIME//ENABLED
     u8 itemFlags[ITEM_FLAGS_COUNT];
+#endif
+    struct Sfc32State seedBoss;
+    struct Sfc32State seedItems;
+    struct Sfc32State seedItemsmed;
+    struct Sfc32State seedItemshigh;
+    struct Sfc32State seedItemsend;
+    struct Sfc32State seedMintHaha;
+    struct Sfc32State seedBoons; //
+
+ // unused go below:    
+#if FNPC_ENABLE_NPC_FOLLOWERS
+    struct NPCFollower NPCfollower;
 #endif
 #if USE_DEXNAV_SEARCH_LEVELS == TRUE
     u8 dexNavSearchLevels[NUM_SPECIES];
@@ -314,15 +333,22 @@ struct BerryPickingResults
     u8 field_F;
 };
 
+struct PyramidBag2
+{
+    enum Item itemId[2][10];
+#if MAX_PYRAMID_BAG_ITEM_CAPACITY > 255
+    u16 quantity[2][10];
+#else
+    u8 quantity[2][10];
+#endif
+};/// perhaps a second one with size 20. this is size 60 bytes. = 2x 10 x(2+1). 
+
 struct PyramidBag
 {
-    enum Item itemId[FRONTIER_LVL_MODE_COUNT][PYRAMID_BAG_ITEMS_COUNT];
-#if MAX_PYRAMID_BAG_ITEM_CAPACITY > 255
-    u16 quantity[FRONTIER_LVL_MODE_COUNT][PYRAMID_BAG_ITEMS_COUNT];
-#else
-    u8 quantity[FRONTIER_LVL_MODE_COUNT][PYRAMID_BAG_ITEMS_COUNT];
-#endif
-};
+    enum Item itemId[2][20];
+    u8 quantity[2][20];
+};// size 120.
+
 
 struct BerryCrush
 {
@@ -518,7 +544,8 @@ struct BattleFrontier
     /*0xE22*/ u16 pyramidRandoms[4];
     /*0xE2A*/ u8 pyramidTrainerFlags; // 1 bit for each trainer (MAX_PYRAMID_TRAINERS)
     /*0xE2B*/ //u8 padding3;
-    /*0xE2C*/ struct PyramidBag pyramidBag;//FLAG_GAUNTLET_CHALLENGE
+    /*0xE2C*/ struct DomeMonData domePlayerPartyData[FRONTIER_PARTY_SIZE];// moving pyramid bag round
+    /*0xE5C*/ u8 padding[12];                                            // moving pyramid bag round
     /*0xE68*/ u8 pyramidLightRadius;
     /*0xE69*/ //u8 padding4;
     /*0xE6A*/ u16 verdanturfTentPrize;
@@ -534,10 +561,10 @@ struct BattleFrontier
     /*0xEF1*/ u8 opponentTrainerIds[FRONTIER_LVL_MODE_COUNT][TRAINER_ID_LENGTH];
     /*0xEF9*/ u8 unk_EF9:7; // Never read
     /*0xEF9*/ u8 savedGame:1;
-    /*0xEFA*/ u8 unused_EFA;
-    /*0xEFB*/ u8 unused_EFB;
-    /*0xEFC*/ struct DomeMonData domePlayerPartyData[FRONTIER_PARTY_SIZE];
-};
+    /*0xEFA*/ //u8 unused_EFA;
+    /*0xEFB*/ //u8 unused_EFB;
+    /*0xF2C*/ struct PyramidBag pyramidBag;
+};// takes us to 0xfc2
 
 struct ApprenticeQuestion
 {
