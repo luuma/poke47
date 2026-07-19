@@ -3352,6 +3352,33 @@ static bool32 EventEvolution(u32 partyIndex)
     return TRUE;
 }
 
+
+static bool32 GauntletEventEvolution(u32 partyIndex)
+{
+    bool32 canStopEvo = gSpecialVar_0x8000;
+    u32 targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_ITEM_USE, 6, NULL, &canStopEvo, CHECK_EVO);
+    if (targetSpecies != SPECIES_NONE)
+    {
+    gSpecialVar_Result = EVO_EVENT_SUCCESSFUL;
+    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_ITEM_USE, gSpecialVar_0x8005, NULL, &canStopEvo, DO_EVO);
+    BeginEvolutionScene(&gParties[B_TRAINER_PLAYER][partyIndex], targetSpecies, canStopEvo, partyIndex);
+    ScriptContext_Stop();
+    return TRUE;
+    }
+    targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 6, NULL, &canStopEvo, CHECK_EVO);
+    if (targetSpecies != SPECIES_NONE)
+    {
+    gSpecialVar_Result = EVO_EVENT_SUCCESSFUL;
+    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 1, NULL, &canStopEvo, DO_EVO);
+    BeginEvolutionScene(&gParties[B_TRAINER_PLAYER][partyIndex], targetSpecies, canStopEvo, partyIndex);
+    ScriptContext_Stop();
+    return TRUE;
+    }
+    gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
+    return FALSE;
+
+}
+
 static void TriggerMultipleEvolutions_Repeatable(void)
 {
     if (gSpecialVar_Result == EVO_EVENT_SUCCESSFUL)
@@ -3394,6 +3421,24 @@ void Script_TriggerUniqueEvolution(struct ScriptContext *ctx)
     }
     gCB2_AfterEvolution = CB2_ReturnToFieldContinueScript;
     EventEvolution(gSpecialVar_0x8004);
+}
+
+
+void Script_GauntletTriggerUniqueEvolution(struct ScriptContext *ctx)
+{
+    ctx->waitAfterCallNative = TRUE;
+    if (gSpecialVar_0x8004 == PARTY_NOTHING_CHOSEN)
+    {
+        gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
+        return;
+    }
+    assertf(gSpecialVar_0x8004 <= PARTY_SIZE, "TriggerEvolution script called with invalid partyIndex %d", gSpecialVar_0x8004)
+    {
+        gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
+        return;
+    }
+    gCB2_AfterEvolution = CB2_ReturnToFieldContinueScript;
+    GauntletEventEvolution(gSpecialVar_0x8004);
 }
 
 void Script_EndTrainerCanSeeIf(struct ScriptContext *ctx)

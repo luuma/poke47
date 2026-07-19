@@ -5213,7 +5213,7 @@ enum Species GetEvolutionTargetSpecies(struct Pokemon *mon, enum EvolutionMode m
             switch (evolutions[i].method)
             {
             case EVO_ITEM:
-                if (evolutions[i].param == evolutionItem)
+                if (evolutions[i].param == evolutionItem || evolutionItem == 6)
                     conditionsMet = TRUE;
                 break;
             }

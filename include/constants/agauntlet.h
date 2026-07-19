@@ -16,6 +16,7 @@ void ScrCmd_LoadGauntletBoonInVarResultToboosboog(struct ScriptContext *ctx);
 void AddDevotionTo0x8008(void);
 void ScrCmd_DoGauntletBoonList(struct ScriptContext *ctx);
 void UpdateDevotions(void);
+void BufferDevotionToStrVar4(void);
 
 enum ItemPool {
     GAUNTLET_ITEM_POOL_LOW,
@@ -54,7 +55,9 @@ enum GauntletRarity
     RARITY_COMMON = 1,
     RARITY_RARE = 2,
     RARITY_EPIC = 3,
-    RARITY_LENGTH,
+    RARITY_RARE2 = 4,
+    RARITY_LENGTH = RARITY_RARE2,
+    RARITY_DUO = 5,
 };
 
 enum BoonType

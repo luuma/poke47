@@ -1113,7 +1113,7 @@ static const u8 sTextGrey[] = _("{COLOR LIGHT_GRAY}{SHADOW DARK_GRAY}");
 
 static void PrintRowInfo(u8 window, u32 totalValue, u32 totalVoltorbs)
 {
-    u8 text[8];
+    u8 text[10];
     FillWindowPixelBuffer(window, PIXEL_FILL(0));
 
     // Top number

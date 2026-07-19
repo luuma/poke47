@@ -50,6 +50,7 @@
 #include "constants/battle_frontier.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/AGauntlet.h"
 
 // Menu actions
 enum
@@ -85,6 +86,7 @@ COMMON_DATA bool8 (*gMenuCallback)(void) = NULL;
 
 // EWRAM
 EWRAM_DATA static u8 sSafariBallsWindowId = 0;
+EWRAM_DATA static u8 sDevotionWindowId = 0;
 EWRAM_DATA static u8 sBattlePyramidFloorWindowId = 0;
 EWRAM_DATA static u8 sStartMenuCursorPos = 0;
 EWRAM_DATA static u8 sNumStartMenuActions = 0;
@@ -148,6 +150,16 @@ static void Task_WaitForBattleTowerLinkSave(u8 taskId);
 static bool8 FieldCB_ReturnToFieldStartMenu(void);
 
 static const struct WindowTemplate sWindowTemplate_SafariBalls = {
+    .bg = 0,
+    .tilemapLeft = 1,
+    .tilemapTop = 1,
+    .width = 9,
+    .height = 4,
+    .paletteNum = 15,
+    .baseBlock = 0x8
+};
+
+static const struct WindowTemplate sWindowTemplate_Devotion = {
     .bg = 0,
     .tilemapLeft = 1,
     .tilemapTop = 1,
@@ -459,6 +471,19 @@ static void BuildMultiPartnerRoomStartMenu(void)
     AddStartMenuAction(MENU_ACTION_EXIT);
 }
 
+
+static void ShowDevotionWindow(void)
+{
+    sDevotionWindowId = AddWindow(&sWindowTemplate_Devotion);
+    PutWindowTilemap(sDevotionWindowId);
+    DrawStdWindowFrame(sDevotionWindowId, FALSE);
+    
+    BufferDevotionToStrVar4();// uses strvar4 and strvar1
+    AddTextPrinterParameterized(sDevotionWindowId, FONT_NORMAL, gStringVar4, 0, 1, TEXT_SKIP_DRAW, NULL);
+    CopyWindowToVram(sDevotionWindowId, COPYWIN_GFX);
+}
+
+
 static void ShowSafariBallsWindow(void)
 {
     sSafariBallsWindowId = AddWindow(&sWindowTemplate_SafariBalls);
@@ -509,6 +534,12 @@ static void RemoveExtraStartMenuWindows(void)
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
+    {
+        ClearStdWindowAndFrameToTransparent(sDevotionWindowId, FALSE);
+        RemoveWindow(sDevotionWindowId);
+    }
+
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -566,6 +597,8 @@ static bool32 InitStartMenuStep(void)
             ShowSafariBallsWindow();
         if (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE)
             ShowPyramidFloorWindow();
+        if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
+            ShowDevotionWindow();
         sInitStartMenuData[0]++;
         break;
     case 4:

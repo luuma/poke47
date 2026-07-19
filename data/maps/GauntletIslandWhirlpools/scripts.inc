@@ -136,7 +136,7 @@ gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 15, gauntlet_giveitemboon
         goto_if_eq VAR_0x8007, 1, gauntlet_giveitemboon @ This should check whether the TM can be learned by any member of the party and return to dynmultistack if player decides against it. Actually fuck that. it should just be possible to teach anything to anyone.
         goto_if_eq VAR_0x8007, 2, gauntlet_giveitemboon @ ditto for HMs
-        goto_if_eq VAR_0x8007, 3, gauntlet_setflagboon
+        @ goto_if_eq VAR_0x8007, 3, gauntlet_setflagboon @ handled in ScrCmd_LoadGauntletBoonInVarResultToboosboog. 
         goto_if_eq VAR_0x8007, 4, gauntlet_tutorboon
         goto_if_eq VAR_0x8007, 5, gauntlet_30berryboon
         goto_if_eq VAR_0x8007, 6, gauntlet_terrainSeeds
@@ -144,7 +144,7 @@ gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 8, gauntlet_DEFSDEF
         goto_if_eq VAR_0x8007, 9, gauntlet_giveHerbReroll
         goto_if_eq VAR_0x8007, 19, gauntlet_giveitemboon3
-        @goto_if_eq VAR_0x8007, 20, gauntlet_evolve
+        goto_if_eq VAR_0x8007, 20, gauntlet_evolve
 
         goto_if_eq VAR_0x8007, 10, gauntlet_giveitemboon10
         goto_if_eq VAR_0x8007, 11, gauntlet_giveironhpupzinc
@@ -153,7 +153,6 @@ gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 17, gauntlet_setweather
         goto_if_eq VAR_0x8007, 18, gauntlet_setstartingstatus
 
-        @ goto gauntlet_giveitemboon. FML i hope this isn't necessary
 GauntletIsland_return::
         callnative AddDevotionTo0x8008
         call_if_eq VAR_0x8008, 0, GauntletIsland_saphmsg
@@ -166,7 +165,7 @@ GauntletIsland_return::
 
         goto_if_eq VAR_0x8007, 9, GauntletIsland_Reroll
         goto_if_eq VAR_0x8007, 12, GauntletIsland_Reroll
-        goto_if_eq VAR_0x8007, 13, GauntletIsland_Reroll//rerollplustutor
+        goto_if_eq VAR_0x8007, 13, GauntletIsland_Reroll
         callnative ScrCmd_SetvarToBoon
         releaseall
         end
@@ -212,6 +211,11 @@ gauntlet_tutorboon::
 	goto GauntletIsland_return
 	end
 
+gauntlet_evolve::
+	pickpartymon SELECT_PC_MON_EVOLUTION
+	callnative Script_GauntletTriggerUniqueEvolution
+        goto GauntletIsland_return
+	end
 
 gauntlet_tutorboon_DeclinedOnce::
 	msgbox GauntletIsland_TutorAnotherMon MSGBOX_YESNO

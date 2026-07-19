@@ -23,11 +23,12 @@ static void RespawnAbout24RandomGauntletItemBalls(void);
 static bool32 GauntletPartySetup(void);
 static bool32 SquashEarthRibbonInfo(void);
 
-static enum BoonType GetGauntletBoonType(u32 id);
-static enum GauntletTypes GetGauntletAltar(u32 id);
-static enum BoonType GetGauntletSpecial(u32 id);
+//static enum BoonType GetGauntletBnType(u32 id);
+//static enum GauntletTypes GetGauntletAltar(u32 id);
+//static enum BoonType GetGauntletSpecial(u32 id);
+static u8 GetGauntletDuoBoon(enum GauntletTypes deityChosen, enum GauntletTypes deity2);
 
-static u8 GetGauntletBoon(enum GauntletTypes type, enum GauntletRarity rarity, u8 MultichoiceOptions[4], u32 Duo);
+static u8 GetGauntletBoon(enum GauntletTypes type, enum GauntletRarity rarity, u8 MultichoiceOptions[4], enum GauntletTypes deity2);
 static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, u8 epicWeight);
 static bool8 dynmultipushFromGauntletVar(u32 id);
 static void ResetGauntletVars(void);
@@ -417,8 +418,6 @@ void CallnativeGauntletItemBallMultichoice(struct ScriptContext *ctx)
 //#   BOONS   #
 //#############
 
-
-
 struct BoonGauntlet
 {
     const u8 name[40];
@@ -426,7 +425,6 @@ struct BoonGauntlet
     enum BoonType boonType;
     u32 special;
 };
-
 
 const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_NULL] =      {         .name =_("   ?!?!?!  "),         .altar = 0,         .boonType = 0,         .special = 0,     },
@@ -633,7 +631,7 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_THUNDERSTORM_WEATHER] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE}   {HIGHLIGHT LIGHT_BLUE} THUNDERSTORM WEATHER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_WEATHER,         .special = WEATHER_RAIN_THUNDERSTORM,     },
 [GB_PSYCHIC_TERRAFORM] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE}   {HIGHLIGHT DARK_GRAY}{COLOR WHITE} PSYCHIC TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_STARTINGSTATUS,         .special = 0,     },
 [GB_DROUGHT_WEATHER] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE}   {HIGHLIGHT LIGHT_GREEN} DROUGHT WEATHER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_WEATHER,         .special = WEATHER_DROUGHT,     },
-[GB_SANDSTORM_WEATHER] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE}   {HIGHLIGHT LIGHT_RED} SANDSTORM WEATHER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_WEATHER,         .special = 0,     },
+[GB_SANDSTORM_WEATHER] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE}   {HIGHLIGHT LIGHT_RED} SANDSTORM WEATHER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_WEATHER,         .special = WEATHER_SANDSTORM,     },
 [GB_NATURE_POWER] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN}   {HIGHLIGHT LIGHT_BLUE} HM NATURE POWER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_HM,         .special = ITEM_HM_NATURE_POWER,     },
 [GB_SPORE] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN}   {HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR SPORE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_SPORE,     },
 [GB_FULL_RECOVERY_EACH_BATTLE] =      {         .name =_("{HIGHLIGHT LIGHT_RED}   {HIGHLIGHT LIGHT_GREEN} FULL RECOVERY EACH BATTLE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_FULL_RECOVERY_EACH_BATTLE,     },
@@ -648,13 +646,13 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 
 };
 
-
+/*
 static const enum GauntletTypes GetGauntletAltar(u32 id)
 {
     return BoonList[id].altar;
 }
 
-static const enum BoonType GetGauntletBoonType(u32 id)
+static const enum BoonType GetGauntletBnType(u32 id)
 {
     return BoonList[id].boonType;
 }
@@ -663,6 +661,7 @@ static const enum BoonType GetGauntletSpecial(u32 id)
 {
     return BoonList[id].special;
 }
+*/
 
 static bool8 dynmultipushFromGauntletVar(u32 id)
 {
@@ -708,25 +707,23 @@ void ScrCmd_DoGauntletBoonList(struct ScriptContext *ctx)
 }
 
 
-void ScrCmd_LoadGauntletBoonInVarResultToboosboog(struct ScriptContext *ctx)
+void ScrCmd_LoadGauntletBoonInVarResultToboosboog(struct ScriptContext *ctx) // HANDLE FLAGS HERE.
 {
     BoonID = VarGet(VAR_RESULT);
 
     enum BoonType boon = BoonList[BoonID].boonType;
-    VarSet(VAR_0x8005, BoonList[BoonID].special);//item, flag, etc.
-    VarSet(VAR_0x8007, boon); // Used by the switch we returnto after dynmultistack
-    VarSet(VAR_0x8008, BoonList[BoonID].altar);//THIS can probably be a static instead.
-
-    /*
     switch (boon)
     {
+        case BOON_FLAG:
+	        FlagSet(BoonList[BoonID].special);break;
+
+/*
         case BOON_30_BERRIES:
         case BOON_TERRAIN_SEEDS:
         case BOON_10XITEM:
         case BOON_XATTACKXSPECIAL:
         case BOON_XDEFXSPDEF:
         case BOON_10IRON10HPUP10ZINC:
-        case BOON_FLAG:
         case BOON_TUTOR:
         case BOON_MONEY:
         case BOON_HERBREROLL:
@@ -736,10 +733,14 @@ void ScrCmd_LoadGauntletBoonInVarResultToboosboog(struct ScriptContext *ctx)
         case BOON_ITEM:
         case BOON_TM:
         case BOON_HM:
+*/
         default:
             break;
     }
-    */
+    VarSet(VAR_0x8005, BoonList[BoonID].special);//item, flag, etc.
+    VarSet(VAR_0x8007, boon); // Used by the switch we returnto after dynmultistack
+    VarSet(VAR_0x8008, BoonList[BoonID].altar);//THIS can probably be a static instead.
+
     return;
 }
 
@@ -814,6 +815,46 @@ void AddDevotionTo0x8008(void)
 }
 
 
+static const u8 BoonListStrings[TYPE_COLOURLESS][8] = 
+{
+    _("{HIGHLIGHT LIGHT_GREEN} "),
+    _("{HIGHLIGHT LIGHT_BLUE} "),
+    _("{HIGHLIGHT BLUE}{COLOR WHITE} "),
+    _("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} "),
+    _("{HIGHLIGHT LIGHT_RED} "),
+    _("{HIGHLIGHT RED}{COLOR WHITE} "),
+};
+
+static const u8 gauntletBasetext[] = _("    DEVOTION\n");
+static const u8 gauntletspacetext[] = _(" ");
+
+void BufferDevotionToStrVar4(void)
+{
+    u32 devotions1 = VarGet(VAR_GAUNTLET_BITFIELD_1);
+    u32 devotions2 = VarGet(VAR_GAUNTLET_BITFIELD_2);
+
+    u8 playerDevotions[TYPE_DEVOTION_LENGTH] =
+    {
+        [TYPE_SAPROTROPH] = devotions1 & BIT_SAPH,
+        [TYPE_NEREID] = (devotions1 & BIT_NEREID) >> 2,
+        [TYPE_ELDWYRM] = (devotions1 & BIT_ELDWYRM) >> 4,
+        [TYPE_DSOTM] = (devotions1 & BIT_DSOTM) >> 6,
+        [TYPE_MONOLITH] = devotions2 & BIT_MONOLITH,
+        [TYPE_WINGED_LION] = (devotions2 & BIT_WINGED_LION) >> 2,
+    };
+    u32 i;
+    StringCopy(gStringVar4, gauntletBasetext);
+    for (i=0; i<TYPE_DEVOTION_LENGTH; i++)
+    {
+        ConvertUIntToDecimalStringN(gStringVar1, playerDevotions[i], STR_CONV_MODE_LEFT_ALIGN, 1);
+        StringAppend(gStringVar4, BoonListStrings[i]);
+        StringAppend(gStringVar4, gStringVar1);
+        StringAppend(gStringVar4, gauntletspacetext);
+    }
+    return;
+}
+
+
 
  
 static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, u8 epicWeight)
@@ -852,43 +893,147 @@ static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, 
             if (playerDevotions[deity] >= devotionNeeded)
             {
                 if (playerDevotions[deity] >= 2)
-                    CanDuo = FALSE;
+                    CanDuo = TRUE;
                 deityChosen = deity;
                 break;
             }
             i++;
         } while (i < 20); // 2% chance we miss it lmao.
 
-        if (isCapped)
+        if (isCapped && deityChosen == TYPE_COLOURLESS)// if capped and not already picked something, we guarantee we pick something
         {
-        i=0;
-        do
-        {
-            enum GauntletTypes deity = GauntletReadRngBoons(TYPE_DEVOTION_LENGTH);
-            if (playerDevotions[deity] >= 1)
+            i=0;
+            do
             {
-                deityChosen = deity;
-                break;
-            }
-            i++;
-        } while (i < 6); //if capped, after you roll "colourless", you're forced into a previously chosen deity 97% of the time
+                enum GauntletTypes deity = GauntletReadRngBoons(TYPE_DEVOTION_LENGTH);
+                if (playerDevotions[deity] >= 1)
+                {
+                    if (playerDevotions[deity] >= 2)
+                        CanDuo = TRUE;
+                    deityChosen = deity;
+                    break;
+                }
+                i++;
+            } while (i < 6); //if capped, after you roll "colourless", you're forced into a previously chosen deity 97% of the time
         }
 
+        enum GauntletTypes deity2;
 
-        // work out what it can duo with. 
-        u32 Duo = FALSE;
+        if (CanDuo)
+        {
+            i=0;
+            CanDuo = FALSE;
+            do {deity2 = GauntletReadRngBoons(TYPE_DEVOTION_LENGTH);
+		if (deity2 != deityChosen)
+                    CanDuo = playerDevotions[deity2] >= 2;
+                i++;
+            } while (i<=6 && !CanDuo); // find duo 97% of time. done because oops we are often more than halving chance of duo boon by failing to reroll
+        }
+        u32 id;
 
+        if (CanDuo)
+            id = GetGauntletBoon(deityChosen, RARITY_DUO, MultichoiceOptions, deity2);
+        else
+            id = GetGauntletBoon(deityChosen, rarity, MultichoiceOptions, 0);
 
-        u32 id = GetGauntletBoon(deityChosen, rarity, MultichoiceOptions, Duo);
-
-        dynmultipushFromGauntletVar(id, canDuo);
-
+        dynmultipushFromGauntletVar(id);
         MultichoiceOptions[menuNum] = id;
     }
 }
 
+static u8 GetGauntletDuoBoon(enum GauntletTypes deityChosen, enum GauntletTypes deity2)
+{    
+    if (deityChosen == TYPE_WINGED_LION)
+    {
+        deityChosen = deity2;
+        deity2 = TYPE_WINGED_LION;
+    }
+    switch(deityChosen)
+    {
+    case TYPE_SAPROTROPH:
+        switch(deity2)
+        {
+        case TYPE_NEREID:
+            return GB_NATURE_POWER;
+        case TYPE_ELDWYRM:
+            return GB_DROUGHT_WEATHER;
+        case TYPE_DSOTM:
+            return GB_SPORE;
+        case TYPE_MONOLITH:
+            return GB_FULL_RECOVERY_EACH_BATTLE;
+        case TYPE_WINGED_LION:
+        default:
+            return GB_REROLL_AND_REVIVAL_HERB;
+        }
+       
+    case TYPE_NEREID:
+        switch(deity2)
+        {
+        case TYPE_SAPROTROPH:
+            return GB_NATURE_POWER;
+        case TYPE_ELDWYRM:
+            return GB_THUNDERSTORM_WEATHER;
+        case TYPE_DSOTM:
+            return GB_PSYCHIC_TERRAFORM;
+        case TYPE_MONOLITH:
+            return GB_SANDSTORM_WEATHER;
+        case TYPE_WINGED_LION:
+        default:
+            return GB_RAISE_LEVEL_CAP;
+        }
+       
+    case TYPE_ELDWYRM:
+        switch(deity2)
+        {
+        case TYPE_SAPROTROPH:
+            return GB_DROUGHT_WEATHER;
+        case TYPE_NEREID:
+            return GB_THUNDERSTORM_WEATHER;
+        case TYPE_DSOTM:
+            return GB_PARENTAL_BOND_BATTLE;
+        case TYPE_MONOLITH:
+            return GB_STATUSED_FOES_BATTLE;
+        case TYPE_WINGED_LION:
+        default:
+            return GB_DAMAGE_DEVOTION;
+        }
+       
+    case TYPE_DSOTM:
+        switch(deity2)
+        {
+        case TYPE_SAPROTROPH:
+            return GB_NATURE_POWER;
+        case TYPE_NEREID:
+            return GB_PSYCHIC_TERRAFORM;
+        case TYPE_ELDWYRM:
+            return GB_PARENTAL_BOND_BATTLE;
+        case TYPE_MONOLITH:
+            return GB_DESTINY_BOND;
+        case TYPE_WINGED_LION:
+        default:
+            return GB_EVOLVE_A_POKÉMON;
+        }
+       
+    case TYPE_MONOLITH:
+    default:
+        switch(deity2)
+        {
+        case TYPE_SAPROTROPH:
+            return GB_FULL_RECOVERY_EACH_BATTLE;
+        case TYPE_NEREID:
+            return GB_SANDSTORM_WEATHER;
+        case TYPE_ELDWYRM:
+            return GB_STATUSED_FOES_BATTLE;
+        case TYPE_DSOTM:
+            return GB_DESTINY_BOND;
+        case TYPE_WINGED_LION:
+        default:
+            return GB_EVERYONE_IS_STURDY;
+        }
+    }
+}
 
-static u8 GetGauntletBoon(enum GauntletTypes type, enum GauntletRarity rarity, u8 MultichoiceOptions[4], u32 Duo)
+static u8 GetGauntletBoon(enum GauntletTypes type, enum GauntletRarity rarity, u8 MultichoiceOptions[4], enum GauntletTypes deity2)
 {
     u32 choice1 = VarGet(VAR_GAUNTLET_1);
     u32 choice2 = VarGet(VAR_GAUNTLET_2);
@@ -898,121 +1043,132 @@ static u8 GetGauntletBoon(enum GauntletTypes type, enum GauntletRarity rarity, u
     u32 choice6 = VarGet(VAR_GAUNTLET_6);
     u32 choice7 = VarGet(VAR_GAUNTLET_7);
     u32 choice8 = VarGet(VAR_GAUNTLET_8);
+    
     u32 i = 0;
     u32 j = 0;
     do {
         j++;
-        if (canDuo);
-        
-        switch (type)
+        if (rarity == RARITY_DUO)
         {
-        case TYPE_SAPROTROPH:
-            switch (rarity)
+            i = GetGauntletDuoBoon(type, deity2);
+            rarity = 2 + GauntletReadRngBoons(2);//rare or epic if this is ditched
+        }
+        else
+        {
+            switch (type)
             {
-            case RARITY_STAPLE:
-                i = 1 + GauntletReadRngBoons(NEREID_STAPLE); break;
-            case RARITY_COMMON:
-                i = SAPROTROPH_COMMON + GauntletReadRngBoons(NEREID_COMMON - SAPROTROPH_COMMON); break;
-            default:
-            case RARITY_RARE:
-                i = SAPROTROPH_RARE + GauntletReadRngBoons(NEREID_RARE - SAPROTROPH_RARE); break;
-            case RARITY_EPIC:
-                i = SAPROTROPH_EPIC + GauntletReadRngBoons(NEREID_EPIC - SAPROTROPH_EPIC); break;
-            }
-            break;
+            case TYPE_SAPROTROPH:
+                switch (rarity)
+                {
+                case RARITY_STAPLE:
+                    i = 1 + GauntletReadRngBoons(NEREID_STAPLE); break;
+                case RARITY_COMMON:
+                    i = SAPROTROPH_COMMON + GauntletReadRngBoons(NEREID_COMMON - SAPROTROPH_COMMON); break;
+                default:
+                case RARITY_RARE:
+                    i = SAPROTROPH_RARE + GauntletReadRngBoons(NEREID_RARE - SAPROTROPH_RARE); break;
+                case RARITY_EPIC:
+                    i = SAPROTROPH_EPIC + GauntletReadRngBoons(NEREID_EPIC - SAPROTROPH_EPIC); break;
+                }
+                break;
 
-        case TYPE_NEREID:
-            switch (rarity)
-            {
-            case RARITY_STAPLE:
-                i = NEREID_STAPLE + GauntletReadRngBoons(ELDWYRM_STAPLE - NEREID_STAPLE); break;
-            case RARITY_COMMON:
-                i = NEREID_COMMON + GauntletReadRngBoons(ELDWYRM_COMMON - NEREID_COMMON); break;
-            default:
-            case RARITY_RARE:
-                i = NEREID_RARE + GauntletReadRngBoons(ELDWYRM_RARE - NEREID_RARE); break;
-            case RARITY_EPIC:
-                i = NEREID_EPIC + GauntletReadRngBoons(ELDWYRM_EPIC - NEREID_EPIC); break;
-            }
-            break;
+            case TYPE_NEREID:
+                switch (rarity)
+                {
+                case RARITY_STAPLE:
+                    i = NEREID_STAPLE + GauntletReadRngBoons(ELDWYRM_STAPLE - NEREID_STAPLE); break;
+                case RARITY_COMMON:
+                    i = NEREID_COMMON + GauntletReadRngBoons(ELDWYRM_COMMON - NEREID_COMMON); break;
+                default:
+                case RARITY_RARE:
+                    i = NEREID_RARE + GauntletReadRngBoons(ELDWYRM_RARE - NEREID_RARE); break;
+                case RARITY_EPIC:
+                    i = NEREID_EPIC + GauntletReadRngBoons(ELDWYRM_EPIC - NEREID_EPIC); break;
+                }
+                break;
 
-        case TYPE_ELDWYRM:
-            switch (rarity)
-            {
-            case RARITY_STAPLE:
-                i = ELDWYRM_STAPLE + GauntletReadRngBoons(DSOTM_STAPLE - ELDWYRM_STAPLE); break;
-            case RARITY_COMMON:
-                i = ELDWYRM_COMMON + GauntletReadRngBoons(DSOTM_COMMON - ELDWYRM_COMMON); break;
+            case TYPE_ELDWYRM:
+                switch (rarity)
+                {
+                case RARITY_STAPLE:
+                    i = ELDWYRM_STAPLE + GauntletReadRngBoons(DSOTM_STAPLE - ELDWYRM_STAPLE); break;
+                case RARITY_COMMON:
+                    i = ELDWYRM_COMMON + GauntletReadRngBoons(DSOTM_COMMON - ELDWYRM_COMMON); break;
+                default:
+                case RARITY_RARE:
+                    i = ELDWYRM_RARE + GauntletReadRngBoons(DSOTM_RARE - ELDWYRM_RARE); break;
+                case RARITY_EPIC:
+                    i = ELDWYRM_EPIC + GauntletReadRngBoons(DSOTM_EPIC - ELDWYRM_EPIC); break;
+                }
+                break;
+            case TYPE_DSOTM:
+                switch (rarity)
+                {
+                case RARITY_STAPLE:
+                    i = DSOTM_STAPLE + GauntletReadRngBoons(MONOLITH_STAPLE - DSOTM_STAPLE); break;
+                case RARITY_COMMON:
+                    i = DSOTM_COMMON + GauntletReadRngBoons(MONOLITH_COMMON - DSOTM_COMMON); break;
+                default:
+                case RARITY_RARE:
+                    i = DSOTM_RARE + GauntletReadRngBoons(MONOLITH_RARE - DSOTM_RARE); break;
+                case RARITY_EPIC:
+                    i = DSOTM_EPIC + GauntletReadRngBoons(MONOLITH_EPIC - DSOTM_EPIC); break;
+                }
+                break;
+            case TYPE_MONOLITH:
+                switch (rarity)
+                {
+                case RARITY_STAPLE:
+                    i = MONOLITH_STAPLE + GauntletReadRngBoons(WINGED_LION_STAPLE - MONOLITH_STAPLE); break;
+                case RARITY_COMMON:
+                    i = MONOLITH_COMMON + GauntletReadRngBoons(WINGED_LION_COMMON - MONOLITH_COMMON); break;
+                default:
+                case RARITY_RARE:
+                    i = MONOLITH_RARE + GauntletReadRngBoons(WINGED_LION_RARE - MONOLITH_RARE); break;
+                case RARITY_EPIC:
+                    i = MONOLITH_EPIC + GauntletReadRngBoons(WINGED_LION_EPIC - MONOLITH_EPIC); break;
+                }
+                break;
+            case TYPE_WINGED_LION:
+                switch (rarity)
+                {
+                case RARITY_STAPLE:
+                    i = WINGED_LION_STAPLE + GauntletReadRngBoons(SAPROTROPH_COMMON - WINGED_LION_STAPLE); break;
+                case RARITY_COMMON:
+                    i = WINGED_LION_COMMON + GauntletReadRngBoons(SAPROTROPH_RARE - WINGED_LION_COMMON); break;
+                default:
+                case RARITY_RARE:
+                    i = WINGED_LION_RARE + GauntletReadRngBoons(SAPROTROPH_EPIC - WINGED_LION_RARE); break;
+                case RARITY_EPIC:
+                    i = WINGED_LION_EPIC + GauntletReadRngBoons(DUO_BOONS - WINGED_LION_EPIC); break;
+                }
+                break;
             default:
-            case RARITY_RARE:
-                i = ELDWYRM_RARE + GauntletReadRngBoons(DSOTM_RARE - ELDWYRM_RARE); break;
-            case RARITY_EPIC:
-                i = ELDWYRM_EPIC + GauntletReadRngBoons(DSOTM_EPIC - ELDWYRM_EPIC); break;
+            case TYPE_COLOURLESS:
+                switch (rarity)
+                {
+                case RARITY_STAPLE:
+                    i = GauntletReadRngBoons(SAPROTROPH_COMMON - SAPROTROPH_STAPLE); break;
+                case RARITY_COMMON:
+                    i = SAPROTROPH_COMMON + GauntletReadRngBoons(SAPROTROPH_RARE - SAPROTROPH_COMMON); break;
+                default:
+                case RARITY_RARE:
+                    i = SAPROTROPH_RARE + GauntletReadRngBoons(SAPROTROPH_EPIC - SAPROTROPH_RARE); break;
+                case RARITY_EPIC:
+                    i = SAPROTROPH_EPIC + GauntletReadRngBoons(DUO_BOONS - SAPROTROPH_EPIC); break;
+                }
+                break;
             }
-            break;
-        case TYPE_DSOTM:
-            switch (rarity)
-            {
-            case RARITY_STAPLE:
-                i = DSOTM_STAPLE + GauntletReadRngBoons(MONOLITH_STAPLE - DSOTM_STAPLE); break;
-            case RARITY_COMMON:
-                i = DSOTM_COMMON + GauntletReadRngBoons(MONOLITH_COMMON - DSOTM_COMMON); break;
-            default:
-            case RARITY_RARE:
-                i = DSOTM_RARE + GauntletReadRngBoons(MONOLITH_RARE - DSOTM_RARE); break;
-            case RARITY_EPIC:
-                i = DSOTM_EPIC + GauntletReadRngBoons(MONOLITH_EPIC - DSOTM_EPIC); break;
-            }
-            break;
-        case TYPE_MONOLITH:
-            switch (rarity)
-            {
-            case RARITY_STAPLE:
-                i = MONOLITH_STAPLE + GauntletReadRngBoons(WINGED_LION_STAPLE - MONOLITH_STAPLE); break;
-            case RARITY_COMMON:
-                i = MONOLITH_COMMON + GauntletReadRngBoons(WINGED_LION_COMMON - MONOLITH_COMMON); break;
-            default:
-            case RARITY_RARE:
-                i = MONOLITH_RARE + GauntletReadRngBoons(WINGED_LION_RARE - MONOLITH_RARE); break;
-            case RARITY_EPIC:
-                i = MONOLITH_EPIC + GauntletReadRngBoons(WINGED_LION_EPIC - MONOLITH_EPIC); break;
-            }
-            break;
-        case TYPE_WINGED_LION:
-            switch (rarity)
-            {
-            case RARITY_STAPLE:
-                i = WINGED_LION_STAPLE + GauntletReadRngBoons(SAPROTROPH_COMMON - WINGED_LION_STAPLE); break;
-            case RARITY_COMMON:
-                i = WINGED_LION_COMMON + GauntletReadRngBoons(SAPROTROPH_RARE - WINGED_LION_COMMON); break;
-            default:
-            case RARITY_RARE:
-                i = WINGED_LION_RARE + GauntletReadRngBoons(SAPROTROPH_EPIC - WINGED_LION_RARE); break;
-            case RARITY_EPIC:
-                i = WINGED_LION_EPIC + GauntletReadRngBoons(GB_LENGTH - WINGED_LION_EPIC); break;
-            }
-            break;
-        default:
-        case TYPE_COLOURLESS:
-            switch (rarity)
-            {
-            case RARITY_STAPLE:
-                i = GauntletReadRngBoons(SAPROTROPH_COMMON - SAPROTROPH_STAPLE); break;
-            case RARITY_COMMON:
-                i = SAPROTROPH_COMMON + GauntletReadRngBoons(SAPROTROPH_RARE - SAPROTROPH_COMMON); break;
-            default:
-            case RARITY_RARE:
-                i = SAPROTROPH_RARE + GauntletReadRngBoons(SAPROTROPH_EPIC - SAPROTROPH_RARE); break;
-            case RARITY_EPIC:
-                i = SAPROTROPH_EPIC + GauntletReadRngBoons(DUO_BOONS - SAPROTROPH_EPIC); break;
-            }
-            break;
         }
         if (j>20)
-            rarity++;// hence we default rarity_rare.
+        {
+            rarity++;// go to next rarity, staple -> common ->rare-> epic -> rare(default).
+            j=0;
+            if (rarity >= RARITY_DUO)
+                return i; // failsafe while-loop exit
+        }
     } while ((i == choice1 || i == choice2 || i == choice3 || i == choice4 || i == choice5 || i == choice6 || i == choice7 || i == choice8 
-|| i == MultichoiceOptions[1] || i == MultichoiceOptions[2] || i == MultichoiceOptions[3]|| i == MultichoiceOptions[0] 
-|| BoonList[i].boonType == BOON_NULL)); 
+|| i == MultichoiceOptions[1] || i == MultichoiceOptions[2] || i == MultichoiceOptions[3]|| i == MultichoiceOptions[0])); 
     return i;
 }
 
