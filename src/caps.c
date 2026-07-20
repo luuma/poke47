@@ -1,5 +1,6 @@
 #include "global.h"
 #include "battle.h"
+#include "battle_main.h"
 #include "event_data.h"
 #include "caps.h"
 #include "pokemon.h"
@@ -39,14 +40,14 @@ u32 GetCurrentLevelCap(void)
 
     if (FlagGet(FLAG_GAUNTLET_CHALLENGE))// starts later
     {
-        if (VarGet(VAR_WILD_AI_FLAGS) != 0)
+        if (IsWildMonSmart())//VarGet(VAR_WILD_AI_FLAGS) != 0
             return 90;
         for (i = 0; i < ARRAY_COUNT(sGauntletCapFlagMap); i++)
         {
             if (!FlagGet(sGauntletCapFlagMap[i][0]))
             {
                 if (FlagGet(FLAG_RAISE_LEVEL_CAP))
-                     return sGauntletCapFlagMap[i][1] + 3;
+                     return sGauntletCapFlagMap[i][1] + 2;
                 else
                     return sGauntletCapFlagMap[i][1];
             }

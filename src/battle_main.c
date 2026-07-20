@@ -6126,13 +6126,9 @@ void ScriptSetTotemBoost(struct ScriptContext *ctx)
     }
 }
 
-bool32 IsWildMonSmart(void)
+bool32 IsWildMonSmart(void)// CUSTOMISED TO SOMETHING ENTIRELY DIFFERENT.
 {
-#if WE_SMART_WILD_AI_FLAG != 0
-    return (FlagGet(WE_SMART_WILD_AI_FLAG));
-#else
-    return FALSE;
-#endif
+    return (VarGet(VAR_WILD_AI_FLAGS) != 0);
 }
 
 s32 Factorial(s32 n)
@@ -6154,7 +6150,7 @@ bool32 CanPlayerForfeitNormalTrainerBattle(void)
     if (gBattleTypeFlags & BATTLE_TYPE_RECORDED_INVALID)
         return FALSE;
 
-    return ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) || VarGet(VAR_WILD_AI_FLAGS) != 0);
+    return ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) || IsWildMonSmart());
 }
 
 bool32 DidPlayerForfeitNormalTrainerBattle(void)

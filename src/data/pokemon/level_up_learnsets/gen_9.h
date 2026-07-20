@@ -17175,6 +17175,7 @@ static const struct LevelUpMove sSeismitoadLevelUpLearnset[] = {
 };
 static const struct LevelUpMove sThrohLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_TACKLE),
+        LEVEL_UP_MOVE(1, MOVE_FOLLOW_ME),
         LEVEL_UP_MOVE(5, MOVE_REFRESH),
         LEVEL_UP_MOVE(10, MOVE_QUICK_GUARD),
         LEVEL_UP_MOVE(15, MOVE_CIRCLE_THROW),
@@ -17193,6 +17194,7 @@ static const struct LevelUpMove sThrohLevelUpLearnset[] = {
 };
 static const struct LevelUpMove sSawkLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_KARATE_CHOP),
+        LEVEL_UP_MOVE(1, MOVE_COACHING),
         LEVEL_UP_MOVE(5, MOVE_REFRESH),
         LEVEL_UP_MOVE(10, MOVE_QUICK_GUARD),
         LEVEL_UP_MOVE(15, MOVE_STORM_THROW),

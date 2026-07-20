@@ -7,6 +7,7 @@
 #include "battle_ai_record.h"
 #include "battle_ai_util.h"
 #include "battle_scripts.h"
+#include "battle_main.h"
 #include "battle_switch_in.h"
 #include "battle_environment.h"
 #include "battle_z_move.h"
@@ -10070,7 +10071,7 @@ static void Cmd_handleballthrow(void)
 
     gBattlerTarget = GetCatchingBattler();
 
-    if ((gBattleTypeFlags & BATTLE_TYPE_GHOST) || VarGet(VAR_WILD_AI_FLAGS) != 0)
+    if ((gBattleTypeFlags & BATTLE_TYPE_GHOST) || IsWildMonSmart())
     {
         BtlController_EmitBallThrowAnim(gBattlerAttacker, B_COMM_TO_CONTROLLER, BALL_GHOST_DODGE);
         MarkBattlerForControllerExec(gBattlerAttacker);

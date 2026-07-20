@@ -104,7 +104,7 @@ GauntletIsland_Altaratk::
     goto_if_eq VAR_RESULT, B_OUTCOME_FORFEITED, GauntletIsland_AltarLoss
     call Common_EventScript_OutOfCenterPartyHeal
     setvar B_VAR_WILD_AI_FLAGS, 0
-    setvar VAR_0x8008, STAT_ATK
+    setvar VAR_0x8008, STAT_DEF
     call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_ATK_ALTAR
     msgbox GauntletIsland_AltaratkVictory
@@ -126,7 +126,7 @@ GauntletIsland_AltaratkTouch:
 
 GauntletIsland_AltaratkVictory:
 	.string "A warms, steady light heals you.\n"
-	.string "Your party's ATTACK stat potential\l"
+	.string "Your party's DEFENSE stat potential\l"
 	.string "is now maximised.$"
 
 
@@ -154,7 +154,7 @@ GauntletIsland_AltarSpatk::
     goto_if_eq VAR_RESULT, B_OUTCOME_FORFEITED, GauntletIsland_AltarLoss
     call Common_EventScript_OutOfCenterPartyHeal
     setvar B_VAR_WILD_AI_FLAGS, 0
-    setvar VAR_0x8008, STAT_SPATK
+    setvar VAR_0x8008, STAT_SPDEF
     call GauntletIsland_AltarBlessing
     @setvar VAR_0x8008, STAT_SPDEF
     @call GauntletIsland_AltarBlessing
@@ -178,7 +178,7 @@ GauntletIsland_AltarSpatkTouch:
 
 GauntletIsland_AltarSpatkVictory:
 	.string "A cool, undulating glow heals you.\n"
-	.string "Your party's SP.ATK stat potential\l"
+	.string "Your party's SP.DEF stat potential\l"
 	.string "is now maximised.$"
 
 GauntletIsland_AltarSpeed::

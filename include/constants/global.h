@@ -108,7 +108,7 @@ enum Language
 #define NUM_CONTEST_WINNERS 13
 #define UNION_ROOM_KB_ROW_COUNT 10
 #define SAVED_TRENDS_COUNT 5
-#define PYRAMID_BAG_ITEMS_COUNT 10// UNUSED.
+#define PYRAMID_BAG_ITEMS_COUNT 20
 #define ROAMER_COUNT 2 // Number of maximum concurrent active roamers. set to 
 
 // Bag constants

@@ -3509,7 +3509,7 @@ const struct {
     enum Species speciesBuddy;
     u8 levelBuddy;
 } sGauntletBossList[] = {
-// altar 1 hp elder wyrm
+// altar 1 hp elder wyrm. 0-2
     {
         .species = SPECIES_GABITE,
         .moves = {MOVE_BITE, MOVE_DRAGON_BREATH, MOVE_FIRE_FANG, MOVE_SAND_TOMB},
@@ -3537,7 +3537,7 @@ const struct {
         .speciesBuddy = 0,
         .levelBuddy = 0,
     },
-//altar 2 atk groudon
+//altar 2 atk groudon. 3-5
     {
         .species = SPECIES_BOLDORE,
         .moves = {MOVE_ROCK_SLIDE, MOVE_SALT_CURE, MOVE_RECOVER, MOVE_POWER_GEM},
@@ -3566,7 +3566,7 @@ const struct {
         .levelBuddy = 16,
 
     },
-// altar 3 def kyo
+// altar 3 SATK kyo . should maybe be def. 6-8
     {
         .species = SPECIES_ABOMASNOW,
         .moves = {MOVE_ROTOTILLER, MOVE_BLIZZARD, MOVE_WOOD_HAMMER, MOVE_DRAIN_PUNCH},
@@ -3593,24 +3593,24 @@ const struct {
         .level = 31,
         .dynlevel = 10,
         .item = ITEM_SITRUS_BERRY,
-        .speciesBuddy = SPECIES_EMOLGA,
+        .speciesBuddy = SPECIES_ZEBSTRIKA,
         .levelBuddy = 25,
 
     },
-/// altar 4 speed winged lion
+/// altar 4 speed winged lion. 9-11
     {
         .species = SPECIES_THROH,
-        .moves = {MOVE_OCTOLOCK, MOVE_KNOCK_OFF, MOVE_CIRCLE_THROW, MOVE_DECORATE},
-        .level = 37,
+        .moves = {MOVE_DECORATE, MOVE_KNOCK_OFF, MOVE_CIRCLE_THROW, MOVE_FOLLOW_ME},
+        .level = 40,
         .dynlevel = 10,
         .item = ITEM_LEFTOVERS,
         .speciesBuddy = SPECIES_SAWK,
-        .levelBuddy = 37,
+        .levelBuddy = 40,
     },
     {
         .species = SPECIES_BRAVIARY,
-        .moves = {MOVE_STRENGTH, MOVE_BRAVE_BIRD, MOVE_SKY_DROP, MOVE_SUPERPOWER},
-        .level = 42,
+        .moves = {MOVE_DOUBLE_EDGE, MOVE_BRAVE_BIRD, MOVE_SKY_DROP, MOVE_SUPERPOWER},
+        .level = 44,
         .dynlevel = 10,
         .item = ITEM_FLYING_GEM,
         .speciesBuddy = SPECIES_PACHIRISU,
@@ -3618,36 +3618,14 @@ const struct {
     },
     {
         .species = SPECIES_LUCARIO,
-        .moves = {MOVE_DRAIN_PUNCH, MOVE_AURA_SPHERE, MOVE_NASTY_PLOT, MOVE_BULLET_PUNCH},
-        .level = 37,
+        .moves = {MOVE_DRAIN_PUNCH, MOVE_ME_FIRST, MOVE_BULK_UP, MOVE_BULLET_PUNCH},
+        .level = 40,
         .dynlevel = 10,
         .item = ITEM_SHELL_BELL,
         .speciesBuddy = SPECIES_INCINEROAR,
-        .levelBuddy = 34,
+        .levelBuddy = 38,
     },
-/// altar 5 SATK dsotm dark void
-    {
-        .species = SPECIES_BEHEEYEM,
-        .moves = {MOVE_EXPANDING_FORCE, MOVE_PSYCHIC_TERRAIN, MOVE_FOCUS_BLAST, MOVE_ZAP_CANNON},
-        .level = 41,
-        .dynlevel = 10,
-        .item = ITEM_CHOICE_BAND,
-    },
-    {
-        .species = SPECIES_BRAVIARY,
-        .moves = {MOVE_STRENGTH, MOVE_BRAVE_BIRD, MOVE_SKY_DROP, MOVE_SUPERPOWER},
-        .level = 37,
-        .dynlevel = 10,
-        .item = ITEM_FLYING_GEM,
-    },
-    {
-        .species = SPECIES_LUCARIO,
-        .moves = {MOVE_AURA_SPHERE, MOVE_FLASH_CANNON, MOVE_NASTY_PLOT, MOVE_BULLET_PUNCH},
-        .level = 37,
-        .dynlevel = 10,
-        .item = ITEM_SITRUS_BERRY,
-    },
-/// altar 6 sdef saphrotroph //ScriptSetTotemBoost must be used lmao.
+/// altar 5, CUT, sdef AND satk, saprotroph //ScriptSetTotemBoost must be used lmao. 12-14
     {
         .species = SPECIES_LURANTIS_TOTEM,
         .moves = {MOVE_BITTER_BLADE, MOVE_PETAL_BLIZZARD, MOVE_LIGHTBLOOM, MOVE_GROWTH},
@@ -3669,12 +3647,47 @@ const struct {
         .dynlevel = 10,
         .item = ITEM_SITRUS_BERRY,
     },
-/// altar 7
+/// altar 6, boss, 15-19
+    {
+        .species = SPECIES_SHAYMIN_SKY,
+        .moves = {MOVE_AIR_CUTTER, MOVE_AIR_SLASH, MOVE_TAILWIND, MOVE_RAZOR_LEAF},
+        .level = 60,
+        .dynlevel = 10,
+        .item = ITEM_SCOPE_LENS,
+    },
+    {
+        .species = SPECIES_KYOGRE,
+        .moves = {MOVE_ORIGIN_PULSE, MOVE_ICY_WIND, MOVE_DAZZLING_GLEAM, MOVE_WATER_SPOUT},
+        .level = 55,
+        .dynlevel = 10,
+        .item = ITEM_SHUCA_BERRY,
+    },
     {
         .species = SPECIES_KYUREM,
-        .moves = {MOVE_GLACIATE, MOVE_ICY_WIND, MOVE_BREAKING_SWIPE, MOVE_CALM_MIND},
-        .level = 60,
+        .moves = {MOVE_GLACIATE, MOVE_BLIZZARD, MOVE_BREAKING_SWIPE, MOVE_CALM_MIND},
+        .level = 55,
         .item = ITEM_SITRUS_BERRY,
+    },
+    {
+        .species = SPECIES_GUZZLORD,
+        .moves = {MOVE_EXPANDING_FORCE, MOVE_PSYCHIC_TERRAIN, MOVE_BRUTAL_SWING, MOVE_BREAKING_SWIPE},
+        .level = 55,
+        .dynlevel = 10,
+        .item = ITEM_FIST_PLATE,
+    },
+    {
+        .species = SPECIES_GROUDON,
+        .moves = {MOVE_PRECIPICE_BLADES, MOVE_ROCK_SLIDE, MOVE_BULLDOZE, MOVE_ERUPTION},
+        .level = 55,
+        .dynlevel = 10,
+        .item = ITEM_RINDO_BERRY,
+    },
+    {
+        .species = SPECIES_ARCEUS,
+        .moves = {MOVE_COUNTER, MOVE_REVERSAL, MOVE_AURA_SPHERE, MOVE_TAILWIND},
+        .level = 55,
+        .dynlevel = 10,
+        .item = ITEM_FIST_PLATE,
     },
 };
 

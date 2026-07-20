@@ -298,6 +298,33 @@ void HyperTrain(struct ScriptContext *ctx)
     CalculateMonStats(&gParties[B_TRAINER_PLAYER][partyIndex]);
 }
 
+
+void GauntletIsland_AltarDamning(struct ScriptContext *ctx)
+{
+    u32 stat = VarGet(VAR_RESULT);
+    u32 partyIndex = VarGet(VAR_0x8004);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    assertf(stat < NUM_STATS, "invalid stat: %d", stat)
+    {
+        return;
+    }
+
+    CalculatePlayerPartyCount();
+    assertf(partyIndex < gPartiesCount[B_TRAINER_PLAYER], "invalid party index: %d", partyIndex)
+    {
+        return;
+    }
+
+    bool32 data = FALSE;
+    bool32 data2 = 1;
+    SetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_HYPER_TRAINED_HP + stat, &data);
+    SetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_HP_IV + stat, &data);
+    SetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_HP, &data2);
+    CalculateMonStats(&gParties[B_TRAINER_PLAYER][partyIndex]);
+}
+
 void HasGigantamaxFactor(struct ScriptContext *ctx)
 {
     u32 partyIndex = VarGet(ScriptReadHalfword(ctx));

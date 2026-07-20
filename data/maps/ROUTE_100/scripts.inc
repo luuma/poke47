@@ -13,9 +13,15 @@ Route100_EventScript_GauntletEnd::
         callnative GauntletEnd @ this also clears several flags
         goto_if_eq VAR_RESULT, FALSE, Route100_EventScript_Failsafe
         setflag FLAG_TEMP_1
+        goto_if_eq VAR_0x8004, 1234, Route100_EventScript_Retire
         goto_if_set FLAG_GAUNTLET_ATK_ALTAR, Route100_EventScript_Altar2
         goto_if_set FLAG_GAUNTLET_BOSS_ALTAR, Route100_EventScript_BRAVO
         msgbox Route100_Text_YouLose
+        releaseall
+        end
+
+Route100_EventScript_Retire::
+        msgbox Route100_Text_Retire
         releaseall
         end
 
@@ -29,6 +35,12 @@ Route100_EventScript_Altar2::
         msgbox Route100_Text_MadeItToSecondAltar
         releaseall
         end
+
+Route100_Text_Retire:
+	.string "Well! I thought that attempt looked\n"
+	.string "rather promising. A shame, I think.\p"
+	.string "Don't fret. Your chosen POKéMON is\n"
+ 	.string "back to its old state, once more.$"
 
 
 Route100_Text_bravo:

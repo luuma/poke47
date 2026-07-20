@@ -31,9 +31,8 @@ enum GauntletAltar{
     GAUNTLET_ALTAR_DEF_3 = 6,//nereid, kyogre
     GAUNTLET_ALTAR_SPEED_4 = 9,//winged lion, arceus fight
     GAUNTLET_ALTAR_SPATK_5 = 12,//Dark Void, guzzlord
-    GAUNTLET_ALTAR_SPDEF_6 = 15,//SAPROTROPH, harvest, shaymin sky
-    GAUNTLET_ALTAR_BOSS_7 = 18,// scary legendaries
-    GAUNTLET_ALTAR_MAX = 24
+    GAUNTLET_ALTAR_SPDEF_6 = 15,// scary legendaries
+    GAUNTLET_ALTAR_MAX = 20
 };// unused.
 
 enum GauntletTypes

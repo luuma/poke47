@@ -345,7 +345,7 @@ struct PyramidBag2
 
 struct PyramidBag
 {
-    enum Item itemId[2][20];
+    enum Item itemId[2][20];// PYRAMID_BAG_ITEMS_COUNT = 20. 
     u8 quantity[2][20];
 };// size 120.
 
