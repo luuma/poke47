@@ -1273,29 +1273,30 @@
 #define FLAG_GAUNTLET_0                                          0x4C0 // Unused Flag
 #define FLAG_GAUNTLET_1                                           0x4C1 // Unused Flag
 #define FLAG_GAUNTLET_2                                           0x4C2 // Unused Flag
-#define FLAG_GAUNTLET_HP_ALTAR                                           0x4C3 // Unused Flag
-#define FLAG_GAUNTLET_ATK_ALTAR                                           0x4C4 // Unused Flag
-#define FLAG_GAUNTLET_DEF_ALTAR                                           0x4C5 // Unused Flag
-#define FLAG_GAUNTLET_SPEED_ALTAR                                           0x4C6 // Unused Flag
-#define FLAG_GAUNTLET_SPATK_ALTAR                                           0x4C7 // Unused Flag
-#define FLAG_GAUNTLET_SPDEF_ALTAR                                           0x4C8 // Unused Flag
-#define FLAG_GAUNTLET_BOSS_ALTAR                                           0x4C9 // Unused Flag
-#define FLAG_GAUNTLET_30                                           0x4CA // Unused Flag
-#define FLAG_GAUNTLET_31                                           0x4CB // Unused Flag
-#define FLAG_GAUNTLET_32                                           0x4CC // Unused Flag
-#define FLAG_GAUNTLET_33                                           0x4CD // Unused Flag
-#define FLAG_GAUNTLET_34                                           0x4CE // Unused Flag
-#define FLAG_GAUNTLET_35                                           0x4CF // Unused Flag
-#define FLAG_GAUNTLET_36                                           0x4D0 // Unused Flag
-#define FLAG_GAUNTLET_37                                           0x4D1 // Unused Flag
-#define FLAG_GAUNTLET_38                                           0x4D2 // Unused Flag
-#define FLAG_GAUNTLET_39                                           0x4D3 //HEREHEREHERE
-#define FLAG_GAUNTLET_3A                                           0x4D4 //  Flag
-#define FLAG_GAUNTLET_3B                                           0x4D5 // Unused Flag
-#define FLAG_GAUNTLET_3C                                           0x4D6 // Unused Flag
-#define FLAG_GAUNTLET_3D                                           0x4D7 // Unused Flag
-#define FLAG_GAUNTLET_3E                                           0x4D8 // Unused Flag
-#define FLAG_GAUNTLET_3F                                           0x4D9 // Unused Flag
+#define FLAG_GAUNTLET_39                                           0x4C3 
+#define FLAG_GAUNTLET_3A                                           0x4C4 //  Flag
+#define FLAG_GAUNTLET_3B                                           0x4C5 //  Flag
+#define FLAG_GAUNTLET_3C                                           0x4C6 //  Flag
+#define FLAG_GAUNTLET_3D                                           0x4C7 //  Flag
+#define FLAG_GAUNTLET_3E                                           0x4C8 //  Flag
+#define FLAG_GAUNTLET_3F                                           0x4C9 //  Flag
+#define FLAG_GAUNTLET_30                                           0x4CA //  Flag
+#define FLAG_GAUNTLET_31                                           0x4CB //  Flag
+#define FLAG_GAUNTLET_32                                           0x4CC //  Flag
+#define FLAG_GAUNTLET_33                                           0x4CD //  Flag
+#define FLAG_GAUNTLET_34                                           0x4CE //  Flag
+#define FLAG_GAUNTLET_35                                           0x4CF //  Flag
+#define FLAG_GAUNTLET_36                                           0x4D0 //  Flag
+#define FLAG_GAUNTLET_37                                           0x4D1 //  Flag
+#define FLAG_GAUNTLET_38                                           0x4D2 //  Flag
+#define FLAG_GAUNTLET_HP_ALTAR                                           0x4D3 // Unused Flag
+#define FLAG_GAUNTLET_ATK_ALTAR                                           0x4D4 // Unused Flag
+#define FLAG_GAUNTLET_DEF_ALTAR                                           0x4D5 // Unused Flag
+#define FLAG_GAUNTLET_SPEED_ALTAR                                           0x4D6 // Unused Flag
+#define FLAG_GAUNTLET_SPATK_ALTAR                                           0x4D7 // Unused Flag
+#define FLAG_GAUNTLET_SPDEF_ALTAR                                           0x4D8 // Unused Flag
+#define FLAG_GAUNTLET_BOSS_ALTAR                                           0x4D9 // Unused Flag
+
 #define FLAG_GAUNTLET_40 0x4DA  // DUSK BALLold mansion
 #define FLAG_GAUNTLET_41 0x4DB  // TRICK ROOM old mansion
 #define FLAG_GAUNTLET_boon2 0x4DC  // OLD GATEAT old mansion
@@ -1332,7 +1333,7 @@
 
 
 #define FLAG_GAUNTLET_LAST FLAG_GAUNTLET_SHOWROCK_4// CLEARED
-#define FLAGS_GAUNTLET FLAG_GAUNTLET_3F - FLAG_GAUNTLET_3// RANDOMLY SET
+#define FLAGS_GAUNTLET 63// RANDOMLY SET
 
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0

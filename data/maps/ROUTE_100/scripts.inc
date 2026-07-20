@@ -121,12 +121,22 @@ Route100_EventScript_DepositTime::
 
 ROUTE_100_EventScript_Witch_First::
         msgbox Route100_Text_IwaswaitingforyouArrive
+        goto_if_lt VAR_BIRCH_LAB_STATE, 3, Route100_getapokemonlmao
         setflag FLAG_GAUNTLET_TALKED_WITCH
         setflag FLAG_GAUNTLET_0FBOULDER1
         setflag FLAG_GAUNTLET_0FBOULDER2
         setflag FLAG_GAUNTLET_0FBOULDER3
         msgbox Route100_Text_GauntletChallengeExplain, MSGBOX_YESNO
         goto ROUTE_100_Power        
+
+Route100_getapokemonlmao::
+        msgbox Route100_Text_getapokemonlmao
+        releaseall
+	end
+
+Route100_Text_getapokemonlmao:
+	.string "Perhaps I can tell you more once you.\n"
+	.string "have your own POKéMON…$"
 
 Route100_Text_IwaswaitingforyouArrive:
 	.string "Ah. I was wondering when you'd arrive.\p"
@@ -142,7 +152,8 @@ Route100_Text_Iwaswaitingforyou:
 	.string "Ah. I was wondering when you'd return.\n"
 	.string "I am here, waiting to trick you again.\p"
 	.string "They say two wrongs don't make a right…\n"
-	.string "But two negatives don't NOT make a right.\p"
+	.string "But two negatives…\n"
+	.string "Don't NOT make a right. Geheheh./p"
 Route100_Text_GauntletChallengeExplain:
 	.string "Here's the deal. I'll reduce your only\n"
 	.string "POKéMON to the state of a newborn, and\l"

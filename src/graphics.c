@@ -1376,9 +1376,9 @@ const u16 gBattleAnimSpritePal_Windstorm[] = INCGFX_U16("graphics/battle_anims/b
 const u32 gBattleAnimSpriteGfx_MetalSoundWaves[] = INCGFX_U32("graphics/battle_anims/sprites/metal_sound_waves.png", ".4bpp.smol");
 const u16 gBattleAnimSpritePal_MetalSoundWaves[] = INCGFX_U16("graphics/battle_anims/sprites/metal_sound_waves.png", ".gbapal");
 
-const u32 gBattleAnimBgImage_Ice[] = INCGFX_U32("graphics/battle_anims/backgrounds/ice.png", ".4bpp.smol");
-const u16 gBattleAnimBgPalette_Ice[] = INCGFX_U16("graphics/battle_anims/backgrounds/ice.png", ".gbapal");
-const u32 gBattleAnimBgTilemap_Ice[] = INCGFX_U32("graphics/battle_anims/backgrounds/ice.bin", ".smolTM");
+const u32 gBattleAnimBgImage_Ice[] = INCGFX_U32("graphics/battle_anims/backgrounds/ice2.png", ".4bpp.smol");
+const u16 gBattleAnimBgPalette_Ice[] = INCGFX_U16("graphics/battle_anims/backgrounds/ice2.png", ".gbapal");
+const u32 gBattleAnimBgTilemap_Ice[] = INCGFX_U32("graphics/battle_anims/backgrounds/ice2.bin", ".smolTM");
 
 const u32 gBattleAnimSpriteGfx_IcicleSpear[] = INCGFX_U32("graphics/battle_anims/sprites/icicle_spear.png", ".4bpp.smol");
 const u16 gBattleAnimSpritePal_IcicleSpear[] = INCGFX_U16("graphics/battle_anims/sprites/icicle_spear.png", ".gbapal");

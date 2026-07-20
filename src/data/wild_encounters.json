@@ -38488,63 +38488,63 @@
             "encounter_rate": 7,
             "mons": [
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_NOIBAT"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 11,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_SHELLOS_EAST"
               },
               {
-                "min_level": 11,
-                "max_level": 11,
+                "min_level": 15,
+                "max_level": 15,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_CARBINK"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_TEPIG"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_TEPIG"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_HEATMOR"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_HEATMOR"
               }
             ]
@@ -38557,63 +38557,63 @@
             "encounter_rate": 7,
             "mons": [
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_NOIBAT"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 11,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 11,
-                "max_level": 11,
+                "min_level": 15,
+                "max_level": 15,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_CARBINK"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_TEPIG"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_CARBINK"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_CARBINK"
               }
             ]
@@ -38626,63 +38626,63 @@
             "encounter_rate": 7,
             "mons": [
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 14,
                 "species": "SPECIES_NOIBAT"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 11,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 11,
-                "max_level": 11,
+                "min_level": 15,
+                "max_level": 15,
                 "species": "SPECIES_ROGGENROLA"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_CARBINK"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_TEPIG"
               },
               {
-                "min_level": 9,
-                "max_level": 9,
+                "min_level": 13,
+                "max_level": 13,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_BRONZOR"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_CARBINK"
               },
               {
-                "min_level": 10,
-                "max_level": 10,
+                "min_level": 14,
+                "max_level": 14,
                 "species": "SPECIES_CARBINK"
               }
             ]

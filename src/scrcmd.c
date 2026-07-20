@@ -3339,14 +3339,14 @@ bool8 ScrCmd_fwdweekday(struct ScriptContext *ctx)
 static bool32 EventEvolution(u32 partyIndex)
 {
     bool32 canStopEvo = gSpecialVar_0x8000;
-    u32 targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, &canStopEvo, CHECK_EVO);
+    u32 targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, &canStopEvo, CHECK_EVO, FALSE);
     if (targetSpecies == SPECIES_NONE)
     {
         gSpecialVar_Result = EVO_EVENT_IMPOSSIBLE;
         return FALSE;
     }
     gSpecialVar_Result = EVO_EVENT_SUCCESSFUL;
-    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, &canStopEvo, DO_EVO);
+    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, &canStopEvo, DO_EVO, FALSE);
     BeginEvolutionScene(&gParties[B_TRAINER_PLAYER][partyIndex], targetSpecies, canStopEvo, partyIndex);
     ScriptContext_Stop();
     return TRUE;
@@ -3356,20 +3356,20 @@ static bool32 EventEvolution(u32 partyIndex)
 static bool32 GauntletEventEvolution(u32 partyIndex)
 {
     bool32 canStopEvo = gSpecialVar_0x8000;
-    u32 targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_ITEM_USE, 6, NULL, &canStopEvo, CHECK_EVO);
+    u32 targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_ITEM_USE, 0, NULL, &canStopEvo, CHECK_EVO, TRUE);
     if (targetSpecies != SPECIES_NONE)
     {
     gSpecialVar_Result = EVO_EVENT_SUCCESSFUL;
-    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_ITEM_USE, 6, NULL, &canStopEvo, DO_EVO);
+    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_ITEM_USE, 6, NULL, &canStopEvo, DO_EVO, TRUE);
     BeginEvolutionScene(&gParties[B_TRAINER_PLAYER][partyIndex], targetSpecies, canStopEvo, partyIndex);
     ScriptContext_Stop();
     return TRUE;
     }
-    targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 6, NULL, &canStopEvo, CHECK_EVO);// CHEKCING if an evo occurs with heal ball bypasses level adn item checks.
+    targetSpecies = GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 0, NULL, &canStopEvo, CHECK_EVO, TRUE);
     if (targetSpecies != SPECIES_NONE)
     {
     gSpecialVar_Result = EVO_EVENT_SUCCESSFUL;
-    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 6, NULL, &canStopEvo, DO_EVO);
+    GetEvolutionTargetSpecies(&gParties[B_TRAINER_PLAYER][partyIndex], EVO_MODE_NORMAL, 6, NULL, &canStopEvo, DO_EVO, TRUE);
     BeginEvolutionScene(&gParties[B_TRAINER_PLAYER][partyIndex], targetSpecies, canStopEvo, partyIndex);
     ScriptContext_Stop();
     return TRUE;

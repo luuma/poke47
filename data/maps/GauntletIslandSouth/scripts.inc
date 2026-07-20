@@ -143,18 +143,19 @@ GauntletIsland_TIPSIGNDEVOTION::
 GauntletIsland_GauntletTIPS:
    	.string "GAUNTLET CHALLENGE TIPS: DEVOTION\p"
 
-   	.string "When you choose a BOON, you gain DEVOTION\n"
-   	.string "to its DEITY.\p"
+   	.string "When you choose a BOON, you gain\n"
+   	.string "DEVOTION to its DEITY, in addition\n"
+   	.string "to its decorous benefits.\p"
 
    	.string "This raises the chance of that DEITY\n"
    	.string "blessing you in future.\p"
 
-   	.string "Once you have 2 or more DEVOTION to 2\n"
+   	.string "Once you have 2 or more DEVOTION to two\n"
    	.string "different DEITIES, you are likely to see\l"
    	.string "their powerful DUO BOONs appear.\p"
 
    	.string "It's rare to be blessed by more\n"
-   	.string "than 3 DEITIES.$"
+   	.string "than 3 different DEITIES at a time.$"
 
 GauntletIsland_south:
    	.string "SOUTH$"

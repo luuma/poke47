@@ -41,7 +41,6 @@ FourthSealed_EventScript_CaveEntranceMiddle::
 	specialvar VAR_RESULT, CheckContestWinnerFirstSlot
 	goto_if_eq VAR_RESULT, FALSE, FourthSealed_EventScript_CaveEntranceSide2
 	special DoSealedChamberShakingEffect_Short
-	waitstate
 	playse SE_DOOR
 	delay 40
 	setmetatile 7, 19, METATILE_Cave_SealedChamberEntrance_TopLeft, TRUE
@@ -74,7 +73,6 @@ FourthSealed_EventScript_Registeel::
 	setwildbattle SPECIES_TAPU_LELE, 40
 	setflag FLAG_SYS_CTRL_OBJ_DELETE
 	special StartRegiBattle
-	waitstate
 	clearflag FLAG_SYS_CTRL_OBJ_DELETE
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, FourthSealed_EventScript_DefeatedRegisteel

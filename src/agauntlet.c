@@ -41,18 +41,26 @@ static void RespawnAbout24RandomGauntletItemBalls(void)
     u32 i;
     for (i = FLAG_GAUNTLET_3; i <= FLAG_GAUNTLET_LAST; i++)
         FlagClear(i);
-
     for (i = FLAG_GAUNTLET_MINT_A; i <= FLAG_GAUNTLET_MINT_G; i++)
         FlagClear(i);
-//Roll 34 random sets in the flags. Giving roughly 48*(1-(47/48)^34) item balls, or 24.04 item balls. But could be anywhere from 1 to 34 removed!
 
     FlagClear(FLAG_GAUNTLET_0FBOULDER3);
     FlagClear(FLAG_GAUNTLET_boon9);
-    for (i = FLAG_GAUNTLET_3; i <= FLAG_GAUNTLET_LAST; i++)
-        FlagClear(i);
 
     for (i = FLAG_FIVE_BOONS; i <= FLAG_EVERYONE_IS_STURDY; i++)
         FlagClear(i);
+
+
+/////////////////////////////
+
+    u32 flag;
+    for (i = 0; i <= 35; i++)
+    {
+        flag = (FLAG_GAUNTLET_3 + Random() % FLAGS_GAUNTLET);
+        FlagSet(flag);
+    }
+
+//Roll 34 random sets in the flags. Giving roughly 48*(1-(47/48)^34) item balls, or 24.04 item balls. But could be anywhere from 1 to 34 removed!
 
     return;
 }

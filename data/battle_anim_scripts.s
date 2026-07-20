@@ -21280,7 +21280,7 @@ BulbblebeamCreateBubbles:
 
 gBattleAnimMove_IcyWind::
 	monbg ANIM_DEF_PARTNER
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG | F_PAL_ATK_SIDE, 4, 0, 4, RGB_BLACK
+	@ createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG | F_PAL_ATK_SIDE, 4, 0, 4, RGB_BLACK
 	fadetobg BG_ICE
 	waitbgfadeout
 	playsewithpan SE_M_ICY_WIND, SOUND_PAN_MIDDLE
@@ -21297,7 +21297,7 @@ gBattleAnimMove_IcyWind::
 	clearmonbg ANIM_DEF_PARTNER
 	restorebg
 	waitbgfadeout
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG | F_PAL_ATK_SIDE, 4, 4, 0, RGB_BLACK
+	@ createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG | F_PAL_ATK_SIDE, 4, 4, 0, RGB_BLACK @ Fuck you icy wind. I tried lmao
 	waitbgfadein
 	end
 IcyWindSwirlingSnowballs:
@@ -27892,18 +27892,22 @@ SetBugBg:
 	goto SetBugBgFade
 SetBugBgPlayer:
 	fadetobg BG_BUG_PLAYER
+	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 0, 4, 4, RGB_BLACK
+	waitforvisualfinish
 	waitbgfadeout
 	createvisualtask AnimTask_StartSlidingBg, 5, -1536, 0, 0, -1
 SetBugBgFade:
 	delay 0
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_BG, 0, 4, 4, RGB_BLACK
 	waitbgfadein
 	return
 
 UnsetBugBg:
 	restorebg
-	waitbgfadeout
 	createvisualtask AnimTask_BlendBattleAnimPalExclude, 10, ANIM_TARGET, 0, 4, 0, RGB_BLACK
+	waitforvisualfinish
+	waitbgfadeout
+	delay 0
+
 	setarg 7, -1
 	waitbgfadein
 	return

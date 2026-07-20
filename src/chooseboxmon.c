@@ -118,7 +118,7 @@ static u32 ChooseBoxMon_CanEvolve(struct BoxPokemon *boxmon)
     if (IsFromPC((u32)boxmon))
         return INVALID_MON;
     BoxMonToMon(boxmon, mon);
-    if (GetEvolutionTargetSpecies(mon, EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, NULL, CHECK_EVO))
+    if (GetEvolutionTargetSpecies(mon, EVO_MODE_SCRIPT_TRIGGER, gSpecialVar_0x8005, NULL, NULL, CHECK_EVO, FALSE))
         result = VALID_MON;
     else
         result = INVALID_MON;
