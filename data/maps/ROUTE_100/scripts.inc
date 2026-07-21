@@ -7,22 +7,6 @@ ROUTE_100_OnFrame::
 	.2byte 0
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Route100_EventScript_GauntletEnd::
         lockall
         applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
@@ -36,16 +20,36 @@ Route100_EventScript_GauntletEnd::
         goto_if_set FLAG_GAUNTLET_SPEED_ALTAR, Route100_EventScript_Altar4
         goto_if_set FLAG_GAUNTLET_BOSS_ALTAR, Route100_EventScript_BRAVO
         goto_if_eq VAR_0x8004, 1234, Route100_EventScript_Retire @ Seems better to handle properly every time unless they gave up early, rather than say "you retired" even if they did great.
-	setvar VAR_0x8004, 1
+	setvar VAR_0x8004, 0
+	call_if_unset GAUNTLET_FREELOSSPOINT, gaunteltreleasened_FREELOSSPOINTAAAAAA
         msgbox Route100_Text_YouLose
 Route100_EventScript_YouLostThereforeLossPoints::
-        addvar VAR_GAUNTLET_LOSS_POINTS VAR_0x8004
-        call_if_gt VAR_GAUNTLET_LOSS_POINTS 1000, Route100_setto999losspoints
+	goto_if_eq VAR_0x8004, 0, gaunteltfuckingyouhavesomepoints
+        callnative fuckromhacking
+        call_if_gt VAR_GAUNTLET_LOSS_POINTS, 1000, Route100_setto999losspoints @ ok cool
 	buffernumberstring STR_VAR_1, VAR_0x8004 
         msgbox Route100_Text_LossPoints MSGBOX_YESNO
         goto_if_eq VAR_RESULT, YES, Route100_LossPointShop
         releaseall
         end
+
+gaunteltfuckingyouhavesomepoints::
+	goto_if_eq VAR_GAUNTLET_LOSS_POINTS, 0, gauntletreleasened::
+	buffernumberstring STR_VAR_1, VAR_GAUNTLET_LOSS_POINTS
+        msgbox Route100_Text_LossPoints MSGBOX_YESNO
+        goto_if_eq VAR_RESULT, YES, Route100_LossPointShop
+gauntletreleasened::
+        releaseall
+        end
+
+Route100_Text_LossPoints:
+	.string "{PLAYER} has {STR_VAR_1} LOSS POINTS.\l"
+	.string "Spend them now?$"
+
+gaunteltreleasened_FREELOSSPOINTAAAAAA::
+	setvar VAR_0x8004, 1
+	setflag GAUNTLET_FREELOSSPOINT
+	return
 
 Route100_EventScript_Retire::
         setvar VAR_0x8004, 0

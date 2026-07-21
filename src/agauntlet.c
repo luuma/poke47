@@ -1260,6 +1260,12 @@ void ScrCmd_SetGauntletVarStartingStatus(void)
 }
 
 
+void fuckromhacking(struct ScriptContext *ctx)
+{
+    u32 killmenow = VarGet(VAR_0x8004);
+    VarSet(VAR_GAUNTLET_LOSS_POINTS, VarGet(VAR_GAUNTLET_LOSS_POINTS) + killmenow);// why doesn't addvar do this
+}
+
 void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
 {
     u8 pointshoptype = ScriptReadByte(ctx);
@@ -1278,7 +1284,10 @@ void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
         case 11:  
         {
             output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.sportBalls; 
-            price = max(output*5, 1);
+            price = 1;
+            if (output == 1) price = 2;
+            if (output == 2) price = 5;
+            if (output >= 3) price = 10;
             break;
         }
         case 2: 
@@ -1287,7 +1296,7 @@ void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
             output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.sacredAshes; 
             price = 5;
             if (output == 1) price = 20;
-            if (output == 2) price = 200;
+            if (output >= 2) price = 200;
             break;
         }
         case 3: 

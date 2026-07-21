@@ -40,9 +40,11 @@ GauntletIsland_AltarHP::
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
     setvar B_VAR_WILD_AI_FLAGS 2@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, 5 = , other =normal
+    setflag GAUNTLET_QUITTER_DETECTED
     forcesave
     closemessage
     call Common_EventScript_OutOfCenterPartyHeal
+    clearflag GAUNTLET_QUITTER_DETECTED
     callnative ScrCmd_SetGauntletBossBattle
     .byte 0
     playmoncry VAR_RESULT, CRY_MODE_ENCOUNTER
@@ -91,8 +93,11 @@ GauntletIsland_Altaratk::
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
     setvar B_VAR_WILD_AI_FLAGS 1@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    setflag GAUNTLET_QUITTER_DETECTED
     forcesave
+    closemessage
     call Common_EventScript_OutOfCenterPartyHeal
+    clearflag GAUNTLET_QUITTER_DETECTED
     callnative ScrCmd_SetGauntletBossBattle
     .byte 3
     playmoncry VAR_RESULT, CRY_MODE_ENCOUNTER
@@ -142,8 +147,11 @@ GauntletIsland_AltarSpatk::
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
     setvar B_VAR_WILD_AI_FLAGS 1@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    setflag GAUNTLET_QUITTER_DETECTED
     forcesave
+    closemessage
     call Common_EventScript_OutOfCenterPartyHeal
+    clearflag GAUNTLET_QUITTER_DETECTED
     callnative ScrCmd_SetGauntletBossBattle
     .byte 6
     playmoncry VAR_RESULT, CRY_MODE_ENCOUNTER
@@ -194,8 +202,11 @@ GauntletIsland_AltarSpeed::
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
     setvar B_VAR_WILD_AI_FLAGS 3 @ 1 == CONSERVATIVE, 2 == RISKY,  <3=BOSS
+    setflag GAUNTLET_QUITTER_DETECTED
     forcesave
+    closemessage
     call Common_EventScript_OutOfCenterPartyHeal
+    clearflag GAUNTLET_QUITTER_DETECTED
     callnative ScrCmd_SetGauntletBossBattle
     .byte 9
     playmoncry VAR_RESULT, CRY_MODE_ENCOUNTER

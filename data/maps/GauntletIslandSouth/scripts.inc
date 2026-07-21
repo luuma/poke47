@@ -19,7 +19,7 @@ GauntletIsland_TxtTheIslandStirs:
 GauntletIsland_AltarsLit::
     lockall
     playse SE_LAVARIDGE_FALL_WARP
-    special DoSealedChamberShakingEffect_Long
+    special DoSealedChamberShakingEffect_Short
     waitse
     msgbox GauntletIsland_TxtTheAltarsFlareToLife 
     addvar VAR_GAUNTLET_9, 1

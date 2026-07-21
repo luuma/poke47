@@ -5,7 +5,8 @@ GauntletIslandSouthwest_MapScripts::
 	.byte 0
 
 GauntletIslandOnResume::
-        goto_if_eq B_VAR_WILD_AI_FLAGS, 0, GauntletIslandOnResume_end
+        goto_if_unset GAUNTLET_QUITTER_DETECTED, GauntletIslandOnResume_end@ STOP FUCKING SENDING THE PLAYER HOME
+        clearflag GAUNTLET_QUITTER_DETECTED
         setvar B_VAR_WILD_AI_FLAGS, 0
 GauntletIsland_EventScript_RetireGauntletChallenge::
         setvar VAR_0x8004, 1234
