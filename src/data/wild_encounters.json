@@ -38093,7 +38093,7 @@
               {
                 "min_level": 8,
                 "max_level": 8,
-                "species": "SPECIES_COTTONEE"
+                "species": "SPECIES_ESPURR"
               },
               {
                 "min_level": 9,
@@ -38346,7 +38346,7 @@
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_SPEWPA_ICY_SNOW"
+                "species": "SPECIES_SPEWPA_POLAR"
               },
               {
                 "min_level": 15,

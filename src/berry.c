@@ -2872,7 +2872,7 @@ void ObjectEventInteractionClearBerryPests(void)
 
 bool8 PlayerHasBerries(void)
 {
-    return IsBagPocketNonEmpty(POCKET_BERRIES);
+    return IsBagPocketNonEmpty(POCKET_BERRIES) || FlagGet(FLAG_GAUNTLET_CHALLENGE);
 }
 
 bool8 ObjectEventInteractionBerryHasWeed(void)

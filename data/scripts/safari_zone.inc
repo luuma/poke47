@@ -48,15 +48,6 @@ GauntletIsland_Text_WouldYouLikeToExit:
 	.string "Would you like to end your attempt\n"
 	.string "at GAUNTLET ISLAND and leave now?$"
 
-
-GauntletIsland_EventScript_RetireGauntletChallenge::
-        setvar VAR_0x8004, 1234
-	warp MAP_ROUTE_100, 8, 11
-	waitstate
-	end
-
-
-
 SafariZone_EventScript_TimesUp::
 	lockall
 	playse SE_DING_DONG

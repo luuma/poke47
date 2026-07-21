@@ -54,7 +54,9 @@ static void RespawnAbout24RandomGauntletItemBalls(void)
 /////////////////////////////
 
     u32 flag;
-    for (i = 0; i <= 35; i++)
+    u32 NumSets = gSaveBlock3Ptr->GauntletIslandStartingBenefits.setsof5lessrandomrespawnballs; 
+    NumSets = max(35-(5*NumSets), 0);
+    for (i = 0; i <= NumSets; i++)
     {
         flag = (FLAG_GAUNTLET_3 + Random() % FLAGS_GAUNTLET);
         FlagSet(flag);
@@ -73,7 +75,8 @@ static void InitGauntletBagItems(void)//COPY of initpyramiditems but gives some 
         gSaveBlock2Ptr->frontier.pyramidBag.itemId[1][i] = ITEM_NONE;
         gSaveBlock2Ptr->frontier.pyramidBag.quantity[1][i] = ITEM_NONE;
     }
-    AddPyramidBagItem(ITEM_HEAL_BALL, 4);
+    AddPyramidBagItem(ITEM_SPORT_BALL, gSaveBlock3Ptr->GauntletIslandStartingBenefits.sportBalls);// plan is: you can get points by doing the challenge and then spend them on these starting items.
+    AddPyramidBagItem(ITEM_SACRED_ASH, gSaveBlock3Ptr->GauntletIslandStartingBenefits.sacredAshes);
     return;
 }
 
@@ -513,8 +516,8 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_BLACK_SLUDGE] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} BLACK SLUDGE{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_BLACK_SLUDGE,     },
 [GB_FIRST_IMPRESSION] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR FIRST IMPRESSION{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_FIRST_IMPRESSION,     },
 [GB_LEECH_SEED] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM LEECH SEED{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_LEECH_SEED,     },
-[GB_NATURAL_GIFT] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR NATURAL GIFT{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_NATURAL_GIFT,     },
-[GB_SHED_SHELL] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} SHED SHELL{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_SHED_SHELL,     },
+[GB_KNELL_BELL] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} KNELL BELL{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_KNELL_BELL,     },
+[GB_SMOKE_BALL] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} SMOKE BALL{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_SMOKE_BALL,     },
 [GB_STICKY_BARB] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} STICKY BARB{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_STICKY_BARB,     },
 [GB_STRING_SHOT] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR STRING SHOT{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_STRING_SHOT,     },
 [GB_TOXIC_ORB_AND_FLAME_ORB] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} 2 TOXIC ORBS & FLAME ORBS{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TOXICANDFLAMEORB,         .special = 0,     },
@@ -533,7 +536,7 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_MISTY_TERRAFORM] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} MISTY TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_WEATHER,         .special = WEATHER_FOG_HORIZONTAL,     },
 [GB_GET_MONEY] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} GET MONEY{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_MONEY,         .special = 5000,     },
 [GB_RAIN_DANCE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM RAIN DANCE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_RAIN_DANCE,     },
-[GB_SNOW] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} SNOW{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_WEATHER,         .special = WEATHER_SNOW,     },
+[GB_SNOW] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} SNOWY WEATHER{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_WEATHER,         .special = WEATHER_SNOW,     },
 [GB_SOAK] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM SOAK{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_SOAK,     },
 [GB_WEATHER_BALL] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM WEATHER BALL{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_WEATHER_BALL,     },
 [GB_TERRAIN_PULSE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR TERRAIN PULSE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_TERRAIN_PULSE,     },
@@ -576,16 +579,16 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_10_FULL_RESTORES] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 10 FULL RESTORES{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10XITEM,         .special = ITEM_FULL_RESTORE,     },
 [GB_10_HYPER_POTIONS] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 10 HYPER POTIONS{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10XITEM,         .special = ITEM_HYPER_POTION,     },
 [GB_10_X_DEFEND_10_X_SP_DEF] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 10 X DEFEND, 10 X SP.DEF{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_XDEFXSPDEF,         .special = 0,     },
-[GB_ANCIENT_POWER] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM ANCIENT POWER{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_ANCIENT_POWER,     },
+[GB_IRON_WILL] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR IRON WILL{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_ARMOR_BREAK,     },
 [GB_ASSAULT_VEST] =      {         .name =_("{HIGHLIGHT LIGHT_RED} ASSAULT VEST{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_ASSAULT_VEST,     },
 [GB_DIG] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM DIG{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_DIG,     },
 [GB_HEAVY_DUTY_BOOTS] =      {         .name =_("{HIGHLIGHT LIGHT_RED} HEAVY DUTY BOOTS{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_HEAVY_DUTY_BOOTS,     },
 [GB_IRON_DEFENSE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM IRON DEFENSE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_IRON_DEFENSE,     },
 [GB_ROCK_SLIDE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM ROCK SLIDE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_ROCK_SLIDE,     },
-[GB_ROCK_SLIDE_TUTOR] =      {         .name =_("{HIGHLIGHT LIGHT_RED} HM STRENGTH{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_HM,         .special = ITEM_HM_STRENGTH,     },
+[GB_STRENGTH] =      {         .name =_("{HIGHLIGHT LIGHT_RED} HM STRENGTH{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_HM,         .special = ITEM_HM_STRENGTH,     },
 [GB_ROCK_SMASH] =      {         .name =_("{HIGHLIGHT LIGHT_RED} HM ROCK SMASH{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_HM,         .special = ITEM_HM_ROCK_SMASH,     },
 [GB_ROCKY_HELMET] =      {         .name =_("{HIGHLIGHT LIGHT_RED} ROCKY HELMET{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_ROCKY_HELMET,     },
-[GB_ROLLOUT] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR ROLLOUT{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_ROLLOUT,     },
+[GB_CANNONADE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR CANNONADE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_BASTION_WALLS,     },
 [GB_ROTOTILLER] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR ROTOTILLER{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_ROTOTILLER,     },
 [GB_SAFETY_GOGGLES] =      {         .name =_("{HIGHLIGHT LIGHT_RED} SAFETY GOGGLES{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_SAFETY_GOGGLES,     },
 [GB_SANDSTORM] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM SANDSTORM{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_SANDSTORM,     },
@@ -619,6 +622,7 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_NATURE_POWER_TUT] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR NATURE POWER TUT{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_NATURE_POWER,     },
 [GB_SLUDGE_BOMB] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM SLUDGE BOMB{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_SLUDGE_BOMB,     },
 [GB_SOLAR_BEAM] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM SOLAR BEAM{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_SOLAR_BEAM,     },
+[GB_TOXIC] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM TOXIC{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_TOXIC,     },
 [GB_STUFF_CHEEKS] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR STUFF CHEEKS{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_STUFF_CHEEKS,     },
 [GB_BLIZZARD] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM BLIZZARD{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_BLIZZARD,     },
 [GB_DAZZLING_GLEAM] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM DAZZLING GLEAM{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_DAZZLING_GLEAM,     },
@@ -679,13 +683,13 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_OUTRAGE] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR OUTRAGE{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_OUTRAGE,     },
 [GB_RUINATION] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR RUINATION{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_RUINATION,     },
 [GB_CURSE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM CURSE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_CURSE,     },
-[GB_DARK_VOID] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR DARK VOID{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_DARK_VOID,     },
+[GB_REVELATION_DANCE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR REVELATION DANCE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_REVELATION_DANCE,     },
 [GB_EXPANDING_FORCE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR EXPANDING FORCE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_EXPANDING_FORCE,     },
 [GB_TRICK_ROOM_TERRAFORM] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TRICK ROOM TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_STARTINGSTATUS,         .special = 2,     },
 [GB_PHOTON_GEYSER] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR PHOTON GEYSER{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_PHOTON_GEYSER,     },
 [GB_3X_MAX_REVIVE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 3X MAX REVIVE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_3XITEM,         .special = ITEM_MAX_REVIVE,     },
 [GB_BODY_PRESS] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR BODY PRESS{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_BODY_PRESS,     },
-[GB_CANNONADE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR CANNONADE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_BASTION_WALLS,     },
+[GB_3X_EVIOLITE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 3X EVIOLITE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_3XITEM,         .special = MOVE_BASTION_WALLS,     },
 [GB_EXTREME_SPEED] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR EXTREME SPEED{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_EXTREME_SPEED,     },
 [GB_TAILWIND_WEATHER] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TAILWIND WEATHER{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_STARTINGSTATUS,         .special = 5,     },
 [GB_HAWKEYE] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR HAWKEYE{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_CRIT_UP_HIT,     },
@@ -936,7 +940,7 @@ static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, 
     bool32 isCapped = (devotions2 & 0b100000) != 0;
     u8 optionsNo = GAUNTLET_MENU_OPTIONS + FlagGet(FLAG_FIVE_BOONS); ////////////////////////// Consider a winged lion boon that permanently increases options available.  
     u8 MultichoiceOptions[optionsNo] = {};
-    u8 devotion_weight[4] = {20, 20, 20, 20};
+    u8 devotion_weight[5] = {40, 35, 10, 10, 5};// keep tweakin it
     u8 rarity_weight[4] = {stapleWeight, commonWeight, rareWeight, epicWeight};
 
     if (isCapped)
@@ -946,7 +950,7 @@ static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, 
     {
         bool32 CanDuo = FALSE;
         enum GauntletRarity rarity = RandomGauntletBoonWeightedIndex(rarity_weight, 4);// of max devotion
-        u32 devotionNeeded = RandomGauntletBoonWeightedIndex(devotion_weight, 4);// of max devotion
+        u32 devotionNeeded = RandomGauntletBoonWeightedIndex(devotion_weight, 5);// of max devotion
         u32 i=0;
         enum GauntletTypes deityChosen = TYPE_COLOURLESS;
         do
@@ -1254,3 +1258,105 @@ void ScrCmd_SetGauntletVarStartingStatus(void)
     NewStatus = (ExistingStatus | NewStatus);
     VarSet(VAR_GAUNTLET_STARTING_STATUS,  NewStatus);
 }
+
+
+void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
+{
+    u8 pointshoptype = ScriptReadByte(ctx);
+    u32 points = 0;
+    u32 price =0;
+    u32 output =0; // failure
+    bool32 bought = FALSE;
+    if (pointshoptype == 10)
+    {
+        pointshoptype = VarGet(VAR_RESULT);
+        if (pointshoptype == 255)
+            return;
+    }
+    switch (pointshoptype){
+        case 1:
+        case 11:  
+        {
+            output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.sportBalls; 
+            price = max(output*5, 1);
+            break;
+        }
+        case 2: 
+        case 12:  
+        {
+            output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.sacredAshes; 
+            price = 5;
+            if (output == 1) price = 20;
+            if (output == 2) price = 200;
+            break;
+        }
+        case 3: 
+        case 13:  
+        {
+            output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.boonballs; break;
+            price = 5*(1+output);
+            break;
+        }
+        case 4: 
+        case 14:  
+        {
+            output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.setsof5lessrandomrespawnballs; 
+            price = 5*(1+output);
+            break;
+        }
+        default: break;
+    }
+
+    switch (pointshoptype){
+        case 11: 
+        {
+            points = VarGet(VAR_GAUNTLET_LOSS_POINTS);
+            if (price>points) break;
+            bought = TRUE;
+            VarSet(VAR_GAUNTLET_LOSS_POINTS, points - price);
+            output++;
+            gSaveBlock3Ptr->GauntletIslandStartingBenefits.sportBalls = output;
+            break;
+        }
+        case 12: 
+        {
+            points = VarGet(VAR_GAUNTLET_LOSS_POINTS);
+            if (price>points) break;
+            bought = TRUE;
+            VarSet(VAR_GAUNTLET_LOSS_POINTS, points - price);
+            output++;
+            gSaveBlock3Ptr->GauntletIslandStartingBenefits.sacredAshes = output;
+            break;
+        }
+        case 13: /// unused.
+        {
+            points = VarGet(VAR_GAUNTLET_LOSS_POINTS);
+            if (price>points) break;
+            bought = TRUE;
+            VarSet(VAR_GAUNTLET_LOSS_POINTS, points - price);
+            output++;
+            gSaveBlock3Ptr->GauntletIslandStartingBenefits.boonballs = output;
+            break;
+        }
+        case 14:
+        {
+            points = VarGet(VAR_GAUNTLET_LOSS_POINTS);
+            if (price>points) break;
+            bought = TRUE;
+            VarSet(VAR_GAUNTLET_LOSS_POINTS, points - price);
+            output++;
+            gSaveBlock3Ptr->GauntletIslandStartingBenefits.setsof5lessrandomrespawnballs = output;
+            output = output*5;// for printing string.
+            break;
+        }
+        default: break;
+    }
+    VarSet(VAR_0x8004, price);
+    VarSet(VAR_0x8005, bought);
+    VarSet(VAR_0x8006, output);
+    VarSet(VAR_0x8007, pointshoptype);
+    return;
+}
+
+
+

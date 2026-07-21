@@ -9724,7 +9724,7 @@ static void FinalizeCapture(void)
     else
         gBattleCommunication[MULTISTRING_CHOOSER] = 1;
 
-    if (ballId == BALL_HEAL)
+    if (ballId == BALL_HEAL || ballId == BALL_SPORT)
     {
         MonRestorePP(caughtMon);
         HealStatusConditions(caughtMon, STATUS1_ANY, gBattlerTarget);
@@ -9931,8 +9931,7 @@ static void ComputeBallData(u32 wildMonBattler, u32 playerBattler, struct BallDa
             ball->multiplier = 150;
         break;
     case BALL_SPORT:
-        if (B_SPORT_BALL_MODIFIER <= GEN_7)
-            ball->multiplier = 150;
+        ball->multiplier = 300;
         break;
     case BALL_BEAST:
         ball->multiplier = 410;

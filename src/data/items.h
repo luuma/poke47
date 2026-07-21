@@ -567,12 +567,12 @@ const struct ItemInfo gItemsInfo[] =
 
     [ITEM_SPORT_BALL] =
     {
-        .name = ITEM_NAME("Sport Ball"),
+        .name = ITEM_NAME("Gauntlet Ball"),
         .price = (I_PRICE <= GEN_3 || I_PRICE >= GEN_9) ? 0 : 300,
         .description = COMPOUND_STRING(
             "A special Ball\n"
-            "used in the Bug-\n"
-            "Catching Contest."),
+            "from the Gauntlet\n"
+            "Island Challenge."),
         .pocket = POCKET_POKE_BALLS,
         .type = ITEM_USE_BAG_MENU,
         .battleUsage = EFFECT_ITEM_THROW_BALL,

@@ -1800,7 +1800,7 @@ enum Ability AI_DecideKnownAbilityForTurn(enum BattlerId battlerId)
         indexAbility = GetSpeciesAbility(gBattleMons[battlerId].species, abilityIndex);
         if (indexAbility != ABILITY_NONE)
         {
-            abilityAiRatings[numValidAbilities] = gAbilitiesInfo[indexAbility].aiRating;
+            abilityAiRatings[numValidAbilities] = max(gAbilitiesInfo[indexAbility].aiRating+3, 0);// negative weighted abilities are ignored
             validAbilities[numValidAbilities++] = indexAbility;
         }
     }

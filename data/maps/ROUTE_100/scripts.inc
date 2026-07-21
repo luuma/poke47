@@ -6,6 +6,23 @@ ROUTE_100_OnFrame::
 	map_script_2 VAR_GAUNTLET_ACTIVE, 1, Route100_EventScript_GauntletEnd
 	.2byte 0
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route100_EventScript_GauntletEnd::
         lockall
         applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
@@ -13,16 +30,33 @@ Route100_EventScript_GauntletEnd::
         callnative GauntletEnd @ this also clears several flags
         goto_if_eq VAR_RESULT, FALSE, Route100_EventScript_Failsafe
         setflag FLAG_TEMP_1
-        goto_if_eq VAR_0x8004, 1234, Route100_EventScript_Retire
+        goto_if_set FLAG_GAUNTLET_HP_ALTAR, Route100_EventScript_Altar1
         goto_if_set FLAG_GAUNTLET_ATK_ALTAR, Route100_EventScript_Altar2
+        goto_if_set FLAG_GAUNTLET_SPATK_ALTAR, Route100_EventScript_Altar3
+        goto_if_set FLAG_GAUNTLET_SPEED_ALTAR, Route100_EventScript_Altar4
         goto_if_set FLAG_GAUNTLET_BOSS_ALTAR, Route100_EventScript_BRAVO
+        goto_if_eq VAR_0x8004, 1234, Route100_EventScript_Retire @ Seems better to handle properly every time unless they gave up early, rather than say "you retired" even if they did great.
+	setvar VAR_0x8004, 1
         msgbox Route100_Text_YouLose
+Route100_EventScript_YouLostThereforeLossPoints::
+        addvar VAR_GAUNTLET_LOSS_POINTS VAR_0x8004
+        call_if_gt VAR_GAUNTLET_LOSS_POINTS 1000, Route100_setto999losspoints
+	buffernumberstring STR_VAR_1, VAR_0x8004 
+        msgbox Route100_Text_LossPoints MSGBOX_YESNO
+        goto_if_eq VAR_RESULT, YES, Route100_LossPointShop
         releaseall
         end
 
 Route100_EventScript_Retire::
+        setvar VAR_0x8004, 0
         msgbox Route100_Text_Retire
         releaseall
+        end
+
+Route100_EventScript_Altar1::
+        setvar VAR_0x8004, 1
+        msgbox Route100_Text_MadeItToFirstAltar
+        goto Route100_EventScript_YouLostThereforeLossPoints
         end
 
 Route100_EventScript_BRAVO::
@@ -32,12 +66,26 @@ Route100_EventScript_BRAVO::
 
 
 Route100_EventScript_Altar2::
+        setvar VAR_0x8004, 2
         msgbox Route100_Text_MadeItToSecondAltar
-        releaseall
+        goto Route100_EventScript_YouLostThereforeLossPoints
+        end
+
+
+Route100_EventScript_Altar3::
+        setvar VAR_0x8004, 3
+        msgbox Route100_Text_MadeItToSecondAltar
+        goto Route100_EventScript_YouLostThereforeLossPoints
+        end
+
+Route100_EventScript_Altar4::
+        setvar VAR_0x8004, 4
+        msgbox Route100_Text_MadeItToFourthAltar
+        goto Route100_EventScript_YouLostThereforeLossPoints
         end
 
 Route100_Text_Retire:
-	.string "Well! I thought that attempt looked\n"
+	.string "Hm! I thought that attempt looked\n"
 	.string "rather promising. A shame, I think.\p"
 	.string "Don't fret. Your chosen POKéMON is\n"
  	.string "back to its old state, once more.$"
@@ -49,6 +97,21 @@ Route100_Text_bravo:
 	.string "Your chosen POKéMON is back to\n"
  	.string "its old state, once more.\p"
 	.string "Stronger than before, I daresay.$"
+
+Route100_Text_MadeItToFourthAltar:
+	.string "Remarkable. Quite the showing,\n"
+	.string "child. You handled yourself well.\p"
+	.string "Don't fret. Your chosen POKéMON is\n"
+ 	.string "back to its old state, once more.\p"
+	.string "Stronger than before, I daresay.$"
+
+Route100_Text_MadeItToFirstAltar:
+	.string "Ah, one step at a time, child.\n"
+	.string "Some good victories there. Geheh.\p"
+	.string "Don't fret. Your chosen POKéMON is\n"
+ 	.string "back to its old state, once more.\p"
+	.string "A little stronger than before.$"
+
 
 
 Route100_Text_MadeItToSecondAltar:
@@ -64,6 +127,10 @@ Route100_Text_YouLose:
 	.string "Don't fret. Your chosen POKéMON is\n"
  	.string "back to its old state, once more.$"
 
+Route100_Text_LossPoints:
+	.string "For a heroic loss in the CHALLENGE,\n"
+	.string "{PLAYER} received {STR_VAR_1} LOSS POINTS.\l"
+	.string "Spend them now?$"
 
 ROUTE_100_Witch::
 	lockall
@@ -179,7 +246,6 @@ Route100_Text_GauntletChallengePower:
 	.string "Everyone loves power, child. Geheheh.\p"
 	.string "Are you ready?$"
 
-
 Route100_Text_GauntletChallengeBegin:
 	.string "In we go. Geheheheh.$"
 
@@ -196,3 +262,116 @@ Route100_Text_MoreThanOnePartyMember:
 	.string "Deposit all but one of them,\l"
 	.string "if you wouldn't mind.$"
 
+
+Route100_FUCKIT::
+	lock
+        call_if_lt VAR_GAUNTLET_LOSS_POINTS, 10, Route100_setto999losspoints
+	goto Route100_LossPointShop
+	end
+
+Route100_setto999losspoints::
+        setvar VAR_GAUNTLET_LOSS_POINTS, 1000
+        return
+
+Route100_LossPointShop::@ god awful code. Duct tape glue and magic numbers. I am tired.
+	buffernumberstring STR_VAR_1, VAR_GAUNTLET_LOSS_POINTS
+	msgbox Route100_Text_YouHaveXLossPoints
+Route100_LossPointShopjUMP::
+        callnative ScrCmd_GauntletStartingBenefitHandler
+        .byte 1
+        call_if_lt VAR_0x8006, 4, Route100_LossPointShop_dynmultiSportBalls @ 4 is plenty
+        callnative ScrCmd_GauntletStartingBenefitHandler
+        .byte 2
+        call_if_lt VAR_0x8006, 3, Route100_LossPointShop_dynmultiSacredAss @ 3 is plenty
+        callnative ScrCmd_GauntletStartingBenefitHandler
+        .byte 4
+@ 6 options each being "start with 1 devotion to x" where you can toggle between them.
+        call_if_lt VAR_0x8006, 7, Route100_LossPointShop_dynmultimoreitems
+    	dynmultipush GauntletIsland_cANCEL, 0xFF
+	message Route100_Text_Buysmth
+        waitmessage
+        dynmultistack 0, 0, TRUE, 6, FALSE, VAR_0x800A, DYN_MULTICHOICE_CB_NONE
+	callnative ScrCmd_GauntletStartingBenefitHandler
+        .byte 10
+	goto_if_eq VAR_RESULT, 255, Route100_Handlecanceljump
+	call_if_eq VAR_0x8005, TRUE, Route100_HandlePurchaseMessage
+	call_if_eq VAR_0x8005, FALSE, Route100_comebackwhenyourealittlemmmmmricher
+Route100_Handlecanceljump::@ this code is SO SHIT!!
+	buffernumberstring STR_VAR_1, VAR_GAUNTLET_LOSS_POINTS
+	msgbox Route100_Text_YouHaveXLossPointsLeft MSGBOX_YESNO
+        goto_if_eq VAR_RESULT, NO, Route100_LossPointShopjUMP
+	release
+	end
+
+Route100_LossPointShop_dynmultiSportBalls::
+	buffernumberstring STR_VAR_1, VAR_0x8004
+    	dynmultipush GauntletIsland_ISLANDMULTI, 11
+	return
+
+Route100_LossPointShop_dynmultiSacredAss::
+	buffernumberstring STR_VAR_2, VAR_0x8004
+    	dynmultipush GauntletIsland_ASHMULTI, 12
+	return
+
+Route100_LossPointShop_dynmultimoreitems::
+	buffernumberstring STR_VAR_3, VAR_0x8004
+    	dynmultipush GauntletIsland_ITEMSMULTI, 14
+	return
+
+Route100_HandlePurchaseMessage::
+	buffernumberstring STR_VAR_1, VAR_0x8004
+	buffernumberstring STR_VAR_3, VAR_0x8006
+	goto_if_eq VAR_0x8007, 11, Route100_LossPointShop_SportBallsbOUGHT
+	goto_if_eq VAR_0x8007, 12, Route100_LossPointShop_ashbOUGHT
+	goto_if_eq VAR_0x8007, 14, Route100_LossPointShop_ITEMSbought
+	return
+
+Route100_LossPointShop_SportBallsbOUGHT::
+	msgbox Route100_Text_LossPointShop_SportBallsbOUGHT 
+	return
+
+Route100_LossPointShop_ashbOUGHT::
+	msgbox Route100_Text_LossPointShop_ashbOUGHT 
+	return
+
+Route100_LossPointShop_ITEMSbought::
+	msgbox Route100_Text_LossPointShop_ITEMSbought
+	return
+
+GauntletIsland_ISLANDMULTI:
+   	.string "+1 ISLAND POKéBALL{CLEAR_TO 130}{STR_VAR_1} LP$"
+
+GauntletIsland_ASHMULTI:
+   	.string "+1 SACRED ASH{CLEAR_TO 130}{STR_VAR_2} LP$"
+
+GauntletIsland_ITEMSMULTI:
+   	.string "MORE ITEM SPAWNS{CLEAR_TO 130}{STR_VAR_3} LP$"
+
+GauntletIsland_cANCEL:
+   	.string "CANCEL$"
+
+Route100_Text_YouHaveXLossPoints:
+   	.string "{PLAYER} opened the LOSS POINT SHOP.\n"
+   	.string "You have {STR_VAR_1} LOSS POINTS to spend!!!$"
+
+Route100_Text_YouHaveXLossPointsLeft:
+   	.string "You have {STR_VAR_1} LOSS POINTS left!\n"
+   	.string "Would you like to exit?$"
+
+Route100_comebackwhenyourealittlemmmmmricher:
+   	.string "You don't have enough LOSS POINTS!$"
+
+Route100_Text_Buysmth:
+   	.string "Buy a boon?$"
+
+Route100_Text_LossPointShop_ITEMSbought:
+   	.string "For {STR_VAR_1} LP, you will now have up to\n"
+  	.string "{STR_VAR_3} more items spawn than default.$"
+
+Route100_Text_LossPointShop_ashbOUGHT:
+   	.string "For {STR_VAR_1} LP, you will now start\n"
+  	.string "with {STR_VAR_3} SACRED ASH.$"
+
+Route100_Text_LossPointShop_SportBallsbOUGHT:
+   	.string "For {STR_VAR_1} LP, you will now start\n"
+  	.string "with {STR_VAR_3} ISLAND BALL(s).$"

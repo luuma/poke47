@@ -53,16 +53,16 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 45,
-      "y": 6,
+      "x": 39,
+      "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GauntletIslandLow_ItemBall_two",
-      "flag": "FLAG_GAUNTLET_20"
+      "script": "GauntletIslandMed_ItemBall",
+      "flag": "FLAG_GAUNTLET_26"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
@@ -144,15 +144,15 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 39,
-      "y": 11,
+      "x": 45,
+      "y": 6,
       "elevation": 4,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "GauntletIslandMed_ItemBall",
+      "script": "GauntletIslandLow_ItemBall_two",
       "flag": "FLAG_GAUNTLET_20"
     }
   ],

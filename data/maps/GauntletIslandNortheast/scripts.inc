@@ -1,6 +1,7 @@
 GauntletIslandNortheast_MapScripts::
-	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume @ 	setstepcallback STEP_CB_ASH ; end
 	map_script MAP_SCRIPT_ON_TRANSITION, GauntletIslandNortheast_OnTransition
+	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume @ 	setstepcallback STEP_CB_ASH ; end
+	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, GauntletIslandOnResume @ 	setstepcallback STEP_CB_ASH ; end
 	.byte 0
 
 GauntletIslandNortheast_OnTransition::
@@ -39,6 +40,8 @@ GauntletIsland_AltarHP::
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
     setvar B_VAR_WILD_AI_FLAGS 2@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, 5 = , other =normal
+    forcesave
+    closemessage
     call Common_EventScript_OutOfCenterPartyHeal
     callnative ScrCmd_SetGauntletBossBattle
     .byte 0
@@ -88,6 +91,7 @@ GauntletIsland_Altaratk::
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
     setvar B_VAR_WILD_AI_FLAGS 1@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    forcesave
     call Common_EventScript_OutOfCenterPartyHeal
     callnative ScrCmd_SetGauntletBossBattle
     .byte 3
@@ -137,7 +141,8 @@ GauntletIsland_AltarSpatk::
     msgbox GauntletIsland_AltarSpatkTouch MSGBOX_YESNO
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
-    setvar B_VAR_WILD_AI_FLAGS 3@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    setvar B_VAR_WILD_AI_FLAGS 1@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, other =normal
+    forcesave
     call Common_EventScript_OutOfCenterPartyHeal
     callnative ScrCmd_SetGauntletBossBattle
     .byte 6
@@ -189,6 +194,7 @@ GauntletIsland_AltarSpeed::
     goto_if_eq VAR_RESULT, FALSE, GauntletIsland_AltarReleaseEnd
     closemessage
     setvar B_VAR_WILD_AI_FLAGS 3 @ 1 == CONSERVATIVE, 2 == RISKY,  <3=BOSS
+    forcesave
     call Common_EventScript_OutOfCenterPartyHeal
     callnative ScrCmd_SetGauntletBossBattle
     .byte 9

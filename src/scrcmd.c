@@ -3539,27 +3539,27 @@ const struct {
     },
 //altar 2 atk groudon. 3-5
     {
-        .species = SPECIES_BOLDORE,
-        .moves = {MOVE_ROCK_SLIDE, MOVE_SALT_CURE, MOVE_RECOVER, MOVE_POWER_GEM},
-        .level = 24,
+        .species = SPECIES_BOLDORE,//// GOOD post ai nerfs
+        .moves = {MOVE_HYPER_BEAM, MOVE_SALT_CURE, MOVE_RECOVER, MOVE_THUNDER_WAVE},
+        .level = 20,
         .dynlevel = 0,
         .item = ITEM_ORAN_BERRY,
         .speciesBuddy = SPECIES_ROGGENROLA,
+        .levelBuddy = 20,
+    },
+    {
+        .species = SPECIES_MUDSDALE,//////gOOD
+        .moves = {MOVE_ROCK_SLIDE, MOVE_DOUBLE_KICK, MOVE_BULK_UP, MOVE_ROTOTILLER},
+        .level = 18,
+        .dynlevel = 0,
+        .item = ITEM_ORAN_BERRY,
+        .speciesBuddy = SPECIES_FOMANTIS,
         .levelBuddy = 18,
     },
     {
-        .species = SPECIES_MUDSDALE,
-        .moves = {MOVE_BULLDOZE, MOVE_DOUBLE_KICK, MOVE_BULK_UP, MOVE_HEAVY_SLAM},
-        .level = 23,
-        .dynlevel = 0,
-        .item = ITEM_ORAN_BERRY,
-        .speciesBuddy = SPECIES_ROGGENROLA,
-        .levelBuddy = 16,
-    },
-    {
-        .species = SPECIES_BRONZONG,
-        .moves = {MOVE_EXTRASENSORY, MOVE_MIRROR_SHOT, MOVE_HYPNOSIS, MOVE_SPEED_SWAP},
-        .level = 23,
+        .species = SPECIES_BRONZONG, //////////aight post ai nd nerfs. What if klang? might be op?
+        .moves = {MOVE_CONFUSION, MOVE_MIRROR_SHOT, MOVE_HYPNOSIS, MOVE_SPEED_SWAP},
+        .level = 19,
         .dynlevel = 0,
         .item = ITEM_ORAN_BERRY,
         .speciesBuddy = SPECIES_BRONZOR,
@@ -3569,32 +3569,32 @@ const struct {
 // altar 3 SATK kyo . should maybe be def. 6-8
     {
         .species = SPECIES_ABOMASNOW,
-        .moves = {MOVE_ROTOTILLER, MOVE_BLIZZARD, MOVE_WOOD_HAMMER, MOVE_DRAIN_PUNCH},
-        .level = 30,
+        .moves = {MOVE_ROTOTILLER, MOVE_ICY_WIND, MOVE_WOOD_HAMMER, MOVE_DRAIN_PUNCH},
+        .level = 24,// was like blizzard lv30 lv26 no ai. Generally an ok fight
         .dynlevel = 10,
         .item = ITEM_OCCA_BERRY,
         .speciesBuddy = SPECIES_SNOVER,
-        .levelBuddy = 25,
+        .levelBuddy = 24,
 
     },
     {
         .species = SPECIES_PRIMARINA,
-        .moves = {MOVE_DAZZLING_GLEAM, MOVE_SPARKLING_ARIA, MOVE_ICY_WIND, MOVE_GROWL},
-        .level = 30,
+        .moves = {MOVE_DAZZLING_GLEAM, MOVE_SPARKLING_ARIA, MOVE_DECORATE, MOVE_GROWL},
+        .level = 22,// was like icy wind lv27 lv25 no ai. Always a solid fight.
         .dynlevel = 10,
         .item = ITEM_LEFTOVERS,
         .speciesBuddy = SPECIES_CHATOT,
-        .levelBuddy = 25,
+        .levelBuddy = 21,
 
     },
     {
         .species = SPECIES_SWANNA,
         .moves = {MOVE_SURF, MOVE_HURRICANE, MOVE_ROOST, MOVE_ICY_WIND},
-        .level = 31,
+        .level = 23,// was like lv30 lv25 no ai. fucking too stupid to deal with the move substitute. you have roost idiot
         .dynlevel = 10,
         .item = ITEM_SITRUS_BERRY,
-        .speciesBuddy = SPECIES_ZEBSTRIKA,
-        .levelBuddy = 25,
+        .speciesBuddy = SPECIES_BLITZLE,
+        .levelBuddy = 23,
 
     },
 /// altar 4 speed winged lion. 9-11

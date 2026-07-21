@@ -250,6 +250,15 @@ struct NPCFollower
     u8 battlePartner; // If you have more than 255 total battle partners defined, change this to a u16
 };
 
+struct GIStarts {
+    u32 sportBalls:3;// max 7 for now
+    u32 sacredAshes:2;// max 3 for now
+    u32 boonballs:3;
+    u32 setsof5lessrandomrespawnballs:3;// max 7 times taken
+    u16 numPoints;// sized for pushing to vars
+};
+
+
 #include "constants/items.h"
 #define ITEM_FLAGS_COUNT ((ITEMS_COUNT / 8) + ((ITEMS_COUNT % 8) ? 1 : 0))
 
@@ -278,7 +287,8 @@ struct SaveBlock3
     struct Sfc32State seedItemsend;
     struct Sfc32State seedMintHaha;
     struct Sfc32State seedBoons; //
-
+    u32 padding[8];
+    struct GIStarts GauntletIslandStartingBenefits;
  // unused go below:    
 #if FNPC_ENABLE_NPC_FOLLOWERS
     struct NPCFollower NPCfollower;

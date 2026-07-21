@@ -2479,35 +2479,35 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Plane Shift"),
         .description = COMPOUND_STRING("Extends user's screens."),
-        .aiRating = 8,
+        .aiRating = 4,
     },
 
     [ABILITY_ITEM_GET] =
     {
         .name = _("Litter Picker"),
         .description = COMPOUND_STRING("Finds consumable junk."),
-        .aiRating = 8,
+        .aiRating = 5,
     },
 
     [ABILITY_GRAND_DEBUT] =
     {
         .name = _("Showboater"),
         .description = COMPOUND_STRING("Halves damage until it acts."),
-        .aiRating = 8,
+        .aiRating = 7,
     },
 
     [ABILITY_OPPOSITE_DAY] =
     {
         .name = _("Opposite Day"),
         .description = COMPOUND_STRING("Sets 5-turn inverse battle."),
-        .aiRating = 8,
+        .aiRating = 5,
     },
 
     [ABILITY_CONSTRICTOR] =
     {
         .name = _("Constrictor"),
         .description = COMPOUND_STRING("Powers trapping moves."),
-        .aiRating = 8,
+        .aiRating = 6,
     },
 
     [ABILITY_WHITEOUT] =
@@ -2521,21 +2521,21 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Echo"),
         .description = COMPOUND_STRING("Copies sound moves."),
-        .aiRating = 8,
+        .aiRating = 5,
     },
 
     [ABILITY_FOCUS_BOOST] =
     {
         .name = _("Staring Contest"),
         .description = COMPOUND_STRING("Gradually ups Accuracy."),
-        .aiRating = 8,
+        .aiRating = 7,
     },
 
     [ABILITY_MOVE_RELEARNER] =
     {
         .name = _("Infinite Wisdom"),
         .description = COMPOUND_STRING("Relearn moves in battle."),
-        .aiRating = 8,
+        .aiRating = 7,
     },
 
     [ABILITY_DOUBLE_WALLOP] =
@@ -2549,7 +2549,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Wonder Surge"),
         .description = COMPOUND_STRING("Sets Wonder Room."),
-        .aiRating = 8,
+        .aiRating = 6,
     },
 
     [ABILITY_TRICKLAND] =
