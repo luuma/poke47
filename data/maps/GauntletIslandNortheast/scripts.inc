@@ -273,7 +273,7 @@ GauntletIsland_AltarTWIN::
     goto_if_eq VAR_RESULT, B_OUTCOME_DREW, GauntletIsland_AltarLoss
     goto_if_eq VAR_RESULT, B_OUTCOME_RAN, GauntletIsland_AltarLoss
     goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, GauntletIsland_AltarLoss
-    goto_if_eq VAR_RESULT, B_OUTCOME_FORFEITED, GauntletIsland_AltarLosss
+    goto_if_eq VAR_RESULT, B_OUTCOME_FORFEITED, GauntletIsland_AltarLoss
     special DoSealedChamberShakingEffect_Short
     msgbox GauntletIsland_AltarTWINInscription3
 @ Fuck you no healing pick the sap/mountain upgrade idiot
