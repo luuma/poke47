@@ -1741,11 +1741,11 @@ static void HandleMoveRelearnerInput(u8 taskId)
             gRelearnMode = RELEARN_MODE_BATTLING_PSS_PAGE_BATTLE_MOVES;
         else
             gRelearnMode = sMonSummaryScreen->currPageIndex;
-        gSpecialVar_MonBoxPos = sMonSummaryScreen->curMonIndex;
         if (sMonSummaryScreen->isBoxMon)
         {
             gSpecialVar_0x8004 = PC_MON_CHOSEN;
             gSpecialVar_MonBoxPos = sMonSummaryScreen->curMonIndex;
+            gSpecialVar_MonBoxId = StorageGetCurrentBox();
         }
         else
         {
