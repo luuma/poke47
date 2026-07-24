@@ -5,6 +5,8 @@ GauntletIslandSouth_MapScripts::
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, GauntletIslandOnResume @ 	setstepcallback STEP_CB_ASH ; end
 	.byte 0
 
+@@ cutscene of walking up and boat leaving maybe.
+
 GauntletIsland_IslandStirs::
     lockall
     special DoSealedChamberShakingEffect_Short
@@ -113,9 +115,13 @@ GauntletIsland_MultipushSPATK::
 	return
 
 GauntletIsland_MultipushSPE::
-        goto_if_eq VAR_LAST_TALKED, localid_speed, GauntletIsland_ret @ 1
+        goto_if_eq VAR_LAST_TALKED, localid_speed, GauntletIsland_pushother @ 1
 	setvar VAR_0x8008 4
     	dynmultipush GauntletIsland_north, 4
+	addvar VAR_TEMP_2, 1
+GauntletIsland_pushother:
+	setvar VAR_0x8008 5
+    	dynmultipush GauntletIsland_OTHER, 5
 	addvar VAR_TEMP_2, 1
 	return
 
@@ -170,6 +176,10 @@ GauntletIsland_west:
 GauntletIsland_north:
    	.string "NORTH$"
 
+GauntletIsland_OTHER:
+   	.string "BEFORE$"
+
+
 GauntletIsland_Altarteletext:
 	.string "Would you like to use the\n"
 	.string "ALTAR to teleport?$"
@@ -185,6 +195,7 @@ GauntletIsland_Teleportmenu::
         goto_if_eq VAR_0x8008, 2, GauntletIsland_Warp_atk
         goto_if_eq VAR_0x8008, 3, GauntletIsland_Warp_satk
         goto_if_eq VAR_0x8008, 4, GauntletIsland_Warp_spe
+        goto_if_eq VAR_0x8008, 5, GauntletIsland_Warp_OTHER
         end
 
 GauntletIsland_Warp_hp::
@@ -204,6 +215,11 @@ GauntletIsland_Warp_satk::
 
 GauntletIsland_Warp_spe::
 	warpteleport MAP_GAUNTLET_ISLAND_FINALE, 10, 41
+	waitstate
+	end
+
+GauntletIsland_Warp_OTHER::
+	warpteleport MAP_GAUNTLET_ISLAND_NORTH_FLOOD, 13, 81
 	waitstate
 	end
 

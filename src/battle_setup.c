@@ -542,7 +542,7 @@ void BattleSetup_StartLegendaryBattle(void)
 {
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
-    gBattleTypeFlags = BATTLE_TYPE_LEGENDARY;
+    gBattleTypeFlags = (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_DOUBLE);
 
     switch (GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES))
     {
@@ -566,11 +566,67 @@ void BattleSetup_StartLegendaryBattle(void)
     case SPECIES_DEOXYS_DEFENSE:
     case SPECIES_DEOXYS_SPEED:
     case SPECIES_GENESECT:
+    case SPECIES_GUZZLORD:
+    case SPECIES_ARCEUS_FLYING:// DONT FORGET TO COPY THIS SHIT
+    case SPECIES_ARCEUS:
+    case SPECIES_WO_CHIEN:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
         break;
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:
     default:
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_LEGEND);
+        break;
+    case SPECIES_MEW:
+    case SPECIES_MARSHADOW:
+    case SPECIES_ROTOM:
+        CreateBattleStartTask(B_TRANSITION_GRID_SQUARES, MUS_VS_MEW);
+        break;
+    }
+
+    IncrementGameStat(GAME_STAT_TOTAL_BATTLES);
+    IncrementGameStat(GAME_STAT_WILD_BATTLES);
+    IncrementDailyWildBattles();
+    TryUpdateGymLeaderRematchFromWild();
+}
+
+void BattleSetup_StartLegendaryDoubleBattle(void)
+{
+    LockPlayerFieldControls();
+    gMain.savedCallback = CB2_EndScriptedWildBattle;
+    gBattleTypeFlags = (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_DOUBLE);
+
+    switch (GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES))
+    {
+    case SPECIES_GROUDON:
+    case SPECIES_ZEKROM:
+    case SPECIES_GROUDON_PRIMAL:
+        CreateBattleStartTask(B_TRANSITION_GROUDON, MUS_VS_KYOGRE_GROUDON);
+        break;
+    case SPECIES_KYOGRE:
+    case SPECIES_RESHIRAM:
+    case SPECIES_KYOGRE_PRIMAL:
+        CreateBattleStartTask(B_TRANSITION_KYOGRE, MUS_VS_KYOGRE_GROUDON);
+        break;
+    case SPECIES_RAYQUAZA:
+    case SPECIES_KYUREM:
+    case SPECIES_RAYQUAZA_MEGA:
+        CreateBattleStartTask(B_TRANSITION_RAYQUAZA, MUS_VS_RAYQUAZA);
+        break;
+    case SPECIES_DEOXYS_NORMAL:
+    case SPECIES_DEOXYS_ATTACK:
+    case SPECIES_DEOXYS_DEFENSE:
+    case SPECIES_DEOXYS_SPEED:
+    case SPECIES_GENESECT:
+    case SPECIES_GUZZLORD:
+    case SPECIES_ARCEUS_FLYING:// DONT FORGET TO COPY THIS SHIT
+    case SPECIES_ARCEUS:
+    case SPECIES_WO_CHIEN:
+    default:// MOVED so we can add others easy peasy
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
+        break;
+    case SPECIES_LUGIA:
+    case SPECIES_HO_OH:
         CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_LEGEND);
         break;
     case SPECIES_MEW:

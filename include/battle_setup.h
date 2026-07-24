@@ -59,6 +59,7 @@ void BattleSetup_StartScriptedWildBattle(void);
 void BattleSetup_StartScriptedDoubleWildBattle(void);
 void BattleSetup_StartLatiBattle(void);
 void BattleSetup_StartLegendaryBattle(void);
+void BattleSetup_StartLegendaryDoubleBattle(void);
 void StartGroudonKyogreBattle(void);
 void StartRegiBattle(void);
 enum BattleEnvironments BattleSetup_GetEnvironmentId(void);

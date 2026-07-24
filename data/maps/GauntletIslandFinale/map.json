@@ -22,7 +22,7 @@
   "object_events": [
     {
       "local_id": "localid_speed",
-      "graphics_id": "OBJ_EVENT_GFX_REGIROCK",
+      "graphics_id": "OBJ_EVENT_GFX_REGICE",
       "x": 10,
       "y": 41,
       "elevation": 3,

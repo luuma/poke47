@@ -252,8 +252,8 @@
 #define P_FAMILY_REGISTEEL               P_GEN_3_POKEMON
 #define P_FAMILY_LATIAS                  P_GEN_3_POKEMON
 #define P_FAMILY_LATIOS                  P_GEN_3_POKEMON
-#define P_FAMILY_KYOGRE                  P_GEN_3_POKEMON
-#define P_FAMILY_GROUDON                 P_GEN_3_POKEMON
+#define P_FAMILY_KYOGRE                  TRUE
+#define P_FAMILY_GROUDON                 TRUE
 #define P_FAMILY_RAYQUAZA                P_GEN_3_POKEMON
 #define P_FAMILY_JIRACHI                 P_GEN_3_POKEMON
 #define P_FAMILY_DEOXYS                  P_GEN_3_POKEMON
@@ -301,7 +301,7 @@
 #define P_FAMILY_MANAPHY                 P_GEN_4_POKEMON
 #define P_FAMILY_DARKRAI                 P_GEN_4_POKEMON
 #define P_FAMILY_SHAYMIN                 P_GEN_4_POKEMON
-#define P_FAMILY_ARCEUS                  P_GEN_4_POKEMON
+#define P_FAMILY_ARCEUS                  TRUE
 
 #define P_FAMILY_VICTINI                 P_GEN_5_POKEMON
 #define P_FAMILY_SNIVY                   P_GEN_5_POKEMON
@@ -470,7 +470,7 @@
 #define P_FAMILY_XURKITREE               FALSE
 #define P_FAMILY_CELESTEELA              FALSE
 #define P_FAMILY_KARTANA                 FALSE
-#define P_FAMILY_GUZZLORD                FALSE
+#define P_FAMILY_GUZZLORD                TRUE
 #define P_FAMILY_NECROZMA                FALSE
 #define P_FAMILY_MAGEARNA                P_GEN_7_POKEMON
 #define P_FAMILY_MARSHADOW               P_GEN_7_POKEMON//Y
@@ -580,7 +580,7 @@
 #define P_FAMILY_IRON_THORNS             P_GEN_9_POKEMON
 #define P_FAMILY_FRIGIBAX                P_GEN_9_POKEMON
 #define P_FAMILY_GIMMIGHOUL              P_GEN_9_POKEMON
-#define P_FAMILY_WO_CHIEN                P_GEN_9_POKEMON
+#define P_FAMILY_WO_CHIEN                TRUE
 #define P_FAMILY_CHIEN_PAO               P_GEN_9_POKEMON
 #define P_FAMILY_TING_LU                 P_GEN_9_POKEMON
 #define P_FAMILY_CHI_YU                  P_GEN_9_POKEMON

@@ -66,3 +66,10 @@ GauntletSoutheastCave_EventScript_FloorSwitchBoulder2::
 	releaseall
 	end
 
+
+GauntletSoutheastCave_braillemsgbox::
+	lockall
+	braillemsgbox Braille_Text_gauntlet
+	releaseall
+	end
+

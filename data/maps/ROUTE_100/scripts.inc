@@ -34,16 +34,16 @@ Route100_EventScript_YouLostThereforeLossPoints::
         end
 
 gaunteltfuckingyouhavesomepoints::
-	goto_if_eq VAR_GAUNTLET_LOSS_POINTS, 0, gauntletreleasened::
+	goto_if_eq VAR_GAUNTLET_LOSS_POINTS, 0, gauntletreleasened
 	buffernumberstring STR_VAR_1, VAR_GAUNTLET_LOSS_POINTS
-        msgbox Route100_Text_LossPoints MSGBOX_YESNO
+        msgbox Route100_Text_LossPointsHave MSGBOX_YESNO
         goto_if_eq VAR_RESULT, YES, Route100_LossPointShop
 gauntletreleasened::
         releaseall
         end
 
-Route100_Text_LossPoints:
-	.string "{PLAYER} has {STR_VAR_1} LOSS POINTS.\l"
+Route100_Text_LossPointsHave:
+	.string "{PLAYER} has {STR_VAR_1} LOSS POINTS.\n"
 	.string "Spend them now?$"
 
 gaunteltreleasened_FREELOSSPOINTAAAAAA::
@@ -70,20 +70,20 @@ Route100_EventScript_BRAVO::
 
 
 Route100_EventScript_Altar2::
-        setvar VAR_0x8004, 2
+        setvar VAR_0x8004, 3
         msgbox Route100_Text_MadeItToSecondAltar
         goto Route100_EventScript_YouLostThereforeLossPoints
         end
 
 
 Route100_EventScript_Altar3::
-        setvar VAR_0x8004, 3
+        setvar VAR_0x8004, 6
         msgbox Route100_Text_MadeItToSecondAltar
         goto Route100_EventScript_YouLostThereforeLossPoints
         end
 
 Route100_EventScript_Altar4::
-        setvar VAR_0x8004, 4
+        setvar VAR_0x8004, 10
         msgbox Route100_Text_MadeItToFourthAltar
         goto Route100_EventScript_YouLostThereforeLossPoints
         end
@@ -172,6 +172,7 @@ Route100_EventScript_GauntletSetup::
 	waitmovement 0
 	delay 30
 	hideobjectat VAR_LAST_TALKED, MAP_ROUTE_100
+        hidefollower 0
 	call_if_eq VAR_FACING, DIR_NORTH, SlateportCity_Harbor_EventScript_BoardFerryNorth
 	call_if_eq VAR_FACING, DIR_EAST, SlateportCity_Harbor_EventScript_BoardFerryEast
 	delay 10
@@ -235,7 +236,7 @@ Route100_Text_Iwaswaitingforyou:
 	.string "Ah. I was wondering when you'd return.\n"
 	.string "I am here, waiting to trick you again.\p"
 	.string "They say two wrongs don't make a right…\n"
-	.string "But two negatives…\n"
+	.string "But two negatives…\l"
 	.string "Don't NOT make a right. Geheheh./p"
 Route100_Text_GauntletChallengeExplain:
 	.string "Here's the deal. I'll reduce your only\n"
@@ -299,13 +300,14 @@ Route100_LossPointShopjUMP::
         .byte 10
 	goto_if_eq VAR_RESULT, 255, Route100_Handlecanceljump
 	call_if_eq VAR_0x8005, TRUE, Route100_HandlePurchaseMessage
-	call_if_eq VAR_0x8005, FALSE, Route100_comebackwhenyourealittlemmmmmricher
+	goto_if_eq VAR_0x8005, FALSE, Route100_comebackwhenyourealittlemmmmmricher
 Route100_Handlecanceljump::@ this code is SO SHIT!!
 	buffernumberstring STR_VAR_1, VAR_GAUNTLET_LOSS_POINTS
 	msgbox Route100_Text_YouHaveXLossPointsLeft MSGBOX_YESNO
         goto_if_eq VAR_RESULT, NO, Route100_LossPointShopjUMP
 	release
 	end
+
 
 Route100_LossPointShop_dynmultiSportBalls::
 	buffernumberstring STR_VAR_1, VAR_0x8004
@@ -329,6 +331,12 @@ Route100_HandlePurchaseMessage::
 	goto_if_eq VAR_0x8007, 12, Route100_LossPointShop_ashbOUGHT
 	goto_if_eq VAR_0x8007, 14, Route100_LossPointShop_ITEMSbought
 	return
+
+Route100_comebackwhenyourealittlemmmmmricher::
+	msgbox Route100_Text_comebackwhenyourealittlemmmmmricher 
+	goto Route100_LossPointShopjUMP
+
+
 
 Route100_LossPointShop_SportBallsbOUGHT::
 	msgbox Route100_Text_LossPointShop_SportBallsbOUGHT 
@@ -362,7 +370,7 @@ Route100_Text_YouHaveXLossPointsLeft:
    	.string "You have {STR_VAR_1} LOSS POINTS left!\n"
    	.string "Would you like to exit?$"
 
-Route100_comebackwhenyourealittlemmmmmricher:
+Route100_Text_comebackwhenyourealittlemmmmmricher:
    	.string "You don't have enough LOSS POINTS!$"
 
 Route100_Text_Buysmth:

@@ -1287,15 +1287,15 @@ void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
             price = 1;
             if (output == 1) price = 2;
             if (output == 2) price = 5;
-            if (output >= 3) price = 10;
+            if (output >= 3) price = 25;
             break;
         }
         case 2: 
         case 12:  
         {
             output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.sacredAshes; 
-            price = 5;
-            if (output == 1) price = 20;
+            price = 15;
+            if (output == 1) price = 50;
             if (output >= 2) price = 200;
             break;
         }
@@ -1303,7 +1303,7 @@ void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
         case 13:  
         {
             output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.boonballs; break;
-            price = 5*(1+output);
+            price = 10*(1+output);
             break;
         }
         case 4: 

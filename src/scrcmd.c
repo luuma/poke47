@@ -3522,7 +3522,7 @@ const struct {
     {
         .species = SPECIES_TURTONATOR,
         .moves = {MOVE_EMBER, MOVE_RAPID_SPIN, MOVE_SMOG, MOVE_FLAIL},
-        .level = 10,
+        .level = 9,
         .dynlevel = 0,
         .item = ITEM_IRON_BALL,
         .speciesBuddy = 0,
@@ -3530,7 +3530,7 @@ const struct {
     },
     {
         .species = SPECIES_FRAXURE,
-        .moves = {MOVE_SLASH, MOVE_X_SCISSOR, MOVE_DRAGON_DANCE, MOVE_NIGHT_SLASH},
+        .moves = {MOVE_CUT, MOVE_GUILLOTINE, MOVE_DRAGON_DANCE, MOVE_NIGHT_SLASH},
         .level = 9,
         .dynlevel = 0,
         .item = ITEM_LAGGING_TAIL,
@@ -3647,10 +3647,10 @@ const struct {
         .dynlevel = 10,
         .item = ITEM_SITRUS_BERRY,
     },
-/// altar 6, boss, 15-19
+/// altar 6, boss, 15-20
     {
-        .species = SPECIES_SHAYMIN_SKY,
-        .moves = {MOVE_AIR_CUTTER, MOVE_AIR_SLASH, MOVE_TAILWIND, MOVE_RAZOR_LEAF},
+        .species = SPECIES_WO_CHIEN,
+        .moves = {MOVE_INFESTATION, MOVE_SLUDGE_BOMB, MOVE_LEECH_SEED, MOVE_RAZOR_LEAF},
         .level = 60,
         .dynlevel = 10,
         .item = ITEM_SCOPE_LENS,
@@ -3664,7 +3664,7 @@ const struct {
     },
     {
         .species = SPECIES_KYUREM,
-        .moves = {MOVE_GLACIATE, MOVE_BLIZZARD, MOVE_BREAKING_SWIPE, MOVE_CALM_MIND},
+        .moves = {MOVE_GLACIATE, MOVE_FLASH_CANNON, MOVE_BREAKING_SWIPE, MOVE_CALM_MIND},
         .level = 55,
         .item = ITEM_SITRUS_BERRY,
     },
@@ -3683,11 +3683,11 @@ const struct {
         .item = ITEM_RINDO_BERRY,
     },
     {
-        .species = SPECIES_ARCEUS,
+        .species = SPECIES_ARCEUS_FLYING,
         .moves = {MOVE_COUNTER, MOVE_REVERSAL, MOVE_AURA_SPHERE, MOVE_TAILWIND},
         .level = 55,
         .dynlevel = 10,
-        .item = ITEM_FIST_PLATE,
+        .item = ITEM_SKY_PLATE,
     },
 };
 
@@ -3733,3 +3733,140 @@ void ScrCmd_SetGauntletBossBattle(struct ScriptContext *ctx)
     VarSet(VAR_RESULT, species);
 }// after this, we call dowildbattle
 
+#define BIT_SAPH 0b11
+#define BIT_NEREID 0b1100
+#define BIT_ELDWYRM 0b110000
+#define BIT_DSOTM 0b11000000
+#define BIT_MONOLITH 0b11
+#define BIT_WINGED_LION 0b11100
+
+
+void ScrCmd_SetGauntletPenultimateBossBattle(struct ScriptContext *ctx)
+{
+    u8 playerDevotions[5] = {0,0,0,0,0};
+    ZeroEnemyPartyMons();
+    u32 i=0;
+
+    u32 devotions1 = VarGet(VAR_GAUNTLET_BITFIELD_1);
+    u32 devotions2 = VarGet(VAR_GAUNTLET_BITFIELD_2);
+
+    if ((devotions1 & BIT_SAPH) ==0)
+    {
+	playerDevotions[i] = TYPE_SAPROTROPH;
+	i++;
+    }
+    if ((devotions1 & BIT_NEREID)==0)
+    {
+	playerDevotions[i] = TYPE_NEREID;
+	i++;
+    }
+    if ((devotions1 & BIT_ELDWYRM)==0)
+    {
+	playerDevotions[i] = TYPE_ELDWYRM;
+	i++;
+    }
+    if ((devotions1 & BIT_DSOTM)==0)
+    {
+	playerDevotions[i] = TYPE_DSOTM;
+	i++;
+    }
+    if ((devotions2 & BIT_MONOLITH)==0)
+    {
+	playerDevotions[i] = TYPE_MONOLITH;
+	i++;
+    }
+    if ((devotions2 & BIT_WINGED_LION)==0)
+    {
+	playerDevotions[i] = TYPE_WINGED_LION;
+	i++;
+    }
+    u8 random = Random() % i;
+    u32 bossIdx = playerDevotions[random] + 15;
+    random = (random + 1) % i;
+    VarSet(VAR_GAUNTLET_BOSS2, playerDevotions[random] +15);
+    random = (random + 1) % i;
+    VarSet(VAR_GAUNTLET_BOSS3, playerDevotions[random] +15);
+    if (i<3)
+        VarSet(VAR_GAUNTLET_BOSS3, bossIdx);
+    if (i<2)
+        VarSet(VAR_GAUNTLET_BOSS2, bossIdx);
+
+
+
+    enum Species species = sGauntletBossList[bossIdx].species;
+
+    assertf(i<0, "spec=%d", species);
+
+    u32 personality = GetMonPersonality(species,
+        GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species),
+        GetSynchronizedNature(STATIC_WILDMON_ORIGIN, species),
+        RANDOM_UNOWN_LETTER);
+    CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], species, sGauntletBossList[bossIdx].level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    
+    for (i = 0; i < MAX_MON_MOVES; i++)
+        SetMonMoveSlot(&gParties[B_TRAINER_OPPONENT_A][0], sGauntletBossList[bossIdx].moves[i], i);
+
+    SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, &sGauntletBossList[bossIdx].item);
+    SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_DYNAMAX_LEVEL, &sGauntletBossList[bossIdx].dynlevel);
+
+
+    Script_RequestEffects(SCREFF_V1);
+
+    sIsScriptedWildDouble = TRUE;
+    VarSet(VAR_RESULT, species);
+}// after this, we call dowildbattle
+
+void ScrCmd_SetGauntletFinalBossBattle(struct ScriptContext *ctx)
+{
+    u32 bossIdx = VarGet(VAR_GAUNTLET_BOSS2);
+    u32 bossIdx2 = VarGet(VAR_GAUNTLET_BOSS3);
+	u32 i;
+
+    enum Species species = sGauntletBossList[bossIdx].species;
+    enum Species species2 = species;
+
+    u32 personality = GetMonPersonality(species,
+        GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species),
+        GetSynchronizedNature(STATIC_WILDMON_ORIGIN, species),
+        RANDOM_UNOWN_LETTER);
+    CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][0], species, sGauntletBossList[bossIdx].level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    
+    for (i = 0; i < MAX_MON_MOVES; i++)
+        SetMonMoveSlot(&gParties[B_TRAINER_OPPONENT_A][0], sGauntletBossList[bossIdx].moves[i], i);
+
+    SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_HELD_ITEM, &sGauntletBossList[bossIdx].item);
+    //SetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_DYNAMAX_LEVEL, &sGauntletBossList[bossIdx].dynlevel);
+
+    species = sGauntletBossList[bossIdx2].species;
+    personality = GetMonPersonality(species,
+        GetSynchronizedGender(STATIC_WILDMON_ORIGIN, species),
+        GetSynchronizedNature(STATIC_WILDMON_ORIGIN, species),
+        RANDOM_UNOWN_LETTER);
+    CreateMonWithIVs(&gParties[B_TRAINER_OPPONENT_A][1], species, sGauntletBossList[bossIdx2].level, personality, OTID_STRUCT_PLAYER_ID, USE_RANDOM_IVS);
+    
+    for (i = 0; i < MAX_MON_MOVES; i++)
+        SetMonMoveSlot(&gParties[B_TRAINER_OPPONENT_A][1], sGauntletBossList[bossIdx2].moves[i], i);
+
+    SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_HELD_ITEM, &sGauntletBossList[bossIdx2].item);
+    //SetMonData(&gParties[B_TRAINER_OPPONENT_A][1], MON_DATA_DYNAMAX_LEVEL, &sGauntletBossList[bossIdx2].dynlevel);
+
+    Script_RequestEffects(SCREFF_V1);
+
+    sIsScriptedWildDouble = TRUE;
+    VarSet(VAR_RESULT, species2);
+    VarSet(VAR_0x8007, species);
+}
+
+bool8 dolegendarybattleincdouble(struct ScriptContext *ctx)
+{
+    Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);
+
+    if (sIsScriptedWildDouble == FALSE)
+        BattleSetup_StartLegendaryBattle();
+    else
+        BattleSetup_StartLegendaryDoubleBattle();
+
+    ScriptContext_Stop();
+
+    return TRUE;
+}

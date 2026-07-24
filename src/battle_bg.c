@@ -907,6 +907,10 @@ static u8 GetBattleEnvironmentOverride(void)
         case SPECIES_KYOGRE:
             return BATTLE_ENVIRONMENT_KYOGRE;
         case SPECIES_RAYQUAZA:
+        case SPECIES_ARCEUS:
+        case SPECIES_ARCEUS_FLYING:
+        case SPECIES_GUZZLORD:
+        case SPECIES_WO_CHIEN:
         case SPECIES_KYUREM:
         case SPECIES_CRESSELIA:
             return BATTLE_ENVIRONMENT_RAYQUAZA;
