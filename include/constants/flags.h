@@ -1534,7 +1534,7 @@
 #define FLAG_STATUSED_FOES_BATTLE                  			(SYSTEM_FLAGS + 0x89) // DONE!!!
 #define FLAG_DAMAGE_DEVOTION                                            (SYSTEM_FLAGS + 0x8A) // done!
 #define FLAG_EVERYONE_IS_STURDY                    			(SYSTEM_FLAGS + 0x8B) // done gauntlet!!
-#define FLAG_UNUSED_0x8EC                           (SYSTEM_FLAGS + 0x8C) // Unused Flag
+#define FLAG_PARENTAL_BOND_STATUS_BATTLE                           (SYSTEM_FLAGS + 0x8C) // Unused Flag
 #define FLAG_UNUSED_0x8ED                           (SYSTEM_FLAGS + 0x8D) // Unused Flag
 #define FLAG_UNUSED_0x8EE                           (SYSTEM_FLAGS + 0x8E) // Unused Flag
 #define FLAG_UNUSED_0x8EF                           (SYSTEM_FLAGS + 0x8F) // Unused Flag

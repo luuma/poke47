@@ -172,6 +172,7 @@ gauntlet_boon_handler::
         goto_if_eq VAR_0x8007, 14, gauntlet_TOXICFLAME
         goto_if_eq VAR_0x8007, 16, gauntlet_rods
         goto_if_eq VAR_0x8007, 20, gauntlet_evolve
+        goto_if_eq VAR_0x8007, 21, gauntlet_givepkmn
 
 GauntletIsland_return::
         callnative AddDevotionTo0x8008
@@ -259,11 +260,61 @@ gauntlet_evolve::
         goto GauntletIsland_return
 	end
 
+
 gauntlet_evoboon_DeclinedOnce::
 	msgbox GauntletIsland_EvoAMon MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, 0, MoveTutor_EventScript_gauntletdeclined
 	goto gauntlet_evolve
 	end
+
+
+gauntlet_givepkmn::
+	bufferspeciesname STR_VAR_1, SPECIES_ALOLAN_EXEGGUTOR
+        setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ALOLAN_EXEGGUTOR
+        givemon SPECIES_ALOLAN_EXEGGUTOR, 20
+        goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, gauntlet_givepkmn_Party
+        goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, gauntlet_givepkmn_PC
+	msgbox gText_NoMoreRoomForPokemon, MSGBOX_DEFAULT
+        goto GauntletIsland_return
+	end
+
+
+gauntlet_givepkmn_Party::
+	call RustboroCity_DevonCorp_2F_EventScript_ReceivedFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, GauntletIsland_return
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto GauntletIsland_return
+	end
+
+gauntlet_givepkmn_PC::
+	call gauntlet_givepkmn_ReceivedFanfare
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, gauntlet_givepkmn_TransferToPC
+	call Common_EventScript_NameReceivedBoxMon
+	goto RustboroCity_DevonCorp_2F_EventScript_TransferToPC
+	end
+
+gauntlet_givepkmn_EventScript_TransferToPC::
+	call Common_EventScript_TransferredToPC
+	goto GauntletIsland_return
+	end
+
+gauntlet_givepkmn_ReceivedFanfare::
+	playfanfare MUS_OBTAIN_ITEM
+	message gauntlet_givepkmn_Text_ReceivedMon
+	waitmessage
+	waitfanfare
+	return
+
+GauntletIsland_EvoAMon:
+	.string "Evolve a POKéMON?$"
+
+
+gauntlet_givepkmn_Text_ReceivedMon
+
+
 
 gauntlet_givemoneyboon::
 	goto_if_gt VAR_0x8005, 9000, gauntlet_givemoneyboonbig

@@ -2271,20 +2271,25 @@ static enum CancelerResult CancelerAccuracyCheck(struct BattleCalcValues *cv)
 
 static bool32 IsMoveParentalBondAffected(struct BattleCalcValues *cv)
 {
-    if (!(cv->abilities[cv->battlerAtk] == ABILITY_PARENTAL_BOND 
-|| (cv->abilities[cv->battlerAtk] == ABILITY_DOUBLE_WALLOP && gBattleMons[cv->battlerDef].hp < gBattleMons[cv->battlerDef].maxHP * 3 / 4)
-|| (IsOnPlayerSide(cv->battlerAtk) && FlagGet(FLAG_PARENTAL_BOND_BATTLE))   ) //GetBattlerSide(cv->battlerAtk) == B_SIDE_PLAYER
-
-     || gBattleStruct->numSpreadTargets > 1
+    if (gBattleStruct->numSpreadTargets > 1
      || IsMoveParentalBondBanned(cv->move)
-     || GetMoveCategory(cv->move) == DAMAGE_CATEGORY_STATUS
      || gBattleMoveEffects[cv->moveEffect].twoTurnEffect
      || cv->moveEffect == EFFECT_OHKO
      || GetActiveGimmick(cv->battlerAtk) == GIMMICK_Z_MOVE
      || (cv->moveEffect == EFFECT_PRESENT && gBattleStruct->presentBasePower == 0)
      || cv->move == MOVE_STRUGGLE)
         return FALSE;
-    return TRUE;
+
+    if ((cv->abilities[cv->battlerAtk] == ABILITY_PARENTAL_BOND 
+|| (cv->abilities[cv->battlerAtk] == ABILITY_DOUBLE_WALLOP && gBattleMons[cv->battlerDef].hp <= gBattleMons[cv->battlerDef].maxHP * 3 / 4)
+|| (IsOnPlayerSide(cv->battlerAtk) && FlagGet(FLAG_PARENTAL_BOND_BATTLE))    //GetBattlerSide(cv->battlerAtk) == B_SIDE_PLAYER
+     && GetMoveCategory(cv->move) != DAMAGE_CATEGORY_STATUS)
+        return TRUE;
+
+    if (IsOnPlayerSide(cv->battlerAtk) && FlagGet(FLAG_PARENTAL_BOND_STATUS_BATTLE)    //GetBattlerSide(cv->battlerAtk) == B_SIDE_PLAYER
+     && GetMoveCategory(cv->move) == DAMAGE_CATEGORY_STATUS)
+        return TRUE;
+
 }
 
 static void SetPossibleNewSmartTarget(u32 move)

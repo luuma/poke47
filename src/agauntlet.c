@@ -1023,7 +1023,7 @@ static u8 GetGauntletDuoBoon(enum GauntletTypes deityChosen, enum GauntletTypes 
         switch(deity2)
         {
         case TYPE_NEREID:
-            return GB_NATURE_POWER;
+            return GB_NATURE_POWER;// THESE should be renamed to "nereid sap, eld sap" etc. 
         case TYPE_ELDWYRM:
             return GB_DROUGHT_WEATHER;
         case TYPE_DSOTM:
