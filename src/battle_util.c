@@ -9517,7 +9517,8 @@ void TryRestoreHeldItems(void)
             {
                 hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MAX_HP);
   		SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, &hp);
-      		SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_STATUS, STATUS1_NONE);
+		u32 status = STATUS1_NONE;
+      		SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_STATUS, &status);
     	        for (j = 0; j < MAX_MON_MOVES; ++j)
     	        {
 		    hp = GetMovePP(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MOVE1 + j));

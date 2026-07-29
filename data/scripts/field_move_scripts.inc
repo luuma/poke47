@@ -352,7 +352,7 @@ EventScript_GauntletRevealRock2::
 EventScript_GauntletRevealRock3::
 	@ fadescreenswapbuffers FADE_TO_BLACK
         removeobject LOCALID_ROCK_3
-	setobjectxyperm LOCALID_ROCK_3, 2, 12
+	setobjectxyperm LOCALID_ROCK_3, 2, 11
         addobject LOCALID_ROCK_3
         showobjectat LOCALID_ROCK_3, MAP_GAUNTLET_ISLAND_SOUTH
         copyobjectxytoperm LOCALID_ROCK_3
@@ -363,7 +363,7 @@ EventScript_GauntletRevealRock3::
 EventScript_GauntletRevealRock4::
 	@ fadescreenswapbuffers FADE_TO_BLACK
         removeobject LOCALID_ROCK_4
-	setobjectxyperm LOCALID_ROCK_4, 0, 12
+	setobjectxyperm LOCALID_ROCK_4, 0, 11
         addobject LOCALID_ROCK_4
         showobjectat LOCALID_ROCK_4, MAP_GAUNTLET_ISLAND_SOUTH
         copyobjectxytoperm LOCALID_ROCK_4

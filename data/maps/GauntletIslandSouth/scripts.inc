@@ -219,7 +219,7 @@ GauntletIsland_Warp_spe::
 	end
 
 GauntletIsland_Warp_OTHER::
-	warpteleport MAP_GAUNTLET_ISLAND_NORTH_FLOOD, 13, 81
+	warpteleport MAP_GAUNTLET_ISLAND_NORTH_FLOOD, 13, 89
 	waitstate
 	end
 

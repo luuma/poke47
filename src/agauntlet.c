@@ -47,6 +47,9 @@ static void RespawnAbout24RandomGauntletItemBalls(void)
     FlagClear(FLAG_GAUNTLET_0FBOULDER3);
     FlagClear(FLAG_GAUNTLET_boon9);
 
+    for (i = FLAG_GAUNTLET_SHOWROCK_1; i <= FLAG_GAUNTLET_LAST; i++)
+        FlagClear(i);
+
     for (i = FLAG_FIVE_BOONS; i <= FLAG_EVERYONE_IS_STURDY; i++)
         FlagClear(i);
 
@@ -434,8 +437,8 @@ void TryUpdateRocksReveal(void)// script callnative
         if (FlagGet(FLAG_TEMP_14) && FlagGet(FLAG_TEMP_15) && !FlagGet(FLAG_TEMP_13) && !FlagGet(FLAG_TEMP_17) && !FlagGet(FLAG_GAUNTLET_SHOWROCK_2))
             VarSet(VAR_RESULT, 2);
     }
-    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_GAUNTLET_ISLAND_SOUTHWEST)
-        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_GAUNTLET_ISLAND_SOUTHWEST)) // Can make these discrete. I have decided not to because it could mean someone gets a timer ball, has a eureka moment, then finds out they were "wrong".
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_GAUNTLET_ISLAND_SOUTH)
+        && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_GAUNTLET_ISLAND_SOUTH)) // Can make these discrete. I have decided not to because it could mean someone gets a timer ball, has a eureka moment, then finds out they were "wrong".
     {
         if (FlagGet(FLAG_TEMP_11) 
          && FlagGet(FLAG_TEMP_12)
@@ -689,7 +692,7 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_PHOTON_GEYSER] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR PHOTON GEYSER{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_PHOTON_GEYSER,     },
 [GB_3X_MAX_REVIVE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 3X MAX REVIVE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_3XITEM,         .special = ITEM_MAX_REVIVE,     },
 [GB_BODY_PRESS] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR BODY PRESS{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_BODY_PRESS,     },
-[GB_3X_EVIOLITE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 3X EVIOLITE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_3XITEM,         .special = MOVE_BASTION_WALLS,     },
+[GB_3X_EVIOLITE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 3X EVIOLITE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_3XITEM,         .special = ITEM_EVIOLITE,     },
 [GB_EXTREME_SPEED] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR EXTREME SPEED{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_EXTREME_SPEED,     },
 [GB_TAILWIND_WEATHER] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TAILWIND WEATHER{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_STARTINGSTATUS,         .special = 5,     },
 [GB_HAWKEYE] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR HAWKEYE{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_CRIT_UP_HIT,     },
@@ -938,9 +941,9 @@ static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, 
         [TYPE_WINGED_LION] = (devotions2 & BIT_WINGED_LION) >> 2,
     };
     bool32 isCapped = (devotions2 & 0b100000) != 0;
-    u8 optionsNo = GAUNTLET_MENU_OPTIONS + FlagGet(FLAG_FIVE_BOONS); ////////////////////////// Consider a winged lion boon that permanently increases options available.  
+    u8 optionsNo = GAUNTLET_MENU_OPTIONS + FlagGet(FLAG_FIVE_BOONS); 
     u8 MultichoiceOptions[optionsNo] = {};
-    u8 devotion_weight[5] = {40, 35, 10, 10, 5};// keep tweakin it
+    u8 devotion_weight[5] = {50, 35, 10, 10, 5};// keep tweakin it
     u8 rarity_weight[4] = {stapleWeight, commonWeight, rareWeight, epicWeight};
 
     if (isCapped)
@@ -1294,7 +1297,7 @@ void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
         case 12:  
         {
             output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.sacredAshes; 
-            price = 15;
+            price = 10;
             if (output == 1) price = 50;
             if (output >= 2) price = 200;
             break;

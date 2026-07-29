@@ -1289,20 +1289,20 @@
 #define FLAG_GAUNTLET_36                                           0x4D0 //  Flag
 #define FLAG_GAUNTLET_37                                           0x4D1 //  Flag
 #define FLAG_GAUNTLET_38                                           0x4D2 //  Flag
-#define FLAG_GAUNTLET_HP_ALTAR                                           0x4D3 // Unused Flag
-#define FLAG_GAUNTLET_ATK_ALTAR                                           0x4D4 // Unused Flag
-#define FLAG_GAUNTLET_DEF_ALTAR                                           0x4D5 // Unused Flag
-#define FLAG_GAUNTLET_SPEED_ALTAR                                           0x4D6 // Unused Flag
+#define FLAG_GAUNTLET_40                                           0x4D3 // Unused Flag
+#define FLAG_GAUNTLET_41                                           0x4D4 // Unused Flag
+#define FLAG_GAUNTLET_HP_ALTAR                                           0x4D5 // Unused Flag
+#define FLAG_GAUNTLET_ATK_ALTAR                                           0x4D6 // Unused Flag
 #define FLAG_GAUNTLET_SPATK_ALTAR                                           0x4D7 // Unused Flag
-#define FLAG_GAUNTLET_SPDEF_ALTAR                                           0x4D8 // Unused Flag
+#define FLAG_GAUNTLET_SPEED_ALTAR                                           0x4D8 // Unused Flag
 #define FLAG_GAUNTLET_BOSS_ALTAR                                           0x4D9 // Unused Flag
 
-#define FLAG_GAUNTLET_40 0x4DA  // DUSK BALLold mansion
-#define FLAG_GAUNTLET_41 0x4DB  // TRICK ROOM old mansion
-#define FLAG_GAUNTLET_boon2 0x4DC  // OLD GATEAT old mansion
-#define FLAG_GAUNTLET_boon4 0x4DD  //  HYPER BEAM sky pillar
-#define FLAG_GAUNTLET_boon6 0x4DE  // wish fallarbor
-#define FLAG_GAUNTLET_boon8 0x4DF  // soak aqua hieout
+#define FLAG_GAUNTLET_unused1 0x4DA  // 
+#define FLAG_GAUNTLET_unused2 0x4DB  // 
+#define FLAG_GAUNTLET_boon2 0x4DC  // 
+#define FLAG_GAUNTLET_boon4 0x4DD  //  
+#define FLAG_GAUNTLET_boon6 0x4DE  //
+ #define FLAG_GAUNTLET_boon8 0x4DF  // 
 
 
 #define FLAG_GAUNTLET_MINT_A                                           0x265 // HIDDS
@@ -1332,8 +1332,8 @@
 #define FLAG_GAUNTLET_TALKED_WITCH                                           0x4EF // Unused Flag
 
 
-#define FLAG_GAUNTLET_LAST FLAG_GAUNTLET_SHOWROCK_4// CLEARED
-#define FLAGS_GAUNTLET 63// RANDOMLY SET
+#define FLAG_GAUNTLET_LAST FLAG_GAUNTLET_0FBOULDER2// CLEARED
+#define FLAGS_GAUNTLET 63// RANDOMLY SET up to 38
 
 
 #define FLAG_DEFEATED_RUSTBORO_GYM                                  0x4F0

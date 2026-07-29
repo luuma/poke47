@@ -795,11 +795,21 @@ bool8 MetatileBehavior_IsTallGrass(u8 metatileBehavior)
 
 bool8 MetatileBehavior_IsLongGrass(u8 metatileBehavior)
 {
-    if (metatileBehavior == MB_LONG_GRASS)
+    if (metatileBehavior == MB_LONG_GRASS || metatileBehavior == MB_UNUSED_04)
         return TRUE;
     else
         return FALSE;
 }
+
+
+bool8 MetatileBehavior_IsLongSandGrass(u8 metatileBehavior)
+{
+    if (metatileBehavior == MB_UNUSED_04)
+        return TRUE;
+    else
+        return FALSE;
+}
+
 
 bool8 MetatileBehavior_IsBerryTreeSoil(u8 metatileBehavior)
 {
@@ -1346,6 +1356,7 @@ bool8 MetatileBehavior_IsRunningDisallowed(u8 metatileBehavior)
 {
     if (metatileBehavior == MB_NO_RUNNING
      || metatileBehavior == MB_LONG_GRASS
+     || metatileBehavior == MB_UNUSED_04
      || metatileBehavior == MB_HOT_SPRINGS
      || MetatileBehavior_IsPacifidlogLog(metatileBehavior) != FALSE)
         return TRUE;

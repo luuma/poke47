@@ -145,7 +145,8 @@
     "GauntletSoutheastCave1f",
     "GauntletSoutheastCave2f",
     "GauntletNortheastSecretCave",
-    "GauntletIslandNorthFlood"
+    "GauntletIslandNorthFlood",
+    "GauntletislandCorridorEntrance"
   ],
   "gMapGroup_GauntletIsland": [
     "GauntletIslandSoutheast",
@@ -156,7 +157,9 @@
     "GauntletIslandFinale",
     "GauntletIslandNortheast",
     "GauntletIslandWhirlpools",
-    "GauntletIslandNortheast_Dive"
+    "GauntletIslandNortheast_Dive",
+    "GauntletIslandCorridors",
+    "GAUNTLETISLANDUNDERGROUNDNORTHWEST"
   ],
   "gMapGroup_IndoorLittleroot": [
     "LittlerootTown_BrendansHouse_1F",

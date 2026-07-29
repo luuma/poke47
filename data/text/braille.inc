@@ -301,3 +301,8 @@ Braille_Text_gauntlet::
 	.braille "SEALED IN ICE\n"
 	.braille "WE BEG YOU.\n"
 	.braille "LET IT REST$"
+
+Braille_Text_gauntletCorridorSignpost::
+	brailleformat 3, 0, 25, 19, 6, 3
+	.braille "LEFT TO GONT\n"
+	.braille "CITY DOOR$"

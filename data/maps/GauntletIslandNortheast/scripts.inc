@@ -252,13 +252,18 @@ GauntletIsland_AltarTWIN::
     lockall
     msgbox GauntletIsland_AltarTWINInscription 
     goto_if_set FLAG_GAUNTLET_BOSS_ALTAR, GauntletIsland_AltarBossjUMP
+    call Common_EventScript_OutOfCenterPartyHeal
+    setvar VAR_0x8008, STAT_ATK
+    call GauntletIsland_AltarBlessing
+    setvar VAR_0x8008, STAT_SPATK
+    call GauntletIsland_AltarBlessing
+    msgbox GauntletIsland_AltarTWINInscription0
     special DoSealedChamberShakingEffect_Short
     msgbox GauntletIsland_AltarTWINInscription2
     setvar B_VAR_WILD_AI_FLAGS 3@ 1 == CONSERVATIVE, 2 == RISKY,  3=BOSS, 5 = , other =normal
     setflag GAUNTLET_QUITTER_DETECTED
     forcesave
     closemessage
-    call Common_EventScript_OutOfCenterPartyHeal
     clearflag GAUNTLET_QUITTER_DETECTED
     msgbox GauntletIsland_AltarTWINInscription4
     callnative ScrCmd_SetGauntletPenultimateBossBattle
@@ -296,10 +301,6 @@ GauntletIsland_AltarTWIN::
     goto_if_eq VAR_RESULT, B_OUTCOME_FORFEITED, GauntletIsland_AltarLoss
     call Common_EventScript_OutOfCenterPartyHeal
     setvar B_VAR_WILD_AI_FLAGS, 0
-    setvar VAR_0x8008, STAT_DEF
-    call GauntletIsland_AltarBlessing
-    setvar VAR_0x8008, STAT_SPDEF
-    call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_BOSS_ALTAR
 	setvar VAR_GAUNTLET_BOSS2 0
 	setvar VAR_GAUNTLET_BOSS3 0
@@ -312,23 +313,30 @@ GauntletIsland_AltarBossjUMP::
 
 GauntletIsland_AltarTWINInscription:
 	.string "The engravings on the twin ALTARs\n"
-	.string "cannot be read from here.\p"
+	.string "cannot be read right now.\p"
 	.string "But together, their power\n"
- 	.string "is overwhelming.$"
+ 	.string "is overwhelming.\p"
+	.string "At last, it's the end.$"
+
+GauntletIsland_AltarTWINInscription0:
+	.string "There's lightning in the air.\p"
+	.string "Your party's ATTACK and SP. ATK\n"
+	.string "stat potential is now maximised.$"
 
 GauntletIsland_AltarTWINInscription2:
 	.string "There are certain DEITIES\n"
-	.string "you showed no devotion to.\p"
-	.string "It seems they are angry.$"
+	.string "you showed no DEVOTION to.\p"
+	.string "You feel their presence, and anger.$"
+
+GauntletIsland_AltarTWINInscription4:
+	.string "One such divine force approaches.$"
+
 
 GauntletIsland_AltarTWINInscription3:
 	.string "It isn't over.$"
 
-GauntletIsland_AltarTWINInscription4:
-	.string "A divine force approaches.$"
 
 GauntletIsland_AltarBossVictory:
-	.string "Your party's Defense and Sp. Defense\n"
-	.string "stat potential is now maximised.\p"
-	.string "With a final burst of power,\n"
+	.string "With an almighty rush,\n"
 	.string "{PLAYER} was banished from the ISLAND.$"
+

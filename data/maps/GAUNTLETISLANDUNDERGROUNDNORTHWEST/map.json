@@ -1,0 +1,43 @@
+{
+  "id": "MAP_GAUNTLETISLANDUNDERGROUNDNORTHWEST",
+  "name": "GAUNTLETISLANDUNDERGROUNDNORTHWEST",
+  "layout": "LAYOUT_GAUNTLETISLANDUNDERGROUNDNORTHWEST",
+  "music": "MUS_ABANDONED_SHIP",
+  "region_map_section": "MAPSEC_GAUNTLETNW",
+  "requires_flash": false,
+  "weather": "WEATHER_SHADE",
+  "map_type": "MAP_TYPE_INDOOR",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": false,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 3,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_GAUNTLET_ISLAND_NORTHWEST",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 2,
+      "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_GAUNTLET_ISLAND_NORTHWEST",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 6,
+      "y": 1,
+      "elevation": 0,
+      "dest_map": "MAP_GAUNTLET_ISLAND_CORRIDORS",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [],
+  "region": "REGION_HOENN"
+}

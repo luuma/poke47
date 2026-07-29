@@ -3,22 +3,27 @@ ROUTE_100_MapScripts::
 	.byte 0
 
 ROUTE_100_OnFrame::
+	map_script_2 VAR_GAUNTLET_ACTIVE, 2, Route100_EventScript_GauntletEnd2
 	map_script_2 VAR_GAUNTLET_ACTIVE, 1, Route100_EventScript_GauntletEnd
 	.2byte 0
 
 
 Route100_EventScript_GauntletEnd::
         lockall
+	setvar VAR_GAUNTLET_ACTIVE, 2 @ used only here, and only to skip saving on a reload
+	forcesave
+    	closemessage @ do instantly and everything is fine.
+Route100_EventScript_GauntletEnd2::
         applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
         waitmovement 0
-        callnative GauntletEnd @ this also clears several flags
+        callnative GauntletEnd @ this also clears several flags and vars.
         goto_if_eq VAR_RESULT, FALSE, Route100_EventScript_Failsafe
         setflag FLAG_TEMP_1
-        goto_if_set FLAG_GAUNTLET_HP_ALTAR, Route100_EventScript_Altar1
-        goto_if_set FLAG_GAUNTLET_ATK_ALTAR, Route100_EventScript_Altar2
-        goto_if_set FLAG_GAUNTLET_SPATK_ALTAR, Route100_EventScript_Altar3
-        goto_if_set FLAG_GAUNTLET_SPEED_ALTAR, Route100_EventScript_Altar4
         goto_if_set FLAG_GAUNTLET_BOSS_ALTAR, Route100_EventScript_BRAVO
+        goto_if_set FLAG_GAUNTLET_SPEED_ALTAR, Route100_EventScript_Altar4
+        goto_if_set FLAG_GAUNTLET_SPATK_ALTAR, Route100_EventScript_Altar3
+        goto_if_set FLAG_GAUNTLET_ATK_ALTAR, Route100_EventScript_Altar2
+        goto_if_set FLAG_GAUNTLET_HP_ALTAR, Route100_EventScript_Altar1
         goto_if_eq VAR_0x8004, 1234, Route100_EventScript_Retire @ Seems better to handle properly every time unless they gave up early, rather than say "you retired" even if they did great.
 	setvar VAR_0x8004, 0
 	call_if_unset GAUNTLET_FREELOSSPOINT, gaunteltreleasened_FREELOSSPOINTAAAAAA
@@ -39,6 +44,7 @@ gaunteltfuckingyouhavesomepoints::
         msgbox Route100_Text_LossPointsHave MSGBOX_YESNO
         goto_if_eq VAR_RESULT, YES, Route100_LossPointShop
 gauntletreleasened::
+
         releaseall
         end
 
@@ -65,6 +71,10 @@ Route100_EventScript_Altar1::
 
 Route100_EventScript_BRAVO::
         msgbox Route100_Text_bravo
+	addvar VAR_GAUNTLET_VICTORY_POINTS, 1
+	addvar VAR_GAUNTLET_VICTORIES, 1
+        buffernumberstring STR_VAR_1, VAR_GAUNTLET_VICTORIES
+        msgbox Route100_Text_numwins
         releaseall
         end
 
@@ -101,6 +111,11 @@ Route100_Text_bravo:
 	.string "Your chosen POKéMON is back to\n"
  	.string "its old state, once more.\p"
 	.string "Stronger than before, I daresay.$"
+
+Route100_Text_numwins:
+	.string "I've been tracking your victories.\n"
+	.string "{STR_VAR_1}, in total. Impressive.\p"
+	.string "I hope to see you soon, {PLAYER}.$"
 
 Route100_Text_MadeItToFourthAltar:
 	.string "Remarkable. Quite the showing,\n"
@@ -237,7 +252,7 @@ Route100_Text_Iwaswaitingforyou:
 	.string "I am here, waiting to trick you again.\p"
 	.string "They say two wrongs don't make a right…\n"
 	.string "But two negatives…\l"
-	.string "Don't NOT make a right. Geheheh./p"
+	.string "Don't NOT make a right. Geheheh.\p"
 Route100_Text_GauntletChallengeExplain:
 	.string "Here's the deal. I'll reduce your only\n"
 	.string "POKéMON to the state of a newborn, and\l"
@@ -305,6 +320,7 @@ Route100_Handlecanceljump::@ this code is SO SHIT!!
 	buffernumberstring STR_VAR_1, VAR_GAUNTLET_LOSS_POINTS
 	msgbox Route100_Text_YouHaveXLossPointsLeft MSGBOX_YESNO
         goto_if_eq VAR_RESULT, NO, Route100_LossPointShopjUMP
+
 	release
 	end
 

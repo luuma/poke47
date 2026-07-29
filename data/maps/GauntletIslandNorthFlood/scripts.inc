@@ -1,4 +1,6 @@
 GauntletIslandNorthFlood_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, GauntletIslandOnTransition @ Ah they can have their weather. whatever
+	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, GauntletIslandOnResume @ Banish the weak lol
 	.byte 0
 
 
@@ -21,11 +23,13 @@ end
 GauntletMoveRightstaircase:
 	walk_left
 	walk_left
-	walk_in_place_up
+	walk_up
+	walk_in_place_down
 	step_end
 
 GauntletMoveLeftstaircase:
 	walk_right
 	walk_right
-	walk_in_place_up
+	walk_up
+	walk_in_place_down
 	step_end

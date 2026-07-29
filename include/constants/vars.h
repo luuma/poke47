@@ -128,8 +128,8 @@
 #define VAR_DERBY_N6                               0x406A // 
 #define VAR_GAUNTLET_BOSS2                               0x406B // Unused Var
 #define VAR_GAUNTLET_BOSS3                               0x406C // Unused Var
-#define VAR_ROUTE114_STATE                               0x406D // Unused Var
-#define VAR_ROUTE115_STATE                               0x406E // Unused Var
+#define VAR_GAUNTLET_VICTORY_POINTS                               0x406D // Unused Var
+#define VAR_GAUNTLET_VICTORIES                             0x406E // Unused Var
 #define VAR_ROUTE116_STATE                               0x406F
 #define VAR_ROUTE117_STATE                               0x4070 // Unused Var
 #define VAR_ROUTE118_STATE                               0x4071

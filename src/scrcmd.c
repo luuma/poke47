@@ -3522,7 +3522,7 @@ const struct {
     {
         .species = SPECIES_TURTONATOR,
         .moves = {MOVE_EMBER, MOVE_RAPID_SPIN, MOVE_SMOG, MOVE_FLAIL},
-        .level = 9,
+        .level = 8,
         .dynlevel = 0,
         .item = ITEM_IRON_BALL,
         .speciesBuddy = 0,
@@ -3601,16 +3601,17 @@ const struct {
     {
         .species = SPECIES_THROH,
         .moves = {MOVE_DECORATE, MOVE_KNOCK_OFF, MOVE_CIRCLE_THROW, MOVE_FOLLOW_ME},
-        .level = 40,
+        .level = 36,// 4040 NO ai
         .dynlevel = 10,
         .item = ITEM_LEFTOVERS,
         .speciesBuddy = SPECIES_SAWK,
-        .levelBuddy = 40,
+        .levelBuddy = 36,
     },
     {
         .species = SPECIES_BRAVIARY,
         .moves = {MOVE_DOUBLE_EDGE, MOVE_BRAVE_BIRD, MOVE_SKY_DROP, MOVE_SUPERPOWER},
-        .level = 44,
+        .level = 41,// 44 35 NO ai
+
         .dynlevel = 10,
         .item = ITEM_FLYING_GEM,
         .speciesBuddy = SPECIES_PACHIRISU,
@@ -3619,11 +3620,11 @@ const struct {
     {
         .species = SPECIES_LUCARIO,
         .moves = {MOVE_DRAIN_PUNCH, MOVE_ME_FIRST, MOVE_BULK_UP, MOVE_BULLET_PUNCH},
-        .level = 40,
+        .level = 36,// 38 36 NO ai
         .dynlevel = 10,
         .item = ITEM_SHELL_BELL,
         .speciesBuddy = SPECIES_INCINEROAR,
-        .levelBuddy = 38,
+        .levelBuddy = 36,
     },
 /// altar 5, CUT, sdef AND satk, saprotroph //ScriptSetTotemBoost must be used lmao. 12-14
     {

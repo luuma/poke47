@@ -9886,11 +9886,43 @@
       "id": "LAYOUT_AEGAUNTLET3_LITTLE_SIMZ_FLOOD",
       "name": "AEGauntlet3_LITTLE_SIMZ_FLOOD",
       "width": 40,
-      "height": 90,
+      "height": 98,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Unused1",
       "border_filepath": "data/layouts/AEGauntlet3_LITTLE_SIMZ_FLOOD/border.bin",
       "blockdata_filepath": "data/layouts/AEGauntlet3_LITTLE_SIMZ_FLOOD/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_GAUNTLET_ISLAND_CORRIDORS",
+      "name": "GauntletIslandCorridors_Layout",
+      "width": 19,
+      "height": 19,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Pacifidlog",
+      "border_filepath": "data/layouts/GauntletIslandCorridors/border.bin",
+      "blockdata_filepath": "data/layouts/GauntletIslandCorridors/map.bin"
+    },
+    {
+      "id": "LAYOUT_GAUNTLETISLANDUNDERGROUNDNORTHWEST",
+      "name": "GAUNTLETISLANDUNDERGROUNDNORTHWEST_Layout",
+      "width": 8,
+      "height": 7,
+      "primary_tileset": "gTileset_Building",
+      "secondary_tileset": "gTileset_GenericBuilding",
+      "border_filepath": "data/layouts/GAUNTLETISLANDUNDERGROUNDNORTHWEST/border.bin",
+      "blockdata_filepath": "data/layouts/GAUNTLETISLANDUNDERGROUNDNORTHWEST/map.bin",
+      "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_GAUNTLETISLAND_CORRIDOR_ENTRANCE",
+      "name": "GauntletislandCorridorEntrance_Layout",
+      "width": 35,
+      "height": 22,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/GauntletislandCorridorEntrance/border.bin",
+      "blockdata_filepath": "data/layouts/GauntletislandCorridorEntrance/map.bin",
       "layout_version": "emerald"
     }
   ]
