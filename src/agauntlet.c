@@ -44,14 +44,11 @@ static void RespawnAbout24RandomGauntletItemBalls(void)
     for (i = FLAG_GAUNTLET_MINT_A; i <= FLAG_GAUNTLET_MINT_G; i++)
         FlagClear(i);
 
-    FlagClear(FLAG_GAUNTLET_0FBOULDER3);
-    FlagClear(FLAG_GAUNTLET_boon9);
+    FlagClear(FLAG_GAUNTLET_0FBOULDER3);// stragglers
+    FlagClear(FLAG_GAUNTLET_boon9);// stragglers
 
-    for (i = FLAG_GAUNTLET_SHOWROCK_1; i <= FLAG_GAUNTLET_LAST; i++)
-        FlagClear(i);
-
-    for (i = FLAG_FIVE_BOONS; i <= FLAG_EVERYONE_IS_STURDY; i++)
-        FlagClear(i);
+    for (i = FLAG_FIVE_BOONS; i <= GAUNTLET_QUITTER_DETECTED; i++)// sys flag clearing.
+        FlagClear(i);// needless as this is done on end.
 
 
 /////////////////////////////
@@ -330,6 +327,9 @@ void GauntletEnd(struct ScriptContext *ctx)// Called in map script in route 100 
     FlagClear(FLAG_GAUNTLET_CHALLENGE);
     FlagClear(FLAG_STORING_ITEMS_IN_PYRAMID_BAG);//PRObably not needed.
     ResetGauntletVars();
+    for (u32 i = FLAG_FIVE_BOONS; i < GAUNTLET_QUITTER_DETECTED; i++)// sys flag clearing. 
+        FlagClear(i);
+    // other flags don't need clearing just yet iirc. item balls, rocks and that shit.
     bool32 SuccessfulSquash = SquashEarthRibbonInfo(); // this is done after gauntlet challenge is cleared, so it can read information about the current level cap.
     VarSet(VAR_GAUNTLET_ACTIVE, 0);// this is done after successfulsquash so it knows "hey do this cap even if theyve not got a level cap in bag"
     VarSet(VAR_RESULT, SuccessfulSquash);
@@ -356,14 +356,14 @@ const int GauntletItemsMed[G_LEN_MED] = {
     ITEM_IRON,
     ITEM_SUPER_POTION,
     ITEM_CHERI_BERRY,
-    ITEM_ASPEAR_BERRY,
+    ITEM_CHESTO_BERRY,
     ITEM_X_ATTACK,
     ITEM_X_DEFEND,
     ITEM_SUPER_REPEL,
     ITEM_ABILITY_CAPSULE
 };
 
-#define G_LEN_HI 9
+#define G_LEN_HI 10
 
 const int GauntletItemsHigh[G_LEN_HI] = {
     ITEM_ZINC,
@@ -373,7 +373,8 @@ const int GauntletItemsHigh[G_LEN_HI] = {
     ITEM_X_SP_DEF,
     ITEM_X_SPEED,
     ITEM_FULL_HEAL,
-    ITEM_FULL_RESTORE,
+    ITEM_HYPER_POTION,
+    ITEM_SUPER_REPEL,
     ITEM_ABILITY_PATCH
 };
 
@@ -382,12 +383,11 @@ const int GauntletItemsHigh[G_LEN_HI] = {
 const int GauntletItemsEnd[G_LEN_END] = {
     ITEM_SUPER_REPEL,
     ITEM_SUPER_REPEL,
-    ITEM_HYPER_POTION,
     ITEM_FULL_RESTORE,
-    ITEM_FULL_HEAL,
-    ITEM_LEPPA_BERRY,
-    ITEM_LUM_BERRY,
-    ITEM_REVIVE
+    ITEM_FULL_RESTORE,
+    ITEM_MAX_ELIXIR,
+    ITEM_REVIVE,
+    ITEM_ABILITY_PATCH
 };
 
 void CallnativeGauntletItemBall(struct ScriptContext *ctx)
@@ -1369,6 +1369,3 @@ void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
     VarSet(VAR_0x8007, pointshoptype);
     return;
 }
-
-
-

@@ -38326,7 +38326,7 @@
               {
                 "min_level": 13,
                 "max_level": 13,
-                "species": "SPECIES_STARAVIA"
+                "species": "SPECIES_RUFFLET"
               },
               {
                 "min_level": 14,
@@ -38341,7 +38341,7 @@
               {
                 "min_level": 14,
                 "max_level": 14,
-                "species": "SPECIES_BOLDORE"
+                "species": "SPECIES_ZORUA_HISUI"
               },
               {
                 "min_level": 14,
@@ -38801,7 +38801,7 @@
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_STARAVIA"
+                "species": "SPECIES_LIEPARD"
               },
               {
                 "min_level": 28,
@@ -38841,12 +38841,12 @@
               {
                 "min_level": 27,
                 "max_level": 27,
-                "species": "SPECIES_SERVINE"
+                "species": "SPECIES_PURRLOIN"
               },
               {
                 "min_level": 28,
                 "max_level": 28,
-                "species": "SPECIES_GOLURK"
+                "species": "SPECIES_GARBODOR"
               },
               {
                 "min_level": 28,
@@ -39431,7 +39431,7 @@
           "map": "MAP_GAUNTLET_ISLAND_CORRIDORS",
           "base_label": "gGauntletIslandCorridors",
           "land_mons": {
-            "encounter_rate": 30,
+            "encounter_rate": 20,
             "mons": [
               {
                 "min_level": 20,

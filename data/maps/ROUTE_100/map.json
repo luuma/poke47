@@ -2,7 +2,7 @@
   "id": "MAP_ROUTE_100",
   "name": "ROUTE_100",
   "layout": "LAYOUT_ROUTE_100",
-  "music": "MUS_RG_CREDITS",
+  "music": "MUS_LITTLEBIRD",
   "region_map_section": "MAPSEC_ROUTE_100",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",

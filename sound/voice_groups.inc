@@ -204,3 +204,4 @@
 .include "sound/voicegroups/rg_sevii_67.inc"
 .include "sound/voicegroups/drumsets/rg_credits.inc"
 .include "sound/voicegroups/gauntletopener.inc"
+.include "sound/voicegroups/littlebird.inc"

@@ -325,6 +325,51 @@ void GauntletIsland_AltarDamning(struct ScriptContext *ctx)
     CalculateMonStats(&gParties[B_TRAINER_PLAYER][partyIndex]);
 }
 
+
+void ScrCmd_EVBottler(struct ScriptContext *ctx)
+{
+    u32 stat = VarGet(VAR_RESULT);
+    u32 partyIndex = VarGet(VAR_0x8004);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    assertf(stat < NUM_STATS, "invalid stat: %d", stat)
+    {
+        return;
+    }
+
+    CalculatePlayerPartyCount();
+    assertf(partyIndex < gPartiesCount[B_TRAINER_PLAYER], "invalid party index: %d", partyIndex)
+    {
+        return;
+    }
+
+    u32 ev = GetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_HP_EV + stat);
+    ev /= 15; // a rough tradeoff. rounds down (flattens).
+    VarSet(VAR_0x8007, stat);
+    if (stat < STAT_SPEED)
+        stat += ITEM_HP_UP;
+    else if (stat == STAT_SPEED)
+	stat = ITEM_CARBOS;
+    else 
+	stat += ITEM_BIG_MALASADA;// this works : )
+    VarSet(VAR_0x8005, stat);
+    VarSet(VAR_0x8006, ev);
+}
+
+void ScrCmd_ZeroEvsOfPartyIndex(struct ScriptContext *ctx)
+{
+    u32 partyIndex = VarGet(VAR_0x8004);
+    u32 stat = VarGet(VAR_0x8007);
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    u32 zero = 0;
+    SetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_HP_EV + stat, &zero);
+    CalculateMonStats(&gParties[B_TRAINER_PLAYER][partyIndex]);
+}
+
+
 void HasGigantamaxFactor(struct ScriptContext *ctx)
 {
     u32 partyIndex = VarGet(ScriptReadHalfword(ctx));

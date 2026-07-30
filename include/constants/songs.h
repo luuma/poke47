@@ -565,5 +565,6 @@
 #define PHONEME_ID(song)            ((song) - FIRST_PHONEME_SONG)
 #define PHONEME_ID_NONE             0xFF
 #define MUS_GAUNTLET_OPENER         621
+#define MUS_LITTLEBIRD              622
 
 #endif  // GUARD_CONSTANTS_SONGS_H

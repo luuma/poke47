@@ -628,6 +628,7 @@ gSongTable::
 	song ph_nurse_held, MUSIC_PLAYER_SE2, 2
 	song ph_nurse_solo, MUSIC_PLAYER_SE2, 2
 	song mus_gauntlet_opener_102, MUSIC_PLAYER_BGM, 0
+	song mus_littlebird, MUSIC_PLAYER_BGM, 0
 
 	.align 2
 dummy_song_header:
