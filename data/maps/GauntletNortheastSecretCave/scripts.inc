@@ -124,7 +124,9 @@ slateport_evbottler_return::
     faceplayer
     callnative ScrCmd_ZeroEvsOfPartyIndex
     giveitem VAR_0x8005, VAR_0x8006
-    message EvBottler_Bottlecomplete
+@ goto_if_eq VAR_RESULT, SPECIES_EGG is not required since we just managed to take 15 evs off it.
+    special BufferMonNickname
+    msgbox EvBottler_Bottlecomplete
     releaseall
     end
 
@@ -141,18 +143,19 @@ evbottler_notenoughitemspace::
 evbottler_Declined::
     msgbox EvBottler_WantChoosePartyMember MSGBOX_YESNO
     goto_if_eq VAR_RESULT, TRUE, slateport_evbottlergo
-    message EVBottler_TxtAwBeans
+    msgbox EVBottler_TxtAwBeans
     releaseall
     end
 
 evbottler_Declined2::
     msgbox EvBottler_WantChooseStat MSGBOX_YESNO
     goto_if_eq VAR_RESULT, TRUE, slateport_evbottler_return
-    message EVBottler_TxtAwBeans
+    msgbox EVBottler_TxtAwBeans
     releaseall
     end
 
 EvBottler_Bottlecomplete:
+	.string "{STR_VAR_1} looks dizzy, but happier!\n"
 	.string "Yeehaw! You BOTTLE believe it!$"
 
 EvBottler_WannaBottle:

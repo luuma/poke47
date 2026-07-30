@@ -366,6 +366,7 @@ void ScrCmd_ZeroEvsOfPartyIndex(struct ScriptContext *ctx)
 
     u32 zero = 0;
     SetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_HP_EV + stat, &zero);
+    AdjustFriendship(&gParties[B_TRAINER_PLAYER][partyIndex], FRIENDSHIP_EVENT_GROW_LEVEL);
     CalculateMonStats(&gParties[B_TRAINER_PLAYER][partyIndex]);
 }
 
