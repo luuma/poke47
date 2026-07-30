@@ -496,40 +496,39 @@ struct BoonGauntlet
 const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_NULL] =      {         .name =_("   ?!?!?!  "),         .altar = 0,         .boonType = 0,         .special = 0,     },
 [GB_30_RANDOM_BERRIES] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} 30 RANDOM BERRIES{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_30_BERRIES,         .special = 0,     },
-[GB_BIG_ROOT] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} BIG ROOT{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_BIG_ROOT,     },
 [GB_INFESTATION] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR INFESTATION{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_INFESTATION,     },
 [GB_POISON_POWDER] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR POISON POWDER{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_POISON_POWDER,     },
-[GB_AQUA_RING] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM AQUA RING{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_AQUA_RING,     },
+[GB_HEAL_PULSE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR HEAL PULSE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_HEAL_PULSE,     },
 [GB_AROMATIC_MIST] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR AROMATIC MIST{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_AROMATIC_MIST,     },
 [GB_LIFE_DEW] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM LIFE DEW{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_LIFE_DEW,     },
-[GB_LASER_FOCUS] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR LASER FOCUS{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_LASER_FOCUS,     },
 [GB_LIFE_ORB] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} LIFE ORB{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_LIFE_ORB,     },
-[GB_MUSCLE_BAND] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} MUSCLE BAND{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_MUSCLE_BAND,     },
-[GB_WISE_GLASSES] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} WISE GLASSES{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_WISE_GLASSES,     },
+[GB_FIRE_PUNCH] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR FIRE PUNCH{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_FIRE_PUNCH,     },
+[GB_THUNDER_PUNCH] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR THUNDER PUNCH{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_THUNDER_PUNCH,     },
 [GB_FOLLOW_ME] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR FOLLOW ME{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_FOLLOW_ME,     },
 [GB_HELPING_HAND] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR HELPING HAND{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_HELPING_HAND,     },
 [GB_HYPNOSIS] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR HYPNOSIS{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_HYPNOSIS,     },
 [GB_EVIOLITE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} EVIOLITE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_EVIOLITE,     },
 [GB_SHOCK_SHIELD] =      {         .name =_("{HIGHLIGHT LIGHT_RED} SHOCK SHIELD{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_ITEM,         .special = ITEM_SHOCK_SHIELD,     },
 [GB_STOCKPILE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR STOCKPILE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_STOCKPILE,     },
-[GB_AIR_CUTTER] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR AIR CUTTER{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_AIR_CUTTER,     },
+[GB_SCOPE_LENS] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} SCOPE LENS{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_SCOPE_LENS,     },
 [GB_FOCUS_SASH] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} FOCUS SASH{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_FOCUS_SASH,     },
 [GB_REROLL_THESE_OPTIONS] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} REROLL THESE OPTIONS{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_REROLL,         .special = 0,     },
+[GB_BIG_ROOT] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} BIG ROOT{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_BIG_ROOT,     },
 [GB_20_TERRAIN_SEEDS] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} 20 TERRAIN SEEDS{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TERRAIN_SEEDS,         .special = 0,     },
-[GB_BLACK_SLUDGE] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} BLACK SLUDGE{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_BLACK_SLUDGE,     },
 [GB_FIRST_IMPRESSION] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR FIRST IMPRESSION{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_FIRST_IMPRESSION,     },
 [GB_LEECH_SEED] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM LEECH SEED{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_LEECH_SEED,     },
-[GB_KNELL_BELL] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} KNELL BELL{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_KNELL_BELL,     },
 [GB_SMOKE_BALL] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} SMOKE BALL{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_SMOKE_BALL,     },
 [GB_STICKY_BARB] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} STICKY BARB{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_STICKY_BARB,     },
 [GB_STRING_SHOT] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR STRING SHOT{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_STRING_SHOT,     },
-[GB_TOXIC_ORB_AND_FLAME_ORB] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} 2 TOXIC ORBS & FLAME ORBS{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TOXICANDFLAMEORB,         .special = 0,     },
+[GB_TOXIC_ORB_AND_FLAME_ORB] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} FLAME ORB, TOXIC ORB, SLUDGE{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TOXICANDFLAMEORB,         .special = 0,     },
 [GB_U_TURN] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM U-TURN{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_U_TURN,     },
 [GB_VENOM_DRENCH] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM VENOM DRENCH{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_VENOM_DRENCH,     },
 [GB_VENOSHOCK] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM VENOSHOCK{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_VENOSHOCK,     },
 [GB_WORRY_SEED] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM WORRY SEED{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_WORRY_SEED,     },
 [GB_SLEEP_POWDER] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR SLEEP POWDER{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_SLEEP_POWDER,     },
 [GB_ALEMBIC] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} ALEMBIC{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_ALEMBIC,     },
+[GB_LEFTOVERS] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} LEFTOVERS{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_LEFTOVERS,     },
+[GB_STUFF_CHEEKS] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR STUFF CHEEKS{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_STUFF_CHEEKS,     },
 [GB_AURORA_VEIL] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM AURORA VEIL{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_AURORA_VEIL,     },
 [GB_COVERT_CLOAK] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} COVERT CLOAK{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_ITEM,         .special = ITEM_COVERT_CLOAK,     },
 [GB_DRAINING_KISS] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM DRAINING KISS{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_DRAINING_KISS,     },
@@ -541,9 +540,16 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_RAIN_DANCE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM RAIN DANCE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_RAIN_DANCE,     },
 [GB_SNOW] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} SNOWY WEATHER{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_WEATHER,         .special = WEATHER_SNOW,     },
 [GB_SOAK] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM SOAK{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_SOAK,     },
-[GB_WEATHER_BALL] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM WEATHER BALL{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_WEATHER_BALL,     },
 [GB_TERRAIN_PULSE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR TERRAIN PULSE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_TERRAIN_PULSE,     },
 [GB_FISHING_RODS] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} FISHING RODS{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_RODS,         .special = 0,     },
+[GB_HEAL_BELL] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR HEAL BELL{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_HEAL_BELL,     },
+[GB_CONFIDE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR CONFIDE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_CONFIDE,     },
+[GB_ICY_WIND] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR ICY WIND{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_ICY_WIND,     },
+[GB_LUCKY_EGG] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} LUCKY EGG{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_ITEM,         .special = ITEM_LUCKY_EGG,     },
+[GB_LASER_FOCUS] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR LASER FOCUS{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_LASER_FOCUS,     },
+[GB_LOADED_DICE] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} LOADED DICE{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_LOADED_DICE,     },
+[GB_MUSCLE_BAND] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} MUSCLE BAND{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_MUSCLE_BAND,     },
+[GB_WISE_GLASSES] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} WISE GLASSES{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_WISE_GLASSES,     },
 [GB_CHARCOAL] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} CHARCOAL{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_CHARCOAL,     },
 [GB_CHOICE_BAND] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} CHOICE BAND{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_CHOICE_BAND,     },
 [GB_CHOICE_SCARF] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} CHOICE SCARF{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_CHOICE_SCARF,     },
@@ -551,34 +557,32 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_DRAGON_FANG] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} DRAGON FANG{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_DRAGON_FANG,     },
 [GB_EXPERT_BELT] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} EXPERT BELT{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_EXPERT_BELT,     },
 [GB_EXPLOSION] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR EXPLOSION{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_EXPLOSION,     },
-[GB_FIRE_PUNCH] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR FIRE PUNCH{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_FIRE_PUNCH,     },
 [GB_INFERNO] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR INFERNO{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_INFERNO,     },
 [GB_MAGNET] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} MAGNET{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_MAGNET,     },
 [GB_SUNNY_DAY] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM SUNNY DAY{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_SUNNY_DAY,     },
-[GB_THUNDER_PUNCH] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR THUNDER PUNCH{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_THUNDER_PUNCH,     },
 [GB_THUNDER_WAVE] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM THUNDER WAVE{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_THUNDER_WAVE,     },
 [GB_WILL_O_WISP] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM WILL O WISP{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_WILL_O_WISP,     },
 [GB_ZAP_CANNON] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR ZAP CANNON{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_ZAP_CANNON,     },
-[GB_BATON_PASS] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM BATON PASS{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_BATON_PASS,     },
 [GB_CALM_MIND] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM CALM MIND{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_CALM_MIND,     },
 [GB_DARK_PULSE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM DARK PULSE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_DARK_PULSE,     },
 [GB_DREAM_EATER] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR DREAM EATER{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_DREAM_EATER,     },
 [GB_HEX] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR HEX{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_HEX,     },
 [GB_HONE_CLAWS] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM HONE CLAWS{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_HONE_CLAWS,     },
-[GB_LIGHT_CLAY] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} LIGHT CLAY{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_ITEM,         .special = 0,     },
 [GB_LIGHT_SCREEN] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM LIGHT SCREEN{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_LIGHT_SCREEN,     },
-[GB_NASTY_PLOT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR NASTY PLOT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_NASTY_PLOT,     },
+[GB_NASTY_PLOT_TUT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR NASTY PLOT TUT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_NASTY_PLOT,     },
 [GB_PHANTOM_FORCE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM PHANTOM FORCE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_PHANTOM_FORCE,     },
 [GB_POWER_HERB] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} POWER HERB{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_ITEM,         .special = 0,     },
 [GB_PROTECT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM PROTECT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_PROTECT,     },
+[GB_SUBSTITUTE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM SUBSTITUTE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_SUBSTITUTE,     },
 [GB_PSYCHO_CUT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM PSYCHO CUT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_PSYCHO_CUT,     },
 [GB_REFLECT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM REFLECT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_REFLECT,     },
-[GB_SWORDS_DANCE_TUT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR SWORDS DANCE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_SWORDS_DANCE,     },
+[GB_SWORDS_DANCE_TUT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR SWORDS DANCE TUT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_SWORDS_DANCE,     },
 [GB_TRICK] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM TRICK{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_TRICK,     },
 [GB_TRICK_ROOM] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM TRICK ROOM{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_TRICK_ROOM,     },
 [GB_WISH] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM WISH{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_WISH,     },
-[GB_PSYCH_UP] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR PSYCH UP{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_PSYCH_UP,     },
+[GB_GUARD_SWAP] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR GUARD SWAP{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_GUARD_SWAP,     },
 [GB_WONDER_ROOM_TERRAFORM] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} WONDER ROOM TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_STARTINGSTATUS,         .special = 4,     },
+[GB_KNOCK_OFF] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM KNOCK OFF{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_KNOCK_OFF,     },
 [GB_10_FULL_RESTORES] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 10 FULL RESTORES{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10XITEM,         .special = ITEM_FULL_RESTORE,     },
 [GB_10_HYPER_POTIONS] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 10 HYPER POTIONS{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_10XITEM,         .special = ITEM_HYPER_POTION,     },
 [GB_10_X_DEFEND_10_X_SP_DEF] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 10 X DEFEND, 10 X SP.DEF{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_XDEFXSPDEF,         .special = 0,     },
@@ -599,67 +603,58 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_WIDE_GUARD] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR WIDE GUARD{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_WIDE_GUARD,     },
 [GB_10_X_SPEEDS] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} 10 X SPEEDS{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_10XITEM,         .special = ITEM_X_SPEED,     },
 [GB_AIR_BALLOON] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} AIR BALLOON{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_AIR_BALLOON,     },
-[GB_EJECT_BUTTON] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} EJECT BUTTON{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_EJECT_BUTTON,     },
 [GB_EJECT_PACK] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} EJECT PACK{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_EJECT_PACK,     },
 [GB_FLAIL] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR FLAIL{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_FLAIL,     },
 [GB_FLYING_GEM] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} FLYING GEM{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_FLYING_GEM,     },
-[GB_FOCUS_BAND] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} FOCUS BAND{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_FOCUS_BAND,     },
 [GB_FOCUS_ENERGY] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR FOCUS ENERGY{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_FOCUS_ENERGY,     },
-[GB_PUNCHING_GLOVE] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} PUNCHING GLOVE{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_PUNCHING_GLOVE,     },
 [GB_RAPID_SPIN] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR RAPID SPIN{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_RAPID_SPIN,     },
 [GB_REVERSAL] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR REVERSAL{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_REVERSAL,     },
-[GB_SCOPE_LENS] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} SCOPE LENS{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_SCOPE_LENS,     },
+[GB_WIDE_LENS] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} WIDE LENS{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_WIDE_LENS,     },
 [GB_AIR_SLASH] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TM AIR SLASH{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_AIR_SLASH,     },
 [GB_TAILWIND] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TM TAILWIND{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_TAILWIND,     },
 [GB_TUTOR_ENDURE_REROLL] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR ENDURE & REROLL{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_REROLLPLUSTUTOR,         .special = MOVE_ENDURE,     },
-[GB_TUTOR_METRONOME_REROLL] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR METRONOME & REROLL{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_REROLLPLUSTUTOR,         .special = MOVE_METRONOME,     },
 [GB_KINGS_ROCK] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} KING’S ROCK{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_KINGS_ROCK,     },
 [GB_MACH_BIKE] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} MACH BIKE{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_MACH_BIKE,     },
 [GB_UPPER_HAND] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TM UPPER HAND{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_UPPER_HAND,     },
-[GB_FALSE_SWIPE] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR FALSE SWIPE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_FALSE_SWIPE,     },
+[GB_FIVE_BOONS] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} 5 BOON OPTIONS{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_FIVE_BOONS,     },
+[GB_KNELL_BELL] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} KNELL BELL{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_KNELL_BELL,     },
 [GB_GIGA_DRAIN] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM GIGA DRAIN{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_GIGA_DRAIN,     },
 [GB_GRASSY_TERRAFORM] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} GRASSY TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_STARTINGSTATUS,         .special = 1,     },
 [GB_LEECH_LIFE] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR LEECH LIFE{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_LEECH_LIFE,     },
-[GB_LEFTOVERS] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} LEFTOVERS{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_LEFTOVERS,     },
 [GB_LUNGE] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM LUNGE{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_LUNGE,     },
 [GB_NATURE_POWER_TUT] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR NATURE POWER TUT{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_NATURE_POWER,     },
 [GB_SLUDGE_BOMB] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM SLUDGE BOMB{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_SLUDGE_BOMB,     },
 [GB_SOLAR_BEAM] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM SOLAR BEAM{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_SOLAR_BEAM,     },
 [GB_TOXIC] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TM TOXIC{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TM,         .special = ITEM_TM_TOXIC,     },
-[GB_STUFF_CHEEKS] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR STUFF CHEEKS{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_STUFF_CHEEKS,     },
+[GB_WEATHER_BALL] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM WEATHER BALL{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_WEATHER_BALL,     },
 [GB_BLIZZARD] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM BLIZZARD{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_BLIZZARD,     },
 [GB_DAZZLING_GLEAM] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM DAZZLING GLEAM{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_DAZZLING_GLEAM,     },
-[GB_DECORATE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR DECORATE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_DECORATE,     },
 [GB_DIVE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} HM DIVE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_HM,         .special = ITEM_HM_DIVE,     },
-[GB_HEAL_BELL] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR HEAL BELL{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_HEAL_BELL,     },
+[GB_BABY_DOLL_EYES] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR BABY DOLL EYES{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_BABY_DOLL_EYES,     },
 [GB_MIRROR_HERB] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} MIRROR HERB{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_ITEM,         .special = ITEM_MIRROR_HERB,     },
 [GB_PLAY_ROUGH] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM PLAY ROUGH{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_PLAY_ROUGH,     },
 [GB_SURF] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} HM SURF{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_HM,         .special = ITEM_HM_SURF,     },
-[GB_TRIPLE_AXEL] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TM TRIPLE AXEL{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TM,         .special = ITEM_TM_TRIPLE_AXEL,     },
-[GB_WATERFALL] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} HM WATERFALL{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_HM,         .special = ITEM_HM_WATERFALL,     },
 [GB_GET_LOTS_OF_MONEY] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} GET LOTS OF MONEY{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_MONEY,         .special = 50000,     },
-[GB_LUCKY_EGG] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} LUCKY EGG{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_ITEM,         .special = ITEM_LUCKY_EGG,     },
-[GB_BLAZE_KICK] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM BLAZE KICK{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_BLAZE_KICK,     },
+[GB_RAINBOW_TERRAFORM] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} RAINBOW TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_STARTINGSTATUS,         .special = 6,     },
+[GB_FLARE_BLITZ] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR FLARE BLITZ{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_FLARE_BLITZ,     },
 [GB_CHOICE_SPECS] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} CHOICE SPECS{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_CHOICE_SPECS,     },
 [GB_DRACO_METEOR] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM DRACO METEOR{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_DRACO_METEOR,     },
-[GB_DRAGON_CLAW] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM DRAGON CLAW{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_DRAGON_CLAW,     },
+[GB_SCALE_SHOT] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR SCALE SHOT{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_SCALE_SHOT,     },
 [GB_DRAGON_RAGE] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR DRAGON RAGE{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_DRAGON_RAGE,     },
 [GB_OVERHEAT] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM OVERHEAT{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_OVERHEAT,     },
 [GB_THUNDER] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM THUNDER{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_THUNDER,     },
 [GB_VOLT_SWITCH] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM VOLT SWITCH{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_VOLT_SWITCH,     },
 [GB_WHITE_HERB] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} WHITE HERB{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_ITEM,         .special = ITEM_WHITE_HERB,     },
-[GB_ZING_ZAP] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TM ZING ZAP{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TM,         .special = ITEM_TM_ZING_ZAP,     },
+[GB_SUPERCELL_SLAM] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR SUPERCELL SLAM{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_SUPERCELL_SLAM,     },
 [GB_GRAVITY] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR GRAVITY{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_GRAVITY,     },
 [GB_HYPER_BEAM] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM HYPER BEAM{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_HYPER_BEAM,     },
-[GB_KNOCK_OFF] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM KNOCK OFF{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_KNOCK_OFF,     },
-[GB_NASTY_PLOT_TUT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM NASTY PLOT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_NASTY_PLOT,     },
+[GB_NASTY_PLOT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM NASTY PLOT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_NASTY_PLOT,     },
 [GB_NIGHTMARE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR NIGHTMARE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_NIGHTMARE,     },
-[GB_POWER_SPLIT] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR POWER SPLIT{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_POWER_SPLIT,     },
+[GB_TOPSY_TURVY] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR TOPSY TURVY{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_TOPSY_TURVY,     },
 [GB_PSYCHIC] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM PSYCHIC{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_PSYCHIC,     },
 [GB_REST] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM REST{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_REST,     },
 [GB_MAGIC_ROOM_TERRAFORM] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} MAGIC ROOM TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_STARTINGSTATUS,         .special = 3,     },
 [GB_SHADOW_BALL] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM SHADOW BALL{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_SHADOW_BALL,     },
-[GB_SLEEP_TALK] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM SLEEP TALK{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_SLEEP_TALK,     },
 [GB_SPEED_SWAP] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR SPEED SWAP{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_SPEED_SWAP,     },
 [GB_SUCKER_PUNCH] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM SUCKER PUNCH{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_SUCKER_PUNCH,     },
 [GB_SWORDS_DANCE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM SWORDS DANCE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_SWORDS_DANCE,     },
@@ -670,47 +665,52 @@ const struct BoonGauntlet BoonList[GB_LENGTH] = {
 [GB_METEOR_BEAM] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM METEOR BEAM{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_METEOR_BEAM,     },
 [GB_SCORCHING_SANDS] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM SCORCHING SANDS{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_SCORCHING_SANDS,     },
 [GB_STEEL_BEAM] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM STEEL BEAM{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_STEEL_BEAM,     },
+[GB_SANDSTORM_WEATHER] =      {         .name =_("  {HIGHLIGHT LIGHT_RED} SANDSTORM WEATHER{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_WEATHER,         .special = WEATHER_SANDSTORM,     },
 [GB_STONE_EDGE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TM STONE EDGE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TM,         .special = ITEM_TM_STONE_EDGE,     },
+[GB_EJECT_BUTTON] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} EJECT BUTTON{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_ITEM,         .special = ITEM_EJECT_BUTTON,     },
+[GB_TUTOR_METRONOME_REROLL] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR METRONOME & REROLL{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_REROLLPLUSTUTOR,         .special = MOVE_METRONOME,     },
 [GB_ACROBATICS] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TM ACROBATICS{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_ACROBATICS,     },
 [GB_COUNTER] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR COUNTER{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_COUNTER,     },
 [GB_DRAIN_PUNCH] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TM DRAIN PUNCH{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TM,         .special = ITEM_TM_DRAIN_PUNCH,     },
 [GB_QUASH] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR QUASH{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_QUASH,     },
 [GB_TUTOR_FLING_REROLL] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR FLING & REROLL{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_REROLLPLUSTUTOR,         .special = MOVE_FLING,     },
-[GB_DOUBLE_EDGE] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR DOUBLE EDGE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_DOUBLE_EDGE,     },
-[GB_FIVE_BOONS] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} 5 BOON OPTIONS{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_FIVE_BOONS,     },
+[GB_TAIL_SLAP] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR TAIL SLAP{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_TAIL_SLAP,     },
 [GB_TOXIC_THREAD] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} TUTOR TOXIC THREAD{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_TUTOR,         .special = MOVE_TOXIC_THREAD,     },
 [GB_WIZARD_CAPE] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} WIZARD CAPE{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_ITEM,         .special = ITEM_DAMAGE_BOUNCEABLES,     },
+[GB_SUNNY_WEATHER] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN} SUNNY WEATHER{CLEAR_TO 150}"),         .altar = TYPE_SAPROTROPH,         .boonType = BOON_WEATHER,         .special = WEATHER_DROUGHT,     },
+[GB_DECORATE] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} TUTOR DECORATE{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_TUTOR,         .special = MOVE_DECORATE,     },
 [GB_HAILSTORM_WEATHER] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} HAILSTORM WEATHER{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_WEATHER,         .special = WEATHER_SNOW_HAIL,     },
 [GB_RAINY_WEATHER] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} RAINY WEATHER{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_WEATHER,         .special = WEATHER_RAIN,     },
-[GB_RAINBOW_TERRAFORM] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE} RAINBOW TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_NEREID,         .boonType = BOON_STARTINGSTATUS,         .special = 6,     },
-[GB_OUTRAGE] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR OUTRAGE{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_OUTRAGE,     },
+[GB_3X_LIFE_ORB] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} 3X LIFE ORB{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_3XITEM,         .special = ITEM_LIFE_ORB,     },
 [GB_RUINATION] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR RUINATION{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_RUINATION,     },
+[GB_REVELATION_DANCE] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE} TUTOR REVELATION DANCE{CLEAR_TO 150}"),         .altar = TYPE_ELDWYRM,         .boonType = BOON_TUTOR,         .special = MOVE_REVELATION_DANCE,     },
 [GB_CURSE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TM CURSE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TM,         .special = ITEM_TM_CURSE,     },
-[GB_REVELATION_DANCE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR REVELATION DANCE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_REVELATION_DANCE,     },
 [GB_EXPANDING_FORCE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR EXPANDING FORCE{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_EXPANDING_FORCE,     },
-[GB_TRICK_ROOM_TERRAFORM] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TRICK ROOM TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_STARTINGSTATUS,         .special = 2,     },
 [GB_PHOTON_GEYSER] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR PHOTON GEYSER{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_TUTOR,         .special = MOVE_PHOTON_GEYSER,     },
+[GB_PSYCHIC_TERRAFORM] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE} PSYCHIC TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_DSOTM,         .boonType = BOON_STARTINGSTATUS,         .special = 0,     },
 [GB_3X_MAX_REVIVE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 3X MAX REVIVE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_3XITEM,         .special = ITEM_MAX_REVIVE,     },
 [GB_BODY_PRESS] =      {         .name =_("{HIGHLIGHT LIGHT_RED} TUTOR BODY PRESS{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_TUTOR,         .special = MOVE_BODY_PRESS,     },
-[GB_3X_EVIOLITE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 3X EVIOLITE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_3XITEM,         .special = ITEM_EVIOLITE,     },
+[GB_3X_EVIOLITE] =      {         .name =_("{HIGHLIGHT LIGHT_RED} 3X EVIOLITE{CLEAR_TO 150}"),         .altar = TYPE_MONOLITH,         .boonType = BOON_3XITEM,         .special = 0,     },
 [GB_EXTREME_SPEED] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR EXTREME SPEED{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_EXTREME_SPEED,     },
 [GB_TAILWIND_WEATHER] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TAILWIND WEATHER{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_STARTINGSTATUS,         .special = 5,     },
 [GB_HAWKEYE] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE} TUTOR HAWKEYE{CLEAR_TO 150}"),         .altar = TYPE_WINGED_LION,         .boonType = BOON_TUTOR,         .special = MOVE_CRIT_UP_HIT,     },
-[GB_THUNDERSTORM_WEATHER] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE}   {HIGHLIGHT LIGHT_BLUE} THUNDERSTORM WEATHER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_WEATHER,         .special = WEATHER_RAIN_THUNDERSTORM,     },
-[GB_PSYCHIC_TERRAFORM] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE}   {HIGHLIGHT DARK_GRAY}{COLOR WHITE} PSYCHIC TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_STARTINGSTATUS,         .special = 0,     },
-[GB_DROUGHT_WEATHER] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE}   {HIGHLIGHT LIGHT_GREEN} DROUGHT WEATHER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_WEATHER,         .special = WEATHER_DROUGHT,     },
-[GB_SANDSTORM_WEATHER] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE}   {HIGHLIGHT LIGHT_RED} SANDSTORM WEATHER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_WEATHER,         .special = WEATHER_SANDSTORM,     },
-[GB_NATURE_POWER] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN}   {HIGHLIGHT LIGHT_BLUE} HM NATURE POWER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_HM,         .special = ITEM_HM_NATURE_POWER,     },
-[GB_SPORE] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN}   {HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR SPORE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_SPORE,     },
-[GB_FULL_RECOVERY_EACH_BATTLE] =      {         .name =_("{HIGHLIGHT LIGHT_RED}   {HIGHLIGHT LIGHT_GREEN} FULL RECOVERY EACH BATTLE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_FULL_RECOVERY_EACH_BATTLE,     },
-[GB_REROLL_AND_REVIVAL_HERB] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN}   {HIGHLIGHT RED}{COLOR WHITE} REROLL AND REVIVAL HERB{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_HERBREROLL,         .special = 0,     },
-[GB_RAISE_LEVEL_CAP] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE}   {HIGHLIGHT LIGHT_BLUE} RAISE LEVEL CAP{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_RAISE_LEVEL_CAP,     },
-[GB_PARENTAL_BOND_BATTLE] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE}   {HIGHLIGHT BLUE}{COLOR WHITE} ALL MOVES HIT TWICE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_PARENTAL_BOND_BATTLE,     },
-[GB_STATUSED_FOES_BATTLE] =      {         .name =_("{HIGHLIGHT LIGHT_RED}   {HIGHLIGHT BLUE}{COLOR WHITE} STATUSED FOES DO 1/2{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_STATUSED_FOES_BATTLE,     },
-[GB_DAMAGE_DEVOTION] =      {         .name =_("{HIGHLIGHT BLUE}{COLOR WHITE}   {HIGHLIGHT RED}{COLOR WHITE} +5% DMG PER LION BOON "),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_DAMAGE_DEVOTION,     },
-[GB_DESTINY_BOND] =      {         .name =_("{HIGHLIGHT LIGHT_RED}   {HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR DESTINY BOND{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_DESTINY_BOND,     },
-[GB_EVOLVE_A_POKÉMON] =      {         .name =_("{HIGHLIGHT DARK_GRAY}{COLOR WHITE}   {HIGHLIGHT RED}{COLOR WHITE} EVOLVE A POKéMON{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_EVOLVE,         .special = 0,     },
-[GB_EVERYONE_IS_STURDY] =      {         .name =_("{HIGHLIGHT RED}{COLOR WHITE}   {HIGHLIGHT LIGHT_RED} EVERYONE IS STURDY{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_EVERYONE_IS_STURDY,     },
+
+
+[GB_NEREID_ELD] =      {         .name =_("{HIGHLIGHT BLUE}  {HIGHLIGHT LIGHT_BLUE} THUNDERSTORM WEATHER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_WEATHER,         .special = WEATHER_RAIN_THUNDERSTORM,     },
+[GB_NEREID_DSOTM] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE}   {HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR TRANSFORM{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_TRANSFORM,     },
+[GB_ELD_SAP] =      {         .name =_("{HIGHLIGHT BLUE}  {HIGHLIGHT LIGHT_GREEN} HARVEST DRAGON{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_HARVESTDRAGON,         .special = SPECIES_EXEGGUTOR_ALOLA,     },
+[GB_NEREID_MONO] =      {         .name =_("{HIGHLIGHT LIGHT_BLUE}   {HIGHLIGHT LIGHT_RED} STATUS GO LAST, HIT 2X{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_PARENTAL_BOND_STATUS_BATTLE,     },
+[GB_NEREID_SAP] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN}   {HIGHLIGHT LIGHT_BLUE} HM NATURE POWER{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_HM,         .special = ITEM_HM_NATURE_POWER,     },
+[GB_DSOTM_SAP] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN}   {HIGHLIGHT DARK_GRAY}{COLOR WHITE} TUTOR SPORE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_TUTOR,         .special = MOVE_SPORE,     },
+[GB_MONO_SAP] =      {         .name =_("{HIGHLIGHT LIGHT_RED}   {HIGHLIGHT LIGHT_GREEN} FULLY RECOVER EACH BATTLE{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_FULL_RECOVERY_EACH_BATTLE,     },
+[GB_WING_SAP] =      {         .name =_("{HIGHLIGHT LIGHT_GREEN}   {HIGHLIGHT RED}{COLOR WHITE} REVIVAL HERB & REROLL{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_HERBREROLL,         .special = 0,     },
+[GB_NEREID_WING] =      {         .name =_("{HIGHLIGHT RED}  {HIGHLIGHT LIGHT_BLUE} RAISE LEVEL CAP{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_RAISE_LEVEL_CAP,     },
+[GB_ELD_DSOTM] =      {         .name =_("{HIGHLIGHT DARK_GRAY}  {HIGHLIGHT BLUE}{COLOR WHITE} ATTACKS HIT 2X{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_PARENTAL_BOND_BATTLE,     },
+[GB_ELD_MONO] =      {         .name =_("{HIGHLIGHT LIGHT_RED}   {HIGHLIGHT BLUE}{COLOR WHITE} STATUSED FOES DO 1/2{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_STATUSED_FOES_BATTLE,     },
+[GB_ELD_WING] =      {         .name =_("{HIGHLIGHT BLUE}  {HIGHLIGHT RED}{COLOR WHITE} +5% DMG PER LION BOON{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_DAMAGE_DEVOTION,     },
+[GB_DSOTM_MONO] =      {         .name =_("{HIGHLIGHT LIGHT_RED}   {HIGHLIGHT DARK_GRAY}{COLOR WHITE} TRICK ROOM TERRAFORM{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_STARTINGSTATUS,         .special = 2,     },
+[GB_DSOTM_WING] =      {         .name =_("{HIGHLIGHT DARK_GRAY}  {HIGHLIGHT RED}{COLOR WHITE} EVOLVE A POKéMON{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_EVOLVE,         .special = 0,     },
+[GB_MONO_WING] =      {         .name =_("{HIGHLIGHT RED}  {HIGHLIGHT LIGHT_RED} EVERYONE IS STURDY{CLEAR_TO 150}"),         .altar = TYPE_COLOURLESS,         .boonType = BOON_FLAG,         .special = FLAG_EVERYONE_IS_STURDY,     },
 
 };
 
@@ -1023,64 +1023,64 @@ static u8 GetGauntletDuoBoon(enum GauntletTypes deityChosen, enum GauntletTypes 
         switch(deity2)
         {
         case TYPE_NEREID:
-            return GB_NATURE_POWER;// THESE should be renamed to "nereid sap, eld sap" etc. 
+            return GB_NEREID_SAP;// THESE should be renamed to "nereid sap, eld sap" etc. 
         case TYPE_ELDWYRM:
-            return GB_DROUGHT_WEATHER;
+            return GB_ELD_SAP;
         case TYPE_DSOTM:
-            return GB_SPORE;
+            return GB_DSOTM_SAP;
         case TYPE_MONOLITH:
-            return GB_FULL_RECOVERY_EACH_BATTLE;
+            return GB_MONO_SAP;
         case TYPE_WINGED_LION:
         default:
-            return GB_REROLL_AND_REVIVAL_HERB;
+            return GB_WING_SAP;
         }
        
     case TYPE_NEREID:
         switch(deity2)
         {
         case TYPE_SAPROTROPH:
-            return GB_NATURE_POWER;
+            return GB_NEREID_SAP;
         case TYPE_ELDWYRM:
-            return GB_THUNDERSTORM_WEATHER;
+            return GB_NEREID_ELD;
         case TYPE_DSOTM:
-            return GB_PSYCHIC_TERRAFORM;
+            return GB_NEREID_DSOTM;
         case TYPE_MONOLITH:
-            return GB_SANDSTORM_WEATHER;
+            return GB_NEREID_MONO;
         case TYPE_WINGED_LION:
         default:
-            return GB_RAISE_LEVEL_CAP;
+            return GB_NEREID_WING;
         }
        
     case TYPE_ELDWYRM:
         switch(deity2)
         {
         case TYPE_SAPROTROPH:
-            return GB_DROUGHT_WEATHER;
+            return GB_ELD_SAP;
         case TYPE_NEREID:
-            return GB_THUNDERSTORM_WEATHER;
+            return GB_NEREID_ELD;
         case TYPE_DSOTM:
-            return GB_PARENTAL_BOND_BATTLE;
+            return GB_ELD_DSOTM;
         case TYPE_MONOLITH:
-            return GB_STATUSED_FOES_BATTLE;
+            return GB_ELD_MONO;
         case TYPE_WINGED_LION:
         default:
-            return GB_DAMAGE_DEVOTION;
+            return GB_ELD_WING;
         }
        
     case TYPE_DSOTM:
         switch(deity2)
         {
         case TYPE_SAPROTROPH:
-            return GB_NATURE_POWER;
+            return GB_DSOTM_SAP;
         case TYPE_NEREID:
-            return GB_PSYCHIC_TERRAFORM;
+            return GB_NEREID_DSOTM;
         case TYPE_ELDWYRM:
-            return GB_PARENTAL_BOND_BATTLE;
+            return GB_ELD_DSOTM;
         case TYPE_MONOLITH:
-            return GB_DESTINY_BOND;
+            return GB_DSOTM_MONO;
         case TYPE_WINGED_LION:
         default:
-            return GB_EVOLVE_A_POKÉMON;
+            return GB_DSOTM_WING;
         }
        
     case TYPE_MONOLITH:
@@ -1088,16 +1088,16 @@ static u8 GetGauntletDuoBoon(enum GauntletTypes deityChosen, enum GauntletTypes 
         switch(deity2)
         {
         case TYPE_SAPROTROPH:
-            return GB_FULL_RECOVERY_EACH_BATTLE;
+            return GB_MONO_SAP;
         case TYPE_NEREID:
-            return GB_SANDSTORM_WEATHER;
+            return GB_NEREID_MONO;
         case TYPE_ELDWYRM:
-            return GB_STATUSED_FOES_BATTLE;
+            return GB_ELD_MONO;
         case TYPE_DSOTM:
-            return GB_DESTINY_BOND;
+            return GB_DSOTM_MONO;
         case TYPE_WINGED_LION:
         default:
-            return GB_EVERYONE_IS_STURDY;
+            return GB_MONO_WING;
         }
     }
 }

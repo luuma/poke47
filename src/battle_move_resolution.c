@@ -2280,16 +2280,19 @@ static bool32 IsMoveParentalBondAffected(struct BattleCalcValues *cv)
      || cv->move == MOVE_STRUGGLE)
         return FALSE;
 
-    if ((cv->abilities[cv->battlerAtk] == ABILITY_PARENTAL_BOND 
+    if (
+(
+cv->abilities[cv->battlerAtk] == ABILITY_PARENTAL_BOND
 || (cv->abilities[cv->battlerAtk] == ABILITY_DOUBLE_WALLOP && gBattleMons[cv->battlerDef].hp <= gBattleMons[cv->battlerDef].maxHP * 3 / 4)
-|| (IsOnPlayerSide(cv->battlerAtk) && FlagGet(FLAG_PARENTAL_BOND_BATTLE))    //GetBattlerSide(cv->battlerAtk) == B_SIDE_PLAYER
+|| (IsOnPlayerSide(cv->battlerAtk) && FlagGet(FLAG_PARENTAL_BOND_BATTLE))
+)    //GetBattlerSide(cv->battlerAtk) == B_SIDE_PLAYER
      && GetMoveCategory(cv->move) != DAMAGE_CATEGORY_STATUS)
         return TRUE;
 
     if (IsOnPlayerSide(cv->battlerAtk) && FlagGet(FLAG_PARENTAL_BOND_STATUS_BATTLE)    //GetBattlerSide(cv->battlerAtk) == B_SIDE_PLAYER
      && GetMoveCategory(cv->move) == DAMAGE_CATEGORY_STATUS)
         return TRUE;
-
+    return FALSE;
 }
 
 static void SetPossibleNewSmartTarget(u32 move)

@@ -3266,7 +3266,7 @@ static s32 AI_DoubleBattle(enum BattlerId battlerAtk, enum BattlerId battlerDef,
           || IS_BATTLER_OF_TYPE(battlerAtkPartner, TYPE_DRAGON)
           || GetMoveCriticalHitStage(aiData->partnerMove) > 0
           || HasMoveWithCriticalHitChance(battlerAtkPartner)
-          || CritEspeciallyDesirable(battlerAtkPartner, BattlerDef)))
+          || CritEspeciallyDesirable(battlerAtkPartner, battlerDef)))
         {
             ADJUST_SCORE(GOOD_EFFECT);
         }
@@ -4289,11 +4289,6 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
     if (IsExplosionMove(move) && gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_WILL_SUICIDE && gBattleMons[battlerDef].statStages[STAT_EVASION] <= DEFAULT_STAT_STAGE)
         ADJUST_SCORE(DECENT_EFFECT);
 
-    //if (MoveAlwaysCrits(move) && (IsCritDesirableCategory(battlerAtk, battlerDef, GetMoveCategory(move))). I assume factored in 
-        //ADJUST_SCORE(GOOD_EFFECT);
-    else if (GetMoveCriticalHitStage(move) > 0 && (IsCritDesirableCategory(battlerAtk, battlerDef, GetMoveCategory(move)))
-        ADJUST_SCORE(DECENT_EFFECT);
-
 
     // Non-volatile statuses
     switch (GetMoveNonVolatileStatus(move))
@@ -4587,7 +4582,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
     case EFFECT_LASER_FOCUS:
         if (aiData->abilities[battlerAtk] == ABILITY_SNIPER);
             ADJUST_SCORE(GOOD_EFFECT); // fall through
-        if (CritEspeciallyDesirable(BattlerAtk, BattlerDef);
+        if (CritEspeciallyDesirable(battlerAtk, battlerDef))
             ADJUST_SCORE(GOOD_EFFECT);
         break;
     case EFFECT_CONFUSE:

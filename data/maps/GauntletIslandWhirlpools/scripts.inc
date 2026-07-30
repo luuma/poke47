@@ -269,9 +269,9 @@ gauntlet_evoboon_DeclinedOnce::
 
 
 gauntlet_givepkmn::
-	bufferspeciesname STR_VAR_1, SPECIES_ALOLAN_EXEGGUTOR
-        setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_ALOLAN_EXEGGUTOR
-        givemon SPECIES_ALOLAN_EXEGGUTOR, 20
+	bufferspeciesname STR_VAR_1, SPECIES_EXEGGUTOR_ALOLA
+        setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EXEGGUTOR_ALOLA
+        givemon SPECIES_EXEGGUTOR_ALOLA, 20
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, gauntlet_givepkmn_Party
         goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, gauntlet_givepkmn_PC
 	msgbox gText_NoMoreRoomForPokemon, MSGBOX_DEFAULT
@@ -291,9 +291,9 @@ gauntlet_givepkmn_Party::
 gauntlet_givepkmn_PC::
 	call gauntlet_givepkmn_ReceivedFanfare
 	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, gauntlet_givepkmn_TransferToPC
+	goto_if_eq VAR_RESULT, NO, gauntlet_givepkmn_EventScript_TransferToPC
 	call Common_EventScript_NameReceivedBoxMon
-	goto RustboroCity_DevonCorp_2F_EventScript_TransferToPC
+	goto gauntlet_givepkmn_EventScript_TransferToPC
 	end
 
 gauntlet_givepkmn_EventScript_TransferToPC::
@@ -307,12 +307,6 @@ gauntlet_givepkmn_ReceivedFanfare::
 	waitmessage
 	waitfanfare
 	return
-
-GauntletIsland_EvoAMon:
-	.string "Evolve a POKéMON?$"
-
-
-gauntlet_givepkmn_Text_ReceivedMon
 
 
 
@@ -444,9 +438,11 @@ gauntlet_DEFSDEF::
 
 
 gauntlet_TOXICFLAME::
-	giveitem ITEM_TOXIC_ORB, 2
+	giveitem ITEM_FLAME_ORB, 1
 	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
-	giveitem ITEM_FLAME_ORB, 2
+	giveitem ITEM_TOXIC_ORB, 1
+	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
+	giveitem ITEM_BLACK_SLUDGE, 1
 	goto_if_eq VAR_RESULT, 0, Gauntlet_EventScript_ShowBagIsFull
         goto GauntletIsland_return
 	end
@@ -531,7 +527,7 @@ GauntletIsland_txtWhichBoon:
 GauntletIsland_Compensated:
 	.string "{PLAYER} received compensation.$"
 
-GauntletIsland_txtHeyThatsDumbOfYou:
+GauntletIsland_txtHeyThatsDumbOfYou: @ unused because it is better that way
 	.string "No POKéMON in your PARTY can\n"
 	.string "currently be taught this.\p"
 	.string "Continue anyway?$"
@@ -543,6 +539,9 @@ GauntletIsland_EvoAMon:
 	.string "Evolve a POKéMON?$"
 
 GauntletIsland_BagSpace:
-	.string "There is not enough space in.\n"
+	.string "There is not enough space in\n"
 	.string "the BAG.$"
 
+gauntlet_givepkmn_Text_ReceivedMon:
+	.string "{PLAYER} was blessed with the\n"
+	.string "presence of ALOLAN EXEGGUTOR!$"

@@ -135,7 +135,7 @@ static const struct BattleWeatherInfo sBattleWeatherInfo[BATTLE_WEATHER_COUNT] =
         .abilityStartMessage = B_MSG_STARTED_PRIMORDIAL_SEA,
         .moveStartMessage = B_MSG_STARTED_RAIN, // Placeholder
         .endMessage = B_MSG_WEATHER_END_RAIN,
-        .continuesMessage = B_MSG_WEATHER_TURN_RAIN,
+        .continuesMessage = B_MSG_WEATHER_TURN_DOWNPOUR,
         .animation = B_ANIM_RAIN_CONTINUES,
     },
 
@@ -2797,11 +2797,18 @@ bool32 TryFieldEffects(enum FieldEffectCases caseId)
             switch (GetCurrentWeather())
             {
             case WEATHER_RAIN:
-            case WEATHER_RAIN_THUNDERSTORM:
             case WEATHER_DOWNPOUR:
                 if (!(gBattleWeather & B_WEATHER_RAIN))
                 {
                     gBattleWeather = B_WEATHER_RAIN_NORMAL;
+                    gBattleScripting.animArg1 = B_ANIM_RAIN_CONTINUES;
+                    effect = TRUE;
+                }
+                break;
+            case WEATHER_RAIN_THUNDERSTORM:
+                if (!(gBattleWeather & B_WEATHER_RAIN))
+                {
+                    gBattleWeather = B_WEATHER_RAIN_PRIMAL;
                     gBattleScripting.animArg1 = B_ANIM_RAIN_CONTINUES;
                     effect = TRUE;
                 }

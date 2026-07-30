@@ -4735,27 +4735,6 @@ u8 *UseStatIncreaseItem(enum Item itemId)
         BattleStringExpandPlaceholdersToDisplayedString(gText_PkmnGettingPumped);
     }
 
-    switch (itemEffect[1])
-    {
-    case ITEM1_X_ATTACK:
-        BufferStatRoseMessage(STAT_ATK);
-        break;
-    case ITEM1_X_DEFENSE:
-        BufferStatRoseMessage(STAT_DEF);
-        break;
-    case ITEM1_X_SPEED:
-        BufferStatRoseMessage(STAT_SPEED);
-        break;
-    case ITEM1_X_SPATK:
-        BufferStatRoseMessage(STAT_SPATK);
-        break;
-    case ITEM1_X_SPDEF:
-        BufferStatRoseMessage(STAT_SPDEF);
-        break;
-    case ITEM1_X_ACCURACY:
-        BufferStatRoseMessage(STAT_ACC);
-        break;
-    }
 
     if (itemEffect[3] & ITEM3_GUARD_SPEC)
     {

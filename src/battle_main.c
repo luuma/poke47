@@ -4787,7 +4787,7 @@ s32 GetBattleMovePriority(enum BattlerId battler, enum Ability ability, enum Mov
     if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX && GetMoveCategory(move) == DAMAGE_CATEGORY_STATUS)
         return GetMovePriority(MOVE_MAX_GUARD);
 
-    if (IsOnPlayerSide(cv->battlerAtk) && FlagGet(FLAG_PARENTAL_BOND_STATUS_BATTLE) && IsBattleMoveStatus(move))
+    if (IsOnPlayerSide(battler) && FlagGet(FLAG_PARENTAL_BOND_STATUS_BATTLE) && IsBattleMoveStatus(move))
     {
         priority--; // stacking with other effects
     }
