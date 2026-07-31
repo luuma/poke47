@@ -1166,6 +1166,7 @@ enum EffectItem
     EFFECT_ITEM_RESTORE_PP,
     EFFECT_ITEM_INCREASE_ALL_STATS,
     EFFECT_ITEM_USE_POKE_FLUTE,
+    EFFECT_ITEM_SACRED_ASH,// I had it working with fully skipping party screen but fucked up. seems like an improvement, if you use it by accident that would be shit lmao.
 };
 
 #endif  // GUARD_CONSTANTS_ITEMS_H

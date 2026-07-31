@@ -4814,7 +4814,10 @@ static void Task_SetSacredAshCB(u8 taskId)
     if (!gPaletteFade.active)
     {
         if (gPartyMenu.menuType == PARTY_MENU_TYPE_IN_BATTLE)
+        {
             sPartyMenuInternal->exitCallback = CB2_SetUpExitToBattleScreen;
+            PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+        }
         gItemUseCB(taskId, Task_ClosePartyMenuAfterText); // ItemUseCB_SacredAsh in this case
     }
 }
@@ -7569,6 +7572,22 @@ void OpenPartyMenuInBattle(u8 partyAction)
         else
             InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), partyAction, FALSE, PARTY_MSG_CHOOSE_MON, Task_HandleChooseMonInput, CB2_SetUpReshowBattleScreenAfterMenu);
     }
+    ReshowBattleScreenDummy();
+    UpdatePartyToBattleOrder();
+}
+
+void SacredAshInBattle(void)
+{
+        gPartyMenu.slotId = 0;
+        for (u32 i = 0; i < PARTY_SIZE; i++)
+        {
+            if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES) != SPECIES_NONE && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP) == 0)
+            {
+                gPartyMenu.slotId = i;
+                break;
+            }
+        }
+    InitPartyMenu(PARTY_MENU_TYPE_IN_BATTLE, GetPartyLayoutFromBattleType(), PARTY_ACTION_USE_ITEM, FALSE, PARTY_MSG_NONE, Task_SetSacredAshCB, CB2_ReturnToBagMenu);
     ReshowBattleScreenDummy();
     UpdatePartyToBattleOrder();
 }

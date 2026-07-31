@@ -28,6 +28,7 @@ gBattlescriptsForUsingItem::
 	.4byte BattleScript_ItemRestorePP                @ EFFECT_ITEM_RESTORE_PP
 	.4byte BattleScript_ItemIncreaseStat             @ EFFECT_ITEM_INCREASE_ALL_STATS
 	.4byte BattleScript_UsePokeFlute                 @ EFFECT_ITEM_USE_POKE_FLUTE
+	.4byte BattleScript_ItemSacredFuckignAsh                @ EFFECT_ITEM_SACRED_ASH
 
 	.align 2
 gBattlescriptsForSafariActions::
@@ -59,6 +60,23 @@ BattleScript_ItemRestoreHPRet:
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_ItemSacredFuckignAsh::
+	call BattleScript_UseItemMessage
+        goto BattleScript_ItemSacredFuckignAshret
+
+BattleScript_ItemRestoreHPRetasd::
+	clearmoveresultflags MOVE_RESULT_NO_EFFECT
+	healthbarupdate BS_SCRIPTING, PASSIVE_HP_UPDATE
+	datahpupdate BS_SCRIPTING, PASSIVE_HP_UPDATE
+	@ printstring STRINGID_ITEMRESTOREDSPECIESHEALTH
+	@ waitmessage B_WAIT_TIME_LONG
+BattleScript_ItemSacredFuckignAshret::
+	callnative BS_sacredashbs
+	.4byte BattleScript_ItemRestoreHPEnd
+	.4byte BattleScript_ItemRestoreHPRetasd
+	call BattleScript_ItemRestoreHP_PartyAsh
+	goto BattleScript_ItemRestoreHPEnd
+
 BattleScript_ItemRestoreHP::
 	call BattleScript_UseItemMessage
 	itemrestorehp BattleScript_ItemRestoreHPEnd, BattleScript_ItemRestoreHP_Battler
@@ -69,6 +87,12 @@ BattleScript_ItemRestoreHP_Battler::
 	call BattleScript_ItemRestoreHPRet
 BattleScript_ItemRestoreHPEnd:
 	end
+
+BattleScript_ItemRestoreHP_PartyAsh::
+	jumpifbyte CMP_EQUAL, gBattleCommunication, TRUE, BattleScript_ItemRestoreHP_SendOutRevivedBattler
+	clearmoveresultflags MOVE_RESULT_NO_EFFECT
+	return
+
 
 BattleScript_ItemRestoreHP_Party::
 	jumpifbyte CMP_EQUAL, gBattleCommunication, TRUE, BattleScript_ItemRestoreHP_SendOutRevivedBattler

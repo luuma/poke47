@@ -11272,6 +11272,71 @@ void ApplyExperienceMultipliers(s32 *expAmount, u8 expGetterMonId, u8 faintedBat
     }
 }
 
+void BS_sacredashbs(void)
+{
+    NATIVE_ARGS(const u8 *alreadyMaxHpInstr, const u8 *restoreBattlerInstr);
+    u16 healAmount;
+    enum BattlerId battler = MAX_BATTLERS_COUNT;
+    //struct Pokemon *party = GetBattlerParty(gBattlerAttacker);
+    u16 hp;
+    u16 maxHP;
+    bool32 nonehealed= TRUE;
+    bool32 healboy = FALSE;
+    for (u32 i=0; i < PARTY_SIZE; i++)
+    {
+        hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP);
+        maxHP = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MAX_HP);
+        if (hp == maxHP)
+            continue;
+
+        nonehealed = FALSE;
+        // Track the number of Revives used in a battle.
+        if (hp == 0 && IsOnPlayerSide(gBattlerAttacker) && gBattleResults.numRevivesUsed < 255)
+            gBattleResults.numRevivesUsed++;
+
+        // Check if the recipient is an active battler.
+        if (i == gBattlerPartyIndexes[gBattlerAttacker])
+            battler = gBattlerAttacker;
+        else if (IsDoubleBattle() && i == gBattlerPartyIndexes[BATTLE_PARTNER(gBattlerAttacker)])
+            battler = BATTLE_PARTNER(gBattlerAttacker);
+
+        // Get amount to heal.
+        healAmount = maxHP - hp;
+
+        //PREPARE_SPECIES_BUFFER(gBattleTextBuff1, GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES));
+        // Heal is applied as move damage if battler is active.
+        if (battler != MAX_BATTLERS_COUNT && hp != 0)
+        {
+                   gBattleScripting.battler = battler;
+            gBattleStruct->passiveHpUpdate[battler] = -healAmount;
+            healboy = TRUE;
+            break;// loops back to this but will of course ignore itself the second time as it is full health.
+        }
+        else
+        {
+            SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, &maxHP);
+
+            enum BattlerId partner = BATTLE_PARTNER(gBattlerAttacker);
+            // Absent battlers on the field need to be replaced
+            if (IsDoubleBattle() && (gAbsentBattlerFlags & (1u << partner)))
+            {
+                gAbsentBattlerFlags &= ~(1u << partner);
+                gBattleCommunication[MULTIUSE_STATE] = TRUE;
+                gBattleScripting.battler = partner;
+                BtlController_EmitChosenMonReturnValue(partner, B_COMM_TO_ENGINE, gBattleStruct->itemPartyIndex[gBattlerAttacker], NULL);
+            }
+            //
+        }
+    }
+
+    if (nonehealed)
+        gBattlescriptCurrInstr = cmd->alreadyMaxHpInstr;
+    else if (healboy)
+       gBattlescriptCurrInstr = cmd->restoreBattlerInstr;
+    else 
+        gBattlescriptCurrInstr = cmd->nextInstr;
+}
+
 void BS_ItemRestoreHP(void)
 {
     NATIVE_ARGS(const u8 *alreadyMaxHpInstr, const u8 *restoreBattlerInstr);
