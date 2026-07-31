@@ -34,7 +34,7 @@
       "local_id": "LOCALID_BOAT",
       "graphics_id": "OBJ_EVENT_GFX_MR_BRINEYS_BOAT",
       "x": 24,
-      "y": 49,
+      "y": 50,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
       "movement_range_x": 0,
@@ -290,7 +290,7 @@
       "y": 43,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "0",
+      "var_value": "1",
       "script": "GauntletIsland_IslandStirs"
     },
     {
@@ -299,7 +299,7 @@
       "y": 34,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "1",
+      "var_value": "2",
       "script": "GauntletIsland_AltarsLit"
     },
     {
@@ -308,7 +308,7 @@
       "y": 25,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "2",
+      "var_value": "3",
       "script": "GauntletIsland_RavenCBBC"
     },
     {
@@ -317,7 +317,7 @@
       "y": 8,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "3",
+      "var_value": "4",
       "script": "GauntletIsland_BeatAltar"
     },
     {
@@ -326,7 +326,7 @@
       "y": 8,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "3",
+      "var_value": "4",
       "script": "GauntletIsland_BeatAltar"
     },
     {
@@ -335,7 +335,7 @@
       "y": 34,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "1",
+      "var_value": "2",
       "script": "GauntletIsland_AltarsLit"
     },
     {
@@ -344,7 +344,7 @@
       "y": 34,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "1",
+      "var_value": "2",
       "script": "GauntletIsland_AltarsLit"
     },
     {
@@ -353,7 +353,7 @@
       "y": 25,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "2",
+      "var_value": "3",
       "script": "GauntletIsland_RavenCBBC"
     },
     {
@@ -362,7 +362,7 @@
       "y": 25,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "2",
+      "var_value": "3",
       "script": "GauntletIsland_RavenCBBC"
     },
     {
@@ -371,7 +371,7 @@
       "y": 43,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "0",
+      "var_value": "1",
       "script": "GauntletIsland_IslandStirs"
     },
     {
@@ -380,7 +380,7 @@
       "y": 43,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "0",
+      "var_value": "1",
       "script": "GauntletIsland_IslandStirs"
     }
   ],

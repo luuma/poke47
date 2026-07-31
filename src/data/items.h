@@ -1184,6 +1184,7 @@ const struct ItemInfo gItemsInfo[] =
         .sortType = ITEM_TYPE_HEALTH_RECOVERY,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_SacredAsh,
+        .battleUsage = EFFECT_ITEM_RESTORE_HP,
         .effect = gItemEffect_SacredAsh,
         .flingPower = 30,
         .iconPic = gItemIcon_DittoPowder,

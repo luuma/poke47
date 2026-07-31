@@ -118,7 +118,6 @@ static void SetupTrader(void)
 void SetMauvilleOldMan(void)// OCCURS ONCE IN NEWGAME
 {
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
-    assertf(FALSE, "day: %d", rtc->dayOfWeek)
     switch (rtc->dayOfWeek % WEEKDAY_COUNT)
     {
     case 6:

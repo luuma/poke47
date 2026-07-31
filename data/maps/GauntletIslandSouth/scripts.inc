@@ -3,9 +3,61 @@ GauntletIslandSouth_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, GauntletIslandOnTransition
 	map_script MAP_SCRIPT_ON_RESUME, Route113_OnResume @ 	setstepcallback STEP_CB_ASH ; end
 	map_script MAP_SCRIPT_ON_RETURN_TO_FIELD, GauntletIslandOnResume @ 	setstepcallback STEP_CB_ASH ; end
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, GauntletIslandSouth_MapScripts_WarpIntoMap
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, GauntletIslandSouth_MapScripts_OnFrame
 	.byte 0
 
+
+
 @@ cutscene of walking up and boat leaving maybe.
+GauntletIslandSouth_MapScripts_WarpIntoMap:
+	map_script_2 VAR_GAUNTLET_9, 0, GauntletIslandSouth_MapScripts_OnEnterSetup
+	.2byte 0
+
+
+GauntletIslandSouth_MapScripts_OnEnterSetup::
+    hideobjectat LOCALID_PLAYER, MAP_GAUNTLET_ISLAND_SOUTH
+    setobjectxyperm LOCALID_BOAT, 33, 50
+    removeobject LOCALID_BOAT
+    delay 1
+    addobject LOCALID_BOAT
+    applymovement LOCALID_PLAYER, BattleFrontier_BattleDomeBattleRoom_Movement_SetInvisibleFacingUp
+    end
+
+GauntletIslandSouth_MapScripts_OnFrame:
+	map_script_2 VAR_GAUNTLET_9, 0, GauntletIslandSouth_MapScripts_OnFrameWalkUp
+	.2byte 0
+
+GauntletIslandSouth_MapScripts_OnFrameWalkUp::
+    applymovement LOCALID_BOAT, GauntletIslandSouth_Movement_BoatArrive
+    waitmovement 0
+    setobjectxyperm LOCALID_BOAT, 24, 50
+    showobjectat LOCALID_PLAYER, MAP_GAUNTLET_ISLAND_SOUTH
+    applymovement LOCALID_PLAYER, GauntletIslandSouth_Movement_WalkUp
+    @ applymovement LOCALID_BOAT, Route100_Movement_BoatDepart @ LOL IDIOT
+    waitmovement 0
+    addvar VAR_GAUNTLET_9, 1
+    end
+
+GauntletIslandSouth_Movement_WalkUp:
+	set_visible
+	delay_16
+	walk_up
+	step_end
+
+
+GauntletIslandSouth_Movement_BoatArrive:
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_faster_left
+	walk_fast_left
+	walk_fast_left
+	walk_left
+	walk_left
+	step_end
+
 
 GauntletIsland_IslandStirs::
     lockall

@@ -189,12 +189,14 @@ Route100_EventScript_GauntletSetup::
 	hideobjectat VAR_LAST_TALKED, MAP_ROUTE_100
         hidefollower 0
 	call_if_eq VAR_FACING, DIR_NORTH, SlateportCity_Harbor_EventScript_BoardFerryNorth
-	call_if_eq VAR_FACING, DIR_EAST, SlateportCity_Harbor_EventScript_BoardFerryEast
-	delay 10
+	call_if_eq VAR_FACING, DIR_WEST, SlateportCity_Harbor_EventScript_BoardFerryEast
+	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
+	waitmovement 0
+	delay 30
 	hideplayer
 	applymovement LOCALID_WITCH_BOAT, Route100_Movement_BoatDepart
 	waitmovement 0
-        warp MAP_GAUNTLET_ISLAND_SOUTH, 24, 48
+        warp MAP_GAUNTLET_ISLAND_SOUTH, 24, 49
         waitstate
         releaseall
 	end
@@ -270,7 +272,7 @@ Route100_Text_GauntletChallengeBegin:
 	.string "In we go. Geheheheh.$"
 
 Route100_Text_veryodd:
-	.string "Odd. I can't get you ready.\p"
+	.string "Hrm. I can't get you ready.\p"
 	.string "You may need a free space in\n"
 	.string "your PC boxes.\p"
 Route100_Text_leavetoprepare:

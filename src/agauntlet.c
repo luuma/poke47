@@ -160,6 +160,8 @@ static void shrinknonearthribbonpartymember(u32 PartyIndex) // Shrink to the cur
 
     enum Species species = GetMonData(mon, MON_DATA_SPECIES);
     u32 lv = GetCurrentLevelCap();
+    if (!FlagGet(FLAG_VISITED_RUSTBORO_CITY))
+	lv = 5;// lv13 is too much for even route 104.
 
     u32 expPoints = gExperienceTables[gSpeciesInfo[species].growthRate][lv];
     if (GetMonData(mon, MON_DATA_EXP) > expPoints)
@@ -217,9 +219,9 @@ static bool32 SquashEarthRibbonInfo(void)
             if (GetBoxMonData(checkingMon, MON_DATA_SPECIES) == SPECIES_NONE)
                 continue;
             contd = GetBoxMonData(checkingMon, MON_DATA_EARTH_RIBBON);
-            if (contd == TRUE)
+            if (contd)
             {
-                u8 Level = Squash(mon, checkingMon);// unused
+                u8 Level = Squash(mon, checkingMon);// unused level u8, but squash does tons.
                 ZeroBoxMonAt(i,j);
                 bool32 neveragain = FALSE;
                 SetMonData(mon, MON_DATA_EARTH_RIBBON, &neveragain);
@@ -227,13 +229,13 @@ static bool32 SquashEarthRibbonInfo(void)
                 break;
             }
         }
-        if (contd == TRUE);
+        if (contd)// a semicolon here resulted in gamebreaking bug missed by compiler
             break;
-        i++;
         if (i == TOTAL_BOXES_COUNT)
             i = 0;
+        else
+            i++;
     } while (i != StorageGetCurrentBox());
-
     return contd;
 }
 
@@ -354,9 +356,9 @@ const int GauntletItemsLow[G_LEN_LOW] = {
 const int GauntletItemsMed[G_LEN_MED] = {
     ITEM_PROTEIN,
     ITEM_IRON,
+    ITEM_ETHER,
     ITEM_SUPER_POTION,
     ITEM_CHERI_BERRY,
-    ITEM_CHESTO_BERRY,
     ITEM_X_ATTACK,
     ITEM_X_DEFEND,
     ITEM_SUPER_REPEL,
@@ -837,13 +839,13 @@ void ScrCmd_SetvarToBoon(struct ScriptContext *ctx)
 
 #define GAUNTLET_MENU_OPTIONS 4
 
-#define BIT_SAPH 0b11
-#define BIT_NEREID 0b1100
-#define BIT_ELDWYRM 0b110000
-#define BIT_DSOTM 0b11000000
-#define BIT_MONOLITH 0b11
-#define BIT_WINGED_LION 0b11100
-#define BIT_CAPPED 0b100000
+#define BIT_SAPH 0b1111
+#define BIT_NEREID 0b11110000
+#define BIT_ELDWYRM 0b111100000000
+#define BIT_DSOTM 0b1111000000000000
+#define BIT_MONOLITH 0b1111
+#define BIT_WINGED_LION 0b1111110000
+#define BIT_CAPPED 0b10000000000
 
 void AddDevotionTo0x8008(void)
 {
@@ -855,15 +857,15 @@ void AddDevotionTo0x8008(void)
     u8 playerDevotions[TYPE_DEVOTION_LENGTH] =
     {
         [TYPE_SAPROTROPH] = devotions1 & BIT_SAPH,
-        [TYPE_NEREID] = (devotions1 & BIT_NEREID) >> 2,
-        [TYPE_ELDWYRM] = (devotions1 & BIT_ELDWYRM) >> 4,
-        [TYPE_DSOTM] = (devotions1 & BIT_DSOTM) >> 6,
+        [TYPE_NEREID] = (devotions1 & BIT_NEREID) >> 4,
+        [TYPE_ELDWYRM] = (devotions1 & BIT_ELDWYRM) >> 8,
+        [TYPE_DSOTM] = (devotions1 & BIT_DSOTM) >> 12,
         [TYPE_MONOLITH] = devotions2 & BIT_MONOLITH,
-        [TYPE_WINGED_LION] = (devotions2 & BIT_WINGED_LION) >> 2,
+        [TYPE_WINGED_LION] = (devotions2 & BIT_WINGED_LION) >> 4,
     };
-    u32 cap = 3;
+    u32 cap = 15;
     if (altar == TYPE_WINGED_LION)
-        cap = 7;
+        cap = 63;
     if (playerDevotions[altar] < cap)
          playerDevotions[altar] = playerDevotions[altar]+1;
 
@@ -878,8 +880,8 @@ void AddDevotionTo0x8008(void)
     else
         isCapped = 0;
 
-    VarSet(VAR_GAUNTLET_BITFIELD_1, (playerDevotions[TYPE_SAPROTROPH] | playerDevotions[TYPE_NEREID] << 2 | playerDevotions[TYPE_ELDWYRM] <<4 | playerDevotions[TYPE_DSOTM]<<6));
-    VarSet(VAR_GAUNTLET_BITFIELD_2, (playerDevotions[TYPE_MONOLITH] |  playerDevotions[TYPE_WINGED_LION]<<2 | isCapped));
+    VarSet(VAR_GAUNTLET_BITFIELD_1, (playerDevotions[TYPE_SAPROTROPH] | playerDevotions[TYPE_NEREID] << 4 | playerDevotions[TYPE_ELDWYRM] <<8 | playerDevotions[TYPE_DSOTM]<<12));
+    VarSet(VAR_GAUNTLET_BITFIELD_2, (playerDevotions[TYPE_MONOLITH] |  playerDevotions[TYPE_WINGED_LION]<<4 | isCapped));
     return;
 }
 
@@ -896,6 +898,7 @@ static const u8 BoonListStrings[TYPE_COLOURLESS][8] =
 
 static const u8 gauntletBasetext[] = _("    DEVOTION\n");
 static const u8 gauntletspacetext[] = _(" ");
+static const u8 gauntletexclamtext[] = _("!?");
 
 void BufferDevotionToStrVar4(void)// RUN on menu load.
 {
@@ -905,20 +908,32 @@ void BufferDevotionToStrVar4(void)// RUN on menu load.
     u8 playerDevotions[TYPE_DEVOTION_LENGTH] =
     {
         [TYPE_SAPROTROPH] = devotions1 & BIT_SAPH,
-        [TYPE_NEREID] = (devotions1 & BIT_NEREID) >> 2,
-        [TYPE_ELDWYRM] = (devotions1 & BIT_ELDWYRM) >> 4,
-        [TYPE_DSOTM] = (devotions1 & BIT_DSOTM) >> 6,
+        [TYPE_NEREID] = (devotions1 & BIT_NEREID) >> 4,
+        [TYPE_ELDWYRM] = (devotions1 & BIT_ELDWYRM) >> 8,
+        [TYPE_DSOTM] = (devotions1 & BIT_DSOTM) >> 12,
         [TYPE_MONOLITH] = devotions2 & BIT_MONOLITH,
-        [TYPE_WINGED_LION] = (devotions2 & BIT_WINGED_LION) >> 2,
+        [TYPE_WINGED_LION] = (devotions2 & BIT_WINGED_LION) >> 4,
     };
     u32 i;
+    bool32 issquish = FALSE;
+
     StringCopy(gStringVar4, gauntletBasetext);
     for (i=0; i<TYPE_DEVOTION_LENGTH; i++)
+        if (playerDevotions[i] >= 10)
+            issquish = TRUE;
+    
+    for (i=0; i<TYPE_DEVOTION_LENGTH; i++)
     {
-        ConvertUIntToDecimalStringN(gStringVar1, playerDevotions[i], STR_CONV_MODE_LEFT_ALIGN, 1);
+        ConvertUIntToDecimalStringN(gStringVar1, playerDevotions[i], STR_CONV_MODE_LEFT_ALIGN, 2);
         StringAppend(gStringVar4, BoonListStrings[i]);
         StringAppend(gStringVar4, gStringVar1);
-        StringAppend(gStringVar4, gauntletspacetext);
+        if (!issquish)
+            StringAppend(gStringVar4, gauntletspacetext);
+        if (issquish && playerDevotions[i] >= 10)// Assume never gets multiple over 10. In theory it is possible. It's not likely at all.
+        {
+            StringAppend(gStringVar4, gauntletexclamtext);// ui saying holy shit is always funny
+            StringAppend(gStringVar4, gauntletspacetext);
+        }
     }
     return;
 }
@@ -934,16 +949,16 @@ static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, 
     u8 playerDevotions[TYPE_DEVOTION_LENGTH] =
     {
         [TYPE_SAPROTROPH] = devotions1 & BIT_SAPH,
-        [TYPE_NEREID] = (devotions1 & BIT_NEREID) >> 2,
-        [TYPE_ELDWYRM] = (devotions1 & BIT_ELDWYRM) >> 4,
-        [TYPE_DSOTM] = (devotions1 & BIT_DSOTM) >> 6,
+        [TYPE_NEREID] = (devotions1 & BIT_NEREID) >> 4,
+        [TYPE_ELDWYRM] = (devotions1 & BIT_ELDWYRM) >> 8,
+        [TYPE_DSOTM] = (devotions1 & BIT_DSOTM) >> 12,
         [TYPE_MONOLITH] = devotions2 & BIT_MONOLITH,
-        [TYPE_WINGED_LION] = (devotions2 & BIT_WINGED_LION) >> 2,
+        [TYPE_WINGED_LION] = (devotions2 & BIT_WINGED_LION) >> 4,
     };
-    bool32 isCapped = (devotions2 & 0b100000) != 0;
+    bool32 isCapped = (devotions2 & BIT_CAPPED) != 0;
     u8 optionsNo = GAUNTLET_MENU_OPTIONS + FlagGet(FLAG_FIVE_BOONS); 
     u8 MultichoiceOptions[optionsNo] = {};
-    u8 devotion_weight[5] = {50, 35, 10, 10, 5};// keep tweakin it
+    u8 devotion_weight[8] = {50, 35, 10, 8, 3, 2, 1, 1};// keep tweakin it
     u8 rarity_weight[4] = {stapleWeight, commonWeight, rareWeight, epicWeight};
 
     if (isCapped)
@@ -953,7 +968,7 @@ static void DoGauntletBoonList(u8 stapleWeight, u8 commonWeight, u8 rareWeight, 
     {
         bool32 CanDuo = FALSE;
         enum GauntletRarity rarity = RandomGauntletBoonWeightedIndex(rarity_weight, 4);// of max devotion
-        u32 devotionNeeded = RandomGauntletBoonWeightedIndex(devotion_weight, 5);// of max devotion
+        u32 devotionNeeded = RandomGauntletBoonWeightedIndex(devotion_weight, 8);// of max devotion
         u32 i=0;
         enum GauntletTypes deityChosen = TYPE_COLOURLESS;
         do

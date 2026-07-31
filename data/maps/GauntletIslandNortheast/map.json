@@ -373,7 +373,7 @@
       "y": 22,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "4",
+      "var_value": "5",
       "script": "GauntletIsland_TheLake"
     },
     {
@@ -382,7 +382,7 @@
       "y": 24,
       "elevation": 0,
       "var": "VAR_GAUNTLET_9",
-      "var_value": "4",
+      "var_value": "5",
       "script": "GauntletIsland_TheLake"
     }
   ],

@@ -3733,12 +3733,13 @@ void ScrCmd_SetGauntletBossBattle(struct ScriptContext *ctx)
     VarSet(VAR_RESULT, species);
 }// after this, we call dowildbattle
 
-#define BIT_SAPH 0b11
-#define BIT_NEREID 0b1100
-#define BIT_ELDWYRM 0b110000
-#define BIT_DSOTM 0b11000000
-#define BIT_MONOLITH 0b11
-#define BIT_WINGED_LION 0b11100
+#define BIT_SAPH 0b1111
+#define BIT_NEREID 0b11110000
+#define BIT_ELDWYRM 0b111100000000
+#define BIT_DSOTM 0b1111000000000000
+#define BIT_MONOLITH 0b1111
+#define BIT_WINGED_LION 0b1111110000
+#define BIT_CAPPED 0b10000000000
 
 
 void ScrCmd_SetGauntletPenultimateBossBattle(struct ScriptContext *ctx)

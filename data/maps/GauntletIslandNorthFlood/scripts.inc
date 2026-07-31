@@ -33,3 +33,4 @@ GauntletMoveLeftstaircase:
 	walk_up
 	walk_in_place_down
 	step_end
+

@@ -37899,7 +37899,7 @@
               {
                 "min_level": 5,
                 "max_level": 6,
-                "species": "SPECIES_ROGGENROLA"
+                "species": "SPECIES_MUDBRAY"
               },
               {
                 "min_level": 5,
@@ -37924,7 +37924,7 @@
               {
                 "min_level": 6,
                 "max_level": 7,
-                "species": "SPECIES_MUDBRAY"
+                "species": "SPECIES_DEERLING"
               },
               {
                 "min_level": 5,
@@ -37934,7 +37934,7 @@
               {
                 "min_level": 6,
                 "max_level": 6,
-                "species": "SPECIES_DEERLING"
+                "species": "SPECIES_NINCADA"
               },
               {
                 "min_level": 6,
@@ -38236,17 +38236,17 @@
             "mons": [
               {
                 "min_level": 20,
-                "max_level": 22,
+                "max_level": 21,
                 "species": "SPECIES_ZEBSTRIKA"
               },
               {
                 "min_level": 20,
-                "max_level": 20,
+                "max_level": 22,
                 "species": "SPECIES_WATCHOG"
               },
               {
-                "min_level": 23,
-                "max_level": 23,
+                "min_level": 22,
+                "max_level": 22,
                 "species": "SPECIES_RUFFLET"
               },
               {
@@ -38260,8 +38260,8 @@
                 "species": "SPECIES_LITLEO"
               },
               {
-                "min_level": 20,
-                "max_level": 20,
+                "min_level": 21,
+                "max_level": 21,
                 "species": "SPECIES_PYROAR"
               },
               {
@@ -38285,13 +38285,13 @@
                 "species": "SPECIES_SIGILYPH"
               },
               {
-                "min_level": 22,
-                "max_level": 22,
+                "min_level": 24,
+                "max_level": 24,
                 "species": "SPECIES_MANDIBUZZ"
               },
               {
-                "min_level": 22,
-                "max_level": 22,
+                "min_level": 24,
+                "max_level": 24,
                 "species": "SPECIES_MANDIBUZZ"
               }
             ]
@@ -38326,7 +38326,7 @@
               {
                 "min_level": 13,
                 "max_level": 13,
-                "species": "SPECIES_RUFFLET"
+                "species": "SPECIES_BOLDORE"
               },
               {
                 "min_level": 14,
@@ -38710,8 +38710,8 @@
                 "species": "SPECIES_GOLETT"
               },
               {
-                "min_level": 25,
-                "max_level": 25,
+                "min_level": 22,
+                "max_level": 23,
                 "species": "SPECIES_WATCHOG"
               },
               {
@@ -38740,8 +38740,8 @@
                 "species": "SPECIES_BRONZONG"
               },
               {
-                "min_level": 23,
-                "max_level": 23,
+                "min_level": 24,
+                "max_level": 24,
                 "species": "SPECIES_MANDIBUZZ"
               },
               {
