@@ -54,6 +54,22 @@ SINGLE_BATTLE_TEST("Own Tempo prevents confusion from moves by the opponent")
     }
 }
 
+
+SINGLE_BATTLE_TEST("Flatter and Own Tempo prevents confusion from moves by the opponent")
+{
+    GIVEN {
+        ASSUME(GetMoveEffect(MOVE_FLATTER) == EFFECT_SWAGGER);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_SLOWPOKE) { Ability(ABILITY_OWN_TEMPO); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_FLATTER); MOVE(opponent, MOVE_CURSE); }
+    } SCENE {
+        ABILITY_POPUP(opponent, ABILITY_OWN_TEMPO);
+        MESSAGE("The opposing Slowpoke cannot be confused!");
+        MESSAGE("The opposing Slowpoke's Defense rose!");
+    }
+}
+
 SINGLE_BATTLE_TEST("Own Tempo prevents confusion from moves by the user")
 {
     GIVEN {

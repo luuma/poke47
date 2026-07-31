@@ -3520,8 +3520,8 @@ const struct {
         .levelBuddy = 0,
     },
     {
-        .species = SPECIES_TURTONATOR,
-        .moves = {MOVE_EMBER, MOVE_RAPID_SPIN, MOVE_SMOG, MOVE_FLAIL},
+        .species = SPECIES_DRUDDIGON,
+        .moves = {MOVE_BITE, MOVE_SPIKES, MOVE_ROAR, MOVE_FLAIL},
         .level = 8,
         .dynlevel = 0,
         .item = ITEM_IRON_BALL,

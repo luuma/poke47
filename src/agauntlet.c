@@ -377,7 +377,7 @@ const int GauntletItemsHigh[G_LEN_HI] = {
     ITEM_FULL_HEAL,
     ITEM_HYPER_POTION,
     ITEM_SUPER_REPEL,
-    ITEM_ABILITY_PATCH
+    ITEM_ABILITY_CAPSULE
 };
 
 #define G_LEN_END 8

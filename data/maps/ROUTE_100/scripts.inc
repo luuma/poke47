@@ -30,7 +30,7 @@ Route100_EventScript_GauntletEnd2::
         msgbox Route100_Text_YouLose
 Route100_EventScript_YouLostThereforeLossPoints::
 	goto_if_eq VAR_0x8004, 0, gaunteltfuckingyouhavesomepoints
-        callnative fuckromhacking
+        callnative fuckromhacking @ this adds the values in two vars together. like addvar doesn't.
         call_if_gt VAR_GAUNTLET_LOSS_POINTS, 1000, Route100_setto999losspoints @ ok cool
 	buffernumberstring STR_VAR_1, VAR_0x8004 
         msgbox Route100_Text_LossPoints MSGBOX_YESNO
