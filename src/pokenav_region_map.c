@@ -280,7 +280,6 @@ void FreeRegionMapSubstruct2(void)
     FreeRegionMapIconResources();
     FreeCityZoomViewGfx();
     RemoveWindow(state->infoWindowId);
-    gSaveBlock2Ptr->optionsEmuSpeedSuppress = 0;
     FreePokenavSubstruct(POKENAV_SUBSTRUCT_REGION_MAP);
     FreePokenavSubstruct(POKENAV_SUBSTRUCT_REGION_MAP_ZOOM);
     SetPokenavVBlankCallback();
@@ -487,6 +486,7 @@ static u32 LoopedTask_ExitRegionMap(s32 taskState)
         HideBg(1);
         HideBg(2);
         HideBg(3);
+        gSaveBlock2Ptr->optionsEmuSpeedSuppress = 0;
         return LT_INC_AND_PAUSE;
     }
 
@@ -502,6 +502,7 @@ static u32 LoopedTask_TreatAsPokeNavFlyMap(s32 taskState)
         struct RegionMap* regionMap = GetSubstructPtr(POKENAV_SUBSTRUCT_REGION_MAP);
         SetFlyDestination(regionMap);
         gSkipShowMonAnim = TRUE;
+    gSaveBlock2Ptr->optionsEmuSpeedSuppress = 0;
         ReturnToFieldFromFlyMapSelect();
 
         return LT_FINISH;

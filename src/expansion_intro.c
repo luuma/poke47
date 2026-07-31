@@ -283,6 +283,8 @@ void Task_HandleExpansionIntro(u8 taskId)
             else
             {
                 CreateTask(Task_Scene1_Load, 0);
+                gSaveBlock2Ptr->optionsEmuSpeedSuppress = 1;
+
                 SetMainCallback2(MainCB2_Intro);
             }
         }

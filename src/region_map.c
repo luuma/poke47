@@ -2465,6 +2465,7 @@ static void CB_FadeInFlyMap(void)
     {
     case 0:
         BeginNormalPaletteFade(PALETTES_ALL, 0, 16, 0, RGB_BLACK);
+    gSaveBlock2Ptr->optionsEmuSpeedSuppress = 1;
         sFlyMap->state++;
         break;
     case 1:
@@ -2518,6 +2519,7 @@ static void CB_ExitFlyMap(void)
         if (!UpdatePaletteFade())
         {
             FreeRegionMapIconResources();
+            gSaveBlock2Ptr->optionsEmuSpeedSuppress = 0;
             if (sFlyMap->choseFlyLocation)
             {
                 struct RegionMap* tempRegionMap = &sFlyMap->regionMap;

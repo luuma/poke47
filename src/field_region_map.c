@@ -193,6 +193,7 @@ static void FieldUpdateRegionMap(void)
                     PlaySE(SE_SELECT);
                     SetFlyDestination(&sFieldRegionMapHandler->regionMap);
                     gSkipShowMonAnim = TRUE;
+    		    gSaveBlock2Ptr->optionsEmuSpeedSuppress = 0;
                     ReturnToFieldFromFlyMapSelect();
                 }
         }

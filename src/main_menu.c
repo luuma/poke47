@@ -1073,6 +1073,7 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
         }
         ChangeBgY(0, 0, BG_COORD_SET);
         ChangeBgY(1, 0, BG_COORD_SET);
+    gSaveBlock2Ptr->optionsEmuSpeedSuppress = 0;
         switch (action)
         {
         case ACTION_NEW_GAME:
