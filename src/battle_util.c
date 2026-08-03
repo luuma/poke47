@@ -9516,7 +9516,7 @@ void TryRestoreHeldItems(void)
             u32 hp;
             if (!(FlagGet(FLAG_FULL_RECOVERY_EACH_BATTLE)))
             {
-                hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MAX_HP) * 2 / 5;
+                hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MAX_HP) * 2 / 5;// how did i get the number right first time lmao
                 if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP) < hp)
       		    SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, &hp);
             }

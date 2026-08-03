@@ -3698,7 +3698,7 @@ void ScrCmd_SetGauntletBossBattle(struct ScriptContext *ctx)
 
     ZeroEnemyPartyMons();
     u32 i;
-    u32 bossIdx = altar + Random() %3; //GauntletReadRng(3); 
+    u32 bossIdx = altar + GauntletReadRng(3); //; 
     enum Species species = sGauntletBossList[bossIdx].species;
 
     u32 personality = GetMonPersonality(species,

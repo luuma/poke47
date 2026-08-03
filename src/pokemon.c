@@ -7631,13 +7631,17 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
     }
     if(loss<1)
         loss=1;
-
+    u32 twofifthsHP = GetHP *2 /5;// last time we need max hp
     GetHP = GetMonData(mon, MON_DATA_HP); // reuse same uint
     u32 currHP = 1;
     if (loss < GetHP)
         currHP = (GetHP - loss); // if not KO'd, set HP. If KO'd, leave it at 1.
     if (currHP * 4 < GetMonData(mon, MON_DATA_MAX_HP)) // if under 1/4 HP now, return "defeated and wore itself out" result
         gSpecialVar_0x8006 = 0;
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE) && currHP < twofifthsHP)// becomes really fun!!!
+    {
+        return twofifthsHP;
+    }
     return currHP;
 }
 
@@ -7650,11 +7654,11 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     u32 initialLevel = GetMonData(mon, MON_DATA_LEVEL);
     u32 totalXP = GetMonData(mon, MON_DATA_EXP);
     u32 addxp = gSpeciesInfo[speciesFoe].expYield * levelFoe;
-    addxp /= 5;
+    addxp /= 4;// should be 5 in theory
     addxp *= sExperienceScalingFactors[(levelFoe * 2) +10];
     addxp /= sExperienceScalingFactors[levelFoe+initialLevel+10];
     addxp += 1; 
-    addxp /= 2.5;
+    addxp /= 2;// 2.5 in theory bt this is not a float lmao.
     u32 bufferxp = GetSoftLevelCapExpValue(initialLevel, addxp);
     totalXP = totalXP + bufferxp;// This is added because users will expect soft level caps to apply to autobattling.
     SetMonData(mon, MON_DATA_EXP, &totalXP);
