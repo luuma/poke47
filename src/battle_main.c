@@ -4733,7 +4733,7 @@ u32 GetBattlerTotalSpeedStat(enum BattlerId battler, enum Ability ability, enum 
         speed /= 2;
     else if (holdEffect == HOLD_EFFECT_IRON_BALL)
         speed /= 2;
-    else if (holdEffect == HOLD_EFFECT_CHOICE_SCARF && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
+    else if ((holdEffect == HOLD_EFFECT_CHOICE_SCARF || holdEffect == HOLD_EFFECT_RANDOMISER) && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
         speed = (speed * 150) / 100;
     else if (holdEffect == HOLD_EFFECT_EVIOLITESPEED)
     {

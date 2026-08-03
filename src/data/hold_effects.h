@@ -645,4 +645,7 @@ const struct HoldEffectInfo gHoldEffectsInfo[HOLD_EFFECT_COUNT] =
     {
     },
 
+    [HOLD_EFFECT_RANDOMISER] =
+    {
+    },
 };

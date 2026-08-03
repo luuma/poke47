@@ -16138,6 +16138,24 @@ const struct ItemInfo gItemsInfo[] =
         .iconPic = gItemIcon_AbilityShield,
         .iconPalette = gItemIconPalette_LustrousOrb,
     },
+    [ITEM_RANDOMISER] =
+    {
+        .name = ITEM_NAME("Magic Metronome"),
+        .price = 10000,
+        .holdEffect = HOLD_EFFECT_RANDOMISER,
+        .holdEffectParam = 2,// param unused.
+        .description = COMPOUND_STRING(
+            "1.5x Speed.\n"
+            "Randomises moves\n"
+            "every turn."),
+        .pocket = POCKET_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 180,// get it
+        .iconPic = gItemIcon_Metronome,
+        .iconPalette = gItemIconPalette_LustrousOrb,
+    },
 };
 
 #undef ITEM_NAME

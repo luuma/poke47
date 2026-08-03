@@ -31,9 +31,12 @@
 #include "trainer_slide.h"
 
 // Used to exclude moves learned temporarily by Transform or Mimic
-#define MOVE_IS_PERMANENT(battler, moveSlot)                        \
-   (!(gBattleMons[battler].volatiles.transformed)           \
- && !(gBattleMons[battler].volatiles.mimickedMoves & (1u << moveSlot)))
+#define MOVE_IS_PERMANENT(battler, moveSlot)                         \
+   (!(gBattleMons[battler].volatiles.transformed)                     \
+ && !(gBattleMons[battler].volatiles.mimickedMoves & (1u << moveSlot)) \
+ && !(GetBattlerHoldEffect(battler) == HOLD_EFFECT_RANDOMISER)  )
+            
+
 
 // Battle Actions
 // These determine what each battler will do in a turn

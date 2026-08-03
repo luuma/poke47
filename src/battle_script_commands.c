@@ -7852,7 +7852,8 @@ static void Cmd_mimicattackcopy(void)
     if (gLastMoves[gBattlerTarget] == MOVE_UNAVAILABLE
      || gLastMoves[gBattlerTarget] == MOVE_NONE
      || gBattleMons[gBattlerAttacker].volatiles.transformed
-     || IsMoveMimicBanned(gLastMoves[gBattlerTarget]))
+     || IsMoveMimicBanned(gLastMoves[gBattlerTarget])
+     || GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_RANDOMISER)
     {
         gBattlescriptCurrInstr = cmd->failInstr;
     }
@@ -8111,7 +8112,8 @@ static void Cmd_copymovepermanently(void)
 
     if (!(gBattleMons[gBattlerAttacker].volatiles.transformed)
         && gLastPrintedMoves[gBattlerTarget] != MOVE_UNAVAILABLE
-        && !IsMoveSketchBanned(gLastPrintedMoves[gBattlerTarget]))
+        && !IsMoveSketchBanned(gLastPrintedMoves[gBattlerTarget])
+        && !(GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_RANDOMISER))
     {
         s32 i;
 
@@ -8234,7 +8236,8 @@ static void Cmd_tryspiteppreduce(void)
 
             // if (MOVE_IS_PERMANENT(gBattlerTarget, i)), but backwards
             if (!(gBattleMons[gBattlerTarget].volatiles.mimickedMoves & (1u << i))
-                && !(gBattleMons[gBattlerTarget].volatiles.transformed))
+                && !(gBattleMons[gBattlerTarget].volatiles.transformed)
+                && !(GetBattlerHoldEffect(gBattlerTarget) == HOLD_EFFECT_RANDOMISER))
             {
                 BtlController_EmitSetMonData(gBattlerTarget, B_COMM_TO_CONTROLLER, REQUEST_PPMOVE1_BATTLE + i, 0, sizeof(gBattleMons[gBattlerTarget].pp[i]), &gBattleMons[gBattlerTarget].pp[i]);
                 MarkBattlerForControllerExec(gBattlerTarget);

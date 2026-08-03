@@ -987,11 +987,15 @@ static enum CancelerResult CancelerPPDeduction(struct BattleCalcValues *cv)
     if (gBattleStruct->submoveAnnouncement == SUBMOVE_SUCCESS)
         movePosition = gChosenMovePos;
 
+/// SHOULD be at start of turn really
+
+
     if (GetBattlerHoldEffect(cv->battlerAtk) == HOLD_EFFECT_KNELL_BELL)
     {
         ppCost *= 4;//
         ppToDeduct = ppCost;
     }
+
 
     if (IsSpreadMove(moveTarget)
      || moveTarget == TARGET_ALL_BATTLERS
@@ -1012,13 +1016,39 @@ static enum CancelerResult CancelerPPDeduction(struct BattleCalcValues *cv)
     }
 
     // For item Metronome, echoed voice
-    if (cv->move != gLastResultingMoves[cv->battlerAtk] || gBattleStruct->unableToUseMove)
-        gBattleMons[cv->battlerAtk].volatiles.metronomeItemCounter = 0;
 
     if (gBattleMons[cv->battlerAtk].pp[movePosition] > ppToDeduct)
         gBattleMons[cv->battlerAtk].pp[movePosition] -= ppToDeduct;
     else
         gBattleMons[cv->battlerAtk].pp[movePosition] = 0;
+
+    if (GetBattlerHoldEffect(cv->battlerAtk) == HOLD_EFFECT_RANDOMISER && GetActiveGimmick(cv->battlerAtk) != GIMMICK_DYNAMAX)
+    {
+        u32 metronomeval = min(gBattleMons[cv->battlerAtk].volatiles.metronomeItemCounter, 3);
+        for (u32 i = 0; i < MAX_MON_MOVES; i++)
+        {
+            u32 j = 0; 
+            enum Move moveFound = MOVE_METRONOME;
+            u32 movepp = 0;
+            do
+            {
+                moveFound = RandomUniform(RNG_METRONOME, 1, MOVES_COUNT);// skip move none
+                movepp = GetMovePP(moveFound);
+                j++;
+            } while (   ((movepp > (35 - (10 * metronomeval)) || movepp < (15 - (5 * metronomeval)) )  && j<200) 
+                      || (GetBattleMoveType(moveFound) != GetBattleMoveType(gBattleMons[cv->battlerAtk].moves[i])) 
+                      || moveFound == gBattleMons[cv->battlerAtk].moves[0]
+                      || moveFound == gBattleMons[cv->battlerAtk].moves[1]
+                      || moveFound == gBattleMons[cv->battlerAtk].moves[2]
+                      || moveFound == gBattleMons[cv->battlerAtk].moves[3]);
+
+            gBattleMons[gBattlerAttacker].pp[i] = movepp;// overwrites pp deduction
+            gBattleMons[gBattlerAttacker].moves[i] = moveFound;
+        }
+    }
+    else if (cv->move != gLastResultingMoves[cv->battlerAtk] || gBattleStruct->unableToUseMove)
+        gBattleMons[cv->battlerAtk].volatiles.metronomeItemCounter = 0;// don't reset if holding it. Moved after pp reduction. This is unlikely to affect jack shit.
+
 
     gLastMoves[cv->battlerAtk] = gChosenMove;
 
@@ -4987,7 +5017,7 @@ static void SetSameMoveTurnValues(enum BattleMoveEffects moveEffect)
         break;
     }
 
-    if (increment)
+    if (increment || GetBattlerHoldEffect(gBattlerAttacker) == HOLD_EFFECT_RANDOMISER)
         gBattleMons[gBattlerAttacker].volatiles.metronomeItemCounter++;
     else
         gBattleMons[gBattlerAttacker].volatiles.metronomeItemCounter = 0;

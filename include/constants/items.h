@@ -1071,14 +1071,14 @@ enum __attribute__((packed)) Item
 
     ITEM_LEVEL_CAP = 874,
     ITEM_SPANDEX_FLARES = 875,
-    ITEM_EVIUM_INGOT,
-    ITEM_EVIOPOLYMER,
+    ITEM_EVIUM_INGOT,// To be deleted
+    ITEM_EVIOPOLYMER,// ditto
     ITEM_KNELL_BELL,
     ITEM_DAMAGE_BOUNCEABLES,
-    ITEM_CURSED_SHELL,
+    ITEM_CURSED_SHELL,// unused
     ITEM_ALEMBIC,
     ITEM_SHOCK_SHIELD,
-    ITEM_space8,
+    ITEM_RANDOMISER,
     ITEM_OVAL_CHARM,// 	why the 	fuck is this saying there are multiple definitions.
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,

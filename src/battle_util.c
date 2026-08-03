@@ -9579,7 +9579,7 @@ void TryRestoreHeldItems(void)
     //if (!B_TRAINERS_KNOCK_OFF_ITEMS && B_RESTORE_HELD_BATTLE_ITEMS < GEN_9)//deleted as the function is now doing five things at once for me and two of them come after here and are nothing to do with restoring held items.
         //return;
 
-    bool32 returnNPCItems = B_RETURN_STOLEN_NPC_ITEMS >= GEN_5 && gBattleTypeFlags & BATTLE_TYPE_TRAINER;
+    bool32 returnNPCItems = B_RETURN_STOLEN_NPC_ITEMS >= GEN_5;//  && gBattleTypeFlags & BATTLE_TYPE_TRAINER
 
     for (u32 i = 0; i < PARTY_SIZE; i++)
     {
@@ -9588,10 +9588,9 @@ void TryRestoreHeldItems(void)
             u32 lostItem = gBattleStruct->itemLost[B_TRAINER_PLAYER][i].originalItem;
             bool32 isHeldItemBerry = GetItemPocket(lostItem) == POCKET_BERRIES;
 
-            if ((isHeldItemBerry || lostItem == ITEM_NONE) && !returnNPCItems)
-                continue;
-
-            if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM) != lostItem)
+            if ((isHeldItemBerry || lostItem == ITEM_NONE) 
+                && !returnNPCItems 
+                && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM) != lostItem)
                 continue;
 
             SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &lostItem);
@@ -9652,18 +9651,20 @@ void TrySaveExchangedItem(enum BattlerId battler, enum Item stolenItem)
 {
     // Because BtlController_EmitSetMonData does SetMonData, we need to save the stolen item only if it matches the battler's original
     // So, if the player steals an item during battle and has it stolen from it, it will not end the battle with it (naturally)
-    if (B_TRAINERS_KNOCK_OFF_ITEMS == FALSE)
-        return;
+    //if (B_TRAINERS_KNOCK_OFF_ITEMS == FALSE)
+        //return;
 
-    if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
-        return;
+    //if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
+        //return;
 
     if (GetBattlerTrainer(battler) != B_TRAINER_PLAYER)
         return;
 
     // If regular trainer battle and mon's original item matches what is being stolen, save it to be restored at end of battle
     if (stolenItem == gBattleStruct->itemLost[B_TRAINER_PLAYER][gBattlerPartyIndexes[battler]].originalItem)
-        gBattleStruct->itemLost[B_TRAINER_PLAYER][gBattlerPartyIndexes[battler]].stolen = TRUE;
+    {
+        gBattleStruct->itemLost[B_TRAINER_PLAYER][gBattlerPartyIndexes[battler]].stolen = TRUE; 
+    }
 }
 
 bool32 IsBattlerAffectedByHazards(enum BattlerId battler, enum HoldEffect holdEffect, bool32 toxicSpikes)
