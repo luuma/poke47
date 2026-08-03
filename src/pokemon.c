@@ -1458,11 +1458,27 @@ bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
     if (P_ONLY_OBTAINABLE_SHINIES && (CurrentBattlePyramidLocation() != PYRAMID_LOCATION_NONE || (FlagGet(WE_FLAG_NO_CATCHING))))
         return FALSE;
 
-    if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
+    if (gSaveBlock3Ptr->fullboxes == TOTAL_BOXES_COUNT)// there will be a bool for this.
+    {
+        gSaveBlock3Ptr->shinycompensation++;//probably won't overflow lol.
         return FALSE;
+    }
+
+    if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
+    {
+        gSaveBlock3Ptr->shinycompensation++;//probably won't overflow lol.
+        return FALSE;
+    }
 
     u32 totalRerolls = 0;
-    
+    if (gSaveBlock3Ptr->shinycompensation !=0)
+    {
+        totalRerolls += min(gSaveBlock3Ptr->shinycompensation, 100);// plenty. 
+        if (gSaveBlock3Ptr->shinycompensation >100)
+            gSaveBlock3Ptr->shinycompensation -= 100;
+        else
+            gSaveBlock3Ptr->shinycompensation = 0;
+    }
     if (CheckBagHasItem(ITEM_SHINY_CHARM, 1) || CheckBagHasItem(ITEM_LEVEL_CAP, 1))
         totalRerolls += I_SHINY_CHARM_ADDITIONAL_ROLLS;
 
@@ -1473,6 +1489,9 @@ bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
 
     if (gDexNavSpecies)
         totalRerolls += CalculateDexNavShinyRolls();
+
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
+        totalRerolls += gSaveBlock3Ptr->fullboxes;// i assume this needs to be quick as fuck.
 
     while (GET_SHINY_VALUE(value, personality) >= SHINY_ODDS && totalRerolls > 0)
     {

@@ -286,8 +286,11 @@ struct SaveBlock3
     struct Sfc32State seedItemshigh;
     struct Sfc32State seedItemsend;
     struct Sfc32State seedMintHaha;
-    struct Sfc32State seedBoons; //
-    u32 padding[8];
+    struct Sfc32State seedBoons; 
+    u8 fullboxes;// calculating boost to shiny odds
+    u16 shinycompensation;// for each skipped encounter, adds to running total rerolls which is then used later.
+    u8 paddingggg;
+    u32 padding[7];
     struct GIStarts GauntletIslandStartingBenefits;
  // unused go below:    
 #if FNPC_ENABLE_NPC_FOLLOWERS

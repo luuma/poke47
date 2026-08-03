@@ -112,7 +112,6 @@ GauntletIsland_TxtBeatAltar:
 	.string "Decided to go back.$"
 
 GauntletIsland_AltarLoss::
-    setvar B_VAR_WILD_AI_FLAGS, 0
     warp MAP_ROUTE_100, 8, 11
     waitstate
     end

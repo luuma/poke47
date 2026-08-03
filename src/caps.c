@@ -30,7 +30,7 @@ u32 GetCurrentLevelCap(void)
     {
         {FLAG_GAUNTLET_HP_ALTAR, 7},//hp. This boss is easy enough.
         {FLAG_GAUNTLET_ATK_ALTAR, 14},//DEF. This boss should try to kick yuor Ass.
-        {FLAG_GAUNTLET_SPATK_ALTAR, 18},//SDEF
+        {FLAG_GAUNTLET_SPATK_ALTAR, 19},//SDEF... was 18 for a While. Changed because it's fine to do so, because grinding was good here, because boss is often a beast
         {FLAG_GAUNTLET_SPEED_ALTAR, 25},//speed
         {FLAG_GAUNTLET_BOSS_ALTAR, 31},//ATK/SATK COMPLETION
     };

@@ -17,7 +17,7 @@ Route100_EventScript_GauntletEnd2::
         applymovement LOCALID_PLAYER, Common_Movement_WalkInPlaceFasterUp
         waitmovement 0
         callnative GauntletEnd @ this also clears several flags and vars.
-        goto_if_eq VAR_RESULT, FALSE, Route100_EventScript_Failsafe
+        goto_if_eq VAR_0x8004, 0xFFFF, Route100_EventScript_Failsafe
         setflag FLAG_TEMP_1
         goto_if_set FLAG_GAUNTLET_BOSS_ALTAR, Route100_EventScript_BRAVO
         goto_if_set FLAG_GAUNTLET_SPEED_ALTAR, Route100_EventScript_Altar4
@@ -25,26 +25,24 @@ Route100_EventScript_GauntletEnd2::
         goto_if_set FLAG_GAUNTLET_ATK_ALTAR, Route100_EventScript_Altar2
         goto_if_set FLAG_GAUNTLET_HP_ALTAR, Route100_EventScript_Altar1
         goto_if_eq VAR_0x8004, 1234, Route100_EventScript_Retire @ Seems better to handle properly every time unless they gave up early, rather than say "you retired" even if they did great.
-	setvar VAR_0x8004, 0
 	call_if_unset GAUNTLET_FREELOSSPOINT, gaunteltreleasened_FREELOSSPOINTAAAAAA
         msgbox Route100_Text_YouLose
 Route100_EventScript_YouLostThereforeLossPoints::
 	goto_if_eq VAR_0x8004, 0, gaunteltfuckingyouhavesomepoints
         callnative fuckromhacking @ this adds the values in two vars together. like addvar doesn't.
-        call_if_gt VAR_GAUNTLET_LOSS_POINTS, 1000, Route100_setto999losspoints @ ok cool
-	buffernumberstring STR_VAR_1, VAR_0x8004 
+        call_if_gt VAR_GAUNTLET_LOSS_POINTS, 10000, Route100_setto999losspoints @ ok cool
+	buffernumberstring STR_VAR_1, VAR_0x8004 @str var 2 and 3 are set by gauntletend 
         msgbox Route100_Text_LossPoints MSGBOX_YESNO
         goto_if_eq VAR_RESULT, YES, Route100_LossPointShop
         releaseall
         end
 
 gaunteltfuckingyouhavesomepoints::
-	goto_if_eq VAR_GAUNTLET_LOSS_POINTS, 0, gauntletreleasened
+	goto_if_eq VAR_GAUNTLET_LOSS_POINTS, 0, gauntletreleasened @perhaps should do the free loss point here but this would be strange messages.
 	buffernumberstring STR_VAR_1, VAR_GAUNTLET_LOSS_POINTS
         msgbox Route100_Text_LossPointsHave MSGBOX_YESNO
         goto_if_eq VAR_RESULT, YES, Route100_LossPointShop
 gauntletreleasened::
-
         releaseall
         end
 
@@ -53,8 +51,9 @@ Route100_Text_LossPointsHave:
 	.string "Spend them now?$"
 
 gaunteltreleasened_FREELOSSPOINTAAAAAA::
-	setvar VAR_0x8004, 1
+        goto_if_ne VAR_0x8004, 0, gaunteltreleasened_FREELOSSPOINTAAAAAASKIP
 	setflag GAUNTLET_FREELOSSPOINT
+gaunteltreleasened_FREELOSSPOINTAAAAAASKIP::
 	return
 
 Route100_EventScript_Retire::
@@ -64,7 +63,6 @@ Route100_EventScript_Retire::
         end
 
 Route100_EventScript_Altar1::
-        setvar VAR_0x8004, 1
         msgbox Route100_Text_MadeItToFirstAltar
         goto Route100_EventScript_YouLostThereforeLossPoints
         end
@@ -80,20 +78,17 @@ Route100_EventScript_BRAVO::
 
 
 Route100_EventScript_Altar2::
-        setvar VAR_0x8004, 3
         msgbox Route100_Text_MadeItToSecondAltar
         goto Route100_EventScript_YouLostThereforeLossPoints
         end
 
 
 Route100_EventScript_Altar3::
-        setvar VAR_0x8004, 6
         msgbox Route100_Text_MadeItToSecondAltar
         goto Route100_EventScript_YouLostThereforeLossPoints
         end
 
 Route100_EventScript_Altar4::
-        setvar VAR_0x8004, 10
         msgbox Route100_Text_MadeItToFourthAltar
         goto Route100_EventScript_YouLostThereforeLossPoints
         end
@@ -147,8 +142,9 @@ Route100_Text_YouLose:
  	.string "back to its old state, once more.$"
 
 Route100_Text_LossPoints:
-	.string "For a heroic loss in the CHALLENGE,\n"
-	.string "{PLAYER} received {STR_VAR_1} LOSS POINTS.\l"
+	@ .string "For a heroic loss in the CHALLENGE,\n"
+	.string "For raising {STR_VAR_2} POKéMON to level {STR_VAR_3},\n"
+	.string "{PLAYER} received {STR_VAR_1} LOSS POINTS.\p"
 	.string "Spend them now?$"
 
 ROUTE_100_Witch::
@@ -185,14 +181,14 @@ Route100_EventScript_GauntletSetup::
 	msgbox Route100_Text_GauntletChallengeBegin
 	applymovement VAR_LAST_TALKED, Common_Movement_WalkUp
 	waitmovement 0
-	delay 30
+	delay 10
 	hideobjectat VAR_LAST_TALKED, MAP_ROUTE_100
         hidefollower 0
 	call_if_eq VAR_FACING, DIR_NORTH, SlateportCity_Harbor_EventScript_BoardFerryNorth
 	call_if_eq VAR_FACING, DIR_WEST, SlateportCity_Harbor_EventScript_BoardFerryEast
 	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
 	waitmovement 0
-	delay 30
+	delay 10
 	hideplayer
 	applymovement LOCALID_WITCH_BOAT, Route100_Movement_BoatDepart
 	waitmovement 0
@@ -292,7 +288,7 @@ Route100_FUCKIT::
 	end
 
 Route100_setto999losspoints::
-        setvar VAR_GAUNTLET_LOSS_POINTS, 1000
+        setvar VAR_GAUNTLET_LOSS_POINTS, 10000
         return
 
 Route100_LossPointShop::@ god awful code. Duct tape glue and magic numbers. I am tired.

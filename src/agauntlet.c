@@ -22,8 +22,12 @@
 static void InitGauntletBagItems(void);
 static void RespawnAbout24RandomGauntletItemBalls(void);
 static bool32 GauntletPartySetup(void);
-static bool32 SquashEarthRibbonInfo(void);
+static u32 SquashEarthRibbonInfo(void);
 static void shrinknonearthribbonpartymember(u32 PartyIndex);
+
+static u32 numparty;
+static u32 minlevel;
+
 
 //static enum BoonType GetGauntletBnType(u32 id);
 //static enum GauntletTypes GetGauntletAltar(u32 id);
@@ -149,19 +153,22 @@ static u8 Squash(struct Pokemon *mon1, struct BoxPokemon *checkingMon)
                 return Level;
 }
 
+
 static void shrinknonearthribbonpartymember(u32 PartyIndex) // Shrink to the current level cap. If petalburg not beaten, devolve. Remove moves and items.
 {
     struct Pokemon *mon = &gParties[B_TRAINER_PLAYER][PartyIndex];
 
     if (GetMonData(mon, MON_DATA_SPECIES_OR_EGG) == SPECIES_EGG)
         return;// Failsafe
-    if (GetMonData(mon, MON_DATA_HP) == 0)
+    if (GetMonData(mon, MON_DATA_LEVEL) == 0)// SHould it be mon data hp?
         return;// Failsafe
-
     enum Species species = GetMonData(mon, MON_DATA_SPECIES);
     u32 lv = GetCurrentLevelCap();
     if (!FlagGet(FLAG_VISITED_RUSTBORO_CITY))
 	lv = 5;// lv13 is too much for even route 104.
+
+    minlevel=min(minlevel, GetMonData(mon, MON_DATA_LEVEL));
+    numparty++;
 
     u32 expPoints = gExperienceTables[gSpeciesInfo[species].growthRate][lv];
     if (GetMonData(mon, MON_DATA_EXP) > expPoints)
@@ -188,15 +195,19 @@ static void shrinknonearthribbonpartymember(u32 PartyIndex) // Shrink to the cur
     CalculateMonStats(mon);
 }
 
-static bool32 SquashEarthRibbonInfo(void)
+static u32 SquashEarthRibbonInfo(void)
 {
     u32 h;
     u32 contd = FALSE;
     struct Pokemon *mon;
+    minlevel=100;// pulled down
+    numparty=0;//to count the earth ribbon holder
+
     for (h = 0; h < PARTY_SIZE; h++)
     {
         if (GetMonData(&gParties[B_TRAINER_PLAYER][h], MON_DATA_EARTH_RIBBON))
         {
+            numparty++;
             contd = TRUE;
             mon = &gParties[B_TRAINER_PLAYER][h];
         }
@@ -205,12 +216,11 @@ static bool32 SquashEarthRibbonInfo(void)
     }
     if (!contd)
         return FALSE; 
-
     u32 i, j;
     contd = FALSE;
     SetPCBoxToSendMon(VarGet(VAR_PC_BOX_TO_SEND_MON));
     i = StorageGetCurrentBox();
-
+    minlevel = min(minlevel, GetMonData(mon, MON_DATA_LEVEL));
     do
     {
         for (j = 0; j < IN_BOX_COUNT; j++)
@@ -236,7 +246,14 @@ static bool32 SquashEarthRibbonInfo(void)
         else
             i++;
     } while (i != StorageGetCurrentBox());
-    return contd;
+
+    if (!contd)
+        return FALSE;
+    ConvertUIntToDecimalStringN(gStringVar2, numparty, STR_CONV_MODE_LEFT_ALIGN, 2);
+    ConvertUIntToDecimalStringN(gStringVar3, minlevel, STR_CONV_MODE_LEFT_ALIGN, 3);
+    //assertf(FALSE, "numparty %d", numparty);
+    //assertf(FALSE, "min lev %d", minlevel);
+    return minlevel + numparty;
 }
 
 static void GauntletSeedRng(void)
@@ -328,13 +345,38 @@ void GauntletEnd(struct ScriptContext *ctx)// Called in map script in route 100 
 {
     FlagClear(FLAG_GAUNTLET_CHALLENGE);
     FlagClear(FLAG_STORING_ITEMS_IN_PYRAMID_BAG);//PRObably not needed.
-    ResetGauntletVars();
+    // other flags don't need clearing just yet iirc. item balls, rocks and that shit.
+    u32 levelplusparty = SquashEarthRibbonInfo(); // this is done after gauntlet challenge is cleared, so it can read information about the current level cap.
+// HANDLE LOSS POINT AWARD
+    if (levelplusparty>0)
+    {
+    if (FlagGet(FLAG_GAUNTLET_BOSS_ALTAR))
+        VarSet(VAR_0x8004, 0);// victory point instead. . . . . . .  i think.
+    else if (FlagGet(FLAG_GAUNTLET_SPEED_ALTAR) || (FlagGet(FLAG_GAUNTLET_SPATK_ALTAR) && VarGet(B_VAR_WILD_AI_FLAGS)))
+        VarSet(VAR_0x8004, levelplusparty*2);   // usually about 60, up to like 80.
+    else if (FlagGet(FLAG_GAUNTLET_SPATK_ALTAR) || (FlagGet(FLAG_GAUNTLET_ATK_ALTAR) && VarGet(B_VAR_WILD_AI_FLAGS)>0))
+    {
+        VarSet(VAR_0x8004, levelplusparty);// usually about 20, up to like 22
+    }
+    else if (FlagGet(FLAG_GAUNTLET_ATK_ALTAR) || (FlagGet(FLAG_GAUNTLET_HP_ALTAR) && VarGet(B_VAR_WILD_AI_FLAGS)>0))
+    {
+        VarSet(VAR_0x8004, levelplusparty/2);//8 to 11
+    }
+    else if (FlagGet(FLAG_GAUNTLET_HP_ALTAR) || (VarGet(B_VAR_WILD_AI_FLAGS) && levelplusparty>=9))// fight boss improve yield 
+    {
+        VarSet(VAR_0x8004, levelplusparty/6);// usually 1, up to 2.
+    }
+    else
+        VarSet(VAR_0x8004, 0);
+    }
+    else
+        VarSet(VAR_0x8004, 0xFFFF);
     for (u32 i = FLAG_FIVE_BOONS; i < GAUNTLET_QUITTER_DETECTED; i++)// sys flag clearing. 
         FlagClear(i);
-    // other flags don't need clearing just yet iirc. item balls, rocks and that shit.
-    bool32 SuccessfulSquash = SquashEarthRibbonInfo(); // this is done after gauntlet challenge is cleared, so it can read information about the current level cap.
+    ResetGauntletVars();
     VarSet(VAR_GAUNTLET_ACTIVE, 0);// this is done after successfulsquash so it knows "hey do this cap even if theyve not got a level cap in bag"
-    VarSet(VAR_RESULT, SuccessfulSquash);
+
+    VarSet(B_VAR_WILD_AI_FLAGS, 0);
     return;
 }
 
@@ -1303,18 +1345,18 @@ void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
         {
             output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.sportBalls; 
             price = 1;
-            if (output == 1) price = 2;
-            if (output == 2) price = 5;
-            if (output >= 3) price = 25;
+            if (output == 1) price = 3;
+            if (output == 2) price = 10;
+            if (output >= 3) price = 100;
             break;
         }
         case 2: 
         case 12:  
         {
             output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.sacredAshes; 
-            price = 10;
-            if (output == 1) price = 50;
-            if (output >= 2) price = 200;
+            price = 70;
+            if (output == 1) price = 200;
+            if (output >= 2) price = 1000;
             break;
         }
         case 3: 
@@ -1328,7 +1370,7 @@ void ScrCmd_GauntletStartingBenefitHandler(struct ScriptContext *ctx)
         case 14:  
         {
             output = gSaveBlock3Ptr->GauntletIslandStartingBenefits.setsof5lessrandomrespawnballs; 
-            price = 5*(1+output);
+            price = 10*(1+output);
             break;
         }
         default: break;

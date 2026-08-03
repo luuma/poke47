@@ -3586,6 +3586,7 @@ bool8 ShouldShowBoxWasFullMessage(void)
         if (StorageGetCurrentBox() != VarGet(VAR_PC_BOX_TO_SEND_MON))
         {
             FlagSet(FLAG_SHOWN_BOX_WAS_FULL_MESSAGE);
+            //UpdateNumInBoxes;. didn't seem to run. not gonna include that! wack
             return TRUE;
         }
     }

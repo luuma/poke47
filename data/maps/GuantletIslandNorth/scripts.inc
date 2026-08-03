@@ -27,3 +27,21 @@ GauntletIslandNorth_Text_SignTown:
 	.string "GAUNT CITY\p"
 	.string "“In the quiet waters,\n"
 	.string "growing forever.”$"
+
+GuantletIslandNorth_EventScript_SignShinyTips::
+	msgbox GauntletIslandNorth_Text_SignShinyTips, MSGBOX_SIGN
+	end
+
+GauntletIslandNorth_Text_SignShinyTips:
+   	.string "GAUNTLET CHALLENGE TIPS: SHINIES\p"
+
+	.string "For each BOX you have filled,\n"
+	.string "you have a higher chance for\l"
+	.string "POKéMON to be SHINY on this island.$"
+
+	.string "One reroll per full BOX!\p"
+
+	.string "Don't worry if you run out of BALLS!\p"
+	.string "Any SHINY POKéMON you encounter\n"
+	.string "will wait secretly until you have\l"
+	.string "BALLS and then come back to face you!$"

@@ -241,13 +241,13 @@
 #define VAR_UNUSED_0x40DB                                0x40DB // Unused Var
 #define VAR_UNUSED_0x40DC                                0x40DC // Unused Var
 #define VAR_GIFT_PICHU_SLOT                              0x40DD
-#define VAR_GAUNTLET_4                                0x40DE // Var CLEANED
+#define VAR_GAUNTLET_4                                0x40DE // Var CLEANED. realistically could be a pointer but better off not that.
 #define VAR_GAUNTLET_5                                0x40DF // Var CLEANED
 #define VAR_GAUNTLET_6                                0x40E0 // CLEANED
 #define VAR_GAUNTLET_7                                0x40E1 // CLEANED
 #define VAR_GAUNTLET_8                                0x40E2 // CLEANED
-#define VAR_GAUNTLET_BITFIELD_1                                0x40E3 // CLEANED
-#define VAR_GAUNTLET_BITFIELD_2                                0x40E4 // CLEANED
+#define VAR_GAUNTLET_BITFIELD_1                                0x40E3 // this should be converted to a pointer in saveblock3.
+#define VAR_GAUNTLET_BITFIELD_2                                0x40E4 // this should be converted to a pointer in saveblock3.
 #define VAR_GAUNTLET_9                                0x40E5 // goes to 4 for tutorial shit in gauntlet island.
 #define VAR_DAILY_SLOTS                                  0x40E6
 #define VAR_DAILY_WILDS                                  0x40E7
@@ -272,7 +272,7 @@
 #define VAR_FADE_STEP_COUNTER                                0x40FA // USED
 #define VAR_WILD_AI_FLAGS                                0x40FB // used gauntlet island
 #define VAR_GAUNTLET_A                                0x40FC // 
-#define VAR_UNUSED_0x40FD                                0x40FD // Unused Var
+#define VAR_UNUSED_0x40FD			0x40FD //unused!! 
 #define VAR_UNUSED_0x40FE                                0x40FE // Unused Var
 #define VAR_UNUSED_0x40FF                                0x40FF // Unused Var
 

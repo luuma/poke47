@@ -1,6 +1,6 @@
 {
     "view": {
-        "editCursorTick": 7968,
+        "editCursorTick": 8160,
         "emptyLanes": [
             {
                 "cc": 255,
@@ -9,7 +9,7 @@
         ],
         "gridMinDenom": 0,
         "gridTriplet": false,
-        "keyHeight": 6,
+        "keyHeight": 11,
         "laneHeight": 128,
         "laneHeights": {
             "cc:0:10": 36,
@@ -22,10 +22,10 @@
             "voice:4": 128,
             "voice:5": 128
         },
-        "pxPerBeat": 14.088379449389379,
-        "scrollPx": 1882,
-        "scrollY": 201,
-        "selectedTrack": 2,
+        "pxPerBeat": 12.23664587475212,
+        "scrollPx": 967,
+        "scrollY": 668,
+        "selectedTrack": 4,
         "splitter": [
             512,
             332

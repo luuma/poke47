@@ -439,7 +439,7 @@ void Overworld_ResetBattleFlagsAndVars(void)
     ResetStartingStatuses();
 
     #if B_VAR_WILD_AI_FLAGS != 0
-        VarSet(B_VAR_WILD_AI_FLAGS,0);
+        //VarSet(B_VAR_WILD_AI_FLAGS,0); ugh fuck off man no let me bastardise this for random shit lmao
     #endif
 
     #if B_VAR_NO_BAG_USE != 0

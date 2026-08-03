@@ -1381,6 +1381,23 @@ u8 CountMonsInBox(u8 boxId)
     return count;
 }
 
+static void UpdateNumInBoxes(void)
+{
+    u16 i, count, j;
+    count = 0;
+    for (j = 0; j < TOTAL_BOXES_COUNT; j++)
+    {
+        for (i = 0; i < IN_BOX_COUNT; i++)
+        {
+            if (GetBoxMonDataAt(j, i, MON_DATA_SPECIES) == SPECIES_NONE)
+                break;
+        }
+        if (i >= (IN_BOX_COUNT-1))
+             count++;
+    }
+    gSaveBlock3Ptr->fullboxes = count;
+}
+
 s16 GetFirstFreeBoxSpot(u8 boxId)
 {
     u16 i;
@@ -3689,6 +3706,11 @@ static void Task_OnCloseBoxPressed(u8 taskId)
         sStorage->state++;
         break;
     case 4:
+        UpdateNumInBoxes();// when close pc, update the shininess boost
+        sStorage->state++;
+        break;
+
+    case 5:
         if (!IsComputerScreenCloseEffectActive())
         {
             UpdateBoxToSendMons();
@@ -3766,7 +3788,13 @@ static void Task_OnBPressed(u8 taskId)
         ComputerScreenCloseEffect(20, 0, 0);
         sStorage->state++;
         break;
+
     case 4:
+        UpdateNumInBoxes();// when close pc, update the shininess boost
+        sStorage->state++;
+        break;
+
+    case 5:
         if (!IsComputerScreenCloseEffectActive())
         {
             UpdateBoxToSendMons();

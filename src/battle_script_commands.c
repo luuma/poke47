@@ -11270,6 +11270,7 @@ void BS_sacredashbs(void)
     u16 maxHP;
     bool32 nonehealed= TRUE;
     bool32 healboy = FALSE;
+    bool32 gothealping = FALSE;
     for (u32 i=0; i < PARTY_SIZE; i++)
     {
         hp = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP);
@@ -11306,8 +11307,9 @@ void BS_sacredashbs(void)
 
             enum BattlerId partner = BATTLE_PARTNER(gBattlerAttacker);
             // Absent battlers on the field need to be replaced
-            if (IsDoubleBattle() && (gAbsentBattlerFlags & (1u << partner)))
+            if (IsDoubleBattle() && (gAbsentBattlerFlags & (1u << partner)) && !gothealping)
             {
+                gothealping = TRUE;
                 gAbsentBattlerFlags &= ~(1u << partner);
                 gBattleCommunication[MULTIUSE_STATE] = TRUE;
                 gBattleScripting.battler = partner;
