@@ -11247,8 +11247,8 @@ void BS_sacredashbs(void)
         // Check if the recipient is an active battler.
         if (i == gBattlerPartyIndexes[gBattlerAttacker])
             battler = gBattlerAttacker;
-        else if (IsDoubleBattle() && i == gBattlerPartyIndexes[BATTLE_PARTNER(gBattlerAttacker)])
-            battler = BATTLE_PARTNER(gBattlerAttacker);
+        else if (IsDoubleBattle() && i == gBattlerPartyIndexes[GetPartnerBattler(gBattlerAttacker)])
+            battler = GetPartnerBattler(gBattlerAttacker);
 
         // Get amount to heal.
         healAmount = maxHP - hp;
@@ -11266,7 +11266,7 @@ void BS_sacredashbs(void)
         {
             SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HP, &maxHP);
 
-            enum BattlerId partner = BATTLE_PARTNER(gBattlerAttacker);
+            enum BattlerId partner = GetPartnerBattler(gBattlerAttacker);
             // Absent battlers on the field need to be replaced
             if (IsDoubleBattle() && (gAbsentBattlerFlags & (1u << partner)) && !gothealping)
             {

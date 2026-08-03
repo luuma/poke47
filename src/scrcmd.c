@@ -3780,7 +3780,7 @@ void ScrCmd_SetGauntletPenultimateBossBattle(struct ScriptContext *ctx)
 	playerDevotions[i] = TYPE_WINGED_LION;
 	i++;
     }
-    u8 random = Random() % i;
+    u8 random = GauntletReadRng(i);
     u32 bossIdx = playerDevotions[random] + 15;
     random = (random + 1) % i;
     VarSet(VAR_GAUNTLET_BOSS2, playerDevotions[random] +15);
