@@ -3997,7 +3997,6 @@ BattleScript_FocusPunchSetUp::
 
 BattleScript_MegaEvolution::
 	flushtextbox
-	trytrainerslidemegaevolutionmsg
 	printstring STRINGID_MEGAEVOREACTING
 BattleScript_MegaEvolutionAfterString:
 	waitmessage B_WAIT_TIME_LONG
@@ -4012,7 +4011,6 @@ BattleScript_MegaEvolutionAfterString:
 
 BattleScript_WishMegaEvolution::
 	flushtextbox
-	trytrainerslidemegaevolutionmsg
 	printstring STRINGID_FERVENTWISHREACHED
 	goto BattleScript_MegaEvolutionAfterString
 
@@ -6326,7 +6324,6 @@ BattleScript_MoveEffectSteelsurge::
 
 BattleScript_DynamaxBegins::
 	flushtextbox
-	trytrainerslidedynamaxmsg
 	jumpifcangigantamax BS_ATTACKER, BattleScript_DynamaxBegins_GigantamaxString_01
 	printstring STRINGID_TIMETODYNAMAX
 	waitmessage B_WAIT_TIME_MED

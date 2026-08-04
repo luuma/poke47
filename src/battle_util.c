@@ -8912,8 +8912,24 @@ bool32 CanUltraBurst(enum BattlerId battler)
     return FALSE;
 }
 
+static void ActivateMegaEvolution_ContinueAfterSlide(void)
+{
+    gBattleResources->battleCallbackStack->size--;
+    gBattleMainFunc = gBattleResources->battleCallbackStack->function[gBattleResources->battleCallbackStack->size];
+    ActivateMegaEvolution(gBattleScripting.battler);
+}
+
 void ActivateMegaEvolution(enum BattlerId battler)
 {
+    if (ShouldDoTrainerSlide(battler, TRAINER_SLIDE_MEGA_EVOLUTION))
+    {
+        gBattleScripting.battler = battler;
+        gBattleResources->battleCallbackStack->function[gBattleResources->battleCallbackStack->size++] = gBattleMainFunc;
+        gBattleMainFunc = ActivateMegaEvolution_ContinueAfterSlide;
+
+        BattleScriptPushCursorAndCallback(BattleScript_TrainerSlideMsg);
+        return;
+    }
     enum Ability ability = GetBattlerAbility(battler);
     gLastUsedItem = gBattleMons[battler].item;
     SetActiveGimmick(battler, GIMMICK_MEGA);
@@ -9586,14 +9602,12 @@ void TryRestoreHeldItems(void)
         if (gBattleStruct->itemLost[B_TRAINER_PLAYER][i].stolen || returnNPCItems)
         {
             u32 lostItem = gBattleStruct->itemLost[B_TRAINER_PLAYER][i].originalItem;
-            bool32 isHeldItemBerry = GetItemPocket(lostItem) == POCKET_BERRIES;
 
-            if ((isHeldItemBerry || lostItem == ITEM_NONE) 
-                && !returnNPCItems 
-                && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM) != lostItem)
-                continue;
+            if (GetItemPocket(lostItem) == POCKET_BERRIES && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM) != lostItem)
+                lostItem = ITEM_NONE;
 
-            SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &lostItem);
+            if ((lostItem != ITEM_NONE || returnNPCItems) && GetItemPocket(lostItem) != POCKET_BERRIES)
+                SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &lostItem);
         }
         if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM) == ITEM_KNELL_BELL)
             {
