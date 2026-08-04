@@ -16145,7 +16145,7 @@ const struct ItemInfo gItemsInfo[] =
         .holdEffect = HOLD_EFFECT_RANDOMISER,
         .holdEffectParam = 2,// param unused.
         .description = COMPOUND_STRING(
-            "1.5x Speed.\n"
+            "1.3x Speed.\n"
             "Randomises moves\n"
             "every turn."),
         .pocket = POCKET_ITEMS,

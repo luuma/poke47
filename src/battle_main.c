@@ -4110,7 +4110,7 @@ static void HandleTurnActionSelectionState(void)
             		do
             		{
                 	    moveFound = RandomUniform(RNG_METRONOME, 1, MOVES_COUNT -1);// skip move none and move count (breakneck blitz)
-                        } while ( //!IsBattleMoveSpecial(moveFound)  || 
+                        } while ( IsBattleMovePhysical(moveFound)  || 
                      moveFound == gBattleMons[battler].moves[0]
                       || moveFound == gBattleMons[battler].moves[1]
                       || moveFound == gBattleMons[battler].moves[2]
@@ -4751,8 +4751,10 @@ u32 GetBattlerTotalSpeedStat(enum BattlerId battler, enum Ability ability, enum 
         speed /= 2;
     else if (holdEffect == HOLD_EFFECT_IRON_BALL)
         speed /= 2;
-    else if ((holdEffect == HOLD_EFFECT_CHOICE_SCARF || holdEffect == HOLD_EFFECT_RANDOMISER) && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
+    else if ((holdEffect == HOLD_EFFECT_CHOICE_SCARF) && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
         speed = (speed * 150) / 100;
+    else if ((holdEffect == HOLD_EFFECT_RANDOMISER) && GetActiveGimmick(battler) != GIMMICK_DYNAMAX)
+        speed = (speed * 130) / 100;
     else if (holdEffect == HOLD_EFFECT_EVIOLITESPEED)
     {
         u16 species = gBattleMons[battler].species;

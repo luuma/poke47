@@ -24202,8 +24202,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Flux"),
         .description = COMPOUND_STRING(
-            "Becomes a random move\n"
-            "at the start of each turn."), 
+            "Becomes a random Special\n"
+            "or Status move every turn."), 
         .effect = EFFECT_HIT,
         .power = 0,
         .type = TYPE_PSYCHIC,
