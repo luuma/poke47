@@ -326,7 +326,7 @@ enum VolatileFlags
     F(VOLATILE_SOMETHINGSPECIAL,         somethingSpecial,                (u32, 1)) \
     F(VOLATILE_SOMETHINGSPECIALSLOT,         somethingSpecialSlot,                (u32, 3)) \
 
-
+/* somethingspecial modes could go in the somethingspecial bool. like idk "pick phys"*/
 /* Use within a macro to get the maximum allowed value for a volatile. Requires _typeMaxValue as input. */
 #define GET_VOLATILE_MAXIMUM(_typeMaxValue, ...) INVOKE_WITH_B(GET_VOLATILE_MAXIMUM_, _typeMaxValue)
 #define GET_VOLATILE_MAXIMUM_(_type, ...) FIRST(__VA_OPT__(FIRST(__VA_ARGS__),) MAX_BITS((sizeof(_type) * 8)))
