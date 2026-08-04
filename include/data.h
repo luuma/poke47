@@ -105,8 +105,8 @@ enum MultiTeamSize
 
 struct StartingStatuses
 {
-    STARTING_STATUS_DEFINITIONS(UNPACK_STARTING_STATUSES_STRUCT)
-    // Expands to:// no it fucking doesnt.
+    STARTING_STATUS_DEFINITIONS(UNPACK_STARTING_STATUSES_STRUCT)// the FUCKING ORDER IN WHICH THEY APPEAR seems to be SHITTING THE BED.
+    // Expands to:// no it doesnt.
     // u32 electricTerrain:1;
     // u32 mistyTerrain:1;
     // u32 grassyTerrain:1;

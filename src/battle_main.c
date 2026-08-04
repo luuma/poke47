@@ -3693,6 +3693,8 @@ static void DoBattleIntro(void)
             if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
             {
                 u16 GSSBitfield = VarGet(VAR_GAUNTLET_STARTING_STATUS);
+
+/*
                 gStartingStatuses.psychicTerrain = (GSSBitfield & 1<<0) != 0;
                 gStartingStatuses.grassyTerrain = (GSSBitfield & 1<<1) != 0;
                 gStartingStatuses.trickRoom = (GSSBitfield & 1<<2) != 0;
@@ -3701,9 +3703,16 @@ static void DoBattleIntro(void)
                 gStartingStatuses.tailwindPlayer = (GSSBitfield & 1<<5) != 0;
                 gStartingStatuses.rainbowPlayer = (GSSBitfield & 1<<6) != 0;
                 gStartingStatuses.inverse = (GSSBitfield & 1<<7) != 0;
-                //gStartingStatuses. = (GSSBitfield & 1<<8);
-                //gStartingStatuses. = (GSSBitfield & 1<<9);
-                //gStartingStatuses. = (GSSBitfield & 1<<10);
+*/
+
+                gStartingStatuses.psychicTerrain = (GSSBitfield>>0 & 1);
+                gStartingStatuses.grassyTerrain = (GSSBitfield>>1 & 1);
+                gStartingStatuses.trickRoom = (GSSBitfield>>2 & 1);
+                gStartingStatuses.magicRoom = (GSSBitfield>>3 & 1);
+                gStartingStatuses.wonderRoom = (GSSBitfield>>4 & 1);
+                gStartingStatuses.tailwindPlayer = (GSSBitfield>>5 & 1);
+                gStartingStatuses.rainbowPlayer = (GSSBitfield>>6 & 1);
+                gStartingStatuses.inverse = (GSSBitfield>>7 & 1);
             }
             if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && !IsSpecialTrainer(TRAINER_BATTLE_PARAM.opponentA))
             {
