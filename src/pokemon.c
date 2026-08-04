@@ -7499,9 +7499,9 @@ static void DoAutobattle(enum Species speciesFoe, u8 levelFoe)
 {
     struct Pokemon *mon = GetFirstLiveMon();
     u8 Level = GetMonData(mon, MON_DATA_LEVEL);
-    if (FlagGet(FLAG_GAUNTLET_CHALLENGE) || CheckBagHasItem(ITEM_LEVEL_CAP, 1))
+    u8 Cap = GetCurrentLevelCap();
+    if (FlagGet(FLAG_GAUNTLET_CHALLENGE) || CheckBagHasItem(ITEM_LEVEL_CAP, 1) || Level == MAX_LEVEL)// Call for further checks if there is a chance the level cap matters.
     {
-    	u8 Cap = GetCurrentLevelCap();
     	if (GetMonData(mon, MON_DATA_EARTH_RIBBON) && FlagGet(FLAG_GAUNTLET_CHALLENGE)) // for gauntlet island lead mon to have an advantage.
             Cap += 2;
 
@@ -7516,7 +7516,7 @@ static void DoAutobattle(enum Species speciesFoe, u8 levelFoe)
     SetMonData(mon, MON_DATA_HP, &setHP);
     if (gSpecialVar_0x8006 <= 5)
     {
-        u32 exp = GiveAutobattleExp(mon, levelFoe, speciesFoe); // gives XP and returns amount given as uint
+        u32 exp = GiveAutobattleExp(mon, levelFoe, speciesFoe, Cap); // gives XP and returns amount given as uint
         ConvertIntToDecimalStringN(gStringVar3, exp, STR_CONV_MODE_LEFT_ALIGN, 4);
     }
     return;
@@ -7599,10 +7599,14 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
     dmg *= numHits;
 
     u32 GetHP = GetMonData(mon, MON_DATA_MAX_HP);
+    u32 twofifthsHP = GetHP *2 /5;
+
     u32 loss = 1;
     if (dmg/4 > GetHP)
     {
         gSpecialVar_0x8006 = 6;
+        if (FlagGet(FLAG_GAUNTLET_CHALLENGE))// becomes really fun!!!
+            return twofifthsHP;
         return 1; // current HP is set to 1.
     }
     if (dmg > GetHP)
@@ -7631,23 +7635,25 @@ u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFo
     }
     if(loss<1)
         loss=1;
-    u32 twofifthsHP = GetHP *2 /5;// last time we need max hp
+
     GetHP = GetMonData(mon, MON_DATA_HP); // reuse same uint
     u32 currHP = 1;
+
     if (loss < GetHP)
         currHP = (GetHP - loss); // if not KO'd, set HP. If KO'd, leave it at 1.
+
     if (currHP * 4 < GetMonData(mon, MON_DATA_MAX_HP)) // if under 1/4 HP now, return "defeated and wore itself out" result
         gSpecialVar_0x8006 = 0;
+
     if (FlagGet(FLAG_GAUNTLET_CHALLENGE) && currHP < twofifthsHP)// becomes really fun!!!
-    {
         return twofifthsHP;
-    }
+
     return currHP;
 }
 
 
 
-u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
+u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe, u32 Cap)
 {
     if (InBattlePyramid_() || InBattlePike())
         return(0);// Note this also always fights like a lv1 mon.
@@ -7661,11 +7667,20 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
     addxp /= 2;// 2.5 in theory bt this is not a float lmao.
     u32 bufferxp = GetSoftLevelCapExpValue(initialLevel, addxp);
     totalXP = totalXP + bufferxp;// This is added because users will expect soft level caps to apply to autobattling.
+    
     SetMonData(mon, MON_DATA_EXP, &totalXP);
     ApplyDaycareExperience(mon);
     u32 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
     if (finalLevel > initialLevel)
+    {
         PlayFanfare(MUS_LEVEL_UP);
+        if (finalLevel >= Cap)// this happens here for the sake of code execution speed. We only need to check for level cap correction if the mon has leveled up and was not capped beforehand.
+        {
+             u32 expPoints = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES)].growthRate][Cap];
+             SetMonData(mon, MON_DATA_EXP, &expPoints);
+             SetMonData(mon, MON_DATA_LEVEL, &Cap);  
+        }
+    }
     //u32 addxp2 = addxp / 2;
     u32 i;
     for (i = 1; i < PARTY_SIZE; i++)//skip slot 1 and loop through everything trying to play the trumpet
@@ -7680,7 +7695,15 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe)
         SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_EXP, &totalXP);
         finalLevel = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL);
         if (finalLevel > initialLevel)
+        {
             PlayFanfare(MUS_LEVEL_UP);
+            if (finalLevel >= Cap)
+            {
+                 u32 expPoints = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES)].growthRate][Cap];
+                 SetMonData(mon, MON_DATA_EXP, &expPoints);
+                 SetMonData(mon, MON_DATA_LEVEL, &Cap);  
+            }
+        }
     }
     return (bufferxp);
 }

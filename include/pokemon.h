@@ -960,7 +960,7 @@ void ChangePokemonNicknameWithCallback(void (*callback)(void));
 bool32 HasShedinjaHPHandling(enum Species species);
 
 u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe);
-u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe);
+u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe, u32 Cap);
 
 static inline u32 OWE_GetMovementTypeFromSpecies(enum Species speciesId, bool8 noDespawn)
 {

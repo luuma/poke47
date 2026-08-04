@@ -53,6 +53,7 @@ Route100_Text_LossPointsHave:
 gaunteltreleasened_FREELOSSPOINTAAAAAA::
         goto_if_ne VAR_0x8004, 0, gaunteltreleasened_FREELOSSPOINTAAAAAASKIP
 	setflag GAUNTLET_FREELOSSPOINT
+        addvar VAR_0x8004, 1@ huh how the hell was this deleted
 gaunteltreleasened_FREELOSSPOINTAAAAAASKIP::
 	return
 
