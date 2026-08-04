@@ -928,6 +928,7 @@ enum __attribute__((packed)) Move
     MOVE_SNAP_FREEZE,//unsure. on vulpix-A
     MOVE_CRASH_OUT,// Kricketune
     MOVE_BRIGHTEST_DAWN,// no fuckin clue!! Possibly bidoof and audino?
+    MOVE_FLUX,
     MOVES_COUNT,
 
     // Z Moves

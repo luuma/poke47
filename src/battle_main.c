@@ -4104,6 +4104,21 @@ static void HandleTurnActionSelectionState(void)
         switch (gBattleCommunication[battler])
         {
         case STATE_TURN_START_RECORD: // Recorded battle related action on start of every turn.
+                    if (gBattleMons[battler].volatiles.somethingSpecial)
+                    {
+            		enum Move moveFound = MOVE_METRONOME;
+            		do
+            		{
+                	    moveFound = RandomUniform(RNG_METRONOME, 1, MOVES_COUNT -1);// skip move none and move count (breakneck blitz)
+                        } while ( //!IsBattleMoveSpecial(moveFound)  || 
+                     moveFound == gBattleMons[battler].moves[0]
+                      || moveFound == gBattleMons[battler].moves[1]
+                      || moveFound == gBattleMons[battler].moves[2]
+                      || moveFound == gBattleMons[battler].moves[3]);
+                        gBattleMons[battler].pp[gBattleMons[battler].volatiles.somethingSpecialSlot] = GetMovePP(moveFound);// overwrites pp deduction. 
+            	        gBattleMons[battler].moves[gBattleMons[battler].volatiles.somethingSpecialSlot] = moveFound;
+                    }// must go before we determine unusability. this is probably the wrong place
+
             RecordedBattle_CopyBattlerMoves(battler);
             gBattleCommunication[battler] = STATE_BEFORE_ACTION_CHOSEN;
             bool32 isAiBattler = (gBattleTypeFlags & BATTLE_TYPE_HAS_AI || IsWildMonSmart()) && (BattlerHasAi(battler) && !(gBattleTypeFlags & BATTLE_TYPE_PALACE));
@@ -4161,6 +4176,9 @@ static void HandleTurnActionSelectionState(void)
                     else
                     {
                         gBattleStruct->itemPartyIndex[battler] = PARTY_SIZE;
+                    
+
+
                         BtlController_EmitChooseAction(battler, B_COMM_TO_CONTROLLER, gChosenActionByBattler[0], gBattleResources->bufferB[0][1] | (gBattleResources->bufferB[0][2] << 8));
                         MarkBattlerForControllerExec(battler);
                         gBattleCommunication[battler]++;

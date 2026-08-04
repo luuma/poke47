@@ -1042,13 +1042,14 @@ static enum CancelerResult CancelerPPDeduction(struct BattleCalcValues *cv)
                       || moveFound == gBattleMons[cv->battlerAtk].moves[2]
                       || moveFound == gBattleMons[cv->battlerAtk].moves[3]);
 
-            gBattleMons[gBattlerAttacker].pp[i] = movepp;// overwrites pp deduction
+            gBattleMons[gBattlerAttacker].pp[i] = movepp;// overwrites pp deduction. If it wasn't for the fact this provides access to any and every move in the game, this could create infinite stall scenarios.
             gBattleMons[gBattlerAttacker].moves[i] = moveFound;
         }
     }
     else if (cv->move != gLastResultingMoves[cv->battlerAtk] || gBattleStruct->unableToUseMove)
         gBattleMons[cv->battlerAtk].volatiles.metronomeItemCounter = 0;// don't reset if holding it. Moved after pp reduction. This is unlikely to affect jack shit.
-
+// in theory it is similarly plausible to add a move that becomes a random special move every turn. youd just search for it at start of battle, set mimic's thing and run something like this. 
+// Also it's really easy to make this happen at start of turn and the reason I'm not doing that is so it's a banger with fake out/ first imp/ uturn but also especially funny with trick.
 
     gLastMoves[cv->battlerAtk] = gChosenMove;
 

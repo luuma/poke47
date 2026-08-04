@@ -23655,6 +23655,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .ignoresProtect = TRUE,
         .battleAnimScript = gBattleAnimMove_GMaxRapidFlow,
     },
+
     [MOVE_ICESOAK] =
     {
         .name = COMPOUND_STRING("Frostbite"),
@@ -23851,7 +23852,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .makesContact = TRUE,
-        .metronomeBanned = TRUE,
         .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
         .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_CUTE,
@@ -24198,4 +24198,29 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_LunarDance,
     },
 
+    [MOVE_FLUX] =// at long last one new move for each type
+    {
+        .name = COMPOUND_STRING("Flux"),
+        .description = COMPOUND_STRING(
+            "Becomes a random move\n"
+            "at the start of each turn."), 
+        .effect = EFFECT_HIT,
+        .power = 0,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 0,
+        .pp = 1,
+        .target = TARGET_USER,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .ignoresProtect = TRUE,
+        .metronomeBanned = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .sketchBanned = TRUE,
+        .assistBanned = TRUE,
+        .contestEffect = CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONE,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_LunarDance,
+    },
 };

@@ -1040,7 +1040,10 @@ void HandleMoveSwitching(enum BattlerId battler)
                 gBattleMons[battler].volatiles.mimickedMoves &= ~(1u << gMoveSelectionCursor[battler]);
                 gBattleMons[battler].volatiles.mimickedMoves |= 1u << gMultiUsePlayerCursor;
             }
-
+            if (gBattleMons[battler].volatiles.somethingSpecial && gBattleMons[battler].volatiles.somethingSpecialSlot == gMoveSelectionCursor[battler])
+            {
+                gBattleMons[battler].volatiles.somethingSpecialSlot = gMultiUsePlayerCursor;
+            }
             MoveSelectionDisplayMoveNames(battler);
 
             for (i = 0; i < MAX_MON_MOVES; i++)

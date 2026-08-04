@@ -323,6 +323,8 @@ enum VolatileFlags
     F(VOLATILE_CANNONADE,               cannonade,                     (u32, 1), V_BATON_PASSABLE) \
     F(VOLATILE_TRACE_ACTIVATED,             traceActivated,                (u32, 1)) \
     F(VOLATILE_DYNAMAX_ENABLED,         dynamaxEnabled,                (u32, 1), V_BATON_PASSABLE) \
+    F(VOLATILE_SOMETHINGSPECIAL,         somethingSpecial,                (u32, 1)) \
+    F(VOLATILE_SOMETHINGSPECIALSLOT,         somethingSpecialSlot,                (u32, 3)) \
 
 
 /* Use within a macro to get the maximum allowed value for a volatile. Requires _typeMaxValue as input. */

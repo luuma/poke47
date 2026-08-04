@@ -34,7 +34,8 @@
 #define MOVE_IS_PERMANENT(battler, moveSlot)                         \
    (!(gBattleMons[battler].volatiles.transformed)                     \
  && !(gBattleMons[battler].volatiles.mimickedMoves & (1u << moveSlot)) \
- && !(GetBattlerHoldEffect(battler) == HOLD_EFFECT_RANDOMISER)  )
+ && !(GetBattlerHoldEffect(battler) == HOLD_EFFECT_RANDOMISER)          \
+&& !(gBattleMons[battler].volatiles.somethingSpecial && gBattleMons[battler].volatiles.somethingSpecialSlot == moveSlot))
             
 
 

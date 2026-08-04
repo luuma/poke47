@@ -168,7 +168,6 @@ bool32 DoSwitchInEvents(void)
                 gBattleStruct->battlerState[battler].switchIn = FALSE;
             }
         }
-
         gBattleStruct->intimidateActivated = FALSE;
         gBattleStruct->adrenalineOrbActivated = FALSE;
         gBattleStruct->battlersSorted = FALSE;
@@ -251,6 +250,15 @@ static bool32 FirstEventBlockEvents(struct BattleCalcValues *calcValues)
             BattleScriptCall(BattleScript_HealReplacementZMove);
             effect = TRUE;
         }
+for (u32 i=0; i< MAX_MON_MOVES; i++)// WASTEFUL perhaps gate behind a species check lmao.
+{
+	if (gBattleMons[battler].moves[i] == MOVE_FLUX)
+	{
+		gBattleMons[battler].volatiles.somethingSpecial = TRUE;
+		gBattleMons[battler].volatiles.somethingSpecialSlot = i;
+		break;
+	}
+}
         gBattleStruct->eventState.battlerSwitchIn++;
         break;
     case FIRST_EVENT_BLOCK_HAZARDS:
