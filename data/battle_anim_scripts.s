@@ -1402,7 +1402,7 @@ DarkPulseParticle:
 	return
 
 gBattleAnimMove_NightSlash::
-	@createvisualtask AnimTask_BlendNightSlash, 2, ANIM_TARGET, 2, 0, 8, 1
+	createvisualtask AnimTask_BlendNightSlash, 2, ANIM_TARGET, 2, 0, 8, 1
 	simple_palette_blend unused_subpriority_offset=0, selector=F_PAL_BG, delay=3, initial_blend_y=0, target_blend_y=12, color=RGB_BLACK
 	waitforvisualfinish
 	createsprite gNightSlashLeftSpriteTemplate, ANIM_TARGET, 2, 1, -8, 0
@@ -1418,7 +1418,6 @@ gBattleAnimMove_NightSlash::
 	waitforvisualfinish
 	simple_palette_blend unused_subpriority_offset=0, selector=F_PAL_BG, delay=3, initial_blend_y=12, target_blend_y=0, color=RGB_BLACK
 	waitforvisualfinish
-	delay 4
 	end
 
 gBattleAnimMove_AquaTail::

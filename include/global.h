@@ -255,7 +255,25 @@ struct GIStarts {
     u32 sacredAshes:2;// max 3 for now
     u32 boonballs:3;
     u32 setsof5lessrandomrespawnballs:3;// max 7 times taken
+    u32 saprotroph:1;// unused x6. Adds +1 starting devotion.
+    u32 nereid:1;
+    u32 eldwyrm:1;
+    u32 dsotm:1;
+    u32 monolith:1;
+    u32 wingedlion:1;
+    u32 VPHealdiff:1;// "flat amount" heal post battle
+    u32 VPHealless:1;// no healing after battle.
+    u32 VP2Balls:1;//only 2 island alls
+    u32 VP1Ash:1;//just the 1 ash
+    u32 VPBallsDevolve:1;// when foe is caught they devolve
+    u32 VPNoLegendaries:1;// cant bring in rotom or legendary
+    u32 VPNuzlocke:1;// if it die in battle, either it no come back and also is erased from existence, or if ribboned, you lose.
+    u32 VPItemLocke:1; //no items in battle.
+    u32 VPNoBallBoughtIn:1;// cant smuggle in a master ball
+    u32 VPNoItemsBoughtIn:1;// cant smuggle in a life orb. may be.
+    u32 padding:5;
     u16 numPoints;// sized for pushing to vars
+    u32 padding2;//
 };
 
 

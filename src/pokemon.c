@@ -7660,7 +7660,7 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe,
     u32 initialLevel = GetMonData(mon, MON_DATA_LEVEL);
     u32 totalXP = GetMonData(mon, MON_DATA_EXP);
     u32 addxp = gSpeciesInfo[speciesFoe].expYield * levelFoe;
-    addxp /= 4;// should be 5 in theory
+    addxp /= 5;// should be 5 in theory
     addxp *= sExperienceScalingFactors[(levelFoe * 2) +10];
     addxp /= sExperienceScalingFactors[levelFoe+initialLevel+10];
     addxp += 1; 

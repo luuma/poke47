@@ -70,7 +70,7 @@ Route100_EventScript_Altar1::
 
 Route100_EventScript_BRAVO::
         msgbox Route100_Text_bravo
-	addvar VAR_GAUNTLET_VICTORY_POINTS, 1
+	addvar VAR_GAUNTLET_VICTORY_POINTS, 5
 	addvar VAR_GAUNTLET_VICTORIES, 1
         buffernumberstring STR_VAR_1, VAR_GAUNTLET_VICTORIES
         msgbox Route100_Text_numwins
@@ -185,10 +185,8 @@ Route100_EventScript_GauntletSetup::
 	delay 10
 	hideobjectat VAR_LAST_TALKED, MAP_ROUTE_100
         hidefollower 0
-	call_if_eq VAR_FACING, DIR_NORTH, SlateportCity_Harbor_EventScript_BoardFerryNorth
-	call_if_eq VAR_FACING, DIR_WEST, SlateportCity_Harbor_EventScript_BoardFerryEast
-	applymovement LOCALID_PLAYER, Common_Movement_WalkUp
-	waitmovement 0
+	call_if_eq VAR_FACING, DIR_NORTH, Route100_EventScript_BoardFerryNorth
+	call_if_eq VAR_FACING, DIR_WEST, Route100_EventScript_BoardFerryWest
 	delay 10
 	hideplayer
 	applymovement LOCALID_WITCH_BOAT, Route100_Movement_BoatDepart
@@ -197,6 +195,21 @@ Route100_EventScript_GauntletSetup::
         waitstate
         releaseall
 	end
+
+Route100_EventScript_BoardFerryNorth::
+	applymovement LOCALID_PLAYER, Common_Movement_WalkUp2
+	waitmovement 0
+	return
+
+Route100_EventScript_BoardFerryWest::
+	applymovement LOCALID_PLAYER, Route100_Movement_BoardFerryWest
+	waitmovement 0
+	return
+
+Route100_Movement_BoardFerryWest:
+	walk_left
+        walk_up
+	step_end
 
 Route100_Movement_BoatDepart:
 	walk_left

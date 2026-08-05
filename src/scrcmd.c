@@ -3593,7 +3593,7 @@ const struct {
         .dynlevel = 10,
         .item = ITEM_SITRUS_BERRY,
         .speciesBuddy = SPECIES_TOGEDEMARU,
-        .levelBuddy = 24,
+        .levelBuddy = 21,
 
     },
 /// altar 4 speed winged lion. 9-11
