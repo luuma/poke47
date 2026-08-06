@@ -1464,7 +1464,7 @@ bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
         return FALSE;
     }
 
-    if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall())
+    if (P_NO_SHINIES_WITHOUT_POKEBALLS && !HasAtLeastOnePokeBall() && FlagGet(FLAG_SYS_POKEDEX_GET))// IF no balls or starter selection. Castform gift not soft reset friendly. 
     {
         gSaveBlock3Ptr->shinycompensation++;//probably won't overflow lol.
         return FALSE;
@@ -1473,9 +1473,9 @@ bool32 ComputePlayerShinyOdds(u32 personality, u32 value)
     u32 totalRerolls = 0;
     if (gSaveBlock3Ptr->shinycompensation !=0)
     {
-        totalRerolls += min(gSaveBlock3Ptr->shinycompensation, 100);// plenty. 
-        if (gSaveBlock3Ptr->shinycompensation >100)
-            gSaveBlock3Ptr->shinycompensation -= 100;
+        totalRerolls += min(gSaveBlock3Ptr->shinycompensation, 3);// plenty. Can't be more or you will just go: avoid having balls -> get balls -> save-> begin SRing.
+        if (gSaveBlock3Ptr->shinycompensation >3)
+            gSaveBlock3Ptr->shinycompensation -= 3;
         else
             gSaveBlock3Ptr->shinycompensation = 0;
     }
