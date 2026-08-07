@@ -5732,6 +5732,7 @@ static s32 AI_CalcAdditionalEffectScore(enum BattlerId battlerAtk, enum BattlerI
                 case SPECIES_TATSUGIRI_CURLY:
                     stat = STAT_ATK;
                     break;
+                case SPECIES_DUOSION:
                 case SPECIES_TATSUGIRI_DROOPY:
                     stat = STAT_DEF;
                     break;
