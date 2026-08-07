@@ -3835,7 +3835,7 @@ static void ShowItemIconSprite(enum Item item, bool8 firstTime, bool8 flash)
 static void DestroyItemIconSprite(void)
 {
     FreeSpriteTilesByTag(ITEM_TAG);
-    FreeSpritePalettebytag(ITEM_TAG);
+    FreeSpritePaletteByTag(ITEM_TAG);
     FreeSpriteOamMatrix(&gSprites[sItemIconSpriteId]);
     DestroySprite(&gSprites[sItemIconSpriteId]);
     if ((GetFlashLevel() > 0 || InBattlePyramid_()) && sItemIconSpriteId2 != MAX_SPRITES)
