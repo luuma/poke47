@@ -152,7 +152,7 @@ u32 GetNonDynamaxHP(enum BattlerId battler)
     struct Pokemon *mon = GetBattlerMon(battler);
 
     u32 dynlevel = GetMonData(mon, MON_DATA_DYNAMAX_LEVEL); // USED BY BOSSES.
-    if ((GetActiveGimmick(battler) != GIMMICK_DYNAMAX && dynlevel <= 1) || HasShedinjaHPHandling(gBattleMons[battler].species) )
+    if ((GetActiveGimmick(battler) != GIMMICK_DYNAMAX && (dynlevel <= 1 || !FlagGet(FLAG_GAUNTLET_CHALLENGE)) || HasShedinjaHPHandling(gBattleMons[battler].species) )
     {
         return gBattleMons[battler].hp;
     }
@@ -170,8 +170,8 @@ u32 GetNonDynamaxMaxHP(enum BattlerId battler)
 {
     struct Pokemon *mon = GetBattlerMon(battler);
 
-    u32 dynlevel = GetMonData(mon, MON_DATA_DYNAMAX_LEVEL); // USED BY BOSSES.
-    if ((GetActiveGimmick(battler) != GIMMICK_DYNAMAX && dynlevel <= 1) || HasShedinjaHPHandling(gBattleMons[battler].species) )
+    u32 dynlevel = GetMonData(mon, MON_DATA_DYNAMAX_LEVEL); // USED BY BOSSES. Note: trainers have a dynamax level by default !!!
+    if ((GetActiveGimmick(battler) != GIMMICK_DYNAMAX && (dynlevel <= 1 || !FlagGet(FLAG_GAUNTLET_CHALLENGE)) || HasShedinjaHPHandling(gBattleMons[battler].species) )
     {
         return gBattleMons[battler].maxHP;
     }
