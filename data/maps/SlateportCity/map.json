@@ -47,8 +47,8 @@
     {
       "local_id": "LOCALID_SLATEPORT_MAN_1",
       "graphics_id": "OBJ_EVENT_GFX_MAN_1",
-      "x": 24,
-      "y": 40,
+      "x": 12,
+      "y": 22,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -251,7 +251,7 @@
     {
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_5",
       "x": 15,
-      "y": 31,
+      "y": 30,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 0,
@@ -371,7 +371,7 @@
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_4",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 22,
+      "x": 21,
       "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -385,7 +385,7 @@
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_5",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-      "x": 23,
+      "x": 22,
       "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -399,7 +399,7 @@
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_6",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 24,
+      "x": -7,
       "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -413,7 +413,7 @@
     {
       "local_id": "LOCALID_SLATEPORT_GRUNT_7",
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 21,
+      "x": 24,
       "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
