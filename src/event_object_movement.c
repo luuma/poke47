@@ -1596,13 +1596,16 @@ static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *tem
     }
 
     objectEventId = GetAvailableObjectEventId(template->localId, mapNum, mapGroup);
-    if (objectEventId == OBJECT_EVENTS_COUNT)
+    if (objectEventId == OBJECT_EVENTS_COUNT ||objectEventId == OBJECT_EVENTS_COUNT-1)// band aid fix.
         return OBJECT_EVENTS_COUNT;
 
     if (!ShouldInitObjectEventStateFromTemplate(template, isClone, x3, y3))
         return OBJECT_EVENTS_COUNT;
     objectEvent = &gObjectEvents[objectEventId];
     ClearObjectEvent(objectEvent);
+//fixes here. Therefore we know the problem is really elsewhere, happening after you actually add an object event, rather than happening when you clear the space for it.
+
+
     if (isClone)
     {
         x = x2 + MAP_OFFSET;
@@ -1617,6 +1620,8 @@ static u8 InitObjectEventStateFromTemplate(const struct ObjectEventTemplate *tem
     objectEvent->triggerGroundEffectsOnMove = TRUE;
     objectEvent->graphicsId = template->graphicsId;
     SetObjectEventDynamicGraphicsId(objectEvent);
+
+// doesn't fix here
     if (IS_OW_MON_OBJ(objectEvent))
     {
         if (template->script && template->script[0] == 0x7d)

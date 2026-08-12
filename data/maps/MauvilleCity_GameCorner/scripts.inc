@@ -111,7 +111,7 @@ MauvilleCity_GameCorner_EventScript_Snake::
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, 25, Onix_Not_Enough
+	goto_if_lt VAR_TEMP_2, 20, Onix_Not_Enough
 	showcoinsbox 1, 1
 	msgbox MauvilleCity_GameCorner_Text_Snake, MSGBOX_YESNO
 	closemessage
@@ -133,7 +133,7 @@ MauvilleCity_GameCorner_EventScript_FlappyBird::
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, 25, Butterfree_Not_Enough
+	goto_if_lt VAR_TEMP_2, 20, Butterfree_Not_Enough
 	showcoinsbox 1, 1
 	msgbox MauvilleCity_GameCorner_Text_Bird, MSGBOX_YESNO
 	closemessage
@@ -155,7 +155,7 @@ MauvilleCity_GameCorner_EventScript_BlockStacker::
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, 25, BlockStacker_Not_Enough
+	goto_if_lt VAR_TEMP_2, 20, BlockStacker_Not_Enough
 	showcoinsbox 1, 1
 	msgbox MauvilleCity_GameCorner_Text_BS, MSGBOX_YESNO
 	closemessage
@@ -222,7 +222,7 @@ MauvilleCity_GameCorner_EventScript_PinballMeowth::
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, 25, Pinball_Not_Enough
+	goto_if_lt VAR_TEMP_2, 20, Pinball_Not_Enough
 	showcoinsbox 1, 1
 	msgbox MauvilleCity_GameCorner_Text_Pinball_Meowth, MSGBOX_YESNO
 	closemessage
@@ -244,7 +244,7 @@ MauvilleCity_GameCorner_EventScript_PinballDiglett::
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, 50, Pinball_Not_Enough
+	goto_if_lt VAR_TEMP_2, 40, Pinball_Not_Enough
 	showcoinsbox 1, 1
 	msgbox MauvilleCity_GameCorner_Text_Pinball_Diglett, MSGBOX_YESNO
 	closemessage
@@ -266,7 +266,7 @@ MauvilleCity_GameCorner_EventScript_PinballSeel::
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, 25, Pinball_Not_Enough
+	goto_if_lt VAR_TEMP_2, 20, Pinball_Not_Enough
 	showcoinsbox 1, 1
 	msgbox MauvilleCity_GameCorner_Text_Pinball_Seel, MSGBOX_YESNO
 	closemessage
@@ -288,7 +288,7 @@ MauvilleCity_GameCorner_EventScript_PinballGengar::
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, 100, Pinball_Not_Enough
+	goto_if_lt VAR_TEMP_2, 80, Pinball_Not_Enough
 	showcoinsbox 1, 1
 	msgbox MauvilleCity_GameCorner_Text_Pinball_Gengar, MSGBOX_YESNO
 	closemessage
@@ -310,7 +310,7 @@ MauvilleCity_GameCorner_EventScript_VoltorbFlip::
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
 	checkcoins VAR_TEMP_2
-	goto_if_lt VAR_TEMP_2, 50, VF_Not_Enough
+	goto_if_lt VAR_TEMP_2, 25, VF_Not_Enough
 	showcoinsbox 1, 1
 	msgbox MauvilleCity_GameCorner_Text_VF, MSGBOX_YESNO
 	closemessage
