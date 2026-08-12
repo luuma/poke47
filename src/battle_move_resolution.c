@@ -122,7 +122,7 @@ static enum CancelerResult CancelerAsleepOrFrozen(struct BattleCalcValues *cv)
     {
         if (GetConfig(B_UPROAR) < GEN_5 && UproarWakeUpCheck(cv->battlerAtk))
         {
-            TryDeactivateSleepClause(GetBattlerSide(cv->battlerAtk), gBattlerPartyIndexes[cv->battlerAtk]);
+            TryDeactivateSleepClause(cv->battlerAtk, gBattlerPartyIndexes[cv->battlerAtk]);
             gBattleMons[cv->battlerAtk].status1 &= ~STATUS1_SLEEP;
             gBattleMons[cv->battlerAtk].volatiles.nightmare = FALSE;
             gEffectBattler = cv->battlerAtk;
@@ -162,7 +162,7 @@ static enum CancelerResult CancelerAsleepOrFrozen(struct BattleCalcValues *cv)
             }
             else
             {
-                TryDeactivateSleepClause(GetBattlerSide(cv->battlerAtk), gBattlerPartyIndexes[cv->battlerAtk]);
+                TryDeactivateSleepClause(cv->battlerAtk, gBattlerPartyIndexes[cv->battlerAtk]);
                 gBattleMons[cv->battlerAtk].volatiles.nightmare = FALSE;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_WOKE_UP;
                 result = CANCELER_RESULT_RUN_SCRIPT_AND_INCREMENT;
@@ -211,6 +211,7 @@ static enum CancelerResult CancelerObedience(struct BattleCalcValues *cv)
             struct DamageContext dmgCtx = {0};
             dmgCtx.battlerAtk = dmgCtx.battlerDef = cv->battlerAtk;
             dmgCtx.move = dmgCtx.chosenMove = MOVE_NONE;
+            dmgCtx.baseMove = gBattleStruct->baseMove;
             dmgCtx.moveType = TYPE_MYSTERY;
             dmgCtx.isCrit = FALSE;
             dmgCtx.randomFactor = FALSE;
@@ -403,7 +404,7 @@ static enum CancelerResult CancelerConfused(struct BattleCalcValues *cv)
                 gBattlerTarget = gBattlerAttacker;
                 struct DamageContext dmgCtx = {0};
                 dmgCtx.battlerAtk = dmgCtx.battlerDef = cv->battlerAtk;
-                dmgCtx.move = dmgCtx.chosenMove = MOVE_NONE;
+                dmgCtx.move = dmgCtx.chosenMove = dmgCtx.baseMove = MOVE_NONE;
                 dmgCtx.moveType = TYPE_MYSTERY;
                 dmgCtx.isCrit = FALSE;
                 dmgCtx.randomFactor = FALSE;
@@ -1969,6 +1970,7 @@ static void SetDamageContextValues(struct DamageContext *ctx, struct BattleCalcV
     ctx->battlerDef = cv->battlerDef;
     ctx->move = cv->move;
     ctx->chosenMove = gChosenMove;
+    ctx->baseMove = gBattleStruct->baseMove;
     ctx->moveType = GetBattleMoveType(cv->move);
     ctx->updateFlags = TRUE;
     ctx->runScript = TRUE;
@@ -2219,10 +2221,7 @@ static enum CancelerResult CancelerAccuracyCheck(struct BattleCalcValues *cv)
 
     while (gBattleStruct->eventState.atkCancelerBattler < gBattlersCount)
     {
-        if (isSmartTarget)
-            cv->battlerDef = gBattlerTarget;
-        else
-            cv->battlerDef = GetTargetBySlot(cv->battlerAtk, gBattleStruct->eventState.atkCancelerBattler);
+        cv->battlerDef = GetTargetBySlot(cv->battlerAtk, gBattleStruct->eventState.atkCancelerBattler);
 
         gBattleStruct->eventState.atkCancelerBattler++;
 
@@ -4748,7 +4747,7 @@ static enum MoveResult StatChangeBeforeChange(struct BattleCalcValues *cv)
         {
             u32 status = gBattleMons[cv->battlerAtk].status1;
             if (status & STATUS1_SLEEP)
-                TryDeactivateSleepClause(GetBattlerSide(cv->battlerAtk), gBattlerPartyIndexes[cv->battlerAtk]);
+                TryDeactivateSleepClause(cv->battlerAtk, gBattlerPartyIndexes[cv->battlerAtk]);
 
             if (status & STATUS1_PARALYSIS)
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_CURED_PARALYSIS;
