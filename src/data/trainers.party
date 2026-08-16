@@ -4941,7 +4941,7 @@ Gender: Female
 Music: Female
 Items: Hyper Potion / Hyper Potion
 Double Battle: No
-AI: Smart Trainer / Risky
+AI: Smart Trainer
 
 Fletchinder
 Level: 29
@@ -4957,7 +4957,7 @@ IVs: 25 HP / 25 Atk / 25 Def / 25 SpA / 25 SpD / 25 Spe
 - Air Slash
 - Phantom Force
 - Stockpile
-- Tailwind
+- Strength Sap
 
 Swanna
 Level: 30

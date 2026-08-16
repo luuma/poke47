@@ -542,7 +542,7 @@ void BattleSetup_StartLegendaryBattle(void)
 {
     LockPlayerFieldControls();
     gMain.savedCallback = CB2_EndScriptedWildBattle;
-    gBattleTypeFlags = (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_DOUBLE);
+    gBattleTypeFlags = (BATTLE_TYPE_LEGENDARY);// Actually yeah that'll look weird let's do it only when planned. e.g. might make kyurem a double battle for a lv70.
 
     switch (GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES))
     {

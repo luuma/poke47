@@ -1913,7 +1913,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             else if (partyData[monIndex].gender == TRAINER_MON_FEMALE)
                 personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(MON_FEMALE, partyData[monIndex].species);
             else if (partyData[monIndex].gender == TRAINER_MON_RANDOM_GENDER)
-                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(Random() & 1 ? MON_MALE : MON_FEMALE, partyData[monIndex].species);
+                personalityValue = (personalityValue & 0xFFFFFF00) | GeneratePersonalityForGender(trainer->gender == TRAINER_GENDER_MALE ? MON_MALE : MON_FEMALE, partyData[monIndex].species);// You can generate the gender randomly here if you wish. This is avoided as it means no two battles with the same trainer will have the same gender spread.
             ModifyPersonalityForNature(&personalityValue, partyData[monIndex].nature);
             if (partyData[monIndex].isShiny)
             {

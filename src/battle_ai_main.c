@@ -3911,7 +3911,7 @@ static u32 GetWindAbilityScore(enum BattlerId battlerAtk, enum BattlerId battler
         if (gBattleMons[battlerAtk].volatiles.chargeTimer == 0
          && HasDamagingMoveOfType(battlerAtk, TYPE_ELECTRIC))
         {
-            score = DECENT_EFFECT;
+            score = GOOD_EFFECT;//changed to "good effect" since this is almost certain to be winona's emolga who can volt switch into a noivern.
         }
     }
 
