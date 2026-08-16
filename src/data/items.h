@@ -16002,10 +16002,10 @@ const struct ItemInfo gItemsInfo[] =
         .description = COMPOUND_STRING(
             "Caps growth based\n"
             "on badges. Lures\n"
-            "Shiny Pokémon."),
+            "Shiny POKéMON."),
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .fieldUseFunc = ItemUseOutOfBattle_LevelCap,
         .iconPic = gItemIcon_LevelCap,
         .iconPalette = gItemIconPalette_LevelCap,
     },
@@ -16109,9 +16109,9 @@ const struct ItemInfo gItemsInfo[] =
         .holdEffect = HOLD_EFFECT_ALEMBIC,
         .holdEffectParam = 15,// param unused.
         .description = COMPOUND_STRING(
-            "Ignores 1/3 lower\n"
-            "Def/Sp. Def stat\n"
-            "if foe has STATUS."),//
+            "Deal 1.3x damage\n"
+            "to foes afflicted\n"
+            "with STATUS."),//
         .pocket = POCKET_ITEMS,
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_BAG_MENU,
@@ -16140,7 +16140,7 @@ const struct ItemInfo gItemsInfo[] =
     },
     [ITEM_RANDOMISER] =
     {
-        .name = ITEM_NAME("Magic Metronome"),
+        .name = ITEM_NAME("Magic Roulette"),
         .price = 10000,
         .holdEffect = HOLD_EFFECT_RANDOMISER,
         .holdEffectParam = 2,// param unused.
@@ -16153,8 +16153,8 @@ const struct ItemInfo gItemsInfo[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 180,// get it
-        .iconPic = gItemIcon_Metronome,
-        .iconPalette = gItemIconPalette_LustrousOrb,
+        .iconPic = gItemIcon_MagicRoulette,
+        .iconPalette = gItemIconPalette_RevealGlass,
     },
 };
 

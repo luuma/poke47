@@ -1782,6 +1782,7 @@ extern const u32 gItemIcon_SpandexFlares[];
 extern const u32 gItemIcon_Alembic[];
 extern const u32 gItemIcon_KnellBell[];
 extern const u16 gItemIconPalette_KnellBell[];
+extern const u32 gItemIcon_MagicRoulette[];
 
 
 extern const u32 gItemIcon_ReturnToFieldArrow[];

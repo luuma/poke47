@@ -26,6 +26,19 @@ u32 GetCurrentLevelCap(void)
         {FLAG_DRAKE_DRAGON_PULSE, 52},//3
         {FLAG_IS_CHAMPION, 53},//5
     };
+    static const u32 sHCNLFlagMap[][2] =// unused. hmm.
+    {
+        {FLAG_BADGE01_GET, 14},//0
+        {FLAG_BADGE02_GET, 18},//0
+        {FLAG_BADGE03_GET, 25},//0
+        {FLAG_BADGE04_GET, 29},//0
+        {FLAG_BADGE05_GET, 31},//0
+        {FLAG_BADGE06_GET, 33},//0
+        {FLAG_BADGE07_GET, 42},//0
+        {FLAG_BADGE08_GET, 46},//0
+        {FLAG_IS_CHAMPION, 58},//0
+    };
+
     static const u32 sGauntletCapFlagMap[][2] =
     {
         {FLAG_GAUNTLET_HP_ALTAR, 7},//hp. This boss is easy enough.

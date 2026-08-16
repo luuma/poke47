@@ -8,6 +8,7 @@
 #include "berry.h"
 #include "berry_powder.h"
 #include "bike.h"
+#include "caps.h"
 #include "coins.h"
 #include "data.h"
 #include "event_data.h"
@@ -98,6 +99,9 @@ static const u8 sText_UsedVar2WildRepelled[] = _("{PLAYER} used the\n{STR_VAR_2}
 static const u8 sText_PlayedPokeFluteCatchy[] = _("Played the POKé FLUTE.\pNow, that's a catchy tune!{PAUSE_UNTIL_PRESS}");
 static const u8 sText_PlayedPokeFlute[] = _("Played the POKé FLUTE.");
 static const u8 sText_PokeFluteAwakenedMon[] = _("The POKé FLUTE awakened sleeping\nPOKéMON.{PAUSE_UNTIL_PRESS}");
+static const u8 sText_LevelCap[] = _("“{NO}. 1 Gamer”\nCurrent Level Cap: {STR_VAR_1}{PAUSE_UNTIL_PRESS}");
+
+
 
 // EWRAM variables
 EWRAM_DATA static TaskFunc sItemUseOnFieldCB = NULL;
@@ -767,6 +771,38 @@ void ItemUseOutOfBattle_CoinCase(u8 taskId)
         DisplayItemMessageOnField(taskId, gStringVar4, Task_CloseCantUseKeyItemMessage);
     }
 }
+
+void ItemUseOutOfBattle_LevelCap(u8 taskId)
+{
+    ConvertIntToDecimalStringN(gStringVar1, GetCurrentLevelCap(), STR_CONV_MODE_LEFT_ALIGN, 4);
+    StringExpandPlaceholders(gStringVar4, sText_LevelCap);
+
+    if (!gTasks[taskId].tUsingRegisteredKeyItem)
+    {
+        DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, CloseItemMessage);
+    }
+    else
+    {
+        DisplayItemMessageOnField(taskId, gStringVar4, Task_CloseCantUseKeyItemMessage);
+    }
+}
+
+void ItemUseOutOfBattle_NuzleafMask(u8 taskId)
+/// so: get curr leader, return string for their team. maybe small xp boost. but prob not. issue is: the string is too long. 
+{
+    ConvertIntToDecimalStringN(gStringVar1, GetCurrentLevelCap(), STR_CONV_MODE_LEFT_ALIGN, 4);
+    StringExpandPlaceholders(gStringVar4, sText_LevelCap);
+
+    if (!gTasks[taskId].tUsingRegisteredKeyItem)
+    {
+        DisplayItemMessage(taskId, FONT_NORMAL, gStringVar4, CloseItemMessage);
+    }
+    else
+    {
+        DisplayItemMessageOnField(taskId, gStringVar4, Task_CloseCantUseKeyItemMessage);
+    }
+}
+
 
 void ItemUseOutOfBattle_PowderJar(u8 taskId)
 {

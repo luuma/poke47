@@ -7426,8 +7426,11 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
         defStage = DEFAULT_STAT_STAGE;
         otherStage = DEFAULT_STAT_STAGE;
 
-    if (ctx->holdEffects[ctx->battlerAtk] == HOLD_EFFECT_ALEMBIC && gBattleMons[battlerDef].status1 & STATUS1_ANY)//ignore 1/3 of target's lowest defense stat, factoring in stat changes but not magically factoring in crits because that would sometimes take off the mult when you crit.
+    if (ctx->holdEffects[ctx->battlerAtk] == HOLD_EFFECT_ALEMBIC && gBattleMons[battlerDef].status1 & STATUS1_ANY && !IsBattlerAlly(ctx->battlerAtk, battlerDef))
     {
+        modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.77));// Do 1.3x damage to statused foes. easy to remember.
+/*
+ignore 1/3 of target's lowest defense stat, factoring in stat changes but not magically factoring in crits because that would sometimes take off the mult when you crit.
         if (usesDefStat)
 	{
             u32 defcalc = def * gStatStageRatios[defStage][0];
@@ -7450,6 +7453,7 @@ static inline u32 CalcDefenseStat(struct DamageContext *ctx)
                 modifier = uq4_12_multiply_half_down(modifier, UQ_4_12(0.67));
             }
         }
+*/
     }
     // critical hits ignore positive stat changes. Defined later due to hold effect alembic
     if (ctx->isCrit && defStage > DEFAULT_STAT_STAGE)
