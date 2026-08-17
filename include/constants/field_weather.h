@@ -16,7 +16,7 @@ enum ColorMapType
 #define NUM_FOG_HORIZONTAL_SPRITES   20
 #define NUM_ASH_SPRITES              20
 #define NUM_FOG_DIAGONAL_SPRITES     20
-#define NUM_SANDSTORM_SPRITES        15 // I am being shot in the head bro. This is an overworld graphical thing I don't understand.
+#define NUM_SANDSTORM_SPRITES        20
 #define NUM_SWIRL_SANDSTORM_SPRITES  5
 #define NUM_SNOWFLAKE_SPRITES        16
 

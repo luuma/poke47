@@ -1505,17 +1505,6 @@ u32 TryAndDespawnOldestGeneratedOWE_ToFreeObject(void)
     return RemoveOldestGeneratedOWE();
 }
 
-bool32 TryAndDespawnOldestGeneratedOWE_ToFreeSprite(void)// UNUSED. not fast enough to do anything useful.
-{
-    if (!WE_OW_ENCOUNTERS)
-        return FALSE;
-    assertf(FALSE, "Despawning overworld encounter to free a sprite slot.");
-    if (RemoveOldestGeneratedOWE() == OBJECT_EVENTS_COUNT)
-        return FALSE;
-
-    return TRUE;
-}
-
 void DespawnOWEOnBattleStart(void)
 {
     struct ObjectEvent *owe = &gObjectEvents[GetObjectEventIdByLocalId(gSpecialVar_LastTalked)];

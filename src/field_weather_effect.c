@@ -2195,7 +2195,7 @@ static void CreateSandstormSprites(void)
         LoadCustomWeatherSpritePalette(gSandstormWeatherPalette);
         for (i = 0; i < NUM_SANDSTORM_SPRITES; i++)
         {
-            spriteId = CreateSpriteAtEnd(&sSandstormSpriteTemplate, 0, ((i / 5) * 84) + i*2, 1);// * 64. Bad commit. bad
+            spriteId = CreateSpriteAtEnd(&sSandstormSpriteTemplate, 0, (i / 5) * 64, 1);
             if (spriteId != MAX_SPRITES)
             {
                 gWeatherPtr->sprites.s2.sandstormSprites1[i] = &gSprites[spriteId];
@@ -2204,7 +2204,7 @@ static void CreateSandstormSprites(void)
             }
             else
             {
-                gWeatherPtr->sprites.s2.sandstormSprites1[i] = NULL;// doesn't get called because it would trip a fatal assertf.
+                gWeatherPtr->sprites.s2.sandstormSprites1[i] = NULL;
             }
         }
 
