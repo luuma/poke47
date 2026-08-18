@@ -24223,4 +24223,30 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_LunarDance,
     },
+
+    [MOVE_QUIVERING_PALM] =// at long last one new move for each type BUT for real this time.
+    {
+        .name = COMPOUND_STRING("Quivering Palm"),
+        .description = COMPOUND_STRING(
+            "The forbidden technique,\n"
+            "long believed a myth."), 
+        .effect = EFFECT_HIT,
+        .power = 10,
+        .type = TYPE_FIGHTING,
+        .accuracy = 80,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_PHYSICAL,
+        .makesContact = TRUE,
+        .punchingMove = TRUE,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_QUIVERING_PALM,
+        }),
+        .contestEffect = CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONE,
+        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_ForcePalm,
+    },
 };

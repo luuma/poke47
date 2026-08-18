@@ -899,6 +899,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_PKMNTWISTEDDIMENSIONSSCR]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} twisted the dimensions!"),
     [STRINGID_SWAPSDEFANDSPDEFOFALLPOKEMONSCR]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} created a bizarre area!\nDefense swaps with Attack,\land Sp.Def swaps with Sp.Atk!"),
     [STRINGID_SOMETHINGTYPECHARTINVERTED]  		    = COMPOUND_STRING("The type chart is inverted!"),
+    [STRINGID_QUIVERINGPALM]				= COMPOUND_STRING("Impossible…!? Could it actually be…!?\nIt's the Quivering Palm technique!\l{B_DEF_NAME_WITH_PREFIX} faints in 3 turns!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =

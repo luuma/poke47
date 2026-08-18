@@ -907,28 +907,29 @@ enum __attribute__((packed)) Move
 
     // Add any custom moves here, not further down!
 
-    MOVE_MOOD_CRUSH = MOVES_COUNT_GEN9,//mad
+    MOVE_MOOD_CRUSH = MOVES_COUNT_GEN9,//mad. LOVE
     MOVE_ICESOAK,//decent design
-    MOVE_SCREEN_BURN,//strong and feels good
-    MOVE_JUST_DESSERTS,//love. Excellent johnny move
-    MOVE_CRIT_UP_HIT,// middling fare
-    MOVE_BASTION_WALLS,//Cannonade. Replaced. Love
-    MOVE_LIGHTBLOOM,//solid still
-    MOVE_ENVELOP,//middling
+    MOVE_SCREEN_BURN,//strong and feels good. Like
+    MOVE_JUST_DESSERTS,//LOVE. Excellent johnny move
+    MOVE_CRIT_UP_HIT,// solid, honestly. Fun on some mons.
+    MOVE_BASTION_WALLS,//Cannonade. Replaced. LOVE
+    MOVE_LIGHTBLOOM,//////////////////////////////////////////////solid still
+    MOVE_ENVELOP,/////////////////////////////////////////////////middling
     MOVE_NAVAL_BLOCKADE,//yesddssss
     MOVE_CLOUD_SOMERSAULT,//yessss
-    MOVE_HIT_DEF,//yessss
+    MOVE_HIT_DEF,/////////////////////////////////////////////////Fine.
     MOVE_CHIEN_POW,
-    MOVE_SANDBLASTER,
+    MOVE_SANDBLASTER,/////////////////////////////////////////////Deece
     MOVE_FORBIDDEN_FANG,//RATICATE sig
-    MOVE_BLINK_STRIKE,// it's good shit iirc.
-    MOVE_ARMOR_BREAK,// Fuckin bingo. This is an excellent "jonny" move.
+    MOVE_BLINK_STRIKE,// Still baller.
+    MOVE_ARMOR_BREAK,// This is an excellent "jonny" move.
     MOVE_FADE,// Felt decent and spooky. Unused
     MOVE_PUFF_UP,//niche filling. Unused
     MOVE_SNAP_FREEZE,//unsure. on vulpix-A
-    MOVE_CRASH_OUT,// Kricketune
+    MOVE_CRASH_OUT,// Kricketune lmao
     MOVE_BRIGHTEST_DAWN,// no fuckin clue!! Possibly bidoof and audino?
-    MOVE_FLUX,
+    MOVE_FLUX,// Still got it.
+    MOVE_QUIVERING_PALM,// Concept: weak hit, apply perish song. 
     MOVES_COUNT,
 
     // Z Moves

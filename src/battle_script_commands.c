@@ -3047,6 +3047,14 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
         BattleScriptPush(battleScript);
         gBattlescriptCurrInstr = BattleScript_TheSwampActivates;
         break;
+    case MOVE_EFFECT_QUIVERING_PALM:
+        if (!gBattleMons[effectBattler].volatiles.perishSong)
+        {
+            gBattleMons[effectBattler].volatiles.perishSong = TRUE;
+            gBattleMons[effectBattler].volatiles.perishSongTimer = 3;
+            gBattlescriptCurrInstr = BattleScript_MoveEffectPerishSong;
+        }
+        break;
     case MOVE_EFFECT_SUN:
     case MOVE_EFFECT_RAIN:
     case MOVE_EFFECT_SANDSTORM:

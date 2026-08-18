@@ -385,6 +385,14 @@ BattleScript_TheRainbowActivates::
 	waitanimation
 	return
 
+BattleScript_MoveEffectPerishSong::
+	savetarget
+	copybyte gBattlerTarget, gEffectBattler
+	printstring STRINGID_QUIVERINGPALM
+	waitmessage B_WAIT_TIME_LONG
+	restoretarget
+	return
+
 BattleScript_TheRainbowDisappeared::
 	printstring STRINGID_THERAINBOWDISAPPEARED
 	waitmessage B_WAIT_TIME_LONG

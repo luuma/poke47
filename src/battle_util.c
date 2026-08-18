@@ -9931,7 +9931,7 @@ u32 CalcSecondaryEffectChance(enum BattlerId battler, enum Ability battlerAbilit
         secondaryEffectChance *= 2;
     if (hasRainbow && additionalEffect->moveEffect != MOVE_EFFECT_SECRET_POWER)
         secondaryEffectChance *= 2;
-
+// if (ctx->isCrit && additionalEffect->moveEffect != MOVE_EFFECT_FLINCH) 
     return secondaryEffectChance;
 }
 
