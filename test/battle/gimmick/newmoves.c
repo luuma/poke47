@@ -554,6 +554,68 @@ SINGLE_BATTLE_TEST("POKE47: Laser Focus Sure Hit for all moves")
     }
 }
 
+SINGLE_BATTLE_TEST("POKE47: Hot Cocoa persists until consumed usefully and lets your blizzard freeze 50% of the time")
+{
+    PASSES_RANDOMLY(50, 100, RNG_SECONDARY_EFFECT);
+    GIVEN {
+        PLAYER(SPECIES_SNOVER);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_HOT_COCOA); }
+        TURN { MOVE(player, MOVE_STRENGTH); }
+        TURN { MOVE(player, MOVE_BLIZZARD); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HOT_COCOA, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_STRENGTH, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_BLIZZARD, player);
+        ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_FRZ, opponent);
+        FREEZE_OR_FROSTBURN_STATUS(opponent, TRUE);
+    } 
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Hot Cocoa is consumed by use of needle arm")
+{
+    PASSES_RANDOMLY(30, 100, RNG_SECONDARY_EFFECT);
+    GIVEN {
+        PLAYER(SPECIES_SNOVER);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_HOT_COCOA); MOVE(opponent, MOVE_CELEBRATE);}
+        TURN { MOVE(player, MOVE_NEEDLE_ARM); }
+        TURN { MOVE(player, MOVE_NEEDLE_ARM); }
+        TURN { MOVE(player, MOVE_HOT_COCOA); MOVE(opponent, MOVE_CELEBRATE);}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HOT_COCOA, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_NEEDLE_ARM, player);
+        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_NEEDLE_ARM, player);
+        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HOT_COCOA, player);
+    } 
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Hot Cocoa not consumed by switching")
+{
+    PASSES_RANDOMLY(100, 100, RNG_SECONDARY_EFFECT);
+    GIVEN {
+        PLAYER(SPECIES_SNOVER);
+        PLAYER(SPECIES_ABOMASNOW);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_HOT_COCOA); MOVE(opponent, MOVE_CELEBRATE);}
+        TURN { SWITCH(player, 1); }
+        TURN { MOVE(player, MOVE_NEEDLE_ARM); }
+        TURN { MOVE(player, MOVE_HOT_COCOA); MOVE(opponent, MOVE_CELEBRATE);}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HOT_COCOA, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_NEEDLE_ARM, player);
+        MESSAGE("The opposing Wobbuffet flinched and couldn't move!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HOT_COCOA, player);
+    } 
+}
+
 SINGLE_BATTLE_TEST("POKE47: Laser Focus Sure Hit lasts one turn")
 {
     PASSES_RANDOMLY(60, 100, RNG_ACCURACY);
@@ -840,7 +902,7 @@ SINGLE_BATTLE_TEST("POKE47: naval blockade LOWER DEF stat changes")
 }
 
 
-SINGLE_BATTLE_TEST("POKE47: naval Blockade leer doesn't lock stat changes")
+SINGLE_BATTLE_TEST("POKE47: naval Blockade doesn't lock stat changes for entire field")
 {
     GIVEN {
         PLAYER(SPECIES_EMPOLEON);

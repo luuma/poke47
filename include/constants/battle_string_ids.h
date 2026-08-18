@@ -722,6 +722,7 @@ enum StringID
     STRINGID_SWAPSDEFANDSPDEFOFALLPOKEMONSCR,/////////////
     STRINGID_SOMETHINGTYPECHARTINVERTED,////////////////
     STRINGID_QUIVERINGPALM,///////////////////
+    STRINGID_PKMNHOTCOCOA,///////////////////
     STRINGID_COUNT
 };
 
@@ -830,6 +831,7 @@ enum ReflectLightScreenSafeguardStringID
     B_MSG_SET_LIGHTSCREEN_DOUBLE,
     B_MSG_SET_SAFEGUARD,
     B_MSG_SET_AURORA_VEIL,
+    B_MSG_SET_HOT_COCOA,
 };
 
 // gProtectLikeUsedStringIds

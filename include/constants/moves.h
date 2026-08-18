@@ -930,6 +930,7 @@ enum __attribute__((packed)) Move
     MOVE_BRIGHTEST_DAWN,// no fuckin clue!! Possibly bidoof and audino?
     MOVE_FLUX,// Still got it.
     MOVE_QUIVERING_PALM,// Concept: weak hit, apply perish song. 
+    MOVE_HOT_COCOA,// Concept: good for flinch or frost 
     MOVES_COUNT,
 
     // Z Moves

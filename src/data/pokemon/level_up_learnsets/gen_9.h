@@ -924,7 +924,7 @@ static const struct LevelUpMove sVulpixAlolaLevelUpLearnset[] = {
     LEVEL_UP_MOVE(18, MOVE_DESTINY_BOND),
     LEVEL_UP_MOVE(20, MOVE_ICY_WIND),
     LEVEL_UP_MOVE(23, MOVE_HEX),
-    LEVEL_UP_MOVE(26, MOVE_SNAP_FREEZE),
+    LEVEL_UP_MOVE(26, MOVE_SNAP_FREEZE),// Realistically should be removed
     LEVEL_UP_MOVE(28, MOVE_MISTY_TERRAIN),
     LEVEL_UP_MOVE(31, MOVE_ICE_BEAM),
     LEVEL_UP_MOVE(34, MOVE_MIST),
@@ -6562,7 +6562,7 @@ static const struct LevelUpMove sOctilleryLevelUpLearnset[] = {
 #if P_FAMILY_DELIBIRD
 static const struct LevelUpMove sDelibirdLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_PRESENT),
-    LEVEL_UP_MOVE(25, MOVE_DRILL_PECK),
+    LEVEL_UP_MOVE(25, MOVE_HOT_COCOA),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_DELIBIRD
@@ -15550,6 +15550,7 @@ static const struct LevelUpMove sBunearyLevelUpLearnset[] = {
 static const struct LevelUpMove sLopunnyLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_CAPTIVATE),
         LEVEL_UP_MOVE(1, MOVE_FLATTER),
+        LEVEL_UP_MOVE(1, MOVE_HOT_COCOA),// Cool move, want to give to a fluffy pokemon. Could go to minccin
         LEVEL_UP_MOVE(1, MOVE_MAGIC_COAT),
         LEVEL_UP_MOVE(1, MOVE_DOUBLESLAP),
         LEVEL_UP_MOVE(1, MOVE_DYNAMIC_PUNCH),
@@ -16066,12 +16067,13 @@ static const struct LevelUpMove sLumineonLevelUpLearnset[] = {
 
 static const struct LevelUpMove sSnoverLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_PRESENT),
+        LEVEL_UP_MOVE(1, MOVE_ICESOAK),//note to self to delete this and reevaluate gauntlet island fight.
         LEVEL_UP_MOVE(1, MOVE_INGRAIN),
         LEVEL_UP_MOVE(1, MOVE_LEAFAGE),
         LEVEL_UP_MOVE(1, MOVE_MIST),
         LEVEL_UP_MOVE(4, MOVE_GROWTH),
         LEVEL_UP_MOVE(8, MOVE_ICY_WIND),
-        LEVEL_UP_MOVE(12, MOVE_ICESOAK),
+        LEVEL_UP_MOVE(12, MOVE_HOT_COCOA),
         LEVEL_UP_MOVE(16, MOVE_NEEDLE_ARM),
         LEVEL_UP_MOVE(20, MOVE_SWAGGER),
         LEVEL_UP_MOVE(23, MOVE_AVALANCHE),
@@ -16090,12 +16092,13 @@ static const struct LevelUpMove sSnoverLevelUpLearnset[] = {
 static const struct LevelUpMove sAbomasnowLevelUpLearnset[] = {
         LEVEL_UP_MOVE(0, MOVE_ICE_PUNCH),
         LEVEL_UP_MOVE(1, MOVE_PRESENT),
+        LEVEL_UP_MOVE(1, MOVE_ICESOAK),
         LEVEL_UP_MOVE(1, MOVE_INGRAIN),
         LEVEL_UP_MOVE(1, MOVE_LEAFAGE),
         LEVEL_UP_MOVE(1, MOVE_MIST),
         LEVEL_UP_MOVE(4, MOVE_GROWTH),
         LEVEL_UP_MOVE(8, MOVE_ICY_WIND),
-        LEVEL_UP_MOVE(12, MOVE_ICESOAK),
+        LEVEL_UP_MOVE(12, MOVE_HOT_COCOA),
         LEVEL_UP_MOVE(16, MOVE_NEEDLE_ARM),
         LEVEL_UP_MOVE(20, MOVE_SWAGGER),
         LEVEL_UP_MOVE(23, MOVE_AVALANCHE),
@@ -18079,7 +18082,7 @@ static const struct LevelUpMove sMinccinoLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sCinccinoLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(1, MOVE_ROCK_BLAST),
+        LEVEL_UP_MOVE(1, MOVE_ROCK_BLAST),// flinch chance with king rock: 47% (refactored) at 77.5 base power. with loaded dice: 35% at 112 base power. Sound.
         LEVEL_UP_MOVE(1, MOVE_ICICLE_SPEAR),
         LEVEL_UP_MOVE(1, MOVE_SURGING_STRIKES),
         LEVEL_UP_MOVE(1, MOVE_ECHOED_VOICE),
@@ -18976,7 +18979,7 @@ static const struct LevelUpMove sBearticLevelUpLearnset[] = {
         LEVEL_UP_MOVE(36, MOVE_ICE_SHARD),
         LEVEL_UP_MOVE(41, MOVE_SWORDS_DANCE),////SHIFT BEAR AGAIN 100
         LEVEL_UP_MOVE(44, MOVE_SUPERPOWER),
-        LEVEL_UP_MOVE(49, MOVE_ARMOR_BREAK),
+        LEVEL_UP_MOVE(49, MOVE_ARMOR_BREAK),// it could be hot cocoa,,,,,,,
         LEVEL_UP_MOVE(53, MOVE_SHEER_COLD),
         LEVEL_UP_MOVE(57, MOVE_BELLY_DRUM),
         LEVEL_UP_END
@@ -18994,7 +18997,7 @@ static const struct LevelUpMove sCryogonalLevelUpLearnset[] = {
         LEVEL_UP_MOVE(38, MOVE_METAL_BURST),
         LEVEL_UP_MOVE(41, MOVE_FREEZE_DRY),//////MELTDOWN?
         LEVEL_UP_MOVE(44, MOVE_FREEZING_GLARE),
-        LEVEL_UP_MOVE(47, MOVE_ICESOAK),////TARGET BECOMES ICE
+        LEVEL_UP_MOVE(47, MOVE_MIST),//
         LEVEL_UP_MOVE(50, MOVE_COSMIC_POWER),
         LEVEL_UP_MOVE(53, MOVE_SHEER_COLD),
         LEVEL_UP_END

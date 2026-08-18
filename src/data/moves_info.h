@@ -1401,7 +1401,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .moveEffect = MOVE_EFFECT_STAT_MINUS,
             .defense = B_UPDATED_MOVE_DATA < GEN_4 ? 1 : 0,
             .spDef = B_UPDATED_MOVE_DATA >= GEN_4 ? 1 : 0,
-            .chance = B_UPDATED_MOVE_DATA >= GEN_2 ? 10 : 33,
+            .chance = B_UPDATED_MOVE_DATA >= GEN_2 ? 10 : 33,// what a fucking move.
         }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_WORSEN_CONDITION_OF_PREV_MONS : CONTEST_EFFECT_BADLY_STARTLE_FRONT_MON,
         .contestCategory = CONTEST_CATEGORY_SMART,
@@ -24122,7 +24122,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Crash Out"),
         .description = COMPOUND_STRING(
             "The user simply gives\n"
-            "up on the spot."),
+            "up on the spot."),// powerful counter to the move snatch
         .effect = EFFECT_STAT_CHANGE,
         .power = 0,
         .type = TYPE_BUG,
@@ -24198,7 +24198,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_LunarDance,
     },
 
-    [MOVE_FLUX] =// at long last one new move for each type
+    [MOVE_FLUX] =// at long last one new move for each type. technically needs tests.
     {
         .name = COMPOUND_STRING("Flux"),
         .description = COMPOUND_STRING(
@@ -24224,7 +24224,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_LunarDance,
     },
 
-    [MOVE_QUIVERING_PALM] =// at long last one new move for each type BUT for real this time.
+    [MOVE_QUIVERING_PALM] =// at long last one new move for each type BUT for real this time. needs tests
     {
         .name = COMPOUND_STRING("Quivering Palm"),
         .description = COMPOUND_STRING(
@@ -24233,7 +24233,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_HIT,
         .power = 10,
         .type = TYPE_FIGHTING,
-        .accuracy = 80,
+        .accuracy = 70,
         .pp = 5,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -24243,10 +24243,35 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_QUIVERING_PALM,
         }),
-        .contestEffect = CONTEST_EFFECT_APPEAL_AS_GOOD_AS_PREV_ONE,
-        .contestCategory = CONTEST_CATEGORY_TOUGH,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS,
+        .contestCategory = CONTEST_CATEGORY_COOL,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {COMBO_STARTER_MIND_READER, COMBO_STARTER_LOCK_ON},
+        .battleAnimScript = gBattleAnimMove_ForcePalm,
+    },
+
+    [MOVE_HOT_COCOA] =
+    {
+        .name = COMPOUND_STRING("Hot Cocoa"),
+        .description = COMPOUND_STRING(
+            "The team's next secondary\n"
+            "effect is 5x as likely."),// it's a johnny's dream. I like this style a lot - set an effect to be later consumed.
+        .effect = EFFECT_HOT_COCOA,
+        .power = 0,
+        .type = TYPE_ICE,
+        .accuracy = 0,
+        .pp = 10,
+        .target = TARGET_USER,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        //.zMove = { .effect = Z_EFFECT_RECOVER_HP },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .snatchAffected = TRUE,
+        .contestEffect = CONTEST_EFFECT_AVOID_STARTLE,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
-        .battleAnimScript = gBattleAnimMove_ForcePalm,
+        .battleAnimScript = gBattleAnimMove_HotCocoa,
     },
 };

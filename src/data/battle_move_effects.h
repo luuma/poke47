@@ -1921,7 +1921,6 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
     {
         .battleScript = BattleScript_EffectHit,
         .battleTvScore = 6,
-        .encourageEncore = TRUE,
     },
     [EFFECT_BLINK_STRIKE] =
     {
@@ -1941,6 +1940,14 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
     {
         .battleScript = BattleScript_EffectHealingWish,
         .battleTvScore = 0, // TODO: Assign points
+    },
+
+    [EFFECT_HOT_COCOA] =
+    {
+        .battleScript = BattleScript_EffectHotCocoa,
+        .battleTvScore = 5,
+        .battleFactoryStyle = FACTORY_STYLE_ENDURANCE,
+        .encourageEncore = TRUE,
     },
 };
 

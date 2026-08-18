@@ -4355,6 +4355,11 @@ static enum MoveEndResult MoveEndClearBits(struct BattleCalcValues *cv)
 
     SetSameMoveTurnValues(cv->moveEffect);
     TryClearChargeVolatile(moveType);
+    if (gBattleMons[cv->battlerAtk].volatiles.clearhotcocoaonmoveend)
+    {
+        gBattleMons[cv->battlerAtk].volatiles.clearhotcocoaonmoveend = FALSE;// well, itll do. Probably the correct way to do this, given how charge works.
+        gSideStatuses[GetBattlerSide(cv->battlerAtk)] &= ~SIDE_STATUS_HOT_COCOA;
+    }
     gProtectStructs[cv->battlerAtk].shellTrap = FALSE;
     gBattleStruct->battlerState[cv->battlerAtk].ateBoost = FALSE;
     gBattleScripting.moveEffect = MOVE_EFFECT_NONE;

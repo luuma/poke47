@@ -900,6 +900,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_SWAPSDEFANDSPDEFOFALLPOKEMONSCR]                = COMPOUND_STRING("{B_SCR_NAME_WITH_PREFIX} created a bizarre area!\nDefense swaps with Attack,\land Sp.Def swaps with Sp.Atk!"),
     [STRINGID_SOMETHINGTYPECHARTINVERTED]  		    = COMPOUND_STRING("The type chart is inverted!"),
     [STRINGID_QUIVERINGPALM]				= COMPOUND_STRING("Impossible…!? Could it actually be…!?\nIt's the Quivering Palm technique!\l{B_DEF_NAME_WITH_PREFIX} faints in 3 turns!"),
+    [STRINGID_PKMNHOTCOCOA]                       = COMPOUND_STRING("The next move with secondary effects used by {B_ATK_TEAM2} team will get lucky!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =
@@ -1091,6 +1092,7 @@ const u16 gReflectLightScreenSafeguardStringIds[] =
     [B_MSG_SET_LIGHTSCREEN_DOUBLE] = STRINGID_PKMNRAISEDSPDEF,
     [B_MSG_SET_SAFEGUARD]          = STRINGID_PKMNCOVEREDBYVEIL,
     [B_MSG_SET_AURORA_VEIL]        = STRINGID_PKMNAURORAVEIL,
+    [B_MSG_SET_HOT_COCOA]        = STRINGID_PKMNHOTCOCOA,
 };
 
 const u16 gLeechSeedStringIds[] =

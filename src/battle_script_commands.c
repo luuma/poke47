@@ -2111,6 +2111,18 @@ static inline bool32 TrySetReflect(enum BattlerId battler)
     return FALSE;
 }
 
+static inline bool32 TrySetHotCocoa(enum BattlerId battler)
+{
+    enum BattleSide side = GetBattlerSide(battler);
+    if (!(gSideStatuses[side] & SIDE_STATUS_HOT_COCOA))
+    {
+        gSideStatuses[side] |= SIDE_STATUS_HOT_COCOA;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SET_HOT_COCOA;
+        return TRUE;
+    }
+    return FALSE;
+}
+
 static inline bool32 TrySetLightScreen(enum BattlerId battler)
 {
     enum BattleSide side = GetBattlerSide(battler);
@@ -13755,6 +13767,19 @@ void BS_SetNavalBlockade(void)
         gSideTimers[side].navalBlockadeTimer = 8;
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
+}
+
+
+void BS_sethotcocoa(void)
+{
+    NATIVE_ARGS();
+    if (!TrySetHotCocoa(gBattlerAttacker))
+    {
+        gBattleStruct->moveResultFlags[gBattlerTarget] |= MOVE_RESULT_MISSED;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SIDE_STATUS_FAILED;
+    }
+
+    gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
 void BS_ConsumeBerry(void)

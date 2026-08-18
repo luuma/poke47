@@ -9922,16 +9922,28 @@ u32 CalcSecondaryEffectChance(enum BattlerId battler, enum Ability battlerAbilit
 {
     bool8 hasSereneGrace = (battlerAbility == ABILITY_SERENE_GRACE);
     bool8 hasRainbow = (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_RAINBOW) != 0;
+    bool8 hasCocoa = (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_HOT_COCOA) != 0;
     u16 secondaryEffectChance = additionalEffect->chance;
 
     if (hasRainbow && hasSereneGrace && additionalEffect->moveEffect == MOVE_EFFECT_FLINCH)
+    {
+        if (secondaryEffectChance < 50 && hasCocoa)
+        {
+            gBattleMons[battler].volatiles.clearhotcocoaonmoveend = TRUE;
+            return secondaryEffectChance *= 10;// stacks
+        }
         return secondaryEffectChance * 2;
-
+    }
     if (hasSereneGrace)
         secondaryEffectChance *= 2;
-    if (hasRainbow && additionalEffect->moveEffect != MOVE_EFFECT_SECRET_POWER)
+    if (hasRainbow) // && additionalEffect->moveEffect != MOVE_EFFECT_SECRET_POWER)// what are you nintendo, scared
         secondaryEffectChance *= 2;
-// if (ctx->isCrit && additionalEffect->moveEffect != MOVE_EFFECT_FLINCH) 
+    
+    if (secondaryEffectChance < 100 && hasCocoa)
+    {
+        gBattleMons[battler].volatiles.clearhotcocoaonmoveend = TRUE;// Making ice fang good shit.
+        return secondaryEffectChance *= 5;
+    }
     return secondaryEffectChance;
 }
 

@@ -753,6 +753,7 @@ extern const u8 BattleScript_SpicySprayImmune[];
 extern const u8 BattleScript_EffectCannonade[];
 extern const u8 BattleScript_HurtCannonadeTarget[];
 extern const u8 BattleScript_MoveEffectPerishSong[];
+extern const u8 BattleScript_EffectHotCocoa[]; 
 
 
 

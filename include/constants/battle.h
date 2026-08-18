@@ -325,6 +325,7 @@ enum VolatileFlags
     F(VOLATILE_DYNAMAX_ENABLED,         dynamaxEnabled,                (u32, 1), V_BATON_PASSABLE) \
     F(VOLATILE_SOMETHINGSPECIAL,         somethingSpecial,                (u32, 1)) \
     F(VOLATILE_SOMETHINGSPECIALSLOT,         somethingSpecialSlot,                (u32, 3)) \
+    F(VOLATILE_CLEARHOTCOCOAONMOVEEND,         clearhotcocoaonmoveend,                (u32, 1)) \
 
 /* somethingspecial modes could go in the somethingspecial bool. like idk "pick phys"*/
 /* Use within a macro to get the maximum allowed value for a volatile. Requires _typeMaxValue as input. */
@@ -406,12 +407,13 @@ enum QueuedSwitch
 #define SIDE_STATUS_RAINBOW                 (1 << 8)
 #define SIDE_STATUS_SEA_OF_FIRE             (1 << 9)
 #define SIDE_STATUS_SWAMP                   (1 << 10)
-#define SIDE_STATUS_NAVAL_BLOCKADE          (1 << 11)
+#define SIDE_STATUS_NAVAL_BLOCKADE          (1 << 11)////////
+#define SIDE_STATUS_HOT_COCOA         	    (1 << 12)///////
 
 #define SIDE_STATUS_SCREEN_ANY     (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)
 #define SIDE_STATUS_PLEDGE_ANY     (SIDE_STATUS_RAINBOW | SIDE_STATUS_SEA_OF_FIRE | SIDE_STATUS_SWAMP)
 #define SIDE_STATUS_GOOD_FOG       (SIDE_STATUS_SCREEN_ANY | SIDE_STATUS_SAFEGUARD | SIDE_STATUS_MIST)
-#define SIDE_STATUS_GOOD_COURT     (SIDE_STATUS_GOOD_FOG | SIDE_STATUS_TAILWIND | SIDE_STATUS_LUCKY_CHANT | SIDE_STATUS_RAINBOW)
+#define SIDE_STATUS_GOOD_COURT     (SIDE_STATUS_GOOD_FOG | SIDE_STATUS_TAILWIND | SIDE_STATUS_LUCKY_CHANT | SIDE_STATUS_RAINBOW | SIDE_STATUS_HOT_COCOA)
 #define SIDE_STATUS_BAD_COURT      (SIDE_STATUS_DAMAGE_NON_TYPES | SIDE_STATUS_SEA_OF_FIRE | SIDE_STATUS_SWAMP | SIDE_STATUS_NAVAL_BLOCKADE)
 
 enum Hazards

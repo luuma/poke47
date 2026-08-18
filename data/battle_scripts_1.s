@@ -1793,6 +1793,11 @@ BattleScript_EffectScreenBurn::
 	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectHotCocoa::
+	attackcanceler
+	callnative BS_sethotcocoa
+	goto BattleScript_PrintReflectLightScreenSafeguardString
+
 BattleScript_EffectRest::
 	attackcanceler
 	jumpifstatus BS_ATTACKER, STATUS1_SLEEP, BattleScript_RestIsAlreadyAsleep
