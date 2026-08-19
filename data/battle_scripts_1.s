@@ -2810,7 +2810,7 @@ BattleScript_FaintBattler::
 	tryillusionoff BS_FAINTED
 	undodynamax BS_FAINTED
 	playfaintcry BS_FAINTED
-	pause B_WAIT_TIME_LONG
+	pause B_WAIT_TIME_MED @ suggestion from syreldar commit
 	dofaintanimation BS_FAINTED
 	copybyte sBATTLER, gBattlerFainted @ for message
 	printstring STRINGID_BATTLERFAINTED
