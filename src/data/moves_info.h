@@ -23656,7 +23656,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_GMaxRapidFlow,
     },
 
-    [MOVE_ICESOAK] =
+    [MOVE_ICESOAK] =// the fifth move in the "add a type" series and the third move of its kind. It's no Hot Cocoa.
     {
         .name = COMPOUND_STRING("Frostbite"),
         .description = COMPOUND_STRING(
@@ -23679,7 +23679,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {COMBO_STARTER_HAIL},
         .battleAnimScript = gBattleAnimMove_MaxHailstorm,
     },
-    [MOVE_MOOD_CRUSH] =
+    [MOVE_MOOD_CRUSH] =// KEEPER
     {
         .name = COMPOUND_STRING("Mood Crush"),
         .description = COMPOUND_STRING(
@@ -23705,7 +23705,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_BaddyBad,
     },
 
-    [MOVE_SCREEN_BURN] =
+    [MOVE_SCREEN_BURN] =// Just about a KEEPER
     {
         .name = COMPOUND_STRING("Screen Burn"),
         .description = COMPOUND_STRING(
@@ -23731,7 +23731,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .validApprenticeMove = TRUE,
     },
 
-    [MOVE_JUST_DESSERTS] =
+    [MOVE_JUST_DESSERTS] =// KEEPER. gem
     {
         .name = COMPOUND_STRING("Just Desserts"),
         .description = COMPOUND_STRING(
@@ -23756,7 +23756,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         }),
     },
 
-    [MOVE_CRIT_UP_HIT] =
+    [MOVE_CRIT_UP_HIT] = // KEEPER
     {
         .name = COMPOUND_STRING("Hawkeye"),
         .description = COMPOUND_STRING(
@@ -23782,7 +23782,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         }),
     },
 
-    [MOVE_BASTION_WALLS] =
+    [MOVE_BASTION_WALLS] = // KEEPER. absolute GEM 
     {
         .name = COMPOUND_STRING("Cannonade"),
         .description = COMPOUND_STRING(
@@ -23811,7 +23811,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         }),
     },
 
-    [MOVE_LIGHTBLOOM] =
+    [MOVE_LIGHTBLOOM] = // KEEPER. just about. Not too special but a base move setting a weather/terrain is a novelty
     {
         .name = COMPOUND_STRING("Solar Dance"),
         .description = COMPOUND_STRING(
@@ -23837,7 +23837,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
 
-    [MOVE_ENVELOP] =
+    [MOVE_ENVELOP] =// I looked into the future and it said "removed from the game"
     {
         .name = COMPOUND_STRING("Envelop"),
         .description = COMPOUND_STRING(
@@ -23860,7 +23860,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_GMaxReplenish,
     },
 
-    [MOVE_NAVAL_BLOCKADE] =
+    [MOVE_NAVAL_BLOCKADE] = // KEEPER
     {
         .name = COMPOUND_STRING("Naval Blockade"),
         .description = COMPOUND_STRING(
@@ -23887,7 +23887,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_NavalBlockade,
     },
 
-    [MOVE_HIT_DEF] =
+    [MOVE_HIT_DEF] = // Very simple, fairly narrow, but what am I meant to do? fucking Torterra (continent turtle) is run as a shell smasher with headlong rush. 
+    // what the fuck is nintendo doing. Do they even look at what pokemon they are giving these tactics to. Nobody is looking at Torterra and going 
+    // "oh my favourite type of guy, I hope it is a niche fast sweeper". No. terraforce body press synthesis leechseed set.
     {
         .name = COMPOUND_STRING("Terraforce"),
         .description = COMPOUND_STRING(
@@ -23914,7 +23916,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_Terraforge,
     },
 
-    [MOVE_CLOUD_SOMERSAULT] =
+    [MOVE_CLOUD_SOMERSAULT] = // KEEPER. Hot cocoa hochi mama Flint was onto something.
     {
         .name = COMPOUND_STRING("Cloud Leap"),
         .description = COMPOUND_STRING(
@@ -23939,7 +23941,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_CloudSomersault,
     },
 
-    [MOVE_CHIEN_POW] =
+    [MOVE_CHIEN_POW] =// menace furfrou rework deserves this
     {
         .name = COMPOUND_STRING("Chien Pow"),
         .description = COMPOUND_STRING(
@@ -23960,7 +23962,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_TeraBlast,
     },
 
-    [MOVE_SANDBLASTER] =// NEEDS TESTS 
+    [MOVE_SANDBLASTER] =// a mid move.
     {
         .name = COMPOUND_STRING("Sandblaster"),
         .description = COMPOUND_STRING(
@@ -23981,7 +23983,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_MudShot,
     },
 
-    [MOVE_BLINK_STRIKE] =
+    [MOVE_BLINK_STRIKE] =// Keeper. banger
     {
         .name = COMPOUND_STRING("Blink Strike"),
         .description = COMPOUND_STRING(
@@ -24002,7 +24004,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_ExtremeSpeed,
     },
 
-    [MOVE_FADE] = //"needs tests"
+    [MOVE_FADE] = //"needs tests". unused. shadow sneak overworld effect over "shadows" this one ! !
     {
         .name = COMPOUND_STRING("Fade"),
         .description = COMPOUND_STRING(
@@ -24034,7 +24036,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
 
-    [MOVE_PUFF_UP] =
+    [MOVE_PUFF_UP] =//unused
     {
         .name = COMPOUND_STRING("Puff Up"),
         .description = COMPOUND_STRING(
@@ -24064,7 +24066,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .validApprenticeMove = TRUE,
     },
 
-    [MOVE_SNAP_FREEZE] =// "needs tests"
+    [MOVE_SNAP_FREEZE] =// Removed from the game.
     {
         .name = COMPOUND_STRING("Snap Freeze"),
         .description = COMPOUND_STRING(
@@ -24085,7 +24087,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_MaxHailstorm,
         .validApprenticeMove = TRUE,
     },
-    [MOVE_ARMOR_BREAK] =
+    [MOVE_ARMOR_BREAK] =// Keeper
     {
         .name = COMPOUND_STRING("Iron Temper"),
         .description = COMPOUND_STRING(
@@ -24117,7 +24119,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
 
-    [MOVE_CRASH_OUT] =//"needs tests"
+    [MOVE_CRASH_OUT] =//"needs tests". For now this can stay. It's dumb and challenging to make work, which is the whole point.
     {
         .name = COMPOUND_STRING("Crash Out"),
         .description = COMPOUND_STRING(
@@ -24150,7 +24152,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
 
-    [MOVE_FORBIDDEN_FANG] =
+    [MOVE_FORBIDDEN_FANG] =// well it was easy to implement.
     {
         .name = COMPOUND_STRING("Forbidden Fang"),
         .description = COMPOUND_STRING(
@@ -24173,7 +24175,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_HyperFang,
     },
 
-    [MOVE_BRIGHTEST_DAWN] =
+    [MOVE_BRIGHTEST_DAWN] =// Keeper
     {
         .name = COMPOUND_STRING("Dragonform Call"),
         .description = COMPOUND_STRING(
@@ -24198,7 +24200,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_LunarDance,
     },
 
-    [MOVE_FLUX] =// at long last one new move for each type. technically needs tests.
+    [MOVE_FLUX] =// Keeper. Mastapeece. at long last one new move for each type. technically needs tests.
     {
         .name = COMPOUND_STRING("Flux"),
         .description = COMPOUND_STRING(
@@ -24224,7 +24226,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_LunarDance,
     },
 
-    [MOVE_QUIVERING_PALM] =// at long last one new move for each type BUT for real this time. needs tests
+    [MOVE_QUIVERING_PALM] =// Keeper. at long last one new move for each type BUT for real this time. needs tests
     {
         .name = COMPOUND_STRING("Quivering Palm"),
         .description = COMPOUND_STRING(
@@ -24241,7 +24243,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = TRUE,
         .punchingMove = TRUE,
         .additionalEffects = ADDITIONAL_EFFECTS({
-            .moveEffect = MOVE_EFFECT_QUIVERING_PALM,
+            .moveEffect = MOVE_EFFECT_QUIVERING_PALM,// perish song target
         }),
         .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS,
         .contestCategory = CONTEST_CATEGORY_COOL,
@@ -24250,7 +24252,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_ForcePalm,
     },
 
-    [MOVE_HOT_COCOA] =
+    [MOVE_HOT_COCOA] =//Keeper.
     {
         .name = COMPOUND_STRING("Hot Cocoa"),
         .description = COMPOUND_STRING(
@@ -24273,5 +24275,83 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_HotCocoa,
+    },
+    [MOVE_SHADOW_CLONE] =//Keeper.
+    {
+        .name = COMPOUND_STRING("Shadow Clone"),
+        .description = COMPOUND_STRING(
+            "Creates a transient copy of\n"
+            "the target and its moves."),
+        .effect = EFFECT_SHADOW_CLONE,
+        .power = 0,
+        .type = TYPE_GHOST,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = {
+            .speciesPowerOverride.species = SPECIES_MARSHADOW
+        },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .snatchAffected = TRUE,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_Grudge,
+    },
+    [MOVE_MITOSIS] =//Keeper.
+    {
+        .name = COMPOUND_STRING("Mitose"),
+        .description = COMPOUND_STRING(
+            "Subdivides cells, fully\n"
+            "cloning itself."),
+        .effect = EFFECT_SHADOW_CLONE,
+        .power = 0,
+        .type = TYPE_PSYCHIC,
+        .accuracy = 100,
+        .pp = 5,
+        .target = TARGET_USER,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = {
+            .speciesPowerOverride.species = SPECIES_DITTO// USED TO MEAN WILDCARD
+        },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .snatchAffected = TRUE,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_DoubleTeam,
+    },
+    [MOVE_SEA_GUARDIAN] =//Keeper.
+    {
+        .name = COMPOUND_STRING("Sea Guardian"),
+        .description = COMPOUND_STRING(
+            "Creates a Phione from\n"
+            "its life force."),
+        .effect = EFFECT_SHADOW_CLONE,
+        .power = 0,
+        .type = TYPE_WATER,
+        .accuracy = 0,
+        .pp = 1,
+        .target = TARGET_USER,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_STATUS,
+        .argument = {
+            .speciesPowerOverride.species = SPECIES_PHIONE
+        },
+        .ignoresProtect = TRUE,
+        .mirrorMoveBanned = TRUE,
+        .snatchAffected = TRUE,
+        .contestEffect = CONTEST_EFFECT_BADLY_STARTLE_MONS_WITH_GOOD_APPEALS,
+        .contestCategory = CONTEST_CATEGORY_CUTE,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .battleAnimScript = gBattleAnimMove_AquaRing,
     },
 };

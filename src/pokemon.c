@@ -7418,6 +7418,31 @@ struct BoxPokemon *GetSelectedBoxMonFromPcOrParty(void)
     return boxmon;
 }
 
+
+u8 GiveMonToPlayerPartyInBattle(struct Pokemon *mon, u8 trainer, bool32 isDouble)
+{
+    u32 i;
+        for (i = 0; i < PARTY_SIZE; i++)
+        {
+            if (GetMonData(&gParties[trainer][i], MON_DATA_IS_SHADOW) == TRUE)
+                return PARTY_SIZE + 1;// no cloning if you've already cloned.
+            if (GetMonData(&gParties[trainer][i], MON_DATA_SPECIES) == SPECIES_NONE)
+                break;
+        }
+        if (i >= PARTY_SIZE)
+        {
+            return PARTY_SIZE + 1;
+        }
+        if (i == 1 && isDouble)// cba to program that
+        {
+            return PARTY_SIZE + 1;
+        }
+        CopyMon(&gParties[trainer][i], mon, sizeof(struct Pokemon));
+        gPartiesCount[trainer] = i + 1;
+    CalculatePartyCount(trainer);
+    return i;
+}
+
 u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot)
 {
     u32 sentToPc;

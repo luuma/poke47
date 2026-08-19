@@ -723,6 +723,7 @@ enum StringID
     STRINGID_SOMETHINGTYPECHARTINVERTED,////////////////
     STRINGID_QUIVERINGPALM,///////////////////
     STRINGID_PKMNHOTCOCOA,///////////////////
+    STRINGID_SACRIFICEDMADECOPY,////////////
     STRINGID_COUNT
 };
 

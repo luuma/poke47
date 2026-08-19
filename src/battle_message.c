@@ -901,6 +901,7 @@ const u8 *const gBattleStringsTable[STRINGID_COUNT] =
     [STRINGID_SOMETHINGTYPECHARTINVERTED]  		    = COMPOUND_STRING("The type chart is inverted!"),
     [STRINGID_QUIVERINGPALM]				= COMPOUND_STRING("Impossible…!? Could it actually be…!?\nIt's the Quivering Palm technique!\l{B_DEF_NAME_WITH_PREFIX} faints in 3 turns!"),
     [STRINGID_PKMNHOTCOCOA]                       = COMPOUND_STRING("The next move with secondary effects used by {B_ATK_TEAM2} team will get lucky!"),
+    [STRINGID_SACRIFICEDMADECOPY]               =  COMPOUND_STRING("{B_ATK_NAME_WITH_PREFIX} converted its health into a clone!"),
 };
 
 const u16 gTrainerUsedItemStringIds[] =

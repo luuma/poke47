@@ -931,6 +931,9 @@ enum __attribute__((packed)) Move
     MOVE_FLUX,// Still got it.
     MOVE_QUIVERING_PALM,// Concept: weak hit, apply perish song. 
     MOVE_HOT_COCOA,// Concept: good for flinch or frost 
+    MOVE_SHADOW_CLONE,// Concept: marshadow bad boy.
+    MOVE_MITOSIS,// Concept: clone yourself at half health im reuniclus fuck yeah.
+    MOVE_SEA_GUARDIAN,// Concept: make a phione. Expect to cut some of these but phione passive based.
     MOVES_COUNT,
 
     // Z Moves

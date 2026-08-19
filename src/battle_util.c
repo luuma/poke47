@@ -9607,6 +9607,8 @@ void TryRestoreHeldItems(void)
 
     for (u32 i = 0; i < PARTY_SIZE; i++)
     {
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_SHADOW) == TRUE)
+            ZeroMonData(&gParties[B_TRAINER_PLAYER][i]);
         if (gBattleStruct->itemLost[B_TRAINER_PLAYER][i].stolen || returnNPCItems)
         {
             u32 lostItem = gBattleStruct->itemLost[B_TRAINER_PLAYER][i].originalItem;

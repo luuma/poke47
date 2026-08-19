@@ -629,6 +629,7 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
 
     isShiny = GetMonData(mon, MON_DATA_IS_SHINY);
     species = GetMonData(mon, MON_DATA_SPECIES);
+    bool32 shadow = GetMonData(mon, MON_DATA_IS_SHADOW);
     personalityValue = GetMonData(mon, MON_DATA_PERSONALITY);
 
     if (gBattleSpritesDataPtr->battlerData[battler].transformSpecies != SPECIES_NONE)
@@ -667,6 +668,13 @@ void BattleLoadMonSpriteGfx(struct Pokemon *mon, enum BattlerId battler)
         BlendPalette(paletteOffset, 16, 6, RGB_WHITE);
         CpuCopy32(&gPlttBufferFaded[paletteOffset], &gPlttBufferUnfaded[paletteOffset], PLTT_SIZEOF(16));
     }
+//shadows (clone mons) are visually distinct. Heck they could be silhouettes.
+    if (shadow)
+    {
+        BlendPalette(paletteOffset, 16, 6, RGB(10, 0, 10));
+        CpuCopy32(&gPlttBufferFaded[paletteOffset], &gPlttBufferUnfaded[paletteOffset], PLTT_SIZEOF(16));
+    }
+
 
     // dynamax tint
     if (GetActiveGimmick(battler) == GIMMICK_DYNAMAX)

@@ -924,7 +924,7 @@ static const struct LevelUpMove sVulpixAlolaLevelUpLearnset[] = {
     LEVEL_UP_MOVE(18, MOVE_DESTINY_BOND),
     LEVEL_UP_MOVE(20, MOVE_ICY_WIND),
     LEVEL_UP_MOVE(23, MOVE_HEX),
-    LEVEL_UP_MOVE(26, MOVE_SNAP_FREEZE),// Realistically should be removed
+    LEVEL_UP_MOVE(26, MOVE_HOT_COCOA),
     LEVEL_UP_MOVE(28, MOVE_MISTY_TERRAIN),
     LEVEL_UP_MOVE(31, MOVE_ICE_BEAM),
     LEVEL_UP_MOVE(34, MOVE_MIST),
@@ -943,7 +943,7 @@ static const struct LevelUpMove sNinetalesAlolaLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_BABY_DOLL_EYES),
     LEVEL_UP_MOVE( 1, MOVE_IMPRISON),
     LEVEL_UP_MOVE( 1, MOVE_DISABLE),
-    LEVEL_UP_MOVE(1, MOVE_SNAP_FREEZE),
+    LEVEL_UP_MOVE(1, MOVE_HOT_COCOA),
     LEVEL_UP_MOVE(1, MOVE_ICY_WIND),
     LEVEL_UP_MOVE(1, MOVE_HEX),
     LEVEL_UP_MOVE(1, MOVE_MISTY_TERRAIN),
@@ -10192,18 +10192,19 @@ static const struct LevelUpMove sMarshadowLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_SHADOW_SNEAK),
     LEVEL_UP_MOVE( 1, MOVE_FEINT),
     LEVEL_UP_MOVE( 1, MOVE_COUNTER),
-    LEVEL_UP_MOVE( 9, MOVE_ROLE_PLAY),
+    LEVEL_UP_MOVE( 6, MOVE_ROLE_PLAY),
+    LEVEL_UP_MOVE(12, MOVE_ASSURANCE),
     LEVEL_UP_MOVE(18, MOVE_SHADOW_PUNCH),
-    LEVEL_UP_MOVE(27, MOVE_FORCE_PALM),
-    LEVEL_UP_MOVE(36, MOVE_ASSURANCE),
-    LEVEL_UP_MOVE(45, MOVE_SUCKER_PUNCH),
-    LEVEL_UP_MOVE(54, MOVE_DRAIN_PUNCH),
-    LEVEL_UP_MOVE(59, MOVE_PSYCH_UP),
-    LEVEL_UP_MOVE(63, MOVE_SPECTRAL_THIEF),
-    LEVEL_UP_MOVE(67, MOVE_LASER_FOCUS),
+    LEVEL_UP_MOVE(24, MOVE_FORCE_PALM),
+    LEVEL_UP_MOVE(30, MOVE_SHADOW_CLONE),// A second sig, currently makes a marshadow-copy of the foe.
+    LEVEL_UP_MOVE(36, MOVE_PSYCH_UP),
+    LEVEL_UP_MOVE(42, MOVE_SUCKER_PUNCH),
+    LEVEL_UP_MOVE(48, MOVE_DRAIN_PUNCH),
+    LEVEL_UP_MOVE(54, MOVE_SPECTRAL_THIEF),
+    LEVEL_UP_MOVE(60, MOVE_LASER_FOCUS),
+    LEVEL_UP_MOVE(67, MOVE_CLOSE_COMBAT),
     LEVEL_UP_MOVE(71, MOVE_ASTRAL_BARRAGE),
     LEVEL_UP_MOVE(75, MOVE_ENDEAVOR),
-    LEVEL_UP_MOVE(80, MOVE_CLOSE_COMBAT),
     LEVEL_UP_END
 };
 #endif //P_FAMILY_MARSHADOW
@@ -16165,15 +16166,15 @@ static const struct LevelUpMove sCresseliaLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sPhioneLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(1, MOVE_SIGNAL_BEAM),
+        LEVEL_UP_MOVE(1, MOVE_FLASH),
         LEVEL_UP_MOVE(1, MOVE_CALM_MIND),
         LEVEL_UP_MOVE(1, MOVE_GUARD_SWAP),
         LEVEL_UP_MOVE(1, MOVE_CHARM),
-        LEVEL_UP_MOVE(2, MOVE_FLASH),
+        LEVEL_UP_MOVE(2, MOVE_SIGNAL_BEAM),
         LEVEL_UP_MOVE(5, MOVE_BUBBLE),
-        LEVEL_UP_MOVE(10, MOVE_CONFUSE_RAY),
+        LEVEL_UP_MOVE(10, MOVE_MITOSIS),
         LEVEL_UP_MOVE(15, MOVE_AURORA_BEAM),
-        LEVEL_UP_MOVE(20, MOVE_AQUA_RING),
+        LEVEL_UP_MOVE(20, MOVE_CONFUSE_RAY),
         LEVEL_UP_MOVE(25, MOVE_WATER_PULSE),
         LEVEL_UP_MOVE(30, MOVE_ENERGY_BALL),
         LEVEL_UP_MOVE(35, MOVE_LIFE_DEW),
@@ -16181,10 +16182,11 @@ static const struct LevelUpMove sPhioneLevelUpLearnset[] = {
         LEVEL_UP_MOVE(45, MOVE_DIVE),
         LEVEL_UP_MOVE(50, MOVE_TAIL_GLOW),
         LEVEL_UP_MOVE(55, MOVE_HYDRO_PUMP),
-        LEVEL_UP_MOVE(60, MOVE_BRIGHTEST_DAWN),// it's the fastest user, too
+        LEVEL_UP_MOVE(60, MOVE_AQUA_RING),//was brightest dawn. perhaps cresselia.
         LEVEL_UP_END
 };
 static const struct LevelUpMove sManaphyLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_SEA_GUARDIAN),
         LEVEL_UP_MOVE(1, MOVE_SIGNAL_BEAM),
         LEVEL_UP_MOVE(1, MOVE_DAZZLING_GLEAM),
         LEVEL_UP_MOVE(1, MOVE_BUBBLE),
@@ -18177,7 +18179,7 @@ static const struct LevelUpMove sSolosisLevelUpLearnset[] = {
         LEVEL_UP_MOVE(16, MOVE_SLUDGE),
         LEVEL_UP_MOVE(20, MOVE_WONDER_ROOM),
         LEVEL_UP_MOVE(24, MOVE_EXPANDING_FORCE),
-        LEVEL_UP_MOVE(28, MOVE_ENDEAVOR),
+        LEVEL_UP_MOVE(26, MOVE_MITOSIS),
         LEVEL_UP_MOVE(31, MOVE_RECOVER),
         LEVEL_UP_MOVE(35, MOVE_ENERGY_BALL),
         LEVEL_UP_MOVE(38, MOVE_FUTURE_SIGHT),
@@ -18189,6 +18191,7 @@ static const struct LevelUpMove sSolosisLevelUpLearnset[] = {
 };
 static const struct LevelUpMove sDuosionLevelUpLearnset[] = {
         LEVEL_UP_MOVE(0, MOVE_TWIN_BEAM),
+        LEVEL_UP_MOVE(1, MOVE_ENDEAVOR),
         LEVEL_UP_MOVE(1, MOVE_CONFUSION),
         LEVEL_UP_MOVE(1, MOVE_TELEPORT),
         LEVEL_UP_MOVE(5, MOVE_PURIFY),
@@ -18198,7 +18201,7 @@ static const struct LevelUpMove sDuosionLevelUpLearnset[] = {
         LEVEL_UP_MOVE(16, MOVE_SLUDGE),
         LEVEL_UP_MOVE(20, MOVE_WONDER_ROOM),
         LEVEL_UP_MOVE(24, MOVE_EXPANDING_FORCE),
-        LEVEL_UP_MOVE(28, MOVE_ENDEAVOR),
+        LEVEL_UP_MOVE(26, MOVE_MITOSIS),
         LEVEL_UP_MOVE(31, MOVE_RECOVER),
         LEVEL_UP_MOVE(36, MOVE_ENERGY_BALL),
         LEVEL_UP_MOVE(40, MOVE_FUTURE_SIGHT),
@@ -18210,6 +18213,8 @@ static const struct LevelUpMove sDuosionLevelUpLearnset[] = {
 };
 static const struct LevelUpMove sReuniclusLevelUpLearnset[] = {
         LEVEL_UP_MOVE(0, MOVE_HAMMER_ARM),
+        LEVEL_UP_MOVE(1, MOVE_TWIN_BEAM),
+        LEVEL_UP_MOVE(1, MOVE_ENDEAVOR),
         LEVEL_UP_MOVE(1, MOVE_EGG_BOMB),
         LEVEL_UP_MOVE(1, MOVE_CONFUSION),
         LEVEL_UP_MOVE(1, MOVE_TELEPORT),
@@ -18220,7 +18225,7 @@ static const struct LevelUpMove sReuniclusLevelUpLearnset[] = {
         LEVEL_UP_MOVE(16, MOVE_SLUDGE),
         LEVEL_UP_MOVE(20, MOVE_WONDER_ROOM),
         LEVEL_UP_MOVE(24, MOVE_EXPANDING_FORCE),
-        LEVEL_UP_MOVE(28, MOVE_ENDEAVOR),
+        LEVEL_UP_MOVE(26, MOVE_MITOSIS),
         LEVEL_UP_MOVE(31, MOVE_RECOVER),
         LEVEL_UP_MOVE(36, MOVE_ENERGY_BALL),
         LEVEL_UP_MOVE(40, MOVE_FUTURE_SIGHT),

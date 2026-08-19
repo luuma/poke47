@@ -7800,6 +7800,7 @@ static void Cmd_transformdataexecution(void)
             gBattleMons[gBattlerAttacker].volatiles.isTransformedMonShiny = gBattleMons[gBattlerAttacker].isShiny;
         gBattleMons[gBattlerAttacker].volatiles.mimickedMoves = 0;
         gBattleMons[gBattlerAttacker].volatiles.usedMoves = 0;
+        gBattleMons[gBattlerAttacker].volatiles.somethingSpecial = 0;
 
         timesGotHit = GetBattlerPartyState(gBattlerTarget)->timesGotHit;
         GetBattlerPartyState(gBattlerAttacker)->timesGotHit = timesGotHit;
@@ -11537,6 +11538,7 @@ void BS_JumpIfShellTrap(void)
         gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+
 void BS_SetTerrain(void)
 {
     NATIVE_ARGS(const u8 *jumpInstr);
@@ -13751,6 +13753,52 @@ void BS_TryEndNeutralizingGas(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
+
+void BS_shadowclone(void)
+{
+    NATIVE_ARGS(const u8 *jumpInstr);
+    struct Pokemon *mon = GetBattlerMon(gBattlerTarget);
+    u8 trainer = GetBattlerTrainer(gBattlerAttacker);
+    u8 partyIndex = GiveMonToPlayerPartyInBattle(mon, trainer, IsDoubleBattle());// misnomer, actually targets trainers properly
+    if (partyIndex <= PARTY_SIZE)
+    {
+        struct Pokemon *mon = &gParties[trainer][partyIndex];
+        enum Species species = GetMoveSpeciesPowerOverride_Species(gCurrentMove);
+        if (species == SPECIES_DITTO)
+            species = gBattleMons[gBattlerTarget].species;
+        if (species == SPECIES_MANAPHY)
+            species = SPECIES_PHIONE;//this is cool it means if you get manaphy to use mitosis, it's a permanent clone. Same for phione.
+        SetMonData(mon, MON_DATA_SPECIES, &species);
+        if (species != SPECIES_PHIONE)
+        {
+            bool32 true = TRUE;
+            SetMonData(mon, MON_DATA_IS_SHADOW, &true);// Imagine how I felt when i remembered there was literally an unused bool for shadow pokemon already.
+            u32 level = GetMonData(GetBattlerMon(gBattlerAttacker), MON_DATA_LEVEL);// always clone user's level.
+            u32 xp = gExperienceTables[gSpeciesInfo[species].growthRate][level];
+            SetMonData(mon, MON_DATA_EXP, &xp);
+            SetMonData(mon, MON_DATA_LEVEL, &level);
+        }
+        else
+        {
+            u32 level = 5;
+            u32 xp = 156;// level 5 slow xp group for phione.
+            SetMonData(mon, MON_DATA_EXP, &xp);
+            SetMonData(mon, MON_DATA_LEVEL, &level);
+            GiveMonInitialMoveset(mon);
+        }
+        CalculateMonStats(mon);
+        u32 shadowcloneHP = GetMonData(mon, MON_DATA_MAX_HP);
+        shadowcloneHP /= 2;
+        SetMonData(mon, MON_DATA_HP, &shadowcloneHP);
+        //if (!(IsOnPlayerSide(gBattlerTarget)))
+            //RecordAllMoves(&gParties[trainer][partyIndex]); // ai knows own moveset, IDEALLY, but since it's not yet sent out, we don't.
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+    else
+    {
+        gBattlescriptCurrInstr = cmd->jumpInstr;
+    }
+}
 
 void BS_SetNavalBlockade(void)
 {

@@ -1949,5 +1949,13 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleFactoryStyle = FACTORY_STYLE_ENDURANCE,
         .encourageEncore = TRUE,
     },
+
+    [EFFECT_SHADOW_CLONE] =
+    {
+        .battleScript = BattleScript_EffectShadowClone,
+        .battleTvScore = 6,
+        .encourageEncore = TRUE,
+    },
+
 };
 

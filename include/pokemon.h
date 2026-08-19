@@ -121,7 +121,7 @@ enum MonData {
     MON_DATA_HYPER_TRAINED_SPEED,
     MON_DATA_HYPER_TRAINED_SPATK,
     MON_DATA_HYPER_TRAINED_SPDEF,
-    MON_DATA_IS_SHADOW,
+    MON_DATA_IS_SHADOW,// LMAO ideal for shadow clone
     MON_DATA_DYNAMAX_LEVEL,// USED FOR GAUNTLET ISLAND BULLSHIT since it has no meaning in game for me.
     MON_DATA_GIGANTAMAX_FACTOR,// USED FOR GAUNTLET ISLAND BULLSHIT since it has no meaning in game for me.
     MON_DATA_TERA_TYPE,
@@ -957,6 +957,9 @@ struct BoxPokemon *GetSelectedBoxMonFromPcOrParty(void);
 u32 GiveScriptedMonToPlayer(struct Pokemon *mon, u8 slot);
 void ChangePokemonNicknameWithCallback(void (*callback)(void));
 bool32 HasShedinjaHPHandling(enum Species species);
+
+u8 GiveMonToPlayerPartyInBattle(struct Pokemon *mon, u8 trainer, bool32 isDouble);
+
 
 u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe);
 u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe, u32 Cap);

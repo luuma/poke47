@@ -2682,8 +2682,12 @@ static enum MoveEndResult MoveEndAbsorb(struct BattleCalcValues *cv)
             result = MOVEEND_RESULT_RUN_SCRIPT;
         }
         break;
-    case EFFECT_MAX_HP_50_RECOIL:
+    case EFFECT_SHADOW_CLONE:
     case EFFECT_SCREEN_BURN:
+        if ((gBattleStruct->moveResultFlags[cv->battlerAtk] & (MOVE_RESULT_MISSED | MOVE_RESULT_FAILED | MOVE_RESULT_DOESNT_AFFECT_FOE)) != 0 || (gBattleStruct->moveResultFlags[cv->battlerDef] & (MOVE_RESULT_MISSED | MOVE_RESULT_FAILED | MOVE_RESULT_DOESNT_AFFECT_FOE)) != 0)// if it set a fail flag on either, do no damage
+            break;
+    //fallthrough
+    case EFFECT_MAX_HP_50_RECOIL:
         if (IsBattlerAlive(cv->battlerAtk)
          && !gBattleStruct->unableToUseMove
          && (gBattleStruct->doneDoublesSpreadHit || !IsDoubleSpreadMove())

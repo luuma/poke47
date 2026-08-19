@@ -1793,6 +1793,20 @@ BattleScript_EffectScreenBurn::
 	tryfaintmon BS_ATTACKER
 	goto BattleScript_MoveEnd
 
+BattleScript_EffectShadowClone::
+	attackcanceler
+    callnative BS_shadowclone
+	.4byte BattleScript_ButItFailed
+	attackanimation
+	waitanimation
+	healthbarupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	datahpupdate BS_ATTACKER, PASSIVE_HP_UPDATE
+	printstring STRINGID_SACRIFICEDMADECOPY
+	waitmessage B_WAIT_TIME_LONG
+	tryfaintmon BS_ATTACKER
+	goto BattleScript_MoveEnd
+
+
 BattleScript_EffectHotCocoa::
 	attackcanceler
 	callnative BS_sethotcocoa

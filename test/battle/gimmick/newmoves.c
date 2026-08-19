@@ -135,6 +135,27 @@ SINGLE_BATTLE_TEST("POKE47: eNVELOP uses special defense stat of target", s16 da
     }
 }
 
+
+SINGLE_BATTLE_TEST("POKE47: Sandblaster 2x in sand", s16 damage)
+{
+    enum Move move;
+
+    PARAMETRIZE { move = MOVE_HAIL; }
+    PARAMETRIZE { move = MOVE_SANDSTORM; }
+
+    GIVEN {
+        PLAYER(SPECIES_PALOSSAND);
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, move); MOVE(player, MOVE_SANDBLASTER); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, move, player);
+        HP_BAR(opponent, captureDamage: &results[i].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[0].damage, Q_4_12(2.0), results[1].damage);
+    }
+}
+
 SINGLE_BATTLE_TEST("POKE47: Blink Strike", s16 damage)
 {
     enum Move move;

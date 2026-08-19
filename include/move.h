@@ -612,7 +612,7 @@ static inline u32 GetMoveTwoTurnAttackWeather(enum Move moveId)
 static inline u32 GetMoveSpeciesPowerOverride_Species(enum Move moveId)
 {
     moveId = SanitizeMoveId(moveId);
-    assertf(gMovesInfo[moveId].effect == EFFECT_SPECIES_POWER_OVERRIDE, "not a species power override move: %S", GetMoveName(moveId));
+    //assertf(gMovesInfo[moveId].effect == EFFECT_SPECIES_POWER_OVERRIDE, "not a species power override move: %S", GetMoveName(moveId)); meh don't need.
     return gMovesInfo[SanitizeMoveId(moveId)].argument.speciesPowerOverride.species;
 }
 

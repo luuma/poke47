@@ -1,6 +1,6 @@
 {
     "view": {
-        "editCursorTick": 8160,
+        "editCursorTick": 330,
         "emptyLanes": [
             {
                 "cc": 255,
@@ -22,10 +22,10 @@
             "voice:4": 128,
             "voice:5": 128
         },
-        "pxPerBeat": 12.23664587475212,
-        "scrollPx": 967,
-        "scrollY": 668,
-        "selectedTrack": 4,
+        "pxPerBeat": 30.077003725545666,
+        "scrollPx": 0,
+        "scrollY": 374,
+        "selectedTrack": 3,
         "splitter": [
             512,
             332
