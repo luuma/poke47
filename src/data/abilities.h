@@ -2558,4 +2558,11 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .description = COMPOUND_STRING("Sets Trick Room."),
         .aiRating = 8,
     },
+
+    [ABILITY_LINGER] =
+    {
+        .name = _("Linger"),
+        .description = COMPOUND_STRING("Foes' debuffs stay on faint/switch"),
+        .aiRating = 8,
+    },
 };

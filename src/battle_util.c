@@ -11540,7 +11540,7 @@ void SetValuesOnFaint(enum BattlerId battler)
     gBattleStruct->eventState.faintedAction = 0;
     gBattlerFainted = battler;
     TryDeactivateSleepClause(battler, gBattlerPartyIndexes[battler]);
-
+/// leech seed still set here
     if (gBattleStruct->faintCounter[GetBattlerTrainer(battler)] < 255)
         gBattleStruct->faintCounter[GetBattlerTrainer(battler)]++;
 

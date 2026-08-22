@@ -3121,6 +3121,8 @@ static void BattleStartClearSetData(void)
 }
 
 #define UNPACK_VOLATILE_BATON_PASSABLES(_enum, _fieldName, _typeMaxValue, ...) __VA_OPT__(if ((FIRST(__VA_ARGS__)) & V_BATON_PASSABLE) gBattleMons[battler].volatiles._fieldName = volatilesCopy->_fieldName;)
+#define UNPACK_VOLATILE_DEBUFF_PASSABLES(_enum, _fieldName, _typeMaxValue, ...) __VA_OPT__(if ((FIRST(__VA_ARGS__)) & V_PASSABLE_DEBUFF) gBattleMons[battler].volatiles._fieldName = volatilesCopy->_fieldName;)//REDDIT
+
 
 void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCopy)
 {
@@ -3168,6 +3170,14 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
             gBattleMons[battler].volatiles.gastroAcid = FALSE;
     }
 
+    if (IsAbilityOnOpposingSide(battler, ABILITY_LINGER) != 0)
+    {
+        VOLATILE_DEFINITIONS(UNPACK_VOLATILE_DEBUFF_PASSABLES)
+
+        if (gBattleMons[battler].volatiles.gastroAcid && gAbilitiesInfo[gBattleMons[battler].ability].cantBeSuppressed)
+            gBattleMons[battler].volatiles.gastroAcid = FALSE;
+    }
+
     for (enum BattlerId i = 0; i < gBattlersCount; i++)
     {
         if (gBattleMons[i].volatiles.infatuation == INFATUATED_WITH(battler))
@@ -3187,7 +3197,14 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
 
     if (GetProtectType(gProtectStructs[battler].protected) == PROTECT_TYPE_SINGLE) // Side type protects expire at the end of the turn
         gProtectStructs[battler].protected = PROTECT_NONE;
-
+    
+    if (IsAbilityOnOpposingSide(battler, ABILITY_LINGER) != 0)
+    {
+        gBattleMons[battler].volatiles.perishSongTimer = volatilesCopy->perishSongTimer;
+        gBattleMons[battler].volatiles.battlerPreventingEscape = volatilesCopy->battlerPreventingEscape;
+        gBattleMons[battler].volatiles.embargoTimer = volatilesCopy->embargoTimer;
+        gBattleMons[battler].volatiles.healBlockTimer = volatilesCopy->healBlockTimer;
+    }
     if (effect == EFFECT_BATON_PASS)
     {
         gBattleMons[battler].volatiles.substituteHP = volatilesCopy->substituteHP;
@@ -3271,16 +3288,32 @@ void SwitchInClearSetData(enum BattlerId battler, struct Volatiles *volatilesCop
     Ai_UpdateSwitchInData(battler);
 }
 
-void FaintClearSetData(enum BattlerId battler)
+void FaintClearSetData(enum BattlerId battler, struct Volatiles *volatilesCopy)// needs volatilescopy for the reddit win. Think I'm also going to be able to do a current ability transfer thing for Plus and for Receiver. oo. and trace. . . . 
 {
-    if (!(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_NAVAL_BLOCKADE))
+    // This was a complex bug to fix: it turns out what I'd done by accident is passed a link to exactly where the battler's volatiles were stored
+    // what I wanted was a link to a copy of them!
+    if (!(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_NAVAL_BLOCKADE))///REDDITWIN // || IsAbilityOnOpposingSide(battler, ABILITY_LINGER)
     {
         for (enum Stat i = 0; i < NUM_BATTLE_STATS; i++)
             gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
     }
     bool32 keepTransformed = gBattleMons[battler].volatiles.transformed;
     enum Species originalSpecies = gBattleMons[battler].volatiles.transformedMonSpecies;
-    memset(&gBattleMons[battler].volatiles, 0, sizeof(struct Volatiles));
+    memset(&gBattleMons[battler].volatiles, 0, sizeof(struct Volatiles));////////// REDDITWIN
+    if (IsAbilityOnOpposingSide(battler, ABILITY_LINGER))///////////////// This is not kosher as it runs when the battle is about to end. Should have a bool passed to it.
+    {
+        VOLATILE_DEFINITIONS(UNPACK_VOLATILE_DEBUFF_PASSABLES)
+
+        //assertf(FALSE, "doing linger, leechseed %d", gBattleMons[battler].volatiles.leechSeed);//BUG SPLATTING. Makes it here!!
+        if (gBattleMons[battler].volatiles.gastroAcid && gAbilitiesInfo[gBattleMons[battler].ability].cantBeSuppressed)
+            gBattleMons[battler].volatiles.gastroAcid = FALSE;
+
+        gBattleMons[battler].volatiles.perishSongTimer = volatilesCopy->perishSongTimer;// note to self: perish song is set to false when it KOs.
+        gBattleMons[battler].volatiles.battlerPreventingEscape = volatilesCopy->battlerPreventingEscape;
+        gBattleMons[battler].volatiles.embargoTimer = volatilesCopy->embargoTimer;
+        gBattleMons[battler].volatiles.healBlockTimer = volatilesCopy->healBlockTimer;
+    }
+
     gBattleMons[battler].volatiles.transformed = keepTransformed; // Edge case: Keep Transformed status to prevent triggering FORM_CHANGE_FAINT on transformed mons.
     gBattleMons[battler].volatiles.transformedMonSpecies = originalSpecies; // Also keep transformed species for ev and exp calculation
 

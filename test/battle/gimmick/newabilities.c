@@ -446,7 +446,6 @@ SINGLE_BATTLE_TEST("POKE47: Ice Body recovers 1/16th of Max HP in hail, not more
     }
 }
 
-
 SINGLE_BATTLE_TEST("POKE47: Comatose tweaked move effects: pSYcho shift.")
 {
     GIVEN {
@@ -476,7 +475,7 @@ SINGLE_BATTLE_TEST("POKE47: Comatose tweaked move effects: rest.")
     }
 }
 
-SINGLE_BATTLE_TEST("POKE47: And check that's unique to comatose.")
+SINGLE_BATTLE_TEST("POKE47: Comatose check that's unique to comatose.")
 {
     GIVEN {
         PLAYER(SPECIES_MUSHARNA) { Ability(ABILITY_ROUGH_SKIN); HP(1); MaxHP(100); }
@@ -490,6 +489,121 @@ SINGLE_BATTLE_TEST("POKE47: And check that's unique to comatose.")
         ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
         ANIMATION(ANIM_TYPE_MOVE, MOVE_REST, player);
 	ANIMATION(ANIM_TYPE_STATUS, B_ANIM_STATUS_SLP, player);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Linger makes stats persist on switch.")
+{
+    GIVEN {
+        PLAYER(SPECIES_TREVENANT) { Ability(ABILITY_LINGER); }
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_SPICY_EXTRACT);}
+        TURN { SWITCH(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("2 sent out Wynaut!");
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_DEF], DEFAULT_STAT_STAGE - 2);
+        EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Linger makes volatiles persist on switch.")
+{
+    s16 damage;
+    s16 healed;
+
+    GIVEN {
+        PLAYER(SPECIES_TREVENANT) {Ability(ABILITY_LINGER); HP(1); }
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_LEECH_SEED); }
+        TURN { SWITCH(opponent, 1); }
+        TURN { }
+    } SCENE {
+        MESSAGE("2 sent out Wynaut!");
+        HP_BAR(opponent);
+        HP_BAR(player);
+        HP_BAR(opponent, captureDamage: &damage);
+        HP_BAR(player, captureDamage: &healed);
+    } THEN {
+        EXPECT_MUL_EQ(damage, Q_4_12(-1), healed);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Linger. Compare to baton pass.")
+{
+    s16 damage;
+    s16 healed;
+
+    GIVEN {
+        PLAYER(SPECIES_TREVENANT) {Ability(ABILITY_LINGER); HP(1); }
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_LEECH_SEED); MOVE(opponent, MOVE_BATON_PASS); SEND_OUT(opponent, 1);}
+    } SCENE {
+        MESSAGE("2 sent out Wynaut!");
+        HP_BAR(opponent, captureDamage: &damage);
+        HP_BAR(player, captureDamage: &healed);
+    } THEN {
+        EXPECT_MUL_EQ(damage, Q_4_12(-1), healed);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Linger persistence on faint.")
+{
+    GIVEN {
+        PLAYER(SPECIES_TREVENANT) {Ability(ABILITY_LINGER); }
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CURSE); MOVE(opponent, MOVE_MEMENTO); SEND_OUT(opponent, 1);}
+        TURN { }
+    } SCENE {
+        MESSAGE("2 sent out Wynaut!");
+        HP_BAR(opponent);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Linger persistence on faint.")
+{
+
+    GIVEN {
+        OPPONENT(SPECIES_TREVENANT) {Ability(ABILITY_LINGER); HP(1); }
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_LEECH_SEED); MOVE(player, MOVE_MEMENTO); SEND_OUT(player, 1);}
+        TURN { }
+    } SCENE {
+        MESSAGE("Your opponent's weak! Get 'em, Wynaut!");
+        HP_BAR(player);
+        HP_BAR(opponent);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Linger DOESN't pass e.g. aqua ring.")
+{
+
+    GIVEN {
+        OPPONENT(SPECIES_FINNEON);
+        OPPONENT(SPECIES_WYNAUT) {HP(1);}
+        PLAYER(SPECIES_TREVENANT) {Ability(ABILITY_LINGER); HP(1);}
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_AQUA_RING);}
+        TURN { MOVE(opponent, MOVE_MEMENTO); SEND_OUT(opponent, 1);}
+        TURN { }
+    } SCENE {
+        MESSAGE("2 sent out Wynaut!");
+        NONE_OF {HP_BAR(opponent);}
     }
 }
 

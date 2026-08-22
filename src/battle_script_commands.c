@@ -3681,14 +3681,16 @@ static void Cmd_cleareffectsonfaint(void)
     if (gBattleControllerExecFlags == 0)
     {
         enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
+	struct Volatiles oldData;
+        oldData = gBattleMons[battler].volatiles;
         if (!(gBattleTypeFlags & BATTLE_TYPE_ARENA) || !IsBattlerAlive(battler))
         {
-            gBattleMons[battler].status1 = 0;
+            gBattleMons[battler].status1 = 0;// clear on faint and ping
             BtlController_EmitSetMonData(battler, B_COMM_TO_CONTROLLER, REQUEST_STATUS_BATTLE, 0, sizeof(gBattleMons[battler].status1), &gBattleMons[battler].status1);
             MarkBattlerForControllerExec(battler);
         }
 
-        FaintClearSetData(battler); // Effects like attractions, trapping, etc.
+        FaintClearSetData(battler, &oldData); // Effects like attractions, trapping, etc.
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
@@ -5043,7 +5045,7 @@ static void Cmd_switchindataupdate(void)
             gBattleMons[battler].statStages[i] = oldData.statStages[i];
         }
     }
-    else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_NAVAL_BLOCKADE)// Also sorted in battle main dot C.
+    else if (gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_NAVAL_BLOCKADE || IsAbilityOnOpposingSide(battler, ABILITY_LINGER))// Also sorted in battle main dot C./// REDDITWIN. Also, the "IsAbilityOnOpposingSide(battler, ABILITY_REDDIT)" should be a bool passed to switchinclearsetdata.
     {
         for (i = 0; i < NUM_BATTLE_STATS; i++)
         {
@@ -12957,17 +12959,19 @@ void BS_SetTeleportOutcome(void)
 {
     NATIVE_ARGS(u8 battler);
     enum BattlerId battler = GetBattlerForBattleScript(cmd->battler);
-
+    
     // Don't end the battle if one of the wild mons teleported from the wild double battle
     // and its partner is still alive.
     if (!IsOnPlayerSide(battler) && IsBattlerAlive(GetPartnerBattler(battler)))
     {
+	struct Volatiles oldData;
+        oldData = gBattleMons[battler].volatiles;
         gAbsentBattlerFlags |= 1u << battler;
         gHitMarker |= HITMARKER_FAINTED(battler);
         gBattleMons[battler].hp = 0;
         SetMonData(GetBattlerMon(battler), MON_DATA_HP, &gBattleMons[battler].hp);
         SetHealthboxSpriteInvisible(gHealthboxSpriteIds[battler]);
-        FaintClearSetData(battler);
+        FaintClearSetData(battler, &oldData);
     }
     else if (IsOnPlayerSide(battler))
     {

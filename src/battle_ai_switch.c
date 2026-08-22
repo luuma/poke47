@@ -717,11 +717,13 @@ static bool32 ShouldSwitchIfBadlyStatused(struct SwitchAiContext *switchContext)
     bool32 switchMon = FALSE;
     enum Ability monAbility = gAiLogicData->abilities[switchContext->battler];
     enum HoldEffect holdEffect = gAiLogicData->holdEffects[switchContext->battler];
+    bool32 linger = AI_IsAbilityOnSide(GetOppositeBattler(switchContext->battler), ABILITY_LINGER);
 
     //Perish Song
     if (gBattleMons[switchContext->battler].volatiles.perishSong
         && gBattleMons[switchContext->battler].volatiles.perishSongTimer == 0
         && monAbility != ABILITY_SOUNDPROOF
+        && !linger
         && RandomPercentage(RNG_AI_SWITCH_PERISH_SONG, GetSwitchChance(SHOULD_SWITCH_PERISH_SONG)))
         return SetSwitchinAndSwitch(switchContext->battler, PARTY_SIZE);
 
@@ -784,16 +786,19 @@ static bool32 ShouldSwitchIfBadlyStatused(struct SwitchAiContext *switchContext)
 
             //Cursed
             if (gBattleMons[switchContext->battler].volatiles.cursed
+                && !linger
                 && ((switchContext->hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_CURSED, GetSwitchChance(SHOULD_SWITCH_CURSED_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_CURSED, GetSwitchChance(SHOULD_SWITCH_CURSED))) || gFieldStatuses & STATUS_FIELD_GRAVITY ))
                 return SetSwitchinAndSwitch(switchContext->battler, PARTY_SIZE);
 
             //Nightmare
             if (gBattleMons[switchContext->battler].volatiles.nightmare
+                && !linger
                 && ((switchContext->hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_NIGHTMARE, GetSwitchChance(SHOULD_SWITCH_NIGHTMARE_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_NIGHTMARE, GetSwitchChance(SHOULD_SWITCH_NIGHTMARE))) || gFieldStatuses & STATUS_FIELD_GRAVITY ))
                 return SetSwitchinAndSwitch(switchContext->battler, PARTY_SIZE);
 
             //Leech Seed
             if (gBattleMons[switchContext->battler].volatiles.leechSeed
+                && !linger
                 && ((switchContext->hasStatRaised ? RandomPercentage(RNG_AI_SWITCH_SEEDED, GetSwitchChance(SHOULD_SWITCH_SEEDED_STATS_RAISED)) : RandomPercentage(RNG_AI_SWITCH_SEEDED, GetSwitchChance(SHOULD_SWITCH_SEEDED))) || gFieldStatuses & STATUS_FIELD_GRAVITY ))
                 return SetSwitchinAndSwitch(switchContext->battler, PARTY_SIZE);
         }
@@ -1225,7 +1230,7 @@ static bool32 ShouldSwitchIfAttackingStatsLowered(struct SwitchAiContext *switch
     if (!(gAiThinkingStruct->aiFlags[switchContext->battler] & AI_FLAG_SMART_SWITCHING))
         return FALSE;
     // Don't switch if naval blockade is stopping stats from resetting when switch. 
-    if (gSideStatuses[GetBattlerSide(switchContext->battler)] & SIDE_STATUS_NAVAL_BLOCKADE)
+    if (gSideStatuses[GetBattlerSide(switchContext->battler)] & SIDE_STATUS_NAVAL_BLOCKADE ||  AI_IsAbilityOnSide(GetOppositeBattler(switchContext->battler), ABILITY_LINGER)>0)///REDDITWIN
         return FALSE;
     // Physical attacker
     if (gBattleMons[switchContext->battler].attack > gBattleMons[switchContext->battler].spAttack)
@@ -1793,6 +1798,12 @@ static u32 GetSwitchinRecurringDamage(enum BattlerId battler)
         else if (holdEffect == HOLD_EFFECT_STICKY_BARB)
         {
             passiveDamage = maxHP / 8;
+            if (passiveDamage == 0)
+                passiveDamage = 1;
+        }
+        if (AI_IsAbilityOnSide(GetOppositeBattler(battler), ABILITY_LINGER)>0)
+        {
+            passiveDamage = maxHP / 8; // assume it rather than passing a ton of info.
             if (passiveDamage == 0)
                 passiveDamage = 1;
         }
