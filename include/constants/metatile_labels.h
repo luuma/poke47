@@ -263,6 +263,9 @@
 #define METATILE_General_CalmWater             0x170
 #define METATILE_General_CaveEntrance_Bottom   0x0A7
 #define METATILE_General_CaveEntrance_Top      0x09F
+#define METATILE_General_DefaultGrass1         0x00C
+#define METATILE_General_DefaultGrass2         0x046
+#define METATILE_General_DefaultGrass3         0x014
 #define METATILE_General_Door                  0x021
 #define METATILE_General_Door_Contest          0x1DB
 #define METATILE_General_Door_Gym              0x1CD

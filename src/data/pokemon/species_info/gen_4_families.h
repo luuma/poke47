@@ -5391,7 +5391,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_Skorupi,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Skorupi,
             gShinyOverworldPalette_Skorupi
@@ -5469,7 +5469,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_Drapion,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Drapion,
             gShinyOverworldPalette_Drapion
@@ -7671,7 +7671,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_Cresselia,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Cresselia,
             gShinyOverworldPalette_Cresselia
@@ -7750,7 +7750,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_Phione,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Phione,
             gShinyOverworldPalette_Phione
@@ -7829,7 +7829,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_Manaphy,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_SPOT,
             sAnimTable_Following,
             gOverworldPalette_Manaphy,
             gShinyOverworldPalette_Manaphy
@@ -7912,7 +7912,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_Darkrai,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Darkrai,
             gShinyOverworldPalette_Darkrai

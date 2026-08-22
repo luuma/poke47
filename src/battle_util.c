@@ -9603,28 +9603,48 @@ void TryRestoreHeldItems(void)
     //if (!B_TRAINERS_KNOCK_OFF_ITEMS && B_RESTORE_HELD_BATTLE_ITEMS < GEN_9)//deleted as the function is now doing five things at once for me and two of them come after here and are nothing to do with restoring held items.
         //return;
 
-    bool32 returnNPCItems = B_RETURN_STOLEN_NPC_ITEMS >= GEN_5;//  && gBattleTypeFlags & BATTLE_TYPE_TRAINER
+    //bool32 returnNPCItems = B_RETURN_STOLEN_NPC_ITEMS >= GEN_5;//  && gBattleTypeFlags & BATTLE_TYPE_TRAINER
 
     for (u32 i = 0; i < PARTY_SIZE; i++)
     {
         if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_SHADOW) == TRUE)
             ZeroMonData(&gParties[B_TRAINER_PLAYER][i]);
-        if (gBattleStruct->itemLost[B_TRAINER_PLAYER][i].stolen || returnNPCItems)
+
+        u32 lostItem = gBattleStruct->itemLost[B_TRAINER_PLAYER][i].originalItem;
+        u32 CURRENTitem = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM);//&gParties[B_TRAINER_PLAYER][i].item;
+
+        if (lostItem != ITEM_NONE && GetItemPocket(lostItem) != POCKET_BERRIES && lostItem != CURRENTitem)// IF lost a real item that wasn't a berry, restore it no question.
         {
-            u32 lostItem = gBattleStruct->itemLost[B_TRAINER_PLAYER][i].originalItem;
-
-            if (GetItemPocket(lostItem) == POCKET_BERRIES && GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM) != lostItem)
-                lostItem = ITEM_NONE;
-
-            if ((lostItem != ITEM_NONE || returnNPCItems) && GetItemPocket(lostItem) != POCKET_BERRIES)
-                SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &lostItem);
+            //if (CURRENTitem != ITEM_NONE && gBattleStruct->itemLost[B_TRAINER_PLAYER][i].stolen)// this handles when you use trick and steal a foe's item - virtually nothing else.
+                //AddBagItem(gLastUsedItem, 1);// enables item duplication probably.
+            SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &lostItem);
         }
-        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM) == ITEM_KNELL_BELL)
+        else if (CURRENTitem != ITEM_NONE && GetItemPocket(CURRENTitem) != POCKET_BERRIES && lostItem != CURRENTitem)
+        // ELSE if holding an item, and (either: user had a berry that is different to item, OR user had nothing beforehand) and the current item is not a berry 
+        {
+            for (j = 0; j < PARTY_SIZE; j++)
             {
-                for (j = 0; j < MAX_MON_MOVES; ++j)
+                if (gBattleStruct->itemLost[B_TRAINER_PLAYER][j].originalItem == CURRENTitem)// fuck me not again.
                 {
-                    u32 pp = GetMovePP(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MOVE1 + j))* 2 / 5;
-                    if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j) < pp)
+                    SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &lostItem);
+                    CURRENTitem = lostItem; // wow so important.
+                    // current item is kept unless it may be duplicating, in which case restore to nothing or to berry.
+                    break;
+                }
+            }
+        }
+        else
+        {
+            SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM, &CURRENTitem);
+        }
+        // else leave with whatever it currently holds - possibly stolen, possibly an allied berry on a different mon.
+
+        if (CURRENTitem == ITEM_KNELL_BELL)
+        {
+            for (j = 0; j < MAX_MON_MOVES; ++j)
+            {
+                u32 pp = GetMovePP(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_MOVE1 + j))* 2 / 5;
+                if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j) < pp)
                 {
                     SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_PP1 + j, &pp);
                 }
@@ -9681,8 +9701,8 @@ void TrySaveExchangedItem(enum BattlerId battler, enum Item stolenItem)
     //if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER) || gBattleTypeFlags & BATTLE_TYPE_FRONTIER)
         //return;
 
-    if (GetBattlerTrainer(battler) != B_TRAINER_PLAYER)
-        return;
+    //if (GetBattlerTrainer(battler) != B_TRAINER_PLAYER)
+        //return;
 
     // If regular trainer battle and mon's original item matches what is being stolen, save it to be restored at end of battle
     if (stolenItem == gBattleStruct->itemLost[B_TRAINER_PLAYER][gBattlerPartyIndexes[battler]].originalItem)

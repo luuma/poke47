@@ -1,4 +1,5 @@
 Route102_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, DefaultGrass_OnResume
 	.byte 0
 
 Route102_EventScript_LittleBoy::

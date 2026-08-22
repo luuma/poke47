@@ -1,4 +1,5 @@
 Route136_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, DefaultGrass_OnResume
 	.byte 0
 
 Route136_Triangle1::

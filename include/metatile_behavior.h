@@ -174,6 +174,8 @@ bool8 MetatileBehavior_IsRockClimbable(u8 metatileBehavior);
 bool8 MetatileBehavior_IsSnow(u8 metatileBehavior);
 bool8 MetatileBehavior_IsSnowGrass(u8 metatileBehavior);
 bool8 MetatileBehavior_IsTallGrassType(u8 metatileBehavior);
+bool8 MetatileBehavior_IsDefaultGrass(u8 metatileBehavior);
+bool8 MetatileBehavior_IsShortGrassSpecifically(u8 metatileBehavior);
 
 bool8 MetatileBehavior_IsSpinRight(u8 metatileBehavior);
 bool8 MetatileBehavior_IsSpinLeft(u8 metatileBehavior);

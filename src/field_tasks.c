@@ -55,6 +55,7 @@ static void PacifidlogBridgePerStepCallback(u8);
 static void SootopolisGymIcePerStepCallback(u8);
 static void CrackedFloorPerStepCallback(u8);
 static void IcefallCaveIcePerStepCallback(u8);
+static void GrassPerStepCallback(u8);
 static void Task_MuddySlope(u8);
 
 static const TaskFunc sPerStepCallbacks[] =
@@ -67,7 +68,8 @@ static const TaskFunc sPerStepCallbacks[] =
     [STEP_CB_TRUCK]             = EndTruckSequence,
     [STEP_CB_SECRET_BASE]       = SecretBasePerStepCallback,
     [STEP_CB_CRACKED_FLOOR]     = CrackedFloorPerStepCallback,
-    [STEP_CB_ICEFALL_CAVE]      = IcefallCaveIcePerStepCallback
+    [STEP_CB_ICEFALL_CAVE]      = IcefallCaveIcePerStepCallback,
+    [STEP_CB_GRASS]      	= GrassPerStepCallback
 };
 
 // The positions of each map space with crackable ice in Icefall Cave.
@@ -802,6 +804,41 @@ static void AshGrassPerStepCallback(u8 taskId)
         }
     }
 }
+
+static void GrassPerStepCallback(u8 taskId)
+{
+    s16 x, y;
+    s16 *data = gTasks[taskId].data;
+    PlayerGetDestCoords(&x, &y);
+
+    // End if player hasn't moved
+    if (x == tPrevX && y == tPrevY)
+        return;
+
+    if (MetatileBehavior_IsDefaultGrass(MapGridGetMetatileBehaviorAt(tPrevX, tPrevY)))
+    {
+        MapGridSetMetatileIdAt(tPrevX, tPrevY, METATILE_General_Grass); // FUCKIN' GORGEOUS!
+        CurrentMapDrawMetatileAt(tPrevX, tPrevY);
+    }
+
+    if (MetatileBehavior_IsShortGrassSpecifically(MapGridGetMetatileBehaviorAt(tPrevX, tPrevY)))
+    {
+        if (MapGridGetMetatileIdAt(tPrevX, tPrevY) == METATILE_General_DefaultGrass2)
+        {
+        MapGridSetMetatileIdAt(tPrevX, tPrevY, METATILE_General_DefaultGrass1);
+        CurrentMapDrawMetatileAt(tPrevX, tPrevY);
+        }
+        else
+        {
+        MapGridSetMetatileIdAt(tPrevX, tPrevY, METATILE_General_DefaultGrass2);
+        CurrentMapDrawMetatileAt(tPrevX, tPrevY);
+        }
+    }
+    tPrevX = x;
+    tPrevY = y;
+}
+
+
 
 #undef tPrevX
 #undef tPrevY

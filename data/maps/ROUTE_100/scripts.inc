@@ -1,6 +1,12 @@
 ROUTE_100_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, DefaultGrass_OnResume
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, ROUTE_100_OnFrame
 	.byte 0
+
+DefaultGrass_OnResume:
+	setstepcallback STEP_CB_GRASS
+	end
+
 
 ROUTE_100_OnFrame::
 	map_script_2 VAR_GAUNTLET_ACTIVE, 2, Route100_EventScript_GauntletEnd2

@@ -92,7 +92,7 @@
 #define FLDEFF_USE_FADE   87
 #define FLDEFF_USE_FUTURE_SIGHT   88
 #define FLDEFF_USE_SPLASH   89
-
+#define FLDEFF_METATILE_REPLACE   90
 
 #define FLDEFFOBJ_SHADOW_S              0
 #define FLDEFFOBJ_SHADOW_M              1

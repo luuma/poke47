@@ -1,4 +1,5 @@
 Route111_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, DefaultGrass_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, Route111_OnLoad
 	map_script MAP_SCRIPT_ON_TRANSITION, Route111_OnTransition
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, Route111_OnWarp
