@@ -7439,7 +7439,10 @@ u8 GiveMonToPlayerPartyInBattle(struct Pokemon *mon, u8 trainer, bool32 isDouble
         }
         CopyMon(&gParties[trainer][i], mon, sizeof(struct Pokemon));
         gPartiesCount[trainer] = i + 1;
-    CalculatePartyCount(trainer);
+    CalculatePartyCount(trainer);// tot up for trainer, then run everyone in battle
+    CalculatePlayerPartyCount();
+    CalculatePartnerPartyCount();
+    CalculateEnemyPartyCount();
     return i;
 }
 

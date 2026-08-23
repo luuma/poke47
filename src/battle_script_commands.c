@@ -13767,6 +13767,7 @@ void BS_shadowclone(void)
     if (partyIndex <= PARTY_SIZE)
     {
         struct Pokemon *mon = &gParties[trainer][partyIndex];
+/////////neeed to update size of gParties[trainer][partyIndex].partySize or whatever the fuck it is.
         enum Species species = GetMoveSpeciesPowerOverride_Species(gCurrentMove);
         if (species == SPECIES_DITTO)
             species = gBattleMons[gBattlerTarget].species;
