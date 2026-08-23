@@ -717,7 +717,7 @@ static bool32 ShouldSwitchIfBadlyStatused(struct SwitchAiContext *switchContext)
     bool32 switchMon = FALSE;
     enum Ability monAbility = gAiLogicData->abilities[switchContext->battler];
     enum HoldEffect holdEffect = gAiLogicData->holdEffects[switchContext->battler];
-    bool32 linger = AI_IsAbilityOnSide(GetOppositeBattler(switchContext->battler), ABILITY_LINGER);
+    bool32 linger = AI_IsAbilityOnSide(GetOppositeBattler(switchContext->battler), ABILITY_LINGER);// now: ai is not clued in on ability effects. This is just a general issue with it.
 
     //Perish Song
     if (gBattleMons[switchContext->battler].volatiles.perishSong

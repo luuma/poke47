@@ -7419,7 +7419,7 @@ struct BoxPokemon *GetSelectedBoxMonFromPcOrParty(void)
 }
 
 
-u8 GiveMonToPlayerPartyInBattle(struct Pokemon *mon, u8 trainer, bool32 isDouble)
+u8 GiveMonToPlayerPartyInBattle(struct Pokemon *mon, u8 trainer, bool32 isDouble)// misnomer. give to trainer.
 {
     u32 i;
         for (i = 0; i < PARTY_SIZE; i++)
@@ -7427,7 +7427,11 @@ u8 GiveMonToPlayerPartyInBattle(struct Pokemon *mon, u8 trainer, bool32 isDouble
             if (GetMonData(&gParties[trainer][i], MON_DATA_IS_SHADOW) == TRUE)
                 return PARTY_SIZE + 1;// no cloning if you've already cloned.
             if (GetMonData(&gParties[trainer][i], MON_DATA_SPECIES) == SPECIES_NONE)
-                break;
+                break;// found an open slot! put a marshadow in it
+        }
+        if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER) && i >= MULTI_PARTY_SIZE)//note that in frontier multis you could in theory have 6 but manaphy is banned anyway so the limit isn't reachable.
+        {
+            return PARTY_SIZE + 1;
         }
         if (i >= PARTY_SIZE)
         {
@@ -7439,7 +7443,7 @@ u8 GiveMonToPlayerPartyInBattle(struct Pokemon *mon, u8 trainer, bool32 isDouble
         }
         CopyMon(&gParties[trainer][i], mon, sizeof(struct Pokemon));
         gPartiesCount[trainer] = i + 1;
-    CalculatePartyCount(trainer);// tot up for trainer, then run everyone in battle
+    CalculatePartyCount(trainer);// tot up for trainer, then for everyone in battle
     CalculatePlayerPartyCount();
     CalculatePartnerPartyCount();
     CalculateEnemyPartyCount();

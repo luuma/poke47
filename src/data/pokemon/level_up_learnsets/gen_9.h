@@ -16265,7 +16265,7 @@ static const struct LevelUpMove sSnivyLevelUpLearnset[] = {
         LEVEL_UP_MOVE(10, MOVE_LEER),
         LEVEL_UP_MOVE(13, MOVE_POISON_TAIL),
         LEVEL_UP_MOVE(16, MOVE_LEAF_TORNADO),
-        LEVEL_UP_MOVE(20, MOVE_LEECH_SEED),
+        LEVEL_UP_MOVE(20, MOVE_LEECH_SEED),// unsure.
         LEVEL_UP_MOVE(24, MOVE_GLARE),
         LEVEL_UP_MOVE(27, MOVE_TEATIME),
         LEVEL_UP_MOVE(28, MOVE_MEGA_DRAIN),
@@ -17349,12 +17349,12 @@ static const struct LevelUpMove sCottoneeLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_COTTON_SPORE),
         LEVEL_UP_MOVE(1, MOVE_ABSORB),
         LEVEL_UP_MOVE(1, MOVE_FAIRY_WIND),
-        LEVEL_UP_MOVE(4, MOVE_LEECH_SEED),
+        LEVEL_UP_MOVE(4, MOVE_TAILWIND),
         LEVEL_UP_MOVE(7, MOVE_STUN_SPORE),
         LEVEL_UP_MOVE(11, MOVE_SUBSTITUTE),
         LEVEL_UP_MOVE(14, MOVE_SLEEP_POWDER),
         LEVEL_UP_MOVE(18, MOVE_AIR_SLASH),
-        LEVEL_UP_MOVE(21, MOVE_TAILWIND),
+        LEVEL_UP_MOVE(21, MOVE_LEECH_SEED),// slight rework
         LEVEL_UP_MOVE(24, MOVE_PLAY_ROUGH),
         LEVEL_UP_MOVE(26, MOVE_GRASSY_TERRAIN),
         LEVEL_UP_MOVE(26, MOVE_MISTY_TERRAIN),
@@ -17641,16 +17641,16 @@ static const struct LevelUpMove sMaractusLevelUpLearnset[] = {
         LEVEL_UP_MOVE(17, MOVE_PIN_MISSILE),
         LEVEL_UP_MOVE(20, MOVE_SHORE_UP),
         LEVEL_UP_MOVE(24, MOVE_LEECH_SEED),
-        LEVEL_UP_MOVE(27, MOVE_NEEDLE_ARM),
+        LEVEL_UP_MOVE(27, MOVE_NEEDLE_ARM),// intentionally its best and only grass move.
         LEVEL_UP_MOVE(30, MOVE_SPIKES),
         LEVEL_UP_MOVE(33, MOVE_COTTON_GUARD),
-        LEVEL_UP_MOVE(37, MOVE_POISON_JAB),
-        LEVEL_UP_MOVE(41, MOVE_ACUPRESSURE),
+        LEVEL_UP_MOVE(37, MOVE_SMART_STRIKE),// Drain punch by tutor round this time. Smart strike is glacia coverage.
+        LEVEL_UP_MOVE(41, MOVE_POISON_JAB),
         LEVEL_UP_MOVE(44, MOVE_ENDEAVOR),
-        LEVEL_UP_MOVE(47, MOVE_DRAIN_PUNCH),
+        LEVEL_UP_MOVE(47, MOVE_ACUPRESSURE),
         LEVEL_UP_MOVE(51, MOVE_SUCKER_PUNCH),
         LEVEL_UP_MOVE(54, MOVE_WOOD_HAMMER),
-        LEVEL_UP_MOVE(56, MOVE_WORRY_SEED),
+        LEVEL_UP_MOVE(56, MOVE_LEECH_SEED),
         LEVEL_UP_MOVE(59, MOVE_BANEFUL_BUNKER),
         LEVEL_UP_END
 };
@@ -17709,12 +17709,13 @@ static const struct LevelUpMove sScraggyLevelUpLearnset[] = {
         LEVEL_UP_MOVE(40, MOVE_FACADE),
         LEVEL_UP_MOVE(43, MOVE_SWAGGER),
         LEVEL_UP_MOVE(45, MOVE_HEAD_SMASH),
-        LEVEL_UP_MOVE(48, MOVE_SUBSTITUTE),
+        LEVEL_UP_MOVE(52, MOVE_GUNK_SHOT),
         LEVEL_UP_MOVE(51, MOVE_HIGH_JUMP_KICK),
         LEVEL_UP_END
 };
 static const struct LevelUpMove sScraftyLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(0, MOVE_HEADBUTT),
+        LEVEL_UP_MOVE(0, MOVE_FLING),// no longer a shite move.
+        //LEVEL_UP_MOVE(1, MOVE_OVERDRIVE),
         LEVEL_UP_MOVE(1, MOVE_HEADBUTT),
         LEVEL_UP_MOVE(3, MOVE_LEER),
         LEVEL_UP_MOVE(7, MOVE_PAYBACK),
@@ -17729,7 +17730,7 @@ static const struct LevelUpMove sScraftyLevelUpLearnset[] = {
         LEVEL_UP_MOVE(42, MOVE_FACADE),
         LEVEL_UP_MOVE(46, MOVE_SWAGGER),
         LEVEL_UP_MOVE(49, MOVE_HEAD_SMASH),
-        LEVEL_UP_MOVE(52, MOVE_SUBSTITUTE),
+        LEVEL_UP_MOVE(52, MOVE_GUNK_SHOT),
         LEVEL_UP_MOVE(55, MOVE_HIGH_JUMP_KICK),
         LEVEL_UP_END
 };
@@ -21097,49 +21098,50 @@ static const struct LevelUpMove sKlefkiLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sPhantumpLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(1, MOVE_GROWTH),
+        LEVEL_UP_MOVE(1, MOVE_INGRAIN),
         LEVEL_UP_MOVE(1, MOVE_DISABLE),
         LEVEL_UP_MOVE(1, MOVE_HEAL_BLOCK),////LINGER
         LEVEL_UP_MOVE(1, MOVE_BRANCH_POKE),
         LEVEL_UP_MOVE(4, MOVE_SHADOW_SNEAK),
         LEVEL_UP_MOVE(8, MOVE_FORESTS_CURSE),
-        LEVEL_UP_MOVE(12, MOVE_CONFUSE_RAY),//LINGER
-        LEVEL_UP_MOVE(16, MOVE_INGRAIN),
+        LEVEL_UP_MOVE(12, MOVE_LEECH_SEED),//LINGER
+        LEVEL_UP_MOVE(16, MOVE_GROWTH),
         LEVEL_UP_MOVE(20, MOVE_HORN_LEECH),
-        LEVEL_UP_MOVE(24, MOVE_GRASSY_GLIDE),
-        LEVEL_UP_MOVE(28, MOVE_LEECH_SEED),
+        LEVEL_UP_MOVE(24, MOVE_PERISH_SONG),// why grassy glide
+        LEVEL_UP_MOVE(28, MOVE_CONFUSE_RAY),// LINGER
         LEVEL_UP_MOVE(32, MOVE_SUCKER_PUNCH),
-        LEVEL_UP_MOVE(36, MOVE_DESTINY_BOND),/////////LINGER
+        LEVEL_UP_MOVE(36, MOVE_SHADOW_BALL),//Linger.
         LEVEL_UP_MOVE(40, MOVE_PHANTOM_FORCE),
         LEVEL_UP_MOVE(44, MOVE_WOOD_HAMMER),
-        LEVEL_UP_MOVE(47, MOVE_SHADOW_BALL),
-        LEVEL_UP_MOVE(50, MOVE_PERISH_SONG),
-        LEVEL_UP_MOVE(53, MOVE_IVY_CUDGEL),
-        LEVEL_UP_MOVE(56, MOVE_CURSE),
+        LEVEL_UP_MOVE(47, MOVE_SCARY_FACE),///LINGER.  This also has passable synergy with stakeout.
+        LEVEL_UP_MOVE(50, MOVE_CURSE),// Removed mood crush.
+        LEVEL_UP_MOVE(53, MOVE_IVY_CUDGEL),// buffed leaf blade
+        LEVEL_UP_MOVE(56, MOVE_DESTINY_BOND),////////LINGER. Don't want it earlier- would rather the game encouraged a team of ghosts together.
         LEVEL_UP_END
 };
 static const struct LevelUpMove sTrevenantLevelUpLearnset[] = {
         LEVEL_UP_MOVE(0, MOVE_SHADOW_CLAW),
         LEVEL_UP_MOVE(1, MOVE_EMBARGO),///////LINGER
-        LEVEL_UP_MOVE(1, MOVE_GROWTH),
+        LEVEL_UP_MOVE(1, MOVE_LEER),///////Linger switchouts.
+        LEVEL_UP_MOVE(1, MOVE_INGRAIN),
         LEVEL_UP_MOVE(1, MOVE_DISABLE),
         LEVEL_UP_MOVE(1, MOVE_HEAL_BLOCK),////LINGER
         LEVEL_UP_MOVE(1, MOVE_BRANCH_POKE),
         LEVEL_UP_MOVE(4, MOVE_SHADOW_SNEAK),
         LEVEL_UP_MOVE(8, MOVE_FORESTS_CURSE),
-        LEVEL_UP_MOVE(12, MOVE_CONFUSE_RAY),//LINGER
-        LEVEL_UP_MOVE(16, MOVE_INGRAIN),
+        LEVEL_UP_MOVE(12, MOVE_LEECH_SEED),//LINGER
+        LEVEL_UP_MOVE(16, MOVE_GROWTH),
         LEVEL_UP_MOVE(20, MOVE_HORN_LEECH),
-        LEVEL_UP_MOVE(24, MOVE_GRASSY_GLIDE),
-        LEVEL_UP_MOVE(28, MOVE_LEECH_SEED),///LINGER
+        LEVEL_UP_MOVE(24, MOVE_PERISH_SONG),// LINGER
+        LEVEL_UP_MOVE(28, MOVE_CONFUSE_RAY),// LINGER
         LEVEL_UP_MOVE(32, MOVE_SUCKER_PUNCH),
         LEVEL_UP_MOVE(36, MOVE_CIRCLE_THROW),
         LEVEL_UP_MOVE(40, MOVE_PHANTOM_FORCE),
         LEVEL_UP_MOVE(44, MOVE_WOOD_HAMMER),
-        LEVEL_UP_MOVE(47, MOVE_DESTINY_BOND),///LINGER
-        LEVEL_UP_MOVE(50, MOVE_PERISH_SONG),// Removed mood crush. This also has passable synergy with stakeout.
+        LEVEL_UP_MOVE(47, MOVE_SCARY_FACE),///LINGER.
+        LEVEL_UP_MOVE(50, MOVE_CURSE),// Removed mood crush.
         LEVEL_UP_MOVE(53, MOVE_IVY_CUDGEL),// buffed leaf blade
-        LEVEL_UP_MOVE(56, MOVE_CURSE),////////LINGER. Don't want it earlier- would rather the game encouraged a team of ghosts together.
+        LEVEL_UP_MOVE(56, MOVE_DESTINY_BOND),////////LINGER. Don't want it earlier- would rather the game encouraged a team of ghosts together.
         LEVEL_UP_END
 };
 static const struct LevelUpMove sPumpkabooLevelUpLearnset[] = {
