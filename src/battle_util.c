@@ -9976,7 +9976,7 @@ bool32 MoveEffectIsGuaranteed(enum BattlerId battler, enum Ability battlerAbilit
 
 bool32 IsGen6ExpShareEnabled(void)
 {
-    if (I_EXP_SHARE_FLAG <= TEMP_FLAGS_END)
+    if (I_EXP_SHARE_FLAG <= TEMP_FLAGS_END || FlagGet(FLAG_GAUNTLET_CHALLENGE))// not active when you don't have it in your bag.
         return FALSE;
 
     return FlagGet(I_EXP_SHARE_FLAG);

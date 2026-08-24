@@ -16161,7 +16161,7 @@ const struct ItemInfo gItemsInfo[] =
         .fieldUseFunc = ItemUseOutOfBattle_ExpShare,
         .flingPower = 30,
         .iconPic = gItemIcon_ExpShare,
-        .iconPalette = gItemIconPalette_LustrousOrb,
+        .iconPalette = gItemIconPalette_ExpShare,
     },
 };
 

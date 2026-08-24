@@ -35,15 +35,20 @@ ProfBirch_EventScript_MoveToRoute103::
 ProfBirch_EventScript_RatePokedexOrRegister::
 	lock
 	faceplayer
+        checkitem ITEM_EXP_ALL
+        call_if_ne VAR_RESULT, TRUE, giveexpall
 	goto_if_unset FLAG_HAS_MATCH_CALL, ProfBirch_EventScript_AskRatePokedex
 	goto_if_unset FLAG_ENABLE_PROF_BIRCH_MATCH_CALL, EventScript_RegisterProfBirch
-
 ProfBirch_EventScript_AskRatePokedex::
 	msgbox gBirchDexRatingText_AreYouCurious, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, ProfBirch_EventScript_DeclineRating
 	call ProfBirch_EventScript_RatePokedex
 	release
 	end
+
+giveexpall:
+        giveitem ITEM_EXP_ALL
+        return
 
 ProfBirch_EventScript_DeclineRating::
 	msgbox gBirchDexRatingText_Cancel, MSGBOX_DEFAULT
