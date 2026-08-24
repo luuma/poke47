@@ -566,5 +566,6 @@
 #define PHONEME_ID_NONE             0xFF
 #define MUS_GAUNTLET_OPENER         621
 #define MUS_LITTLEBIRD              622
+#define MUS_RAYQUAZA_APPEARS_EXTENDED 623
 
 #endif  // GUARD_CONSTANTS_SONGS_H

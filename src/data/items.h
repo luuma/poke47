@@ -9673,25 +9673,15 @@ const struct ItemInfo gItemsInfo[] =
     {
         .name = ITEM_NAME("Exp. Share"),
         .holdEffect = HOLD_EFFECT_EXP_SHARE,
-    #if I_EXP_SHARE_ITEM >= GEN_6
-        .price = 0,
-        .importance = 1,
-        .description = COMPOUND_STRING(
-            "This device gives\n"
-            "exp. to other\n"
-            "party members."),
-        .pocket = POCKET_KEY_ITEMS,
-    #else
         .price = (I_PRICE == GEN_1) ? 1 : 3000,
         .description = COMPOUND_STRING(
             "A hold item that\n"
             "gets Exp. points\n"
             "from battles."),
         .pocket = POCKET_ITEMS,
-    #endif
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_FIELD,
-        .fieldUseFunc = ItemUseOutOfBattle_ExpShare,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 30,
         .iconPic = gItemIcon_ExpShare,
         .iconPalette = gItemIconPalette_ExpShare,
@@ -16155,6 +16145,23 @@ const struct ItemInfo gItemsInfo[] =
         .flingPower = 180,// get it
         .iconPic = gItemIcon_MagicRoulette,
         .iconPalette = gItemIconPalette_RevealGlass,
+    },
+    [ITEM_EXP_ALL] =
+    {
+        .name = ITEM_NAME("Exp. ALL"),
+        .price = 0,
+        .importance = 1,
+        .description = COMPOUND_STRING(
+            "This device gives\n"
+            "extra EXP to all\n"
+            "party members."),
+        .pocket = POCKET_KEY_ITEMS,
+        .sortType = ITEM_TYPE_HELD_ITEM,
+        .type = ITEM_USE_FIELD,
+        .fieldUseFunc = ItemUseOutOfBattle_ExpShare,
+        .flingPower = 30,
+        .iconPic = gItemIcon_ExpShare,
+        .iconPalette = gItemIconPalette_LustrousOrb,
     },
 };
 

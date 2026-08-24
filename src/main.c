@@ -140,7 +140,6 @@ void AgbMainLoop(void)
     for (;;)
     {
         ReadKeys();
-
         if (gSoftResetDisabled == FALSE
          && JOY_HELD_RAW(A_BUTTON)
          && JOY_HELD_RAW(B_START_SELECT) == B_START_SELECT)
@@ -178,24 +177,47 @@ void AgbMainLoop(void)
     }
 }
 
-EWRAM_DATA u32 sSkipCounter = 0;
+EWRAM_DATA u8 sSkipCounter = 0;
+EWRAM_DATA u8 mashing = 0;
+
 
 static bool32 SpeedupFrameSkip(void)
 {
-    if (!gSaveBlock2Ptr->optionsEmuSpeed || gSaveBlock2Ptr->optionsEmuSpeedSuppress)// if 0, or if suppression on. Am I a hack? I think I am a hack
+    if (mashing>0)// Should really be in ther tc with the spin thing.
+        mashing--;
+
+    if (gSaveBlock2Ptr->optionsEmuSpeedSuppress)// if suppression on
         return FALSE;
 
-    if (sSkipCounter >= gSaveBlock2Ptr->optionsEmuSpeed)
+    if (mashing > 50)// mashing anything makes the game actually go faster. We all understand this will work inherently so there's no need for a tutorial.
     {
-        sSkipCounter = 0;
-        return FALSE;
+        if (sSkipCounter >= 3)
+        {
+            sSkipCounter = 0;
+            return FALSE;
+        }
+        else
+        {
+            UpdatePaletteFade();
+            sSkipCounter++;
+            return TRUE;
+        }
     }
-    else
+    if (gSaveBlock2Ptr->optionsEmuSpeed)
     {
-        UpdatePaletteFade();
-        sSkipCounter++;
-        return TRUE;
+        if (sSkipCounter >= gSaveBlock2Ptr->optionsEmuSpeed)
+        {
+            sSkipCounter = 0;
+            return FALSE;
+        }
+        else
+        {
+            UpdatePaletteFade();
+            sSkipCounter++;
+            return TRUE;
+        }
     }
+    return FALSE;
 }
 
 
@@ -319,9 +341,10 @@ static void ReadKeys(void)
         gMain.keyRepeatCounter = gKeyRepeatStartDelay;
     }
 
+
     gMain.heldKeysRaw = keyInput;
     gMain.heldKeys = gMain.heldKeysRaw;
-
+    
     // Remap L to A if the L=A option is enabled.
     if (gSaveBlock2Ptr->optionsButtonMode == OPTIONS_BUTTON_MODE_L_EQUALS_A)
     {
@@ -331,6 +354,10 @@ static void ReadKeys(void)
         if (JOY_HELD(L_BUTTON))
             gMain.heldKeys |= A_BUTTON;
     }
+
+    if ((gMain.newKeys & (A_BUTTON | B_BUTTON)) > 0 && mashing < 200)// 1s speedup per button press, lingering 3s max
+        mashing += 50;
+
 
     if (JOY_NEW(gMain.watchedKeysMask))
         gMain.watchedKeysPressed = TRUE;

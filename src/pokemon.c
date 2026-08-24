@@ -7689,14 +7689,23 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe,
              SetMonData(mon, MON_DATA_LEVEL, &Cap);  
         }
     }
-    //u32 addxp2 = addxp / 2;
+    u32 addxp2 = addxp;
     u32 i;
     for (i = 1; i < PARTY_SIZE; i++)//skip slot 1 and loop through everything trying to play the trumpet
     {
-        if (!(GetItemHoldEffect(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM)) == HOLD_EFFECT_EXP_SHARE))
-            continue;
         if (!IsValidForBattle(&gParties[B_TRAINER_PLAYER][i]))
             continue;
+
+        if (!(GetItemHoldEffect(GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM)) == HOLD_EFFECT_EXP_SHARE))
+        {
+	    if (!(IsGen6ExpShareEnabled()))
+                continue;
+            addxp = addxp2 / 2;
+        }
+        else // you have the exp share so full exp.
+        {
+            addxp = addxp2;
+        }
         totalXP = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_EXP);
         initialLevel = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL);
         totalXP = totalXP + GetSoftLevelCapExpValue(initialLevel, addxp);// This is added because users will expect soft level caps to apply to autobattling.

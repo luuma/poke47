@@ -1,6 +1,6 @@
 voice_group rayquaza_appears
 	voice_keysplit_all voicegroup_emerald_drumset_2
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, DirectSoundWaveData_unknown_female_voice, 250, 166, 128, 188
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

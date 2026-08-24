@@ -260,7 +260,6 @@ STATIC_ASSERT(I_EXP_SHARE_ITEM < GEN_6 || I_EXP_SHARE_FLAG > TEMP_FLAGS_END, You
 
 void ItemUseOutOfBattle_ExpShare(u8 taskId)
 {
-#if I_EXP_SHARE_ITEM >= GEN_6
     if (IsGen6ExpShareEnabled())
     {
         PlaySE(SE_PC_OFF);
@@ -278,9 +277,6 @@ void ItemUseOutOfBattle_ExpShare(u8 taskId)
             DisplayItemMessage(taskId, FONT_NORMAL, gText_ExpShareOn, CloseItemMessage);
     }
     FlagToggle(I_EXP_SHARE_FLAG);
-#else
-    DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
-#endif
 }
 
 void ItemUseOutOfBattle_Bike(u8 taskId)

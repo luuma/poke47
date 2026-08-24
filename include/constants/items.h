@@ -608,7 +608,7 @@ enum __attribute__((packed)) Item
      ITEM_BRIGHT_POWDER = 474,// TRAINER TOWER
      ITEM_BRIGHTPOWDER = ITEM_BRIGHT_POWDER, // Pre-Gen VI name
      ITEM_EXP_SHARE = 475,// rustboro
-     ITEM_EXP_ALL = ITEM_EXP_SHARE, // Gen I name
+     //ITEM_EXP_ALL = ITEM_EXP_SHARE, // Gen I name
      ITEM_QUICK_CLAW = 476,// rustboro
      ITEM_SOOTHE_BELL = 477,// as in emerald
 
@@ -1069,16 +1069,17 @@ enum __attribute__((packed)) Item
     ITEM_GLIMMORANITE = 873,
     CUSTOM_ITEMS_BEGIN = ITEM_GLIMMORANITE,
 
-    ITEM_LEVEL_CAP = 874,
-    ITEM_SPANDEX_FLARES = 875,
+    ITEM_LEVEL_CAP = 874,// littleroot
+    ITEM_SPANDEX_FLARES = 875,//in lilycove hotel
     ITEM_EVIUM_INGOT,// To be deleted
     ITEM_EVIOPOLYMER,// ditto
-    ITEM_KNELL_BELL,
-    ITEM_DAMAGE_BOUNCEABLES,
+    ITEM_KNELL_BELL,// 136
+    ITEM_DAMAGE_BOUNCEABLES,// outside trick house
     ITEM_CURSED_SHELL,// unused
-    ITEM_ALEMBIC,
-    ITEM_SHOCK_SHIELD,
-    ITEM_RANDOMISER,
+    ITEM_ALEMBIC,// glassblower
+    ITEM_SHOCK_SHIELD,// gauntlet
+    ITEM_RANDOMISER,// UNDER gauntlet northwest
+    ITEM_EXP_ALL,// AT POKEDEX
     ITEM_OVAL_CHARM,// 	why the 	fuck is this saying there are multiple definitions.
     ITEMS_COUNT,
     ITEM_FIELD_ARROW = ITEMS_COUNT,

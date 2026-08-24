@@ -58,15 +58,20 @@ OWEAutoBattleOverworldWildEncounter::
     autobattle VAR_0x8004, VAR_0x8005 @ input a species and level in vars. Loads a battle result into var 0x8006
     goto_if_eq VAR_0x8006, 6, EventScript_AutoBattleLoss
     removeobject VAR_LAST_TALKED @ Enemy down
-    goto_if_eq VAR_0x8006, 1, EventScript_AutoBattleWin1
-    goto_if_eq VAR_0x8006, 2, EventScript_AutoBattleWin2
-    goto_if_eq VAR_0x8006, 3, EventScript_AutoBattleWin3
-    goto_if_eq VAR_0x8006, 4, EventScript_AutoBattleWin4
-    goto_if_eq VAR_0x8006, 5, EventScript_AutoBattleWin5
-    msgbox gText_BarelyDefeatedWoreItselfOut, MSGBOX_DEFAULT @AUTOBATTLE
+    call_if_eq VAR_0x8006, 1, EventScript_AutoBattleWin1
+    call_if_eq VAR_0x8006, 2, EventScript_AutoBattleWin2
+    call_if_eq VAR_0x8006, 3, EventScript_AutoBattleWin3
+    call_if_eq VAR_0x8006, 4, EventScript_AutoBattleWin4
+    call_if_eq VAR_0x8006, 5, EventScript_AutoBattleWin5
+    call_if_eq VAR_0x8006, 0, EventScript_AutoBattleBarelyWin0
+    call_if_set FLAG_EXP_ALL, EventScript_expallmessagereturn
     goto_if_eq VAR_0x8006, 0, EventScript_OWEAutoBattlingEnd
     releaseall
     end
+
+EventScript_AutoBattleBarelyWin0::
+    msgbox gText_BarelyDefeatedWoreItselfOut, MSGBOX_DEFAULT @AUTOBATTLE
+    return
 
 gText_BarelyDefeatedWoreItselfOut:
 	.string "{STR_VAR_1} barely defeated a {STR_VAR_2}.\n"
@@ -83,8 +88,7 @@ EventScript_AutoBattleLoss::
 
 EventScript_AutoBattleWin1::
     msgbox gText_Buffer1DefeatedABuffer2easy, MSGBOX_DEFAULT @AUTOBATTLE
-    releaseall
-    end
+    return
 
 gText_Buffer1DefeatedABuffer2easy:
 	.string "{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"
@@ -92,8 +96,7 @@ gText_Buffer1DefeatedABuffer2easy:
 
 EventScript_AutoBattleWin2::
     msgbox gText_Buffer1DefeatedABuffer2, MSGBOX_DEFAULT @AUTOBATTLE
-    releaseall
-    end
+    return
 
 gText_Buffer1DefeatedABuffer2:
 	.string "{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"
@@ -101,8 +104,7 @@ gText_Buffer1DefeatedABuffer2:
 
 EventScript_AutoBattleWin3::
     msgbox gText_Buffer1DefeatedABuffer2dmg, MSGBOX_DEFAULT @AUTOBATTLE
-    releaseall
-    end
+    return
 
 gText_Buffer1DefeatedABuffer2dmg:
 	.string "{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"
@@ -110,8 +112,7 @@ gText_Buffer1DefeatedABuffer2dmg:
 
 EventScript_AutoBattleWin4::
     msgbox gText_Buffer1DefeatedABuffer2hurt, MSGBOX_DEFAULT @AUTOBATTLE
-    releaseall
-    end
+    return
 
 gText_Buffer1DefeatedABuffer2hurt:
 	.string "{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"
@@ -119,13 +120,18 @@ gText_Buffer1DefeatedABuffer2hurt:
 
 EventScript_AutoBattleWin5::
     msgbox gText_Buffer1DefeatedABuffer2bighurt, MSGBOX_DEFAULT @AUTOBATTLE
-    releaseall
-    end
+    return
 
 gText_Buffer1DefeatedABuffer2bighurt:
 	.string "{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"
 	.string "a lot of damage and gained {STR_VAR_3} EXP.$"
 
+EventScript_expallmessagereturn::
+    msgbox gText_ExpAllSharesXP, MSGBOX_DEFAULT @AUTOBATTLE
+    return
+
+gText_ExpAllSharesXP:
+	.string "The Exp. ALL awarded half EXP to the\nrest of the party.$"@ annoy people since this is op and i dont really like it >:(
 
 OWEAutoBattling::
     lockall
