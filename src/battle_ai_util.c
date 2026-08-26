@@ -3912,7 +3912,15 @@ bool32 ShouldUseRecoilMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
 static inline bool32 RecoveryEnablesWinning1v1(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum Move move, bool32 aiIsFaster, u32 healAmount)
 {
     if (GetBestDmgFromBattler(battlerDef, battlerAtk, AI_DEFENDING) > healAmount)
-        return FALSE;// Give up if healing gains no ground against the foe, or if it's not a 1v1
+    {
+        const struct AdditionalEffect *effect = GetMoveAdditionalEffectById(move, effectIndex);
+
+        if (!(effect->moveEffect == MOVE_EFFECT_STAT_MINUS && effect->self == TRUE) 
+           && !(effect->moveEffect == MOVE_EFFECT_RECHARGE)
+           && !IsSelfSacrificeEffect(move)
+           && !IsRecoilDamageEffect(effect))
+            return FALSE; // don't bother healing unless it gains some ground.
+    }
 
     if (aiIsFaster)
     {
@@ -3924,9 +3932,8 @@ static inline bool32 RecoveryEnablesWinning1v1(enum BattlerId battlerAtk, enum B
     }
     else
     {
-        if (!CanTargetFaintAi(battlerDef, battlerAtk)
-          && NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk, AI_DEFENDING, CONSIDER_ENDURE) < NoOfHitsForTargetToFaintBattlerWithMod(battlerDef, battlerAtk, healAmount))
-            return TRUE;    // target can't faint attacker
+        if (NoOfHitsForTargetToFaintBattler(battlerDef, battlerAtk, AI_DEFENDING, CONSIDER_ENDURE) < NoOfHitsForTargetToFaintBattlerWithMod(battlerDef, battlerAtk, healAmount))
+            return TRUE;    // target loses the 1v1 after healing
         else if (!CanTargetFaintAi(battlerDef, battlerAtk) && gAiLogicData->hpPercents[battlerAtk] < ENABLE_RECOVERY_THRESHOLD && RandomPercentage(RNG_AI_SHOULD_RECOVER, SHOULD_RECOVER_CHANCE))
             return TRUE;    // target can't faint attacker at all, generally safe
     }
