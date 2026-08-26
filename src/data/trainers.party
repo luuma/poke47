@@ -6184,7 +6184,7 @@ Gender: Male
 Music: Male
 Items: Full Restore / Full Restore / Full Restore / Full Restore
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 Mugshot: Yellow
 
 Swanna 
@@ -9459,7 +9459,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer, Smart Switching
 
 Darmanitan
 Level: 30
@@ -9514,7 +9514,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer, Smart Switching
 
 Floatzel
 Level: 30
@@ -9569,7 +9569,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer, Smart Switching
 
 Darmanitan
 Level: 30
@@ -9624,7 +9624,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer, Smart Switching
 
 Floatzel
 Level: 29
@@ -9679,7 +9679,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer, Smart Switching
 
 Floatzel
 Level: 30
@@ -9734,7 +9734,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Basic Trainer, Smart Switching
 
 Darmanitan
 Level: 30
@@ -12143,7 +12143,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 
 Darmanitan
 Level: 33
@@ -12168,7 +12168,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 
 Staraptor
 Level: 33
@@ -12193,7 +12193,7 @@ Pic: Brendan
 Gender: Male
 Music: Male
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 
 Staraptor
 Level: 33
@@ -12218,7 +12218,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 
 Staraptor
 Level: 33
@@ -12243,7 +12243,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 
 Staraptor
 Level: 33
@@ -12268,7 +12268,7 @@ Pic: May
 Gender: Female
 Music: Female
 Double Battle: No
-AI: Basic Trainer
+AI: Gym Leader
 
 Staraptor
 Level: 33
@@ -12283,7 +12283,7 @@ Level: 33
 IVs: 18 HP / 18 Atk / 18 Def / 18 SpA / 18 SpD / 18 Spe
 
 Empoleon
-Level: 34
+Level: 35
 IVs: 24 HP / 24 Atk / 24 Def / 24 SpA / 24 SpD / 24 Spe
 
 === TRAINER_JONAH ===
