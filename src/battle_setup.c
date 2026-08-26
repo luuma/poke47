@@ -598,18 +598,13 @@ void BattleSetup_StartLegendaryDoubleBattle(void)
 
     switch (GetMonData(&gParties[B_TRAINER_OPPONENT_A][0], MON_DATA_SPECIES))
     {
-    case SPECIES_GROUDON:
     case SPECIES_ZEKROM:
-    case SPECIES_GROUDON_PRIMAL:
         CreateBattleStartTask(B_TRANSITION_GROUDON, MUS_VS_KYOGRE_GROUDON);
         break;
-    case SPECIES_KYOGRE:
     case SPECIES_RESHIRAM:
-    case SPECIES_KYOGRE_PRIMAL:
         CreateBattleStartTask(B_TRANSITION_KYOGRE, MUS_VS_KYOGRE_GROUDON);
         break;
     case SPECIES_RAYQUAZA:
-    case SPECIES_KYUREM:
     case SPECIES_RAYQUAZA_MEGA:
         CreateBattleStartTask(B_TRANSITION_RAYQUAZA, MUS_VS_RAYQUAZA);
         break;
@@ -622,8 +617,13 @@ void BattleSetup_StartLegendaryDoubleBattle(void)
     case SPECIES_ARCEUS_FLYING:// DONT FORGET TO COPY THIS SHIT
     case SPECIES_ARCEUS:
     case SPECIES_WO_CHIEN:
+    case SPECIES_KYUREM:
+    case SPECIES_GROUDON:
+    case SPECIES_KYOGRE:
+    case SPECIES_KYOGRE_PRIMAL:
+    case SPECIES_GROUDON_PRIMAL:
     default:// MOVED so we can add others easy peasy
-        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RG_VS_DEOXYS);
+        CreateBattleStartTask(B_TRANSITION_BLUR, MUS_RAYQUAZA_APPEARS_EXTENDED);//IT ISN'T OVER
         break;
     case SPECIES_LUGIA:
     case SPECIES_HO_OH:

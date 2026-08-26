@@ -271,7 +271,7 @@ GauntletIsland_AltarTWIN::
     delay 40
     waitmoncry
     totemboost_defsdef B_POSITION_OPPONENT_LEFT 
-    callnative dolegendarybattleincdouble
+    callnative dolegendarybattleincdouble @ alexa play a absolute banger
     waitstate @ ugh.
     specialvar VAR_RESULT, GetBattleOutcome
     goto_if_eq VAR_RESULT, B_OUTCOME_LOST, GauntletIsland_AltarLoss

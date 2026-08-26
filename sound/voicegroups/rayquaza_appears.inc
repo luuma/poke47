@@ -1,6 +1,8 @@
 voice_group rayquaza_appears
 	voice_keysplit_all voicegroup_emerald_drumset_2
-	voice_directsound 60, 0, DirectSoundWaveData_unknown_female_voice, 250, 166, 128, 188
+	voice_directsound 60, 0, DirectSoundWaveData_unknown_female_voice, 255, 20, 128, 50
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_tubular_bell, 255, 165, 90, 216
+	voice_keysplit voicegroup_piano_keysplit, keysplit_piano
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
@@ -10,9 +12,7 @@ voice_group rayquaza_appears
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_directsound 60, 0, DirectSoundWaveData_sc88pro_tubular_bell, 255, 165, 90, 216
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

@@ -4273,6 +4273,9 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_CASINO_PLUS_8)            \
     X(MUS_CASINO_PLUS_9)            \
     X(MUS_CASINO_PLUS_GACHA)        \
+    X(MUS_GAUNTLET_OPENER)        \
+    X(MUS_LITTLEBIRD)        \
+    X(MUS_RAYQUAZA_APPEARS_EXTENDED)        \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
