@@ -3913,12 +3913,9 @@ static inline bool32 RecoveryEnablesWinning1v1(enum BattlerId battlerAtk, enum B
 {
     if (GetBestDmgFromBattler(battlerDef, battlerAtk, AI_DEFENDING) > healAmount)
     {
-        const struct AdditionalEffect *effect = GetMoveAdditionalEffectById(move, effectIndex);
+        const struct AdditionalEffect *effect = GetMoveAdditionalEffectById(move, 0);
 
-        if (!(effect->moveEffect == MOVE_EFFECT_STAT_MINUS && effect->self == TRUE) 
-           && !(effect->moveEffect == MOVE_EFFECT_RECHARGE)
-           && !IsSelfSacrificeEffect(move)
-           && !IsRecoilDamageEffect(effect))
+        if (!AI_IsMoveEffectInMinus(battlerAtk, battlerDef, move, 2))
             return FALSE; // don't bother healing unless it gains some ground.
     }
 
