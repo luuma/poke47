@@ -9571,10 +9571,16 @@ void SortBattlersBySpeed(enum BattlerId *battlers, bool32 slowToFast)
     }
 }
 
-void TryRestoreHeldItems(void)
+void TryRestoreHeldItems(void)// This is being used as UpdatePkmnDataOnBattleEnd
 {
     u32 i;
     u32 j;
+
+// This for loop happens early to ensure items aren't deleted due to being held in duplicate by a shadow clone. We should include some if.. continues for some shit.
+    for (u32 i = 0; i < PARTY_SIZE; i++)
+        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_SHADOW) == TRUE)
+            ZeroMonData(&gParties[B_TRAINER_PLAYER][i]);
+
     if (FlagGet(FLAG_GAUNTLET_CHALLENGE))// this for loop is separate for efficiency (obviously lol)
     {
         for (i = 0; i < PARTY_SIZE; i++)
@@ -9607,9 +9613,6 @@ void TryRestoreHeldItems(void)
 
     for (u32 i = 0; i < PARTY_SIZE; i++)
     {
-        if (GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_IS_SHADOW) == TRUE)
-            ZeroMonData(&gParties[B_TRAINER_PLAYER][i]);
-
         u32 lostItem = gBattleStruct->itemLost[B_TRAINER_PLAYER][i].originalItem;
         u32 CURRENTitem = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_HELD_ITEM);//&gParties[B_TRAINER_PLAYER][i].item;
 
