@@ -186,7 +186,7 @@ static bool32 SpeedupFrameSkip(void)
     if (mashing>0)// Should really be in ther tc with the spin thing.
         mashing--;
 
-    if (gSaveBlock2Ptr->optionsEmuSpeedSuppress)// if suppression on
+    if (gSaveBlock2Ptr->optionsEmuSpeedSuppress || gSaveBlock2Ptr->optionsEmuSpeed >= 3)// if suppression on or set to none.
         return FALSE;
 
     if (mashing > 50)// mashing anything makes the game actually go faster. We all understand this will work inherently so there's no need for a tutorial.

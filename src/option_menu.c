@@ -91,9 +91,10 @@ static const u8 gText_FrameTypeNumber[]    = _("{COLOR GREEN}{SHADOW LIGHT_GREEN
 static const u8 gText_ButtonTypeNormal[]   = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}NORMAL");
 static const u8 gText_ButtonTypeLR[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}LR");
 static const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
-static const u8 gText_EmuSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}None");
+static const u8 gText_EmuSpeedSlow[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Mash AB");
 static const u8 gText_EmuSpeedMid[]       = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}2x");
-static const u8 gText_EmuSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3x(buggy)");
+static const u8 gText_EmuSpeedFast[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}3x");
+static const u8 gText_EmuSpeedNone[]      = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}None");
 
 static const u16 sOptionMenuText_Pal[] = INCGFX_U16("graphics/interface/option_menu_text.pal", ".gbapal");
 // note: this is only used in the Japanese release
@@ -107,7 +108,7 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = COMPOUND_STRING("SOUND"),
     [MENUITEM_BUTTONMODE]  = COMPOUND_STRING("BUTTON MODE"),
     [MENUITEM_FRAMETYPE]   = COMPOUND_STRING("FRAME"),
-    [MENUITEM_CANCEL]      = COMPOUND_STRING("Frameskip Speed"),
+    [MENUITEM_CANCEL]      = COMPOUND_STRING("Speed"),
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -478,7 +479,7 @@ static u8 EmuSpeed_ProcessInput(u8 selection)
 {
     if (JOY_NEW(DPAD_RIGHT))
     {
-        if (selection <= 1)
+        if (selection <= 2)
             selection++;
         else
             selection = 0;
@@ -490,7 +491,7 @@ static u8 EmuSpeed_ProcessInput(u8 selection)
         if (selection != 0)
             selection--;
         else
-            selection = 2;
+            selection = 3;
 
         sArrowPressed = TRUE;
     }
@@ -499,25 +500,20 @@ static u8 EmuSpeed_ProcessInput(u8 selection)
 
 static void EmuSpeed_DrawChoices(u8 selection)
 {
-    u8 styles[3];
-    s32 widthSlow, widthMid, widthFast, xMid;
+    u8 styles[4];
 
     styles[0] = 0;
     styles[1] = 0;
     styles[2] = 0;
+    styles[3] = 0;
     styles[selection] = 1;
 
     DrawOptionMenuChoice(gText_EmuSpeedSlow, 104, YPOS_EMUSPEED, styles[0]);
 
-    widthSlow = GetStringWidth(FONT_NORMAL, gText_EmuSpeedSlow, 0);
-    widthMid = GetStringWidth(FONT_NORMAL, gText_EmuSpeedMid, 0);
-    widthFast = GetStringWidth(FONT_NORMAL, gText_EmuSpeedFast, 0);
+    DrawOptionMenuChoice(gText_EmuSpeedMid, 146, YPOS_EMUSPEED, styles[1]);
+    DrawOptionMenuChoice(gText_EmuSpeedFast, 160, YPOS_EMUSPEED, styles[2]);
 
-    widthMid -= 94;
-    xMid = (widthSlow - widthMid - widthFast) / 2 + 104;
-    DrawOptionMenuChoice(gText_EmuSpeedMid, xMid, YPOS_EMUSPEED, styles[1]);
-
-    DrawOptionMenuChoice(gText_EmuSpeedFast, GetStringRightAlignXOffset(FONT_NORMAL, gText_EmuSpeedFast, 198), YPOS_EMUSPEED, styles[2]);
+    DrawOptionMenuChoice(gText_EmuSpeedNone, GetStringRightAlignXOffset(FONT_NORMAL, gText_EmuSpeedNone, 198), YPOS_EMUSPEED, styles[3]);
 }
 
 static u8 BattleScene_ProcessInput(u8 selection)
