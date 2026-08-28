@@ -238,11 +238,22 @@ EventScript_SmashRock:: @ fallthrough
 	goto_if_eq VAR_RESULT, TRUE, EventScript_EndSmash
         callnative TryUpdateRocksReveal
 	goto_if_ne VAR_RESULT, FALSE, EventScript_GauntletReveal
+        callnative rockItems
+	call_if_ne VAR_0x8005, ITEM_NONE, EventScript_TrySmashItem
 	special RockSmashWildEncounter
 	goto_if_eq VAR_RESULT, FALSE, EventScript_EndSmash
 	waitstate
 	releaseall
 	end
+
+EventScript_TrySmashItem::
+        checkitemspace VAR_0x8005
+	goto_if_ne VAR_RESULT, FALSE, EventScript_GiveSmashItem
+	return
+
+EventScript_GiveSmashItem::
+        giveitem VAR_0x8005
+        return
 
 EventScript_CheckSecretPowerSmash::
 	buffermovename STR_VAR_2, MOVE_NATURE_POWER

@@ -13,6 +13,7 @@
 #include "sound.h"
 #include "sprite.h"
 #include "task.h"
+#include "random.h"
 #include "constants/event_object_movement.h"
 #include "constants/event_objects.h"
 #include "constants/field_effects.h"
@@ -164,4 +165,77 @@ static void FieldMove_RockSmash(void)
     PlaySE(SE_M_ROCK_THROW);
     FieldEffectActiveListRemove(FLDEFF_USE_ROCK_SMASH);
     ScriptContext_Enable();
+}
+
+void rockItems(void)
+{
+    enum Item item = ITEM_NONE;
+    if(Random() % 4 == 0)
+    {
+// fossils check maybe???
+        u32 randitem = 40;
+        if (gMapHeader.mapType == MAP_TYPE_UNDERWATER || gMapHeader.mapType == MAP_TYPE_OCEAN_ROUTE)
+            randitem = 7 + Random() % 9;
+        else if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
+            randitem = 2 + Random() % 5;
+        else if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE135_MAP) &&
+                gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE135_MAP))
+            || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_MIRAGE_TOWER_3F) &&
+                gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_MIRAGE_TOWER_3F)))
+            randitem = 4;
+        else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_GRANITE_CAVE_B2F) &&
+                gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_GRANITE_CAVE_B2F))
+            randitem = Random() % 2;
+        else if (gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
+            randitem = Random() % 16;//
+        switch(randitem)
+        {
+        case 0:
+            item = ITEM_IRON_BALL;
+            break;
+        case 1:
+        case 2:
+        case 3:
+            item = ITEM_HARD_STONE;
+            break;
+        case 4:
+            item = ITEM_SOFT_SAND;
+            break;
+        case 5:
+            item = ITEM_REVIVE;
+            break;
+        case 6:
+            item = ITEM_ETHER;
+            break;
+        case 7:
+            item = ITEM_RED_SHARD;
+            break;
+        case 8:
+            item = ITEM_BLUE_SHARD;
+            break;
+        case 9:
+            item = ITEM_GREEN_SHARD;
+            break;
+        case 10:
+            item = ITEM_YELLOW_SHARD;
+            break;
+        case 11:
+            item = ITEM_STAR_PIECE;
+            break;
+        case 12:
+            item = ITEM_PEARL;
+            break;
+        case 13:
+            item = ITEM_BIG_PEARL;
+            break;
+        case 14:
+        case 15:
+            item = ITEM_SOFT_SAND;
+            break;
+        default:
+            item = ITEM_NONE;
+        }
+    }
+    VarSet(VAR_0x8005, item);
+    return;
 }
