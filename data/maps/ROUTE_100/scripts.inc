@@ -14,6 +14,11 @@ ROUTE_100_OnFrame::
 	.2byte 0
 
 
+Route100_EventScript_TrainerTips::
+	msgbox Route100_Text_TrainerTipsGauntletIsland, MSGBOX_SIGN
+	end
+
+
 Route100_EventScript_GauntletEnd::
         lockall
 	setvar VAR_GAUNTLET_ACTIVE, 2 @ used only here, and only to skip saving on a reload
@@ -99,6 +104,14 @@ Route100_EventScript_Altar4::
         msgbox Route100_Text_MadeItToFourthAltar
         goto Route100_EventScript_YouLostThereforeLossPoints
         end
+
+Route100_Text_TrainerTipsGauntletIsland:
+	.string "TRAINER TIPS\p"
+	.string "Every POKéMON harbours limitless\n"
+	.string "potential.\p"
+	.string "In harsh environments, like the\n"
+	.string "GAUNTLET ISLAND CHALLENGE, their\l"
+ 	.string "INDIVIDUAL VALUES can be perfected.$"
 
 Route100_Text_Retire:
 	.string "Hm! I thought that attempt looked\n"

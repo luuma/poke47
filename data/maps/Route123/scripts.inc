@@ -44,7 +44,7 @@ Route123_EventScript_TicketShrine::
 	end
 
 Route123_EventScript_TicketShrineShowPhotos::
-	goto_if_set FLAG_TICKET_BEGIN Route123_EventScript_TicketShrineBegin
+	goto_if_set FLAG_TICKET_BEGIN, Route123_EventScript_TicketShrineBegin
 	clearflag FLAG_AURORATICKET_ITEM
 	clearflag FLAG_EONTICKET_ITEM
 	clearflag FLAG_MYSTICTICKET_ITEM

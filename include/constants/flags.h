@@ -532,8 +532,8 @@
 #define FLAG_DEFEATED_HO_OH                  0x1DC
 #define FLAG_DEFEATED_LUGIA                  0x1DD
 
-#define FLAG_UNUSED_0x1DE                    0x1DE // Unused Flag
-#define FLAG_UNUSED_0x1DF                    0x1DF // Unused Flag
+#define FLAG_ITEM_RT100_1                    0x1DE // Unused Flag
+#define FLAG_ITEM_RT100_2                    0x1DF // Unused Flag
 #define FLAG_UNUSED_0x1E0                    0x1E0 // Unused Flag
 #define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
@@ -676,7 +676,7 @@
 
 
 
-#define FLAG_UNUSED_0x26C  0x26C // sand tomb ashblower UNUSED NOW
+#define FLAG_UNUSED_0x26C  0x26C //Slaterpotr
 #define FLAG_UNUSED_0x26D  0x26D // carbos
 #define FLAG_UNUSED_0x26E  0x26E // sticky web petalburg woods
 #define FLAG_ARTISAN_VOLT_SWITCH  0x26F // 
@@ -686,7 +686,7 @@
 #define FLAG_ARTISAN_LUNGE  0x273 
 #define FLAG_ARTISAN_DARK_PULSE  0x274 // 
 #define FLAG_ARTISAN_IRON_HEAD  0x275 // HIDDEN
-#define FLAG_ARTISAN_AIR_SLASH  0x276 // Unused Flag!!!!!
+#define FLAG_ARTISAN_AIR_SLASH  0x276 // NOw route 114
 #define FLAG_ARTISAN_POLLEN_PUFF  0x277 // 
 #define FLAG_SCORCHING_SANDS  0x278 // Unused Flag
 #define FLAG_DRAIN_KISS  0x279 // SLATEPORT HARBOR
@@ -703,8 +703,8 @@
 #define FLAG_AURORATICKET_ITEM 0x284 // 
 #define FLAG_MYSTICTICKET_ITEM 0x285 // 
 #define FLAG_EONTICKET_ITEM  0x286 // 
-#define FLAG_TICKET_BEGIN  0x287 // 
-#define FLAG_TICKET_PHOTO_STATE  0x288 // Unused Flag
+#define FLAG_HIDDEN_RT100  0x287 // 
+#define FLAG_HIDDEN_RT100_2  0x288 // Unused Flag
 #define FLAG_DIVE_ITEM_114  0x289 // Unused Flag
 #define FLAG_DEWBEACH1  0x28A //  Flag
 #define FLAG_DEWBEACH2  0x28B //  Flag
@@ -1423,8 +1423,8 @@
 #define FLAG_SYS_SAFARI_MODE                        (SYSTEM_FLAGS + 0x2C)
 #define FLAG_SYS_CRUISE_MODE                        (SYSTEM_FLAGS + 0x2D)
 
-#define FLAG_UNUSED_0x88E                           (SYSTEM_FLAGS + 0x2E) // Unused Flag
-#define FLAG_UNUSED_0x88F                           (SYSTEM_FLAGS + 0x2F) // Unused Flag
+#define FLAG_TICKET_BEGIN                           (SYSTEM_FLAGS + 0x2E) //sure whatever it's barely noticeable and doesn't break savs
+#define FLAG_TICKET_PHOTO_STATE                          (SYSTEM_FLAGS + 0x2F) //
 
 #define FLAG_SYS_TV_HOME                            (SYSTEM_FLAGS + 0x30)
 #define FLAG_SYS_TV_WATCH                           (SYSTEM_FLAGS + 0x31)
