@@ -62,6 +62,7 @@ GauntletIsland_AltarHP::
     setvar VAR_0x8008, STAT_HP
     call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_HP_ALTAR
+    setflag FLAG_HAS_PREVIOUSLY_PERFECTED_IV @ Can now see perfect IVs
     addvar VAR_GAUNTLET_9, 1
     msgbox GauntletIsland_AltarHPVictory
 GauntletIsland_AltarHPjUMP::
@@ -222,7 +223,7 @@ GauntletIsland_AltarSpeed::
     goto_if_eq VAR_RESULT, B_OUTCOME_FORFEITED, GauntletIsland_AltarLoss
     call Common_EventScript_OutOfCenterPartyHeal
     setvar B_VAR_WILD_AI_FLAGS, 0
-    setvar VAR_0x8008, STAT_HP
+    setvar VAR_0x8008, STAT_SPEED
     call GauntletIsland_AltarBlessing
     setflag FLAG_GAUNTLET_SPEED_ALTAR
     msgbox GauntletIsland_AltarSpeedVictory

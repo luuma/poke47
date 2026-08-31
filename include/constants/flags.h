@@ -1548,9 +1548,9 @@
 #define FLAG_UNUSED_0x8F7                           (SYSTEM_FLAGS + 0x97) // Unused Flag
 #define FLAG_UNUSED_0x8F8                           (SYSTEM_FLAGS + 0x98) // Unused Flag
 #define FLAG_UNUSED_0x8F9                           (SYSTEM_FLAGS + 0x99) // Unused Flag
-#define GAUNTLET_QUITTER_DETECTED                           (SYSTEM_FLAGS + 0x9A) // Unused Flag
-#define GAUNTLET_FREELOSSPOINT                           (SYSTEM_FLAGS + 0x9B) // Unused Flag
-#define FLAG_UNUSED_0x8FC                           (SYSTEM_FLAGS + 0x9C) // Unused Flag
+#define GAUNTLET_QUITTER_DETECTED                           (SYSTEM_FLAGS + 0x9A) // lololol. Holy shit i could use an external thing to the savefile. why did i not do that. like. in option menu. omg.
+#define GAUNTLET_FREELOSSPOINT                           (SYSTEM_FLAGS + 0x9B) // this only triggers if you faint before fuckin facing that first fight
+#define FLAG_HAS_PREVIOUSLY_PERFECTED_IV                           (SYSTEM_FLAGS + 0x9C) // beat gauntlet island boss 1 therefore show perfect ivs.
 #define FLAG_UNUSED_0x8FD                           (SYSTEM_FLAGS + 0x9D) // Unused Flag
 #define FLAG_UNUSED_0x8FE                           (SYSTEM_FLAGS + 0x9E) // Unused Flag
 #define FLAG_UNUSED_0x8FF                           (SYSTEM_FLAGS + 0x9F) // Unused Flag

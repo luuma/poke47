@@ -4,7 +4,7 @@ Route113_MapScripts::
 	.byte 0
 
 Route113_OnResume:
-	setstepcallback STEP_CB_GRASS
+	setstepcallback STEP_CB_ASH
 	end
 
 Route113_OnTransition:

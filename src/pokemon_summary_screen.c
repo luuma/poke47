@@ -166,6 +166,12 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         u32 OTID; // 0x48
         enum Type teraType;
         u8 mintNature;
+        u8 ivHP;
+        u8 ivatk;
+        u8 ivdef;
+        u8 ivspatk;
+        u8 ivspdef;
+        u8 ivspeed;
     } summary;
     u16 bgTilemapBuffers[PSS_PAGE_COUNT][2][0x400];
     u8 mode;
@@ -186,7 +192,6 @@ static EWRAM_DATA struct PokemonSummaryScreenData
     u8 windowIds[8];
     u8 spriteIds[SPRITE_ARR_ID_COUNT];
     s16 switchCounter; // Used for various switch statement cases that decompress/load graphics or Pokémon data
-    u8 unk_filler4[6];
     u8 categoryIconSpriteId;
 } *sMonSummaryScreen = NULL;
 
@@ -1931,6 +1936,12 @@ void ExtractMonSkillStatsData(struct Pokemon *mon, struct PokeSummary *sum)
     sum->spatk = GetMonData(mon, MON_DATA_SPATK);
     sum->spdef = GetMonData(mon, MON_DATA_SPDEF);
     sum->speed = GetMonData(mon, MON_DATA_SPEED);
+    sum->ivHP = GetAdjustedIvData(mon, STAT_HP);
+    sum->ivatk = GetAdjustedIvData(mon, STAT_ATK);
+    sum->ivdef =  GetAdjustedIvData(mon, STAT_DEF);
+    sum->ivspatk = GetAdjustedIvData(mon, STAT_SPATK);
+    sum->ivspdef = GetAdjustedIvData(mon, STAT_SPDEF);
+    sum->ivspeed = GetAdjustedIvData(mon, STAT_SPEED);
 }
 
 void ExtractMonSkillIvData(struct Pokemon *mon, struct PokeSummary *sum)
@@ -1941,6 +1952,13 @@ void ExtractMonSkillIvData(struct Pokemon *mon, struct PokeSummary *sum)
     sum->spatk = GetAdjustedIvData(mon, STAT_SPATK);
     sum->spdef = GetAdjustedIvData(mon, STAT_SPDEF);
     sum->speed = GetAdjustedIvData(mon, STAT_SPEED);
+    sum->ivHP = GetAdjustedIvData(mon, STAT_HP);
+    sum->ivatk = GetAdjustedIvData(mon, STAT_ATK);
+    sum->ivdef =  GetAdjustedIvData(mon, STAT_DEF);
+    sum->ivspatk = GetAdjustedIvData(mon, STAT_SPATK);
+    sum->ivspdef = GetAdjustedIvData(mon, STAT_SPDEF);
+    sum->ivspeed = GetAdjustedIvData(mon, STAT_SPEED);
+
 }
 
 void ExtractMonSkillEvData(struct Pokemon *mon, struct PokeSummary *sum)
@@ -1951,6 +1969,13 @@ void ExtractMonSkillEvData(struct Pokemon *mon, struct PokeSummary *sum)
     sum->spatk = GetMonData(mon, MON_DATA_SPATK_EV);
     sum->spdef = GetMonData(mon, MON_DATA_SPDEF_EV);
     sum->speed = GetMonData(mon, MON_DATA_SPEED_EV);
+    sum->ivHP = GetAdjustedIvData(mon, STAT_HP);
+    sum->ivatk = GetAdjustedIvData(mon, STAT_ATK);
+    sum->ivdef =  GetAdjustedIvData(mon, STAT_DEF);
+    sum->ivspatk = GetAdjustedIvData(mon, STAT_SPATK);
+    sum->ivspdef = GetAdjustedIvData(mon, STAT_SPDEF);
+    sum->ivspeed = GetAdjustedIvData(mon, STAT_SPEED);
+
 }
 
 bool32 HasAnyRelearnableMoves(enum MoveRelearnerStates state)
@@ -3871,11 +3896,16 @@ static void PrintRibbonCount(void)
     PrintTextOnWindow(AddWindowFromTemplateList(sPageSkillsTemplate, PSS_DATA_WINDOW_SKILLS_RIBBON_COUNT), text, x, 1, 0, 0);
 }
 
-static void BufferStat(u8 *dst, enum Stat statIndex, u32 stat, u32 strId, u32 n)
+static void BufferStat(u8 *dst, enum Stat statIndex, u32 stat, u32 strId, u32 n, u8 iv)
 {
     static const u8 sTextNatureDown[] = _("{COLOR}{08}");
     static const u8 sTextNatureUp[] = _("{COLOR}{05}");
     static const u8 sTextNatureNeutral[] = _("{COLOR}{01}");
+
+    static const u8 sTextIVPerfect[] = _("{SHADOW}{06}");
+    static const u8 sTextIVNil[] = _("{SHADOW}{03}");
+    static const u8 sTextBlank[] = _("{SHADOW}{02}");
+
     u8 *txtPtr;
 
     if (statIndex == 0 || !P_SUMMARY_SCREEN_NATURE_COLORS || gNaturesInfo[sMonSummaryScreen->summary.mintNature].statUp == gNaturesInfo[sMonSummaryScreen->summary.mintNature].statDown)
@@ -3887,14 +3917,24 @@ static void BufferStat(u8 *dst, enum Stat statIndex, u32 stat, u32 strId, u32 n)
     else
         txtPtr = StringCopy(dst, sTextNatureNeutral);
 
+    if (FlagGet(FLAG_HAS_PREVIOUSLY_PERFECTED_IV))
+    {
+        if (iv == 0)
+            txtPtr = StringAppend(dst, sTextIVNil);
+        else if (iv == 31 || iv == 30)
+            txtPtr = StringAppend(dst, sTextIVPerfect);
+    }
+
     if (!P_SUMMARY_SCREEN_IV_EV_VALUES
         && sMonSummaryScreen->skillsPageMode == SUMMARY_SKILLS_MODE_IVS)
-        StringAppend(dst, GetLetterGrade(stat));
+        StringAppend(dst, GetLetterGrade(iv));
     else
         ConvertIntToDecimalStringN(txtPtr, stat, STR_CONV_MODE_RIGHT_ALIGN, n);
 
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(strId, dst);
 }
+
+
 
 static const u8 *GetLetterGrade(u32 stat)
 {
@@ -3918,7 +3958,6 @@ static const u8 *GetLetterGrade(u32 stat)
     else
         return gText_GradeS;
 }
-
 static void BufferLeftColumnStats(void)
 {
     u8 *currentHPString = Alloc(20);
@@ -3928,10 +3967,10 @@ static void BufferLeftColumnStats(void)
 
     DynamicPlaceholderTextUtil_Reset();
 
-    BufferStat(currentHPString, STAT_HP, sMonSummaryScreen->summary.currentHP, 0, 3);
-    BufferStat(maxHPString, STAT_HP, sMonSummaryScreen->summary.maxHP, 1, 3);
-    BufferStat(attackString, STAT_ATK, sMonSummaryScreen->summary.atk, 2, 7);
-    BufferStat(defenseString, STAT_DEF, sMonSummaryScreen->summary.def, 3, 7);
+    BufferStat(currentHPString, STAT_HP, sMonSummaryScreen->summary.currentHP, 0, 3, sMonSummaryScreen->summary.ivHP);
+    BufferStat(maxHPString, STAT_HP, sMonSummaryScreen->summary.maxHP, 1, 3, sMonSummaryScreen->summary.ivHP);
+    BufferStat(attackString, STAT_ATK, sMonSummaryScreen->summary.atk, 2, 7, sMonSummaryScreen->summary.ivatk);
+    BufferStat(defenseString, STAT_DEF, sMonSummaryScreen->summary.def, 3, 7, sMonSummaryScreen->summary.ivdef);
 
     DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftColumnLayout);
 
@@ -3949,9 +3988,9 @@ static void BufferLeftColumnIvEvStats(void)
 
     DynamicPlaceholderTextUtil_Reset();
 
-    BufferStat(hpIvEvString, STAT_HP, sMonSummaryScreen->summary.currentHP, 0, 7);
-    BufferStat(attackIvEvString, STAT_ATK, sMonSummaryScreen->summary.atk, 1, 7);
-    BufferStat(defenseIvEvString, STAT_DEF, sMonSummaryScreen->summary.def, 2, 7);
+    BufferStat(hpIvEvString, STAT_HP, sMonSummaryScreen->summary.currentHP, 0, 7, 1);
+    BufferStat(attackIvEvString, STAT_ATK, sMonSummaryScreen->summary.atk, 1, 7, 1);
+    BufferStat(defenseIvEvString, STAT_DEF, sMonSummaryScreen->summary.def, 2, 7, 1);
 
     DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsLeftIVEVColumnLayout);
 
@@ -3976,9 +4015,9 @@ static void BufferRightColumnStats(void)
 {
     DynamicPlaceholderTextUtil_Reset();
 
-    BufferStat(gStringVar1, STAT_SPATK, sMonSummaryScreen->summary.spatk, 0, 3);
-    BufferStat(gStringVar2, STAT_SPDEF, sMonSummaryScreen->summary.spdef, 1, 3);
-    BufferStat(gStringVar3, STAT_SPEED, sMonSummaryScreen->summary.speed, 2, 3);
+    BufferStat(gStringVar1, STAT_SPATK, sMonSummaryScreen->summary.spatk, 0, 3, sMonSummaryScreen->summary.ivspatk);
+    BufferStat(gStringVar2, STAT_SPDEF, sMonSummaryScreen->summary.spdef, 1, 3, sMonSummaryScreen->summary.ivspdef);
+    BufferStat(gStringVar3, STAT_SPEED, sMonSummaryScreen->summary.speed, 2, 3, sMonSummaryScreen->summary.ivspeed);
 
     DynamicPlaceholderTextUtil_ExpandPlaceholders(gStringVar4, sStatsRightColumnLayout);
 }
