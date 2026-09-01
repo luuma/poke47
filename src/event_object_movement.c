@@ -6738,7 +6738,8 @@ bool8 IsMetatileDirectionallyImpassable(struct ObjectEvent *objectEvent, s16 x, 
     if (gOppositeDirectionBlockedMetatileFuncs[direction - 1](objectEvent->currentMetatileBehavior)
         || gDirectionBlockedMetatileFuncs[direction - 1](MapGridGetMetatileBehaviorAt(x, y)))
         return TRUE;
-
+    else if (objectEvent->localId == LOCALID_PLAYER && MapGridGetMetatileBehaviorAt(x, y) == MB_IMPASSABLE_FOR_PLAYERS)
+        return TRUE;
     return FALSE;
 }
 

@@ -317,6 +317,7 @@ bool8 MetatileBehavior_IsPassableForAutobattlers(u8 metatileBehavior)
      || metatileBehavior == MB_MT_PYRE_HOLE 
      || metatileBehavior == MB_SHOAL_CAVE_ENTRANCE
      || metatileBehavior == MB_SECRET_BASE_HOLE
+     || metatileBehavior == MB_IMPASSABLE_FOR_AUTOBATTLERS
 )
         return FALSE;
     else
