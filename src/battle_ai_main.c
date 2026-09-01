@@ -3471,10 +3471,6 @@ static s32 AI_DoubleBattle(enum BattlerId battlerAtk, enum BattlerId battlerDef,
                     isMoveAffectedByPartnerAbility = FALSE;
                 }
                 break;  // handled in AI_HPAware
-            case ABILITY_LEVITATE:
-                if (moveType != TYPE_GROUND)
-                    isMoveAffectedByPartnerAbility = FALSE;
-                break;
             case ABILITY_DRY_SKIN:
             case ABILITY_WATER_ABSORB:
             case ABILITY_STORM_DRAIN:

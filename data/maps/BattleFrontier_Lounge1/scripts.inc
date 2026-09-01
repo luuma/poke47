@@ -8,6 +8,7 @@ BattleFrontier_Lounge1_EventScript_Breeder::
 	call_if_unset FLAG_MET_BATTLE_FRONTIER_BREEDER, BattleFrontier_Lounge1_EventScript_BreederIntro
 	call_if_set FLAG_MET_BATTLE_FRONTIER_BREEDER, BattleFrontier_Lounge1_EventScript_AlreadyMetBreeder
 	setflag FLAG_MET_BATTLE_FRONTIER_BREEDER
+        setflag FLAG_HAS_PREVIOUSLY_PERFECTED_IV @ Can now see perfect IVs
 	goto BattleFrontier_Lounge1_EventScript_ChooseMonToShowBreeder
 	end
 
@@ -216,7 +217,7 @@ BattleFrontier_Lounge1_Text_StatImpressive:
 	.string "…Hm… That's how I call it.$"
 
 BattleFrontier_Lounge1_Text_StatOutstanding:
-	.string "That stat is outstanding!\n"
+	.string "That stat is golden!\n"
 	.string "…Hm… That's how I call it.$"
 
 BattleFrontier_Lounge1_Text_StatFlawless:

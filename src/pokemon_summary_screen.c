@@ -3923,6 +3923,8 @@ static void BufferStat(u8 *dst, enum Stat statIndex, u32 stat, u32 strId, u32 n,
             txtPtr = StringAppend(dst, sTextIVNil);
         else if (iv == 31 || iv == 30)
             txtPtr = StringAppend(dst, sTextIVPerfect);
+        else 
+            txtPtr = StringAppend(dst, sTextBlank);// dont delete this idiot obviously
     }
 
     if (!P_SUMMARY_SCREEN_IV_EV_VALUES
