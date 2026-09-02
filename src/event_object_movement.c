@@ -23,6 +23,7 @@
 #include "gpu_regs.h"
 #include "graphics.h"
 #include "item.h"
+#include "item_use.h"
 #include "mauville_old_man.h"
 #include "metatile_behavior.h"
 #include "overworld.h"
@@ -47,6 +48,7 @@
 #include "constants/abilities.h"
 #include "constants/battle.h"
 #include "constants/event_objects.h"
+#include "constants/event_bg.h"
 #include "constants/field_effects.h"
 #include "constants/items.h"
 #include "constants/layouts.h"
@@ -218,6 +220,7 @@ static void DestroyLevitateMovementTask(u8);
 const struct ObjectEventGraphicsInfo *SpeciesToGraphicsInfo(enum Species species, bool32 shiny, bool32 female);
 static bool8 NpcTakeStep(struct Sprite *);
 static void CopyObjectGraphicsInfoToSpriteTemplate_WithMovementType(u16 graphicsId, u16 movementType, struct SpriteTemplate *spriteTemplate, const struct SubspriteTable **subspriteTables);
+static bool32 SetFollowerItemFlagDoNoise(void);//////new
 
 static enum Species GetUnownSpecies(struct Pokemon *mon);
 
@@ -5545,7 +5548,12 @@ bool8 CopyablePlayerMovement_WalkSlow(struct ObjectEvent *objectEvent, struct Sp
     ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkSlowMovementAction(direction));
     objectEvent->playerCopyableMovement = TRUE;
 
-    if (GetCollisionAtCoords(objectEvent, x, y, direction) || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
+    enum Collision collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+
+    if (collision == COLLISION_DETECT_ITEM)
+        ObjectEventSetSingleMovement(objectEvent, sprite, MOVEMENT_ACTION_EMOTE_EXCLAMATION_MARK);
+
+    else if (collision || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
         ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(direction));
 
     objectEvent->singleMovementActive = TRUE;
@@ -5581,7 +5589,14 @@ bool8 CopyablePlayerMovement_WalkNormal(struct ObjectEvent *objectEvent, struct 
     ObjectEventMoveDestCoords(objectEvent, direction, &x, &y);
     ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkNormalMovementAction(direction));
 
-    if (GetCollisionAtCoords(objectEvent, x, y, direction) || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
+    enum Collision collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+
+    //assertf(collision != COLLISION_DETECT_ITEM, "ping to emote");
+
+    if (collision == COLLISION_DETECT_ITEM)
+        ObjectEventSetSingleMovement(objectEvent, sprite, MOVEMENT_ACTION_EMOTE_EXCLAMATION_MARK);
+
+    else if (collision || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
         ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(direction));
 
     objectEvent->singleMovementActive = TRUE;
@@ -5600,7 +5615,12 @@ bool8 CopyablePlayerMovement_WalkFast(struct ObjectEvent *objectEvent, struct Sp
     ObjectEventMoveDestCoords(objectEvent, direction, &x, &y);
     ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkFastMovementAction(direction));
 
-    if (GetCollisionAtCoords(objectEvent, x, y, direction) || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
+    enum Collision collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+
+    if (collision == COLLISION_DETECT_ITEM)
+        ObjectEventSetSingleMovement(objectEvent, sprite, MOVEMENT_ACTION_EMOTE_EXCLAMATION_MARK);
+
+    else if (collision || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
         ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(direction));
 
     objectEvent->singleMovementActive = TRUE;
@@ -5619,7 +5639,12 @@ bool8 CopyablePlayerMovement_WalkFaster(struct ObjectEvent *objectEvent, struct 
     ObjectEventMoveDestCoords(objectEvent, direction, &x, &y);
     ObjectEventSetSingleMovement(objectEvent, sprite, GetWalkFasterMovementAction(direction));
 
-    if (GetCollisionAtCoords(objectEvent, x, y, direction) || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
+    enum Collision collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+
+    if (collision == COLLISION_DETECT_ITEM)
+        ObjectEventSetSingleMovement(objectEvent, sprite, MOVEMENT_ACTION_EMOTE_EXCLAMATION_MARK);
+
+    else if (collision || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
         ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(direction));
 
     objectEvent->singleMovementActive = TRUE;
@@ -5638,7 +5663,12 @@ bool8 CopyablePlayerMovement_Slide(struct ObjectEvent *objectEvent, struct Sprit
     ObjectEventMoveDestCoords(objectEvent, direction, &x, &y);
     ObjectEventSetSingleMovement(objectEvent, sprite, GetSlideMovementAction(direction));
 
-    if (GetCollisionAtCoords(objectEvent, x, y, direction) || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
+    enum Collision collision = GetCollisionAtCoords(objectEvent, x, y, direction);
+
+    if (collision == COLLISION_DETECT_ITEM)
+        ObjectEventSetSingleMovement(objectEvent, sprite, MOVEMENT_ACTION_EMOTE_EXCLAMATION_MARK);
+
+    else if (collision || (tileCallback != NULL && !tileCallback(MapGridGetMetatileBehaviorAt(x, y))))
         ObjectEventSetSingleMovement(objectEvent, sprite, GetFaceDirectionMovementAction(direction));
 
     objectEvent->singleMovementActive = TRUE;
@@ -6596,6 +6626,8 @@ static enum Collision GetVanillaCollision(struct ObjectEvent *objectEvent, s16 x
 {
     if (IsCoordOutsideObjectEventMovementRange(objectEvent, x, y) )
         return COLLISION_OUTSIDE_RANGE;
+    else if (objectEvent->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE && DetectHiddenItem(x, y))
+        return COLLISION_DETECT_ITEM;
     else if (MapGridGetCollisionAt(x, y) || GetMapBorderIdAt(x, y) == CONNECTION_INVALID || IsMetatileDirectionallyImpassable(objectEvent, x, y, direction))
         return COLLISION_IMPASSABLE;
     else if (objectEvent->trackedByCamera && !CanCameraMoveInDirection(direction))
@@ -6743,18 +6775,65 @@ bool8 IsMetatileDirectionallyImpassable(struct ObjectEvent *objectEvent, s16 x, 
     return FALSE;
 }
 
+
+bool32 DetectHiddenItem(s16 x, s16 y)
+{
+    u8 i;
+
+    if (TRUE)
+    {
+        const struct MapEvents *events = gMapHeader.events;
+        s16 checkx = x-MAP_OFFSET;
+        s16 checky = y-MAP_OFFSET;
+
+        for (i = 0; i < events->bgEventCount; i++)
+        {
+            // Check if there are any hidden items on the current map that haven't been picked up
+            if (events->bgEvents[i].kind == BG_EVENT_HIDDEN_ITEM // bg_event_hidden_item 
+               && !FlagGet(events->bgEvents[i].bgUnion.hiddenItem.hiddenItemId + FLAG_HIDDEN_ITEMS_START)
+               && events->bgEvents[i].x == checkx && events->bgEvents[i].y == checky)
+                return SetFollowerItemFlagDoNoise();// plays noise and returns TRUE if hasn't pinged the same event already, else FALSE.
+        }
+        const struct MapConnection *conn = GetMapConnectionAtPos(x, y);
+        if (IsHiddenItemPresentInConnection(conn, x, y))
+            return SetFollowerItemFlagDoNoise();
+    }
+    FlagClear(FLAG_TEMP_F);// Allows setfolloweritemflagdonoise to play again. CLEARLY there are better ways to do this.
+    return FALSE;
+}
+
+static bool32 SetFollowerItemFlagDoNoise(void)
+{
+    if (!FlagGet(FLAG_TEMP_F))
+    {
+        FlagSet(FLAG_TEMP_F);
+        u32 species;
+        bool32 shiny;
+        bool32 female;
+        if (GetMonInfo(GetFirstLiveMon(), &species, &shiny, &female) && Random() % 3 == 0)
+            PlayCry_Normal(species, 0);
+        else
+            PlaySE(SE_PIN);
+        return TRUE;
+    }
+    return FALSE;// Pretty bad way to do it but if detecting an item, don't ping again on the same one.
+}
+
+
 u32 GetObjectObjectCollidesWith(struct ObjectEvent *objectEvent, s16 x, s16 y, bool32 addCoords)
 {
     u8 i;
     struct ObjectEvent *curObject;
 
-    if (objectEvent->localId == OBJ_EVENT_ID_FOLLOWER)
-        return OBJECT_EVENTS_COUNT; // follower cannot collide with other objects, but they can collide with it
-
     if (addCoords)
     {
         x += objectEvent->currentCoords.x;
         y += objectEvent->currentCoords.y;
+    }
+
+    if (objectEvent->localId == OBJ_EVENT_ID_FOLLOWER)
+    {
+        return OBJECT_EVENTS_COUNT; // follower cannot collide with other objects, but they can collide with it
     }
 
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
@@ -12432,6 +12511,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
 	// Perhaps this is better refactored to save an object event directly into the gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId
 	// like in overworld.c. This doesn't do that, which means the event is temporary and despawns.
         species = SanitizeSpeciesId(species);
+        PlayCry_Normal(species, 0);
         u32 autobattleMovementType = gSpeciesInfo[species].autobattleMovementType;
         if (autobattleMovementType == MOVEMENT_TYPE_NONE)
             autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE;

@@ -52,6 +52,7 @@ void ItemUseOutOfBattle_TownMap(u8 taskId);
 bool8 ItemfinderCheckForHiddenItems(const struct MapEvents *, u8);
 enum Direction GetDirectionToHiddenItem(s16, s16);
 
+bool8 IsHiddenItemPresentInConnection(const struct MapConnection *connection, int x, int y);
 void ItemUseOutOfBattle_LevelCap(u8 taskId);
 
 void ItemUseOutOfBattle_NuzleafMask(u8 taskId);
