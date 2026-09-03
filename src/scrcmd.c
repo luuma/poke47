@@ -3857,6 +3857,30 @@ void ScrCmd_SetGauntletFinalBossBattle(struct ScriptContext *ctx)
     VarSet(VAR_0x8007, species);
 }
 
+
+void BufferCountBerries(struct ScriptContext *ctx)
+{
+    if (GetGameStat(GAME_STAT_PLANTED_BERRIES) >=200)
+    {
+        VarSet(VAR_RESULT, TRUE);
+        return;
+    }
+    VarSet(VAR_RESULT, FALSE);
+
+    u32 stat = GetGameStat(GAME_STAT_PLANTED_BERRIES);
+    stat = 200 - stat;// roughly every berry patch in the region, plus or minus 50.
+    if (stat>10)
+    {
+        stat /=10;
+        stat *=10; //idiot rounding
+    }
+    u8 len = CountDigits(stat);
+    ConvertIntToDecimalStringN(gStringVar1, stat, STR_CONV_MODE_LEFT_ALIGN, len);// Store a number string in strvar1
+    return;
+}
+
+
+
 bool8 dolegendarybattleincdouble(struct ScriptContext *ctx)
 {
     Script_RequestEffects(SCREFF_V1 | SCREFF_HARDWARE);

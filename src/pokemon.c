@@ -723,6 +723,7 @@ static const enum NationalDexOrder sHoennToNationalOrder[HOENN_DEX_COUNT - 1] =
     HOENN_TO_NATIONAL(SNOVER),
     HOENN_TO_NATIONAL(ABOMASNOW),
     HOENN_TO_NATIONAL(BASCULEGION),
+    HOENN_TO_NATIONAL(SHAYMIN),
 };
 
 // In Battle Palace, moves are chosen based on the pokemons nature rather than by the player

@@ -815,6 +815,15 @@ static void GrassPerStepCallback(u8 taskId)
     if (x == tPrevX && y == tPrevY)
         return;
 
+    if (FlagGet(FLAG_SHAYMIN_WALKING) && (MetatileBehavior_IsShortGrass(MapGridGetMetatileBehaviorAt(tPrevX, tPrevY)) || MapGridGetMetatileIdAt(tPrevX, tPrevY) == METATILE_General_Grass))
+    {
+        MapGridSetMetatileIdAt(tPrevX, tPrevY, METATILE_General_DefaultGrass3);
+        CurrentMapDrawMetatileAt(tPrevX, tPrevY);
+        tPrevX = x;
+        tPrevY = y;
+        return;
+    }
+
     if (MetatileBehavior_IsDefaultGrass(MapGridGetMetatileBehaviorAt(tPrevX, tPrevY)))
     {
         MapGridSetMetatileIdAt(tPrevX, tPrevY, METATILE_General_Grass); // FUCKIN' GORGEOUS!

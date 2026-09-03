@@ -179,9 +179,9 @@ Route104_PrettyPetalFlowerShop_Text_WailmerPailExplanation:
 	.string "While BERRY plants are growing,\n"
 	.string "water them with the WAILMER PAIL.\p"
 	.string "Oh, another thing.\p"
-	.string "BUG-type POKéMON can pester BERRY\n"
+	.string "Certain POKéMON can pester BERRY\n"
 	.string "plants as they're growing. But those\l"
-	.string "BUGS all hold nutritious MULCH!\p"
+	.string "POKéMON all hold nutritious MULCH!\p"
 	.string "Isn't that awesome?\n"
 	.string "It's like they're trying to help!$"
 

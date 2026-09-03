@@ -9924,6 +9924,26 @@
       "border_filepath": "data/layouts/GauntletislandCorridorEntrance/border.bin",
       "blockdata_filepath": "data/layouts/GauntletislandCorridorEntrance/map.bin",
       "layout_version": "emerald"
+    },
+    {
+      "id": "LAYOUT_SHAYMIN",
+      "name": "shaymin_Layout",
+      "width": 21,
+      "height": 32,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_EverGrande",
+      "border_filepath": "data/layouts/shaymin/border.bin",
+      "blockdata_filepath": "data/layouts/shaymin/map.bin"
+    },
+    {
+      "id": "LAYOUT_SHAYMIN_LAYOUT_BACKUP",
+      "name": "shaymin_Layout_BACKUP",
+      "width": 20,
+      "height": 28,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_EverGrande",
+      "border_filepath": "data/layouts/shaymin_Layout_BACKUP/border.bin",
+      "blockdata_filepath": "data/layouts/shaymin_Layout_BACKUP/map.bin"
     }
   ]
 }

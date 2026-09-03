@@ -16,7 +16,7 @@
 #define FLAG_TEMP_3      (TEMP_FLAGS_START + 0x3)
 #define FLAG_TEMP_4      (TEMP_FLAGS_START + 0x4)
 #define FLAG_TEMP_5      (TEMP_FLAGS_START + 0x5)  // Unused Flag
-#define FLAG_TEMP_6      (TEMP_FLAGS_START + 0x6)  // Unused Flag
+#define FLAG_TEMP_6      (TEMP_FLAGS_START + 0x6)  // SHAYMIN STEPS
 #define FLAG_TEMP_7      (TEMP_FLAGS_START + 0x7)  // Unused Flag
 #define FLAG_TEMP_8      (TEMP_FLAGS_START + 0x8)  // Unused Flag
 #define FLAG_TEMP_9      (TEMP_FLAGS_START + 0x9)  // Unused Flag
@@ -1551,10 +1551,10 @@
 #define GAUNTLET_QUITTER_DETECTED                           (SYSTEM_FLAGS + 0x9A) // lololol. Holy shit i could use an external thing to the savefile. why did i not do that. like. in option menu. omg.
 #define GAUNTLET_FREELOSSPOINT                           (SYSTEM_FLAGS + 0x9B) // this only triggers if you faint before fuckin facing that first fight
 #define FLAG_HAS_PREVIOUSLY_PERFECTED_IV                           (SYSTEM_FLAGS + 0x9C) // beat gauntlet island boss 1 therefore show perfect ivs.
-#define FLAG_UNUSED_0x8FD                           (SYSTEM_FLAGS + 0x9D) // Unused Flag
-#define FLAG_UNUSED_0x8FE                           (SYSTEM_FLAGS + 0x9E) // Unused Flag
-#define FLAG_UNUSED_0x8FF                           (SYSTEM_FLAGS + 0x9F) // Unused Flag
-#define FLAG_UNUSED_0x900                           (SYSTEM_FLAGS + 0xA0) // Unused Flag
+#define FLAG_SHAYMIN_WALKING                           (SYSTEM_FLAGS + 0x9D) // Unused Flag
+#define FLAG_SHAYMIN_ENCOUNTERED                           (SYSTEM_FLAGS + 0x9E) // Unused Flag
+#define FLAG_SHAYMIN_CAUGHT                           (SYSTEM_FLAGS + 0x9F) // Unused Flag
+#define FLAG_GRACIDEA                           (SYSTEM_FLAGS + 0xA0) // Unused Flag
 #define FLAG_UNUSED_0x901                           (SYSTEM_FLAGS + 0xA1) // Unused Flag
 #define FLAG_UNUSED_0x902                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
 #define FLAG_UNUSED_0x903                           (SYSTEM_FLAGS + 0xA3) // Unused Flag

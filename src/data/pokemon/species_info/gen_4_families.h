@@ -1770,7 +1770,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Rampardos,
             gShinyOverworldPalette_Rampardos
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sRampardosLevelUpLearnset,
         .teachableLearnset = sRampardosTeachableLearnset,
@@ -1841,7 +1841,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Shieldon,
             gShinyOverworldPalette_Shieldon
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sShieldonLevelUpLearnset,
         .teachableLearnset = sShieldonTeachableLearnset,
@@ -1912,7 +1912,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             gOverworldPalette_Bastiodon,
             gShinyOverworldPalette_Bastiodon
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sBastiodonLevelUpLearnset,
         .teachableLearnset = sBastiodonTeachableLearnset,
@@ -8027,9 +8027,9 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .genderRatio = MON_GENDERLESS,
         .eggCycles = 120,
         .friendship = 100,
-        .growthRate = GROWTH_MEDIUM_SLOW,
+        .growthRate = GROWTH_MEDIUM_SLOW,// oh shit!!!! that's actually spooky!!! fuck!
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_NATURAL_CURE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_GRASS_PELT, ABILITY_NONE, ABILITY_NATURAL_CURE },
         .bodyColor = BODY_COLOR_GREEN,
         .speciesName = _("Shaymin"),
         .cryId = CRY_SHAYMIN_LAND,
@@ -8080,8 +8080,8 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
         .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
-        .levelUpLearnset = sShayminLandLevelUpLearnset,
-        .teachableLearnset = sShayminLandTeachableLearnset,
+        .levelUpLearnset = sShayminLevelUpLearnset,
+        .teachableLearnset = sShayminTeachableLearnset,
         .formSpeciesIdTable = sShayminFormSpeciesIdTable,
         .formChangeTable = sShayminFormChangeTable,
     },
@@ -8109,7 +8109,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .friendship = 100,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_NO_EGGS_DISCOVERED),
-        .abilities = { ABILITY_SERENE_GRACE, ABILITY_NONE, ABILITY_NONE },
+        .abilities = { ABILITY_SERENE_GRACE, ABILITY_NONE, ABILITY_WIND_RIDER},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
         .speciesName = _("Shaymin"),
@@ -8160,7 +8160,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
         .isFrontierBanned = TRUE,
         .isSkyBattleBanned = B_SKY_BATTLE_STRICT_ELIGIBILITY,
         .perfectIVCount = LEGENDARY_PERFECT_IV_COUNT,
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sShayminSkyLevelUpLearnset,
         .teachableLearnset = sShayminSkyTeachableLearnset,

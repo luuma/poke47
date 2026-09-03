@@ -283,19 +283,6 @@
       "flag": "FLAG_WIZARD_CAPE"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 1,
-      "y": 55,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_TM_PLAY_ROUGH",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_110_RARE_CANDY"
-    },
-    {
       "local_id": "LOCALID_CHALLENGE_BIKER",
       "graphics_id": "OBJ_EVENT_GFX_CYCLING_TRIATHLETE_M",
       "x": 27,
@@ -519,6 +506,19 @@
       "trainer_sight_or_berry_tree_id": "ITEM_DAMAGE_BOUNCEABLES",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_WIZARD_CAPE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
+      "x": 1,
+      "y": 55,
+      "elevation": 3,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "ITEM_TM_X_SCISSOR",
+      "script": "Common_EventScript_FindItem",
+      "flag": "FLAG_ITEM_ROUTE_133_MAX_REVIVE"
     }
   ],
   "warp_events": [
@@ -566,8 +566,8 @@
     },
     {
       "warp_id": "WARP_ID_FLY_ROUTE_110",
-      "x": 17,
-      "y": 40,
+      "x": 22,
+      "y": 15,
       "elevation": 0,
       "dest_map": "MAP_ROUTE110",
       "dest_warp_id": "0"

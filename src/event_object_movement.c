@@ -2420,6 +2420,10 @@ void UpdateFollowingPokemon(void)
         objEvent = &gObjectEvents[objId];
         objEvent->invisible = TRUE;
     }
+    if (species == SPECIES_SHAYMIN_SKY || species == SPECIES_SHAYMIN_LAND)// unique walking effect: set lush grass rather than trampling.
+        FlagSet(FLAG_SHAYMIN_WALKING);
+    else
+        FlagClear(FLAG_SHAYMIN_WALKING);
     sprite = &gSprites[objEvent->spriteId];
     // Follower appearance changed; move to player and set invisible
     if (species != OW_SPECIES(objEvent) || shiny != OW_SHINY(objEvent) || female != OW_FEMALE(objEvent))

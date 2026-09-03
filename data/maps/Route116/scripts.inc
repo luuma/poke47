@@ -1,4 +1,5 @@
 Route116_MapScripts::
+	map_script MAP_SCRIPT_ON_RESUME, DefaultGrass_OnResume
 	map_script MAP_SCRIPT_ON_TRANSITION, Route116_OnTransition
 	map_script MAP_SCRIPT_ON_LOAD, Route116_OnLoad
 	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route116_OnFrame
@@ -16,9 +17,29 @@ Route116_EventScript_SetWandasBoyfriendPos::
 	return
 
 Route116_OnLoad:
+	call_if_set FLAG_RECEIVED_WAILMER_PAIL, Route116_EventScript_CheckOpenShaymin
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_NORTH, AbnormalWeather_EventScript_PlaceTilesRoute116North
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_SOUTH, AbnormalWeather_EventScript_PlaceTilesRoute116South
 	end
+
+Route116_EventScript_CheckOpenShaymin:
+        goto_if_set FLAG_GRACIDEA, Route116_EventScript_OpenToShaymin
+        goto_if_set FLAG_SHAYMIN_CAUGHT, Common_EventScript_NopReturn
+Route116_EventScript_OpenToShaymin:
+	setmetatile 7, 3, METATILE_General_DefaultGrass1, FALSE
+	setmetatile 7, 2, METATILE_General_DefaultGrass1, FALSE
+	setmetatile 7, 1, METATILE_General_DefaultGrass1, FALSE
+	setmetatile 7, 0, METATILE_General_Grass_TreeDown, TRUE
+	setmetatile 6, 0, METATILE_General_DefaultGrass1, FALSE
+	setmetatile 6, 1, METATILE_General_Grass_TreeUp, FALSE
+	@ special DrawWholeMapView
+        goto_if_unset FLAG_SHAYMIN_CAUGHT, Route116_EventScript_shayminclearflagencountered
+	return
+
+Route116_EventScript_shayminclearflagencountered:
+        clearflag FLAG_SHAYMIN_ENCOUNTERED
+	return
+
 
 Route116_OnFrame:
 	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1

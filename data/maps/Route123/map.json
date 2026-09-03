@@ -25,7 +25,7 @@
     },
     {
       "map": "MAP_ROUTE135_MAP",
-      "offset": 84,
+      "offset": 95,
       "direction": "down"
     }
   ],
@@ -720,15 +720,15 @@
     },
     {
       "type": "weather",
-      "x": 111,
-      "y": 17,
+      "x": 108,
+      "y": 19,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
     {
       "type": "weather",
-      "x": 112,
-      "y": 18,
+      "x": 111,
+      "y": 17,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_SUNNY"
     },
@@ -773,6 +773,13 @@
       "y": 10,
       "elevation": 3,
       "weather": "COORD_EVENT_WEATHER_ROUTE123_CYCLE"
+    },
+    {
+      "type": "weather",
+      "x": 109,
+      "y": 18,
+      "elevation": 3,
+      "weather": "COORD_EVENT_WEATHER_SUNNY"
     }
   ],
   "bg_events": [
