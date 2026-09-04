@@ -10,10 +10,6 @@ shaymin_shaymin::
 	msgbox shaymin_offerstofight, MSGBOX_YESNO
         goto_if_ne VAR_RESULT, YES, shayminreleaseallend
 	setwildbattle SPECIES_SHAYMIN, 4
-	waitse
-	playmoncry SPECIES_SHAYMIN, CRY_MODE_ENCOUNTER
-	waitmoncry
-	delay 40
 	special BattleSetup_StartLegendaryBattle
 	specialvar VAR_RESULT, GetBattleOutcome
 	goto_if_eq VAR_RESULT, B_OUTCOME_WON, shaymin_EventScript_ShayminGone
