@@ -1,6 +1,11 @@
 MagmaHideout_4F_MapScripts::
 	.byte 0
 
+magmahideout_eventscript_drone3::
+	warpteleport MAP_MAGMA_HIDEOUT_3F_1R, 7, 22
+        waitstate
+	end
+
 MagmaHideout_4F_EventScript_Maxie::
 	lockall
 	playbgm MUS_ENCOUNTER_MAGMA, FALSE

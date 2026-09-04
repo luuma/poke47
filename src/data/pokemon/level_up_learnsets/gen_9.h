@@ -18119,8 +18119,8 @@ static const struct LevelUpMove sGothitaLevelUpLearnset[] = {
         LEVEL_UP_MOVE(7, MOVE_TRICK_ROOM),
         LEVEL_UP_MOVE(10, MOVE_PHANTOM_FORCE),
         LEVEL_UP_MOVE(14, MOVE_TICKLE),
-        LEVEL_UP_MOVE(18, MOVE_DESTINY_BOND),
-        LEVEL_UP_MOVE(20, MOVE_PSYSHOCK),
+        LEVEL_UP_MOVE(18, MOVE_GRUDGE),
+        LEVEL_UP_MOVE(20, MOVE_EXTRASENSORY),
         LEVEL_UP_MOVE(24, MOVE_DARK_PULSE),
         LEVEL_UP_MOVE(28, MOVE_PAIN_SPLIT),
         LEVEL_UP_MOVE(31, MOVE_EMBARGO),
@@ -18134,14 +18134,16 @@ static const struct LevelUpMove sGothitaLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sGothoritaLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(0, MOVE_DESTINY_BOND),
+        LEVEL_UP_MOVE(1, MOVE_PSYSHOCK),
         LEVEL_UP_MOVE(1, MOVE_CONFUSION),
         LEVEL_UP_MOVE(1, MOVE_FAKE_TEARS),
         LEVEL_UP_MOVE(5, MOVE_MAGIC_ROOM),
         LEVEL_UP_MOVE(7, MOVE_TRICK_ROOM),
         LEVEL_UP_MOVE(10, MOVE_PHANTOM_FORCE),
         LEVEL_UP_MOVE(14, MOVE_TICKLE),
-        LEVEL_UP_MOVE(18, MOVE_DESTINY_BOND),
-        LEVEL_UP_MOVE(20, MOVE_PSYSHOCK),
+        LEVEL_UP_MOVE(18, MOVE_GRUDGE),
+        LEVEL_UP_MOVE(20, MOVE_EXTRASENSORY),
         LEVEL_UP_MOVE(24, MOVE_DARK_PULSE),
         LEVEL_UP_MOVE(28, MOVE_PAIN_SPLIT),
         LEVEL_UP_MOVE(31, MOVE_EMBARGO),
@@ -18288,10 +18290,12 @@ static const struct LevelUpMove sSwannaLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sVanilliteLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_FLAIL),
         LEVEL_UP_MOVE(1, MOVE_ASTONISH),
         LEVEL_UP_MOVE(5, MOVE_HAIL),
         LEVEL_UP_MOVE(9, MOVE_ACID_ARMOR),
-        LEVEL_UP_MOVE(13, MOVE_ICY_WIND),
+        LEVEL_UP_MOVE(12, MOVE_ICY_WIND),
+        LEVEL_UP_MOVE(15, MOVE_ENDURE),
         LEVEL_UP_MOVE(18, MOVE_RAPID_SPIN),
         LEVEL_UP_MOVE(23, MOVE_ICE_SPINNER),
         LEVEL_UP_MOVE(27, MOVE_TAUNT),
@@ -18307,10 +18311,12 @@ static const struct LevelUpMove sVanilliteLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sVanillishLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_FLAIL),
         LEVEL_UP_MOVE(1, MOVE_ASTONISH),
         LEVEL_UP_MOVE(5, MOVE_HAIL),
         LEVEL_UP_MOVE(9, MOVE_ACID_ARMOR),
-        LEVEL_UP_MOVE(13, MOVE_ICY_WIND),
+        LEVEL_UP_MOVE(12, MOVE_ICY_WIND),
+        LEVEL_UP_MOVE(15, MOVE_ENDURE),
         LEVEL_UP_MOVE(18, MOVE_RAPID_SPIN),
         LEVEL_UP_MOVE(23, MOVE_ICE_SPINNER),
         LEVEL_UP_MOVE(27, MOVE_TAUNT),
@@ -18326,10 +18332,12 @@ static const struct LevelUpMove sVanillishLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sVanilluxeLevelUpLearnset[] = {
+        LEVEL_UP_MOVE(1, MOVE_FLAIL),
         LEVEL_UP_MOVE(1, MOVE_ASTONISH),
         LEVEL_UP_MOVE(5, MOVE_HAIL),
         LEVEL_UP_MOVE(9, MOVE_ACID_ARMOR),
-        LEVEL_UP_MOVE(13, MOVE_ICY_WIND),
+        LEVEL_UP_MOVE(12, MOVE_ICY_WIND),
+        LEVEL_UP_MOVE(15, MOVE_ENDURE),
         LEVEL_UP_MOVE(18, MOVE_RAPID_SPIN),
         LEVEL_UP_MOVE(23, MOVE_ICE_SPINNER),
         LEVEL_UP_MOVE(27, MOVE_TAUNT),
@@ -18948,11 +18956,10 @@ static const struct LevelUpMove sHaxorusLevelUpLearnset[] = {
         LEVEL_UP_END
 };
 static const struct LevelUpMove sCubchooLevelUpLearnset[] = {
-        LEVEL_UP_MOVE(1, MOVE_FLAIL),
         LEVEL_UP_MOVE(1, MOVE_PLAY_NICE),
         LEVEL_UP_MOVE(3, MOVE_POWDER_SNOW),
         LEVEL_UP_MOVE(6, MOVE_HAIL),
-        LEVEL_UP_MOVE(9, MOVE_ENDURE),
+        LEVEL_UP_MOVE(9, MOVE_BIDE),
         LEVEL_UP_MOVE(12, MOVE_FROST_BREATH),// extremely powerful move.
         LEVEL_UP_MOVE(15, MOVE_SLASH),
         LEVEL_UP_MOVE(18, MOVE_CHILLY_RECEPTION),
@@ -18974,11 +18981,10 @@ static const struct LevelUpMove sBearticLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_AQUA_JET),
         LEVEL_UP_MOVE(1, MOVE_HEADLONG_RUSH),
         LEVEL_UP_MOVE(1, MOVE_CHARM),
-        LEVEL_UP_MOVE(1, MOVE_FLAIL),
         LEVEL_UP_MOVE(1, MOVE_PLAY_NICE),
         LEVEL_UP_MOVE(3, MOVE_POWDER_SNOW),
         LEVEL_UP_MOVE(6, MOVE_HAIL),
-        LEVEL_UP_MOVE(9, MOVE_ENDURE),
+        LEVEL_UP_MOVE(9, MOVE_BIDE),
         LEVEL_UP_MOVE(12, MOVE_FROST_BREATH),
         LEVEL_UP_MOVE(15, MOVE_SLASH),
         LEVEL_UP_MOVE(18, MOVE_CHILLY_RECEPTION),

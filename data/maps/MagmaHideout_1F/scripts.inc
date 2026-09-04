@@ -2,6 +2,12 @@ MagmaHideout_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MagmaHideout_1F_OnTransition
 	.byte 0
 
+magmahideout_eventscript_drone1::
+	warpteleport MAP_MAGMA_HIDEOUT_1F, 10, 22
+        waitstate
+	end
+
+
 MagmaHideout_1F_OnTransition:
 	setvar VAR_JAGGED_PASS_ASH_WEATHER, 0
 	end

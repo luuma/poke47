@@ -22,12 +22,12 @@
             "voice:4": 128,
             "voice:5": 128
         },
-        "pxPerBeat": 30.077003725545666,
-        "scrollPx": 0,
+        "pxPerBeat": 8.539521194355443,
+        "scrollPx": 768,
         "scrollY": 374,
         "selectedTrack": 3,
         "splitter": [
-            502,
+            512,
             332
         ]
     }

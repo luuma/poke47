@@ -640,10 +640,6 @@ void SetOverworldObjectSpecies(struct ScriptContext *ctx)
         speciesId = SPECIES_WINGULL;
         break;
 
-    case OBJ_EVENT_GFX_POOCHYENA:
-        speciesId = SPECIES_POOCHYENA;
-        break;
-
     case OBJ_EVENT_GFX_KIRLIA:
         speciesId = SPECIES_KIRLIA;
         break;

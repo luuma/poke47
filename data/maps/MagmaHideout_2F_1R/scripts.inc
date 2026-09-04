@@ -27,6 +27,8 @@ MagmaHideout_2F_1R_Text_Grunt14Intro:
 	.string "to be in here!\p"
 	.string "But you're not dressed in TEAM MAGMA's\n"
 	.string "uniform…\p"
+	.string "You're about to be all over our\n"
+	.string "security footage!\p"
 	.string "You rouse my suspicion!\n"
 	.string "Battle with me!$"
 
@@ -35,8 +37,12 @@ MagmaHideout_2F_1R_Text_Grunt14Defeat:
 	.string "My pride as a TEAM MAGMA member…$"
 
 MagmaHideout_2F_1R_Text_Grunt14PostBattle:
-	.string "If you suffer from chills, you should\n"
-	.string "join TEAM MAGMA.$"
+	.string "Fufufu… In a uniform like that,\n"
+	.string "you'll never make it past all our\l"
+	.string "TEAM MAGMA SPY QUADCOPTERS. Fool!\p"
+	.string "They may look flimsy, intrusive,\n"
+	.string "slow, and easy to trick or block…\l"
+	.string "But… uh…………$"
 
 MagmaHideout_2F_1R_Text_Grunt3Intro:
 	.string "Hold it right there!\p"

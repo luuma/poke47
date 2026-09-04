@@ -9,6 +9,7 @@
 #include "pokemon.h"
 #include "script.h"
 #include "script_movement.h"
+#include "sound.h"
 #include "sprite.h"
 #include "task.h"
 #include "trainer_see.h"
@@ -22,6 +23,7 @@
 #include "constants/field_effects.h"
 #include "constants/script_commands.h"
 #include "constants/trainer_types.h"
+#include "constants/songs.h"
 
 // this file's functions
 static u8 CheckTrainer(u8 objectEventId);
@@ -434,6 +436,60 @@ static const struct SpriteTemplate sSpriteTemplate_Emote =
 };
 
 // code
+bool8 CheckForDrones(void)
+{
+    u8 i;
+    u8 droneObjects[OBJECT_EVENTS_COUNT] = {0};
+    u8 droneObjectsCount = 0;
+    if (FlagGet(OW_FLAG_NO_TRAINER_SEE))
+        return FALSE;
+
+    if (FlagGet(OW_FLAG_NO_TRAINER_SEE))
+        return FALSE;
+
+    gNoOfApproachingTrainers = 0;
+    gApproachingTrainerId = 0;
+    gNoOfApproachingTrainers = 0;
+    gApproachingTrainerId = 0;
+
+    // Add all drones to an array 
+    for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
+    {
+        if (gObjectEvents[i].localId == LOCALID_PLAYER && gObjectEvents[i].invisible == TRUE)
+            return FALSE;// duck out if we find player to be invisible.
+        if (gObjectEvents[i].trainerType != TRAINER_TYPE_DRONE)
+            continue;
+        if (!gObjectEvents[i].active)
+            continue;
+        droneObjects[droneObjectsCount++] = i;
+    }
+    u8 numTrainers;
+
+    //loop through the array, seeing if anything spotted us.
+    for (i = 0; i <= droneObjectsCount; i++)
+    {
+        numTrainers = CheckTrainer(droneObjects[i]); 
+        if (numTrainers == 0xFF) // non-trainerbattle script expected for this. we could be way more efficient.
+        {
+            u32 objectEventId = gApproachingTrainers[0].objectEventId;
+            gApproachingTrainers[0].trainerScriptPtr = GetObjectEventScriptPointerByObjectEventId(objectEventId);
+            gSelectedObjectEvent = objectEventId;
+            PlaySE(SE_PIN);
+
+            PlayNewMapMusic(MUS_ENCOUNTER_MAGMA);
+            gSpecialVar_LastTalked = gObjectEvents[objectEventId].localId;
+            ScriptContext_SetupScript(EventScript_ObjectApproachPlayer);
+            LockPlayerFieldControls();
+            return TRUE;
+        }
+    }
+
+    gTrainerApproachedPlayer = FALSE;
+    return FALSE;
+}
+
+
+
 bool8 CheckForTrainersWantingBattle(void)
 {
     u8 i;
@@ -450,7 +506,7 @@ bool8 CheckForTrainersWantingBattle(void)
     for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
     {
         if (gObjectEvents[i].localId == LOCALID_PLAYER && gObjectEvents[i].invisible == TRUE)
-            return FALSE;// duck out if we find player to be invisible
+            return FALSE;// duck out if we find player to be invisible.
         if (!gObjectEvents[i].active)
             continue;
         if (gObjectEvents[i].trainerType != TRAINER_TYPE_NORMAL && gObjectEvents[i].trainerType != TRAINER_TYPE_SEE_ALL_DIRECTIONS && gObjectEvents[i].trainerType != TRAINER_TYPE_BURIED)
@@ -644,7 +700,7 @@ static u8 GetTrainerApproachDistance(struct ObjectEvent *trainerObj)
     u8 approachDistance;
 
     PlayerGetDestCoords(&x, &y);
-    if (trainerObj->trainerType == TRAINER_TYPE_NORMAL)  // can only see in one direction
+    if (trainerObj->trainerType == TRAINER_TYPE_NORMAL || trainerObj->trainerType == TRAINER_TYPE_DRONE)  // can only see in one direction
     {
         // Disable trainer approach while moving diagonally (usually moving on sideway stairs)
         if (trainerObj->facingDirection > DIR_EAST)

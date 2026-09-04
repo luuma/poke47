@@ -16,6 +16,8 @@ extern u8 gNoOfApproachingTrainers;
 extern bool8 gTrainerApproachedPlayer;
 extern u8 gApproachingTrainerId;
 
+bool8 CheckForDrones(void);
+
 bool8 CheckForTrainersWantingBattle(void);
 void SetBuriedTrainerMovement(struct ObjectEvent *objEvent);
 void DoTrainerApproach(void);

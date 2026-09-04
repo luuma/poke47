@@ -1,6 +1,11 @@
 MagmaHideout_3F_1R_MapScripts::
 	.byte 0
 
+magmahideout_eventscript_drone2::
+	warpteleport MAP_MAGMA_HIDEOUT_3F_1R, 24, 6
+        waitstate
+	end
+
 MagmaHideout_3F_1R_EventScript_Grunt9::
 	trainerbattle_single TRAINER_GRUNT_MAGMA_HIDEOUT_9, MagmaHideout_3F_1R_Text_Grunt9Intro, MagmaHideout_3F_1R_Text_Grunt9Defeat
 	msgbox MagmaHideout_3F_1R_Text_Grunt9PostBattle, MSGBOX_AUTOCLOSE
