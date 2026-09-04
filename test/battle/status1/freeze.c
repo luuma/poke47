@@ -1,13 +1,55 @@
 #include "global.h"
 #include "test/battle.h"
 
-SINGLE_BATTLE_TEST("Freeze has a 20% chance of being thawed")
+SINGLE_BATTLE_TEST("Freeze has a 25% chance of being thawed")
 {
-    PASSES_RANDOMLY(20, 100, RNG_FROZEN);
+    PASSES_RANDOMLY(25, 100, RNG_FROZEN);
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_FREEZE); }
         OPPONENT(SPECIES_WOBBUFFET);
     } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE); }
+    } SCENE {
+        STATUS_ICON(player, none: TRUE);
+    }
+}
+
+SINGLE_BATTLE_TEST("Freeze has a 25% chance of THAWING t2")
+{
+    PASSES_RANDOMLY(25, 100, RNG_FROZEN);
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_FREEZE_BIT2); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE); }
+    } SCENE {
+        STATUS_ICON(player, none: TRUE);
+    }
+}
+
+SINGLE_BATTLE_TEST("Freeze has a 100% chance of being thawed by t3")
+{
+    PASSES_RANDOMLY(100, 100, RNG_FROZEN);
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_FREEZE); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN {  }
+        TURN {  }
+        TURN { MOVE(player, MOVE_CELEBRATE); }
+    } SCENE {
+        STATUS_ICON(player, none: TRUE);
+    }
+}
+
+SINGLE_BATTLE_TEST("Freeze has a 100% chance of thawing 2 turns from t2")
+{
+    PASSES_RANDOMLY(100, 100, RNG_FROZEN);
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_FREEZE_BIT2); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN {  }
         TURN { MOVE(player, MOVE_CELEBRATE); }
     } SCENE {
         STATUS_ICON(player, none: TRUE);
@@ -177,7 +219,7 @@ SINGLE_BATTLE_TEST("Freeze is thawed by user's Flame Wheel")
 
 SINGLE_BATTLE_TEST("Freeze isn't thawed if opponent is asleep during thawing attack")
 {
-    PASSES_RANDOMLY(80, 100, RNG_FROZEN);
+    PASSES_RANDOMLY(75, 100, RNG_FROZEN);
     GIVEN {
         ASSUME(GetMoveType(MOVE_EMBER) == TYPE_FIRE);
         PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_FREEZE); }
@@ -195,7 +237,7 @@ SINGLE_BATTLE_TEST("Freeze isn't thawed if opponent is asleep during thawing att
 
 SINGLE_BATTLE_TEST("Freeze isn't thawed if opponent is asleep during thawing attack when using Scald")
 {
-    PASSES_RANDOMLY(80, 100, RNG_FROZEN);
+    PASSES_RANDOMLY(75, 100, RNG_FROZEN);
     GIVEN {
         PLAYER(SPECIES_WOBBUFFET) { Status1(STATUS1_FREEZE); }
         OPPONENT(SPECIES_WOBBUFFET) { Status1(STATUS1_SLEEP); }

@@ -173,8 +173,10 @@ static enum CancelerResult CancelerAsleepOrFrozen(struct BattleCalcValues *cv)
     }
     else if (gBattleMons[cv->battlerAtk].status1 & STATUS1_FREEZE && !MoveThawsUser(cv->move))
     {
-        if (!RandomPercentage(RNG_FROZEN, 20))
+        if (!RandomPercentage(RNG_FROZEN, 25) && !(gBattleMons[cv->battlerAtk].status1 & STATUS1_FREEZE_BIT1 && !(gBattleMons[cv->battlerAtk].status1 & STATUS1_FREEZE_BIT2)))
         {
+            u8 shift = (gBattleMons[cv->battlerAtk].status1 >> 12) - 1;
+            gBattleMons[cv->battlerAtk].status1 = shift << 12;
             result = CANCELER_RESULT_FAILURE;
             gBattlescriptCurrInstr = BattleScript_MoveUsedIsFrozen;
         }

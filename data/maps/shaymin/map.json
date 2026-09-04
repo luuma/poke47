@@ -2,7 +2,7 @@
   "id": "MAP_SHAYMIN",
   "name": "shaymin",
   "layout": "LAYOUT_SHAYMIN",
-  "music": "MUS_EVER_GRANDE",
+  "music": "MUS_VERDANTURF",
   "region_map_section": "MAPSEC_ROUTE_116",
   "requires_flash": false,
   "weather": "WEATHER_SUNNY",
