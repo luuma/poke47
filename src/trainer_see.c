@@ -471,11 +471,10 @@ bool8 CheckForDrones(void)
         numTrainers = CheckTrainer(droneObjects[i]); 
         if (numTrainers == 0xFF) // non-trainerbattle script expected for this. we could be way more efficient.
         {
+            PlaySE(SE_ITEMFINDER_3);// spent like an hour fucking trying to make this play thrice. UGH.
             u32 objectEventId = gApproachingTrainers[0].objectEventId;
             gApproachingTrainers[0].trainerScriptPtr = GetObjectEventScriptPointerByObjectEventId(objectEventId);
             gSelectedObjectEvent = objectEventId;
-            PlaySE(SE_PIN);
-
             PlayNewMapMusic(MUS_ENCOUNTER_MAGMA);
             gSpecialVar_LastTalked = gObjectEvents[objectEventId].localId;
             ScriptContext_SetupScript(EventScript_ObjectApproachPlayer);

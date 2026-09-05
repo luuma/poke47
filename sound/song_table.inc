@@ -630,6 +630,7 @@ gSongTable::
 	song mus_gauntlet_opener_102, MUSIC_PLAYER_BGM, 0
 	song mus_littlebird, MUSIC_PLAYER_BGM, 0
 	song mus_rayquaza_appears_extended, MUSIC_PLAYER_BGM, 0
+	song se_itemfinder_3, MUSIC_PLAYER_SE1, 1
 
 	.align 2
 dummy_song_header:

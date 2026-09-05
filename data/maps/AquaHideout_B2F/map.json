@@ -3,7 +3,6 @@
   "name": "AquaHideout_B2F",
   "layout": "LAYOUT_AQUA_HIDEOUT_B2F",
   "music": "MUS_AQUA_MAGMA_HIDEOUT",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_AQUA_HIDEOUT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -93,6 +92,20 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "5",
       "script": "AquaHideout_B2F_EventScript_Grunt8",
+      "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_DRONE_4",
+      "graphics_id": "OBJ_EVENT_GFX_DRONE",
+      "x": 18,
+      "y": 4,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_RIGHT",
+      "movement_range_x": 4,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_DRONE",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "AquaHideout_B2F_DroneWarp4",
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
     }
   ],
@@ -186,7 +199,17 @@
       "var": "VAR_TEMP_1",
       "var_value": "0",
       "script": "AquaHideout_B2F_EventScript_MattNoticePlayer"
+    },
+    {
+      "type": "trigger",
+      "x": 24,
+      "y": 2,
+      "elevation": 5,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "AquaHideout_B1F_DroneOff4"
     }
   ],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

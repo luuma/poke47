@@ -3,7 +3,6 @@
   "name": "AquaHideout_B1F",
   "layout": "LAYOUT_AQUA_HIDEOUT_B1F",
   "music": "MUS_AQUA_MAGMA_HIDEOUT",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_AQUA_HIDEOUT",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -30,10 +29,10 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_M",
-      "x": 6,
-      "y": 6,
+      "x": 8,
+      "y": 3,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
+      "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
       "movement_range_x": 0,
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NORMAL",
@@ -56,7 +55,7 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_AQUA_MEMBER_F",
-      "x": 20,
+      "x": 21,
       "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_ROTATE_COUNTERCLOCKWISE",
@@ -131,6 +130,61 @@
       "trainer_sight_or_berry_tree_id": "4",
       "script": "AquaHideout_B1F_EventScript_Grunt7",
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_DRONE_1",
+      "graphics_id": "OBJ_EVENT_GFX_DRONE",
+      "x": 24,
+      "y": 15,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_LEFT",
+      "movement_range_x": 4,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_DRONE",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "AquaHideout_B1F_DroneWarp1",
+      "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_DRONE_2",
+      "graphics_id": "OBJ_EVENT_GFX_DRONE",
+      "x": 20,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_UP",
+      "movement_range_x": 4,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_DRONE",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "magmahideout_eventscript_drone1",
+      "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
+    },
+    {
+      "local_id": "LOCALID_DRONE_3",
+      "graphics_id": "OBJ_EVENT_GFX_DRONE",
+      "x": 7,
+      "y": 5,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_IN_PLACE_DOWN",
+      "movement_range_x": 4,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_DRONE",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "magmahideout_eventscript_drone1",
+      "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_DRONE",
+      "x": 49,
+      "y": 18,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WALK_LEFT_AND_RIGHT",
+      "movement_range_x": 8,
+      "movement_range_y": 4,
+      "trainer_type": "TRAINER_TYPE_DRONE",
+      "trainer_sight_or_berry_tree_id": "6",
+      "script": "magmahideout_eventscript_drone1",
+      "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
     }
   ],
   "warp_events": [
@@ -177,7 +231,7 @@
       "dest_warp_id": "8"
     },
     {
-      "x": 20,
+      "x": 22,
       "y": 4,
       "elevation": 3,
       "dest_map": "MAP_AQUA_HIDEOUT_B1F",
@@ -310,6 +364,35 @@
       "dest_warp_id": "19"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+    {
+      "type": "trigger",
+      "x": 20,
+      "y": 15,
+      "elevation": 5,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "AquaHideout_B1F_DroneOff1"
+    },
+    {
+      "type": "trigger",
+      "x": 18,
+      "y": 4,
+      "elevation": 5,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "AquaHideout_B1F_DroneOff2"
+    },
+    {
+      "type": "trigger",
+      "x": 2,
+      "y": 9,
+      "elevation": 5,
+      "var": "VAR_TEMP_0",
+      "var_value": "0",
+      "script": "AquaHideout_B1F_DroneOff3"
+    }
+  ],
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

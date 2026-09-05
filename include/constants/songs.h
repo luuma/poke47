@@ -567,5 +567,6 @@
 #define MUS_GAUNTLET_OPENER         621
 #define MUS_LITTLEBIRD              622
 #define MUS_RAYQUAZA_APPEARS_EXTENDED 623
+#define SE_ITEMFINDER_3               624
 
 #endif  // GUARD_CONSTANTS_SONGS_H

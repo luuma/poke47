@@ -3,6 +3,105 @@ AquaHideout_B1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, AquaHideout_B1F_OnTransition
 	.byte 0
 
+AquaHideout_B1F_DroneWarp1::
+	warpteleport MAP_AQUA_HIDEOUT_B1F, 3, 15
+        waitstate
+        end
+
+AquaHideout_B1F_DroneWarp2::
+	warpteleport MAP_AQUA_HIDEOUT_B1F, 19, 3
+        waitstate
+        end
+
+AquaHideout_B1F_DroneWarp3::
+	warpteleport MAP_AQUA_HIDEOUT_B2F, 3, 3
+        waitstate
+        end
+
+AquaHideout_B2F_DroneWarp4::
+	warpteleport MAP_AQUA_HIDEOUT_B1F, 18, 1
+        waitstate
+        end
+
+AquaHideout_B1F_DroneOff1::
+	lockall
+	setmetatile 20, 15, METATILE_Facility_CameraOffPressed, 0
+	playse SE_ICE_BREAK
+        goto_if_set FLAG_HIDE_AQUA_HIDEOUT_GRUNTS, AquaHideout_B1F_releaseallend
+	waitse
+	playse SE_M_THUNDER_WAVE
+        applymovement LOCALID_DRONE_1, dronespin
+        waitmovement
+        applymovement LOCALID_DRONE_1, Common_Movement_FaceUp
+        waitmovement
+AquaHideout_B1F_releaseallend::
+	waitse
+	special DrawWholeMapView
+        releaseall
+        end
+
+dronespin:
+	face_down
+	delay_2
+	face_left
+	delay_2
+	face_up
+	delay_2
+	face_right
+	delay_2
+	face_down
+	delay_2
+	step_end
+
+AquaHideout_B1F_DroneOff2::
+	lockall
+	setmetatile 18, 4, METATILE_Facility_CameraOffPressed, 0
+	playse SE_ICE_BREAK
+        goto_if_set FLAG_HIDE_AQUA_HIDEOUT_GRUNTS, AquaHideout_B1F_releaseallend
+	waitse
+	playse SE_M_THUNDER_WAVE
+        applymovement LOCALID_DRONE_2, dronespin
+        waitmovement
+        applymovement LOCALID_DRONE_2, Common_Movement_FaceDown
+        waitmovement
+	waitse
+	special DrawWholeMapView
+        releaseall
+        end
+
+AquaHideout_B1F_DroneOff3::
+	lockall
+	setmetatile 2, 9, METATILE_Facility_CameraOffPressed, 0
+	playse SE_ICE_BREAK
+        goto_if_set FLAG_HIDE_AQUA_HIDEOUT_GRUNTS, AquaHideout_B1F_releaseallend
+	waitse
+	playse SE_M_THUNDER_WAVE
+        applymovement LOCALID_DRONE_3, dronespin
+        waitmovement
+        applymovement LOCALID_DRONE_3, Common_Movement_FaceUp
+        waitmovement
+	waitse
+	special DrawWholeMapView
+        releaseall
+        end
+
+AquaHideout_B1F_DroneOff4::
+	lockall
+	setmetatile 24, 2, METATILE_Facility_CameraOffPressed, 0
+	playse SE_ICE_BREAK
+        goto_if_set FLAG_HIDE_AQUA_HIDEOUT_GRUNTS, AquaHideout_B1F_releaseallend
+	waitse
+	playse SE_M_THUNDER_WAVE
+        applymovement LOCALID_DRONE_4, dronespin
+        waitmovement
+        applymovement LOCALID_DRONE_4, Common_Movement_FaceLeft
+        waitmovement
+	waitse
+	special DrawWholeMapView
+        releaseall
+        end
+
+
 AquaHideout_B1F_OnResume:
 	call_if_set FLAG_SYS_CTRL_OBJ_DELETE, AquaHideout_B1F_EventScript_TryRemoveElectrode
 	end

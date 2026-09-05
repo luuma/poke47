@@ -189,6 +189,7 @@
 #define METATILE_EverGrande_Door_PokemonLeague  0x21D
 
 // gTileset_Facility
+#define METATILE_Facility_CameraOffPressed              0x2E2
 #define METATILE_Facility_DataPad                       0x3E4
 #define METATILE_Facility_NewMauvilleDoor_Closed_Tile0  0x314
 #define METATILE_Facility_NewMauvilleDoor_Closed_Tile1  0x315

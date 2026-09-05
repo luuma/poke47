@@ -173,6 +173,8 @@ static void DoRippleFieldEffect(struct ObjectEvent *, struct Sprite *);
 static void DoGroundEffects_OnSpawn(struct ObjectEvent *, struct Sprite *);
 static void DoGroundEffects_OnBeginStep(struct ObjectEvent *, struct Sprite *);
 static void DoGroundEffects_OnFinishStep(struct ObjectEvent *, struct Sprite *);
+static void DoNPCTriggers(struct ObjectEvent *objEvent);
+static bool8 ObjectEventDoNPCTriggers(struct ObjectEvent *objEvent);
 static void VirtualObject_UpdateAnim(struct Sprite *);
 static void ApplyLevitateMovement(u8);
 static bool8 MovementType_Disguise_Callback(struct ObjectEvent *, struct Sprite *);
@@ -10723,6 +10725,37 @@ static void DoFlaggedGroundEffects(struct ObjectEvent *objEvent, struct Sprite *
     }
 }
 
+static bool8 ObjectEventDoNPCTriggers(struct ObjectEvent *objectEvent)
+{
+    if (objectEvent->localId == OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE 
+         || objectEvent->localId == OBJ_EVENT_ID_FOLLOWER)
+        return TRUE;
+
+    return FALSE;
+}
+
+static void DoNPCTriggers(struct ObjectEvent *objEvent)
+{
+    if (objEvent->previousMetatileBehavior == MB_NPC_BUTTON)
+    {
+        int i;
+        int n = gMapHeader.events->coordEventCount;
+        u16 y = objEvent->currentCoords.y;
+        u16 x = objEvent->currentCoords.x;
+        const struct CoordEvent * events = gMapHeader.events->coordEvents;
+
+        for (i = 0; i < n; i++)
+        {
+            if (events[i].x + MAP_OFFSET == x && events[i].y + MAP_OFFSET == y)
+            {
+                ScriptContext_SetupScript(events[i].script);
+                LockPlayerFieldControls();// ALSO LMAO THIS CAN HAPPEN MID STEP.
+            }
+        }
+    }
+}
+
+
 void filters_out_some_ground_effects(struct ObjectEvent *objEvent, u32 *flags)
 {
     if (objEvent->disableCoveringGroundEffects)
@@ -10749,11 +10782,7 @@ static void DoGroundEffects_OnSpawn(struct ObjectEvent *objEvent, struct Sprite 
 {
     u32 flags;
 
-#ifdef BUGFIX
     if (objEvent->triggerGroundEffectsOnMove && objEvent->localId != OBJ_EVENT_ID_CAMERA)
-#else
-    if (objEvent->triggerGroundEffectsOnMove)
-#endif
     {
         flags = 0;
         if (OW_LARGE_OW_SUPPORT && !sprite->oam.affineMode)
@@ -10771,11 +10800,7 @@ static void DoGroundEffects_OnBeginStep(struct ObjectEvent *objEvent, struct Spr
 {
     u32 flags;
 
-#ifdef BUGFIX
     if (objEvent->triggerGroundEffectsOnMove && objEvent->localId != OBJ_EVENT_ID_CAMERA)
-#else
-    if (objEvent->triggerGroundEffectsOnMove)
-#endif
     {
         flags = 0;
         if (OW_LARGE_OW_SUPPORT && !sprite->oam.affineMode)
@@ -10794,11 +10819,7 @@ static void DoGroundEffects_OnFinishStep(struct ObjectEvent *objEvent, struct Sp
 {
     u32 flags;
 
-#ifdef BUGFIX
     if (objEvent->triggerGroundEffectsOnStop && objEvent->localId != OBJ_EVENT_ID_CAMERA)
-#else
-    if (objEvent->triggerGroundEffectsOnStop)
-#endif
     {
         flags = 0;
         UpdateObjectEventElevationAndPriority(objEvent, sprite);
@@ -10806,6 +10827,8 @@ static void DoGroundEffects_OnFinishStep(struct ObjectEvent *objEvent, struct Sp
         SetObjectEventSpriteOamTableForLongGrass(objEvent, sprite);
         FilterOutStepOnPuddleGroundEffectIfJumping(objEvent, &flags);
         DoFlaggedGroundEffects(objEvent, sprite, flags);
+        if (ObjectEventDoNPCTriggers(objEvent))///////////////////// new junk in the main loop. I want this happening when not triggeronstop
+            DoNPCTriggers(objEvent);
         objEvent->triggerGroundEffectsOnStop = 0;
         objEvent->landingJump = 0;
     }
