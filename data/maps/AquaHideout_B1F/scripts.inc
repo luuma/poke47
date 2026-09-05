@@ -23,6 +23,11 @@ AquaHideout_B2F_DroneWarp4::
         waitstate
         end
 
+AquaHideout_B2F_DroneWarp5::
+	warpteleport MAP_AQUA_HIDEOUT_B1F, 46, 9
+        waitstate
+        end
+
 AquaHideout_B1F_DroneOff1::
 	lockall
 	setmetatile 20, 15, METATILE_Facility_CameraOffPressed, 0
