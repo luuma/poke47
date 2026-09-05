@@ -9,7 +9,7 @@ AquaHideout_B1F_DroneWarp1::
         end
 
 AquaHideout_B1F_DroneWarp2::
-	warpteleport MAP_AQUA_HIDEOUT_B1F, 19, 3
+	warpteleport MAP_AQUA_HIDEOUT_B1F, 32, 19
         waitstate
         end
 
@@ -19,11 +19,11 @@ AquaHideout_B1F_DroneWarp3::
         end
 
 AquaHideout_B2F_DroneWarp4::
-	warpteleport MAP_AQUA_HIDEOUT_B1F, 18, 1
+	warpteleport MAP_AQUA_HIDEOUT_B1F, 18, 2
         waitstate
         end
 
-AquaHideout_B2F_DroneWarp5::
+AquaHideout_B1F_DroneWarp5::
 	warpteleport MAP_AQUA_HIDEOUT_B1F, 46, 9
         waitstate
         end
