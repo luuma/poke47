@@ -654,20 +654,20 @@ Route111_Text_RouteSign113:
 
 Route111_Text_OldLadysRestStopSign:
 	.string "OLD LADY'S REST STOP\n"
-	.string "“Come in and rest your tired bones.”$"
+	.string "“Come in and rest. For a while.”$"
 
 Route111_Text_TrainerTipsSpAtkSpDef:
 	.string "TRAINER TIPS\p"
-	.string "Press A to interact with a TRAINER TIPS\n"
-	.string "signpost.\p"
-	.string "Alternately, you can Press A while not\n"
-	.string "facing a signpost to let the POKéMON\l"
+	.string "You can press A while not facing a\n"
+	.string "signpost to let the POKéMON\l"
 	.string "following you begin AUTOBATTLING,\l"
 	.string "as long as it has more than 1 HP.\p"
-	.string "AUTOBATTLES earn EXP. POINTS by\n"
-	.string "colliding and battling a POKéMON, at\l"
-	.string "1/5 the normal rate, ignoring EXP\l"
-	.string "boosts from TRADE and so on.$"
+	.string "Most POKéMON mirror your movement, but\n"
+	.string "some may have other ideas! It's cute!\p"
+	.string "Your partners will earn EXP. POINTS\n"
+	.string "by bumping into wild POKéMON, but\l"
+	.string "they can also find hidden ITEMS!\p"
+	.string "Look out for an exclamation mark!$"
 
 Route111_Text_ShouldBeMirageTowerAroundHere:
 	.string "There should be a tower made of sand\n"

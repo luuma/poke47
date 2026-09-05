@@ -156,7 +156,7 @@
       "movement_range_y": 4,
       "trainer_type": "TRAINER_TYPE_DRONE",
       "trainer_sight_or_berry_tree_id": "6",
-      "script": "magmahideout_eventscript_drone1",
+      "script": "AquaHideout_B1F_DroneWarp2",
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
     },
     {
@@ -170,7 +170,7 @@
       "movement_range_y": 4,
       "trainer_type": "TRAINER_TYPE_DRONE",
       "trainer_sight_or_berry_tree_id": "6",
-      "script": "magmahideout_eventscript_drone1",
+      "script": "AquaHideout_B1F_DroneWarp3",
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
     },
     {
@@ -183,7 +183,7 @@
       "movement_range_y": 4,
       "trainer_type": "TRAINER_TYPE_DRONE",
       "trainer_sight_or_berry_tree_id": "6",
-      "script": "magmahideout_eventscript_drone1",
+      "script": "AquaHideout_B1F_DroneWarp5",
       "flag": "FLAG_HIDE_AQUA_HIDEOUT_GRUNTS"
     }
   ],

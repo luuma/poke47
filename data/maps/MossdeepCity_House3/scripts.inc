@@ -2,6 +2,8 @@ MossdeepCity_House3_MapScripts::
 	.byte 0
 
 MossdeepCity_House3_EventScript_hmfishingshack::
+	lock
+	faceplayer
 	msgbox MossdeepCity_House3_Text_Tryharder, MSGBOX_DEFAULT
 	release
 	end

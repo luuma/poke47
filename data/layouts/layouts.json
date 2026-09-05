@@ -9944,6 +9944,17 @@
       "secondary_tileset": "gTileset_EverGrande",
       "border_filepath": "data/layouts/shaymin_Layout_BACKUP/border.bin",
       "blockdata_filepath": "data/layouts/shaymin_Layout_BACKUP/map.bin"
+    },
+    {
+      "id": "LAYOUT_SEAFLOOR_CAVERN_ROOM8_2",
+      "name": "SeafloorCavern_Room8_2_Layout",
+      "width": 11,
+      "height": 14,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/SeafloorCavern_Room8_2/border.bin",
+      "blockdata_filepath": "data/layouts/SeafloorCavern_Room8_2/map.bin",
+      "layout_version": "emerald"
     }
   ]
 }

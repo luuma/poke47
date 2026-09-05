@@ -27,6 +27,11 @@
       "map": "MAP_UNDERWATER_ROUTE129",
       "offset": 0,
       "direction": "dive"
+    },
+    {
+      "map": "MAP_GAUNTLET_ISLAND_FINALE",
+      "offset": 22,
+      "direction": "down"
     }
   ],
   "object_events": [

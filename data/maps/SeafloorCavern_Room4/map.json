@@ -39,31 +39,18 @@
       "trainer_sight_or_berry_tree_id": "3",
       "script": "SeafloorCavern_Room4_EventScript_Grunt4",
       "flag": "FLAG_HIDE_SEAFLOOR_CAVERN_AQUA_GRUNTS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 3,
-      "y": 3,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_TM_SOAK",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_UNUSED_0x26A"
     }
   ],
   "warp_events": [
     {
-      "x": 13,
+      "x": 4,
       "y": 1,
       "elevation": 3,
       "dest_map": "MAP_SEAFLOOR_CAVERN_ROOM2",
       "dest_warp_id": "1"
     },
     {
-      "x": 4,
+      "x": 13,
       "y": 1,
       "elevation": 3,
       "dest_map": "MAP_SEAFLOOR_CAVERN_ROOM5",
@@ -73,8 +60,8 @@
       "x": 9,
       "y": 10,
       "elevation": 3,
-      "dest_map": "MAP_SEAFLOOR_CAVERN_ROOM5",
-      "dest_warp_id": "2"
+      "dest_map": "MAP_SEAFLOOR_CAVERN_ROOM8",
+      "dest_warp_id": "0"
     },
     {
       "x": 10,

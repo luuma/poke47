@@ -423,6 +423,6 @@ MossdeepCity_Text_SootopolisNewGymLeader:
 	.string "island city SOOTOPOLIS?\p"
 	.string "I think the GYM there had a new\n"
 	.string "LEADER come in.\p"
-	.string "People tell me the new LEADER once\n"
-	.string "mentored WALLACE.$"
+	.string "People tell me the new LEADER was\n"
+	.string "once an ELITE FOUR member.$"
 

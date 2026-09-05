@@ -510,7 +510,8 @@
     "OldHouseRoom1",
     "OldHouseRoom1_2",
     "FourthSealed",
-    "Route128_Cavern"
+    "Route128_Cavern",
+    "SeafloorCavern_Room8_2"
   ],
   "gMapGroup_IndoorDynamic": [
     "SecretBase_RedCave1",

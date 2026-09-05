@@ -17,6 +17,11 @@
       "map": "MAP_GUANTLET_ISLAND_NORTH",
       "offset": -4,
       "direction": "down"
+    },
+    {
+      "map": "MAP_ROUTE129",
+      "offset": -22,
+      "direction": "up"
     }
   ],
   "object_events": [
