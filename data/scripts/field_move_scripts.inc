@@ -356,7 +356,6 @@ EventScript_GauntletReveal::
         showobjectat LOCALID_ROCK_1, MAP_GAUNTLET_ISLAND_SOUTHWEST
         copyobjectxytoperm LOCALID_ROCK_1
 	@ fadescreenswapbuffers FADE_FROM_BLACK
-EventScript_EndSmash::
 	releaseall
 	end
 

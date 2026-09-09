@@ -1649,7 +1649,6 @@
           },
           "water_mons": {
             "encounter_rate": 0,
-
             "mons": [
               {
                 "min_level": 20,
@@ -5110,6 +5109,36 @@
                 "species": "SPECIES_ALOMOMOLA"
               }
             ]
+          },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_DWEBBLE"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_SANDYGAST"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_SANDYGAST"
+              },
+              {
+                "min_level": 33,
+                "max_level": 37,
+                "species": "SPECIES_CRUSTLE"
+              },
+              {
+                "min_level": 33,
+                "max_level": 37,
+                "species": "SPECIES_CRUSTLE"
+              }
+            ]
           }
         },
         {
@@ -5627,7 +5656,6 @@
           "base_label": "gRoute134",
           "water_mons": {
             "encounter_rate": 0,
-
             "mons": [
               {
                 "min_level": 20,
@@ -8712,7 +8740,6 @@
           "base_label": "gSlateportCity",
           "water_mons": {
             "encounter_rate": 0,
-
             "mons": [
               {
                 "min_level": 5,
@@ -12049,7 +12076,6 @@
           },
           "water_mons": {
             "encounter_rate": 0,
-
             "mons": [
               {
                 "min_level": 5,

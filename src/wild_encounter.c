@@ -887,7 +887,7 @@ void rockSmashRNG(struct ScriptContext *ctx)
     {
         rockSmashResult = RandomWeighted(RNG_NONE, 320, encounterChance, 320);// 1/3 chance to do each. You can change this by tweaking rock smash encounter odds by map.
     }
-    else if (OW_ROCK_SMASH_ITEMS == GEN_4)
+    else
     {
         if (EncounterOddsCheck(encounterChance))
         {
@@ -895,20 +895,20 @@ void rockSmashRNG(struct ScriptContext *ctx)
             return;
         }
         u32 itemRate = gMapHeader.events->objectEvents[(gSpecialVar_LastTalked - 1)].trainerRange_berryTreeId;// this is 0 on everything by default. 
-        if (itemRate < OW_ROCK_SMASH_ITEMS_MIN_ODDS)
-            itemRate = OW_ROCK_SMASH_ITEMS_MIN_ODDS;
+        if (itemRate < 25)
+            itemRate = 25;// MIN 1/4
 
         if (VarGet(VAR_0x8004) == TRUE)
-            itemRate += 5;
+            itemRate += 10;
 
         u32 partySlot = VarGet(VAR_0x8006);
         enum Ability ability = GetMonAbility(&gParties[B_TRAINER_PLAYER][partySlot]);
         if (ability == ABILITY_KEEN_EYE)
-            itemRate += 5;
+            itemRate += 10;
         if (ability == ABILITY_MAGNET_PULL)
-            itemRate += 5;
+            itemRate += 10;
         if (ability == ABILITY_SUCTION_CUPS)
-            itemRate += 5;
+            itemRate += 10;
 
         u32 nothingRate = 0;
         if (itemRate < 100)
@@ -916,12 +916,13 @@ void rockSmashRNG(struct ScriptContext *ctx)
 
             rockSmashResult = RandomWeighted(RNG_NONE, nothingRate, 0, itemRate);
     }
+    /*
     else
     {
         rockSmashResult = EncounterOddsCheck(encounterChance);
 //EncounterOddsCheck returns either 0 or 1, meaning nothing or encounter. This violates types, but rockSmashResult is immediately put into a var.
     }
-
+    */
     gSpecialVar_Result = rockSmashResult;
     return;
 }

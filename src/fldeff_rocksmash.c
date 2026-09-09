@@ -25,7 +25,7 @@ static void Task_DoFieldMove_WaitForMon(u8 taskId);
 static void Task_DoFieldMove_RunFunc(u8 taskId);
 static void rockSmashGenerateItemGen4(void);
 static void rockSmashGenerateItemGen6(void);
-
+static void rockSmashGenerateItemp47(void);
 static void FieldCallback_RockSmash(void);
 static void FieldMove_RockSmash(void);
 
@@ -169,48 +169,148 @@ static void FieldMove_RockSmash(void)
     ScriptContext_Enable();
 }
 
-void rockItems(void)
+
+static const enum Item WetSmashTable[] = {
+    ITEM_SOFT_SAND,//0
+    ITEM_SOFT_SAND,
+    ITEM_SOFT_SAND,
+    ITEM_PEARL,
+    ITEM_PEARL,
+    ITEM_PEARL,//5
+    ITEM_BIG_PEARL,
+    ITEM_RED_SHARD,
+    ITEM_BLUE_SHARD,
+    ITEM_GREEN_SHARD,
+    ITEM_YELLOW_SHARD,//10
+    ITEM_RED_SHARD,
+    ITEM_BLUE_SHARD,
+    ITEM_GREEN_SHARD,
+    ITEM_YELLOW_SHARD,
+    ITEM_PEARL_STRING,//15
+};
+
+static const enum Item CustomSmashTable[] = {
+    ITEM_HARD_STONE,//0
+    ITEM_HARD_STONE,
+    ITEM_HARD_STONE,
+    ITEM_SOFT_SAND, 
+    ITEM_SOFT_SAND,
+    ITEM_SOFT_SAND,//5
+    ITEM_IRON_BALL,
+    ITEM_REVIVE,
+    ITEM_ETHER,
+    ITEM_RED_SHARD,
+    ITEM_BLUE_SHARD,//10
+    ITEM_GREEN_SHARD,
+    ITEM_YELLOW_SHARD,
+    ITEM_STAR_PIECE,
+    ITEM_PEARL,
+    ITEM_BIG_PEARL,//15
+};
+
+static const enum Item GraniteCaveSmashTable[] = {
+    ITEM_HARD_STONE,//0
+    ITEM_HARD_STONE,
+    ITEM_HARD_STONE,
+    ITEM_IRON_BALL, 
+    ITEM_IRON_BALL,
+    ITEM_IRON_BALL,//5
+    ITEM_IRON_BALL,
+    ITEM_IRON_BALL,
+    ITEM_IRON_BALL,
+    ITEM_REVIVE,
+    ITEM_REVIVE,//10
+    ITEM_REVIVE,
+    ITEM_STAR_PIECE,
+    ITEM_STAR_PIECE,
+    ITEM_NORMAL_GEM,
+    ITEM_ROCK_GEM,//15
+};
+
+static const enum Item GauntletSmashTable[] = {
+    ITEM_HARD_STONE,//0
+    ITEM_HARD_STONE,
+    ITEM_HARD_STONE,
+    ITEM_SOFT_SAND, 
+    ITEM_SOFT_SAND,
+    ITEM_SOFT_SAND,//5
+    ITEM_IRON_BALL,
+    ITEM_ETHER,
+    ITEM_ETHER,
+    ITEM_MAX_ETHER,
+    ITEM_NORMAL_GEM,//10
+    ITEM_FIGHTING_GEM,
+    ITEM_ROCK_GEM,
+    ITEM_POISON_GEM,
+    ITEM_WATER_GEM,
+    ITEM_FLYING_GEM,//15
+};
+
+
+void rockSmashGenerateItem(struct ScriptContext *ctx)
+{
+    rockSmashGenerateItemp47();
+    if (OW_ROCK_SMASH_ITEMS == GEN_6 || OW_ROCK_SMASH_ITEMS == GEN_6_ORAS)
+        rockSmashGenerateItemGen6();
+    else if (OW_ROCK_SMASH_ITEMS == GEN_4)
+        rockSmashGenerateItemGen4();
+    else
+        VarSet(VAR_0x8005, ITEM_NONE);
+    return;
+}
+
+void rockSmashGenerateItemp47(void)
 {
     enum Item item = ITEM_NONE;
-    u32 randitem = 17;
+    if (gMapHeader.mapType == MAP_TYPE_INDOOR)
+    {
+        VarSet(VAR_0x8005, ITEM_NONE);// Not given in burned tower
+        return;
+    }
+    u32 randomItem = Random() % 16;
+
+    if (randomItem < 15)
+    {
+        u32 partySlot = VarGet(VAR_0x8006);
+        enum Ability ability = GetMonAbility(&gParties[B_TRAINER_PLAYER][partySlot]);
+        if (ability == ABILITY_SERENE_GRACE
+           || ability == ABILITY_SUPER_LUCK)
+        {
+            if (randomItem < 10)
+                randomItem+=5;
+            else
+                randomItem++;
+        }
+    }   
+
     if (gMapHeader.mapType == MAP_TYPE_UNDERWATER || gMapHeader.mapType == MAP_TYPE_OCEAN_ROUTE)
-        randitem = 7 + Random() % 9;
+        item = WetSmashTable[randomItem];// doesn't happen right??? don't think so???? need to add some.
     else if (FlagGet(FLAG_GAUNTLET_CHALLENGE))
-        randitem = 2 + Random() % 5;
+        item = GauntletSmashTable[randomItem];
     else if ((gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_ROUTE135_MAP) &&
             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_ROUTE135_MAP))
         || (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_MIRAGE_TOWER_3F) &&
             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_MIRAGE_TOWER_3F)))
-        randitem = 4;
+    {
+        if (randomItem >=13)
+            item = ITEM_STARDUST;
+        else
+            item = ITEM_SOFT_SAND;
+    }
     else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_GRANITE_CAVE_B2F) &&
             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_GRANITE_CAVE_B2F))
-        randitem = Random() % 2;
-    else if (gMapHeader.mapType == MAP_TYPE_UNDERGROUND)
-        randitem = Random() % 17;
-    
+        item = GraniteCaveSmashTable[randomItem];
+    else
+        item = CustomSmashTable[randomItem];
+    VarSet(VAR_0x8005, item);
+    return;
 }
 
-static const enum Item CustomSmashTable[] = {
-        ITEM_IRON_BALL,//0
-        ITEM_HARD_STONE,
-        ITEM_HARD_STONE,
-        ITEM_HARD_STONE,
-        ITEM_SOFT_SAND, //4
-        ITEM_REVIVE,//5
-        ITEM_ETHER,
-        ITEM_RED_SHARD,
-        ITEM_BLUE_SHARD,
-        ITEM_GREEN_SHARD,
-        ITEM_YELLOW_SHARD,//10
-        ITEM_STAR_PIECE,
-        ITEM_PEARL,
-        ITEM_BIG_PEARL,
-        ITEM_SOFT_SAND,
-        ITEM_SOFT_SAND,//15
-        ITEM_NONE,
-        ITEM_NONE,
-        ITEM_NONE,
-};
+
+
+
+
+
 
 static const enum Item Gen6DefaultSmashTable[] = {
     ITEM_STAR_PIECE,
@@ -268,20 +368,6 @@ static const enum Item Gen4CliffCaveSmashTable[] = {
     ITEM_CLAW_FOSSIL,
     ITEM_RARE_BONE, //5
 };
-
-void rockSmashGenerateItem(struct ScriptContext *ctx)
-{
-    if (OW_ROCK_SMASH_ITEMS == GEN_6 || OW_ROCK_SMASH_ITEMS == GEN_6_ORAS)
-        rockSmashGenerateItemGen6();
-    else if (OW_ROCK_SMASH_ITEMS == GEN_4)
-        rockSmashGenerateItemGen4();
-    else
-        VarSet(VAR_0x8005, ITEM_NONE);
-    return;
-}
-
-
-
 
 static void rockSmashGenerateItemGen4(void)
 {
