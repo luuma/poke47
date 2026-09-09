@@ -23815,7 +23815,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Solar Dance"),
         .description = COMPOUND_STRING(
-            "A blossoming fire that\n"
+            "A blossoming sunray\n"
             "intensifies sun for 5 turns."),
         .effect = EFFECT_HIT,
         .power = 60,
@@ -23852,7 +23852,6 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
         .makesContact = TRUE,
-        .skyBattleBanned = B_EXTRAPOLATED_MOVE_FLAGS,
         .contestEffect = CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = 0,
@@ -23889,7 +23888,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_HIT_DEF] = // Very simple, fairly narrow, but what am I meant to do? fucking Torterra (continent turtle) is run as a shell smasher with headlong rush. 
     // what the fuck is nintendo doing. Do they even look at what pokemon they are giving these tactics to. Nobody is looking at Torterra and going 
-    // "oh my favourite type of guy, I hope it is a niche fast sweeper". No. terraforce body press synthesis leechseed set.
+    // "oh my favourite type of guy, I hope it is a niche fast shellsmasher". terraforce body press synthesis leechseed set.
     {
         .name = COMPOUND_STRING("Terraforce"),
         .description = COMPOUND_STRING(
@@ -23962,20 +23961,23 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .battleAnimScript = gBattleAnimMove_TeraBlast,
     },
 
-    [MOVE_SANDBLASTER] =// a mid move.
+    [MOVE_SANDBLASTER] =// originally just 75 power and doubled, but this is adapted from Contingency Contract by Hedara and Turtleye
     {
         .name = COMPOUND_STRING("Sandblaster"),
         .description = COMPOUND_STRING(
-            "Scours the foe with a\n"
-            "sand jet. Doubled in sand."),
+            "Scours with a sandjet.\n"
+            "Sets Sand. 2x power in Sand."),
         .effect = EFFECT_SANDBLASTER,
-        .power = 75,
+        .power = 60,
         .type = TYPE_GROUND,
         .accuracy = 90,
-        .pp = 15,
+        .pp = 5,
         .target = TARGET_SELECTED,
         .priority = 0,
         .category = DAMAGE_CATEGORY_SPECIAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_SANDSTORM,
+        }),
         .contestEffect = CONTEST_EFFECT_REPETITION_NOT_BORING,
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
@@ -24092,7 +24094,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Iron Temper"),
         .description = COMPOUND_STRING(
             "Strikes itself and raises\n"
-            "Defense and Sp. Def twice."),
+            "Sp. Def and Speed twice."),// rattled combo (beartic) fucked stamina combo (mudsdale) FUCKED justified combo (cario)
         .effect = EFFECT_HIT,// don't forget the AI cannot fucking handle this move
         .power = 50,
         .type = TYPE_DARK,
@@ -24104,8 +24106,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .makesContact = B_UPDATED_MOVE_DATA < GEN_4,
         .additionalEffects = ADDITIONAL_EFFECTS({
             .moveEffect = MOVE_EFFECT_STAT_PLUS,
-            .defense = 1,
             .spDef = 1,// possibly nerf to "accuracy"
+            .speed = 1,
             .self = TRUE,
             .chance = 100,
         }),
@@ -24311,7 +24313,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .effect = EFFECT_SHADOW_CLONE,
         .power = 0,
         .type = TYPE_PSYCHIC,
-        .accuracy = 100,
+        .accuracy = 0,
         .pp = 5,
         .target = TARGET_USER,
         .priority = 0,

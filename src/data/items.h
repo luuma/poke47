@@ -16159,7 +16159,6 @@ const struct ItemInfo gItemsInfo[] =
         .sortType = ITEM_TYPE_HELD_ITEM,
         .type = ITEM_USE_FIELD,
         .fieldUseFunc = ItemUseOutOfBattle_ExpShare,
-        .flingPower = 30,
         .iconPic = gItemIcon_ExpShare,
         .iconPalette = gItemIconPalette_ExpShare,
     },

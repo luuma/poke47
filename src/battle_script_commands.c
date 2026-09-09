@@ -2527,7 +2527,8 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
     case MOVE_EFFECT_RECHARGE:
         if (B_SKIP_RECHARGE == GEN_1 && !IsBattlerAlive(gBattlerTarget))  // Skip recharge if gen 1 and foe is KO'd
             break;
-
+        else if (GetBattlerAbility(gBattlerAttacker) == ABILITY_BEAM_REFRACTOR && GetWeather() & B_WEATHER_SUN)
+            break;
         gBattleMons[effectBattler].volatiles.rechargeTimer = 2;
         gLockedMoves[effectBattler] = gCurrentMove;
         gBattlescriptCurrInstr = battleScript;

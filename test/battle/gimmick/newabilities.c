@@ -607,4 +607,94 @@ SINGLE_BATTLE_TEST("POKE47: Linger DOESN't pass e.g. aqua ring.")
     }
 }
 
+
+SINGLE_BATTLE_TEST("POKE47: Beam Refractor means Razor Wind doesn't need to charge in Sun")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Ability(ABILITY_BEAM_REFRACTOR); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_SUNNY_DAY); MOVE(player, MOVE_RAZOR_WIND); }
+    } SCENE {
+        if (B_UPDATED_MOVE_DATA >= GEN_5) {
+            NOT MESSAGE("Wobbuffet whipped up a whirlwind!");
+            MESSAGE("Wobbuffet used Razor Wind!");
+        } else
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
+        if (B_UPDATED_MOVE_DATA < GEN_5)
+            MESSAGE("Wobbuffet whipped up a whirlwind!");
+        else
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
+        if (B_UPDATED_MOVE_DATA < GEN_5)
+            MESSAGE("Wobbuffet used Razor Wind!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
+        HP_BAR(opponent);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Beam Refractor, outside sun, means Razor Wind needs a charging turn")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Ability(ABILITY_BEAM_REFRACTOR); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_RAZOR_WIND); }
+        TURN { SKIP_TURN(player); }
+    } SCENE {
+        // Charging turn
+        if (B_UPDATED_MOVE_DATA >= GEN_5) {
+            NOT MESSAGE("Wobbuffet whipped up a whirlwind!");
+            MESSAGE("Wobbuffet used Razor Wind!");
+        } else {
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
+        }
+        if (B_UPDATED_MOVE_DATA < GEN_5)
+            MESSAGE("Wobbuffet whipped up a whirlwind!");
+        else
+            ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
+        // Attack turn
+        MESSAGE("Wobbuffet used Razor Wind!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_RAZOR_WIND, player);
+        HP_BAR(opponent);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Beam Refractor skips hyper beam recharge")
+{
+    GIVEN {
+        PLAYER(SPECIES_GIGALITH) { Ability(ABILITY_BEAM_REFRACTOR); }
+        OPPONENT(SPECIES_WOBBUFFET) { }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_SUNNY_DAY); MOVE(player, MOVE_HYPER_BEAM); }
+        TURN { MOVE(player, MOVE_TACKLE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_HYPER_BEAM, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, player);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Beam Refractor makes spatks use atk", s16 damage)
+{
+    enum Ability ability;
+    PARAMETRIZE { ability = ABILITY_WEAK_ARMOR; }
+    PARAMETRIZE { ability = ABILITY_BEAM_REFRACTOR;}
+    u32 j = 2*i;
+    GIVEN {
+        PLAYER(SPECIES_GIGALITH) { Ability(ability); ; SpAttack(75); Attack(150);}
+        OPPONENT(SPECIES_WOBBUFFET) { }
+    } WHEN {
+        TURN {MOVE(player, MOVE_TRI_ATTACK);}
+        TURN {MOVE(player, MOVE_STRENGTH);}
+    } SCENE {
+        HP_BAR(opponent, captureDamage: &results[j].damage);
+        HP_BAR(opponent, captureDamage: &results[j+1].damage);
+    } FINALLY {
+        EXPECT_MUL_EQ(results[1].damage, UQ_4_12(0.5), results[0].damage); // 
+        EXPECT_MUL_EQ(results[1].damage, UQ_4_12(1), results[2].damage); // 
+        EXPECT_MUL_EQ(results[1].damage, UQ_4_12(1), results[3].damage); // 
+    }
+}
+
+
 /// ANALYTIC. NOT MOve relearner sadly.

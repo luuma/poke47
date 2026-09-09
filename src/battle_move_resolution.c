@@ -1695,6 +1695,9 @@ static enum CancelerResult CancelerProtean(struct BattleCalcValues *cv)
 
 static bool32 CanTwoTurnMoveFireThisTurn(struct BattleCalcValues *cv)
 {
+    if (cv->abilities[cv->battlerAtk] == ABILITY_BEAM_REFRACTOR && GetWeather() & B_WEATHER_SUN)
+        return TRUE;
+
     if (cv->moveEffect == EFFECT_GEOMANCY || gBattleMoveEffects[cv->moveEffect].semiInvulnerableEffect)
         return FALSE;
 

@@ -7036,6 +7036,7 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
         atkStat = gBattleMons[battlerAtk].speed;
         atkStage = gBattleMons[battlerAtk].statStages[STAT_SPEED];
     }
+
     else if (gFieldStatuses & STATUS_FIELD_WONDER_ROOM)
     {
         if (moveEffect == EFFECT_FOUL_PLAY)
@@ -7062,6 +7063,18 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
             {
                 atkStat = gBattleMons[battlerAtk].spAttack;
                 atkStage = gBattleMons[battlerAtk].statStages[STAT_SPDEF];
+            }
+        }
+        else if (gBattleMons[battlerAtk].ability == ABILITY_BEAM_REFRACTOR)
+        {
+            atkStat = gBattleMons[battlerAtk].defense;
+            if (IsBattleMovePhysical(move))
+            {
+                atkStage = gBattleMons[battlerAtk].statStages[STAT_ATK];
+            }
+            else
+            {
+                atkStage = gBattleMons[battlerAtk].statStages[STAT_SPATK];
             }
         }
         else
@@ -7103,6 +7116,18 @@ static inline u32 CalcAttackStat(struct DamageContext *ctx)
             atkStat = gBattleMons[battlerAtk].spDefense;
             atkStage = gBattleMons[battlerAtk].statStages[STAT_SPDEF];
         }
+    }
+    else if (gBattleMons[battlerAtk].ability == ABILITY_BEAM_REFRACTOR) 
+    {
+        atkStat = gBattleMons[battlerAtk].attack;
+            if (IsBattleMovePhysical(move))
+            {
+                atkStage = gBattleMons[battlerAtk].statStages[STAT_ATK];
+            }
+            else
+            {
+                atkStage = gBattleMons[battlerAtk].statStages[STAT_SPATK];
+            }
     }
     else
     {

@@ -2389,11 +2389,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-    #if P_UPDATED_ABILITIES >= GEN_7
-        .abilities = {ABILITY_WEAK_ARMOR, ABILITY_STURDY, ABILITY_THERMAL_EXCHANGE},
-    #else
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_SAND_FORCE },
-    #endif
+        .abilities = {ABILITY_WEAK_ARMOR, ABILITY_THERMAL_EXCHANGE, ABILITY_STURDY},
+
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Roggenrola"),
         .cryId = CRY_ROGGENROLA,
@@ -2467,11 +2464,8 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-    #if P_UPDATED_ABILITIES >= GEN_7
-        .abilities = {ABILITY_WEAK_ARMOR, ABILITY_STURDY, ABILITY_THERMAL_EXCHANGE},//GEM MINER find fire gems
-    #else
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_SAND_FORCE },
-    #endif
+        .abilities = {ABILITY_WEAK_ARMOR, ABILITY_BEAM_REFRACTOR, ABILITY_STURDY},//GEM MINER find fire gems
+
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Boldore"),
         .cryId = CRY_BOLDORE,
@@ -2536,7 +2530,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .baseDefense   = 130,
         .baseSpeed     = 25,
         .baseSpAttack  = 60,
-        .baseSpDefense = P_UPDATED_STATS >= GEN_6 ? 80 : 70,
+        .baseSpDefense = 80,
         .types = MON_TYPES(TYPE_ROCK),
         .catchRate = 45,
     #if P_UPDATED_EXP_YIELDS >= GEN_8
@@ -2554,11 +2548,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-    #if P_UPDATED_ABILITIES >= GEN_7
-        .abilities = {ABILITY_SAND_STREAM, ABILITY_STURDY, ABILITY_SAND_FORCE},
-    #else
-        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_SAND_FORCE },
-    #endif
+        .abilities = {ABILITY_SAND_STREAM, ABILITY_BEAM_REFRACTOR, ABILITY_STURDY},
         .bodyColor = BODY_COLOR_BLUE,
         .speciesName = _("Gigalith"),
         .cryId = CRY_GIGALITH,

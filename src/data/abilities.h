@@ -2535,7 +2535,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Infinite Wisdom"),
         .description = COMPOUND_STRING("Relearn moves in battle."),
-        .aiRating = 7,
+        .aiRating = 5,
     },
 
     [ABILITY_DOUBLE_WALLOP] =
@@ -2556,13 +2556,20 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Hijink Surge"),
         .description = COMPOUND_STRING("Sets Trick Room."),
-        .aiRating = 8,
+        .aiRating = 6,
     },
 
     [ABILITY_LINGER] =
     {
         .name = _("Linger"),
-        .description = COMPOUND_STRING("Foes' debuffs stay on faint/switch"),
-        .aiRating = 8,
+        .description = COMPOUND_STRING("Foes' debuffs stay on faint"),
+        .aiRating = 7,
+    },
+
+    [ABILITY_BEAM_REFRACTOR] =
+    {
+        .name = _("Beam Refractor"),
+        .description = COMPOUND_STRING("Sp.Atk = Atk. Sun recharges"),
+        .aiRating = 7,
     },
 };
