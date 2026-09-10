@@ -250,6 +250,7 @@ static const enum Item GauntletSmashTable[] = {
 void rockSmashGenerateItem(struct ScriptContext *ctx)
 {
     rockSmashGenerateItemp47();
+    return;
     if (OW_ROCK_SMASH_ITEMS == GEN_6 || OW_ROCK_SMASH_ITEMS == GEN_6_ORAS)
         rockSmashGenerateItemGen6();
     else if (OW_ROCK_SMASH_ITEMS == GEN_4)

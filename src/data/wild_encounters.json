@@ -5055,6 +5055,36 @@
               }
             ]
           },
+          "rock_smash_mons": {
+            "encounter_rate": 20,
+            "mons": [
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_DWEBBLE"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_SANDYGAST"
+              },
+              {
+                "min_level": 30,
+                "max_level": 35,
+                "species": "SPECIES_SANDYGAST"
+              },
+              {
+                "min_level": 33,
+                "max_level": 37,
+                "species": "SPECIES_CRUSTLE"
+              },
+              {
+                "min_level": 33,
+                "max_level": 37,
+                "species": "SPECIES_CRUSTLE"
+              }
+            ]
+          },
           "fishing_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -5107,36 +5137,6 @@
                 "min_level": 30,
                 "max_level": 45,
                 "species": "SPECIES_ALOMOMOLA"
-              }
-            ]
-          },
-          "rock_smash_mons": {
-            "encounter_rate": 20,
-            "mons": [
-              {
-                "min_level": 30,
-                "max_level": 35,
-                "species": "SPECIES_DWEBBLE"
-              },
-              {
-                "min_level": 30,
-                "max_level": 35,
-                "species": "SPECIES_SANDYGAST"
-              },
-              {
-                "min_level": 30,
-                "max_level": 35,
-                "species": "SPECIES_SANDYGAST"
-              },
-              {
-                "min_level": 33,
-                "max_level": 37,
-                "species": "SPECIES_CRUSTLE"
-              },
-              {
-                "min_level": 33,
-                "max_level": 37,
-                "species": "SPECIES_CRUSTLE"
               }
             ]
           }
@@ -37632,7 +37632,7 @@
             ]
           },
           "rock_smash_mons": {
-            "encounter_rate": 100,
+            "encounter_rate": 60,
             "mons": [
               {
                 "min_level": 28,
