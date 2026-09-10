@@ -69,7 +69,7 @@ static void UpdatePerDay(struct Time *localTime)
         ResetMauvilleOldManFlag();
         SetMauvilleOldMan();
         DailyResetApricornTrees();
-
+        ResetLilycoveLadyForRecordMix();
         *days = localTime->days;
     }
 }
