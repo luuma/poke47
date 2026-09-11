@@ -913,13 +913,13 @@ enum __attribute__((packed)) Move
     MOVE_JUST_DESSERTS,//LOVE. Excellent johnny move
     MOVE_CRIT_UP_HIT,// solid, honestly. Fun on some mons.
     MOVE_BASTION_WALLS,//Cannonade. Replaced. LOVE
-    MOVE_LIGHTBLOOM,//////////////////////////////////////////////solid still
+    MOVE_LIGHTBLOOM,////solid still
     MOVE_ENVELOP,/////////////////////////////////////////////////middling
     MOVE_NAVAL_BLOCKADE,//yesddssss
     MOVE_CLOUD_SOMERSAULT,//yessss
-    MOVE_HIT_DEF,/////////////////////////////////////////////////Fine.
+    MOVE_HIT_DEF,/////////////////////////////////////////////////Fine
     MOVE_CHIEN_POW,
-    MOVE_SANDBLASTER,/////////////////////////////////////////////Deece
+    MOVE_SANDBLASTER,///////////////////////Deece
     MOVE_FORBIDDEN_FANG,//RATICATE sig
     MOVE_BLINK_STRIKE,// Still baller.
     MOVE_ARMOR_BREAK,// This is an excellent "jonny" move.
@@ -934,6 +934,7 @@ enum __attribute__((packed)) Move
     MOVE_SHADOW_CLONE,// Concept: marshadow bad boy.
     MOVE_MITOSIS,// Concept: clone yourself at half health im reuniclus fuck yeah.
     MOVE_SEA_GUARDIAN,// Concept: make a phione. Expect to cut some of these but phione passive based.
+    MOVE_CRACK_THE_SUSPECT,// Conditional fast roar that confuses: cycle enemy team into spikes a la riolu prankster copycat - but with requirements, and with 45 base speed. puzzle for players to theorycraft round, I hope. Decent midgame utility.
     MOVES_COUNT,
 
     // Z Moves

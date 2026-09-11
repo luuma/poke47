@@ -17,6 +17,7 @@
 #include "constants/form_change_types.h"
 #include "apricorn_tree.h"
 #include "mauville_old_man.h"
+#include "lilycove_lady.h"
 
 
 static void UpdatePerDay(struct Time *localTime);

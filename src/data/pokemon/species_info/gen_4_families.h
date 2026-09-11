@@ -1851,7 +1851,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
 
     [SPECIES_BASTIODON] =
     {
-        .baseHP        = 80,
+        .baseHP        = 80,// when was this boosted?????? rip can't re nerf
         .baseAttack    = 52,
         .baseDefense   = 168,
         .baseSpeed     = 30,

@@ -3109,6 +3109,7 @@ bool32 IsSelfSacrificeEffect(enum Move move)
     case EFFECT_MEMENTO:
     case EFFECT_HEALING_WISH:
     case EFFECT_REVIVAL_BLESSING:
+    case EFFECT_BRIGHTEST_DAWN:
         return TRUE;
     default:
         return FALSE;
@@ -4012,6 +4013,10 @@ bool32 ShouldSetScreen(enum BattlerId battlerAtk, enum BattlerId battlerDef, enu
         // Use only in Hail and only if AI doesn't already have Reflect, Light Screen or Aurora Veil itself active.
         if ((AI_GetWeather() & (B_WEATHER_ICY_ANY))
             && !(gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)))
+            return TRUE;
+        break;
+    case EFFECT_SCREEN_BURN:
+        if (!(gSideStatuses[atkSide] & (SIDE_STATUS_REFLECT | SIDE_STATUS_LIGHTSCREEN | SIDE_STATUS_AURORA_VEIL)))
             return TRUE;
         break;
     case EFFECT_REFLECT:

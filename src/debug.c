@@ -3746,7 +3746,7 @@ static void DebugAction_PCBag_Fill_PCBoxes_Fast(u8 taskId) //Credit: Sierraffini
     enum Species species = SPECIES_TURTWIG;
     u8 speciesName[POKEMON_NAME_LENGTH + 1];
 
-    CreateBoxMon(&boxMon, species, 100, Random32(), OTID_STRUCT_PLAYER_ID);
+    CreateBoxMon(&boxMon, species, 14, Random32(), OTID_STRUCT_PLAYER_ID);
     //mons are created with 0 IVs
 
     for (boxId = 0; boxId < TOTAL_BOXES_COUNT; boxId++)
