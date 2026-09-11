@@ -10193,12 +10193,12 @@ static const struct LevelUpMove sMarshadowLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_COPYCAT),
     LEVEL_UP_MOVE( 1, MOVE_SHADOW_SNEAK),
     LEVEL_UP_MOVE( 1, MOVE_FEINT),
-    LEVEL_UP_MOVE( 1, MOVE_COUNTER),
-    LEVEL_UP_MOVE( 6, MOVE_ROLE_PLAY),
+    LEVEL_UP_MOVE( 1, MOVE_ROLE_PLAY),
+    LEVEL_UP_MOVE( 6, MOVE_COUNTER),
     LEVEL_UP_MOVE(12, MOVE_ASSURANCE),
     LEVEL_UP_MOVE(18, MOVE_SHADOW_PUNCH),
-    LEVEL_UP_MOVE(24, MOVE_FORCE_PALM),
-    LEVEL_UP_MOVE(30, MOVE_SHADOW_CLONE),// A second sig, currently makes a marshadow-copy of the foe. WILL FAIL second time it's used but odd in a boss fight. 
+    LEVEL_UP_MOVE(25, MOVE_FORCE_PALM),
+    LEVEL_UP_MOVE(31, MOVE_SHADOW_CLONE),// A second sig, currently makes a marshadow-copy of the foe.1 Level after it is caught- if used in a fight I risk people using a master ball on a shadow clone that then vanishes.
     LEVEL_UP_MOVE(36, MOVE_PSYCH_UP),
     LEVEL_UP_MOVE(42, MOVE_SUCKER_PUNCH),
     LEVEL_UP_MOVE(48, MOVE_DRAIN_PUNCH),
@@ -15185,7 +15185,7 @@ static const struct LevelUpMove sShieldonLevelUpLearnset[] = {
         LEVEL_UP_MOVE(26, MOVE_METAL_BURST),
         LEVEL_UP_MOVE(31, MOVE_IRON_HEAD),
         LEVEL_UP_MOVE(35, MOVE_ARMOR_BREAK),
-        LEVEL_UP_MOVE(40, MOVE_RECOVER),
+        LEVEL_UP_MOVE(40, MOVE_REST),
         LEVEL_UP_MOVE(44, MOVE_ROCK_BLAST),
         LEVEL_UP_MOVE(47, MOVE_BODY_PRESS),
         LEVEL_UP_MOVE(50, MOVE_AMNESIA),
@@ -15210,7 +15210,7 @@ static const struct LevelUpMove sBastiodonLevelUpLearnset[] = {
         LEVEL_UP_MOVE(26, MOVE_METAL_BURST),
         LEVEL_UP_MOVE(31, MOVE_IRON_HEAD),
         LEVEL_UP_MOVE(38, MOVE_ARMOR_BREAK),
-        LEVEL_UP_MOVE(44, MOVE_RECOVER),
+        LEVEL_UP_MOVE(44, MOVE_RECOVER),// my hope is that the sole set is not just garg (well, gigalith) but cannonade not salt cure. instead you run armor break cannonade bod press recover. also doubles lead with cannonade obstruct eq recover paired with pop bomb pachirisu. filter is like, compulsory. possibly just hp boost and expect people to use rest.
         LEVEL_UP_MOVE(49, MOVE_ROCK_BLAST),
         LEVEL_UP_MOVE(54, MOVE_BODY_PRESS),
         LEVEL_UP_MOVE(59, MOVE_AMNESIA),
@@ -17088,6 +17088,7 @@ static const struct LevelUpMove sAudinoLevelUpLearnset[] = {
         LEVEL_UP_MOVE(42, MOVE_SIMPLE_BEAM),
         LEVEL_UP_MOVE(44, MOVE_BRIGHTEST_DAWN),
         LEVEL_UP_MOVE(48, MOVE_DOUBLE_EDGE),
+        LEVEL_UP_MOVE(52, MOVE_FOLLOW_ME),
         LEVEL_UP_END
 };
 static const struct LevelUpMove sTimburrLevelUpLearnset[] = {
@@ -21762,7 +21763,7 @@ static const struct LevelUpMove sYungoosLevelUpLearnset[] = {
     LEVEL_UP_MOVE(19, MOVE_BITE),
     LEVEL_UP_MOVE(22, MOVE_MUD_SLAP),
     LEVEL_UP_MOVE(25, MOVE_SUPER_FANG),
-    LEVEL_UP_MOVE(28, MOVE_TAKE_DOWN),
+    LEVEL_UP_MOVE(28, MOVE_DOUBLE_HIT),
     LEVEL_UP_MOVE(31, MOVE_YAWN),
     LEVEL_UP_MOVE(34, MOVE_CRUNCH),
     LEVEL_UP_MOVE(37, MOVE_HYPER_FANG),
@@ -21773,7 +21774,7 @@ static const struct LevelUpMove sYungoosLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sGumshoosLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 0, MOVE_AMNESIA),
+    LEVEL_UP_MOVE( 0, MOVE_CRACK_THE_SUSPECT),
     LEVEL_UP_MOVE( 1, MOVE_AMNESIA),
     LEVEL_UP_MOVE( 1, MOVE_QUICK_ATTACK),
     LEVEL_UP_MOVE( 1, MOVE_LEER),
@@ -21785,9 +21786,9 @@ static const struct LevelUpMove sGumshoosLevelUpLearnset[] = {
     LEVEL_UP_MOVE(13, MOVE_ODOR_SLEUTH),
     LEVEL_UP_MOVE(16, MOVE_BIDE),
     LEVEL_UP_MOVE(19, MOVE_BITE),
-    LEVEL_UP_MOVE(23, MOVE_MUD_SLAP),
+    LEVEL_UP_MOVE(23, MOVE_MUD_SLAP), 
     LEVEL_UP_MOVE(27, MOVE_SUPER_FANG),
-    LEVEL_UP_MOVE(31, MOVE_TAKE_DOWN),
+    LEVEL_UP_MOVE(31, MOVE_DOUBLE_HIT),
     LEVEL_UP_MOVE(35, MOVE_YAWN),
     LEVEL_UP_MOVE(39, MOVE_CRUNCH),
     LEVEL_UP_MOVE(43, MOVE_HYPER_FANG),

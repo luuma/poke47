@@ -26,7 +26,7 @@ u32 GetCurrentLevelCap(void)
         {FLAG_DRAKE_DRAGON_PULSE, 52},//3
         {FLAG_IS_CHAMPION, 53},//5
     };
-    static const u32 sHCNLFlagMap[][2] =// unused. hmm.
+    static const u32 sHCNLFlagMap[][2] =// hardcore nuzlocke rules unused
     {
         {FLAG_BADGE01_GET, 14},//0
         {FLAG_BADGE02_GET, 18},//0

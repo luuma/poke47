@@ -24356,4 +24356,38 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestComboMoves = {0},
         .battleAnimScript = gBattleAnimMove_AquaRing,
     },
+
+    [MOVE_CRACK_THE_SUSPECT] =
+    {
+        .name = COMPOUND_STRING("Crack The Suspect"),
+        .description = COMPOUND_STRING(
+            "Interrogates to confuse the\n"
+            "foe and make it Wimp Out."),
+        .effect = EFFECT_HIT,
+        .power = 30,
+        .type = TYPE_NORMAL,
+        .accuracy = 90,
+        .pp = 10,
+        .target = TARGET_SELECTED,
+        .priority = 0,
+        .category = DAMAGE_CATEGORY_SPECIAL,
+        .additionalEffects = ADDITIONAL_EFFECTS({
+            .moveEffect = MOVE_EFFECT_CONFUSION,
+            .chance = 100,
+        },
+        {
+            .moveEffect = MOVE_EFFECT_OVERWRITE_ABILITY,
+            .chance = 100,
+        }),
+        .argument = { .overwriteAbility = ABILITY_WIMP_OUT },
+        .zMove = { .effect = Z_EFFECT_SPATK_UP_1 },
+        .ignoresSubstitute = TRUE,
+        .soundMove = TRUE,
+        .contestEffect = CONTEST_EFFECT_BETTER_IF_FIRST,
+        .contestCategory = CONTEST_CATEGORY_SMART,
+        .contestComboStarterId = 0,
+        .contestComboMoves = {0},
+        .sketchBanned = TRUE,// surely. surely too fast on viv. Inherently fucked up.
+        .battleAnimScript = gBattleAnimMove_Confide,
+    },
 };

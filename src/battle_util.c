@@ -4748,7 +4748,7 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                     if (ability == ABILITY_AS_ONE_ICE_RIDER)
                         gBattleScripting.abilityPopupOverwrite = gLastUsedAbility = ABILITY_CHILLING_NEIGH;
                     else if (ability == ABILITY_AS_ONE_SHADOW_RIDER)
-                        gBattleScripting.abilityPopupOverwrite = gLastUsedAbility = ABILITY_GRIM_NEIGH;
+                        gBattleScripting.abilityPopupOverwrite = gLastUsedAbility = ABILITY_MOXIE;// FOR pyroar
 
                     gEffectBattler = gBattlerAbility = battler;
                     SetStatChange(battler, stat, numMonsFainted);
@@ -10527,7 +10527,7 @@ bool32 TrySwitchInEjectPack(enum EjectPackTiming timing)
 
 bool32 EmergencyExitCanBeTriggered(enum BattlerId battler, enum Ability ability)
 {
-    if (ability != ABILITY_EMERGENCY_EXIT && ability != ABILITY_WIMP_OUT)
+    if (ability != ABILITY_EMERGENCY_EXIT && ability != ABILITY_WIMP_OUT && gBattleMons[battler].volatiles.overwrittenAbility != ABILITY_WIMP_OUT)
         return FALSE;
 
     if (IsBattlerAlive(battler)

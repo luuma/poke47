@@ -20,7 +20,7 @@
       "x": 59,
       "y": 5,
       "elevation": 4,
-      "movement_type": "MOVEMENT_TYPE_INVISIBLE",
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "0",

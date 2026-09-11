@@ -3,6 +3,7 @@
 #include "malloc.h"
 #include "battle.h"
 #include "battle_anim.h"
+#include "battle_gimmick.h"
 #include "battle_ai_util.h"
 #include "battle_ai_items.h"
 #include "battle_ai_switch.h"
@@ -1816,6 +1817,15 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
         if (gBattleMons[battlerAtk].volatiles.dragonCheer || gBattleMons[battlerAtk].volatiles.focusEnergy)
             ADJUST_SCORE(-10);
         break;
+    case EFFECT_CANNONADE:
+        if (gBattleMons[battlerAtk].volatiles.cannonade)
+            ADJUST_SCORE(-5);// fine, still a def boost that synergises. TOTAL -2.
+        break;
+    case EFFECT_NAVAL_BLOCKADE:
+        if (gSideStatuses[GetBattlerSide(battlerAtk)] & (SIDE_STATUS_NAVAL_BLOCKADE)
+         || (HasPartner(battlerAtk) && AreMovesEquivalent(battlerAtk, GetPartnerBattler(battlerAtk), move, aiData->partnerMove)))
+            ADJUST_SCORE(-5);// fine, still a sdef shred that synergises
+        break;
     case EFFECT_NON_VOLATILE_STATUS:
         if (DoesPartnerHaveSameMoveEffect(GetPartnerBattler(battlerAtk), battlerDef, move, aiData->partnerMove))
             ADJUST_SCORE(-10);
@@ -2116,10 +2126,6 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
     case EFFECT_INGRAIN:
         if (gBattleMons[battlerAtk].volatiles.root)
             ADJUST_SCORE(-10);
-        break;
-    case EFFECT_CANNONADE:
-        if (gBattleMons[battlerAtk].volatiles.cannonade)
-            ADJUST_SCORE(-8);
         break;
     case EFFECT_AQUA_RING:
         if (gBattleMons[battlerAtk].volatiles.aquaRing)
@@ -2488,10 +2494,17 @@ static s32 AI_CheckBadMove(enum BattlerId battlerAtk, enum BattlerId battlerDef,
           && GetMoveTwoTurnAttackStatus(move) == STATE_ON_AIR)
             ADJUST_SCORE(-10); // Attacker will faint while in the air
         break;
+    case EFFECT_LUNAR_DANCE:
     case EFFECT_HEALING_WISH:   //healing wish, lunar dance
         if (CountUsablePartyMons(battlerAtk) == 0 || DoesPartnerHaveSameMoveEffect(GetPartnerBattler(battlerAtk), battlerDef, move, aiData->partnerMove))
             ADJUST_SCORE(-10);
         else if (IsPartyFullyHealedExceptBattler(battlerAtk))
+            ADJUST_SCORE(-10);
+        break;
+    case EFFECT_BRIGHTEST_DAWN:
+        if (CountUsablePartyMons(battlerAtk) == 0 
+|| DoesPartnerHaveSameMoveEffect(GetPartnerBattler(battlerAtk), battlerDef, move, aiData->partnerMove)
+|| HasTrainerUsedGimmick(battlerAtk, GIMMICK_DYNAMAX))
             ADJUST_SCORE(-10);
         break;
     case EFFECT_NATURE_POWER:
@@ -4346,6 +4359,21 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
         if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_WILL_SUICIDE)
             ADJUST_SCORE(DECENT_EFFECT);
         break;
+    case EFFECT_HEALING_WISH:
+    case EFFECT_LUNAR_DANCE:
+        if (AI_IsFaster(battlerAtk, battlerDef, move, predictedMove, CONSIDER_PRIORITY) && CanTargetFaintAi(battlerDef, battlerAtk))
+            ADJUST_SCORE(WEAK_EFFECT);// Sacrificing when you're about to faint is okay 
+
+        if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_WILL_SUICIDE)
+            ADJUST_SCORE(WEAK_EFFECT);
+        break;
+    case EFFECT_BRIGHTEST_DAWN:
+        if (AI_IsFaster(battlerAtk, battlerDef, move, predictedMove, CONSIDER_PRIORITY) && CanTargetFaintAi(battlerDef, battlerAtk))
+            ADJUST_SCORE(DECENT_EFFECT);
+
+        if (gAiThinkingStruct->aiFlags[battlerAtk] & AI_FLAG_WILL_SUICIDE)
+            ADJUST_SCORE(GOOD_EFFECT);
+        break;
     case EFFECT_MIRROR_MOVE:
         if (incomingMove && GetMoveEffect(incomingMove) != GetMoveEffect(move))
             return AI_CheckViability(battlerAtk, battlerDef, incomingMove, score);
@@ -4376,6 +4404,13 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
     case EFFECT_CHARGE:
         if (HasDamagingMoveOfType(battlerAtk, TYPE_ELECTRIC))
             ADJUST_SCORE(DECENT_EFFECT);
+        ADJUST_SCORE(GetStatChangeScore(battlerAtk, battlerDef, move));
+        break;
+    case EFFECT_CANNONADE:
+        if (!(CanTargetFaintAi(battlerDef, battlerAtk)))
+            ADJUST_SCORE(BEST_EFFECT);// We're doing at least 2/6 damage with chance to recover. that's great!
+        else
+            ADJUST_SCORE(WEAK_EFFECT);
         ADJUST_SCORE(GetStatChangeScore(battlerAtk, battlerDef, move));
         break;
     case EFFECT_ROTOTILLER:
@@ -4531,6 +4566,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
     case EFFECT_LIGHT_SCREEN:
     case EFFECT_REFLECT:
     case EFFECT_AURORA_VEIL:
+    case EFFECT_SCREEN_BURN:
         if (ShouldSetScreen(battlerAtk, battlerDef, moveEffect))
         {
             ADJUST_SCORE(BEST_EFFECT);
@@ -6055,6 +6091,9 @@ static s32 AI_ForceSetupFirstTurn(enum BattlerId battlerAtk, enum BattlerId batt
     case EFFECT_WEATHER_AND_SWITCH:
     case EFFECT_CEASELESS_EDGE:
     case EFFECT_STONE_AXE:
+    case EFFECT_CANNONADE:
+    case EFFECT_NAVAL_BLOCKADE:
+    case EFFECT_SCREEN_BURN:
         ADJUST_SCORE(DECENT_EFFECT);
         break;
     default:
@@ -6288,6 +6327,7 @@ static s32 AI_HPAware(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum
             case EFFECT_ROOST:
             case EFFECT_MEMENTO:
             case EFFECT_GRUDGE:
+            case EFFECT_BRIGHTEST_DAWN:
                 ADJUST_SCORE(-2);
                 break;
             default:
@@ -6343,6 +6383,7 @@ static s32 AI_HPAware(enum BattlerId battlerAtk, enum BattlerId battlerDef, enum
             case EFFECT_PSYCH_UP:
             case EFFECT_REFLECT_DAMAGE:
             case EFFECT_WEATHER:
+            case EFFECT_CANNONADE:
                 ADJUST_SCORE(-2);
                 break;
             default:
@@ -6440,6 +6481,7 @@ static s32 AI_PowerfulStatus(enum BattlerId battlerAtk, enum BattlerId battlerDe
     case EFFECT_LIGHT_SCREEN:
     case EFFECT_REFLECT:
     case EFFECT_AURORA_VEIL:
+    case EFFECT_SCREEN_BURN:
         if (ShouldSetScreen(battlerAtk, battlerDef, moveEffect))
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
@@ -6464,6 +6506,10 @@ static s32 AI_PowerfulStatus(enum BattlerId battlerAtk, enum BattlerId battlerDe
         break;
     case EFFECT_MISTY_TERRAIN:
         if (!(gFieldStatuses & STATUS_FIELD_MISTY_TERRAIN))
+            ADJUST_SCORE(POWERFUL_STATUS_MOVE);
+        break;
+    case EFFECT_NAVAL_BLOCKADE:
+        if (!(gSideStatuses[GetBattlerSide(battlerAtk)] & SIDE_STATUS_NAVAL_BLOCKADE))
             ADJUST_SCORE(POWERFUL_STATUS_MOVE);
         break;
     case EFFECT_WEATHER:
