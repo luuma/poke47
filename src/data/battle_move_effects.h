@@ -1327,11 +1327,6 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .battleTvScore = 0, // TODO: Assign points
     },
 
-    [EFFECT_TOXIC_THREAD] =
-    {
-        .battleScript = BattleScript_EffectStatChange,
-        .battleTvScore = 0, // TODO: Assign points
-    },
 
     [EFFECT_HIT_SWITCH_TARGET] =
     {
@@ -1957,5 +1952,25 @@ const struct BattleMoveEffect gBattleMoveEffects[NUM_BATTLE_MOVE_EFFECTS] =
         .encourageEncore = TRUE,
     },
 
+    [EFFECT_MAGIC_COAT_AE] =
+    {
+        .battleScript = BattleScript_EffectMagicCoatAE,
+        .battleTvScore = 6,
+        .battleFactoryStyle = FACTORY_STYLE_ENDURANCE,
+    },
+
+    [EFFECT_SNATCH_AE] =
+    {
+        .battleScript = BattleScript_EffectSnatchAE,
+        .battleTvScore = 1,
+        .battleFactoryStyle = FACTORY_STYLE_SLOW_STEADY,
+    },
+
+
+    [EFFECT_BROIL] =
+    {
+        .battleScript = BattleScript_EffectStatChange,
+        .battleTvScore = 0, // TODO: Assign points
+    },
 };
 

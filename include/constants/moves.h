@@ -935,6 +935,30 @@ enum __attribute__((packed)) Move
     MOVE_MITOSIS,// Concept: clone yourself at half health im reuniclus fuck yeah.
     MOVE_SEA_GUARDIAN,// Concept: make a phione. Expect to cut some of these but phione passive based.
     MOVE_CRACK_THE_SUSPECT,// Conditional fast roar that confuses: cycle enemy team into spikes a la riolu prankster copycat - but with requirements, and with 45 base speed. puzzle for players to theorycraft round, I hope. Decent midgame utility.
+
+
+/// ADDITIONS FOR ALTERED EMERALD
+    MOVE_BROIL,// burn maximise def
+    MOVE_SHIELD_SLAM,//literally suing nintendo
+    MOVE_HORN_CRASH,//hit raise def normal move
+    MOVE_SNOW_IN,//hit maximise sdef, 105 power
+    MOVE_MELTDOWN,
+    MOVE_SUPER_SPIT_UP,//spitup but double power poison type
+    MOVE_FACTORY_WASTE,//SHOULD remove. 
+    MOVE_FAIRY_SCALES,//possible omniboost. ew
+    MOVE_METALLURGY,//HIT make steel
+    MOVE_DASH,
+    //MOVE_TIME_WARP,//deleted.
+    MOVE_PARCEL_FORCE,//deleted
+    MOVE_PLUNDER,// thin ice
+    MOVE_CANDY_CRUNCH,// maybe
+    MOVE_SHIFT_BEAR,
+    MOVE_DISARM,
+    MOVE_OVERLOAD,
+
+//heavily editeds with no current equivalent
+    MOVE_SNATCH_AE,//HOODWINK
+    MOVE_MAGIC_COAT_AE,//MAGIC MIRROR
     MOVES_COUNT,
 
     // Z Moves

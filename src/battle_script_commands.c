@@ -13810,6 +13810,42 @@ void BS_shadowclone(void)
     }
 }
 
+
+
+void Cmd_trysetmagiccoatae(void)
+{
+    CMD_ARGS(const u8 *failInstr);
+
+    if (IsLastMonToMove(gBattlerAttacker)) // fails if moving last
+    {
+        gBattlescriptCurrInstr = BattleScript_ButItFailed;
+    }
+    else
+    {
+        gProtectStructs[gBattlerAttacker].magicmirrorMove = TRUE;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+}
+
+// Snatch
+void Cmd_trysetsnatchae(void)
+{
+    CMD_ARGS(const u8 *failInstr);
+
+    if (IsLastMonToMove(gBattlerAttacker)) // fails if moving last
+    {
+        gBattlescriptCurrInstr = BattleScript_ButItFailed;
+    }
+    else
+    {
+        gProtectStructs[gBattlerAttacker].hoodwinkMove = TRUE;
+        gBattlescriptCurrInstr = cmd->nextInstr;
+    }
+}
+
+
+
+
 void BS_SetNavalBlockade(void)
 {
     NATIVE_ARGS(const u8 *jumpInstr);

@@ -297,6 +297,9 @@ enum  BattleMoveEffects
     EFFECT_BRIGHTEST_DAWN, // Same as EFFECT_HEALING_WISH, but heals nothing and sets a volatile that enables gmax.
     EFFECT_HOT_COCOA, 
     EFFECT_SHADOW_CLONE,
+    EFFECT_SNATCH_AE, 
+    EFFECT_MAGIC_COAT_AE,
+    EFFECT_BROIL,
     NUM_BATTLE_MOVE_EFFECTS,
 };
 

@@ -139,6 +139,11 @@ BattleScript_ToxicThread::
 	trymovestatchanges
 	goto BattleScript_MoveEnd
 
+BattleScript_Broil::
+	seteffectprimary BS_ATTACKER, BS_SCRIPTING, MOVE_EFFECT_BURN
+	trymovestatchanges
+	goto BattleScript_MoveEnd
+
 BattleScript_SwaggerConfusion::
 	seteffectprimary BS_ATTACKER, BS_SCRIPTING, MOVE_EFFECT_CONFUSION
 	trymovestatchanges
@@ -3990,6 +3995,25 @@ BattleScript_SnatchedMove::
 	printstring STRINGID_PKMNSNATCHEDMOVE
 	waitmessage B_WAIT_TIME_LONG
 	return
+
+BattleScript_EffectMagicCoatAE::
+	attackcanceler
+	callnative Cmd_trysetmagiccoatae
+	attackanimation
+	waitanimation
+	printstring STRINGID_PKMNSHROUDEDITSELF
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
+
+BattleScript_EffectSnatchAE::
+	attackcanceler
+	callnative Cmd_trysetsnatchae
+	attackanimation
+	waitanimation
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PKMNWAITSFORTARGET
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd
 
 BattleScript_EnduredMsg::
 	printstring STRINGID_PKMNENDUREDHIT

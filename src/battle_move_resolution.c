@@ -25,6 +25,7 @@ static void RequestNonVolatileChange(enum BattlerId battlerAtk);
 static bool32 CanBattlerBounceBackMove(struct BattleCalcValues *cv);
 static bool32 TryMagicBounce(struct BattleCalcValues *cv);
 static bool32 TryMagicCoat(struct BattleCalcValues *cv);
+static bool32 TryMagicMirror(struct BattleCalcValues *cv);
 static bool32 TryActivatePowderStatus(enum Move move);
 static void CalculateMagnitudeDamage(void);
 static void UpdateStallMons(void);
@@ -1838,8 +1839,8 @@ static enum CancelerResult CancelerSnatch(struct BattleCalcValues *cv)
 {
     for (u32 i = 0; i < gCurrentTurnActionNumber; i++)
     {
-        if (!gProtectStructs[gBattlerByTurnOrder[i]].stealMove
-         || !MoveCanBeSnatched(cv->move))
+        if (!(gProtectStructs[gBattlerByTurnOrder[i]].stealMove && MoveCanBeSnatched(cv->move))
+         && !(gProtectStructs[gBattlerByTurnOrder[i]].hoodwinkMove && GetMoveCategory(cv->move) == DAMAGE_CATEGORY_STATUS && !IsMoveAssistBanned(cv->move)))
             continue;
 
         if (B_SNATCH < GEN_5 || !gBattleStruct->snatchedMoveIsUsed)
@@ -1853,6 +1854,7 @@ static enum CancelerResult CancelerSnatch(struct BattleCalcValues *cv)
             }
 
             gProtectStructs[snatchBattler].stealMove = FALSE;
+            gProtectStructs[snatchBattler].hoodwinkMove = FALSE;
             gBattleStruct->snatchedMoveIsUsed = TRUE;
 
             if (cv->battlerAtk == cv->battlerDef)
@@ -5299,7 +5301,7 @@ static enum Move GetMeFirstMove(void)
 
 static bool32 CanBattlerBounceBackMove(struct BattleCalcValues *cv)
 {
-    return TryMagicBounce(cv) || TryMagicCoat(cv);
+    return TryMagicBounce(cv) || TryMagicCoat(cv) || TryMagicMirror(cv);
 }
 
 static bool32 TryMagicBounce(struct BattleCalcValues *cv)
@@ -5331,6 +5333,26 @@ static bool32 TryMagicCoat(struct BattleCalcValues *cv)
     gBattleStruct->magicCoatPending |= 1u << cv->battlerDef;
     return TRUE;
 }
+
+
+static bool32 TryMagicMirror(struct BattleCalcValues *cv)
+{
+    if (GetMovePower(cv->move) < 100)
+        return FALSE;
+
+    if (GetBattlerMoveTargetType(cv->battlerAtk, cv->move) != TARGET_SELECTED)
+        return FALSE;
+
+    if (gBattleStruct->bouncedMoveIsUsed)
+        return FALSE;
+
+    if (!gProtectStructs[cv->battlerDef].magicmirrorMove)
+        return FALSE;
+
+    gBattleStruct->magicCoatPending |= 1u << cv->battlerDef;
+    return TRUE;
+}
+
 
 static bool32 TryActivatePowderStatus(enum Move move)
 {

@@ -734,6 +734,7 @@ extern const u8 BattleScript_TarShotMessage[];
 extern const u8 BattleScript_Stockpile[];
 extern const u8 BattleScript_Memento[];
 extern const u8 BattleScript_TakeHeart[];
+//mine
 
 extern const u8 BattleScript_EffectScreenBurn[]; 
 extern const u8 BattleScript_RestComatose[]; 
@@ -755,6 +756,9 @@ extern const u8 BattleScript_HurtCannonadeTarget[];
 extern const u8 BattleScript_MoveEffectPerishSong[];
 extern const u8 BattleScript_EffectHotCocoa[]; 
 extern const u8 BattleScript_EffectShadowClone[]; 
+extern const u8 BattleScript_EffectSnatchAE[];
+extern const u8 BattleScript_EffectMagicCoatAE[];
+extern const u8 BattleScript_Broil[];
 
 
 // mine

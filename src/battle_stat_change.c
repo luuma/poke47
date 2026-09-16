@@ -144,6 +144,14 @@ static bool32 CheckSpecificMoveCondition(struct BattleCalcValues *cv, struct Sta
                 st->moveScript = BattleScript_ToxicThread;
         }
         break;
+    case EFFECT_BROIL:
+        if (CanBeBurned(cv->battlerAtk, cv->battlerDef, cv->abilities[cv->battlerDef]))
+        {
+            st->additionalEffectTriggers = TRUE;
+            if (!st->onlyChecking)
+                st->moveScript = BattleScript_Broil;//added
+        }
+        break;
     case EFFECT_SWAGGER:
         if (cv->abilities[cv->battlerDef] == ABILITY_OWN_TEMPO)
         {
