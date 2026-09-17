@@ -5340,7 +5340,7 @@ static bool32 TryMagicMirror(struct BattleCalcValues *cv)
     if (GetMovePower(cv->move) < 100)
         return FALSE;
 
-    if (GetBattlerMoveTargetType(cv->battlerAtk, cv->move) != TARGET_SELECTED)
+    if (GetBattlerMoveTargetType(cv->battlerAtk, cv->move) != TARGET_SELECTED && IsDoubleBattle())
         return FALSE;
 
     if (gBattleStruct->bouncedMoveIsUsed)

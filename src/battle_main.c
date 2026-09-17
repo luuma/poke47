@@ -3356,6 +3356,8 @@ void FaintClearSetData(enum BattlerId battler, struct Volatiles *volatilesCopy)/
     gProtectStructs[battler].helpingHand = 0;
     gProtectStructs[battler].bounceMove = FALSE;
     gProtectStructs[battler].stealMove = FALSE;
+    gProtectStructs[battler].magicmirrorMove = FALSE;
+    gProtectStructs[battler].hoodwinkMove = FALSE;
     gProtectStructs[battler].chargingTurn = FALSE;
     gProtectStructs[battler].fleeType = 0;
     gProtectStructs[battler].statRaised = FALSE;

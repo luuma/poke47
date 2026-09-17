@@ -2185,9 +2185,12 @@ bool32 ShouldRaiseAnyStat(enum BattlerId battlerAtk, enum BattlerId battlerDef)
     if (AI_IsAbilityOnSide(battlerDef, ABILITY_OPPORTUNIST))
         return FALSE;
 
-    // Don't increase stats if opposing battler has used Haze effect or AI effect
+    // Don't increase stats if opposing battler has used Haze effect or snatch effect
     if (!RandomPercentage(RNG_AI_BOOST_INTO_HAZE, BOOST_INTO_HAZE_CHANCE)
       && HasBattlerSideUsedMoveWithEffect(battlerDef, EFFECT_HAZE))
+        return FALSE;
+
+    if (HasBattlerSideUsedMoveWithEffect(battlerDef, EFFECT_SNATCH_AE))// NOT MAKIN THAT MISTAKE AGAIN ! MAMA MIA
         return FALSE;
 
     if (CountPositiveStatStages(battlerAtk) > 0
@@ -5617,8 +5620,9 @@ bool32 AI_ShouldSetUpHazards(enum BattlerId battlerAtk, enum BattlerId battlerDe
 
     if (IsBattleMoveStatus(move))
     {
-        if (HasMoveWithEffect(battlerDef, EFFECT_MAGIC_COAT))
+        if (HasBattlerSideUsedMoveWithEffect(battlerDef, EFFECT_MAGIC_COAT) || HasBattlerSideUsedMoveWithEffect(battlerDef, EFFECT_SNATCH_AE))
             return FALSE;
+
         if (DoesBattlerIgnoreAbilityChecks(battlerAtk, aiData->abilities[battlerAtk], move))
             return TRUE;
         if (aiData->abilities[battlerDef] == ABILITY_MAGIC_BOUNCE)
@@ -6509,6 +6513,10 @@ s32 GetAllyStatChangeScore(u32 battlerAtk, u32 partner, u32 move)
     if (!RandomPercentage(RNG_AI_BOOST_INTO_HAZE, BOOST_INTO_HAZE_CHANCE)
      && HasBattlerSideUsedMoveWithEffect(foe, EFFECT_HAZE))
         return tempScore;
+
+    if (HasBattlerSideUsedMoveWithEffect(foe, EFFECT_SNATCH_AE))// NOT MAKIN THAT MISTAKE AGAIN ! MAMA MIA
+        return tempScore;
+
 
     if (CanBattlerKOTargetIgnoringSturdy(partner, foe)
      || CanBattlerKOTargetIgnoringSturdy(partner, GetPartnerBattler(foe)))

@@ -984,3 +984,139 @@ SINGLE_BATTLE_TEST("POKE47: naval blockade     locks stat changes, fainting .")
         EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
     }
 }
+
+
+SINGLE_BATTLE_TEST("POKE47: Snatch steals stat-boosting moves from the opponent")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Speed(100); }
+        OPPONENT(SPECIES_WYNAUT) { Speed(50); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_SNATCH); MOVE(opponent, MOVE_SWORDS_DANCE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, player);
+        MESSAGE("Wobbuffet is waiting for a target to make a move!");
+        MESSAGE("Wobbuffet snatched the opposing Wynaut's move!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, player);
+        MESSAGE("Wobbuffet's Attack rose sharply!");
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_ATK], DEFAULT_STAT_STAGE + 2);
+        EXPECT_EQ(opponent->statStages[STAT_ATK], DEFAULT_STAT_STAGE);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Snatch does not steal non-snatchable moves")
+{
+    GIVEN {
+        ASSUME(MoveCanBeSnatched(MOVE_TACKLE) == FALSE);
+        PLAYER(SPECIES_WOBBUFFET) { Speed(100); }
+        OPPONENT(SPECIES_WYNAUT) { Speed(50); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_SNATCH); MOVE(opponent, MOVE_TACKLE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH, player);
+        MESSAGE("Wobbuffet is waiting for a target to make a move!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
+        HP_BAR(player);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: AE Hoodwink steals stat-boosting moves from the opponent")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Speed(100); }
+        OPPONENT(SPECIES_WYNAUT) { Speed(50); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_SNATCH_AE); MOVE(opponent, MOVE_SPIKES); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH_AE, player);
+        MESSAGE("Wobbuffet is waiting for a target to make a move!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SPIKES, player);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: AE Hoodwink does not steal nonstatus moves")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET) { Speed(100); }
+        OPPONENT(SPECIES_WYNAUT) { Speed(50); }
+    } WHEN {
+        TURN { MOVE(player, MOVE_SNATCH_AE); MOVE(opponent, MOVE_TACKLE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SNATCH_AE, player);
+        MESSAGE("Wobbuffet is waiting for a target to make a move!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_TACKLE, opponent);
+        HP_BAR(player);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: AE Magic Mirror prints the correct message when bouncing back a move, doesn't linger, etc.")
+{
+    GIVEN {
+        PLAYER(SPECIES_ZIGZAGOON);
+        PLAYER(SPECIES_ZIGZAGOON);
+        OPPONENT(SPECIES_ZIGZAGOON);
+        OPPONENT(SPECIES_ZIGZAGOON);
+    } WHEN {
+        TURN { MOVE(player, MOVE_MAGIC_COAT_AE); MOVE(opponent, MOVE_OVERHEAT); }
+        TURN { MOVE(player, MOVE_MAGIC_COAT); MOVE(opponent, MOVE_OVERHEAT); }
+        TURN { MOVE(player, MOVE_MAGIC_COAT_AE); MOVE(opponent, MOVE_OVERHEAT); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT_AE, player);
+        MESSAGE("Zigzagoon bounced the Overheat back!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_OVERHEAT, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_OVERHEAT, opponent);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT_AE, player);
+        MESSAGE("Zigzagoon bounced the Overheat back!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_OVERHEAT, player);
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 4);
+        EXPECT_EQ(opponent->statStages[STAT_SPATK], DEFAULT_STAT_STAGE - 2);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: AE Magic Mirror does bounce spread moves (singles).")
+{
+    GIVEN {
+        PLAYER(SPECIES_ZIGZAGOON);
+        OPPONENT(SPECIES_MEW);
+    } WHEN {
+        TURN { MOVE(player, MOVE_MAGIC_COAT_AE); MOVE(opponent, MOVE_EARTHQUAKE); }
+        TURN { MOVE(player, MOVE_MAGIC_COAT_AE); MOVE(opponent, MOVE_GLACIAL_LANCE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT_AE, player);
+        MESSAGE("Zigzagoon bounced the Earthquake back!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT_AE, player);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_GLACIAL_LANCE, player);
+    }
+}
+
+
+DOUBLE_BATTLE_TEST("POKE47: AE Magic Mirror doesn't bounce spread moves or those under like 100 power in doubles.")
+{
+    GIVEN {
+        PLAYER(SPECIES_GRUMPIG);
+        PLAYER(SPECIES_GRUMPIG);
+        OPPONENT(SPECIES_MEW);
+        OPPONENT(SPECIES_MEW);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_MAGIC_COAT_AE); MOVE(opponentLeft, MOVE_EARTHQUAKE); }
+        TURN { MOVE(playerLeft, MOVE_MAGIC_COAT_AE); MOVE(opponentLeft, MOVE_ASTRAL_BARRAGE); }
+        TURN { MOVE(playerLeft, MOVE_MAGIC_COAT_AE); MOVE(opponentLeft, MOVE_ICE_FANG, target: playerLeft); }
+        TURN { MOVE(playerLeft, MOVE_MAGIC_COAT_AE); MOVE(opponentLeft, MOVE_FLARE_BLITZ, target: playerLeft); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT_AE, playerLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_EARTHQUAKE, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT_AE, playerLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ASTRAL_BARRAGE, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT_AE, playerLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ICE_FANG, opponentLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_MAGIC_COAT_AE, playerLeft);
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_FLARE_BLITZ, playerLeft);
+    }
+}

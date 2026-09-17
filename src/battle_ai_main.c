@@ -5027,6 +5027,7 @@ static s32 AI_CalcMoveEffectScore(enum BattlerId battlerAtk, enum BattlerId batt
         case HOLD_EFFECT_CHOICE_SCARF:
             ADJUST_SCORE(DECENT_EFFECT); // assume its beneficial
             break;
+
         case HOLD_EFFECT_CHOICE_BAND:
             if (!HasMoveWithCategory(battlerDef, DAMAGE_CATEGORY_PHYSICAL))
                 ADJUST_SCORE(DECENT_EFFECT);
@@ -6016,6 +6017,11 @@ static s32 AI_CheckViability(enum BattlerId battlerAtk, enum BattlerId battlerDe
 
     if (GetMovePower(move) != 0)
     {
+        if (HasMoveWithEffect(battlerDef, EFFECT_MAGIC_COAT_AE) 
+        && GetMovePower(move) >= 100 
+        && (GetBattlerMoveTargetType(battlerAtk, move) == TARGET_SELECTED || !IsDoubleBattle()))
+            ADJUST_SCORE(WORST_EFFECT); // - 10 TO SCORE.
+
         if (GetNoOfHitsToKOBattler(battlerAtk, battlerDef, gAiThinkingStruct->movesetIndex, AI_ATTACKING, CONSIDER_ENDURE) == 0)
             ADJUST_AND_RETURN_SCORE(NO_DAMAGE_OR_FAILS); // No point in checking the move further so return early
         else
