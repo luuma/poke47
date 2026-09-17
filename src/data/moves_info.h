@@ -7006,7 +7006,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Releases stockpiled power\n"
             "(the more the better)."),
         .effect = EFFECT_SPIT_UP,
-        .power = 1,
+        .power = 100,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 10,
@@ -23660,9 +23660,9 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Broil"),
         .description = COMPOUND_STRING(
-            "Maximises Defense,\n"
+            "Maximises target's Defense,\n"
             "but ensures a burn."),
-        .effect = EFFECT_TOXIC_THREAD,
+        .effect = EFFECT_BROIL,
         .power = 0,
         .type = TYPE_FIRE,
         .accuracy = 0,
@@ -23685,10 +23685,10 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_SHIELD_SLAM] =
     {
-        .name = COMPOUND_STRING("Body Press"),
+        .name = COMPOUND_STRING("Shield Slam"),
         .description = COMPOUND_STRING(
-            "Does more damage the\n"
-            "- Hey! They copied me!"),
+            "Does damage from Defense.\n"
+            "Hey! They copied me!"),
         .effect = EFFECT_BODY_PRESS,
         .power = 65,
         .type = TYPE_STEEL,
@@ -23704,7 +23704,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestCategory = CONTEST_CATEGORY_BEAUTY,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
-        .battleAnimScript = gBattleAnimMove_BodyPress,
+        .battleAnimScript = gBattleAnimMove_IronTail,
     },
 
     [MOVE_HORN_CRASH] =
@@ -23740,8 +23740,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Snow In"),
         .description = COMPOUND_STRING(
-            "Covers foes in snow,\n"
-            "maximising Sp. Def."),
+            "Covers targets in snow,\n"
+            "maximising their Sp. Def."),
         .effect = EFFECT_HIT,
         .power = 105,
         .type = TYPE_ICE,
@@ -23768,8 +23768,8 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     {
         .name = COMPOUND_STRING("Meltdown"),
         .description = COMPOUND_STRING(
-            "Burns out the user fully\n"
-            "removing the Fire type."),
+            "Melts the user entirely,\n"
+            "removing the Ice type."),
         .effect = EFFECT_FAIL_IF_NOT_ARG_TYPE,
         .power = 130,
         .type = TYPE_WATER,
@@ -23826,7 +23826,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Releases stockpiled power\n"
             "(the more the better)."),
         .effect = EFFECT_SPIT_UP,
-        .power = 1,
+        .power = 140,
         .type = TYPE_POISON,
         .accuracy = 100,
         .pp = 10,
@@ -23878,7 +23878,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
 
     [MOVE_CANDY_CRUNCH] =
     {
-        .name = COMPOUND_STRING("Fairy Scales"),
+        .name = COMPOUND_STRING("Sugar Snap"),
         .description = COMPOUND_STRING(
             "May flinch or may boost,\n"
             "Attack and Speed."),
@@ -24069,7 +24069,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .contestCategory = CONTEST_CATEGORY_CUTE,
         .contestComboStarterId = 0,
         .contestComboMoves = {0},
-        .battleAnimScript = gBattleAnimMove_Agility,
+        .battleAnimScript = gBattleAnimMove_FlyingPress,
         .validApprenticeMove = TRUE,
     },
 
@@ -24145,7 +24145,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
 
-    [MOVE_SNATCH_AE] =
+    [MOVE_SNATCH_AE] = // Actually this move was great fun it should be back in.
     {
         .name = COMPOUND_STRING("Hoodwink"),
         .description = COMPOUND_STRING(
@@ -24153,13 +24153,13 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "Status move the foe uses."),
         .effect = EFFECT_SNATCH_AE,
         .power = 0,
-        .type = TYPE_DARK,
+        .type = TYPE_GHOST,
         .accuracy = 0,
         .pp = 5,
         .target = TARGET_DEPENDS,
         .priority = 4,
         .category = DAMAGE_CATEGORY_STATUS,
-        .zMove = { .effect = Z_EFFECT_SPD_UP_2 },
+        .zMove = { .effect = Z_EFFECT_SPD_UP_1 },
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
         .ignoresSubstitute = TRUE,
@@ -24176,15 +24176,15 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
     },
 
 
-    [MOVE_MAGIC_COAT_AE] =
+    [MOVE_MAGIC_COAT_AE] = // as above. Feels good man.
     {
-        .name = COMPOUND_STRING("Magic Mirror"),
+        .name = COMPOUND_STRING("Miracle Coat"),
         .description = COMPOUND_STRING(
-            "Reflects attacks with\n"
-            "more than 100 power."),
+            "Reflects moves targeting\n"
+            "it with 100 power or more."),
         .effect = EFFECT_MAGIC_COAT_AE,
         .power = 0,
-        .type = TYPE_PSYCHIC,
+        .type = TYPE_FAIRY,
         .accuracy = 0,
         .pp = 10,
         .target = TARGET_DEPENDS,
