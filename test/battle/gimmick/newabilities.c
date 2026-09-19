@@ -17,6 +17,25 @@ SINGLE_BATTLE_TEST("POKE47: wonderland sets wonder room")
     }
 }
 
+SINGLE_BATTLE_TEST("POKE47: Overgrow retaliate boost")
+{
+    s16 damage[2];
+    GIVEN {
+        PLAYER(SPECIES_WYNAUT) { HP(1); }
+        PLAYER(SPECIES_IVYSAUR) { Ability(ABILITY_OVERGROW); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_SCRATCH); SEND_OUT(player, 1); }
+        TURN { MOVE(player, MOVE_MEGA_DRAIN); }// FFSSSSS lmao
+        TURN { MOVE(player, MOVE_MEGA_DRAIN); }
+    } SCENE {
+        HP_BAR(opponent, captureDamage: &damage[0]);
+        HP_BAR(opponent, captureDamage: &damage[1]);
+    } THEN {
+        EXPECT_MUL_EQ(damage[1], Q_4_12(1.5), damage[0]);
+    }
+}
+
 SINGLE_BATTLE_TEST("POKE47: trickland sets trick room")
 {
     GIVEN {
@@ -693,6 +712,33 @@ SINGLE_BATTLE_TEST("POKE47: Beam Refractor makes spatks use atk", s16 damage)
         EXPECT_MUL_EQ(results[1].damage, UQ_4_12(0.5), results[0].damage); // 
         EXPECT_MUL_EQ(results[1].damage, UQ_4_12(1), results[2].damage); // 
         EXPECT_MUL_EQ(results[1].damage, UQ_4_12(1), results[3].damage); // 
+    }
+}
+
+DOUBLE_BATTLE_TEST("POKE47: Incendiary 50% traps both opponents in Fire Spin")
+{
+    PASSES_RANDOMLY(50, 100, RNG_POISON_TOUCH);
+    GIVEN {
+        PLAYER(SPECIES_FLAREON) { Ability(ABILITY_INCENDIARY);  }
+        PLAYER(SPECIES_SIZZLIPEDE);
+        PLAYER(SPECIES_SIZZLIPEDE);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_FLAME_CHARGE, target: opponentLeft); }
+        TURN { SWITCH(playerLeft, 2); }
+    } SCENE {
+        // turn 1
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
+        MESSAGE("The opposing Wobbuffet is hurt by Fire Spin!");
+        HP_BAR(opponentLeft);
+        MESSAGE("The opposing Wynaut is hurt by Fire Spin!");
+        HP_BAR(opponentRight);
+        // turn 2 - Fire Spin continues even after Flareon switches out
+        MESSAGE("The opposing Wobbuffet is hurt by Fire Spin!");
+        HP_BAR(opponentLeft);
+        MESSAGE("The opposing Wynaut is hurt by Fire Spin!");
+        HP_BAR(opponentRight);
     }
 }
 

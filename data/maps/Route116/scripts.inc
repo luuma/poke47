@@ -17,23 +17,22 @@ Route116_EventScript_SetWandasBoyfriendPos::
 	return
 
 Route116_OnLoad:
-	call_if_set FLAG_RECEIVED_WAILMER_PAIL, Route116_EventScript_CheckOpenShaymin
+	call Route116_EventScript_CheckOpenShaymin
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_NORTH, AbnormalWeather_EventScript_PlaceTilesRoute116North
 	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_116_SOUTH, AbnormalWeather_EventScript_PlaceTilesRoute116South
 	end
 
 Route116_EventScript_CheckOpenShaymin:
-        goto_if_set FLAG_GRACIDEA, Route116_EventScript_OpenToShaymin
-        goto_if_set FLAG_SHAYMIN_CAUGHT, Common_EventScript_NopReturn
-Route116_EventScript_OpenToShaymin:
-	setmetatile 7, 3, METATILE_General_DefaultGrass1, FALSE
-	setmetatile 7, 2, METATILE_General_DefaultGrass1, FALSE
-	setmetatile 7, 1, METATILE_General_DefaultGrass1, FALSE
-	setmetatile 7, 0, METATILE_General_Grass_TreeDown, TRUE
-	setmetatile 6, 0, METATILE_General_DefaultGrass1, FALSE
-	setmetatile 6, 1, METATILE_General_Grass_TreeUp, FALSE
-	@ special DrawWholeMapView
-        goto_if_unset FLAG_SHAYMIN_CAUGHT, Route116_EventScript_shayminclearflagencountered
+        goto_if_unset FLAG_RECEIVED_WAILMER_PAIL, Route116_EventScript_CloseToShaymin
+        goto_if_set FLAG_GRACIDEA, Common_EventScript_NopReturn @leave open if gracidea
+	getplayerxy VAR_TEMP_0, VAR_TEMP_1
+	goto_if_le VAR_TEMP_1, 1, Common_EventScript_NopReturn @leave open if north
+        goto_if_unset FLAG_SHAYMIN_CAUGHT, Route116_EventScript_shayminclearflagencountered @leave open and also clear
+Route116_EventScript_CloseToShaymin:
+	setmetatile 7, 3, METATILE_General_Grass_TreeDown, TRUE
+	setmetatile 7, 2, 0x0c6, TRUE
+	setmetatile 7, 1, 0x0c6, TRUE
+	setmetatile 7, 0, 0x0c6, TRUE
 	return
 
 Route116_EventScript_shayminclearflagencountered:

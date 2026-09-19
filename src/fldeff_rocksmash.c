@@ -227,6 +227,26 @@ static const enum Item GraniteCaveSmashTable[] = {
     ITEM_ROCK_GEM,//15
 };
 
+
+static const enum Item DesertUnderpassTable[] = {
+    ITEM_SOFT_SAND,//0
+    ITEM_SOFT_SAND,
+    ITEM_SOFT_SAND,
+    ITEM_STARDUST, 
+    ITEM_STARDUST,
+    ITEM_DOME_FOSSIL,//5
+    ITEM_HELIX_FOSSIL,
+    ITEM_ROOT_FOSSIL,
+    ITEM_CLAW_FOSSIL, 
+    ITEM_OLD_AMBER,
+    ITEM_DOME_FOSSIL,//10
+    ITEM_HELIX_FOSSIL,
+    ITEM_ROOT_FOSSIL,
+    ITEM_CLAW_FOSSIL, 
+    ITEM_OLD_AMBER,
+    ITEM_OLD_AMBER,//15
+};
+
 static const enum Item GauntletSmashTable[] = {
     ITEM_HARD_STONE,//0
     ITEM_HARD_STONE,
@@ -301,6 +321,10 @@ void rockSmashGenerateItemp47(void)
     else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_GRANITE_CAVE_B2F) &&
             gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_GRANITE_CAVE_B2F))
         item = GraniteCaveSmashTable[randomItem];
+    else if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_DESERT_UNDERPASS) &&
+            gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_DESERT_UNDERPASS))
+        item = DesertUnderpassTable[randomItem];
+
     else
         item = CustomSmashTable[randomItem];
     VarSet(VAR_0x8005, item);

@@ -195,16 +195,76 @@ static const struct {
     u8 location;
 } sPokeOutbreakSpeciesList[] = {
     {
+        .species = SPECIES_LICKITUNG,
+        .moves = {MOVE_LICK},
+        .level = 3,
+        .location = MAP_NUM(MAP_ROUTE101)
+    },
+    {
         .species = SPECIES_HOPPIP,
         .moves = {MOVE_SAFEGUARD, MOVE_TAIL_WHIP, MOVE_POISON_POWDER},
         .level = 4,
         .location = MAP_NUM(MAP_ROUTE102)
     },
     {
+        .species = SPECIES_RALTS,
+        .moves = {MOVE_GROWL, MOVE_GRAVITY, MOVE_DOUBLE_TEAM},
+        .level = 4,
+        .location = MAP_NUM(MAP_ROUTE103)
+    },
+    {
+        .species = SPECIES_PARAS,
+        .moves = {MOVE_SCRATCH, MOVE_STUN_SPORE, MOVE_POWDER},
+        .level = 6,
+        .location = MAP_NUM(MAP_ROUTE104),
+    },
+    {
+        .species = SPECIES_POLIWAG,
+        .moves = {MOVE_HYPNOSIS, MOVE_WATER_SPORT, MOVE_MUD_SPORT, MOVE_COUNTER},
+        .level = 25,
+        .location = MAP_NUM(MAP_ROUTE105),
+    },
+    {
+        .species = SPECIES_MARILL,
+        .moves = {MOVE_AQUA_RING, MOVE_HELPING_HAND, MOVE_BUBBLE_BEAM, MOVE_BELLY_DRUM},
+        .level = 27,
+        .location = MAP_NUM(MAP_ROUTE106),
+    },
+    {
+        .species = SPECIES_SHELLDER,
+        .moves = {MOVE_PROTECT, MOVE_ICICLE_SPEAR, MOVE_BUBBLE_BEAM, MOVE_LICK},
+        .level = 26,
+        .location = MAP_NUM(MAP_ROUTE107),
+    },
+    {
+        .species = SPECIES_TENTACOOL,
+        .moves = {MOVE_TOXIC_SPIKES, MOVE_ACID_SPRAY, MOVE_BUBBLE, MOVE_SUPERSONIC},
+        .level = 25,
+        .location = MAP_NUM(MAP_ROUTE108),
+    },
+    {
+        .species = SPECIES_REMORAID,
+        .moves = {MOVE_BUBBLE_BEAM, MOVE_AURORA_BEAM, MOVE_LOCK_ON, MOVE_LASER_FOCUS},
+        .level = 25,
+        .location = MAP_NUM(MAP_ROUTE109),
+    },
+    {
+        .species = SPECIES_GULPIN,
+        .moves = {MOVE_YAWN, MOVE_POISON_GAS, MOVE_PURIFY, MOVE_CORROSIVE_GAS},
+        .level = 13,
+        .location = MAP_NUM(MAP_ROUTE110),
+    },
+    {
         .species = SPECIES_BALTOY,
         .moves = {MOVE_SKILL_SWAP, MOVE_RAPID_SPIN, MOVE_PSYBEAM, MOVE_HEAL_BLOCK},
         .level = 21,
         .location = MAP_NUM(MAP_ROUTE111),
+    },
+    {
+        .species = SPECIES_NUMEL,
+        .moves = {MOVE_MAGNITUDE, MOVE_AMNESIA, MOVE_FOCUS_ENERGY, MOVE_INCINERATE},
+        .level = 16,
+        .location = MAP_NUM(MAP_ROUTE112),
     },
     {
         .species = SPECIES_NINCADA,
@@ -219,16 +279,172 @@ static const struct {
         .location = MAP_NUM(MAP_ROUTE114),
     },
     {
+        .species = SPECIES_SWABLU,
+        .moves = {MOVE_TWISTER, MOVE_SING, MOVE_NATURES_MADNESS, MOVE_MISTY_TERRAIN},
+        .level = 15,
+        .location = MAP_NUM(MAP_ROUTE115),
+    },
+    {
+        .species = SPECIES_EEVEE,
+        .moves = {MOVE_DISARM, MOVE_HELPING_HAND, MOVE_BABY_DOLL_EYES, MOVE_TACKLE},
+        .level = 8,
+        .location = MAP_NUM(MAP_ROUTE116),
+    },
+    {
+        .species = SPECIES_SURSKIT,
+        .moves = {MOVE_QUICK_ATTACK, MOVE_WISH, MOVE_SAFEGUARD, MOVE_SWEET_SCENT},
+        .level = 13,
+        .location = MAP_NUM(MAP_ROUTE117),
+    },
+    {
+        .species = SPECIES_TROPIUS,
+        .moves = {MOVE_GUST, MOVE_SUNNY_DAY, MOVE_RAZOR_LEAF, MOVE_SAFEGUARD},
+        .level = 26,
+        .location = MAP_NUM(MAP_ROUTE118),
+    },
+    {
+        .species = SPECIES_CASTFORM,
+        .moves = {MOVE_RAIN_DANCE, MOVE_HAIL, MOVE_DISARM, MOVE_SUNNY_DAY},
+        .level = 25,
+        .location = MAP_NUM(MAP_ROUTE119),
+    },
+    {
+        .species = SPECIES_ODDISH,
+        .moves = {MOVE_SLEEP_POWDER, MOVE_LUCKY_CHANT, MOVE_GIGA_DRAIN, MOVE_CAMOUFLAGE},
+        .level = 25,
+        .location = MAP_NUM(MAP_ROUTE120),
+    },
+    {
         .species = SPECIES_SCYTHER,
         .moves = {MOVE_X_SCISSOR, MOVE_FRUSTRATION, MOVE_SOLAR_BLADE, MOVE_ACROBATICS},
         .level = 25,
         .location = MAP_NUM(MAP_ROUTE121),
     },
     {
-        .species = SPECIES_PARAS,
-        .moves = {MOVE_SCRATCH, MOVE_STUN_SPORE, MOVE_POWDER},
-        .level = 6,
+        .species = SPECIES_SHUPPET,
+        .moves = {MOVE_ASTONISH, MOVE_HEAL_BLOCK, MOVE_GRUDGE, MOVE_SPITE},
+        .level = 27,
+        .location = MAP_NUM(MAP_ROUTE122),
+    },
+    {
+        .species = SPECIES_ARON,
+        .moves = {MOVE_EARTH_POWER, MOVE_IRON_TAIL, MOVE_SMACK_DOWN, MOVE_IRON_DEFENSE},
+        .level = 25,
+        .location = MAP_NUM(MAP_ROUTE123),
+    },
+    {
+        .species = SPECIES_CHINCHOU,
+        .moves = {MOVE_WILD_CHARGE, MOVE_CONFUSE_RAY, MOVE_AQUA_CUTTER, MOVE_ION_DELUGE},
+        .level = 28,
+        .location = MAP_NUM(MAP_ROUTE124),
+    },
+    {
+        .species = SPECIES_SPHEAL,
+        .moves = {MOVE_ROLLOUT, MOVE_ICE_BALL, MOVE_DEFENSE_CURL, MOVE_ENCORE},
+        .level = 29,
+        .location = MAP_NUM(MAP_ROUTE125),
+    },
+    {
+        .species = SPECIES_CLAMPERL,
+        .moves = {MOVE_CLAMP, MOVE_WHIRLPOOL, MOVE_IRON_DEFENSE, MOVE_ENCORE},
+        .level = 29,
+        .location = MAP_NUM(MAP_ROUTE126),
+    },
+    {
+        .species = SPECIES_TENTACOOL,
+        .moves = {MOVE_ROLLOUT, MOVE_ICE_BALL, MOVE_DEFENSE_CURL, MOVE_ENCORE},
+        .level = 29,
+        .location = MAP_NUM(MAP_ROUTE127),
+    },
+    {
+        .species = SPECIES_BELLSPROUT,
+        .moves = {MOVE_ACID_SPRAY, MOVE_WRING_OUT, MOVE_SLEEP_POWDER, MOVE_INGRAIN},
+        .level = 26,
+        .location = MAP_NUM(MAP_ROUTE128),
+    },
+    {
+        .species = SPECIES_ZUBAT,
+        .moves = {MOVE_POISON_FANG, MOVE_AIR_CUTTER, MOVE_CONFUSE_RAY, MOVE_LEECH_LIFE},
+        .level = 29,
+        .location = MAP_NUM(MAP_ROUTE129),
+    },
+    {
+        .species = SPECIES_KRABBY,
+        .moves = {MOVE_CRUSH_GRIP, MOVE_AQUA_JET, MOVE_METAL_CLAW, MOVE_CLAMP},
+        .level = 29,
+        .location = MAP_NUM(MAP_ROUTE130),
+    },
+    {
+        .species = SPECIES_WYNAUT,
+        .moves = {MOVE_ENCORE, MOVE_SPLASH, MOVE_COMEUPPANCE, MOVE_TAIL_WHIP},
+        .level = 20,
+        .location = MAP_NUM(MAP_ROUTE131),
+    },
+    {
+        .species = SPECIES_CORSOLA,
+        .moves = {MOVE_BUBBLE_BEAM, MOVE_REFRESH, MOVE_LUCKY_CHANT, MOVE_RECOVER},
+        .level = 23,
+        .location = MAP_NUM(MAP_ROUTE132),
+    },
+    {
+        .species = SPECIES_HORSEA,
+        .moves = {MOVE_SOAK, MOVE_OCTAZOOKA, MOVE_DRAGON_DANCE, MOVE_TWISTER},
+        .level = 29,
+        .location = MAP_NUM(MAP_ROUTE133),
+    },
+    {
+        .species = SPECIES_DRATINI,
+        .moves = {MOVE_DRAGON_TAIL, MOVE_TWISTER, MOVE_THUNDER_WAVE, MOVE_LEER},
+        .level = 25,
+        .location = MAP_NUM(MAP_ROUTE134),
+    },
+    {
+        .species = SPECIES_NOSEPASS,
+        .moves = {MOVE_MAGNETIC_FLUX, MOVE_TACKLE, MOVE_HARDEN, MOVE_BLOCK},
+        .level = 8,
+        .location = MAP_NUM(MAP_DEW_BEACH106),
+    },
+    {
+        .species = SPECIES_TYROGUE,
+        .moves = {MOVE_FAKE_OUT, MOVE_COACHING, MOVE_HELPING_HAND, MOVE_MEDITATE},
+        .level = 8,
+        .location = MAP_NUM(MAP_ROUTE_100),
+    },
+    {
+        .species = SPECIES_MAGNEMITE,
+        .moves = {MOVE_CRAFTY_SHIELD, MOVE_MAGNET_BOMB, MOVE_SHOCK_WAVE, MOVE_MIRROR_SHOT},
+        .level = 37,
+        .location = MAP_NUM(MAP_ROUTE135_MAP),
+    },
+    {
+        .species = SPECIES_SPOINK,
+        .moves = {MOVE_PSYCH_UP, MOVE_MAGIC_COAT_AE, MOVE_ODOR_SLEUTH, MOVE_PSYWAVE},
+        .level = 24,
+        .location = MAP_NUM(MAP_ROUTE136),
+    },
+    {
+        .species = SPECIES_SNORUNT,
+        .moves = {MOVE_ICY_WIND, MOVE_HEADBUTT, MOVE_DOUBLE_TEAM, MOVE_BARRIER},
+        .level = 15,
+        .location = MAP_NUM(MAP_INGY_BINGY_ISLAND),
+    },
+    {
+        .species = SPECIES_SABLEYE,
+        .moves = {MOVE_PLUNDER, MOVE_CONFIDE, MOVE_ASTONISH, MOVE_SNATCH},
+        .level = 7,
+        .location = MAP_NUM(MAP_DEW_BEACH106),
+    },
+    {
+        .species = SPECIES_SHROOMISH,
+        .moves = {MOVE_TACKLE, MOVE_STUN_SPORE, MOVE_LEECH_SEED},
+        .level = 7,
         .location = MAP_NUM(MAP_ROUTE104),
+    },
+    {
+        .species = SPECIES_WURMPLE,
+        .moves = {MOVE_POISON_STING, MOVE_STRING_SHOT, MOVE_POWDER},
+        .level = 3,
+        .location = MAP_NUM(MAP_ROUTE101)
     }
 };
 

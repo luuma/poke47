@@ -496,28 +496,28 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_OVERGROW] =
     {
         .name = _("Overgrow"),
-        .description = COMPOUND_STRING("Ups Grass moves in a pinch."),
+        .description = COMPOUND_STRING("Low HP/ally faint ups Grass"),
         .aiRating = 5,
     },
 
     [ABILITY_BLAZE] =
     {
         .name = _("Blaze"),
-        .description = COMPOUND_STRING("Ups Fire moves in a pinch."),
+        .description = COMPOUND_STRING("Low HP/ally faint ups Fire"),
         .aiRating = 5,
     },
 
     [ABILITY_TORRENT] =
     {
         .name = _("Torrent"),
-        .description = COMPOUND_STRING("Ups Water moves in a pinch."),
+        .description = COMPOUND_STRING("Low HP/ally faint ups Water"),
         .aiRating = 5,
     },
 
     [ABILITY_SWARM] =
     {
         .name = _("Swarm"),
-        .description = COMPOUND_STRING("Ups Bug moves in a pinch."),
+        .description = COMPOUND_STRING("Low HP/ally faint ups Bug"),
         .aiRating = 5,
     },
 
@@ -860,7 +860,7 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     {
         .name = _("Ice Body"),
         .description = COMPOUND_STRING("Constantly recovers HP"),
-        .aiRating = 3,
+        .aiRating = 6,
     },
 
     [ABILITY_SOLID_ROCK] =
@@ -2571,5 +2571,33 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
         .name = _("Beam Refractor"),
         .description = COMPOUND_STRING("Sp.Atk = Atk. Sun recharges"),
         .aiRating = 7,
+    },
+
+    [ABILITY_TANK_SHELL] =
+    {
+        .name = _("Tank Shell"),
+        .description = COMPOUND_STRING("Constantly recovers HP"),
+        .aiRating = 6,
+    },
+
+    [ABILITY_ARMOR_TUNING] =
+    {
+        .name = _("Reactive Armor"),
+        .description = COMPOUND_STRING("Defenses respond to hits."),
+        .aiRating = 8,
+    },
+
+    [ABILITY_INCENDIARY] =
+    {
+        .name = _("Incendiary"),
+        .description = COMPOUND_STRING("Moves may trap in fire."),
+        .aiRating = 6,
+    },
+
+    [ABILITY_STATIC_TOUCH] =
+    {
+        .name = _("Static Touch"),
+        .description = COMPOUND_STRING("Contact moves can Paralyze."),
+        .aiRating = 6,
     },
 };

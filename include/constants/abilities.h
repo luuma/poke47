@@ -357,7 +357,10 @@ enum __attribute__((packed)) Ability
     ABILITY_TRICKLAND = (ABILITIES_NEW +11), //
     ABILITY_LINGER,
     ABILITY_BEAM_REFRACTOR,
-
+    ABILITY_TANK_SHELL,//icebod clone
+    ABILITY_ARMOR_TUNING,// absolutely apeshit ability.
+    ABILITY_STATIC_TOUCH,// psn tuch but its para.
+    ABILITY_INCENDIARY,// sets fire spin side 50%. flareon and typhlo
 
     ABILITIES_COUNT,
 };

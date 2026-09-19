@@ -5791,11 +5791,11 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
         .name = COMPOUND_STRING("Steel Wing"),
         .description = COMPOUND_STRING(
             "Strikes the foe with hard\n"
-            "wings spread wide."),
+            "wings. Boosts Defense."),
         .effect = EFFECT_HIT,
-        .power = 70,
+        .power = 75,
         .type = TYPE_STEEL,
-        .accuracy = 90,
+        .accuracy = 100,
         .pp = 25,
         .target = TARGET_SELECTED,
         .priority = 0,
@@ -5806,7 +5806,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             .moveEffect = MOVE_EFFECT_STAT_PLUS,
             .defense = 1,
             .self = TRUE,
-            .chance = 10,
+            .chance = 100,
         }),
         .contestEffect = C_UPDATED_MOVE_EFFECTS >= GEN_6 ? CONTEST_EFFECT_AFFECTED_BY_PREV_APPEAL : CONTEST_EFFECT_BETTER_IF_SAME_TYPE,
         .contestCategory = CONTEST_CATEGORY_COOL,
