@@ -7,7 +7,7 @@ voice_group casino_pinball
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound 60, 0, DirectSoundWaveData_sd90_classical_detuned_ep1_low, 255, 188, 128, 226
-	voice_directsound 60, 65, DirectSoundWaveData_sd90_classical_detuned_ep1_high, 128, 204, 77, 246
+	voice_directsound 60, 65, DirectSoundWaveData_sd90_classical_detuned_ep1_high, 128, 204, 77, 255
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound 60, 0, DirectSoundWaveData_pinball_7_clav, 255, 241, 0, 127
 	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0

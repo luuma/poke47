@@ -576,6 +576,11 @@ gSongTable::
 	song mus_casino_plus_8, MUSIC_PLAYER_BGM, 0
 	song mus_casino_plus_9, MUSIC_PLAYER_BGM, 0
 	song mus_casino_plus_gacha, MUSIC_PLAYER_BGM, 0
+	song mus_gauntlet_opener_102, MUSIC_PLAYER_BGM, 0
+	song mus_rayquaza_appears_extended, MUSIC_PLAYER_BGM, 0
+	song se_itemfinder_3, MUSIC_PLAYER_SE1, 1
+	song mus_littlebird, MUSIC_PLAYER_BGM, 0
+	song mus_creed_of_the_kings_courier, MUSIC_PLAYER_BGM, 0
 	song ph_trap_blend, MUSIC_PLAYER_SE2, 2
 	song ph_trap_held, MUSIC_PLAYER_SE2, 2
 	song ph_trap_solo, MUSIC_PLAYER_SE2, 2
@@ -627,10 +632,6 @@ gSongTable::
 	song ph_nurse_blend, MUSIC_PLAYER_SE2, 2
 	song ph_nurse_held, MUSIC_PLAYER_SE2, 2
 	song ph_nurse_solo, MUSIC_PLAYER_SE2, 2
-	song mus_gauntlet_opener_102, MUSIC_PLAYER_BGM, 0
-	song mus_littlebird, MUSIC_PLAYER_BGM, 0
-	song mus_rayquaza_appears_extended, MUSIC_PLAYER_BGM, 0
-	song se_itemfinder_3, MUSIC_PLAYER_SE1, 1
 
 	.align 2
 dummy_song_header:

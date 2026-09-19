@@ -715,7 +715,7 @@ SINGLE_BATTLE_TEST("POKE47: Beam Refractor makes spatks use atk", s16 damage)
     }
 }
 
-DOUBLE_BATTLE_TEST("POKE47: Incendiary 50% traps both opponents in Fire Spin")
+DOUBLE_BATTLE_TEST("POKE47: Incendiary 50% traps target in Fire Spin")
 {
     PASSES_RANDOMLY(50, 100, RNG_POISON_TOUCH);
     GIVEN {
@@ -732,6 +732,37 @@ DOUBLE_BATTLE_TEST("POKE47: Incendiary 50% traps both opponents in Fire Spin")
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
         MESSAGE("The opposing Wobbuffet is hurt by Fire Spin!");
         HP_BAR(opponentLeft);
+        NONE_OF {
+            MESSAGE("The opposing Wynaut is hurt by Fire Spin!");
+            HP_BAR(opponentRight);
+        }
+        // turn 2 - Fire Spin continues even after Flareon switches out
+        MESSAGE("The opposing Wobbuffet is hurt by Fire Spin!");
+        HP_BAR(opponentLeft);
+        NONE_OF {
+            MESSAGE("The opposing Wynaut is hurt by Fire Spin!");
+            HP_BAR(opponentRight);
+        }
+    }
+}
+
+
+DOUBLE_BATTLE_TEST("POKE47: Incendiary 50% traps all enemy targets in Fire Spin")
+{
+    PASSES_RANDOMLY(50, 100, RNG_POISON_TOUCH);
+    GIVEN {
+        PLAYER(SPECIES_FLAREON) { Ability(ABILITY_INCENDIARY);  }
+        PLAYER(SPECIES_SIZZLIPEDE);
+        PLAYER(SPECIES_SIZZLIPEDE);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(playerLeft, MOVE_LAVA_PLUME); }
+        TURN { SWITCH(playerLeft, 2); }
+    } SCENE {
+        // turn 1
+        MESSAGE("The opposing Wobbuffet is hurt by Fire Spin!");
+        HP_BAR(opponentLeft);
         MESSAGE("The opposing Wynaut is hurt by Fire Spin!");
         HP_BAR(opponentRight);
         // turn 2 - Fire Spin continues even after Flareon switches out
@@ -741,6 +772,5 @@ DOUBLE_BATTLE_TEST("POKE47: Incendiary 50% traps both opponents in Fire Spin")
         HP_BAR(opponentRight);
     }
 }
-
 
 /// ANALYTIC. NOT MOve relearner sadly.

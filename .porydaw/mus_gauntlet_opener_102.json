@@ -7,6 +7,7 @@
                 "track": 0
             }
         ],
+        "eventList": false,
         "gridMinDenom": 0,
         "gridTriplet": false,
         "keyHeight": 11,
@@ -23,12 +24,14 @@
             "voice:5": 128
         },
         "pxPerBeat": 8.539521194355443,
-        "scrollPx": 768,
+        "scrollPx": 0,
         "scrollY": 374,
-        "selectedTrack": 3,
+        "selectedTrack": 4,
         "splitter": [
-            512,
+            500,
+            0,
             332
-        ]
+        ],
+        "tempoLane": false
     }
 }

@@ -4059,6 +4059,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
 
 
 #define SOUND_LIST_BGM              \
+    X(MUS_DUMMY) \
     X(MUS_LITTLEROOT_TEST)          \
     X(MUS_GSC_ROUTE38)              \
     X(MUS_CAUGHT)                   \
@@ -4282,6 +4283,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_GAUNTLET_OPENER)        \
     X(MUS_LITTLEBIRD)        \
     X(MUS_RAYQUAZA_APPEARS_EXTENDED)        \
+    X(MUS_CREED_OF_THE_KINGS_COURIER) \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
@@ -4552,7 +4554,8 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(SE_ARENA_TIMEUP2)             \
     X(SE_PIKE_CURTAIN_CLOSE)        \
     X(SE_PIKE_CURTAIN_OPEN)         \
-    X(SE_SUDOWOODO_SHAKE)
+    X(SE_SUDOWOODO_SHAKE)           \
+    X(SE_ITEMFINDER_3)
 
 // Create song list
 #define X(songId) [songId] = COMPOUND_STRING(#songId),

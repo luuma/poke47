@@ -3202,7 +3202,7 @@ void SetMoveEffect(enum BattlerId battlerAtk, enum BattlerId effectBattler, enum
         // Affects both opponents, but doesn't print strings so we can handle it here.
         for (enum BattlerId battler = 0; battler < MAX_BATTLERS_COUNT; ++battler)
         {
-            if (!IsBattlerAlly(battler, effectBattler))
+            if (!IsBattlerAlly(battler, effectBattler) || !IsBattlerTurnDamaged(battler, EXCLUDING_SUBSTITUTES))// added new clause so incendiary works how i want it to work.
                 continue;
             if (!gBattleMons[battler].volatiles.wrapped)
             {
