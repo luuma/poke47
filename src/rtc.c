@@ -12,11 +12,14 @@
 // iwram bss
 static u16 sErrorStatus;
 static struct SiiRtcInfo sRtc;
+static struct SiiRtcInfo sRtcreal;
 static u8 sProbeResult;
 static u16 sSavedIme;
 
 // iwram common
 COMMON_DATA struct Time gLocalTime = {0};
+
+static void RealRTC_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2);
 
 // const rom
 static const u8 sText_AM[] = _("AM");
@@ -53,8 +56,8 @@ void RtcRestoreInterrupts(void)
 
 u32 ConvertBcdToBinary(u8 bcd)
 {
-    if (OW_USE_FAKE_RTC)
-        return bcd;
+    //if (OW_USE_FAKE_RTC)
+        //return bcd;// very confused as to why this has to return the same value its sent. hm.
 
     if (bcd > 0x9F)
         return 0xFF;
@@ -101,16 +104,27 @@ u16 RtcGetDayCount(struct SiiRtcInfo *rtc)
 {
     u8 year, month, day;
 
-    year = ConvertBcdToBinary(rtc->year);
-    month = ConvertBcdToBinary(rtc->month);
-    day = ConvertBcdToBinary(rtc->day);
+    year = (rtc->year);//ConvertBcdToBinary
+    month = (rtc->month);//ConvertBcdToBinary
+    day = (rtc->day);//ConvertBcdToBinary
+    return ConvertDateToDayCount(year, month, day);
+}
+
+
+u16 RtcGetDayCountReal(struct SiiRtcInfo *rtc)
+{
+    u8 year, month, day;
+
+    year = ConvertBcdToBinary(rtc->year);//ConvertBcdToBinary
+    month = ConvertBcdToBinary(rtc->month);//ConvertBcdToBinary
+    day = ConvertBcdToBinary(rtc->day);//ConvertBcdToBinary
     return ConvertDateToDayCount(year, month, day);
 }
 
 void RtcInit(void)
 {
-    if (OW_USE_FAKE_RTC)
-        return;
+    //if (OW_USE_FAKE_RTC)
+    //    return;
 
     sErrorStatus = 0;
 
@@ -129,14 +143,15 @@ void RtcInit(void)
         sErrorStatus = RTC_INIT_WARNING;
     else
         sErrorStatus = 0;
+    //assertf(FALSE, "errorflags %d", sErrorStatus);
 
-    RtcGetRawInfo(&sRtc);
-    sErrorStatus = RtcCheckInfo(&sRtc);
+    RtcGetRawInfo(&sRtcreal);
+    sErrorStatus = RtcCheckInfo(&sRtcreal);
 }
 
 u16 RtcGetErrorStatus(void)
 {
-    return (OW_USE_FAKE_RTC) ? 0 : sErrorStatus;
+    return sErrorStatus;
 }
 
 void RtcGetInfo(struct SiiRtcInfo *rtc)
@@ -144,6 +159,14 @@ void RtcGetInfo(struct SiiRtcInfo *rtc)
     if (OW_USE_FAKE_RTC)
         FakeRtc_GetRawInfo(rtc);
     else if (sErrorStatus & RTC_ERR_FLAG_MASK)
+        *rtc = sRtcDummy;
+    else
+        RtcGetRawInfo(rtc);
+}
+
+void RtcGetInfoReal(struct SiiRtcInfo *rtc)
+{
+    if (sErrorStatus & RTC_ERR_FLAG_MASK)
         *rtc = sRtcDummy;
     else
         RtcGetRawInfo(rtc);
@@ -176,8 +199,8 @@ u16 RtcCheckInfo(struct SiiRtcInfo *rtc)
     s32 month;
     s32 value;
 
-    if (OW_USE_FAKE_RTC)
-        return 0;
+    //if (OW_USE_FAKE_RTC)
+       // return 0;
 
     if (rtc->status & SIIRTCINFO_POWER)
         errorFlags |= RTC_ERR_POWER_FAILURE;
@@ -234,7 +257,7 @@ void RtcReset(void)
     if (OW_USE_FAKE_RTC)
     {
         FakeRtc_Reset();
-        return;
+        //return;
     }
 
     RtcDisableInterrupts();
@@ -290,9 +313,9 @@ static void UNUSED FormatHexDate(u8 *dest, s32 year, s32 month, s32 day)
 void RtcCalcTimeDifference(struct SiiRtcInfo *rtc, struct Time *result, struct Time *t)
 {
     u16 days = RtcGetDayCount(rtc);
-    result->seconds = ConvertBcdToBinary(rtc->second) - t->seconds;
-    result->minutes = ConvertBcdToBinary(rtc->minute) - t->minutes;
-    result->hours = ConvertBcdToBinary(rtc->hour) - t->hours;
+    result->seconds = (rtc->second) - t->seconds;// used the bcd converter before
+    result->minutes = (rtc->minute) - t->minutes;
+    result->hours = (rtc->hour) - t->hours;
     result->days = days - t->days;
 
     if (result->seconds < 0)
@@ -318,6 +341,44 @@ void RtcCalcLocalTime(void)
 {
     RtcGetInfo(&sRtc);
     RtcCalcTimeDifference(&sRtc, &gLocalTime, &gSaveBlock2Ptr->localTimeOffset);
+}
+
+
+void RtcWriteTimeToSavefile(void)
+{
+    if (sErrorStatus & RTC_ERR_FLAG_MASK)
+    {
+        assertf(FALSE, "Error. here is error status: %d", sErrorStatus );
+        return;
+    }
+    RtcGetRawInfo(&sRtcreal);
+    struct Time diff;//zeroed
+    diff.seconds = 0;
+    diff.minutes = 0;
+    diff.hours = 0;
+    diff.days = 0;
+    gSaveBlock3Ptr->LastSavedTimePresent = TRUE;
+    RealRTC_CalcTimeDifference(&gSaveBlock3Ptr->LastSavedTime, &sRtcreal, &diff);// real minus diff gives current time
+    assertf(FALSE, "days %d", gSaveBlock3Ptr->LastSavedTime.days);
+}
+
+void RtcAddElapsedTimeToFakeRTC(void)
+{
+    if (sErrorStatus & RTC_ERR_FLAG_MASK || !gSaveBlock3Ptr->LastSavedTimePresent)
+    {
+        assertf(gSaveBlock3Ptr->LastSavedTimePresent, "unset. here is error status: %d", sErrorStatus );
+        return;
+    }
+    RtcGetRawInfo(&sRtcreal);
+    //Script_PauseFakeRtc();
+    struct Time diff;
+    
+    RealRTC_CalcTimeDifference(&diff, &sRtcreal, &gSaveBlock3Ptr->LastSavedTime);// real minus prev gives diff
+    FakeRtc_AdvanceTimeBy(diff.days, diff.hours, diff.minutes, diff.seconds);
+        assertf(FALSE, "secs %d", diff.seconds);
+    assertf(FALSE, "mins %d", diff.minutes);
+    assertf(FALSE, "days %d", diff.days);
+    //Script_ResumeFakeRtc();
 }
 
 bool8 IsBetweenHours(s32 hours, s32 begin, s32 end)
@@ -357,6 +418,33 @@ void RtcCalcLocalTimeOffset(s32 days, s32 hours, s32 minutes, s32 seconds)
     RtcCalcTimeDifference(&sRtc, &gSaveBlock2Ptr->localTimeOffset, &gLocalTime);
 }
 
+static void RealRTC_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2)
+{
+    result->seconds = ConvertBcdToBinary(t1->second) - t2->seconds;
+    result->minutes = ConvertBcdToBinary(t1->minute) - t2->minutes;
+    result->hours = ConvertBcdToBinary(t1->hour) - t2->hours;
+    result->days = ConvertBcdToBinary(t1->day) - t2->days;
+
+    if (result->seconds < 0)
+    {
+        result->seconds += SECONDS_PER_MINUTE;
+        --result->minutes;
+    }
+
+    if (result->minutes < 0)
+    {
+        result->minutes += MINUTES_PER_HOUR;
+        --result->hours;
+    }
+
+    if (result->hours < 0)
+    {
+        result->hours += HOURS_PER_DAY;
+        --result->days;
+    }
+}
+
+
 void CalcTimeDifference(struct Time *result, struct Time *t1, struct Time *t2)
 {
     result->seconds = t2->seconds - t1->seconds;
@@ -393,6 +481,7 @@ u32 RtcGetLocalDayCount(void)
 {
     return RtcGetDayCount(&sRtc);
 }
+
 
 void FormatDecimalTimeWithoutSeconds(u8 *txtPtr, s8 hour, s8 minute, bool32 is24Hour)
 {

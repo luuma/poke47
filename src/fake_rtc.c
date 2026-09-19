@@ -13,8 +13,6 @@
 #include "main.h"
 
 
-static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2);
-
 void FakeRtc_Reset(void)
 {
 #if OW_USE_FAKE_RTC
@@ -89,7 +87,7 @@ void FakeRtc_ForwardTimeTo(u32 hour, u32 minute, u32 second)
 
 
 
-static void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2)
+void FakeRtc_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2)
 {
     result->seconds = t2->seconds - t1->second;
     result->minutes = t2->minutes - t1->minute;

@@ -292,9 +292,9 @@ static void SeedRngWithRtc(void)
     #define BCD8(x) ((((x) >> 4) & 0xF) * 10 + ((x) & 0xF))
     u32 seconds;
     struct SiiRtcInfo rtc;
-    RtcGetInfo(&rtc);
+    RtcGetInfoReal(&rtc);
     seconds =
-        ((HOURS_PER_DAY * RtcGetDayCount(&rtc) + BCD8(rtc.hour))
+        ((HOURS_PER_DAY * RtcGetDayCountReal(&rtc) + BCD8(rtc.hour))
         * MINUTES_PER_HOUR + BCD8(rtc.minute))
         * SECONDS_PER_MINUTE + BCD8(rtc.second);
     SeedRng(seconds);

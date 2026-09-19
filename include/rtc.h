@@ -42,4 +42,10 @@ enum TimeOfDay GenConfigTimeOfDay(enum TimeOfDay timeOfDay);
 enum TimeOfDay TryIncrementTimeOfDay(enum TimeOfDay timeOfDay);
 enum TimeOfDay TryDecrementTimeOfDay(enum TimeOfDay timeOfDay);
 
+void RtcWriteTimeToSavefile(void);
+void RtcAddElapsedTimeToFakeRTC(void);
+u16 RtcGetDayCountReal(struct SiiRtcInfo *rtc);
+void RtcGetInfoReal(struct SiiRtcInfo *rtc);
+
+
 #endif // GUARD_RTC_UTIL_H

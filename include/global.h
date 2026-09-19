@@ -310,6 +310,8 @@ struct SaveBlock3
     u8 paddingggg;
     u32 padding[7];
     struct GIStarts GauntletIslandStartingBenefits;
+    struct Time LastSavedTime;
+    bool32 LastSavedTimePresent;
  // unused go below:    
 #if FNPC_ENABLE_NPC_FOLLOWERS
     struct NPCFollower NPCfollower;
