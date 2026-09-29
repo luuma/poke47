@@ -4942,7 +4942,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .enemyMonElevation = 17,                            \
         .backPic = gMonBackPic_MiniorMeteor,                \
         .backPicSize = MON_COORDS_SIZE(56, 40),             \
-        .backPicYOffset = 11,                               \
+        .backPicYOffset = 13,                               \
         /*.backAnimId = BACK_ANIM_NONE,*/                   \
         .palette = gMonPalette_MiniorMeteor,                \
         .shinyPalette = gMonShinyPalette_MiniorMeteor,      \
@@ -4987,7 +4987,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .enemyMonElevation = 17,                                \
         .backPic = gMonBackPic_MiniorCore,                      \
         .backPicSize = MON_COORDS_SIZE(56, 40),                 \
-        .backPicYOffset = 13,                                   \
+        .backPicYOffset = 11,                                   \
         /*.backAnimId = BACK_ANIM_NONE,*/                       \
         .palette = gMonPalette_MiniorCore##Form,                \
         .shinyPalette = gMonShinyPalette_MiniorCore,            \
@@ -4999,7 +4999,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             sPicTable_MiniorMeteor,                         \
             SIZE_32x32,                                     \
             SHADOW_SIZE_M,                                  \
-            TRACKS_FOOT,                                    \
+            TRACKS_NONE,                                    \
             sAnimTable_Following,                           \
             gOverworldPalette_MiniorMeteor,                 \
             gShinyOverworldPalette_MiniorMeteor             \
@@ -5114,7 +5114,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MONSTER, EGG_GROUP_DRAGON),
-        .abilities = { ABILITY_DAUNTLESS_SHIELD, ABILITY_NONE, ABILITY_DROUGHT},
+        .abilities = { ABILITY_DAUNTLESS_SHIELD, ABILITY_NONE, ABILITY_INCENDIARY},
         .bodyColor = BODY_COLOR_RED,
         .speciesName = _("Turtonator"),
         .cryId = CRY_TURTONATOR,

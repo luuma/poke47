@@ -816,9 +816,9 @@ Route110_Text_MayTakeThis:
 	.string "This is from me!$"
 
 Route110_Text_MayExplainItemfinder:
-	.string "MAY: That's an ITEMFINDER.\p"
-	.string "Try it out. If there is an item that's\n"
-	.string "not visible, it emits a sound.\p"
+	.string "MAY: That's a DOWSING MACHINE.\p"
+	.string "It's like Autobattling POKéMON! If it\n"
+	.string "sees a hidden item, it makes a sound.\p"
 	.string "Okay, {PLAYER}{KUN}, let's meet again!\p"
 	.string "I know it's a little silly coming from\n"
 	.string "me, but I think you should train a lot\l"
@@ -842,11 +842,11 @@ Route110_Text_BrendanTakeThis:
 	.string "Here, take this.$"
 
 Route110_Text_BrendanExplainItemfinder:
-	.string "BRENDAN: That's an ITEMFINDER.\p"
-	.string "Use it to root around for items that\n"
-	.string "aren't visible.\p"
-	.string "If it senses something, it emits\n"
-	.string "a sound.\p"
+	.string "BRENDAN: That's an DOWSING.\p"
+	.string "MACHINE. Use it to root around for\n"
+	.string "items that aren't visible.\p"
+	.string "It's like POKéMON. If it senses\n"
+	.string "something, it emits a sound.\p"
 	.string "Anyway, I'm off to look for new\n"
 	.string "POKéMON.$"
 

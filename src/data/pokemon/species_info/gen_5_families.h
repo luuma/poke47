@@ -2203,7 +2203,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Unfezant,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Unfezant,
             gShinyOverworldPalette_Unfezant
@@ -2212,7 +2212,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_UnfezantF,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_UnfezantF,
             gShinyOverworldPalette_UnfezantF
@@ -4486,7 +4486,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
-        .abilities  = {ABILITY_CHLOROPHYLL, ABILITY_DANCER, ABILITY_MEGA_SOL},// own tempo niche important. hmm
+        .abilities  = {ABILITY_CHLOROPHYLL, ABILITY_OWN_TEMPO, ABILITY_MEGA_SOL},//petal dance berserk gene lilligant lmao
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = TRUE,
         .speciesName = _("Lilligant"),
@@ -12043,6 +12043,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .catchRate = 45,
         .expYield = 172,
         .evYield_Attack = 2,
+        .itemCommon = ITEM_BERSERK_GENE,
         .genderRatio = PERCENT_FEMALE(50),
         .eggCycles = 20,
         .friendship = STANDARD_FRIENDSHIP,

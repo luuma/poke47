@@ -519,6 +519,19 @@
       "trainer_sight_or_berry_tree_id": "ITEM_TM_X_SCISSOR",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_ROUTE_133_MAX_REVIVE"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(DRIFLOON)",
+      "x": 34,
+      "y": 25,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WATCH_PLAYER_OWE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_OW_WILD_ENCOUNTER",
+      "trainer_sight_or_berry_tree_id": "22",
+      "script": "InteractWithOverworldWildEncounter",
+      "flag": "FLAG_DAILY_DRIFLOON"
     }
   ],
   "warp_events": [
@@ -567,7 +580,7 @@
     {
       "warp_id": "WARP_ID_FLY_ROUTE_110",
       "x": 22,
-      "y": 15,
+      "y": 40,
       "elevation": 0,
       "dest_map": "MAP_ROUTE110",
       "dest_warp_id": "0"

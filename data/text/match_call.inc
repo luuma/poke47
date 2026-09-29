@@ -1,3 +1,32 @@
+MatchCall_WeaknessPolicyText::
+	.string "Hi there! I'm calling you\n"
+	.string "on behalf of STONE Insurance\p"
+	.string "I wanted to ask if you have\n"
+	.string "recently been affected by a\l"
+	.string "SUPER EFFECTIVE attack that\l"
+	.string "wasn't your fault?\p"
+	.string "I'm sorry, I heard no response,\n"
+	.string "And in the cold caller world,\l"
+	.string "No response means YES!!!\p"
+	.string "CONGRATULATIONS!!!\p"
+	.string "{PLAY_SE SE_ITEMFINDER}Huh!? A Weakness Policy appeared\n"
+	.string "in the Item pocket!$"
+
+MatchCall_BlunderPolicyText::
+	.string "Hi there! I'm calling you\n"
+	.string "on behalf of STONE Insurance\p"
+	.string "I wanted to ask if you have\n"
+	.string "been involved in the use\l"
+	.string "of a missed attack that\l"
+	.string "wasn't your fault?\p"
+	.string "I'm sorry, I heard no response,\n"
+	.string "And in the cold caller world,\l"
+	.string "no response means YES!!!\p"
+	.string "CONGRATULATIONS!!!\p"
+	.string "{PLAY_SE SE_ITEMFINDER}Huh!? A Blunder Policy appeared\n"
+	.string "in the Item pocket!$"
+
+
 MatchCall_WildBattleText1::
 	.string "Hi! {PLAYER}{KUN}, hello!\n"
 	.string "This is {STR_VAR_1}.\p"
@@ -2926,7 +2955,7 @@ MatchCall_Text_MrStone7::
 
 MatchCall_Text_MrStone8::
 	.string "…Huh? …What's that?\p"
-	.string "GROU… Yes? …DON?\p"
+	.string "RESHI… Yes? …RAM?\p"
 	.string "You're breaking up…\n"
 	.string "…can't hear…\p"
 	.string "BZZZZ…$"

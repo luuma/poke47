@@ -63,9 +63,10 @@ u32 ConvertBcdToBinary(u8 bcd)
         return 0xFF;
 
     if ((bcd & 0xF) <= 9)
-        return (10 * ((bcd >> 4) & 0xF)) + (bcd & 0xF);
-    else
-        return 0xFF;
+    {
+        return ((10 * ((bcd >> 4) & 0xF)) + (bcd & 0xF));
+    }
+    return 0xFF;
 }
 
 bool8 IsLeapYear(u32 year)
@@ -111,14 +112,14 @@ u16 RtcGetDayCount(struct SiiRtcInfo *rtc)
 }
 
 
-u16 RtcGetDayCountReal(struct SiiRtcInfo *rtc)
+u16 RtcGetDayCountReal(struct SiiRtcInfo *rtc)/// unused..
 {
-    u8 year, month, day;
+    //u8 year, month, day;
 
-    year = ConvertBcdToBinary(rtc->year);//ConvertBcdToBinary
-    month = ConvertBcdToBinary(rtc->month);//ConvertBcdToBinary
-    day = ConvertBcdToBinary(rtc->day);//ConvertBcdToBinary
-    return ConvertDateToDayCount(year, month, day);
+   // year = ConvertBcdToBinary(rtc->year);//ConvertBcdToBinary
+   // month = ConvertBcdToBinary(rtc->month);//ConvertBcdToBinary
+   // day = ConvertBcdToBinary(rtc->day);//ConvertBcdToBinary
+    return 0xFF; //ConvertDateToDayCount(year, month, day);
 }
 
 void RtcInit(void)
@@ -145,8 +146,8 @@ void RtcInit(void)
         sErrorStatus = 0;
     //assertf(FALSE, "errorflags %d", sErrorStatus);
 
-    RtcGetRawInfo(&sRtcreal);
-    sErrorStatus = RtcCheckInfo(&sRtcreal);
+    RtcGetRawInfo(&sRtcreal);//must be raw info else the error statuses will never update. why is this sometimes giving me a dead screen. nightmare
+    sErrorStatus |= RealRtcCheckInfo(&sRtcreal);
 }
 
 u16 RtcGetErrorStatus(void)
@@ -192,7 +193,7 @@ void RtcGetRawInfo(struct SiiRtcInfo *rtc)
     RtcGetDateTime(rtc);
 }
 
-u16 RtcCheckInfo(struct SiiRtcInfo *rtc)
+u16 RealRtcCheckInfo(struct SiiRtcInfo *rtc)
 {
     u16 errorFlags = 0;
     s32 year;
@@ -216,24 +217,27 @@ u16 RtcCheckInfo(struct SiiRtcInfo *rtc)
     month = ConvertBcdToBinary(rtc->month);
 
     if (month == 0xFF || month == 0 || month > MONTH_COUNT)
-        errorFlags |= RTC_ERR_INVALID_MONTH;
-
-    value = ConvertBcdToBinary(rtc->day);
-
-    if (value == 0xFF)
-        errorFlags |= RTC_ERR_INVALID_DAY;
-
-    if (month == MONTH_FEB)
     {
-        if (value > IsLeapYear(year) + sNumDaysInMonths[month - 1])
-            errorFlags |= RTC_ERR_INVALID_DAY;
+        errorFlags |= (RTC_ERR_INVALID_MONTH | RTC_ERR_INVALID_DAY);
     }
-    else
+    else // fucking think i found it. this should never check the date when month is fucked, as sNumDaysInMonths is reliant on a month and must be checked.
     {
-        if (value > sNumDaysInMonths[month - 1])
-            errorFlags |= RTC_ERR_INVALID_DAY;
-    }
+        value = ConvertBcdToBinary(rtc->day);
 
+        if (value == 0xFF)
+            errorFlags |= RTC_ERR_INVALID_DAY;
+
+        if (month == MONTH_FEB)
+        {
+            if (value > IsLeapYear(year) + sNumDaysInMonths[month - 1])
+                errorFlags |= RTC_ERR_INVALID_DAY;
+        }
+        else
+        {
+            if (value > sNumDaysInMonths[month - 1])
+                errorFlags |= RTC_ERR_INVALID_DAY;
+        }
+    }
     value = ConvertBcdToBinary(rtc->hour);
 
     if (value > HOURS_PER_DAY)
@@ -351,7 +355,7 @@ void RtcWriteTimeToSavefile(void)
         assertf(FALSE, "Error. here is error status: %d", sErrorStatus );
         return;
     }
-    RtcGetRawInfo(&sRtcreal);
+    RtcGetInfoReal(&sRtcreal);
     struct Time diff;//zeroed
     diff.seconds = 0;
     diff.minutes = 0;
@@ -359,7 +363,7 @@ void RtcWriteTimeToSavefile(void)
     diff.days = 0;
     gSaveBlock3Ptr->LastSavedTimePresent = TRUE;
     RealRTC_CalcTimeDifference(&gSaveBlock3Ptr->LastSavedTime, &sRtcreal, &diff);// real minus diff gives current time
-    assertf(FALSE, "days %d", gSaveBlock3Ptr->LastSavedTime.days);
+    //assertf(FALSE, "days %d", gSaveBlock3Ptr->LastSavedTime.days);
 }
 
 void RtcAddElapsedTimeToFakeRTC(void)
@@ -369,16 +373,15 @@ void RtcAddElapsedTimeToFakeRTC(void)
         assertf(gSaveBlock3Ptr->LastSavedTimePresent, "unset. here is error status: %d", sErrorStatus );
         return;
     }
-    RtcGetRawInfo(&sRtcreal);
-    //Script_PauseFakeRtc();
+    RtcGetInfoReal(&sRtcreal);
     struct Time diff;
     
     RealRTC_CalcTimeDifference(&diff, &sRtcreal, &gSaveBlock3Ptr->LastSavedTime);// real minus prev gives diff
+    //assertf(FALSE, "secs %d", diff.seconds);
+    //assertf(FALSE, "mins %d", diff.minutes);
+    //assertf(FALSE, "days %d", diff.days); // wait did these make it break what the fuck.
+
     FakeRtc_AdvanceTimeBy(diff.days, diff.hours, diff.minutes, diff.seconds);
-        assertf(FALSE, "secs %d", diff.seconds);
-    assertf(FALSE, "mins %d", diff.minutes);
-    assertf(FALSE, "days %d", diff.days);
-    //Script_ResumeFakeRtc();
 }
 
 bool8 IsBetweenHours(s32 hours, s32 begin, s32 end)

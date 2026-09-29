@@ -110,5 +110,8 @@ extern const u8 OWEAutoBattleOverworldWildEncounter[];
 extern const u8 EventScript_AButtonToAutobattle[];
 extern const u8 EventScript_AButtonToEndAutobattle[];
 
+extern const u8 InteractWithOverworldWildEncounterMimikyu[];
+extern const u8 InteractWithOverworldWildEncounterHonedgeShiny[];
+
 
 #endif // GUARD_WILD_ENCOUNTER_OW_H

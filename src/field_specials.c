@@ -1634,7 +1634,7 @@ void LoadWallyZigzagoon(void)
     CreateRandomMon(&gParties[B_TRAINER_PLAYER][0], SPECIES_LILLIPUP, 7);
     monData = TRUE;
     SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_ABILITY_NUM, &monData);
-    monData = MOVE_TACKLE;
+    monData = MOVE_HOLD_BACK;
     SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE1, &monData);
     monData = MOVE_NONE;
     SetMonData(&gParties[B_TRAINER_PLAYER][0], MON_DATA_MOVE2, &monData);

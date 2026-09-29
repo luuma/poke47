@@ -3,7 +3,12 @@ MagmaHideout_1F_MapScripts::
 	.byte 0
 
 magmahideout_eventscript_drone1::
-	warpteleport MAP_MAGMA_HIDEOUT_1F, 10, 22
+	warpteleport MAP_MAGMA_HIDEOUT_1F, 10, 28
+        waitstate
+	end
+
+magmahideout_eventscript_drone1b::
+	warpteleport MAP_MAGMA_HIDEOUT_1F, 27, 22
         waitstate
 	end
 

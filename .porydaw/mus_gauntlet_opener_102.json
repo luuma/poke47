@@ -23,8 +23,8 @@
             "voice:4": 128,
             "voice:5": 128
         },
-        "pxPerBeat": 8.539521194355443,
-        "scrollPx": 0,
+        "pxPerBeat": 4,
+        "scrollPx": -129,
         "scrollY": 374,
         "selectedTrack": 4,
         "splitter": [
@@ -32,6 +32,6 @@
             0,
             332
         ],
-        "tempoLane": false
+        "tempoLane": true
     }
 }

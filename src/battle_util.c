@@ -4567,7 +4567,6 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         case ABILITY_INCENDIARY:
             if (IsBattlerAlive(gBattlerTarget)
              && !gBattleStruct->unableToUseMove
-             && RandomPercentage(RNG_POISON_TOUCH, 50)
              && IsBattlerTurnDamaged(gBattlerTarget, EXCLUDING_SUBSTITUTES)
              && !MoveHasAdditionalEffect(gCurrentMove, MOVE_EFFECT_FIRE_SPIN_SIDE))
             {

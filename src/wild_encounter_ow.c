@@ -1048,7 +1048,13 @@ void TryTriggerOverworldWildEncounter(struct ObjectEvent *obstacle, struct Objec
     // Stop the bobbing animation.
     if (wildMon->movementActionId >= MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_DOWN && wildMon->movementActionId <= MOVEMENT_ACTION_WALK_IN_PLACE_NORMAL_RIGHT)
         ClearObjectEventMovement(wildMon, &gSprites[wildMon->spriteId]);
-    
+    if (gSaveBlock1Ptr->location.mapGroup == MAP_GROUP(MAP_OLD_HOUSE_ROOM1_2) && gSaveBlock1Ptr->location.mapNum == MAP_NUM(MAP_OLD_HOUSE_ROOM1_2))
+    {
+        ScriptContext_SetupScript(InteractWithOverworldWildEncounterMimikyu);
+// This is hack bullshit. I really don't like the way I've done this but it is presumably faster than getting the script pointer from the event every time.
+// Given what I'm looking at here, we're kind of ruling out the possibility of a shinylocked honedge fight that is "catch set". I'm going to barrel ahead with it anyway.
+        return;
+    }
     if (playerHit)
         ScriptContext_SetupScript(InteractWithOverworldWildEncounter);
     if (followerHit)

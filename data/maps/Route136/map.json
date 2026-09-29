@@ -318,6 +318,32 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
       "flag": "FLAG_TEMP_18"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(HONEDGE)",
+      "x": 23,
+      "y": 69,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_CHASE_PLAYER_OWE",
+      "movement_range_x": 1,
+      "movement_range_y": 2,
+      "trainer_type": "TRAINER_TYPE_OW_WILD_ENCOUNTER",
+      "trainer_sight_or_berry_tree_id": "20",
+      "script": "InteractWithOverworldWildEncounter",
+      "flag": "FLAG_DAILY_HONEDGE_PAI"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES_SHINY(HONEDGE)",
+      "x": 37,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_WATCH_PLAYER_OWE",
+      "movement_range_x": 1,
+      "movement_range_y": 1,
+      "trainer_type": "TRAINER_TYPE_OW_WILD_ENCOUNTER",
+      "trainer_sight_or_berry_tree_id": "19",
+      "script": "InteractWithOverworldWildEncounter",
+      "flag": "FLAG_PAI_SHINY_HONEDGE"
     }
   ],
   "warp_events": [

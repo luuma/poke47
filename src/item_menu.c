@@ -614,7 +614,7 @@ void CB2_ChooseBerry(void)
 void CB2_ChooseMulch(void)
 {
     if (CurrentBattlePyramidLocation() == PYRAMID_LOCATION_NONE && !FlagGet(FLAG_GAUNTLET_CHALLENGE))
-        GoToBagMenu(ITEMMENULOCATION_BERRY_TREE_MULCH, POCKET_BERRIES, CB2_ReturnToFieldContinueScript);
+        GoToBagMenu(ITEMMENULOCATION_BERRY_TREE_MULCH, POCKET_ITEMS, CB2_ReturnToFieldContinueScript);
     else
         GoToBattlePyramidBagMenu(PYRAMIDBAG_LOC_MULCH, CB2_ReturnToFieldContinueScript);
 

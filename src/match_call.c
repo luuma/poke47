@@ -1027,6 +1027,8 @@ static const struct MatchCallText *const sMatchCallGeneralTopics[] =
 extern const u8 gBirchDexRatingText_AreYouCurious[];
 extern const u8 gBirchDexRatingText_SoYouveSeenAndCaught[];
 extern const u8 gBirchDexRatingText_OnANationwideBasis[];
+extern const u8 MatchCall_WeaknessPolicyText[];
+extern const u8 MatchCall_BlunderPolicyText[];
 
 void InitMatchCallCounters(void)
 {
@@ -1327,8 +1329,20 @@ static bool32 MatchCall_PrintIntro(u8 taskId)
 
         // Ready the message (and the speaker's name if possible)
         if (!sMatchCallState.triggeredFromScript)
-            SelectMatchCallMessage(sMatchCallState.trainerId, gStringVar4);
-
+        {
+            if (Random() % 20 == 0 && AddBagItem(ITEM_WEAKNESS_POLICY, 1) == TRUE)
+            {
+	            StringCopy(gStringVar4, MatchCall_WeaknessPolicyText);
+            }
+            else if (Random() % 20 == 0 && AddBagItem(ITEM_BLUNDER_POLICY, 1) == TRUE)
+            {
+	            StringCopy(gStringVar4, MatchCall_BlunderPolicyText);
+            }
+            else
+            {
+                SelectMatchCallMessage(sMatchCallState.trainerId, gStringVar4);
+            }
+        }
         if (IsSpeakerBuffered(gStringVar4))
             TrySpawnAndShowNamebox(gSpeakerName, NAME_BOX_BASE_TILE_NUM);
 

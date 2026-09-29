@@ -1,13 +1,36 @@
+
+InteractWithOverworldWildEncounterHonedgeShiny::@unused
 InteractWithOverworldWildEncounter::
     lock
     overworldwildencounterapproach
-    applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
+    @ applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
     facetogether
     getoverworldwildencounterspecies VAR_0x8005
     playmoncry VAR_0x8005, CRY_MODE_DOUBLES
     waitmoncry
     tryoverworldwildencounter
     waitstate
+    end
+
+InteractWithOverworldWildEncounterMimikyu::
+    lock
+    applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
+    facetogether
+    getoverworldwildencounterspecies VAR_0x8005
+    playmoncry VAR_0x8005, CRY_MODE_DOUBLES
+    waitmoncry
+    setwildbattle SPECIES_MIMIKYU, 8 @ this pokemon is very fucking strong
+    setflag FLAG_DAILY_MIMIKYU
+    dowildbattle
+    specialvar VAR_RESULT, GetBattleOutcome
+    goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, EventScript_mimikyuremovelastrelease
+    warpteleport MAP_PETALBURG_WOODS, 50, 12
+    waitstate
+    end
+
+EventScript_mimikyuremovelastrelease::
+    removeobject VAR_LAST_TALKED
+    release
     end
 
 EventScript_FollowerAuto::
@@ -31,8 +54,10 @@ EventScript_AButtonToAutobattle::
 EventScript_AButtonToEndAutobattle::
     lockall
     setvar VAR_LAST_TALKED, OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE
+    playse SE_BALL_OPEN
     applymovement OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE, gMovement_EnterPokeball
     waitmovement
+    playse SE_BALL_TRADE
     callnative RemoveAutoBattlingPokemon @ this despawn automatically updates following pokemon.
     releaseall
     end
@@ -77,7 +102,7 @@ gText_BarelyDefeatedWoreItselfOut:
 	.string "{STR_VAR_1} barely defeated a {STR_VAR_2}.\n"
 	.string "It gained {STR_VAR_3} EXP.\p"
 gText_Buffer1WoreItselfOut:
-	.string "{STR_VAR_1} wore itself out and\n"
+	.string "{PLAY_SE SE_FAINT}{STR_VAR_1} wore itself out and\n"
 	.string "came back to you.$"
 
 EventScript_AutoBattleLoss::
@@ -115,7 +140,7 @@ EventScript_AutoBattleWin4::
     return
 
 gText_Buffer1DefeatedABuffer2hurt:
-	.string "{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"
+	.string "{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"@ You can also include  {PLAY_SE SE_EFFECTIVE} here but I found it sounded loud and had no volume control.
 	.string "some damage and gained {STR_VAR_3} EXP.$"
 
 EventScript_AutoBattleWin5::
@@ -123,7 +148,7 @@ EventScript_AutoBattleWin5::
     return
 
 gText_Buffer1DefeatedABuffer2bighurt:
-	.string "{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"
+	.string "{PLAY_SE SE_SUPER_EFFECTIVE}{STR_VAR_1} defeated a {STR_VAR_2}! It took\n"
 	.string "a lot of damage and gained {STR_VAR_3} EXP.$"
 
 EventScript_expallmessagereturn::

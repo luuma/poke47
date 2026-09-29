@@ -289,14 +289,14 @@ void EnableVCountIntrAtLine150(void)
 #ifdef BUGFIX
 static void SeedRngWithRtc(void)
 {
-    #define BCD8(x) ((((x) >> 4) & 0xF) * 10 + ((x) & 0xF))
+    #define BCD8(x) ((((x) >> 4) & 0xF) * 10 + ((x) & 0xF))// unneeded we are not doing that. 
     u32 seconds;
     struct SiiRtcInfo rtc;
-    RtcGetInfoReal(&rtc);
+    RtcGetInfo(&rtc);
     seconds =
-        ((HOURS_PER_DAY * RtcGetDayCountReal(&rtc) + BCD8(rtc.hour))
-        * MINUTES_PER_HOUR + BCD8(rtc.minute))
-        * SECONDS_PER_MINUTE + BCD8(rtc.second);
+        ((HOURS_PER_DAY * RtcGetDayCount(&rtc) + rtc.hour)
+        * MINUTES_PER_HOUR + rtc.minute)
+        * SECONDS_PER_MINUTE + rtc.second;
     SeedRng(seconds);
     #undef BCD8
 }

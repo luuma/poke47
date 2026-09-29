@@ -134,13 +134,14 @@ static bool32 CanBeInfinitelyConfused(enum BattlerId battler)
 
 static enum ItemEffect TryBerserkGene(enum BattlerId battler)
 {
-    if (CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_EQUAL, GetBattlerAbility(battler)))
+    if (CompareStat(battler, STAT_ATK, MAX_STAT_STAGE, CMP_EQUAL, GetBattlerAbility(battler)) && CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_EQUAL, GetBattlerAbility(battler)))
         return ITEM_NO_EFFECT;
 
     if (CanBeInfinitelyConfused(battler))
         gBattleMons[battler].volatiles.infiniteConfusion = TRUE;
 
-    SetStatChange(battler, STAT_ATK, 2);
+    SetStatChange(battler, STAT_ATK, 1);// otherwise it's a game of own tempo physical attackers being insane
+    SetStatChange(battler, STAT_SPATK, 1);
     BattleScriptCall(BattleScript_BerserkGeneRet);
     return ITEM_STATS_CHANGE;
 }

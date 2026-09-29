@@ -102,7 +102,7 @@
       "movement_range_y": 4,
       "trainer_type": "TRAINER_TYPE_DRONE",
       "trainer_sight_or_berry_tree_id": "3",
-      "script": "magmahideout_eventscript_drone2",
+      "script": "magmahideout_eventscript_drone2b",
       "flag": "FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS"
     }
   ],
@@ -138,6 +138,13 @@
     {
       "x": 24,
       "y": 6,
+      "elevation": 0,
+      "dest_map": "MAP_MAGMA_HIDEOUT_1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 21,
+      "y": 11,
       "elevation": 0,
       "dest_map": "MAP_MAGMA_HIDEOUT_1F",
       "dest_warp_id": "1"

@@ -183,8 +183,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 44,
-      "y": 7,
+      "x": 43,
+      "y": 9,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_NONE",
       "movement_range_x": 0,
@@ -376,6 +376,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_StrengthBoulder",
       "flag": "FLAG_TEMP_1A"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES_FEMALE(CRYOGONAL)",
+      "x": 45,
+      "y": 7,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_CHASE_PLAYER_OWE",
+      "movement_range_x": 5,
+      "movement_range_y": 5,
+      "trainer_type": "TRAINER_TYPE_OW_WILD_ENCOUNTER",
+      "trainer_sight_or_berry_tree_id": "14",
+      "script": "InteractWithOverworldWildEncounter",
+      "flag": "FLAG_DAILY_CRYOGONAL"
     }
   ],
   "warp_events": [

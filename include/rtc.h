@@ -21,7 +21,7 @@ void RtcGetInfo(struct SiiRtcInfo *rtc);
 void RtcGetDateTime(struct SiiRtcInfo *rtc);
 void RtcGetStatus(struct SiiRtcInfo *rtc);
 void RtcGetRawInfo(struct SiiRtcInfo *rtc);
-u16 RtcCheckInfo(struct SiiRtcInfo *rtc);
+u16 RealRtcCheckInfo(struct SiiRtcInfo *rtc);
 void RtcReset(void);
 void RtcCalcTimeDifference(struct SiiRtcInfo *rtc, struct Time *result, struct Time *t);
 void RtcCalcLocalTime(void);

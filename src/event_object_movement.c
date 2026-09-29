@@ -8034,6 +8034,7 @@ bool8 MovementAction_ExitPokeball_Step0(struct ObjectEvent *objectEvent, struct 
     ObjectEventSetPokeballGfx(objectEvent);
     objectEvent->graphicsId = graphicsId;
     objectEvent->inanimate = FALSE;
+    //PlaySE(SE_BALL_OPEN);
     return MovementAction_ExitPokeball_Step1(objectEvent, sprite);
 }
 
@@ -8128,6 +8129,7 @@ bool8 MovementAction_EnterPokeball_Step0(struct ObjectEvent *objectEvent, struct
     else
         sprite->sSpeedFlip = 2;
     EndFollowerTransformEffect(objectEvent, sprite);
+    //PlaySE(SE_BALL_OPEN);
     return MovementAction_EnterPokeball_Step1(objectEvent, sprite);
 }
 
@@ -8162,6 +8164,7 @@ bool8 MovementAction_EnterPokeball_Step1(struct ObjectEvent *objectEvent, struct
         ObjectEventSetPokeballGfx(objectEvent);
         objectEvent->graphicsId = graphicsId;
         objectEvent->inanimate = FALSE;
+        //PlaySE(SE_BALL_TRADE);
     }
     return FALSE;
 }
@@ -10719,6 +10722,7 @@ static void DoFlaggedGroundEffects(struct ObjectEvent *objEvent, struct Sprite *
     for (i = 0; i < ARRAY_COUNT(sGroundEffectFuncs); i++, flags >>= 1)
         if (flags & 1)
             sGroundEffectFuncs[i](objEvent, sprite);
+
     if (!OW_OBJECT_VANILLA_SHADOWS && CurrentMapHasShadows() && !(gWeatherPtr->noShadows || objEvent->inHotSprings || objEvent->inSandPile || MetatileBehavior_IsPuddle(objEvent->currentMetatileBehavior)))
     {
         SetUpShadow(objEvent);
@@ -10772,6 +10776,22 @@ void filters_out_some_ground_effects(struct ObjectEvent *objEvent, u32 *flags)
     }
 }
 
+void filters_out_tracks_none_ground_effects(struct ObjectEvent *objEvent, u32 *flags)
+{
+    const struct ObjectEventGraphicsInfo *info = GetObjectEventGraphicsInfo(objEvent->graphicsId);
+    if (info->tracks == TRACKS_NONE)
+    {
+        objEvent->inShortGrass = 0;
+        objEvent->inSandPile = 0;
+        objEvent->inShallowFlowingWater = 0;
+        *flags &= (GROUND_EFFECT_FLAG_LONG_GRASS_ON_SPAWN 
+| GROUND_EFFECT_FLAG_LONG_GRASS_ON_MOVE 
+| GROUND_EFFECT_FLAG_HOT_SPRINGS 
+| GROUND_EFFECT_FLAG_SEAWEED);// keep only these
+    }
+}
+
+
 void FilterOutStepOnPuddleGroundEffectIfJumping(struct ObjectEvent *objEvent, u32 *flags)
 {
     if (objEvent->landingJump)
@@ -10809,6 +10829,7 @@ static void DoGroundEffects_OnBeginStep(struct ObjectEvent *objEvent, struct Spr
         GetAllGroundEffectFlags_OnBeginStep(objEvent, &flags);
         SetObjectEventSpriteOamTableForLongGrass(objEvent, sprite);
         filters_out_some_ground_effects(objEvent, &flags);
+        //filters_out_tracks_none_ground_effects(objEvent, &flags);
         DoFlaggedGroundEffects(objEvent, sprite, flags);
         objEvent->triggerGroundEffectsOnMove = FALSE;
         objEvent->disableCoveringGroundEffects = 0;
@@ -10826,6 +10847,7 @@ static void DoGroundEffects_OnFinishStep(struct ObjectEvent *objEvent, struct Sp
         GetAllGroundEffectFlags_OnFinishStep(objEvent, &flags);
         SetObjectEventSpriteOamTableForLongGrass(objEvent, sprite);
         FilterOutStepOnPuddleGroundEffectIfJumping(objEvent, &flags);
+        filters_out_tracks_none_ground_effects(objEvent, &flags);
         DoFlaggedGroundEffects(objEvent, sprite, flags);
         if (ObjectEventDoNPCTriggers(objEvent))///////////////////// new junk in the main loop. I want this happening when not triggeronstop
             DoNPCTriggers(objEvent);
@@ -12538,7 +12560,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
 	// Perhaps this is better refactored to save an object event directly into the gSaveBlock1Ptr->objectEventTemplates[i].localId = gMapHeader.events->objectEvents[i].localId
 	// like in overworld.c. This doesn't do that, which means the event is temporary and despawns.
         species = SanitizeSpeciesId(species);
-        PlayCry_Normal(species, 0);
+
         u32 autobattleMovementType = gSpeciesInfo[species].autobattleMovementType;
         if (autobattleMovementType == MOVEMENT_TYPE_NONE)
             autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE;
@@ -12560,6 +12582,11 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
         objEvent = &gObjectEvents[objectEventId];
         objEvent->triggerGroundEffectsOnMove = TRUE;
         objEvent->active = TRUE;
+
+        if (Random() % 3 == 0) // IDK WHY but I think it's better than the cry or just the SE. Feels like it's got a mind.
+            PlayCry_Normal(species, 0);
+        else
+            PlaySE(SE_EGG_HATCH);
     }
     sprite = &gSprites[objEvent->spriteId];
     UpdateFollowingPokemon();// Ensures that it respawns quickly without garbled graphics.

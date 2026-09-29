@@ -838,7 +838,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_Staravia,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Staravia,
             gShinyOverworldPalette_Staravia
@@ -847,7 +847,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_StaraviaF,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following
         )
         .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
@@ -926,7 +926,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_Staraptor,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Staraptor,
             gShinyOverworldPalette_Staraptor
@@ -935,7 +935,7 @@ const struct SpeciesInfo gSpeciesInfoGen4[] =
             sPicTable_StaraptorF,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following
         )
         .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
