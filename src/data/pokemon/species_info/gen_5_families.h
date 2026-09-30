@@ -7994,7 +7994,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             sPicTable_Swanna,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_FOOT,
+            TRACKS_NONE,
             sAnimTable_Following,
             gOverworldPalette_Swanna,
             gShinyOverworldPalette_Swanna
