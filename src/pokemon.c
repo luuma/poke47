@@ -7677,22 +7677,21 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe,
     addxp /= 2;// 2.5 in theory bt this is not a float lmao.
     u32 bufferxp = GetSoftLevelCapExpValue(initialLevel, addxp);
     totalXP = totalXP + bufferxp;// This is added because users will expect soft level caps to apply to autobattling.
-    
+    u32 i;
     SetMonData(mon, MON_DATA_EXP, &totalXP);
-    ApplyDaycareExperience(mon);
+// this section replaces ApplyDaycareExperience. It handles level caps.
+    for (i = 0; i < MAX_LEVEL; i++)
+        if (!TryIncrementMonLevel(mon))
+            break;
+    
+    CalculateMonStats(mon);
+// end section
+
     u32 finalLevel = GetMonData(mon, MON_DATA_LEVEL);
     if (finalLevel > initialLevel)
-    {
         PlayFanfare(MUS_LEVEL_UP);
-        if (finalLevel >= Cap)// this happens here for the sake of code execution speed. We only need to check for level cap correction if the mon has leveled up and was not capped beforehand.
-        {
-             u32 expPoints = gExperienceTables[gSpeciesInfo[GetMonData(mon, MON_DATA_SPECIES)].growthRate][Cap];
-             SetMonData(mon, MON_DATA_EXP, &expPoints);
-             SetMonData(mon, MON_DATA_LEVEL, &Cap);  
-        }
-    }
+
     u32 addxp2 = addxp;
-    u32 i;
     for (i = 1; i < PARTY_SIZE; i++)//skip slot 1 and loop through everything trying to play the trumpet
     {
         if (!IsValidForBattle(&gParties[B_TRAINER_PLAYER][i]))
@@ -7712,17 +7711,14 @@ u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe,
         initialLevel = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL);
         totalXP = totalXP + GetSoftLevelCapExpValue(initialLevel, addxp);// This is added because users will expect soft level caps to apply to autobattling.
         SetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_EXP, &totalXP);
+        for (u32 j = 0; j < MAX_LEVEL; j++)
+            if (!TryIncrementMonLevel(&gParties[B_TRAINER_PLAYER][i]))
+                break;
+        
+        CalculateMonStats(&gParties[B_TRAINER_PLAYER][i]);
         finalLevel = GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_LEVEL);
         if (finalLevel > initialLevel)
-        {
             PlayFanfare(MUS_LEVEL_UP);
-            if (finalLevel >= Cap)
-            {
-                 u32 expPoints = gExperienceTables[gSpeciesInfo[GetMonData(&gParties[B_TRAINER_PLAYER][i], MON_DATA_SPECIES)].growthRate][Cap];
-                 SetMonData(mon, MON_DATA_EXP, &expPoints);
-                 SetMonData(mon, MON_DATA_LEVEL, &Cap);  
-            }
-        }
     }
     return (bufferxp);
 }

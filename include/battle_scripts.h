@@ -759,7 +759,7 @@ extern const u8 BattleScript_EffectShadowClone[];
 extern const u8 BattleScript_EffectSnatchAE[];
 extern const u8 BattleScript_EffectMagicCoatAE[];
 extern const u8 BattleScript_Broil[];
-
+extern const u8 BattleScript_VoltAbsorbTerrainActivates[];
 
 // mine
 

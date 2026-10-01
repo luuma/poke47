@@ -2242,7 +2242,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities  = {ABILITY_SURGE_SURFER, ABILITY_MOTOR_DRIVE, ABILITY_QUARK_DRIVE},
+        .abilities  = {ABILITY_SURGE_SURFER, ABILITY_PLUS, ABILITY_QUARK_DRIVE},
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Blitzle"),
         .cryId = CRY_BLITZLE,
@@ -2316,7 +2316,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FIELD),
-        .abilities  = {ABILITY_SURGE_SURFER, ABILITY_MOTOR_DRIVE, ABILITY_QUARK_DRIVE},
+        .abilities  = {ABILITY_MOTOR_DRIVE, ABILITY_PLUS, ABILITY_QUARK_DRIVE},
         .bodyColor = BODY_COLOR_BLACK,
         .speciesName = _("Zebstrika"),
         .cryId = CRY_ZEBSTRIKA,
@@ -9728,7 +9728,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities  = {ABILITY_PLUS, ABILITY_STEAM_ENGINE, ABILITY_CLEAR_BODY},
+        .abilities  = {ABILITY_PLUS, ABILITY_STEAM_ENGINE, ABILITY_VOLT_ABSORB},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Klink"),
@@ -9801,7 +9801,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities  = {ABILITY_PLUS, ABILITY_STEAM_ENGINE, ABILITY_CLEAR_BODY},
+        .abilities  = {ABILITY_PLUS, ABILITY_STEAM_ENGINE, ABILITY_VOLT_ABSORB},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Klang"),
@@ -9874,7 +9874,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
-        .abilities  = {ABILITY_PLUS, ABILITY_STEAM_ENGINE, ABILITY_CLEAR_BODY},
+        .abilities  = {ABILITY_PLUS, ABILITY_STEAM_ENGINE, ABILITY_VOLT_ABSORB},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = TRUE,
         .speciesName = _("Klinklang"),
@@ -10439,7 +10439,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Litwick,
             gShinyOverworldPalette_Litwick
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
         .overworldEncounterBehavior = OWE_CHASE_PLAYER_SLOW, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sLitwickLevelUpLearnset,
         .teachableLearnset = sLitwickTeachableLearnset,
@@ -10512,7 +10512,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Lampent,
             gShinyOverworldPalette_Lampent
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_CHASE_PLAYER_SLOW, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sLampentLevelUpLearnset,
         .teachableLearnset = sLampentTeachableLearnset,
@@ -10583,7 +10583,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
             gOverworldPalette_Chandelure,
             gShinyOverworldPalette_Chandelure
         )
-        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_SLOW,
         .overworldEncounterBehavior = OWE_IGNORE_PLAYER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sChandelureLevelUpLearnset,
         .teachableLearnset = sChandelureTeachableLearnset,
@@ -11256,7 +11256,7 @@ const struct SpeciesInfo gSpeciesInfoGen5[] =
         .friendship = 70,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_WATER_1, EGG_GROUP_AMORPHOUS),
-        .abilities = { ABILITY_STATIC, ABILITY_SAND_VEIL, ABILITY_WATER_ABSORB },
+        .abilities = { ABILITY_STATIC, ABILITY_LIGHTNING_ROD, ABILITY_WATER_ABSORB },
         .bodyColor = BODY_COLOR_BROWN,
         .speciesName = _("Stunfisk"),
         .cryId = CRY_STUNFISK,

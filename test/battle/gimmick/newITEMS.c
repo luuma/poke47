@@ -315,6 +315,7 @@ SINGLE_BATTLE_TEST("POKE47: SPANDEX flares set electric terrain")
     }
 }
 
+
 SINGLE_BATTLE_TEST("POKE47: SPANDEX flares set electric terrain 5 turn")
 {
     GIVEN {
@@ -349,6 +350,27 @@ SINGLE_BATTLE_TEST("POKE47: SPANDEX flares doesn't when not dancing")
         STATUS_ICON(player, sleep: TRUE);
     }
 }
+
+
+SINGLE_BATTLE_TEST("POKE47: SPANDEX flares electric terrain triggers quark drive, motor drive, etc.")
+{
+    GIVEN {
+        PLAYER(SPECIES_ELECTIVIRE) { Item(ITEM_SPANDEX_FLARES); Ability(ABILITY_MOTOR_DRIVE); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_SWORDS_DANCE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_SWORDS_DANCE, player);
+        MESSAGE("An electric current ran across the battlefield!");
+        ABILITY_POPUP(player, ABILITY_MOTOR_DRIVE);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
+        MESSAGE("Electivire's Speed rose!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+    }
+}
+
 
 SINGLE_BATTLE_TEST("POKE47: Alembic and Defense < sdef", s16 damage)
 {

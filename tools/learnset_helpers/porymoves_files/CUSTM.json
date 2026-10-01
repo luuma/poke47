@@ -5759,6 +5759,7 @@
       "MOVE_LOW_KICK",
       "MOVE_THUNDERBOLT",
       "MOVE_LIGHT_SCREEN",
+      "MOVE_SWORDS_DANCE",
       "MOVE_THUNDER",
       "MOVE_GIGA_IMPACT"
     ],
@@ -5791,6 +5792,7 @@
       "MOVE_THUNDERBOLT",
       "MOVE_LIGHT_SCREEN",
       "MOVE_THUNDER",
+      "MOVE_SWORDS_DANCE",
       "MOVE_GIGA_IMPACT"
     ],
     "EggMoves": [],
@@ -28598,6 +28600,7 @@
       "MOVE_ZAP_CANNON",
       "MOVE_DOUBLE_IRON_BASH",
       "MOVE_ZING_ZAP",
+      "MOVE_SWORDS_DANCE",
       "MOVE_BATON_PASS"
     ],
     "EggMoves": [],

@@ -773,4 +773,122 @@ DOUBLE_BATTLE_TEST("POKE47: Incendiary 50% traps all enemy targets in Fire Spin"
     }
 }
 
+
+DOUBLE_BATTLE_TEST("POKE47: Electric Terrain lightning rod raises sp Attack by one stage if setup by its partner")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_ELECTIVIRE) { Ability(ABILITY_LIGHTNING_ROD); }
+    } WHEN {
+        TURN { MOVE(opponentLeft, MOVE_ELECTRIC_TERRAIN); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, opponentLeft);
+        ABILITY_POPUP(opponentRight, ABILITY_LIGHTNING_ROD);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
+        MESSAGE("The opposing Electivire's Sp. Atk rose!");
+    } THEN {
+        EXPECT_EQ(opponentRight->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 1);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Electric Terrain lightning rod raises sp Attack by one stage on switchin")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_ELECTIVIRE) { Ability(ABILITY_LIGHTNING_ROD); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_ELECTRIC_TERRAIN); }
+        TURN { SWITCH(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, opponent);
+        ABILITY_POPUP(opponent, ABILITY_LIGHTNING_ROD);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The opposing Electivire's Sp. Atk rose!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_SPATK], DEFAULT_STAT_STAGE + 1);
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Electric Terrain motor drive raises speed by one stage on switchin")
+{
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_ELECTIVIRE) { Ability(ABILITY_MOTOR_DRIVE); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_ELECTRIC_TERRAIN); }
+        TURN { SWITCH(opponent, 1); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, opponent);
+        ABILITY_POPUP(opponent, ABILITY_MOTOR_DRIVE);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The opposing Electivire's Speed rose!");
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, player);
+    } THEN {
+        EXPECT_EQ(opponent->statStages[STAT_SPEED], DEFAULT_STAT_STAGE + 1);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Electric Terrain VOLT absorb restores 1/4hp on switchin")
+{
+    s16 health;
+
+    PARAMETRIZE { health = 75; }
+    PARAMETRIZE { health = 100; }
+
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+        OPPONENT(SPECIES_LANTURN) { Ability(ABILITY_VOLT_ABSORB);  HP(health); MaxHP(100); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_ELECTRIC_TERRAIN); }
+        TURN { SWITCH(opponent, 1); }
+        TURN {}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, opponent);
+        if (health == 75) {
+            ABILITY_POPUP(opponent, ABILITY_VOLT_ABSORB);
+            HP_BAR(opponent, damage: -25);
+        } else {
+            NONE_OF {
+            ABILITY_POPUP(opponent, ABILITY_VOLT_ABSORB);
+            HP_BAR(opponent, damage: -25); 
+            }
+        }
+    }
+}
+
+SINGLE_BATTLE_TEST("POKE47: Electric Terrain VOLT absorb restores 1/4hp on use")
+{
+    s16 health;
+
+    PARAMETRIZE { health = 80; }
+    PARAMETRIZE { health = 100; }
+
+    GIVEN {
+        PLAYER(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_LANTURN) { Ability(ABILITY_VOLT_ABSORB);  HP(health); MaxHP(100); }
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_ELECTRIC_TERRAIN); }
+        TURN {}
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_ELECTRIC_TERRAIN, opponent);
+        if (health == 80) {
+            ABILITY_POPUP(opponent, ABILITY_VOLT_ABSORB);
+            HP_BAR(opponent, damage: -20);
+        } else {
+            NONE_OF {
+            ABILITY_POPUP(opponent, ABILITY_VOLT_ABSORB);
+            HP_BAR(opponent, damage: -25); 
+            }
+        }
+    }
+}
+
+
 /// ANALYTIC. NOT MOve relearner sadly.

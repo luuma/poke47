@@ -407,7 +407,7 @@ static const struct {
     {
         .species = SPECIES_TYROGUE,
         .moves = {MOVE_FAKE_OUT, MOVE_COACHING, MOVE_HELPING_HAND, MOVE_MEDITATE},
-        .level = 8,
+        .level = 19,
         .location = MAP_NUM(MAP_ROUTE_100),
     },
     {
@@ -445,6 +445,12 @@ static const struct {
         .moves = {MOVE_POISON_STING, MOVE_STRING_SHOT, MOVE_POWDER},
         .level = 3,
         .location = MAP_NUM(MAP_ROUTE101)
+    },
+    {
+        .species = SPECIES_MISDREAVUS,
+        .moves = {MOVE_ASTONISH, MOVE_PAIN_SPLIT, MOVE_FEINT_ATTACK, MOVE_FADE},
+        .level = 26,
+        .location = MAP_NUM(MAP_ROUTE122),
     }
 };
 

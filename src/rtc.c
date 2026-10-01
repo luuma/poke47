@@ -220,7 +220,7 @@ u16 RealRtcCheckInfo(struct SiiRtcInfo *rtc)
     {
         errorFlags |= (RTC_ERR_INVALID_MONTH | RTC_ERR_INVALID_DAY);
     }
-    else // fucking think i found it. this should never check the date when month is fucked, as sNumDaysInMonths is reliant on a month and must be checked.
+    else // this should never check the date when month is fucked, as sNumDaysInMonths is reliant on a month and must be checked.
     {
         value = ConvertBcdToBinary(rtc->day);
 
@@ -421,7 +421,7 @@ void RtcCalcLocalTimeOffset(s32 days, s32 hours, s32 minutes, s32 seconds)
     RtcCalcTimeDifference(&sRtc, &gSaveBlock2Ptr->localTimeOffset, &gLocalTime);
 }
 
-static void RealRTC_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2)
+static void RealRTC_CalcTimeDifference(struct Time *result, struct SiiRtcInfo *t1, struct Time *t2)// This does the opposite of its equivalent function: it subtracts the provided struct Time from the siirtc, converting to the right format as it goes.
 {
     result->seconds = ConvertBcdToBinary(t1->second) - t2->seconds;
     result->minutes = ConvertBcdToBinary(t1->minute) - t2->minutes;

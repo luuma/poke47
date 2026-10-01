@@ -8300,7 +8300,7 @@ static const struct LevelUpMove sPachirisuLevelUpLearnset[] = {
         LEVEL_UP_MOVE(36, MOVE_STUFF_CHEEKS),
         LEVEL_UP_MOVE(39, MOVE_PLAY_ROUGH),
         LEVEL_UP_MOVE(42, MOVE_PARABOLIC_CHARGE),
-        LEVEL_UP_MOVE(44, MOVE_ENDURE),
+        LEVEL_UP_MOVE(44, MOVE_ELECTRIC_TERRAIN),
         LEVEL_UP_MOVE(47, MOVE_THUNDER),
         LEVEL_UP_MOVE(50, MOVE_BATON_PASS),
         LEVEL_UP_MOVE(53, MOVE_POPULATION_BOMB),
@@ -12012,6 +12012,7 @@ static const struct LevelUpMove sAccelgorLevelUpLearnset[] = {
 static const struct LevelUpMove sStunfiskLevelUpLearnset[] = {
         LEVEL_UP_MOVE(1, MOVE_MUD_SLAP),
         LEVEL_UP_MOVE(1, MOVE_SPIKES),
+        LEVEL_UP_MOVE(1, MOVE_ELECTRIC_TERRAIN),
         LEVEL_UP_MOVE(3, MOVE_WATER_GUN),
         LEVEL_UP_MOVE(6, MOVE_THUNDER_WAVE),
         LEVEL_UP_MOVE(9, MOVE_REFRESH),
@@ -14774,7 +14775,7 @@ static const struct LevelUpMove sCharjabugLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sVikavoltLevelUpLearnset[] = {
-    LEVEL_UP_MOVE( 0, MOVE_THUNDERBOLT),
+    LEVEL_UP_MOVE( 0, MOVE_SHOCK_WAVE),// vikavolt is, almost inherently, terrifying in gym 6.
     LEVEL_UP_MOVE( 1, MOVE_BLINK_STRIKE),
     LEVEL_UP_MOVE( 1, MOVE_AGILITY),
     LEVEL_UP_MOVE( 1, MOVE_AIR_SLASH),

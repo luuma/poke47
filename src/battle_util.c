@@ -5108,6 +5108,42 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                 effect++;
             }
             break;
+        case ABILITY_MOTOR_DRIVE:
+            if (CompareStat(battler, STAT_SPEED, MAX_STAT_STAGE, CMP_LESS_THAN, gLastUsedAbility)
+             && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN
+             && !gBattleMons[battler].volatiles.terrainAbilityDone)
+            {
+                gBattleMons[battler].volatiles.terrainAbilityDone = TRUE;
+                gEffectBattler = gBattlerAbility = battler;
+                SetStatChange(battler, STAT_SPEED, 1);
+                BattleScriptCall(BattleScript_AbilityStatChange);
+                effect++;
+            }
+            break;
+        case ABILITY_LIGHTNING_ROD:
+            if (CompareStat(battler, STAT_SPATK, MAX_STAT_STAGE, CMP_LESS_THAN, gLastUsedAbility)
+             && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN
+             && !gBattleMons[battler].volatiles.terrainAbilityDone)
+            {
+                gBattleMons[battler].volatiles.terrainAbilityDone = TRUE;
+                gEffectBattler = gBattlerAbility = battler;
+                SetStatChange(battler, STAT_SPATK, 1);
+                BattleScriptCall(BattleScript_AbilityStatChange);
+                effect++;
+            }
+            break;
+        case ABILITY_VOLT_ABSORB:
+            if (gBattleMons[battler].hp < gBattleMons[battler].maxHP
+             && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN
+             && !gBattleMons[battler].volatiles.terrainAbilityDone)
+            {
+                gEffectBattler = battler;
+                SetHealAmount(battler, GetNonDynamaxMaxHP(battler) / 4);
+                BattleScriptCall(BattleScript_VoltAbsorbTerrainActivates);
+                effect++;
+            }
+            break;
+// well fuck me sideways that was unbelievably easy.
         default:
             break;
         }
