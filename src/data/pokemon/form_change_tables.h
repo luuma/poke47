@@ -1537,6 +1537,18 @@ static const struct FormChange sOricorioFormChangeTable[] =
 };
 #endif //P_FAMILY_ORICORIO
 
+static const struct FormChange sExeggcuteFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_HP_PERCENT_SEND_OUT, SPECIES_EXEGGCUTE_SCHOOL, ABILITY_SCHOOLING, HP_HIGHER_THAN,   25, 15},
+    {FORM_CHANGE_BATTLE_HP_PERCENT_SEND_OUT, SPECIES_EXEGGCUTE,   ABILITY_SCHOOLING, HP_LOWER_EQ_THAN, 25},
+    {FORM_CHANGE_BATTLE_HP_PERCENT_TURN_END, SPECIES_EXEGGCUTE_SCHOOL, ABILITY_SCHOOLING, HP_HIGHER_THAN,   25, 15},
+    {FORM_CHANGE_BATTLE_HP_PERCENT_TURN_END, SPECIES_EXEGGCUTE,   ABILITY_SCHOOLING, HP_LOWER_EQ_THAN, 25},
+    {FORM_CHANGE_BATTLE_SWITCH_OUT,          SPECIES_EXEGGCUTE},
+    {FORM_CHANGE_FAINT,                      SPECIES_EXEGGCUTE},
+    {FORM_CHANGE_END_BATTLE,                 SPECIES_EXEGGCUTE},
+    {FORM_CHANGE_TERMINATOR},
+};
+
 #if P_FAMILY_WISHIWASHI
 static const struct FormChange sWishiwashiFormChangeTable[] =
 {
@@ -1551,6 +1563,8 @@ static const struct FormChange sWishiwashiFormChangeTable[] =
     {FORM_CHANGE_END_BATTLE,                 SPECIES_WISHIWASHI_SOLO},
     {FORM_CHANGE_TERMINATOR},
 };
+
+
 
 static const struct FormChange sWishiwashiMechFormChangeTable[] =
 {
@@ -1742,6 +1756,15 @@ static const struct FormChange sMiniorYellowFormChangeTable[] =
     {FORM_CHANGE_TERMINATOR},
 };
 #endif //P_FAMILY_MINIOR
+
+static const struct FormChange sSudowoodoFormChangeTable[] =
+{
+    {FORM_CHANGE_BATTLE_HIT_BY_CONFUSION_SELF_DMG, SPECIES_SUDOWOODO_BUSTED,   ABILITY_DISGUISE},
+    {FORM_CHANGE_BATTLE_HIT_BY_MOVE_CATEGORY,      SPECIES_SUDOWOODO_BUSTED,   ABILITY_DISGUISE, DAMAGE_CATEGORY_PHYSICAL},
+    {FORM_CHANGE_BATTLE_HIT_BY_MOVE_CATEGORY,      SPECIES_SUDOWOODO_BUSTED,   ABILITY_DISGUISE, DAMAGE_CATEGORY_SPECIAL},
+    {FORM_CHANGE_END_BATTLE,                       SPECIES_SUDOWOODO},
+    {FORM_CHANGE_TERMINATOR},
+};
 
 #if P_FAMILY_MIMIKYU
 static const struct FormChange sMimikyuFormChangeTable[] =

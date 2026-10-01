@@ -1954,6 +1954,12 @@ static const u16 sLycanrocFormSpeciesIdTable[] = {
 };
 #endif //P_FAMILY_ROCKRUFF
 
+static const u16 sExeggcuteFormSpeciesIdTable[] = {
+    SPECIES_EXEGGCUTE,
+    SPECIES_EXEGGCUTE_SCHOOL,
+    FORM_SPECIES_END,
+};
+
 #if P_FAMILY_WISHIWASHI
 static const u16 sWishiwashiFormSpeciesIdTable[] = {
     SPECIES_WISHIWASHI_SOLO,
@@ -2048,6 +2054,13 @@ static const u16 sTogedemaruFormSpeciesIdTable[] = {
     FORM_SPECIES_END,
 };
 #endif //P_FAMILY_TOGEDEMARU
+
+static const u16 sSudowoodoFormSpeciesIdTable[] = {
+    SPECIES_SUDOWOODO,
+    SPECIES_SUDOWOODO_BUSTED,
+    FORM_SPECIES_END,
+};
+
 
 #if P_FAMILY_MIMIKYU
 static const u16 sMimikyuFormSpeciesIdTable[] = {

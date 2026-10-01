@@ -13746,11 +13746,96 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .evYield_Defense = 1,
         .itemRare = ITEM_PSYCHIC_SEED,
         .genderRatio = PERCENT_FEMALE(50),
-        .eggCycles = 20,
+        .eggCycles = 1,
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
-        .abilities = { ABILITY_CHLOROPHYLL, ABILITY_NONE, ABILITY_HARVEST },// SCHOOLING REFLEGGTOR HARVEST
+        .abilities = { ABILITY_SCHOOLING, ABILITY_NONE, ABILITY_MAGIC_BOUNCE },
+        .bodyColor = BODY_COLOR_PINK,
+        .noFlip = TRUE,
+        .speciesName = _("Exeggcute"),
+        .cryId = CRY_EXEGGCUTE,
+        .natDexNum = NATIONAL_DEX_EXEGGCUTE,
+        .categoryName = _("Egg"),
+        .height = 4,
+        .weight = 25,
+        .description = COMPOUND_STRING(
+            "It yearns for companionship to give\n"
+            "its eggsistence - sorry, existence -\n"
+            "meaning. When cracks increasingly\n"
+            "appear, it is close to evolution."),
+        .pokemonScale = 489,
+        .pokemonOffset = -4,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_ExeggcuteSolo,
+        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(56, 40),
+        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 12,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+            ANIMCMD_FRAME(1, 10),
+            ANIMCMD_FRAME(0, 10),
+        ),
+        .frontAnimId = ANIM_H_SLIDE_SLOW,
+        .backPic = gMonBackPic_ExeggcuteSolo,
+        .backPicSize = MON_COORDS_SIZE(48, 40),
+        .backPicYOffset = 29,
+        .backAnimId = BACK_ANIM_H_SLIDE,
+        .palette = gMonPalette_ExeggcuteSolo,
+        .shinyPalette = gMonShinyPalette_ExeggcuteSolo,
+        .iconSprite = gMonIcon_ExeggcuteSolo,
+        .iconPalIndex = 0,
+        .pokemonJumpType = PKMN_JUMP_TYPE_SLOW,
+        SHADOW(0, -5, SHADOW_SIZE_L)
+        FOOTPRINT(Exeggcute)
+        OVERWORLD(
+            sPicTable_Exeggcute,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_SPOT,
+            sAnimTable_Following,
+            gOverworldPalette_Exeggcute,
+            gShinyOverworldPalette_Exeggcute
+        )
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .overworldEncounterBehavior = OWE_WATCH_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
+        .levelUpLearnset = sExeggcuteLevelUpLearnset,
+        .teachableLearnset = sExeggcuteTeachableLearnset,
+        .eggMoveLearnset = sExeggcuteEggMoveLearnset,
+        .formSpeciesIdTable = sExeggcuteFormSpeciesIdTable,
+        .formChangeTable = sExeggcuteFormChangeTable,
+        .evolutions = EVOLUTION({EVO_ITEM, ITEM_LEAF_STONE, SPECIES_EXEGGUTOR, CONDITIONS({IF_NOT_REGION, REGION_ALOLA})}
+                            #if P_ALOLAN_FORMS
+                                ,{EVO_ITEM, ITEM_LEAF_STONE, SPECIES_EXEGGUTOR_ALOLA, CONDITIONS({IF_REGION, REGION_ALOLA})}
+                            #endif
+                            ),
+    },
+
+    [SPECIES_EXEGGCUTE_SCHOOL] =
+    {
+        .baseHP        = 60,
+        .baseAttack    = 100,
+        .baseDefense   = 80,
+        .baseSpeed     = 20,
+        .baseSpAttack  = 125,
+        .baseSpDefense = 150,
+        .types = MON_TYPES(TYPE_GRASS, TYPE_PSYCHIC),
+        .catchRate = 90,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 65 : 98,
+        .evYield_Defense = 1,
+        .itemRare = ITEM_PSYCHIC_SEED,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 1,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_SLOW,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
+        .abilities = { ABILITY_SCHOOLING, ABILITY_NONE, ABILITY_MAGIC_BOUNCE },// SCHOOLING REFLEGGTOR HARVEST
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = TRUE,
         .speciesName = _("Exeggcute"),
@@ -13768,9 +13853,9 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .pokemonOffset = -4,
         .trainerScale = 256,
         .trainerOffset = 0,
-        .frontPic = gMonFrontPic_Exeggcute,
-        .frontPicSize = P_GBA_STYLE_SPECIES_GFX ? MON_COORDS_SIZE(64, 56) : MON_COORDS_SIZE(56, 40),
-        .frontPicYOffset = P_GBA_STYLE_SPECIES_GFX ? 7 : 12,
+        .frontPic = gMonFrontPic_ExeggcuteSolo,
+        .frontPicSize = MON_COORDS_SIZE(64, 56),
+        .frontPicYOffset = 7,
         .frontAnimFrames = ANIM_FRAMES(
             ANIMCMD_FRAME(0, 10),
             ANIMCMD_FRAME(1, 10),
@@ -13795,7 +13880,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         SHADOW(0, -5, SHADOW_SIZE_L)
         FOOTPRINT(Exeggcute)
         OVERWORLD(
-            sPicTable_Exeggcute,
+            sPicTable_Exeggcute,// now is the single egg.
             SIZE_32x32,
             SHADOW_SIZE_M,
             TRACKS_SPOT,
@@ -13808,6 +13893,8 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .levelUpLearnset = sExeggcuteLevelUpLearnset,
         .teachableLearnset = sExeggcuteTeachableLearnset,
         .eggMoveLearnset = sExeggcuteEggMoveLearnset,
+        .formSpeciesIdTable = sExeggcuteFormSpeciesIdTable,
+        .formChangeTable = sExeggcuteFormChangeTable,
         .evolutions = EVOLUTION({EVO_ITEM, ITEM_LEAF_STONE, SPECIES_EXEGGUTOR, CONDITIONS({IF_NOT_REGION, REGION_ALOLA})}
                             #if P_ALOLAN_FORMS
                                 ,{EVO_ITEM, ITEM_LEAF_STONE, SPECIES_EXEGGUTOR_ALOLA, CONDITIONS({IF_REGION, REGION_ALOLA})}

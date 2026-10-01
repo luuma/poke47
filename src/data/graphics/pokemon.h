@@ -4118,6 +4118,18 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //P_FAMILY_VOLTORB
 
 #if P_FAMILY_EXEGGCUTE
+    const u8 gMonIcon_ExeggcuteSolo[] = INCGFX_U8("graphics/pokemon/exeggcuteSingle/icon_gba.png", ".4bpp");
+    const u32 gMonFrontPic_ExeggcuteSolo[] = INCGFX_U32("graphics/pokemon/exeggcuteSingle/anim_front_gba.png", ".4bpp.smol");
+    const u32 gMonBackPic_ExeggcuteSolo[] = INCGFX_U32("graphics/pokemon/exeggcuteSingle/back_gba.png", ".4bpp.smol");
+
+    const u16 gMonPalette_ExeggcuteSolo[] = INCGFX_U16("graphics/pokemon/exeggcute/normal_gba.pal", ".gbapal");
+    const u16 gMonShinyPalette_ExeggcuteSolo[] = INCGFX_U16("graphics/pokemon/exeggcute/shiny_gba.pal", ".gbapal");
+
+#if OW_POKEMON_OBJECT_EVENTS
+    const u32 gObjectEventPic_ExeggcuteSolo[] = INCGFX_COMP("graphics/pokemon/exeggcuteSingle/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+#endif //OW_POKEMON_OBJECT_EVENTS
+
+
 #if !P_GBA_STYLE_SPECIES_GFX
     const u32 gMonFrontPic_Exeggcute[] = INCGFX_U32("graphics/pokemon/exeggcute/anim_front.png", ".4bpp.smol");
     const u16 gMonPalette_Exeggcute[] = INCGFX_U16("graphics/pokemon/exeggcute/normal.pal", ".gbapal");
@@ -7443,6 +7455,12 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_PKMN_OBJECTS_SHARE_PALETTES
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_GEN_4_CROSS_EVOS
+
+    const u32 gMonFrontPic_Sudobusted[] = INCGFX_U32("graphics/pokemon/sudobusted/anim_front_gba.png", ".4bpp.smol");
+    const u32 gMonBackPic_Sudobusted[] = INCGFX_U32("graphics/pokemon/sudobusted/back_gba.png", ".4bpp.smol");
+    const u8 gMonIcon_Sudobusted[] = INCGFX_U8("graphics/pokemon/sudobusted/icon_gba.png", ".4bpp");
+    const u16 gMonPalette_Sudobusted[] = INCGFX_U16("graphics/pokemon/sudowoodo/normal_gba.pal", ".gbapal");
+    const u16 gMonShinyPalette_Sudobusted[] = INCGFX_U16("graphics/pokemon/sudowoodo/shiny_gba.pal", ".gbapal");
 
 #if !P_GBA_STYLE_SPECIES_GFX
     const u32 gMonFrontPic_Sudowoodo[] = INCGFX_U32("graphics/pokemon/sudowoodo/anim_front.png", ".4bpp.smol");

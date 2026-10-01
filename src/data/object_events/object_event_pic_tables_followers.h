@@ -856,10 +856,10 @@ static const struct SpriteFrameImage sPicTable_ElectrodeHisui[] = {
 
 #if P_FAMILY_EXEGGCUTE
 static const struct SpriteFrameImage sPicTable_Exeggcute[] = {
-    overworld_ascending_frames(gObjectEventPic_Exeggcute, 4, 4),
+    overworld_ascending_frames(gObjectEventPic_ExeggcuteSolo, 4, 4),
 };
 static const struct SpriteFrameImage sPicTable_Exeggutor[] = {
-    overworld_ascending_frames(gObjectEventPic_Exeggutor, 4, 4),
+    overworld_ascending_frames(gObjectEventPic_ExeggcuteSolo, 4, 4),
 };
 #if P_ALOLAN_FORMS
 static const struct SpriteFrameImage sPicTable_ExeggutorAlola[] = {

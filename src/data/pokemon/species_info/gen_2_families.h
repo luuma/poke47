@@ -2756,6 +2756,89 @@ const struct SpeciesInfo gSpeciesInfoGen2[] =
         .levelUpLearnset = sSudowoodoLevelUpLearnset,
         .teachableLearnset = sSudowoodoTeachableLearnset,
         .eggMoveLearnset = sSudowoodoEggMoveLearnset,
+        .formSpeciesIdTable = sSudowoodoFormSpeciesIdTable,
+        .formChangeTable = sSudowoodoFormChangeTable,
+    },
+
+    [SPECIES_SUDOWOODO_BUSTED] =
+    {
+        .baseHP        = 60,//-10
+        .baseAttack    = 90,//-10
+        .baseDefense   = 125,//10
+        .baseSpeed     = 85,//55
+        .baseSpAttack  = 30,
+        .baseSpDefense = 65,//20
+        .types = MON_TYPES(TYPE_ROCK),
+        .catchRate = 65,
+        .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 144 : 135,
+        .evYield_Defense = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_MINERAL),
+        .abilities = { ABILITY_STURDY, ABILITY_NONE, ABILITY_RATTLED },//TODO: DISGUISE
+        .bodyColor = BODY_COLOR_BROWN,
+        .speciesName = _("Sudowoodo"),
+        .cryId = CRY_SUDOWOODO,
+        .natDexNum = NATIONAL_DEX_SUDOWOODO,
+        .categoryName = _("Imitation"),
+        .height = 12,
+        .weight = 380,
+        .description = COMPOUND_STRING(
+            "WAIT A SECOND!!!!\n"
+            "THIS ISNT A DAMN TREE\n"
+            "THERES NO GREEN ON IT?????"),
+        .pokemonScale = 305,
+        .pokemonOffset = 8,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Sudobusted,
+        .frontPicSize = MON_COORDS_SIZE(48, 56),
+        .frontPicYOffset = 6,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+            ANIMCMD_FRAME(1, 15),
+            ANIMCMD_FRAME(0, 15),
+        ),
+        .frontAnimId = ANIM_H_SLIDE_SLOW,
+        .backPic = gMonBackPic_Sudobusted,
+        .backPicSize = MON_COORDS_SIZE(48, 48),
+        .backPicYOffset = 8,
+        .backAnimId = BACK_ANIM_H_SLIDE,
+        .palette = gMonPalette_Sudobusted,
+        .shinyPalette = gMonShinyPalette_Sudobusted,
+        .iconSprite = gMonIcon_Sudobusted,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(-2, 7, SHADOW_SIZE_S)
+        FOOTPRINT(Sudowoodo)
+        OVERWORLD(
+            sPicTable_Sudowoodo,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gOverworldPalette_Sudowoodo,
+            gShinyOverworldPalette_Sudowoodo
+        )
+        OVERWORLD_FEMALE(
+            sPicTable_SudowoodoF,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following
+        )
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE,
+        .overworldEncounterBehavior = OWE_WATCH_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
+        .levelUpLearnset = sSudowoodoLevelUpLearnset,
+        .teachableLearnset = sSudowoodoTeachableLearnset,
+        .eggMoveLearnset = sSudowoodoEggMoveLearnset,
+        .formSpeciesIdTable = sSudowoodoFormSpeciesIdTable,
+        .formChangeTable = sSudowoodoFormChangeTable,
     },
 #endif //P_FAMILY_SUDOWOODO
 

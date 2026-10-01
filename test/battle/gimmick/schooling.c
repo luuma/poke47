@@ -37,6 +37,63 @@ SINGLE_BATTLE_TEST("POKE47: Schooling switches Level 20+ Wishiwashi's form when 
     }
 }
 
+SINGLE_BATTLE_TEST("POKE47: Schooling egg switches Level 15+ Exeggcute form when HP is 25-percent or less at the end of the turn")
+{
+    u16 level;
+    PARAMETRIZE { level = 14; }
+    PARAMETRIZE { level = 15; }
+
+    GIVEN {
+        ASSUME(GetSpeciesBaseHP(SPECIES_EXEGGCUTE) == GetSpeciesBaseHP(SPECIES_EXEGGCUTE_SCHOOL));
+        PLAYER(SPECIES_EXEGGCUTE)
+        {
+            Level(level);
+            HP(GetMonData(&PLAYER_PARTY[0], MON_DATA_MAX_HP) / 3);
+            Ability(ABILITY_SCHOOLING);
+        }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(player, MOVE_CELEBRATE); MOVE(opponent, MOVE_SUPER_FANG); }
+    } SCENE {
+        if (level >= 15)
+        {
+            ABILITY_POPUP(player, ABILITY_SCHOOLING);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
+        }
+        MESSAGE("The opposing Wobbuffet used Super Fang!");//         MESSAGE("Exeggcute used Celebrate!"); doesn't check as exeggcute is going slower!
+        HP_BAR(player);
+        if (level >= 15)
+        {
+            ABILITY_POPUP(player, ABILITY_SCHOOLING);
+            ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_FORM_CHANGE, player);
+        }
+    } THEN {
+        EXPECT_EQ(player->species, SPECIES_EXEGGCUTE);
+    }
+}
+
+
+SINGLE_BATTLE_TEST("POKE47: Disguised Sudowoodo doesn't lose 1/8 of its max HP upon changing to its busted form (Gen7)")
+{
+    u32 species, newSpecies;
+    PARAMETRIZE { species = SPECIES_SUDOWOODO;       newSpecies = SPECIES_SUDOWOODO_BUSTED; }
+    GIVEN {
+        WITH_CONFIG(B_DISGUISE_HP_LOSS, GEN_7);
+        PLAYER(species) { Ability(ABILITY_DISGUISE); }
+        OPPONENT(SPECIES_WOBBUFFET);
+    } WHEN {
+        TURN { MOVE(opponent, MOVE_AERIAL_ACE); }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_AERIAL_ACE, opponent);
+        NOT HP_BAR(player);
+        ABILITY_POPUP(player, ABILITY_DISGUISE);
+    } THEN {
+        EXPECT_EQ(player->species, newSpecies);
+        EXPECT_EQ(player->hp, player->maxHP);
+    }
+}
+
+
 SINGLE_BATTLE_TEST("POKE47: Schooling switches Level 40+ Wishiwashi's form when HP is 50-percent or less, healing it too")
 {
     u16 level;
