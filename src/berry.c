@@ -3065,8 +3065,35 @@ static void SetTreeMutations(u8 id, u8 berry)
 
 static enum Species GetBerryPestSpecies(u8 berryId)
 {
-#if OW_BERRY_PESTS == TRUE
     const struct BerryInfo *berryInfo = GetBerryInfo(berryId);
+
+    if (FlagGet(FLAG_IS_CHAMPION) && Random() % 3 == 0)
+    {
+        if (Random() % 7 == 0)// 1/21 chance.
+            return SPECIES_MUNCHLAX;
+    switch (berryInfo->color)
+    {
+        case BERRY_COLOR_RED:
+            return SPECIES_WURMPLE;
+            break;
+        case BERRY_COLOR_BLUE:
+            return SPECIES_HERACROSS;
+            break;
+        case BERRY_COLOR_PURPLE:
+            return SPECIES_AIPOM;
+            break;
+        case BERRY_COLOR_GREEN:
+            return SPECIES_CATERPIE;
+            break;
+        case BERRY_COLOR_YELLOW:
+            return SPECIES_KAKUNA;
+            break;
+        case BERRY_COLOR_PINK:
+            return SPECIES_ILLUMISE;
+            break;
+    }
+    }
+
     switch (berryInfo->color)
     {
         case BERRY_COLOR_RED:
@@ -3088,7 +3115,6 @@ static enum Species GetBerryPestSpecies(u8 berryId)
             return SPECIES_CHERUBI;
             break;
     }
-#endif
     return SPECIES_NONE;
 }
 

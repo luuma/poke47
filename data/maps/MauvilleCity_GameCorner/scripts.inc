@@ -407,8 +407,10 @@ MauvilleCity_GameCorner_EventScript_TransferGachaMonToPC:
 
 MauvilleCity_GameCorner_EventScript_Gacha_Great::
 	lockall
+        goto_if_unset FLAG_IS_CHAMPION, MauvilleCity_GameCorner_EventScript_ItsBroken
 	checkitem ITEM_COIN_CASE
 	goto_if_eq VAR_RESULT, FALSE, MauvilleCity_GameCorner_EventScript_NoCoinCase
+	goto_if_ne VAR_FACING, DIR_NORTH, MauvilleCity_GameCorner_EventScript_notfromhere
 	setvar VAR_0x8004, 2
 	call MauvilleCity_GameCorner_EventScript_GachaCommon
 	releaseall
@@ -1552,6 +1554,26 @@ MauvilleCity_GameCorner_EventScript_NoCoinCase::
 	msgbox MauvilleCity_GameCorner_Text_CantPlayWithNoCoinCase, MSGBOX_DEFAULT
 	releaseall
 	end
+
+MauvilleCity_GameCorner_EventScript_ItsBroken::
+	msgbox MauvilleCity_GameCorner_Text_BrokenNotChampion, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MauvilleCity_GameCorner_Text_BrokenNotChampion:
+	.string "A note on this old, jammed machine\n"
+	.string "says “COME BACK LATER!”.\p"
+	.string "Inside the machine there is a\n"
+	.string "pink-blue POKéMON from far away.$"
+
+MauvilleCity_GameCorner_EventScript_notfromhere::
+	msgbox MauvilleCity_GameCorner_Text_notfromhere, MSGBOX_DEFAULT
+	releaseall
+	end
+
+MauvilleCity_GameCorner_Text_notfromhere:
+	.string "Can't play it from this side!$"
+
 
 MauvilleCity_GameCorner_EventScript_NoCoinCase2::
 	msgbox MauvilleCity_GameCorner_Text_CantBuyWithNoCoinCase, MSGBOX_DEFAULT

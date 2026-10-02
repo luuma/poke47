@@ -13824,7 +13824,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .baseDefense   = 80,
         .baseSpeed     = 20,
         .baseSpAttack  = 125,
-        .baseSpDefense = 150,
+        .baseSpDefense = 150,// this is a 535 bst nfe. that's fucking crazy and thank god I made it mixed.
         .types = MON_TYPES(TYPE_GRASS, TYPE_PSYCHIC),
         .catchRate = 90,
         .expYield = (P_UPDATED_EXP_YIELDS >= GEN_5) ? 65 : 98,
@@ -13835,7 +13835,7 @@ const struct SpeciesInfo gSpeciesInfoGen1[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_SLOW,
         .eggGroups = MON_EGG_GROUPS(EGG_GROUP_GRASS),
-        .abilities = { ABILITY_SCHOOLING, ABILITY_NONE, ABILITY_MAGIC_BOUNCE },// SCHOOLING REFLEGGTOR HARVEST
+        .abilities = { ABILITY_SCHOOLING, ABILITY_NONE, ABILITY_MAGIC_BOUNCE },
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = TRUE,
         .speciesName = _("Exeggcute"),

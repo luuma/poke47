@@ -1556,7 +1556,7 @@
 #define FLAG_SHAYMIN_CAUGHT                           (SYSTEM_FLAGS + 0x9F) // Unused Flag
 #define FLAG_GRACIDEA                           (SYSTEM_FLAGS + 0xA0) // Unused Flag
 #define FLAG_PAI_SHINY_HONEDGE                           (SYSTEM_FLAGS + 0xA1) // Unused Flag
-#define FLAG_UNUSED_0x902                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
+#define FLAG_RECEIVED_CASTFORMT                           (SYSTEM_FLAGS + 0xA2) // Unused Flag
 #define FLAG_UNUSED_0x903                           (SYSTEM_FLAGS + 0xA3) // Unused Flag
 #define FLAG_UNUSED_0x904                           (SYSTEM_FLAGS + 0xA4) // Unused Flag
 #define FLAG_UNUSED_0x905                           (SYSTEM_FLAGS + 0xA5) // Unused Flag
@@ -1621,8 +1621,8 @@
 #define FLAG_DAILY_HONEDGE_PAI                           (DAILY_FLAGS_START + 0x1A) // Unused Flag
 #define FLAG_DAILY_SALAZZLE                           (DAILY_FLAGS_START + 0x1B) // Unused Flag
 #define FLAG_DAILY_ALOLAN_EXEGGUTOR                           (DAILY_FLAGS_START + 0x1C) // Unused Flag
-#define FLAG_UNUSED_0x93D                           (DAILY_FLAGS_START + 0x1D) // Unused Flag
-#define FLAG_UNUSED_0x93E                           (DAILY_FLAGS_START + 0x1E) // Unused Flag
+#define FLAG_DAILY_LAPRAS                           (DAILY_FLAGS_START + 0x1D) // Unused Flag
+#define FLAG_DAILY_KECLEON                           (DAILY_FLAGS_START + 0x1E) // Unused Flag
 #define FLAG_UNUSED_0x93F                           (DAILY_FLAGS_START + 0x1F) // Unused Flag
 #define FLAG_UNUSED_0x940                           (DAILY_FLAGS_START + 0x20) // Unused Flag
 #define FLAG_UNUSED_0x941                           (DAILY_FLAGS_START + 0x21) // Unused Flag

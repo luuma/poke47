@@ -416,8 +416,8 @@ BattleFrontier_OutsideWest_Text_ChooseFishingOverBattling:
 	.string "I believe I'm the only person here who,\n"
 	.string "for some unknown reason, would choose\l"
 	.string "fishing over battling.\p"
-	.string "Huh? You can't catch anything here?\n"
-	.string "That's disappointing…$"
+	.string "Wahey! I've never seen this POKéMON\n"
+	.string "before! This rules!$"
 
 BattleFrontier_OutsideWest_Text_KeepBattlingUntilIGetSymbol:
 	.string "Today, I'm going to keep battling, no\n"

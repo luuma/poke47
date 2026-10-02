@@ -363,9 +363,9 @@ static const struct {
         .location = MAP_NUM(MAP_ROUTE128),
     },
     {
-        .species = SPECIES_ZUBAT,
-        .moves = {MOVE_POISON_FANG, MOVE_AIR_CUTTER, MOVE_CONFUSE_RAY, MOVE_LEECH_LIFE},
-        .level = 29,
+        .species = SPECIES_WOOPER_PALDEA,
+        .moves = {MOVE_POISON_TAIL, MOVE_TOXIC_SPIKES, MOVE_YAWN, MOVE_SLAM},
+        .level = 25,
         .location = MAP_NUM(MAP_ROUTE129),
     },
     {
@@ -429,9 +429,9 @@ static const struct {
         .location = MAP_NUM(MAP_INGY_BINGY_ISLAND),
     },
     {
-        .species = SPECIES_SABLEYE,
-        .moves = {MOVE_PLUNDER, MOVE_CONFIDE, MOVE_ASTONISH, MOVE_SNATCH},
-        .level = 7,
+        .species = SPECIES_MAWILE,
+        .moves = {MOVE_ASTONISH, MOVE_SCARY_FACE, MOVE_FAKE_TEARS, MOVE_BITE},
+        .level = 8,
         .location = MAP_NUM(MAP_DEW_BEACH106),
     },
     {
@@ -441,18 +441,48 @@ static const struct {
         .location = MAP_NUM(MAP_ROUTE104),
     },
     {
-        .species = SPECIES_WURMPLE,
-        .moves = {MOVE_POISON_STING, MOVE_STRING_SHOT, MOVE_POWDER},
-        .level = 3,
-        .location = MAP_NUM(MAP_ROUTE101)
+        .species = SPECIES_WAILMER,
+        .moves = {MOVE_PUFF_UP, MOVE_ASTONISH, MOVE_ROLLOUT, MOVE_WHIRLPOOL},
+        .level = 24,
+        .location = MAP_NUM(MAP_LILYCOVE_CITY),
     },
     {
-        .species = SPECIES_MISDREAVUS,
-        .moves = {MOVE_ASTONISH, MOVE_PAIN_SPLIT, MOVE_FEINT_ATTACK, MOVE_FADE},
-        .level = 26,
-        .location = MAP_NUM(MAP_ROUTE122),
+        .species = SPECIES_NIDORAN_F,
+        .moves = {MOVE_GROWL, MOVE_POISON_STING, MOVE_SCRATCH},
+        .level = 4,
+        .location = MAP_NUM(MAP_ROUTE103),
     }
 };
+
+// during game: hoppip
+// fossil maniac house: Ditto, whismur, gastly, spinarak, ledyba, omanyte, kabuto, aerodactyl, lileep, anorith
+
+//(Frontier)
+// WINGULL seel mantyke 
+// magikarp goldeen
+// daily lapras,
+// daily kecleon, 
+// smeargle, koffing, sableye, woopster, zubat, paras, venonat, misdreav, eevee
+// rock smash: shuckle
+
+
+// (safari zone) alolans
+
+// (trees postgame, 33% chance, colour dependent) kakuna caterpie aipom illumise heracross wurmple. (5% chance, any tree) munchlax
+
+// (game corner postgame) teddiursa delibird voltorb igglybuff cleffa togepi mimejr wynaut porygon 
+// (weather institute) castform
+
+/// todo: altering cave daily somehow (snubbull, sentret, machop, tangela, happiny?, mareep)
+
+
+// so many. probably not this patch.
+// starters legendaries
+//  pidgey spearow ekans oddish, psyd, machop, ponta, slowp,  farf, dodo, onix, drowzz, rhorn, chansey, tangela, kanga, staryu, electa, magb, pinsir, tauros, 
+// sentret hoothoot chinchou natu, mareep, marill, sunkern, yanma, murkrow, unown, pineco, dunsparce, gligar, snubbull, qwilf, sneasle, teddiursa, slugma, swinub, skarm, houndour, phanpy, stantler, miltank, larv
+// poochyena lotad, seedot, taillow, slakoth, makuhita, skitty, meditite, electrike, plusle, minun, carv, torkoal, spinda, trapinch, cacnea, zangoos, seviper, solrock, lunatone, barboach, corph, feebas, duskull tropius chingling absol, relicanth, luvdisc, bagon, beldum 
+// reaper cloth protector magmarizer electirizer
+
 
 static const u16 sGoldSymbolFlags[NUM_FRONTIER_FACILITIES] = {
     [FRONTIER_FACILITY_TOWER]   = FLAG_SYS_TOWER_GOLD,

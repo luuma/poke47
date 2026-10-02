@@ -3,7 +3,6 @@
   "name": "BattleFrontier_Lounge9",
   "layout": "LAYOUT_BATTLE_FRONTIER_LOUNGE2",
   "music": "MUS_B_TOWER_RS",
-  "region": "REGION_HOENN",
   "region_map_section": "MAPSEC_BATTLE_FRONTIER",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -17,28 +16,28 @@
   "object_events": [
     {
       "graphics_id": "OBJ_EVENT_GFX_GIRL_2",
-      "x": 6,
-      "y": 3,
+      "x": 4,
+      "y": 5,
       "elevation": 0,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "0x0",
+      "script": "BattleFrontier_Lounge9_StoneSeller",
       "flag": "0"
     }
   ],
   "warp_events": [
     {
-      "x": 1,
+      "x": 4,
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_BATTLE_FRONTIER_OUTSIDE_EAST",
       "dest_warp_id": "11"
     },
     {
-      "x": 2,
+      "x": 0,
       "y": 9,
       "elevation": 0,
       "dest_map": "MAP_BATTLE_FRONTIER_OUTSIDE_EAST",
@@ -46,5 +45,6 @@
     }
   ],
   "coord_events": [],
-  "bg_events": []
+  "bg_events": [],
+  "region": "REGION_HOENN"
 }

@@ -157,7 +157,53 @@ Route119_WeatherInstitute_2F_EventScript_LegendaryDefeated::
 	return
 
 Route119_WeatherInstitute_2F_EventScript_NoAbnormalWeather::
+	goto_if_unset FLAG_RECEIVED_CASTFORMT Route119_WeatherInstitute_2F_EventScript_ReceiveCastformT
 	msgbox Route119_WeatherInstitute_2F_Text_NoAbnormalWeather, MSGBOX_DEFAULT
+	release
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ReceiveCastformT::
+	msgbox Route119_WeatherInstitute_2F_Text_ThanksAbnormalPleaseTakePokemon, MSGBOX_DEFAULT
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_CASTFORM
+	givemon SPECIES_CASTFORM, 25, ITEM_ICY_ROCK
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PARTY, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPartyT
+	goto_if_eq VAR_RESULT, MON_GIVEN_TO_PC, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPCT
+	goto Common_EventScript_NoMoreRoomForPokemon
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPartyT::
+	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfareT
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route119_WeatherInstitute_2F_EventScript_ExplainCastformT
+	call Common_EventScript_GetGiftMonPartySlot
+	call Common_EventScript_NameReceivedPartyMon
+	goto Route119_WeatherInstitute_2F_EventScript_ExplainCastformT
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ReceiveCastformPCT::
+	call Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfareT
+	msgbox gText_NicknameThisPokemon, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, Route119_WeatherInstitute_2F_EventScript_SendCastformToPCT
+	call Common_EventScript_NameReceivedBoxMon
+	goto Route119_WeatherInstitute_2F_EventScript_SendCastformToPCT
+	end
+
+Route119_WeatherInstitute_2F_EventScript_SendCastformToPCT::
+	call Common_EventScript_TransferredToPC
+	goto Route119_WeatherInstitute_2F_EventScript_ExplainCastformT
+	end
+
+Route119_WeatherInstitute_2F_EventScript_ReceivedCastformFanfareT::
+	playfanfare MUS_OBTAIN_ITEM
+	message Route119_WeatherInstitute_2F_Text_PlayerReceivedCastformT
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_CASTFORM
+	return
+
+Route119_WeatherInstitute_2F_EventScript_ExplainCastformT::
+	msgbox Route119_WeatherInstitute_2F_Text_PokemonChangesWithWeather, MSGBOX_DEFAULT
+	setflag FLAG_RECEIVED_CASTFORMT
 	release
 	end
 
@@ -291,6 +337,10 @@ Route119_WeatherInstitute_2F_Text_NoRoomForPokemon:
 Route119_WeatherInstitute_2F_Text_PlayerReceivedCastform:
 	.string "{PLAYER} received DEERLING!$"
 
+Route119_WeatherInstitute_2F_Text_PlayerReceivedCastformT:
+	.string "{PLAYER} received CASTFORM!$"
+
+
 Route119_WeatherInstitute_2F_Text_PokemonChangesWithWeather:
 	.string "That POKéMON changes shape according\n"
 	.string "to the weather conditions.\p"
@@ -323,4 +373,11 @@ Route119_WeatherInstitute_2F_Text_NoAbnormalWeather:
 	.string "no longer being reported.\p"
 	.string "The occasional rainfall is a blessing,\n"
 	.string "really.$"
+
+Route119_WeatherInstitute_2F_Text_ThanksAbnormalPleaseTakePokemon:
+	.string "Abnormal weather conditions are\n"
+	.string "no longer being reported.\p"
+	.string "Phew! Makes my life easier!\n"
+	.string "It might be an odd way of thanking you,\n"
+	.string "but here's another POKéMON.$"
 
