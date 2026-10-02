@@ -455,7 +455,7 @@ static const struct {
 };
 
 // during game: hoppip
-// fossil maniac house: Ditto, whismur, gastly, spinarak, ledyba, omanyte, kabuto, aerodactyl, lileep, anorith
+// fossil maniac house: Ditto, whismur, gastly, spinarak, ledyba, rock smash: nosepass, omanyte, kabuto, aerodactyl, lileep, anorith
 
 //(Frontier)
 // WINGULL seel mantyke 
