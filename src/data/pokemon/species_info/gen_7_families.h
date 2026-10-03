@@ -4362,7 +4362,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             sPicTable_Wimpod,
             SIZE_32x32,
             SHADOW_SIZE_M,
-            TRACKS_BIKE_TIRE,
+            TRACKS_BUG,
             sAnimTable_Following,
             gOverworldPalette_Wimpod,
             gShinyOverworldPalette_Wimpod
