@@ -39,6 +39,18 @@ const struct BehaviorOWE gOWESpeciesBehavior[OWE_SPECIES_BEHAVIOR_COUNT] =
         .returnToIdle = PLAYER_OUTSIDE_ACTIVE_RANGE,
     },
 
+
+    [OWE_FLEE_PLAYER_FASTER] =
+    {
+        .movementType = MOVEMENT_TYPE_FLEE_PLAYER_OWE,
+        .viewDistance = 4,
+        .viewWidth = 3,
+        .activeDistance = 7,
+        .idleSpeed = OWE_SPEED_FASTER,
+        .activeSpeed = OWE_SPEED_FAST,
+        .returnToIdle = PLAYER_OUTSIDE_ACTIVE_RANGE,// wimpod only
+    },
+
     [OWE_WATCH_PLAYER_NORMAL] =
     {
         .movementType = MOVEMENT_TYPE_WATCH_PLAYER_OWE,

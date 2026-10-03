@@ -78,6 +78,19 @@
       "trainer_sight_or_berry_tree_id": "ITEM_NONE",
       "script": "Common_EventScript_FindItem",
       "flag": "FLAG_ITEM_RT100_1"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_SPECIES(WIMPOD)",
+      "x": 24,
+      "y": 38,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FLEE_PLAYER_OWE",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_OW_WILD_ENCOUNTER",
+      "trainer_sight_or_berry_tree_id": "25",
+      "script": "InteractWithOverworldWildEncounter",
+      "flag": "FLAG_TEMP_11"
     }
   ],
   "warp_events": [

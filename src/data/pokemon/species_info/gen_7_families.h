@@ -4368,7 +4368,7 @@ const struct SpeciesInfo gSpeciesInfoGen7[] =
             gShinyOverworldPalette_Wimpod
         )
         .autobattleMovementType = MOVEMENT_TYPE_FLEE_PLAYER_OWE,
-        .overworldEncounterBehavior = OWE_FLEE_PLAYER_NORMAL, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
+        .overworldEncounterBehavior = OWE_FLEE_PLAYER_FASTER, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
         .levelUpLearnset = sWimpodLevelUpLearnset,
         .teachableLearnset = sWimpodTeachableLearnset,
         .eggMoveLearnset = sWimpodEggMoveLearnset,

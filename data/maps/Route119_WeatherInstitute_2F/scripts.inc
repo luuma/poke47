@@ -157,7 +157,7 @@ Route119_WeatherInstitute_2F_EventScript_LegendaryDefeated::
 	return
 
 Route119_WeatherInstitute_2F_EventScript_NoAbnormalWeather::
-	goto_if_unset FLAG_RECEIVED_CASTFORMT Route119_WeatherInstitute_2F_EventScript_ReceiveCastformT
+	goto_if_unset FLAG_RECEIVED_CASTFORMT, Route119_WeatherInstitute_2F_EventScript_ReceiveCastformT
 	msgbox Route119_WeatherInstitute_2F_Text_NoAbnormalWeather, MSGBOX_DEFAULT
 	release
 	end

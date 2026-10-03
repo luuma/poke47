@@ -999,7 +999,7 @@
               {
                 "min_level": 10,
                 "max_level": 30,
-                "species": "SPECIES_WIMPOD"
+                "species": "SPECIES_CLAUNCHER"
               },
               {
                 "min_level": 10,
@@ -1014,7 +1014,7 @@
               {
                 "min_level": 25,
                 "max_level": 30,
-                "species": "SPECIES_WIMPOD"
+                "species": "SPECIES_CLAUNCHER"
               },
               {
                 "min_level": 20,
@@ -1321,7 +1321,7 @@
               {
                 "min_level": 20,
                 "max_level": 30,
-                "species": "SPECIES_WIMPOD"
+                "species": "SPECIES_CLAUNCHER"
               },
               {
                 "min_level": 20,
@@ -1336,7 +1336,7 @@
               {
                 "min_level": 25,
                 "max_level": 30,
-                "species": "SPECIES_WIMPOD"
+                "species": "SPECIES_CLAUNCHER"
               },
               {
                 "min_level": 20,
@@ -37801,7 +37801,7 @@
               {
                 "min_level": 30,
                 "max_level": 33,
-                "species": "SPECIES_WIMPOD"
+                "species": "SPECIES_STUNFISK"
               },
               {
                 "min_level": 30,
@@ -37816,7 +37816,7 @@
               {
                 "min_level": 30,
                 "max_level": 33,
-                "species": "SPECIES_WIMPOD"
+                "species": "SPECIES_STUNFISK_GALAR"
               },
               {
                 "min_level": 32,

@@ -3,7 +3,7 @@ InteractWithOverworldWildEncounterHonedgeShiny::@unused
 InteractWithOverworldWildEncounter::
     lock
     overworldwildencounterapproach
-    @ applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark
+    applymovement VAR_LAST_TALKED, Common_Movement_ExclamationMark @ It turns out this is specifically necessary for MOVEMENT_TYPE_FLEE_PLAYER_OWE which will otherwise fail to facetogether.
     facetogether
     getoverworldwildencounterspecies VAR_0x8005
     playmoncry VAR_0x8005, CRY_MODE_DOUBLES

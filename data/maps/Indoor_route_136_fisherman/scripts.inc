@@ -10,7 +10,7 @@ ing_fisherman_challengesign:
 	.string "Can you catch them all?\p"
 	.string "OLD ROD: Finneon, Basculin,\n"
 	.string "Froakie, Tympole, Dhelmise.\p"
-	.string "GOOD ROD: Clauncher, Stunfisk, Wimpod\n"
+	.string "GOOD ROD: Clauncher, Stunfisk\n"
 	.string "Wishiwashi, Alomomola.\p"
 	.string "SUPER ROD: Palpitoad, Bruxish, Skrelp,\n"
 	.string "Frogadier, Lumineon.$"

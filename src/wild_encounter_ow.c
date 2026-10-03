@@ -1781,7 +1781,9 @@ bool32 CanAwareOWESeePlayer(struct ObjectEvent *owe)
 
     if (gPlayerAvatar.runningState == MOVING
      && TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH | PLAYER_AVATAR_FLAG_BIKE)
-     && IsPlayerInsideOWEActiveDistance(owe))
+     && IsPlayerInsideOWEActiveDistance(owe)
+     //&& owe->movementType != MOVEMENT_TYPE_FLEE_PLAYER_OWE
+)// at some point once I can actually do speed_fastest movement without graphical errors, this should be a OWE_GetActiveSpeedFromSpecies(speciesId); check.
         return TRUE;
 
     struct ObjectEvent *player = &gObjectEvents[gPlayerAvatar.objectEventId];

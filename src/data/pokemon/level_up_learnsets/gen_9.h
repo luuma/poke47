@@ -15549,6 +15549,7 @@ static const struct LevelUpMove sPassimianLevelUpLearnset[] = {
 static const struct LevelUpMove sWimpodLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_STRUGGLE_BUG),
     LEVEL_UP_MOVE( 1, MOVE_SAND_ATTACK),
+    LEVEL_UP_MOVE(27, MOVE_FLIP_TURN),
     LEVEL_UP_END
 };
 

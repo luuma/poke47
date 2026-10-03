@@ -39,7 +39,7 @@ bool16 CheckFishVsRod(void)
     }
     if (gSpecialVar_0x8004 >= 2) // GOOD rod
     {
-	gSpecialVar_0x8006 = 10;
+	gSpecialVar_0x8006 = 9;
 	if (GetSetPokedexFlag(NATIONAL_DEX_CLAUNCHER, FLAG_GET_CAUGHT))
 	        gSpecialVar_0x8005++;
 	if (GetSetPokedexFlag(NATIONAL_DEX_WISHIWASHI, FLAG_GET_CAUGHT))
@@ -48,12 +48,10 @@ bool16 CheckFishVsRod(void)
 	        gSpecialVar_0x8005++;
 	if (GetSetPokedexFlag(NATIONAL_DEX_STUNFISK, FLAG_GET_CAUGHT))
 	        gSpecialVar_0x8005++;
-	if (GetSetPokedexFlag(NATIONAL_DEX_WIMPOD, FLAG_GET_CAUGHT))
-	        gSpecialVar_0x8005++;
     }
     if (gSpecialVar_0x8004 >= 3) // SUPER rod
     {
-	gSpecialVar_0x8006 = 15;
+	gSpecialVar_0x8006 = 14;
 	if (GetSetPokedexFlag(NATIONAL_DEX_PALPITOAD, FLAG_GET_CAUGHT))
 	        gSpecialVar_0x8005++;
 	if (GetSetPokedexFlag(NATIONAL_DEX_FROGADIER, FLAG_GET_CAUGHT))
