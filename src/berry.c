@@ -9,10 +9,14 @@
 #include "item_menu.h"
 #include "main.h"
 #include "random.h"
+#include "fake_rtc.h"
 #include "script_pokemon_util.h"
 #include "sprite.h"
 #include "string_util.h"
 #include "text.h"
+#include "tv.h"
+#include "text.h"
+
 #include "constants/event_object_movement.h"
 #include "constants/items.h"
 
@@ -3063,36 +3067,81 @@ static void SetTreeMutations(u8 id, u8 berry)
 #endif
 }
 
+const u8 BerryRoute[] = {
+    MAP_NUM(MAP_GAUNTLET_ISLAND_SOUTHWEST),
+    MAP_NUM(MAP_GAUNTLET_ISLAND_SOUTHEAST),
+    MAP_NUM(MAP_ROUTE102),
+    MAP_NUM(MAP_ROUTE103),
+    MAP_NUM(MAP_ROUTE104),
+    MAP_NUM(MAP_ROUTE110),
+    MAP_NUM(MAP_ROUTE110),
+    MAP_NUM(MAP_ROUTE111),
+    MAP_NUM(MAP_ROUTE112),
+    MAP_NUM(MAP_ROUTE114),
+    MAP_NUM(MAP_ROUTE115),
+    MAP_NUM(MAP_ROUTE116),
+    MAP_NUM(MAP_ROUTE117),
+    MAP_NUM(MAP_ROUTE118),
+    MAP_NUM(MAP_ROUTE119),
+    MAP_NUM(MAP_ROUTE120),
+    MAP_NUM(MAP_ROUTE121),
+    MAP_NUM(MAP_ROUTE123),
+    MAP_NUM(MAP_ROUTE136),
+    MAP_NUM(MAP_GUANTLET_ISLAND_NORTH)
+};
+
+u8 ReturnMunchlaxTreeRoute()
+{
+    u32 id = GetPlayerIDAsU32();
+    return BerryRoute[id % ARRAY_COUNT(BerryRoute)];
+}
+
+u8 ReturnPoipoleTreeRoute()
+{
+    struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
+    u8 weekday = rtc->dayOfWeek % WEEKDAY_COUNT;
+    u32 id = GetPlayerIDAsU32();
+    id *= weekday;// playerid caps at 99999 so just multiply by weekday directly and it'll still fit in u32.
+    return BerryRoute[id % ARRAY_COUNT(BerryRoute)];
+}
+
 static enum Species GetBerryPestSpecies(u8 berryId)
 {
     const struct BerryInfo *berryInfo = GetBerryInfo(berryId);
 
-    if (FlagGet(FLAG_IS_CHAMPION) && Random() % 3 == 0)
+    if (FlagGet(FLAG_IS_CHAMPION))
     {
-        if (Random() % 7 == 0)// 1/21 chance.
+        if (gSaveBlock1Ptr->location.mapNum == ReturnMunchlaxTreeRoute())
             return SPECIES_MUNCHLAX;
-    switch (berryInfo->color)
-    {
-        case BERRY_COLOR_RED:
-            return SPECIES_WURMPLE;
-            break;
-        case BERRY_COLOR_BLUE:
-            return SPECIES_HERACROSS;
-            break;
-        case BERRY_COLOR_PURPLE:
-            return SPECIES_AIPOM;
-            break;
-        case BERRY_COLOR_GREEN:
-            return SPECIES_CATERPIE;
-            break;
-        case BERRY_COLOR_YELLOW:
-            return SPECIES_KAKUNA;
-            break;
-        case BERRY_COLOR_PINK:
-            return SPECIES_ILLUMISE;
-            break;
+
+        if (Random() % 3 == 0)
+        {
+            switch (berryInfo->color)
+            {
+                case BERRY_COLOR_RED:
+                    return SPECIES_WURMPLE;
+                    break;
+                case BERRY_COLOR_BLUE:
+                    return SPECIES_HERACROSS;
+                    break;
+                case BERRY_COLOR_PURPLE:
+                    return SPECIES_AIPOM;
+                    break;
+                case BERRY_COLOR_GREEN:
+                    return SPECIES_CATERPIE;
+                    break;
+                case BERRY_COLOR_YELLOW:
+                    return SPECIES_KAKUNA;
+                    break;
+                case BERRY_COLOR_PINK:
+                    return SPECIES_ILLUMISE;
+                    break;
+            }
+        }
     }
-    }
+
+    if (gSaveBlock1Ptr->location.mapNum == ReturnPoipoleTreeRoute())
+         return SPECIES_POIPOLE;
 
     switch (berryInfo->color)
     {
@@ -3103,7 +3152,7 @@ static enum Species GetBerryPestSpecies(u8 berryId)
             return SPECIES_KARRABLAST;
             break;
         case BERRY_COLOR_PURPLE:
-            return SPECIES_POIPOLE;
+            return SPECIES_VENIPEDE;
             break;
         case BERRY_COLOR_GREEN:
             return SPECIES_BURMY_PLANT;
