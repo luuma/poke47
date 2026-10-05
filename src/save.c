@@ -1,5 +1,6 @@
 #include "global.h"
 #include "agb_flash.h"
+#include "clock.h"
 #include "gba/flash_internal.h"
 #include "fieldmap.h"
 #include "rtc.h"
@@ -895,6 +896,7 @@ u8 LoadGameSave(u8 saveType)
         status = TryLoadSaveSlot(FULL_SAVE_SLOT, gRamSaveSectorLocations);
         CopyPartyAndObjectsFromSave();
         RtcAddElapsedTimeToFakeRTC();
+       // DoTimeBasedEvents(); Seems to be unnecessary!?
         gSaveFileStatus = status;
         gGameContinueCallback = NULL;
         break;
