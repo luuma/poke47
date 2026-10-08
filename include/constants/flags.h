@@ -1297,7 +1297,7 @@
 #define FLAG_GAUNTLET_SPEED_ALTAR                                           0x4D8 // Unused Flag
 #define FLAG_GAUNTLET_BOSS_ALTAR                                           0x4D9 // Unused Flag
 
-#define FLAG_GAUNTLET_unused1 0x4DA  // 
+#define FLAG_GAUNTLET_EvoRock 0x4DA  // 
 #define FLAG_GAUNTLET_unused2 0x4DB  // 
 #define FLAG_GAUNTLET_boon2 0x4DC  // 
 #define FLAG_GAUNTLET_boon4 0x4DD  //  

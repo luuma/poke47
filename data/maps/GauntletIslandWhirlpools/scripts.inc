@@ -257,6 +257,7 @@ gauntlet_evolve::
 	special ChoosePartyMon
 	goto_if_ge VAR_0x8004, PARTY_SIZE, gauntlet_evoboon_DeclinedOnce
 	callnative Script_GauntletTriggerUniqueEvolution
+        goto_if_eq VAR_RESULT, EVO_EVENT_IMPOSSIBLE, gauntlet_evoboon_DeclinedOnce
         goto GauntletIsland_return
 	end
 
@@ -267,6 +268,32 @@ gauntlet_evoboon_DeclinedOnce::
 	goto gauntlet_evolve
 	end
 
+gauntlet_FreeEvoboon::
+        goto_if_set FLAG_GAUNTLET_EvoRock, gauntlet_FreeEvoboon_therockisquiet
+        msgbox GauntletIsland_dwaynetherockjohnson MSGBOX_DEFAULT
+	msgbox GauntletIsland_EvoAMon MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, 0, gauntlet_FreeEvoboon_therockisquiet
+	special ChoosePartyMon @ callnative buffergauntletmontovar8004? nah no thanks seems lame.
+	goto_if_ge VAR_0x8004, PARTY_SIZE, gauntlet_FreeEvoboon
+	callnative Script_GauntletTriggerUniqueEvolution
+        goto_if_eq VAR_RESULT, EVO_EVENT_IMPOSSIBLE, gauntlet_FreeEvoboon
+        setflag FLAG_GAUNTLET_EvoRock
+        release
+	end
+
+gauntlet_FreeEvoboon_therockisquiet:
+        msgbox GauntletIsland_dwaynetherockjohnsonisquiet MSGBOX_DEFAULT
+        release
+        end
+
+GauntletIsland_dwaynetherockjohnsonisquiet:
+	.string "The Evolution Rock glints in\n"
+	.string "a pristine silence.$"
+
+
+GauntletIsland_dwaynetherockjohnson:
+	.string "The Evolution Rock. It will\n"
+	.string "allow one partner to evolve.$"
 
 gauntlet_givepkmn::
 	bufferspeciesname STR_VAR_1, SPECIES_EXEGGUTOR_ALOLA
