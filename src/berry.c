@@ -3100,6 +3100,7 @@ u8 ReturnPoipoleTreeRoute()
 {
     struct SiiRtcInfo *rtc = FakeRtc_GetCurrentTime();
     u8 weekday = rtc->dayOfWeek % WEEKDAY_COUNT;
+    weekday +=2;
     u32 id = GetPlayerIDAsU32();
     id *= weekday;// playerid caps at 99999 so just multiply by weekday directly and it'll still fit in u32.
     return BerryRoute[id % ARRAY_COUNT(BerryRoute)];
