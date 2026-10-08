@@ -893,10 +893,7 @@ static bool8 TrainerTurnToFacePlayer(u8 taskId, struct Task *task, struct Object
     {
         ObjectEventSetHeldMovement(trainerObj, MOVEMENT_ACTION_FACE_PLAYER);
 
-        if (!task->tTrainerRange)
-            task->tFuncId = TRSEE_PLAYER_FACE;
-        else
-            task->tFuncId++; // TRSEE_MOVE_TO_PLAYER
+        task->tFuncId++; // TRSEE_MOVE_TO_PLAYER
     }
     return FALSE;
 }

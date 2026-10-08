@@ -3068,8 +3068,6 @@ static void SetTreeMutations(u8 id, u8 berry)
 }
 
 const u8 BerryRoute[] = {
-    MAP_NUM(MAP_GAUNTLET_ISLAND_SOUTHWEST),
-    MAP_NUM(MAP_GAUNTLET_ISLAND_SOUTHEAST),
     MAP_NUM(MAP_ROUTE102),
     MAP_NUM(MAP_ROUTE103),
     MAP_NUM(MAP_ROUTE104),
@@ -3087,6 +3085,8 @@ const u8 BerryRoute[] = {
     MAP_NUM(MAP_ROUTE121),
     MAP_NUM(MAP_ROUTE123),
     MAP_NUM(MAP_ROUTE136),
+    MAP_NUM(MAP_GAUNTLET_ISLAND_SOUTHWEST),
+    MAP_NUM(MAP_GAUNTLET_ISLAND_SOUTHEAST),
     MAP_NUM(MAP_GUANTLET_ISLAND_NORTH)
 };
 
@@ -3112,7 +3112,7 @@ static enum Species GetBerryPestSpecies(u8 berryId)
     if (FlagGet(FLAG_IS_CHAMPION))
     {
         if (gSaveBlock1Ptr->location.mapNum == ReturnMunchlaxTreeRoute())
-            return SPECIES_MUNCHLAX;
+            return SPECIES_MUNCHLAX;// Pretty chuffed with this bit. 
 
         if (Random() % 3 == 0)
         {
