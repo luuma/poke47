@@ -872,6 +872,31 @@ SINGLE_BATTLE_TEST("POKE47: naval blockade SETS something that persists")
 }
 
 
+SINGLE_BATTLE_TEST("POKE47: naval blockade heart swap ")
+{
+    GIVEN {
+        PLAYER(SPECIES_EMPOLEON);
+        OPPONENT(SPECIES_WOBBUFFET);
+        OPPONENT(SPECIES_WYNAUT);
+    } WHEN {
+        TURN { MOVE(player, MOVE_NAVAL_BLOCKADE);}
+        TURN { SWITCH(opponent, 1); }
+        TURN { MOVE(opponent, MOVE_HEART_SWAP);}
+        TURN { }
+    } SCENE {
+        ANIMATION(ANIM_TYPE_MOVE, MOVE_NAVAL_BLOCKADE, player);
+        ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponent);
+        MESSAGE("The opposing Wobbuffet's Sp. Def fell!");
+	MESSAGE("Empoleon makes lowered stats persist for opponents for 8 turns!");
+	ANIMATION(ANIM_TYPE_MOVE, MOVE_HEART_SWAP, opponent);
+	ANIMATION(ANIM_TYPE_MOVE, MOVE_CELEBRATE, opponent);
+    } THEN {
+        EXPECT_EQ(player->statStages[STAT_SPDEF], DEFAULT_STAT_STAGE - 1);
+    }
+}
+
+
+
 SINGLE_BATTLE_TEST("POKE47: naval blockade last 8 turns. Fails for no reason.")
 {
     GIVEN {

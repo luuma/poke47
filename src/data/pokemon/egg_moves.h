@@ -6360,3 +6360,12 @@ static const u16 sFrigibaxEggMoveLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 #endif //P_FAMILY_FRIGIBAX
+#if P_FAMILY_WO_CHIEN
+static const u16 sKerpootEggMoveLearnset[] = {
+    MOVE_BODY_PRESS,
+    MOVE_COUNTER,
+    MOVE_NIGHT_SLASH,
+    MOVE_METEOR_ASSAULT,
+    MOVE_UNAVAILABLE,
+};
+#endif //P_FAMILY_HOUNDOUR

@@ -21785,7 +21785,7 @@ const struct MoveInfo gMovesInfo[MOVES_COUNT_ALL] =
             "using moves like Protect."),
         .effect = EFFECT_HIT,
         .power = 95,
-        .type = TYPE_ROCK,
+        .type = TYPE_STEEL,
         .accuracy = 100,
         .pp = 5,
         .target = TARGET_SELECTED,

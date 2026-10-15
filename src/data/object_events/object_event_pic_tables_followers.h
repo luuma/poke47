@@ -6573,6 +6573,10 @@ static const struct SpriteFrameImage sPicTable_Gholdengo[] = {
 static const struct SpriteFrameImage sPicTable_WoChien[] = {
     overworld_ascending_frames(gObjectEventPic_WoChien, 4, 4),
 };
+
+static const struct SpriteFrameImage sPicTable_Kerpoot[] = {
+    overworld_ascending_frames(gObjectEventPic_Kerpoot, 4, 4),
+};
 #endif //P_FAMILY_WO_CHIEN
 
 #if P_FAMILY_CHIEN_PAO

@@ -27534,6 +27534,18 @@ const u32 gObjectEventPic_Substitute[] = INCGFX_COMP("graphics/pokemon/question_
 #endif //OW_POKEMON_OBJECT_EVENTS
 #endif //P_FAMILY_PECHARUNT
 
+#if P_FAMILY_WO_CHIEN
+    const u32 gMonFrontPic_Kerpoot[] = INCGFX_U32("graphics/pokemon/kerpoot/anim_front.png", ".4bpp.smol");
+    const u16 gMonPalette_Kerpoot[] = INCGFX_U16("graphics/pokemon/kerpoot/normal.pal", ".gbapal");
+    const u32 gMonBackPic_Kerpoot[] = INCGFX_U32("graphics/pokemon/kerpoot/back.png", ".4bpp.smol");
+    const u16 gMonShinyPalette_Kerpoot[] = INCGFX_U16("graphics/pokemon/kerpoot/shiny.pal", ".gbapal");
+    const u8 gMonIcon_Kerpoot[] = INCGFX_U8("graphics/pokemon/kerpoot/icon.png", ".4bpp");
+#if OW_POKEMON_OBJECT_EVENTS
+    const u32 gObjectEventPic_Kerpoot[] = INCGFX_COMP("graphics/pokemon/kerpoot/overworld.png", ".4bpp", "-mwidth 4 -mheight 4");
+
+#endif //OW_POKEMON_OBJECT_EVENTS
+#endif //OW_wo chien
+
     const u32 gMonFrontPic_Egg[] = INCGFX_U32("graphics/pokemon/egg/anim_front.png", ".4bpp.smol");
     const u16 gMonPalette_Egg[] = INCGFX_U16("graphics/pokemon/egg/normal.pal", ".gbapal");
     const u8 gMonIcon_Egg[] = INCGFX_U8("graphics/pokemon/egg/icon.png", ".4bpp");

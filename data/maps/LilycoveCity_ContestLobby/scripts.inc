@@ -1112,7 +1112,7 @@ LilycoveCity_ContestLobby_EventScript_CantGroomEgg::
 
 LilycoveCity_ContestLobby_EventScript_changeitscoat::
 	msgbox LilycoveCity_ContestLobby_Text_FurfrouChangeCoat
-	dynmultichoice 0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, LilycoveCity_ContestLobby_Text_Natural, LilycoveCity_ContestLobby_Text_Heart, LilycoveCity_ContestLobby_Text_Star, LilycoveCity_ContestLobby_Text_Diamond, LilycoveCity_ContestLobby_Text_Debutante, LilycoveCity_ContestLobby_Text_Matron, LilycoveCity_ContestLobby_Text_Dandy, LilycoveCity_ContestLobby_Text_LaReine, LilycoveCity_ContestLobby_Text_Kabuki, LilycoveCity_ContestLobby_Text_Pharaoh
+	@ dynmultichoice 0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, LilycoveCity_ContestLobby_Text_Natural, LilycoveCity_ContestLobby_Text_Heart, LilycoveCity_ContestLobby_Text_Star, LilycoveCity_ContestLobby_Text_Diamond, LilycoveCity_ContestLobby_Text_Debutante, LilycoveCity_ContestLobby_Text_Matron, LilycoveCity_ContestLobby_Text_Dandy, LilycoveCity_ContestLobby_Text_LaReine, LilycoveCity_ContestLobby_Text_Kabuki, LilycoveCity_ContestLobby_Text_Pharaoh
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_Natural
 	case 1, LilycoveCity_ContestLobby_Heart
@@ -1125,16 +1125,59 @@ LilycoveCity_ContestLobby_EventScript_changeitscoat::
 	case 8, LilycoveCity_ContestLobby_Kabuki
 	case 9, LilycoveCity_ContestLobby_Pharaoh
 LilycoveCity_ContestLobby_EventScript_formchange::
-
-
-
-
+	release
+	end
 
 LilycoveCity_ContestLobby_Natural::
     setvar VAR_RESULT, SPECIES_FURFROU_NATURAL
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
 
+
+LilycoveCity_ContestLobby_Heart::
+    setvar VAR_RESULT, SPECIES_FURFROU_HEART
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
+
+LilycoveCity_ContestLobby_Star::
+    setvar VAR_RESULT, SPECIES_FURFROU_STAR
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
+
+LilycoveCity_ContestLobby_Diamond::
+    setvar VAR_RESULT, SPECIES_FURFROU_DIAMOND
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
+
+LilycoveCity_ContestLobby_Debutante::
+    setvar VAR_RESULT, SPECIES_FURFROU_DEBUTANTE
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
+
+LilycoveCity_ContestLobby_Matron::
+    setvar VAR_RESULT, SPECIES_FURFROU_MATRON
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
+
+LilycoveCity_ContestLobby_Dandy::
+    setvar VAR_RESULT, SPECIES_FURFROU_DANDY
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
+
+LilycoveCity_ContestLobby_LaReine::
+    setvar VAR_RESULT, SPECIES_FURFROU_LA_REINE
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
+
+LilycoveCity_ContestLobby_Kabuki::
+    setvar VAR_RESULT, SPECIES_FURFROU_KABUKI
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
+
+LilycoveCity_ContestLobby_Pharaoh::
+    setvar VAR_RESULT, SPECIES_FURFROU_PHARAOH
+    goto LilycoveCity_ContestLobby_EventScript_formchange
+    end
 
 
 LilycoveCity_ContestLobby_EventScript_DeclineGrooming::

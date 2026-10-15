@@ -6829,6 +6829,143 @@ const struct SpeciesInfo gSpeciesInfoGen9[] =
 #endif //P_FAMILY_GIMMIGHOUL
 
 #if P_FAMILY_WO_CHIEN
+    [SPECIES_KERPOOT] =
+    {
+        .baseHP        = 50,
+        .baseAttack    = 40,
+        .baseDefense   = 70,
+        .baseSpeed     = 30,
+        .baseSpAttack  = 30,
+        .baseSpDefense = 55,
+        .types = MON_TYPES(TYPE_FIGHTING),
+        .catchRate = 225,
+        .expYield = 75,
+        .evYield_Defense = 1,
+        .itemRare = ITEM_PUNCHING_GLOVE,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = 70,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
+        .abilities = { ABILITY_THICK_FAT, ABILITY_STALWART, ABILITY_IRON_FIST },
+        .bodyColor = BODY_COLOR_BLACK,
+        .speciesName = _("Kerpoot"),
+        .cryId = CRY_TORCHIC,
+        .natDexNum = NATIONAL_DEX_WO_CHIEN,
+        .categoryName = _("Coot"),
+        .height = 15,
+        .weight = 742,
+        .description = COMPOUND_STRING(
+            "When surprised, it inflates the\n"
+            "large red crest on its head like a big\n"
+            "balloon to intimidate predators.\n"
+            "It's rather pugnacious over food."),
+        .pokemonScale = 156,
+        .pokemonOffset = 0,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Kerpoot,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 9,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 20),
+        ),
+        .frontAnimId = ANIM_V_STRETCH,
+        .backPic = gMonBackPic_Kerpoot,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 20,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_Kerpoot,
+        .shinyPalette = gMonShinyPalette_Kerpoot,
+        .iconSprite = gMonIcon_Kerpoot,
+        .iconPalIndex = 0,
+        FOOTPRINT(Ducklett)
+        OVERWORLD(
+            sPicTable_Kerpoot,
+            SIZE_32x32,
+            SHADOW_SIZE_S,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_Kerpoot,
+            gMonShinyPalette_Kerpoot
+        )
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
+        .overworldEncounterBehavior = OWE_CHASE_PLAYER_SLOW, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
+        .levelUpLearnset = sKerpootLevelUpLearnset,
+        .teachableLearnset = sKerpootTeachableLearnset,
+        .eggMoveLearnset = sKerpootEggMoveLearnset,
+        .evolutions = EVOLUTION({EVO_LEVEL, 26, SPECIES_KERPOWLLIE}),
+    },
+
+    [SPECIES_KERPOWLLIE] =
+    {
+        .baseHP        = 80,
+        .baseAttack    = 75,
+        .baseDefense   = 110,
+        .baseSpeed     = 40,
+        .baseSpAttack  = 40,
+        .baseSpDefense = 80,
+        .types = MON_TYPES(TYPE_FIGHTING, TYPE_STEEL),
+        .catchRate = 75,
+        .expYield = 175,
+        .evYield_Defense = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = 70,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = MON_EGG_GROUPS(EGG_GROUP_FLYING),
+        .abilities = { ABILITY_THICK_FAT, ABILITY_STALWART, ABILITY_SHARPNESS },
+        .bodyColor = BODY_COLOR_GRAY,
+        .speciesName = _("Kerpowllie"),
+        .cryId = CRY_WO_CHIEN,
+        .natDexNum = NATIONAL_DEX_WO_CHIEN,
+        .categoryName = _("Highlander"),
+        .height = 15,
+        .weight = 742,
+        .description = COMPOUND_STRING(
+            "When surprised, it inflates the\n"
+            "large red crest on its head like a big\n"
+            "balloon to intimidate predators.\n"
+            "dead leaves to become a Pokémon."),
+        .pokemonScale = 156,
+        .pokemonOffset = 0,
+        .trainerScale = 256,
+        .trainerOffset = 0,
+        .frontPic = gMonFrontPic_Kerpoot,
+        .frontPicSize = MON_COORDS_SIZE(64, 64),
+        .frontPicYOffset = 1,
+        .frontAnimFrames = ANIM_FRAMES(
+            ANIMCMD_FRAME(1, 40),
+            ANIMCMD_FRAME(0, 20),
+        ),
+        .frontAnimId = ANIM_V_STRETCH,
+        .backPic = gMonBackPic_Kerpoot,
+        .backPicSize = MON_COORDS_SIZE(64, 64),
+        .backPicYOffset = 3,
+        .backAnimId = BACK_ANIM_V_SHAKE,
+        .palette = gMonPalette_Kerpoot,
+        .shinyPalette = gMonShinyPalette_Kerpoot,
+        .iconSprite = gMonIcon_Kerpoot,
+        .iconPalIndex = 1,
+        .pokemonJumpType = PKMN_JUMP_TYPE_NONE,
+        SHADOW(0, 11, SHADOW_SIZE_XL_BATTLE_ONLY)
+        FOOTPRINT(WoChien)
+        OVERWORLD(
+            sPicTable_WoChien,
+            SIZE_32x32,
+            SHADOW_SIZE_M,
+            TRACKS_FOOT,
+            sAnimTable_Following,
+            gMonPalette_Kerpoot,
+            gMonShinyPalette_Kerpoot
+        )
+        .autobattleMovementType = MOVEMENT_TYPE_COPY_PLAYER_AUTOBATTLE_FAST,
+        .overworldEncounterBehavior = OWE_CHASE_PLAYER_SLOW, // OWE_CHASE_PLAYER_SLOW OWE_IGNORE_PLAYER OWE_FLEE_PLAYER_NORMAL OWE_WATCH_PLAYER_NORMAL OWE_DESPAWN_ON_NOTICE OWE_APPROACH_PLAYER_SLOW
+        .levelUpLearnset = sKerpowllieLevelUpLearnset,
+        .teachableLearnset = sKerpowllieTeachableLearnset,
+    },
+
     [SPECIES_WO_CHIEN] =
     {
         .baseHP        = 85,
