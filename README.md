@@ -3,7 +3,7 @@
 
 # About `poke47`
 
-[Gif that shows the game's start menu, with Kyurem](https://images.hackdex.app/poke47/1777208057027-9.gif)![Image of the player flying to a new route - a dramatic canyon](https://images.hackdex.app/poke47/1773931248565-0.png) 
+![Gif that shows the game's start menu, with Kyurem](https://images.hackdex.app/poke47/1777208057027-9.gif)![Image of the player flying to a new route - a dramatic canyon](https://images.hackdex.app/poke47/1773931248565-0.png) 
 =========================================================================================================================================================================================================
 ![Image showing the autobattle mechanic - the player's Sliggoo is fighting a starly in the overworld!](https://images.hackdex.app/poke47/1776628470989-8.png)![Gif that shows an expanded region map](https://images.hackdex.app/poke47/1777211690399-1.gif)![Image showing an Inkay battling a Furfrou with its ability Opposite Day, inverting the type chart](https://images.hackdex.app/poke47/1773931251614-2.png)
 
