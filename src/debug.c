@@ -4284,6 +4284,7 @@ static void DebugAction_DestroyFollowerNPC(u8 taskId)
     X(MUS_LITTLEBIRD)        \
     X(MUS_RAYQUAZA_APPEARS_EXTENDED)        \
     X(MUS_CREED_OF_THE_KINGS_COURIER) \
+    X(MUS_DENWOLD) \
 
 #define SOUND_LIST_SE               \
     X(SE_USE_ITEM)                  \
