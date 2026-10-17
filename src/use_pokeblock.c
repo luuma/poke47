@@ -184,14 +184,6 @@ static const u32 sGraphData_Tilemap[] = INCGFX_U32("graphics/pokeblock/use_scree
 
 // The condition/flavors aren't listed in their normal order in this file, they're listed as shown on the graph going counter-clockwise
 // Normally they would go Cool/Spicy, Beauty/Dry, Cute/Sweet, Smart/Bitter, Tough/Sour (also graph order, but clockwise)
-static const u32 sConditionToMonData[CONDITION_COUNT] =
-{
-    [CONDITION_COOL]   = MON_DATA_COOL,
-    [CONDITION_TOUGH]  = MON_DATA_TOUGH,
-    [CONDITION_SMART]  = MON_DATA_SMART,
-    [CONDITION_CUTE]   = MON_DATA_CUTE,
-    [CONDITION_BEAUTY] = MON_DATA_BEAUTY
-};
 
 static const u8 sConditionToFlavor[CONDITION_COUNT] =
 {
@@ -290,15 +282,6 @@ static const struct WindowTemplate sUsePokeblockYesNoWinTemplate =
     .height = 4,
     .paletteNum = 15,
     .baseBlock = 0x83
-};
-
-static const u8 *const sConditionNames[CONDITION_COUNT] =
-{
-    [CONDITION_COOL]   = gText_Coolness,
-    [CONDITION_TOUGH]  = gText_Toughness,
-    [CONDITION_SMART]  = gText_Smartness,
-    [CONDITION_CUTE]   = gText_Cuteness,
-    [CONDITION_BEAUTY] = gText_Beauty3
 };
 
 static const struct SpriteSheet sSpriteSheet_UpDown =

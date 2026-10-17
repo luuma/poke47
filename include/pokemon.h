@@ -736,6 +736,10 @@ extern const u32 sExpCandyExperienceTable[];
 extern const struct AbilityInfo gAbilitiesInfo[];
 extern const struct NatureInfo gNaturesInfo[];
 extern const struct BehaviorOWE gOWESpeciesBehavior[OWE_SPECIES_BEHAVIOR_COUNT];
+extern const u32 sConditionToMonData[5];
+extern const u8 *const sConditionNames[5];// 5= condition_count
+
+
 
 void ZeroBoxMonData(struct BoxPokemon *boxMon);
 void ZeroMonData(struct Pokemon *mon);
@@ -960,7 +964,7 @@ void ChangePokemonNicknameWithCallback(void (*callback)(void));
 bool32 HasShedinjaHPHandling(enum Species species);
 
 u8 GiveMonToPlayerPartyInBattle(struct Pokemon *mon, u8 trainer, bool32 isDouble);
-
+u32 BoostContestStat(struct Pokemon *mon);
 
 u32 GetAutoBattleDamage(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe);
 u32 GiveAutobattleExp(struct Pokemon *mon, u8 levelFoe, enum Species speciesFoe, u32 Cap);

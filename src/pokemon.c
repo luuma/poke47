@@ -78,6 +78,8 @@
 // for autobattle
 #include "battle_script_commands.h"
 
+// for daisy massage
+#include "menu_specialized.h"
 
 // table to avoid ugly powing on gba (courtesy of doesnt)
 // this returns (i^2.5)/4
@@ -1086,6 +1088,24 @@ const struct NatureInfo gNaturesInfo[NUM_NATURES] =
 const u8 gPPUpGetMask[MAX_MON_MOVES]   = {PP_UP_SHIFTS(3)};
 const u8 gPPUpClearMask[MAX_MON_MOVES] = {PP_UP_SHIFTS_INV(3)};
 const u8 gPPUpAddValues[MAX_MON_MOVES] = {PP_UP_SHIFTS(1)};
+
+const u8 *const sConditionNames[5] =
+{
+    [CONDITION_COOL]   = gText_Coolness,
+    [CONDITION_TOUGH]  = gText_Toughness,
+    [CONDITION_SMART]  = gText_Smartness,
+    [CONDITION_CUTE]   = gText_Cuteness,
+    [CONDITION_BEAUTY] = gText_Beauty3
+};
+
+const u32 sConditionToMonData[5] =
+{
+    [CONDITION_COOL]   = MON_DATA_COOL,
+    [CONDITION_TOUGH]  = MON_DATA_TOUGH,
+    [CONDITION_SMART]  = MON_DATA_SMART,
+    [CONDITION_CUTE]   = MON_DATA_CUTE,
+    [CONDITION_BEAUTY] = MON_DATA_BEAUTY
+};
 
 const u8 gStatStageRatios[MAX_STAT_STAGE + 1][2] =
 {
@@ -7543,6 +7563,111 @@ bool32 HasShedinjaHPHandling(enum Species species)
     if (P_BASE_HP_1_SHEDINJA_HANDLING && GetSpeciesBaseHP(species) == 1)
         return TRUE;
     return FALSE;
+}
+
+
+static u32 ReturnSpeciesContestStat(u32 species)
+{
+    switch (species)
+    {
+    case SPECIES_LILLIPUP:
+    case SPECIES_HERDIER:
+    case SPECIES_STOUTLAND:
+    case SPECIES_FURFROU_DANDY:
+    case SPECIES_MEOWTH:
+    case SPECIES_PERSIAN:
+    case SPECIES_MEOWTH_ALOLA:
+    case SPECIES_PERSIAN_ALOLA:
+    case SPECIES_ESPEON:
+    case SPECIES_ESPURR:
+    case SPECIES_MEOWSTIC_F:
+    case SPECIES_MEOWSTIC_M:
+        return CONDITION_SMART;
+
+    case SPECIES_GRANBULL:
+    case SPECIES_SNUBBULL:
+    case SPECIES_HOUNDOUR:
+    case SPECIES_HOUNDOOM:
+    case SPECIES_SHINX:
+    case SPECIES_LUXIO:
+    case SPECIES_LUXRAY:
+    case SPECIES_GLAMEOW:
+    case SPECIES_PURUGLY:
+    case SPECIES_FURFROU_DIAMOND:
+    case SPECIES_FURFROU_DEBUTANTE:
+    case SPECIES_MEOWTH_GALAR:
+    case SPECIES_PERRSERKER:
+        return CONDITION_TOUGH;
+
+    case SPECIES_GROWLITHE:
+    case SPECIES_ARCANINE:
+    case SPECIES_ELECTRIKE:
+    case SPECIES_MANECTRIC:
+    case SPECIES_ROCKRUFF:
+    case SPECIES_ROCKRUFF_OWN_TEMPO:
+    case SPECIES_LYCANROC_MIDDAY:
+    case SPECIES_LYCANROC_DUSK:
+    case SPECIES_LYCANROC_MIDNIGHT:
+    case SPECIES_FURFROU_KABUKI:
+    case SPECIES_JOLTEON:
+    case SPECIES_UMBREON:
+        return CONDITION_COOL;
+
+    case SPECIES_FURFROU:
+    case SPECIES_FURFROU_MATRON:
+    case SPECIES_FURFROU_HEART:
+    case SPECIES_FLAREON:
+    case SPECIES_VAPOREON:// copypasta
+    case SPECIES_SYLVEON:
+    case SPECIES_GLACEON:
+    case SPECIES_LEAFEON:
+    case SPECIES_EEVEE:
+    case SPECIES_SKITTY:
+        return CONDITION_CUTE;
+
+    case SPECIES_FURFROU_LA_REINE:
+    case SPECIES_FURFROU_PHARAOH:
+    case SPECIES_FURFROU_STAR:
+    case SPECIES_LITLEO:
+    case SPECIES_PYROAR:
+    case SPECIES_DELCATTY:
+    case SPECIES_BUNEARY:
+    case SPECIES_LOPUNNY:
+    case SPECIES_SWABLU:
+    case SPECIES_ALTARIA:
+        return CONDITION_BEAUTY;
+
+    default:
+        return CONDITION_COUNT;
+    }
+}
+
+u32 BoostContestStat(struct Pokemon *mon)
+{
+    u32 stat = ReturnSpeciesContestStat(GetMonData(mon, MON_DATA_SPECIES));
+    
+    if (stat >= CONDITION_COUNT)
+        return CONDITION_COUNT;
+
+    Script_RequestEffects(SCREFF_V1 | SCREFF_SAVE);
+
+    u32 boostedStat = GetMonData(mon, sConditionToMonData[stat]);
+    if (boostedStat < 50)
+        boostedStat += 50;
+    else if (boostedStat < 90)
+        boostedStat += 40;
+    else if (boostedStat < 150)
+        boostedStat += 20;
+    else if (boostedStat < 200)
+        boostedStat += 10;
+    else if (boostedStat < 250)
+        boostedStat += 5;
+    else if (boostedStat < 255)
+        boostedStat = 255;
+
+    SetMonData(mon, sConditionToMonData[stat], &boostedStat);
+    CalculateMonStats(mon);
+    return stat;
 }
 
 static void DoAutobattle(enum Species speciesFoe, u8 levelFoe)

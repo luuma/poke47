@@ -1081,24 +1081,28 @@ LilycoveCity_ContestLobby_EventScript_GroomMon::
 @ pay 10000
 @ set furfrou form
 @ raise friendship, boost a furfrou contest stat. maybe furfrou, purugly, delcatty, and eeveelutions only.
-
-	@ goto_if_lt VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 500, LilycoveCity_ContestLobby_EventScript_RateMonFriendship / peut etre.
+	lock
+	faceplayer
+	goto_if_set FLAG_CELINE_MASSAGE, LilycoveCity_ContestLobby_EventScript_RateMonFriendship
 	msgbox LilycoveCity_ContestLobby_Text_LikeMeToGroomMon, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, LilycoveCity_ContestLobby_EventScript_DeclineGrooming
 	msgbox LilycoveCity_ContestLobby_Text_GroomWhichOne
 	special ChoosePartyMon
-	lock
-	faceplayer
 	goto_if_ge VAR_0x8004, PARTY_SIZE, LilycoveCity_ContestLobby_EventScript_DeclineGrooming
-	specialvar VAR_RESULT, ScriptGetPartyMonSpecies
-	goto_if_eq VAR_RESULT, SPECIES_EGG, LilycoveCity_ContestLobby_EventScript_CantGroomEgg
-	goto_if_eq VAR_RESULT, SPECIES_FURFROU, LilycoveCity_ContestLobby_EventScript_changeitscoat
+	specialvar VAR_0x8005, ScriptGetPartyMonSpecies
+	goto_if_eq VAR_0x8005, SPECIES_EGG, LilycoveCity_ContestLobby_EventScript_CantGroomEgg
+	goto_if_eq VAR_0x8005, SPECIES_EXEGGCUTE, LilycoveCity_ContestLobby_EventScript_CantGroomEgg
+    callnative Script_returnbasespecies
+	call_if_eq VAR_RESULT, SPECIES_FURFROU, LilycoveCity_ContestLobby_EventScript_changeitscoat
 	msgbox LilycoveCity_ContestLobby_Text_LookingNiceInNoTime
 	closemessage
 	fadescreen FADE_TO_BLACK
 	playfanfare MUS_HEAL
 	waitfanfare
+	setflag FLAG_CELINE_MASSAGE
 	special DaisyMassageServices
+	callnative UpdateFollowingPokemon
+	goto_if_ne VAR_RESULT, 5, DaisyBoostedThisStat @ check beauty still triggers this.
 	fadescreen FADE_FROM_BLACK
 	special BufferMonNickname
 	msgbox LilycoveCity_ContestLobby_Text_ThereYouGoAllDone
@@ -1110,9 +1114,16 @@ LilycoveCity_ContestLobby_EventScript_CantGroomEgg::
 	release
 	end
 
+DaisyBoostedThisStat::
+	fadescreen FADE_FROM_BLACK
+	special BufferMonNickname
+	msgbox LilycoveCity_ContestLobby_Text_ThereYouGoAllDone2
+	release
+	end
+
 LilycoveCity_ContestLobby_EventScript_changeitscoat::
 	msgbox LilycoveCity_ContestLobby_Text_FurfrouChangeCoat
-	@ dynmultichoice 0, 0, FALSE, 2, 0, DYN_MULTICHOICE_CB_NONE, LilycoveCity_ContestLobby_Text_Natural, LilycoveCity_ContestLobby_Text_Heart, LilycoveCity_ContestLobby_Text_Star, LilycoveCity_ContestLobby_Text_Diamond, LilycoveCity_ContestLobby_Text_Debutante, LilycoveCity_ContestLobby_Text_Matron, LilycoveCity_ContestLobby_Text_Dandy, LilycoveCity_ContestLobby_Text_LaReine, LilycoveCity_ContestLobby_Text_Kabuki, LilycoveCity_ContestLobby_Text_Pharaoh
+	dynmultichoice 0, 0, FALSE, 9, 0, DYN_MULTICHOICE_CB_NONE, LilycoveCity_ContestLobby_Text_Natural, LilycoveCity_ContestLobby_Text_Heart, LilycoveCity_ContestLobby_Text_Star, LilycoveCity_ContestLobby_Text_Diamond, LilycoveCity_ContestLobby_Text_Debutante, LilycoveCity_ContestLobby_Text_Matron, LilycoveCity_ContestLobby_Text_Dandy, LilycoveCity_ContestLobby_Text_LaReine, LilycoveCity_ContestLobby_Text_Kabuki, LilycoveCity_ContestLobby_Text_Pharaoh
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_Natural
 	case 1, LilycoveCity_ContestLobby_Heart
@@ -1125,60 +1136,89 @@ LilycoveCity_ContestLobby_EventScript_changeitscoat::
 	case 8, LilycoveCity_ContestLobby_Kabuki
 	case 9, LilycoveCity_ContestLobby_Pharaoh
 LilycoveCity_ContestLobby_EventScript_formchange::
-	release
-	end
+    callnative Script_SetSpeciesAsForm
+	return
 
 LilycoveCity_ContestLobby_Natural::
     setvar VAR_RESULT, SPECIES_FURFROU_NATURAL
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
 
+LilycoveCity_ContestLobby_Text_Natural::
+	.string "Naturale$"
 
 LilycoveCity_ContestLobby_Heart::
     setvar VAR_RESULT, SPECIES_FURFROU_HEART
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
 
+LilycoveCity_ContestLobby_Text_Heart::
+	.string "Coeur d'Amour$"
+
 LilycoveCity_ContestLobby_Star::
     setvar VAR_RESULT, SPECIES_FURFROU_STAR
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
+
+LilycoveCity_ContestLobby_Text_Star::
+	.string "L'etoile$"
 
 LilycoveCity_ContestLobby_Diamond::
     setvar VAR_RESULT, SPECIES_FURFROU_DIAMOND
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
 
+LilycoveCity_ContestLobby_Text_Diamond::
+	.string "Diamant$"
+
+
 LilycoveCity_ContestLobby_Debutante::
     setvar VAR_RESULT, SPECIES_FURFROU_DEBUTANTE
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
+
+LilycoveCity_ContestLobby_Text_Debutante::
+	.string "Debutante$"
 
 LilycoveCity_ContestLobby_Matron::
     setvar VAR_RESULT, SPECIES_FURFROU_MATRON
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
 
+LilycoveCity_ContestLobby_Text_Matron::
+	.string "Matron$"
+
 LilycoveCity_ContestLobby_Dandy::
     setvar VAR_RESULT, SPECIES_FURFROU_DANDY
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
+
+LilycoveCity_ContestLobby_Text_Dandy::
+	.string "La Dandy$"
 
 LilycoveCity_ContestLobby_LaReine::
     setvar VAR_RESULT, SPECIES_FURFROU_LA_REINE
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
 
+LilycoveCity_ContestLobby_Text_LaReine::
+	.string "Le Reine$"
+
 LilycoveCity_ContestLobby_Kabuki::
     setvar VAR_RESULT, SPECIES_FURFROU_KABUKI
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
+
+LilycoveCity_ContestLobby_Text_Kabuki::
+	.string "Kabouquie$"
 
 LilycoveCity_ContestLobby_Pharaoh::
     setvar VAR_RESULT, SPECIES_FURFROU_PHARAOH
     goto LilycoveCity_ContestLobby_EventScript_formchange
     end
 
+LilycoveCity_ContestLobby_Text_Pharaoh::
+	.string "Pharaoeuh$"
 
 LilycoveCity_ContestLobby_EventScript_DeclineGrooming::
 	msgbox LilycoveCity_ContestLobby_Text_DontNeedAnyGrooming
@@ -1187,6 +1227,7 @@ LilycoveCity_ContestLobby_EventScript_DeclineGrooming::
 
 LilycoveCity_ContestLobby_EventScript_RateMonFriendship::
 	msgbox LilycoveCity_ContestLobby_Text_MayISeeFirstMon
+	wait 8
 	specialvar VAR_RESULT, GetLeadMonFriendship
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_EventScript_MonFriendshipLowest
@@ -1234,85 +1275,86 @@ LilycoveCity_ContestLobby_EventScript_MonFriendshipHighest::
 	end
 
 LilycoveCity_ContestLobby_Text_LikeMeToGroomMon::
-	.string "DAISY: Hi, {PLAYER}!\n"
-	.string "Good timing.\p"
-	.string "I'm about to have some tea.\n"
-	.string "Would you like to join me?\p"
-	.string "Oh, but look.\n"
-	.string "Your POKéMON are a little dirty.\p"
-	.string "Would you like me to groom one?$"
+	.string "CELINE: Ah, my friend!\n"
+	.string "Un contest enthusiaste!\p"
+	.string "Je suis un expert GROOMEURE\n"
+	.string "for your POKéMON!\p"
+	.string "Oui! I GROOM! Comprenez-vous?\p"
+	.string "Je suis éspécialement good avec\n"
+	.string "les POKéMONs DOGS et CATS!\p"
+	.string "C'est ok?$"
 
 LilycoveCity_ContestLobby_Text_DontNeedAnyGrooming::
-	.string "You don't need any grooming done?\n"
-	.string "Okay, we'll just have tea.$"
+	.string "CELINE: Quoi! Vous think this accent is?\n"
+	.string "ridiculous? Eet's real! I swear down.\p"
+	.string "Le francais est la lingue de l'amour!$"
 
 LilycoveCity_ContestLobby_Text_GroomWhichOne::
-	.string "Which one should I groom?$"
+	.string "CELINE: Ouich one should I GROOM?$"
 
 LilycoveCity_ContestLobby_Text_LookingNiceInNoTime::
-	.string "DAISY: Okay, I'll get it looking\n"
-	.string "nice in no time.$"
+	.string "CELINE: Bien! I'll get it looking\n"
+	.string "tres belle - tout suite!$"
 
+
+LilycoveCity_ContestLobby_Text_ThereYouGoAllDone2::
+	.string "CELINE: VOILA! Ma spécialité! Aha! I\n"
+	.string "permanently improved eets {STR_VAR_2}!\l"
 LilycoveCity_ContestLobby_Text_ThereYouGoAllDone::
-#ifdef BUGFIX @ The localizers missed what should be a textcolor change in the localizations.
-	.string "{COLOR DARK_GRAY}{STR_VAR_1} looks dreamily content…\p"
-	.string "{COLOR RED}DAISY: There you go! All done.\n"
-#else @ In the JP games, gender-based text used a different font instead of different colors.
-	.string "{FONT_NORMAL}{STR_VAR_1} looks dreamily content…\p"
-	.string "{FONT_FEMALE}DAISY: There you go! All done.\n"
-#endif
-	.string "See? Doesn't it look nice?\p"
-	.string "Giggle…\n"
-	.string "It's such a cute POKéMON.$"
+	.string "{STR_VAR_1} looks dreamily content…\p"
+	.string "CELINE: C'est complete! See?\n"
+	.string "Absolument beau!\p"
+	.string "Honhonhon…$"
 
 LilycoveCity_ContestLobby_Text_CantGroomAnEgg::
-	.string "Oh, sorry. I honestly can't\n"
-	.string "groom an EGG.$"
+	.string "CELINE: Je suis désolé. I can't massage\n"
+	.string "un …oeuf.$"
 
 LilycoveCity_ContestLobby_Text_MayISeeFirstMon::
-	.string "DAISY: Your POKéMON grow to love\n"
-	.string "you if you raise them with love.\p"
-	.string "For example, {PLAYER}, may I see\n"
-	.string "your first POKéMON?$"
+	.string "CELINE: Ah, my friend!\p"
+	.string "Avez-vous done un contest? Non?\n"
+	.string "Pourquoi! Quelle dommage…\p"
+	.string "Quoi! Vous think this accent is?\n"
+	.string "ridiculous? But le francais ees the\l"
+	.string "language d'amour!\p"
+	.string "Et L'amour… Est tres important.\n"
+	.string "One example. Your first POKéMON.$"
 
 LilycoveCity_ContestLobby_Text_CouldntLoveYouMore::
-	.string "It couldn't possibly love you\n"
-	.string "any more than it does now.\p"
-	.string "Your POKéMON is happy beyond\n"
+	.string "C'est impossible to have more\n"
+	.string "love than it does now.\p"
+	.string "Your POKéMON is joyeux beyond\n"
 	.string "words.$"
 
 LilycoveCity_ContestLobby_Text_ItLooksVeryHappy::
-	.string "It looks very happy.\p"
-	.string "I wish {RIVAL} could see this and\n"
-	.string "learn something from it.$"
+	.string "It looks tres joyeux.\p"
+	.string "Un example tres bien!$"
 
 LilycoveCity_ContestLobby_Text_ItsQuiteFriendly::
-	.string "It's quite friendly with you.\n"
-	.string "Keep being good to it!$"
+	.string "C'est content.\n"
+	.string "Continue to use l'amour!$"
 
 LilycoveCity_ContestLobby_Text_ItsWarmingUpToYou::
-	.string "It's warming up to you.\n"
-	.string "Trust must be growing between you.$"
+	.string "Comme-ci, comme-ca. It's doing ok.\n"
+	.string "Trust should be growing between you.$"
 
 LilycoveCity_ContestLobby_Text_NotFamiliarWithYouYet::
 	.string "It's not quite familiar with you\n"
 	.string "yet.\p"
 	.string "POKéMON are all quite wary when\n"
-	.string "you first get them.$"
+	.string "zey are initially caught.$"
 
 LilycoveCity_ContestLobby_Text_DontLikeWayItGlaresAtYou::
-	.string "{PLAYER}, I don't like the way it\n"
-	.string "glares at you.\p"
-	.string "Could you try being a little nicer\n"
+	.string "Oh. Mon dieu. Un peut mal.\p"
+	.string "Could you try being un peut nicer\n"
 	.string "to it?$"
 
 LilycoveCity_ContestLobby_Text_WhyWouldMonHateYouSoMuch::
-	.string "…Um, it's not easy for me to say\n"
-	.string "this, but…\p"
-	.string "Is there some reason why your\n"
-	.string "POKéMON would hate you so much?$"
+	.string "…mon dieu…\p"
+	.string "eet thinks you are un cul.\n"
+	.string "Why does it detéstez-vous?$"
 
 LilycoveCity_ContestLobby_Text_FurfrouChangeCoat:
-	.string "Ah! C'est un Furfrou! 'ow would\n"
-	.string "you like me to groume eet?\p"
+	.string "Ah! C'est un Furfrou! 'Ow would\n"
+	.string "you like me to groume eet?$"
 

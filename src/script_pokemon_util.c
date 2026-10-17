@@ -738,3 +738,24 @@ void Script_GiveRandomBerry(struct ScriptContext *ctx)
 
     gSpecialVar_Result = BerryTypeToItemId(RandomUniform(RNG_RANDOM_BERRY, loBerry, hiBerry));
 }
+
+
+void Script_SetSpeciesAsForm(struct ScriptContext *ctx)
+{
+    u32 partyIndex = gSpecialVar_0x8004;
+    u32 currentSpecies = gSpecialVar_0x8005;
+    u32 targetSpecies = gSpecialVar_Result; 
+
+    if (targetSpecies != currentSpecies)
+    {
+        SetMonData(&gParties[B_TRAINER_PLAYER][partyIndex], MON_DATA_SPECIES, &targetSpecies);
+        TrySetDayLimitToFormChange(&gParties[B_TRAINER_PLAYER][partyIndex]);
+        CalculateMonStats(&gParties[B_TRAINER_PLAYER][partyIndex]);
+    }
+}
+
+
+void Script_returnbasespecies(struct ScriptContext *ctx)
+{
+    gSpecialVar_Result = GET_BASE_SPECIES_ID(gSpecialVar_0x8005);
+}

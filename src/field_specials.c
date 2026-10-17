@@ -81,6 +81,8 @@
 #include "rogue_voltorbflip.h"
 #include "chooseboxmon.h"
 
+#include "menu_specialized.h"
+
 #define TAG_ITEM_ICON 5500
 
 #define GFXTAG_MULTICHOICE_SCROLL_ARROWS 2000
@@ -4710,7 +4712,10 @@ void SetAbility(void)
 void DaisyMassageServices(void)
 {
     AdjustFriendship(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], FRIENDSHIP_EVENT_MASSAGE);
-    VarSet(VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 0);
+    u32 stat = BoostContestStat(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004]);
+   // VarSet(VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 0);
+    StringCopy(gStringVar2, sConditionNames[stat]);
+    gSpecialVar_Result = stat;
 }
 
 u8 GetLeadMonFriendship(void)

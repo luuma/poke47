@@ -646,6 +646,7 @@ static void Task_ShowContestResults(u8 taskId)
         else
         {
             IncrementGameStat(GAME_STAT_ENTERED_CONTEST);
+            FlagClear(FLAG_CELINE_MASSAGE);
             if (gContestFinalStandings[gContestPlayerMonIndex] == 0)
                 IncrementGameStat(GAME_STAT_WON_CONTEST);
 
