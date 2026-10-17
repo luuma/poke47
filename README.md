@@ -3,11 +3,11 @@
 
 # About `poke47`
 
-![Image of a sewaddle running back and forth in snow making footprints while the player watches](https://images.hackdex.app/poke47/1773931253238-3.png)![Gif that shows the game's start menu, with Kyurem](https://images.hackdex.app/poke47/1777208057027-9.gif)![Image of the player flying to a new route - a dramatic canyon](https://images.hackdex.app/poke47/1773931248565-0.png) 
+![Gif that shows the game's start menu, with Kyurem](https://images.hackdex.app/poke47/1777208057027-9.gif)![Image of the player flying to a new route - a dramatic canyon](https://images.hackdex.app/poke47/1773931248565-0.png) 
 =========================================================================================================================================================================================================
-![Image showing the autobattle mechanic - the player's Sliggoo is fighting a starly in the overworld!](https://images.hackdex.app/poke47/1776628470989-8.png)![Gif that shows an expanded region map](https://images.hackdex.app/poke47/1777211690399-1.gif)![Image showing an Inkay battling a Furfrou with its ability Opposite Day, inverting the type chart](https://images.hackdex.app/poke47/1773931251614-2.png)
+![Image showing the autobattle mechanic - the player's Sliggoo is fighting a starly in the overworld!](https://images.hackdex.app/poke47/1776628470989-8.png)![Gif that shows an expanded region map](https://images.hackdex.app/poke47/1777211690399-1.gif)![Image showing an Inkay battling a Furfrou with its ability Opposite Day, inverting the type chart](https://images.hackdex.app/poke47/1773931251614-2.png) 
 
-Pokemon ____(4) _______(7) is a patch for Pokémon Emerald. It replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with properly playtested and overhauled movepools, new abilities, new TMs, and a handful of new routes, shown in the gif above. 
+Poke47 is a patch for Pokémon Emerald. It replaces all pokemon from gen 1-3 with pokémon from generations 4 to 7, with properly playtested and overhauled movepools, new abilities, new TMs, and a handful of new routes, shown in the gif above. 
 [This ROM is **extensively documented**, courtesy of JTebbe's Obstagoon, and some excellent work by Menace.](https://menace791.github.io/poke47-docs/)
 
 This is a from-scratch disassembly port of my previous QOL/engine hack, Altered Emerald. Along the way I have made a few cuts, a few map additions, and some extra changes:
