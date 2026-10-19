@@ -4784,6 +4784,8 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
         case ABILITY_AS_ONE_SHADOW_RIDER:
         case ABILITY_BEAST_BOOST:
         case ABILITY_EELEVATE:
+        case ABILITY_PROPELLER_TAIL:
+        case ABILITY_STALWART://UNUSED
             {
                 if (NoAliveMonsForEitherParty())
                     break;
@@ -4795,6 +4797,8 @@ u32 AbilityBattleEffects(enum AbilityEffect caseID, enum BattlerId battler, enum
                     stat = GetHighestStatId(battler);
                 else if (ability == ABILITY_GRIM_NEIGH || ability == ABILITY_AS_ONE_SHADOW_RIDER)
                     stat = STAT_SPATK;
+                else if (ability == ABILITY_PROPELLER_TAIL || ability == ABILITY_STALWART)
+                    stat = STAT_SPDEF;
 
                 if (numMonsFainted && CompareStat(battler, stat, MAX_STAT_STAGE, CMP_LESS_THAN, ability))
                 {
