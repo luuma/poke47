@@ -1227,7 +1227,7 @@ LilycoveCity_ContestLobby_EventScript_DeclineGrooming::
 
 LilycoveCity_ContestLobby_EventScript_RateMonFriendship::
 	msgbox LilycoveCity_ContestLobby_Text_MayISeeFirstMon
-	wait 8
+	delay_16
 	specialvar VAR_RESULT, GetLeadMonFriendship
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_EventScript_MonFriendshipLowest
@@ -1287,7 +1287,7 @@ LilycoveCity_ContestLobby_Text_LikeMeToGroomMon::
 LilycoveCity_ContestLobby_Text_DontNeedAnyGrooming::
 	.string "CELINE: Quoi! Vous think this accent is?\n"
 	.string "ridiculous? Eet's real! I swear down.\p"
-	.string "Le francais est la lingue de l'amour!$"
+	.string "Le francais est la language de l'amour!$"
 
 LilycoveCity_ContestLobby_Text_GroomWhichOne::
 	.string "CELINE: Ouich one should I GROOM?$"
@@ -1339,7 +1339,7 @@ LilycoveCity_ContestLobby_Text_ItsWarmingUpToYou::
 	.string "Trust should be growing between you.$"
 
 LilycoveCity_ContestLobby_Text_NotFamiliarWithYouYet::
-	.string "It's not quite familiar with you\n"
+	.string "Eet's not quite familiar with you\n"
 	.string "yet.\p"
 	.string "POKéMON are all quite wary when\n"
 	.string "zey are initially caught.$"
