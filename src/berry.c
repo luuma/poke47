@@ -2740,13 +2740,13 @@ static u8 GetWaterBonusByBerryType(u8 berry)
 static u8 GetWeedingBonusByBerryType(u8 berry)
 {
     u8 bonus = GetBerryInfo(berry)->weedsBonus;
-    return (bonus == 0) ? 1 : bonus * 5;
+    return (bonus == 0) ? 2 : bonus * 5;
 }
 
 static u8 GetPestsBonusByBerryType(u8 berry)
 {
     u8 bonus = GetBerryInfo(berry)->pestsBonus;
-    return (bonus == 0) ? 2 : bonus * 5;
+    return (bonus == 0) ? 2 : bonus * 4;
 }
 
 bool8 CanWaterBerryPlot(void)
@@ -3204,6 +3204,7 @@ static void AddTreeBonus(struct BerryTree *tree, u8 bonus)
         tree->moistureLevel = bonus % 10;
     }
     bonus /= 10;
+    assertf(FALSE, "BONUS=%d",bonus);
     if (bonus + tree->berryYield > GetBerryInfo(tree->berry)->maxYield)
         tree->berryYield = GetBerryInfo(tree->berry)->maxYield;
     else

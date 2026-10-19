@@ -833,6 +833,8 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
             else if (WildEncounterCheck(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo->encounterRate, FALSE) != TRUE)
                 return FALSE;
 
+
+
             if (TryStartRoamerEncounter())
             {
                 roamer = &gSaveBlock1Ptr->roamer[gEncounteredRoamerIndex];
@@ -844,6 +846,14 @@ bool8 StandardWildEncounter(u16 curMetatileBehavior, u16 prevMetatileBehavior)
             }
             else // try a regular surfing encounter
             {
+                if (DoMassOutbreakEncounterTest() == TRUE 
+                    && SetUpMassOutbreakEncounter(WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE 
+                    && gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo == NULL)// if no encounter header for land
+                {
+                    BattleSetup_StartWildBattle();
+                    return TRUE;
+                }
+
                 if (TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo, WILD_AREA_WATER, WILD_CHECK_REPEL | WILD_CHECK_KEEN_EYE) == TRUE)
                 {
                     gIsSurfingEncounter = TRUE;
@@ -1044,7 +1054,11 @@ bool8 SweetScentWildEncounter(void)
                 return TRUE;
             }
 
-            TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo, WILD_AREA_WATER, 0);
+            if (DoMassOutbreakEncounterTest() == TRUE && gWildMonHeaders[headerId].encounterTypes[timeOfDay].landMonsInfo == NULL)
+                SetUpMassOutbreakEncounter(0);
+            else
+                TryGenerateWildMon(gWildMonHeaders[headerId].encounterTypes[timeOfDay].waterMonsInfo, WILD_AREA_WATER, 0);
+            
             BattleSetup_StartWildBattle();
             return TRUE;
         }

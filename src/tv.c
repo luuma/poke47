@@ -372,13 +372,13 @@ static const struct {
         .species = SPECIES_KRABBY,
         .moves = {MOVE_CRUSH_GRIP, MOVE_AQUA_JET, MOVE_METAL_CLAW, MOVE_CLAMP},
         .level = 29,
-        .location = MAP_NUM(MAP_ROUTE130),
+        .location = MAP_NUM(MAP_ROUTE131),
     },
     {
         .species = SPECIES_WYNAUT,
         .moves = {MOVE_ENCORE, MOVE_SPLASH, MOVE_COMEUPPANCE, MOVE_TAIL_WHIP},
         .level = 20,
-        .location = MAP_NUM(MAP_ROUTE131),
+        .location = MAP_NUM(MAP_ROUTE130), // find mirage island little man
     },
     {
         .species = SPECIES_CORSOLA,

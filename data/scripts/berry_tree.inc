@@ -459,6 +459,7 @@ BerryTree_EventScript_CheckForPests::
 	return
 
 BerryTree_EventScript_EncounterPests::
+	special ObjectEventInteractionClearBerryPests
 	message BerryTree_Text_APokemonAppeared
 	waitmessage
 	waitbuttonpress
