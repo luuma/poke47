@@ -7667,6 +7667,7 @@ u32 BoostContestStat(struct Pokemon *mon)
 
     SetMonData(mon, sConditionToMonData[stat], &boostedStat);
     CalculateMonStats(mon);
+    StringCopy(gStringVar2, sConditionNames[stat]);
     return stat;
 }
 

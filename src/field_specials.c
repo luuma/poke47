@@ -4714,7 +4714,6 @@ void DaisyMassageServices(void)
     AdjustFriendship(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004], FRIENDSHIP_EVENT_MASSAGE);
     u32 stat = BoostContestStat(&gParties[B_TRAINER_PLAYER][gSpecialVar_0x8004]);
    // VarSet(VAR_MASSAGE_COOLDOWN_STEP_COUNTER, 0);
-    StringCopy(gStringVar2, sConditionNames[stat]);
     gSpecialVar_Result = stat;
 }
 

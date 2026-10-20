@@ -1227,7 +1227,8 @@ LilycoveCity_ContestLobby_EventScript_DeclineGrooming::
 
 LilycoveCity_ContestLobby_EventScript_RateMonFriendship::
 	msgbox LilycoveCity_ContestLobby_Text_MayISeeFirstMon
-	delay_16
+	playse SE_CONTEST_PLACE
+        waitse
 	specialvar VAR_RESULT, GetLeadMonFriendship
 	switch VAR_RESULT
 	case 0, LilycoveCity_ContestLobby_EventScript_MonFriendshipLowest

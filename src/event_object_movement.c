@@ -2448,8 +2448,6 @@ void RemoveFollowingPokemon(void)
     RemoveObjectEvent(objectEvent);
 }
 
-
-
 // Determine whether follower *should* be visible
 bool32 IsFollowerVisible(void)
 {
@@ -12543,7 +12541,9 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
     bool32 shiny;
     bool32 female;
     RemoveAutoBattlingPokemon();
-
+    //u32 followerd = GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER);
+    //u16 facingDirection = gObjectEvents[followerd].facingDirection;
+    //assertf(FALSE, "%d", facingDirection);
     struct ObjectEvent *objEvent = GetFollowerAutobattleObject();
     struct Sprite *sprite;
 
@@ -12551,6 +12551,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
      || SpeciesToGraphicsInfo(species, shiny, female) == NULL)
         assertf(FALSE, "could not spawn an autobattler from that!")
         return;
+
     if (objEvent == NULL) // Done only to check it isn't spawned.
     {
         RemoveFollowingPokemon();// Avoids a ball anim playing.
@@ -12582,6 +12583,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
         objEvent = &gObjectEvents[objectEventId];
         objEvent->triggerGroundEffectsOnMove = TRUE;
         objEvent->active = TRUE;
+        //SetObjectEventDirection(objEvent, facingDirection);
 
         if (Random() % 3 == 0) // IDK WHY but I think it's better than the cry or just the SE. Feels like it's got a mind.
             PlayCry_Normal(species, 0);
