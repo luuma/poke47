@@ -29,6 +29,18 @@ static const u8 sTextWindowFrame17_Gfx[] = INCGFX_U8("graphics/text_window/17.pn
 static const u8 sTextWindowFrame18_Gfx[] = INCGFX_U8("graphics/text_window/18.png", ".4bpp");
 static const u8 sTextWindowFrame19_Gfx[] = INCGFX_U8("graphics/text_window/19.png", ".4bpp");
 static const u8 sTextWindowFrame20_Gfx[] = INCGFX_U8("graphics/text_window/20.png", ".4bpp");
+static const u8 sTextWindowFrame21_Gfx[] = INCGFX_U8("graphics/text_window/21.png", ".4bpp");
+//static const u8 sTextWindowFrame22_Gfx[] = INCGFX_U8("graphics/text_window/22.png", ".4bpp");
+static const u8 sTextWindowFrame23_Gfx[] = INCGFX_U8("graphics/text_window/23.png", ".4bpp");
+//static const u8 sTextWindowFrame24_Gfx[] = INCGFX_U8("graphics/text_window/24.png", ".4bpp");
+static const u8 sTextWindowFrame25_Gfx[] = INCGFX_U8("graphics/text_window/25.png", ".4bpp");
+static const u8 sTextWindowFrame26_Gfx[] = INCGFX_U8("graphics/text_window/26.png", ".4bpp");
+static const u8 sTextWindowFrame27_Gfx[] = INCGFX_U8("graphics/text_window/27.png", ".4bpp");
+static const u8 sTextWindowFrame28_Gfx[] = INCGFX_U8("graphics/text_window/28.png", ".4bpp");
+static const u8 sTextWindowFrame29_Gfx[] = INCGFX_U8("graphics/text_window/29.png", ".4bpp");
+static const u8 sTextWindowFrame30_Gfx[] = INCGFX_U8("graphics/text_window/30.png", ".4bpp");
+static const u8 sTextWindowFrame31_Gfx[] = INCGFX_U8("graphics/text_window/31.png", ".4bpp");
+static const u8 sTextWindowFrame32_Gfx[] = INCGFX_U8("graphics/text_window/32.png", ".4bpp");
 
 const u16 gTextWindowFrame1_Pal[] = INCGFX_U16("graphics/text_window/1.png", ".gbapal");
 static const u16 sTextWindowFrame2_Pal[] = INCGFX_U16("graphics/text_window/2.png", ".gbapal");
@@ -50,6 +62,18 @@ static const u16 sTextWindowFrame17_Pal[] = INCGFX_U16("graphics/text_window/17.
 static const u16 sTextWindowFrame18_Pal[] = INCGFX_U16("graphics/text_window/18.png", ".gbapal");
 static const u16 sTextWindowFrame19_Pal[] = INCGFX_U16("graphics/text_window/19.png", ".gbapal");
 static const u16 sTextWindowFrame20_Pal[] = INCGFX_U16("graphics/text_window/20.png", ".gbapal");
+static const u16 sTextWindowFrame21_Pal[] = INCGFX_U16("graphics/text_window/21.png", ".gbapal");
+static const u16 sTextWindowFrame22_Pal[] = INCGFX_U16("graphics/text_window/22.png", ".gbapal");
+static const u16 sTextWindowFrame23_Pal[] = INCGFX_U16("graphics/text_window/23.png", ".gbapal");
+static const u16 sTextWindowFrame24_Pal[] = INCGFX_U16("graphics/text_window/24.png", ".gbapal");
+static const u16 sTextWindowFrame25_Pal[] = INCGFX_U16("graphics/text_window/25.png", ".gbapal");
+static const u16 sTextWindowFrame26_Pal[] = INCGFX_U16("graphics/text_window/26.png", ".gbapal");
+static const u16 sTextWindowFrame27_Pal[] = INCGFX_U16("graphics/text_window/27.png", ".gbapal");
+static const u16 sTextWindowFrame28_Pal[] = INCGFX_U16("graphics/text_window/28.png", ".gbapal");
+static const u16 sTextWindowFrame29_Pal[] = INCGFX_U16("graphics/text_window/29.png", ".gbapal");
+static const u16 sTextWindowFrame30_Pal[] = INCGFX_U16("graphics/text_window/30.png", ".gbapal");
+static const u16 sTextWindowFrame31_Pal[] = INCGFX_U16("graphics/text_window/31.png", ".gbapal");
+static const u16 sTextWindowFrame32_Pal[] = INCGFX_U16("graphics/text_window/32.png", ".gbapal");
 
 static const u16 sTextWindowPalettes[][16] =
 {
@@ -81,7 +105,20 @@ static const struct TilesPal sWindowFrames[WINDOW_FRAMES_COUNT] =
     {sTextWindowFrame17_Gfx, sTextWindowFrame17_Pal},
     {sTextWindowFrame18_Gfx, sTextWindowFrame18_Pal},
     {sTextWindowFrame19_Gfx, sTextWindowFrame19_Pal},
-    {sTextWindowFrame20_Gfx, sTextWindowFrame20_Pal}
+    {sTextWindowFrame20_Gfx, sTextWindowFrame20_Pal},
+    {sTextWindowFrame21_Gfx, sTextWindowFrame21_Pal},
+    {sTextWindowFrame21_Gfx, sTextWindowFrame22_Pal},
+    {sTextWindowFrame23_Gfx, sTextWindowFrame23_Pal},
+    {sTextWindowFrame23_Gfx, sTextWindowFrame24_Pal},
+    {sTextWindowFrame25_Gfx, sTextWindowFrame25_Pal},
+    {sTextWindowFrame26_Gfx, sTextWindowFrame26_Pal},
+    {sTextWindowFrame27_Gfx, sTextWindowFrame27_Pal},
+    {sTextWindowFrame28_Gfx, sTextWindowFrame28_Pal},
+    {sTextWindowFrame29_Gfx, sTextWindowFrame29_Pal},
+    {sTextWindowFrame30_Gfx, sTextWindowFrame30_Pal},
+    {sTextWindowFrame31_Gfx, sTextWindowFrame31_Pal},
+    {sTextWindowFrame32_Gfx, sTextWindowFrame32_Pal}
+
 };
 
 static const u16 sTextWindowDexNavFrame[] = INCGFX_U16("graphics/text_window/dexnav_pal.pal", ".gbapal");

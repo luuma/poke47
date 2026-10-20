@@ -1827,8 +1827,8 @@ const struct AbilityInfo gAbilitiesInfo[ABILITIES_COUNT] =
     [ABILITY_PROPELLER_TAIL] =
     {
         .name = _("Propeller Tail"),
-        .description = COMPOUND_STRING("Ignores foe's redirection."),
-        .aiRating = 2,
+        .description = COMPOUND_STRING("Boosts Sp. Def on KO."),
+        .aiRating = 5,
     },
 
     [ABILITY_MIRROR_ARMOR] =
