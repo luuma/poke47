@@ -40,9 +40,25 @@ EventScript_FollowerAutoBegin::
     lockall
     getobjectxy OBJ_EVENT_ID_FOLLOWER, CURRENT_POSITION, 0x8004, 0x8005
     followertoautobattler 0x8004, 0x8005
+    call_if_set FLAG_TEMP_8, EventScript_facedownauto
     setvar VAR_LAST_TALKED, OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE
+    @ applymovement OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE, gMovement_FacePlayer 
+    @ waitmovement
     releaseall
     end
+
+gMovement_FacePlayer:
+	face_player
+	step_end
+
+EventScript_facedownauto::
+    applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown @ LMAOOOO
+    waitmovement
+    return
+
+EventScript_set8::
+	setflag FLAG_TEMP_8
+	return
 
 EventScript_AButtonToAutobattle::
     lockall
@@ -53,7 +69,9 @@ EventScript_AButtonToAutobattle::
 
 EventScript_AButtonToEndAutobattle::
     lockall
-    setvar VAR_LAST_TALKED, OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE
+    call_if_set FLAG_TEMP_7, EventScript_set8
+    setflag FLAG_TEMP_7
+    @ setvar VAR_LAST_TALKED, OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE
     playse SE_BALL_OPEN
     applymovement OBJ_EVENT_ID_FOLLOWER_AUTOBATTLE, gMovement_EnterPokeball
     waitmovement
@@ -61,8 +79,6 @@ EventScript_AButtonToEndAutobattle::
     callnative RemoveAutoBattlingPokemon @ this despawn automatically updates following pokemon.
     releaseall
     end
-
-
 
 gText_FollowerAutoQuestion::
     .string "Let {STR_VAR_1} roam and battle?$"

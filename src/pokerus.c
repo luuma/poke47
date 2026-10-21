@@ -8,7 +8,7 @@
 
 u32 GetDaysLeftBasedOnStrain(u32 strain)
 {
-    u32 daysLeft = (strain % 4) + 1;
+    u32 daysLeft = (strain % 15) + 1;
     return daysLeft;
 }
 
@@ -17,9 +17,9 @@ static u32 GetRandomPokerusStrain(void)
     if (P_POKERUS_STRAIN_DISTRIBUTION < GEN_3) // Gen 1 - 2 (Gen 1 had no Pokérus but we default it with gen 2)
         return RandomWeighted(RNG_POKERUS_STRAIN_DISTRIBUTION, 15, 30, 30, 30, 30, 30, 30, 30, 30, 1, 1, 1, 1, 1, 1, 1);
     else if (P_POKERUS_STRAIN_DISTRIBUTION < GEN_4) //Gen 3 (Ruby/Sapphire only)
-        return RandomWeighted(RNG_POKERUS_STRAIN_DISTRIBUTION, 30, 31, 31, 31, 31, 31, 31, 31, 1, 1, 1, 1, 1, 1, 1, 1);
+        return RandomWeighted(RNG_POKERUS_STRAIN_DISTRIBUTION, 30, 31, 31, 31, 31, 31, 31, 31, 26, 21, 16, 11, 6, 6, 6, 1);
     else // Gen 4+ (Pokérus was disabled in gen 9 but we default it here)
-        return RandomWeighted(RNG_POKERUS_STRAIN_DISTRIBUTION, 0, 31, 31, 31, 31, 31, 31, 31, 0, 1, 1, 1, 1, 1, 1, 1);
+        return RandomWeighted(RNG_POKERUS_STRAIN_DISTRIBUTION, 0, 31, 31, 31, 31, 31, 31, 31, 26, 21, 16, 11, 6, 6, 6, 1);// top end rarer.
 }
 
 void RandomlyGivePartyPokerus(void)

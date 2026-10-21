@@ -12543,7 +12543,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
     RemoveAutoBattlingPokemon();
     //u32 followerd = GetObjectEventIdByLocalId(OBJ_EVENT_ID_FOLLOWER);
     //u16 facingDirection = gObjectEvents[followerd].facingDirection;
-    //assertf(FALSE, "%d", facingDirection);
+   // assertf(FALSE, "%d", facingDirection);
     struct ObjectEvent *objEvent = GetFollowerAutobattleObject();
     struct Sprite *sprite;
 
@@ -12583,6 +12583,7 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
         objEvent = &gObjectEvents[objectEventId];
         objEvent->triggerGroundEffectsOnMove = TRUE;
         objEvent->active = TRUE;
+        //objEvent->facingDirection = facingDirection;
         //SetObjectEventDirection(objEvent, facingDirection);
 
         if (Random() % 3 == 0) // IDK WHY but I think it's better than the cry or just the SE. Feels like it's got a mind.
@@ -12591,8 +12592,14 @@ static void CreateAutoBattleMonAtCoords(u16 xcoord, u16 ycoord)
             PlaySE(SE_EGG_HATCH);
     }
     sprite = &gSprites[objEvent->spriteId];
+
+    //ObjectEventSetSingleMovement(objEvent, sprite, GetFaceDirectionMovementAction(facingDirection));
+   // objEvent->singleMovementActive = TRUE; 
+    //ObjectEventExecSingleMovementAction(objEvent, sprite);  /// actually dont think that any objects ever face a direction lol
+
     UpdateFollowingPokemon();// Ensures that it respawns quickly without garbled graphics.
     sprite->data[6] = 0; // set animation data
+    
 }
 
 void RemoveAutoBattlingPokemon(void)// technically, since some of the time it is called by a script, this should be passed struct ScriptContext *ctx, not void. However it has no impact on this compiler.
